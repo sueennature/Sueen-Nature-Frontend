@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
         <img
-        src="../public/img/welcomeImg.png"
+        src="/img/welcomeImg.png"
         alt="backgroundImg"
         class="lg:object-cover object-fill lg:h-full lg:w-full min-w-min min-h-screen"
       />

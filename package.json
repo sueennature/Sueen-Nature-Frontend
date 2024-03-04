@@ -16,6 +16,7 @@
     "@mui/material": "^5.15.11",
     "@splidejs/vue-splide": "^0.6.12",
     "flowbite": "^2.3.0",
+    "flowbite-datepicker": "^1.2.6",
     "nuxt": "^3.10.3",
     "nuxt-icon": "^0.6.8",
     "nuxt-swiper": "^1.2.2",

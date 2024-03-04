@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row justify-center gap-8 my-10">
+  <div class="lg:flex lg:flex-row grid grid-cols-1 justify-center justify-items-center gap-8 my-10 p-4 lg:p-0">
     <div
       class="w-full p-4 max-w-lg bg-white border border-gray-200 rounded-none shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
     >
@@ -21,31 +21,30 @@
           convallis, dolor sed consectetur gravida, neque sem tristique.
         </p>
 
-        <div class="grid gap-x-4 mb-6 grid-cols-2">
+        <div class="grid gap-x-4 mb-6 grid-cols-2 gap-y-6">
           <div>
             <label
-              for="first_name"
+              for="name"
               class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
-              >Name</label
-            >
+              >Name</label>
             <input
               type="text"
-              id="first_name"
-              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-bold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              id="name"
+              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-semibold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Name"
               required
             />
           </div>
           <div>
             <label
-              for="last_name"
+              for="email"
               class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
               >Email</label
             >
             <input
               type="email"
-              id="first_name"
-              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-bold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              id="Email"
+              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-semibold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Email"
               required
             />
@@ -59,7 +58,7 @@
             <input
               type="tel"
               id="first_name"
-              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-bold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-semibold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="+ 1009 12345"
               required
             />
@@ -70,14 +69,14 @@
               class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
               >Room</label>
             <select
-              id="countries"
-              class="bg-white border-none text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              id="rooms"
+              class="bg-gray-500 border-none text-gray-700 font-semibold text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Deluxe Room</option>
-              <option value="US">United States</option>
-              <option value="CA">Canada</option>
-              <option value="FR">France</option>
-              <option value="DE">Germany</option>
+              <option value="premium room">premium room</option>
+              <option value="premium room">premium room</option>
+              <option value="premium room">premium room</option>
+              <option value="premium room">premium room</option>         
             </select>
           </div>
         </div>
@@ -90,7 +89,7 @@
         <textarea
           id="message"
           rows="4"
-          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="block p-2.5 w-full text-sm placeholder:text-gray-700 placeholder:font-semibold placeholder:text-sm text-gray-900 bg-gray-500 border-none rounded-0 border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your Message"
         ></textarea>
 
@@ -102,6 +101,7 @@
         </button>
       </form>
     </div>
+    <!-- column of contact details inofrmation -->
     <div class="flex flex-col space-y-4">
       <div class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700">
         <h5 class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white">
@@ -171,7 +171,7 @@
             </g>
           </svg>
           <a
-            href="mailto:hello@ayamaresort.com"
+            href="tel:+123456789"
             class="text-stone-700 hover:underline text-base"
             >+(123) - 456 -789</a
           >
@@ -237,6 +237,10 @@ h5 {
 p,
 a,input {
   font-family: "Open Sans", sans-serif;
+}
+#rooms {
+  /* Your existing styles here */
+  background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23F1F3F5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
 }
 
 </style>

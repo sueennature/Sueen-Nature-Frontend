@@ -389,15 +389,12 @@
     </nav>
     <!-- content on hero section -->
     <div
-      class="absolute inset-0 flex-col justify-center items-center text-center lg:flex hidden"
+      class="absolute inset-0 flex-col justify-center items-center text-center flex"
     >
-      <h6 class="text-white lg:text-2xl text-lg font-semibold">STAY WITH US</h6>
-      <h2 class="text-white lg:text-8xl text-xl font-semibold mt-8">
-        Attention to detail like never before.
+      <h6 class="text-white text-2xl font-semibold uppercase">Get in touch</h6>
+      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8 uppercase">
+        contact us
       </h2>
-      <h6 class="text-white lg:text-2xl text-lg font-semibold mt-8 uppercase">
-        EXPLORE OUR HOTEL
-      </h6>
       <!-- Add the following div for the vertical line -->
       <div class="absolute bottom-0 left-1/2 w-px bg-white"></div>
     </div>

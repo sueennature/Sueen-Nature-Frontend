@@ -1,31 +1,34 @@
 <template>
   <div class="container py-20">
+    <!-- main title -->
     <h2
-      class="text-black-200 text-4xl font-medium text-center max-w-[38ch] mx-auto"
+      class="text-black-200 md:text-4xl text-2xl font-medium text-center max-w-[38ch] mx-auto"
     >
       "I only get to come home once a year.When we have our annual conference at
       the Grand Standard"
     </h2>
-
-    <h6 class="text-black-200 font-semibold text-xl text-center mt-4">
+   <!-- sub title -->
+    <h6 class="text-black-200 font-semibold md:text-xl text-lg text-center mt-4">
       RECENT GUEST
     </h6>
-    <p class="text-gray-300 text-3xl text-center mt-10 max-w-[50ch] mx-auto">
+    <!-- introduction paragraph -->
+    <p class="text-gray-300 md:text-3xl text-xl text-center mt-10 max-w-[50ch] mx-auto">
       Immerse yourself in tranquility and luxury as you explore our carefully
       curated selection of accommodations designed to elevate your stay amidst
       nature's embrace. From cozy retreats to lavish suites, each room is
       thoughtfully crafted to offer comfort, style, and a seamless blend with
       the breathtaking natural surroundings.
     </p>
+    <!-- Deluxe ROOM Section -->
     <div>
-      <div class="flex items-center justify-center mt-20">
+      <div class="flex items-center justify-center md:mt-20 md:mb-10 my-6">
         <span class="border-t border-black w-1/4 mx-4"></span>
-        <h2 class="text-4xl uppercase text-black-200 mx-4">Deluxe ROOM</h2>
+        <h2 class="md:text-4xl text-xl uppercase text-black-200 mx-4 whitespace-pre">Deluxe ROOM</h2>
         <span class="border-t border-black w-1/4 mx-4"></span>
       </div>
       <div
         id="controls-carousel"
-        class="relative max-w-md mx-auto"
+        class="relative w-full mx-auto"
         data-carousel="static"
       >
         <!-- Carousel wrapper -->
@@ -125,34 +128,38 @@
           </span>
         </button>
       </div>
-      <div class="flex flex-row gap-4 justify-center">
-        <h5 class="text-sm text-black-200 pl-4">
+      <!-- Bottom line details about the room -->
+      <div class="flex flex-row gap-4 justify-center mt-2">
+        <h5 class="md:text-sm text-xs text-black-200 pl-4">
           Size: <span class="italic">49 m<sup>2</sup></span>
         </h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">Beds: 01 King</h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">Beds: 01 King</h5>
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
           Occupancy: 03 Adults / 02 Adults & 02 Kids
         </h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">View: Pool</h5>
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">View: Pool</h5>
       </div>
+     <!-- view all button -->
       <div class="flex justify-center items-center">
         <button
           type="button"
-          class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
           VIEW ALL
         </button>
       </div>
     </div>
+    <!-- Garden View Suite Section -->
     <div>
-      <div class="flex items-center justify-center mt-20">
+      <div class="flex items-center justify-center md:mt-20 md:mb-10 my-6">
         <span class="border-t border-black w-1/4 mx-4"></span>
-        <h2 class="text-4xl uppercase text-black-200 mx-4">Garden View Suite</h2>
+        <h2 class="md:text-4xl text-xl uppercase text-black-200 mx-4 whitespace-pre">Garden View Suite</h2>
         <span class="border-t border-black w-1/4 mx-4"></span>
       </div>
+      <!-- Carousel wrapper -->
       <div
         id="controls-carousel"
-        class="relative max-w-md mx-auto"
+        class="relative w-full mx-auto"
         data-carousel="static"
       >
         <!-- Carousel wrapper -->
@@ -252,34 +259,37 @@
           </span>
         </button>
       </div>
-      <div class="flex flex-row gap-4 justify-center">
-        <h5 class="text-sm text-black-200 pl-4">
+      <!-- Bottom line details about the room -->
+      <div class="flex flex-row gap-4 justify-center mt-2">
+        <h5 class="md:text-sm text-xs text-black-200 pl-4">
           Size: <span class="italic">45 m<sup>2</sup></span>
         </h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">Beds: 01 King / 01 Twin</h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">Beds: 01 King / 01 Twin</h5>
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
             Occupancy: 03 Adults
         </h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">View: Garden</h5>
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">View: Garden</h5>
       </div>
+      <!-- view all button -->
       <div class="flex justify-center items-center">
         <button
           type="button"
-          class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
           VIEW ALL
         </button>
       </div>
     </div>
+    <!-- Premier Suite Section -->
     <div>
-      <div class="flex items-center justify-center mt-20">
+      <div class="flex items-center justify-center md:mt-20 md:mb-10 my-6">
         <span class="border-t border-black w-1/4 mx-4"></span>
-        <h2 class="text-4xl uppercase text-black-200 mx-4">Premier Suite</h2>
+        <h2 class="md:text-4xl text-2xl uppercase text-black-200 mx-4 whitespace-pre">Premier Suite</h2>
         <span class="border-t border-black w-1/4 mx-4"></span>
       </div>
       <div
         id="controls-carousel"
-        class="relative max-w-md mx-auto"
+        class="relative w-full mx-auto"
         data-carousel="static"
       >
         <!-- Carousel wrapper -->
@@ -379,20 +389,22 @@
           </span>
         </button>
       </div>
-      <div class="flex flex-row gap-4 justify-center">
-        <h5 class="text-sm text-black-200 pl-4">
+      <!-- Bottom line details about the room -->
+      <div class="flex flex-row gap-4 justify-center mt-2">
+        <h5 class="md:text-sm text-xs text-black-200 pl-4">
           Size: <span class="italic">49 m<sup>2</sup></span>
         </h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">Beds: 01 King</h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">Beds: 01 King</h5>
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
             Occupancy: 03 Adults
         </h5>
-        <h5 class="text-sm text-black-200 border-l pl-4">View: Direct Pool</h5>
+        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">View: Direct Pool</h5>
       </div>
+      <!-- view all button -->
       <div class="flex justify-center items-center">
         <button
           type="button"
-          class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
           VIEW ALL
         </button>

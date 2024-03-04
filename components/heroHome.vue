@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
       <img
-        src="../public/img/sueen-hero-background-2 1.png"
+        src="/img/sueen-hero-background-2 1.png"
         alt="backgroundImg"
         class=""
       />
@@ -10,7 +10,7 @@
       >
         <a href="/" class="relative mx-auto">
           <!-- Adjust mx-2 as needed for spacing -->
-          <img src="../public/img/logo.png" alt="logoImg" class="w-auto h-16 md:h-auto" />
+          <img src="/img/logo.png" alt="logoImg" class="w-auto h-16 md:h-auto" />
           <div
             class="absolute bottom-0 h-1 shadow-md shadow-slate-800 md:w-40 w-4 bg-white md:-left-48 -left-10 md:block hidden"
           ></div>

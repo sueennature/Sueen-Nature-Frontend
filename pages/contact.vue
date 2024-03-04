@@ -1,13 +1,13 @@
 <template>
      <div class="main overflow-hidden">
-        <heroRooms/>
+        <heroContact/>
         <contactBody/>       
         <footerHome/>
     </div>
 </template>
 
 <script setup>
-import heroRooms from '~/components/heroRooms.vue';
+import heroContact from '~/components/heroContact.vue';
 import contactBody from '~/components/contactBody.vue'
 import footerHome from '~/components/footerHome.vue';
 
