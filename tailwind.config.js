@@ -54,6 +54,9 @@ export default {
           600:"#5D5351",
           700:"#3B3A43",
         },
+        green:{
+          100:"#008000",
+        },
 
       },
       container: {

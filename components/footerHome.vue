@@ -3,7 +3,7 @@
   <div class="bg-black-300">
     <div class="container pt-20">
     <img
-      src="../public/img/logo3.png"
+      src="/img/logo3.png"
       alt="logoImg"
       class="w-auto h-16 md:h-auto mx-auto"
     />

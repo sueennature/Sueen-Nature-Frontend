@@ -192,9 +192,9 @@
   <div class="relative">
     <!-- hero image of room page -->
     <img
-      src="../public/img/hero-checkout.png"
+      src="/img/hero-checkout.png"
       alt="hero-rooms-Img"
-      class="w-full z-10 min-h-screen bg-cover"
+      class="w-full z-10 min-h-screen object-cover"
     />
     <!-- default navbar -->
     <nav

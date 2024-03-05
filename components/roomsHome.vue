@@ -15,7 +15,7 @@
         <a href="#">
           <img
             class="rounded-0"
-            src="../public/img/room-1 1.png"
+            src="/img/room-1 1.png"
             alt="image description"
           />
         </a>
@@ -30,7 +30,7 @@
         <a href="#">
           <img
             class="rounded-0"
-            src="../public/img/room-2 1.png"
+            src="/img/room-2 1.png"
             alt="image description"
           />
         </a>
@@ -45,7 +45,7 @@
         <a href="#">
           <img
             class="rounded-0"
-            src="../public/img/room-3 1.png"
+            src="/img/room-3 1.png"
             alt="image description"
           />
         </a>

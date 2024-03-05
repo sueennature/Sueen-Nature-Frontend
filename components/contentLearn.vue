@@ -33,17 +33,17 @@
         <h6 class="text-gray-300 font-bold text-sm text-center">Guest Relation</h6>
       </div>
       <div class="flex flex-col gap-1">
-        <img class="rounded-full w-24 h-24" src="../public/img/team2.png" alt="teamImg">
+        <img class="rounded-full w-24 h-24" src="/img/team2.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center max-w-[20ch] mx-auto">Emilie Johnson</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Guest Relation</h6>
       </div>
       <div class="flex flex-col gap-1">
-        <img class="rounded-full w-24 h-24" src="../public/img/team3.png" alt="teamImg">
+        <img class="rounded-full w-24 h-24" src="/img/team3.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center max-w-[20ch] mx-auto">Emilie Johnson</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Guest Relation</h6>
       </div>
       <div class="flex flex-col gap-1">
-        <img class="rounded-full w-24 h-24" src="../public/img/team4.png" alt="teamImg">
+        <img class="rounded-full w-24 h-24" src="/img/team4.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center max-w-[20ch] mx-auto">Emilie Johnson</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Guest Relation</h6>
       </div>

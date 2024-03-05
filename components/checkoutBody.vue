@@ -1,107 +1,169 @@
 <template>
   <div class="container my-28">
-    <div class="grid lg:grid-cols-2 grid-cols-1">
+    <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-4 gap-y-16">
       <div>
-        <h2 class="text-black-100 text-4xl text-left">Deluxe Room</h2>
-        <div class="flex text-lg font-light mt-4">
+        <h2 class="text-black-100 md:text-4xl text-3xl text-left">Deluxe Room</h2>
+        <div class="flex md:text-xl text-lg font-light mt-4">
           <span class="mr-2">28 m²</span>
           <span class="mr-2">/</span>
           <span class="mr-2">Partial Lake View</span>
           <span class="mr-2">/</span>
           <span>2 Guests</span>
         </div>
-        <div class="flex space-x-8 mt-4">
+        <!-- 1st section -->
+        <div class="md:flex grid grid-cols-2 justify-items-start md:space-x-8 gap-4 mt-8">
           <div
-            class="flex flex-row justify-center items-center text-xl space-x-1"
+            class="flex flex-row justify-center items-center md:text-2xl text-lg space-x-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
+              fill="none"
             >
-              <path
-                fill="currentColor"
-                d="M10 5v5H9V5H5v8h4v-1h1v5H9v-3H5v5h7v-2h1v2h6v-2h2v4H3V3h18v12h-2v-5h-6v5h-1V9h7V5z"
-              />
+              <rect width="24" height="24" fill="url(#pattern32)" />
+              <defs>
+                <pattern
+                  id="pattern32"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use
+                    xlink:href="#image0_470_323"
+                    transform="scale(0.0078125)"
+                  />
+                </pattern>
+                <image
+                  id="image0_470_323"
+                  width="128"
+                  height="128"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADsQAAA7EB9YPtSQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAqhSURBVHic7Z17sFVVGcB/91KCoSAEWgjOxfF11QJCmVSI0nDMR5aovV/GWGqPSZzI7KFNmqI1ZRM12VjKaE7Sw+hFqUVwUzIQEq20kCuG0UVMJBAul9sf397dvdfZ5+zXWnufc/b3m1lzz9qPtb979nfWWnvt7wG1jANuAjYA/cBgzrIFmBtxna8BOy20r6Vx6ffu5Y3AyyPuQ4gjgaccCPG0cZ2pTfDFVLH0AkcEb0Rn4PMwYAkwCfv0GfXngL0OrqM05jDgbuReA9AR2Hk2sDRQHwD+CPw350WfBa4B/mJsPx94PzA8Z/tKY0YCMwjcdOAs4BfmgdcR7i4uKkI6pRDmEb631/o7gkPAQcZJD7iXSymIHqM+xv/QiVJpVAEqThoFOATpSgYo/3FGS3QZAFYCB9e5hzWkUYDLgJNTnqMUSydwCnKvEp+QlHGpxVHKYnzSA1+S4yIPUH+N4Chk0cFnFfBCjmsFmQQcHaj/Gfh3gvOOB14RqK8AdhvHjAVek1Gu54GHjG0TgWMC9UeQpfG0xMk+EjgpQ7shFhEeT7pT7g/yFePYaXmFC/Axo+3zEp53h3HehIhj5hjH3Aq8sUF5MXDsgxHtXWq0d2FCWU0WG+1MNPZ3G/sXJd2fpweoAv8A7m2wf1/M+YOW5OiIPyQbOqFzy/NGvStjO4cb9ecytlODKoBb/mrU3wnsl7KN44HpgfpT5H8/83+KGgJuAP5jqa0jLbVTBA8DTwKTvfoU5G3cZdS+IjfpAGYh85Cg0vzIpoBFKcCcgq7TbAwCnwduD2x7s1c2I5PIeoyl9v3MDmChTQF1EuiexcAbgA8Y26OeQhoxALwPeMaGUD46ByiGecjr9v6M528BzsFy9w/F9QCvRxZsbHAxcL2ltopiH3AVcBtiZzGL8MJOFP3ARsRw41ak+7dOUQqwHXuPLrsstVMGjwOfKluIIDoEhDF/ZQc2OHY4YXM2J79Q16gChOk16mcQtqULcibh7+9JJxI5RhUgzGZgXaA+BfhMxHGvRPwagvzKlVAuUQWo5atG/WrgZ8C5yLv2y4H1hM3n/07Yorpl0HWAWhYD7wFODWw7yytRDACXAHscy+UE7QFqGQAuIJlV9B7kGb/RG8OmRhUgmm3I6t011J/d/wGYCXyvIJmcoENAfXYj4/9C5F1GN2J5sxlYDjxWmmQWUQWIZydwj1faDh0CKo72AM3BGIasfjZg0eInDu0ByuUU5AmiD/iTV/qA+5AJpnNUAcrjCuD3wGmEl5uHIWsQy4EFroVQBSiHdyMhWxp9/53Ia+/3uhREFaB4DkT8JoJsAW4Bvg38y9j3ZWBUymtchKxl+CXKZwFQBSiDtxB23VoHHIsYunwIOA5YG9g/DnhrymsMRyaWfqmrQKoAxWO6cC1AfqU+24BPxpxjDX0MLJ4xRt30HYDaeEpjU16jD/Ef8BmB9Cw1qAIUj+nIeiK1higzjHpah9IliF+iTzd1lq51CCie5Ub9RsLOLkcggTobnWONonqAQ6n1k8tKbLTLOuccYGybhPwai45X+HPE2rfLq3chFtMrEUeSWUiX7dOLGKQ4wZUCbDfqLq1l4hRrPvJGz+ztHkTs+GYib/iKYjcy4/8lQwtAIxB3c5MB5MmgkQdRLlwNAc66LIMdwOqYYxZQ//+cDLzDqkTJ+A3iKLqzwTG7kAWjZS4FcaUAvwW+5ahtn37EyTLO6fTRmP3r7YiTmh8gM/NbgK2B7c8C3/H23eVaCJdzgEuAHyPr2uajT142Ie/nH0lw7IXAR6j1xNmLvHRx+guLYSMyHFzM0KPetrpHO8D1JPDXXimTPsRDt9kp9Mb76GNgxVEFqDiqABVHFaDiqAJUHFWAitMuCjAaCaWWNgRb5WkHBZgMPIFY1K5AlSAV7aAAcxkysZpB9mDPlSTPSuAyske9som5zPyyUqRITgfwJSTq10+BK8sUJo8CuMgvWAVOZcje/1jkzeD9ZQmjJmFh9idsjOGCo436YZFHFUQeBdiOGCyUzQjkxuXlC8CnqR8Uqi3JowCvpdZ6tQzmE7ahyxJJexQSyLEdJsWpaId/eAlD3jQ9wJoMbYyiPb4Ln3chyS78UtfmoR3mAL2IVe1kpEeyYeTZi+RNdkEXYgruklEkdCdrBwUAsQ1MYh2UlBVIpDAXzEV6LR9bybQykUcB5pEsW5cL+hFT6t/RemnolyH+gFMQH0AXASa3E7YzfCl1HtvzKMDlOc61xUNI/L6+sgVJwQ7gBOSGbMKNAt9BRTyDTqTWi6YV2Iv4JJTee7W6AoAEbVYykmcI+ATwz0D91YQDK9+FgwwXHp9DsmmB+M93Ep/DT4kg78ug4EKQ6aCxHsmQ5YIPO2q3crTDEKDkQBWg4qgCVBxVgIqjClBx2uVdQLszmsaRUSZmbVgVoHnpRKKDfJxaKyJrqAI0J8OA7yOpa5yic4DmZD4F3HzQHqAZGYZEEg+yxiv1lrsPQiKhpCaPAtxNOHqVaYFyKelj3CblqMDnvUh4tXbhGMKxhO9HIog1+h+7KUEBIkOPBpjgFdc8RnspgDnb78Hh/9cOc4Avli2AZTqMutO3nK3qF7APCbJ8E/CTkmRoC9rBL0DJQTsMAUoOVAEqjipAxVEFqDit6hhim9FG/Tiic/btBJ5G7Pkfpjm8o3PR6o4hrpjmlUb0IRE+vkl8yPqmJc0QsMuZFK3JeOCDiHfSnbRoxJQ0CnAn4takhOlAkk6sRtK9tBRphoDVSIbrV5F+8ngBEhPf57M0yGaZgzcRHpquR3IC2GI0kv9oFnAG4TxE45FE0G9H8iS0BGnnAH1kC2g01aivRb4s23QZ9UcdXedmJAXsFV7xI5PtByxG8hCtjT61udDHwOy8gCSiOJlw3r+RiEucjbhFzgkqgDnJO7RIQVqYdcBswo/Ek4GPliNOOoJDgBlh47teyRJ0yeR1Rn0u8fYEWTBDr5yNXUXeCayiNnxML5IFLDjcXAksooUmzqOQMX5QS2xZQXR8v3uM486P/dZrmW20cXWCc7qNcxYl3R8cArYjeeebIfxrszMTyY1oWu983aifW4w42TEngUuB02iRGWzJdCFxCoIsJ5zJ1EwC3XREPQauQJZBD0e6ObUcHmIqsrbgRxN9G+K44dOPhK4/wasXYROZi0Y3d4NXlCHuBeYAp3v1Q5D1gGCot2cCnw+I2B+HaQPo9Aeo6wDpMW+mmaBiT8z+OLYY9TNxGAJfu/fm4wnC6eWnIRHFNjU4J3OEc1WA5mMQWWG8LbDtYK9YR4eA5uR24LoiLqQK0LxchbiELaV2XmANHQKam/tI9jq7bijYOLQHqDiqABVHFaDiqAJUHFWAiqMKUHH0MdA9P8S9jcXIrCeqArhndtkCNEKHAPtsjT/EOYlzKKkC2GchEtKtjMBV+4CVwDeSnqBDgH02ANPLFiIp2gNUHFWA/Jhh3VoKVYD0mMmxTipFinTMNOrb/A86B0hPDxIXwGcJ4in0YvThsWxFLIAeR6x+rqXWyTUPI6k1T++x2H7l2B+x2bPpabTKa3ux5XajyhoCPb8OAenZBZyH3XzF47y/jbKC2KAXidWgSTYtMAFxBdvIUMTyLGUzcI7X5nTgbznaiiq+s8oNwFjzn/gf672+E2TTzRwAAAAASUVORK5CYII="
+                />
+              </defs>
             </svg>
             <span>28 m²</span>
           </div>
           <div
-            class="flex flex-row justify-center items-center text-xl space-x-1"
+            class="flex flex-row justify-center items-center md:text-2xl text-lg space-x-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
+              fill="none"
             >
-              <path
-                fill="currentColor"
-                d="M12 11a5 5 0 0 1 5 5v6h-2v-6a3 3 0 0 0-2.824-2.995L12 13a3 3 0 0 0-2.995 2.824L9 16v6H7v-6a5 5 0 0 1 5-5m-6.5 3c.279 0 .55.033.81.094a5.948 5.948 0 0 0-.301 1.575L6 16v.086a1.493 1.493 0 0 0-.356-.08L5.5 16a1.5 1.5 0 0 0-1.493 1.355L4 17.5V22H2v-4.5A3.5 3.5 0 0 1 5.5 14m13 0a3.5 3.5 0 0 1 3.5 3.5V22h-2v-4.5a1.5 1.5 0 0 0-1.355-1.493L18.5 16c-.175 0-.343.03-.5.085V16c0-.666-.108-1.306-.308-1.904c.258-.063.53-.096.808-.096m-13-6a2.5 2.5 0 1 1 0 5a2.5 2.5 0 0 1 0-5m13 0a2.5 2.5 0 1 1 0 5a2.5 2.5 0 0 1 0-5m-13 2a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1m13 0a.5.5 0 1 0 0 1a.5.5 0 0 0 0-1M12 2a4 4 0 1 1 0 8a4 4 0 0 1 0-8m0 2a2 2 0 1 0 0 4a2 2 0 0 0 0-4"
-              />
+              <rect width="24" height="24" fill="url(#pattern48)" />
+              <defs>
+                <pattern
+                  id="pattern48"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use
+                    xlink:href="#image0_470_331"
+                    transform="scale(0.0078125)"
+                  />
+                </pattern>
+                <image
+                  id="image0_470_331"
+                  width="128"
+                  height="128"
+                  xlink:href="data:image/png;base64,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"
+                />
+              </defs>
             </svg>
             <span>2 Guests</span>
           </div>
           <div
-            class="flex flex-row justify-center items-center text-xl space-x-1"
+            class="flex flex-row justify-center items-center md:text-2xl text-lg space-x-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
-              viewBox="0 0 512 512"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
             >
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="32"
-                d="M384 240H96V136a40.12 40.12 0 0 1 40-40h240a40.12 40.12 0 0 1 40 40v104ZM48 416V304a64.19 64.19 0 0 1 64-64h288a64.19 64.19 0 0 1 64 64v112"
-              />
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="32"
-                d="M48 416v-8a24.07 24.07 0 0 1 24-24h368a24.07 24.07 0 0 1 24 24v8M112 240v-16a32.09 32.09 0 0 1 32-32h80a32.09 32.09 0 0 1 32 32v16m0 0v-16a32.09 32.09 0 0 1 32-32h80a32.09 32.09 0 0 1 32 32v16"
-              />
+              <rect width="24" height="24" fill="url(#pattern45)" />
+              <defs>
+                <pattern
+                  id="pattern45"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use
+                    xlink:href="#image0_470_337"
+                    transform="scale(0.0078125)"
+                  />
+                </pattern>
+                <image
+                  id="image0_470_337"
+                  width="128"
+                  height="128"
+                  xlink:href="data:image/png;base64,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"
+                />
+              </defs>
             </svg>
             <span>2 Beds</span>
           </div>
           <div
-            class="flex flex-row justify-center items-center text-xl space-x-1"
+            class="flex flex-row justify-center items-center md:text-2xl text-lg space-x-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
-              viewBox="0 0 256 256"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
             >
-              <path
-                fill="currentColor"
-                d="M232 96h-24a8 8 0 0 0-8-8h-64a8 8 0 0 0-8 8H64V52a12 12 0 0 1 12-12a12.44 12.44 0 0 1 12.16 9.59a8 8 0 0 0 15.68-3.18A28.32 28.32 0 0 0 76 24a28 28 0 0 0-28 28v44H24a16 16 0 0 0-16 16v32a56.06 56.06 0 0 0 56 56v16a8 8 0 0 0 16 0v-16h96v16a8 8 0 0 0 16 0v-16a56.06 56.06 0 0 0 56-56v-32a16 16 0 0 0-16-16m-40 8v32h-48v-32Zm40 40a40 40 0 0 1-40 40H64a40 40 0 0 1-40-40v-32h104v32a8 8 0 0 0 8 8h64a8 8 0 0 0 8-8v-32h24Z"
-              />
+              <rect width="24" height="24" fill="url(#pattern44)" />
+              <defs>
+                <pattern
+                  id="pattern44"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use
+                    xlink:href="#image0_470_340"
+                    transform="scale(0.0078125)"
+                  />
+                </pattern>
+                <image
+                  id="image0_470_340"
+                  width="128"
+                  height="128"
+                  xlink:href="data:image/png;base64,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"
+                />
+              </defs>
             </svg>
             <span>1 Bathroom</span>
           </div>
         </div>
 
-        <p class="text-black-200 text-xl mt-10 font-light">
+        <p class="text-black-200 md:text-xl text-lg mt-10 font-light">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
           commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
           et magnis dis parturient montes, nascetur ridiculus mus
         </p>
-        <p class="text-black-200 text-xl mt-10 font-light">
+        <p class="text-black-200 md:text-xl text-lg mt-16 font-light">
           Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
           Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
           aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
           imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
           mollis pretium. Integer tincidunt.
         </p>
-        <h2 class="text-black-100 text-4xl text-left mt-20">Room Amenities</h2>
+        <h2 class="text-black-100 md:text-4xl text-3xl text-left mt-16">Room Amenities</h2>
+        <!-- 2nd section (Room Amenities) section -->
         <div class="grid grid-cols-2 mt-6 gap-6">
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -133,7 +195,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Air conditioner</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Air conditioner</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -165,7 +227,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Wifi & Internet</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Wifi & Internet</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -197,7 +259,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Safe Box</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Safe Box</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -229,7 +291,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Welcome Drinks</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Welcome Drinks</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -261,7 +323,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">In-room Refrigerator</h5>
+            <h5 class="md:text-xl text-lg text-black-200">In-room Refrigerator</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -293,7 +355,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Cable TV</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Cable TV</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -325,7 +387,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Pet Friendly</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Pet Friendly</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -357,7 +419,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Espresso Machine</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Espresso Machine</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -389,7 +451,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Shampoo</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Shampoo</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -421,7 +483,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Slippers</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Slippers</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -453,7 +515,7 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Towels</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Towels</h5>
           </div>
           <div class="flex flex-row items-center space-x-4">
             <svg
@@ -485,14 +547,15 @@
                 />
               </defs>
             </svg>
-            <h5 class="text-base text-black-200">Hair Dryer</h5>
+            <h5 class="md:text-xl text-lg text-black-200">Hair Dryer</h5>
           </div>
         </div>
-        <h2 class="text-black-100 text-4xl text-left mt-20">
+        <h2 class="text-black-100 md:text-4xl text-3xl text-left mt-20">
           What’s included in this suite?
         </h2>
+        <!-- 3rd section -->
         <ul
-          class="max-w-lg space-y-4 text-black-200 list-disc list-inside dark:text-gray-400 mt-8"
+          class="max-w-lg space-y-4 text-black-200 md:text-xl text-lg list-disc list-inside dark:text-gray-400 mt-8"
         >
           <li>Private balcony</li>
           <li>140x200 cm Elite bed</li>
@@ -507,13 +570,14 @@
       </div>
 
       <!-- Room Reserve card -->
-      <div
-        class="w-full max-w-sm p-4 bg-white border-none rounded-none shadow-xl shadow-black-100 sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+      <div class="inline-block">
+        <div
+        class="w-full p-4 bg-white border-none rounded-none shadow-xl shadow-black-100 sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
       >
-        <form class="space-y-6" action="#">
-          <h2 class="text-black-100 text-4xl text-left">RESERVE</h2>
+        <form class="space-y-8" action="#">
+          <h2 class="text-black-100 md:text-4xl text-base text-left">RESERVE</h2>
 
-          <div class="relative max-w-sm">
+          <div class="relative w-full">
             <div
               class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
             >
@@ -532,16 +596,17 @@
             <input
               ref="datepicker1"
               type="text"
-              class="bg-white w-full border rounded-none border-black-200 text-black-200 placeholder:text-black-200 text-sm focus:ring-blue-500 focus:border-blue-500 block ps-52 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white w-full border rounded-none border-black-200 text-black-200 placeholder:text-black-200 text-sm placeholder:text-sm focus:ring-blue-500 focus:border-blue-500 block p-4 pe-8 text-right md:padding-left dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Check In"
+              
             />
             <div
               class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
             >
-              <span class="text-black-200">Check In</span>
+              <span class="text-black-200 text-sm">Check In</span>
             </div>
           </div>
-          <div class="relative max-w-sm">
+          <div class="relative w-full">
             <div
               class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
             >
@@ -560,16 +625,16 @@
             <input
               ref="datepicker2"
               type="text"
-              class="bg-white w-full border rounded-none border-black-200 text-black-200 placeholder:text-black-200 text-sm focus:ring-blue-500 focus:border-blue-500 block ps-52 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white w-full border rounded-none border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 block p-4 pe-8 text-right dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Check Out"
             />
             <div
               class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
             >
-              <span class="text-black-200">Check Out</span>
+              <span class="text-black-200 text-sm">Check Out</span>
             </div>
           </div>
-          <div class="relative max-w-sm">
+          <div class="relative w-full">
             <div
               class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
             >
@@ -587,7 +652,7 @@
             </div>
             <select
               id="room"
-              class="bg-white ps-56 border border-black-200 text-black-200 placeholder:text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-4 pe-8 text-right dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>1 Room</option>
               <option value="2">2 Room</option>
@@ -601,36 +666,100 @@
           </div>
           <div class="grid grid-cols-2 gap-x-2">
             <div class="relative w-full">
-            <div
-              class="absolute inset-y-0 end-0 flex items-center pe-7 pointer-events-none"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
+              <div
+                class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
               >
-                <path
-                  fill="currentColor"
-                  d="m12.37 15.835l6.43-6.63C19.201 8.79 18.958 8 18.43 8H5.57c-.528 0-.771.79-.37 1.205l6.43 6.63c.213.22.527.22.74 0"
-                />
-              </svg>
-            </div>
-            <select
-              id="room"
-              class="bg-white ps-24 border border-black-200 text-black-200 placeholder:text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option selected>3</option>
-              <option value="2">2</option>
-              <option value="3">1</option>
-            </select>
-            <div
-              class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
-            >
-              <span class="text-black-200">Adults</span>
-            </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m12.37 15.835l6.43-6.63C19.201 8.79 18.958 8 18.43 8H5.57c-.528 0-.771.79-.37 1.205l6.43 6.63c.213.22.527.22.74 0"
+                  />
+                </svg>
+              </div>
+              <select
+                id="room"
+                class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-4 pr-10 text-right dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>3</option>
+                <option value="2">2</option>
+                <option value="3">1</option>
+              </select>
+              <div
+                class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
+              >
+                <span class="text-black-200">Adults</span>
+              </div>
             </div>
             <div class="relative w-full">
+              <div
+                class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m12.37 15.835l6.43-6.63C19.201 8.79 18.958 8 18.43 8H5.57c-.528 0-.771.79-.37 1.205l6.43 6.63c.213.22.527.22.74 0"
+                  />
+                </svg>
+              </div>
+              <select
+                id="room"
+                class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-4 pr-10 text-right dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <div
+                class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
+              >
+                <span class="text-black-200">Children</span>
+              </div>
+            </div>
+          </div>
+          <h2 class="text-black-100 md:text-4xl text-base text-left">Extra Services</h2>
+          <div class="flex flex-row justify-between">
+            <div class="flex items-center mb-4">
+              <input
+                id="room-checkbox"
+                type="checkbox"
+                value=""
+                class="w-4 h-4 text-blue-600 bg-white border-black-200 rounded-none focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                for="default-checkbox"
+                class="ms-6 md:text-base text-sm font-medium text-black-200 dark:text-gray-300"
+                >Room Clean</label
+              >
+            </div>
+            <p class="md:text-base text-sm text-black-200">$12 / Night</p>
+          </div>
+          <div class="flex flex-row justify-between items-baseline">
+            <div class="flex items-center mb-4">
+              <input
+                id="room-checkbox"
+                type="checkbox"
+                value=""
+                class="w-4 h-4 text-blue-600 bg-white border-black-200 rounded-none focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                for="default-checkbox"
+                class="ms-6 md:text-base text-sm font-medium text-black-200 dark:text-gray-300"
+                >Massage</label
+              >
+            </div>
+            <div class="flex flex-row items-center space-x-4">
+              <p class="text-black-200 md:text-base text-sm">$30 / Person</p>
+            <div class="relative max-w-sm">
             <div
               class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
             >
@@ -648,7 +777,7 @@
             </div>
             <select
               id="room"
-              class="bg-white ps-24 border border-black-200 text-black-200 placeholder:text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white ps-5 border border-black-200 text-black-200 placeholder:text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>1</option>
               <option value="2">2</option>
@@ -657,12 +786,103 @@
             <div
               class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
             >
-              <span class="text-black-200">Children</span>
             </div>
-           </div>
+            </div> 
+            </div>
+            
           </div>
+          <div class="flex flex-row justify-between items-baseline">
+            <div class="flex items-center mb-4">
+              <input
+                id="room-checkbox"
+                type="checkbox"
+                value=""
+                class="w-4 h-4 text-blue-600 bg-white border-black-200 rounded-none focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              />
+              <label
+                for="default-checkbox"
+                class="ms-6 md:text-base text-sm font-medium text-black-200 dark:text-gray-300"
+                >Day Spa</label
+              >
+            </div>
+            <div class="flex flex-row items-center space-x-4">
+              <p class="text-black-200 md:text-base text-sm">$45 / Person</p>
+            <div class="relative max-w-sm">
+            <div
+              class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="m12.37 15.835l6.43-6.63C19.201 8.79 18.958 8 18.43 8H5.57c-.528 0-.771.79-.37 1.205l6.43 6.63c.213.22.527.22.74 0"
+                />
+              </svg>
+            </div>
+            <select
+              id="room"
+              class="bg-white ps-5 border border-black-200 text-black-200 placeholder:text-black-200 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <div
+              class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
+            >
+            </div>
+            </div> 
+            </div>
+            
+          </div>
+          <hr class="h-px w-full bg-gradient-to-r from-transparent via-neutral-400 to-transparent border-none border-opacity-20 mt-8"/>
+          <div class="flex flex-row justify-between items-baseline">
+            <div class="relative max-w-sm">
+            <div class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="m12.37 15.835l6.43-6.63C19.201 8.79 18.958 8 18.43 8H5.57c-.528 0-.771.79-.37 1.205l6.43 6.63c.213.22.527.22.74 0"
+                />
+              </svg>
+            </div>
+            <select
+              id="room"
+              class="bg-white costSelector ps-5 border-none text-black-200 uppercase placeholder:text-black-200 md:text-3xl text-base rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option selected>Total cost</option>
+              <option value="2">Total cost</option>
+              <option value="3">Total cost</option>
+            </select>
+            </div>
+            <div class="flex flex-row total-cost md:text-3xl text-base text-black-200">
+              <span>$</span>
+              <span>
+                199
+              </span>
+            </div>
+            
+
+          </div>
+          <button type="button" class="mt-8 uppercase w-full buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-md md:text-xl text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Book Your Stay Now</button>
+          <p class="md:text-xl text-sm text-green-100">
+            The room reservation has been successfully added to your cart.
+          </p>
+        
+         
         </form>
       </div>
+      </div>
+      
     </div>
   </div>
 </template>
@@ -678,9 +898,11 @@ export default {
       const datepickerEl2 = this.$refs.datepicker2;
       new DatePicker1.default(datepickerEl1, {
         autohide: true, // This will enable autohide feature for the first datepicker
+        orientation: 'bottom right' // Set orientation for the first datepicker
       });
       new DatePicker2.default(datepickerEl2, {
         autohide: true, // This will enable autohide feature for the second datepicker
+        orientation: 'bottom right' // Set orientation for the second datepicker
       });
     });
   },
@@ -688,7 +910,7 @@ export default {
 </script>
 
 <style  scoped>
-h2 {
+h2,.costSelector,.total-cost {
   font-family: "Philosopher", sans-serif;
 }
 h3,
@@ -696,7 +918,7 @@ h3,
 h5 {
   font-family: "Work Sans", sans-serif;
 }
-p {
+p ,label,select,input {
   font-family: "Open Sans", sans-serif;
 }
 ::marker {
@@ -705,5 +927,7 @@ p {
 #room {
   /* Your existing styles here */
   background-image: none;
+ 
 }
+
 </style>
