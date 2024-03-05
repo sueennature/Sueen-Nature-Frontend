@@ -194,7 +194,7 @@
     <img
       src="/img/hero-rooms.png"
       alt="hero-rooms-Img"
-      class="w-full z-10 min-h-screen bg-cover"
+      class="w-full z-10 min-h-screen object-cover"
     />
     <!-- default navbar -->
     <nav
@@ -389,22 +389,23 @@
     </nav>
     <!-- content on hero section -->
     <div
-      class="absolute inset-0 flex-col justify-center items-center text-center lg:flex hidden"
+      class="absolute inset-0 flex flex-col justify-center items-center text-center"
     >
-      <h6 class="text-white lg:text-2xl text-lg font-semibold">STAY WITH US</h6>
-      <h2 class="text-white lg:text-8xl text-xl font-semibold mt-8">
+      <h6 class="text-white text-2xl font-semibold">STAY WITH US</h6>
+      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8">
         Attention to detail like never before.
       </h2>
-      <h6 class="text-white lg:text-2xl text-lg font-semibold mt-8 uppercase">
+      <h6 class="text-white text-2xl font-semibold mt-8 uppercase">
         EXPLORE OUR HOTEL
       </h6>
-      <!-- Add the following div for the vertical line -->
-      <div class="absolute bottom-0 left-1/2 w-px bg-white"></div>
+      <!-- Vertical line -->
+      <div class="absolute left-1/2 bottom-0 transform -translate-x-1/2 h-60 w-0.5 bg-white hidden lg:flex"></div>
     </div>
   </div>
 </template>
 
 <script setup>
+
 import { ref } from "vue";
 import { onMounted, onBeforeUnmount } from "vue";
 import { initFlowbite } from "flowbite";

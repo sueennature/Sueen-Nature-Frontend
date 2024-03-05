@@ -8,7 +8,7 @@
     >
       Sueen Nature Resort
     </h3>
-    <div class="flex justify-center gap-2 my-10">
+    <div class="lg:flex lg:flex-row grid grid-cols-1 lg:justify-center lg:items-baseline justify-items-center gap-6 my-10">
       <figure
         class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
       >
@@ -24,7 +24,7 @@
           <h2 class="text-3xl text-white">Deluxe Room</h2>
         </figcaption>
       </figure>
-      <figure
+      <figure 
         class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
       >
         <a href="#">
