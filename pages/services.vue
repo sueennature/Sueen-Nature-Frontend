@@ -1,15 +1,15 @@
 <template>
     <div class="main overflow-hidden">
-        <heroRooms/>
-        <contentRooms/>
+        <heroServices/>
+        <ContentServices/>
         <footerHome/>
 
     </div>
 </template>
 
 <script setup>
-  import heroRooms from '~/components/heroRooms.vue';
-  import contentRooms from '~/components/contentRooms.vue';
+  import heroServices from '~/components/heroServices.vue';
+  import contentServices from '~/components/contentServices.vue';
   import footerHome from '~/components/footerHome.vue';
   
 

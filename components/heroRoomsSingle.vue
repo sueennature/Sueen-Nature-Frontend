@@ -187,7 +187,7 @@
   </nav>
   <!--  hero section -->
   <div class="relative">
-    <!-- hero image of contact page -->
+    <!-- hero image of rooms-single page -->
     <img
       src="/img/hero-rooms.png"
       alt="hero-rooms-Img"
@@ -197,10 +197,11 @@
     <div
       class="absolute inset-0 flex flex-col justify-center items-center text-center"
     >
-      <h6 class="text-white text-2xl font-semibold uppercase">Get in touch</h6>
-      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8 uppercase">
-        contact us
+      <h6 class="text-white text-2xl font-semibold">STAY WITH US</h6>
+      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8">
+        Attention to detail like never before.
       </h2>
+      <button type="button" class="text-white buttontext mt-40 bg-black-700 bg-opacity-60 hover:bg-black-200 hover:bg-opacity-60 focus:outline-none focus:ring-0 font-medium rounded-full text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">view Image Gallery</button>
 
     </div>
   </div>

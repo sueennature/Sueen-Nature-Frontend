@@ -25,12 +25,12 @@
           <div>
             <label
               for="name"
-              class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
+              class="block mb-2 text-sm  text-black-200 font-bold dark:text-white"
               >Name</label>
             <input
               type="text"
               id="name"
-              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-semibold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Name"
               required
             />
@@ -38,13 +38,13 @@
           <div>
             <label
               for="email"
-              class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
+              class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
               >Email</label
             >
             <input
               type="email"
               id="Email"
-              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-semibold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Email"
               required
             />
@@ -52,13 +52,13 @@
           <div>
             <label
               for="phone"
-              class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
+              class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
               >Phone Number</label
             >
             <input
               type="tel"
-              id="first_name"
-              class="bg-gray-500 border-none text-gray-900 placeholder:text-gray-700 placeholder:font-semibold placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              id="phone"
+              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="+ 1009 12345"
               required
             />
@@ -66,11 +66,11 @@
           <div>
             <label
               for="countries"
-              class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
+              class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
               >Room</label>
             <select
               id="rooms"
-              class="bg-gray-500 border-none text-gray-700 font-semibold text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Deluxe Room</option>
               <option value="premium room">premium room</option>
@@ -83,13 +83,13 @@
 
         <label
           for="message"
-          class="block mb-2 text-sm font-medium text-gray-700 dark:text-white"
+          class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
           >Message Us</label
         >
         <textarea
           id="message"
           rows="4"
-          class="block p-2.5 w-full text-sm placeholder:text-gray-700 placeholder:font-semibold placeholder:text-sm text-gray-900 bg-gray-500 border-none rounded-0 border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="block p-2.5 w-full text-sm text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm  bg-white border-black-200 rounded-0 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your Message"
         ></textarea>
 
@@ -235,12 +235,12 @@ h5 {
   font-family: "Work Sans", sans-serif;
 }
 p,
-a,input {
+a,input,label {
   font-family: "Open Sans", sans-serif;
 }
 #rooms {
   /* Your existing styles here */
-  background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23F1F3F5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
 }
 
 </style>

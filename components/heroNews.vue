@@ -187,9 +187,9 @@
   </nav>
   <!--  hero section -->
   <div class="relative">
-    <!-- hero image of contact page -->
+    <!-- hero image of news page -->
     <img
-      src="/img/hero-rooms.png"
+      src="/img/hero-news.png"
       alt="hero-rooms-Img"
       class="w-full z-10 min-h-screen object-cover"
     />  
@@ -197,9 +197,9 @@
     <div
       class="absolute inset-0 flex flex-col justify-center items-center text-center"
     >
-      <h6 class="text-white text-2xl font-semibold uppercase">Get in touch</h6>
-      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8 uppercase">
-        contact us
+      <h6 class="text-white text-2xl font-semibold uppercase tracking-widest">blog</h6>
+      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8">
+        News
       </h2>
 
     </div>
