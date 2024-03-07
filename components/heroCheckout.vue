@@ -8,10 +8,7 @@
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <span
-          class="self-center md:text-2xl text-base whitespace-nowrap font-semibold text-white dark:text-white uppercase"
-          >sueen Nature</span
-        >
+        <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
       </a>
       <div
         class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
@@ -60,7 +57,7 @@
           <li>
             <a
               href="/"
-              class="block py-2 px-3 lg:p-0 text-white hover:bg-gray-100 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
+              class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 hover:bg-gray-100 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
               >Home</a
             >
           </li>
@@ -147,7 +144,7 @@
             <li>
               <a
                 href="/"
-                class="block py-2 px-3 lg:p-0 text-white bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >
             </li>
