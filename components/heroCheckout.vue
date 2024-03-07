@@ -1,13 +1,13 @@
 <template>
   <!-- stiky navbar -->
-  <nav class=" dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600" :class="{ 'bg-black-200': isNavbarBackgroundBlack }">
+  <nav
+    class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+    :class="{ 'bg-black-200': isNavbarBackgroundBlack }"
+  >
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <a
-        href="/"
-        class="flex items-center space-x-3 rtl:space-x-reverse"
-      >
+      <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <span
           class="self-center md:text-2xl text-base whitespace-nowrap font-semibold text-white dark:text-white uppercase"
           >sueen Nature</span
@@ -16,12 +16,15 @@
       <div
         class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
       >
-        <button
-          type="button"
-          class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
-        >
-          book now
-        </button>
+        <a href="/checkout">
+          <button
+            type="button"
+            class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
+          >
+            Book Now
+          </button>
+        </a>
+
         <button
           data-collapse-toggle="navbar-cta"
           type="button"
@@ -63,7 +66,7 @@
           </li>
           <li>
             <a
-              href="#"
+              href="/about"
               class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
               >About</a
             >
@@ -100,12 +103,15 @@
       </div>
       <div class="hidden lg:flex lg:flex-row lg:gap-4">
         <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
-          <button
+          <a href="/checkout">
+            <button
             type="button"
             class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
           >
             book now
           </button>
+          </a>
+          
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
@@ -147,7 +153,7 @@
             </li>
             <li>
               <a
-                href="#"
+                href="/about"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >About</a
               >
@@ -192,7 +198,7 @@
       src="/img/hero-checkout.png"
       alt="hero-rooms-Img"
       class="w-full z-10 min-h-screen object-cover"
-    />  
+    />
     <!-- content on hero section -->
     <div
       class="absolute inset-0 flex flex-col justify-center items-center text-center"
@@ -201,7 +207,6 @@
       <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8 uppercase">
         Checkout
       </h2>
-
     </div>
   </div>
 </template>
@@ -241,6 +246,4 @@ h6 {
 p {
   font-family: "Open Sans", sans-serif;
 }
-
-
 </style>

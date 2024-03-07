@@ -1,7 +1,7 @@
 <template>
     <div class="main overflow-hidden">
         <heroRooms/>
-        <contentLearn/>
+        <contentAbout/>
         <footerHome/>
 
 
@@ -10,7 +10,7 @@
 
 <script setup>
 import heroRooms from '~/components/heroRooms.vue';
-import contentLearn from '~/components/contentLearn.vue';
+import contentAbout from '~/components/contentAbout.vue';
 import footerHome from '~/components/footerHome.vue';
 </script>
 

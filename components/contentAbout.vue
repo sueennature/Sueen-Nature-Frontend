@@ -56,9 +56,9 @@
       </div>
 
     </div>
-    <h2 class="text-black-200 text-4xl text-center mt-20 mb-4">EXPLORE OUR JOURNAL</h2>
-    <!-- jourmal section -->
-    <div class="lg:flex lg:flex-row grid grid-cols-1 md:space-x-4 gap-y-16 md:mt-20 mt-10">
+    <!-- <h2 class="text-black-200 text-4xl text-center mt-20 mb-4">EXPLORE OUR JOURNAL</h2> -->
+    <!-- journal section -->
+    <!-- <div class="lg:flex lg:flex-row grid grid-cols-1 md:space-x-4 gap-y-16 md:mt-20 mt-10">
       <div class="flex flex-col space-y-4 items-center flex-1">    
         <h3 class="md:text-4xl text-3xl text-red-100 font-medium text-center">7 Reasons to Visit Prince Edward County</h3>
         <p class="text-sm text-black-200 font-light text-center">With chilly evenings creeping in and the slightest change in the colour of the leaves, it's getting hard to deny that pumpkin spice season is here! The County has more to offer than a summer getaway to the beach - here are 7 reasons you should visit in the fall</p>
@@ -77,7 +77,7 @@
         <a href="#" class="text-red-100 font-bold text-sm text-center">VIEW DETAILS</a>
       </div>
 
-    </div>
+    </div> -->
     </div>
 
     

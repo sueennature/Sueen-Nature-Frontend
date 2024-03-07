@@ -62,7 +62,7 @@
             </li>
             <li>
               <a
-                href="#"
+                href="/about"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >About</a
               >
@@ -101,12 +101,15 @@
           <div
             class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
           >
-            <button
-              type="button"
-              class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
-            >
-              book now
-            </button>
+            <a href="/checkout">
+              <button
+                type="button"
+                class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
+              >
+                Book Now
+              </button>
+            </a>
+
             <button
               data-collapse-toggle="navbar-cta"
               type="button"
@@ -141,28 +144,28 @@
             >
               <li>
                 <a
-                  href="#"
+                  href="/"
                   class="block py-2 px-3 lg:p-0 text-white bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                   >Home</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/about"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >About</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/services"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >Services</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/rooms"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >Rooms</a
                 >
@@ -176,7 +179,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/contact"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >Contact</a
                 >
@@ -190,56 +193,56 @@
     <div class="absolute top-2 left-0 w-full md:flex hidden items-center">
       <a href="/" class="relative mx-auto">
         <!-- Adjust mx-2 as needed for spacing -->
-        <img src="/img/logo.png" alt="logoImg" class="w-auto h-16 md:h-auto" />
+        <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
         <div
-          class="absolute bottom-0 h-1 shadow-md shadow-slate-800 md:w-40 w-4 bg-white md:-left-48 -left-10 md:block hidden"
+          class="absolute bottom-0 h-0.5 shadow-slate-800 md:w-40 w-4 bg-white md:-left-48 -left-10 md:block hidden"
         ></div>
         <!-- Left vertical line -->
         <div
-          class="absolute bottom-0 h-1 shadow-md shadow-slate-800 md:w-40 w-4 bg-white md:-right-48 -right-10 md:block hidden"
+          class="absolute bottom-0 h-0.5 shadow-slate-800 md:w-40 w-4 bg-white md:-right-48 -right-10 md:block hidden"
         ></div>
         <!-- Right vertical line -->
       </a>
     </div>
     <!-- default navbar -->
     <div
-      class="absolute inset-0 md:flex hidden justify-center md:top-60 top-20"
+      class="absolute top-20 left-0 right-0 md:flex hidden justify-center md:top-60"
     >
-      <div class="flex justify-center md:space-x-4 space-x-0">
+      <div class="flex flex-row justify-center md:space-x-4 space-x-0">
         <a
           href="/"
           aria-current="true"
-          class="text-white md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase"
+          class="text-white font-semibold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
           Home
         </a>
         <a
-          href="#"
-          class="text-white md:text-sm text-xs px-4 py-2 rounded-lg uppercase"
+          href="/about"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
           About
         </a>
         <a
           href="/services"
-          class="text-white md:text-sm text-xs px-4 py-2 rounded-lg uppercase"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
           Services
         </a>
         <a
           href="/rooms"
-          class="text-white md:text-sm text-xs px-4 py-2 rounded-lg uppercase"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
           Rooms
         </a>
         <a
           href="/news"
-          class="text-white md:text-sm text-xs px-4 py-2 rounded-lg uppercase"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
           News
         </a>
         <a
           href="/contact"
-          class="text-white md:text-sm text-xs px-4 py-2 rounded-lg uppercase"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
           Contact
         </a>
@@ -252,44 +255,72 @@
       <div
         class="md:flex grid grid-cols-1 justify-center md:space-x-4 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white bg-black-200 bg-opacity-65"
       >
-        <form class="md:max-w-sm md:mx-auto">
-          <select
-            id="adults"
-            class="text-white text-sm bg-transparent md:border-none border-b border-white border-t-0 border-x-0 md:rounded-l-lg rounded-none focus:ring-0 focus:border-white block w-full md:p-4 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        <div class="relative md:max-w-sm md:mx-auto">
+          <div
+            class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
           >
-            <option selected>2 Adults</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
-          </select>
-        </form>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="#ffffff"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="m7 10l5 5m0 0l5-5"
+              />
+            </svg>
+          </div>
+          <input
+            ref="datepicker1"
+            type="text"
+            class="bg-black-200 w-full border rounded-t-lg rounded-b-lg border-l-0 border-r-0 border-t-0 border-b-0 border-white text-white placeholder:text-white text-sm placeholder:text-sm focus:ring-0 focus:border-none block p-4 pe-8 text-left md:padding-left dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="From Date"
+          />
+        </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
-        <form class="md:max-w-sm md:mx-auto">
-          <select
-            id="children"
-            class="text-white text-sm bg-transparent md:border-none border-b border-white border-t-0 border-x-0 rounded-0 focus:ring-0 focus:border-white block w-full md:p-4 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        <div class="relative md:max-w-sm md:mx-auto">
+          <div
+            class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
           >
-            <option selected>0 Children</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
-          </select>
-        </form>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="#ffffff"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="m7 10l5 5m0 0l5-5"
+              />
+            </svg>
+          </div>
+          <input
+            ref="datepicker2"
+            type="text"
+            class="bg-black-200 w-full border rounded-l rounded-lg border-l-0 border-r-0 border-t-0 border-b-0 border-white text-white placeholder:text-white text-sm placeholder:text-sm focus:ring-0 focus:border-none block p-4 pe-8 text-left md:padding-left dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="To Date"
+          />
+        </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
         <form class="md:max-w-sm md:mx-auto">
           <select
             id="view"
-            class="text-white text-sm bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full md:p-4 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text-white text-sm bg-black-200 border-none rounded-0 focus:ring-0 focus:border-white block w-full md:p-4 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option selected>Garden View Suit</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
+            <option value="Deluxe Room">Deluxe Room</option>
+            <option value="Premier Suit">Premier Suit</option>
           </select>
         </form>
       </div>
@@ -309,15 +340,28 @@
   </div>
 </template>
   
-<script setup>
-import { onMounted } from "vue";
-import { initFlowbite } from "flowbite";
-
-// initialize components based on data attribute selectors
-onMounted(() => {
-  initFlowbite();
-});
+<script>
+export default {
+  mounted() {
+    Promise.all([
+      import("flowbite-datepicker/Datepicker"),
+      import("flowbite-datepicker/Datepicker"),
+    ]).then(([DatePicker1, DatePicker2]) => {
+      const datepickerEl1 = this.$refs.datepicker1;
+      const datepickerEl2 = this.$refs.datepicker2;
+      new DatePicker1.default(datepickerEl1, {
+        autohide: true, // This will enable autohide feature for the first datepicker
+        orientation: "bottom right", // Set orientation for the first datepicker
+      });
+      new DatePicker2.default(datepickerEl2, {
+        autohide: true, // This will enable autohide feature for the second datepicker
+        orientation: "bottom right", // Set orientation for the second datepicker
+      });
+    });
+  },
+};
 </script>
+
   
 <style  scoped>
 </style>
