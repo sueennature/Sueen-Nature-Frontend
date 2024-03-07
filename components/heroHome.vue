@@ -257,7 +257,7 @@
       >
         <div class="relative md:max-w-sm md:mx-auto">
           <div
-            class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
+            class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -286,7 +286,7 @@
         <!-- Vertical separator -->
         <div class="relative md:max-w-sm md:mx-auto">
           <div
-            class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
+            class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -316,7 +316,7 @@
         <form class="md:max-w-sm md:mx-auto">
           <select
             id="view"
-            class="text-white text-sm bg-black-200 border-none rounded-0 focus:ring-0 focus:border-white block w-full md:p-4 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text-white text-sm p-4 bg-black-200 border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option selected>Garden View Suit</option>
             <option value="Deluxe Room">Deluxe Room</option>
@@ -324,17 +324,21 @@
           </select>
         </form>
       </div>
+      <a href="/checkout">
       <button
         class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
       >
         Check Availability
       </button>
-      <div class="md:hidden flex justify-center items-center">
+      </a>
+      <div class="md:hidden">
+        <a href="/checkout">
         <button
           class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
         >
           Check Availability
         </button>
+        </a>
       </div>
     </div>
   </div>

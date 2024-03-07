@@ -3,7 +3,7 @@
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16">
       <!-- shipping details submiting form -->
       <div>
-        <h2 class="text-black-100 md:text-7xl text-3xl text-left">Shipping</h2>
+        <h2 class="text-black-100 md:text-7xl text-3xl text-left">Contact Info</h2>
         <form class="mt-12 space-y-8">
           <div>
             <div class="flex gap-2 items-baseline">
