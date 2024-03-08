@@ -267,6 +267,7 @@
         floor-to-ceiling windows.
       </li>
     </ul>
+    
     <div class="flex items-baseline justify-center mt-20">
       <span class="border-t border-black w-1/4 mx-4"></span>
       <button
@@ -277,6 +278,7 @@
       </button>
       <span class="border-t border-black w-1/4 mx-4"></span>
     </div>
+    
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-center mt-16">
       EXPLORE OTHER ROOMS
     </h2>

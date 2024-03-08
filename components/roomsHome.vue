@@ -15,13 +15,13 @@
         <a href="#">
           <img
             class="rounded-0"
-            src="/img/room-1 1.png"
+            src="/img/room1_1.png"
             alt="image description"
           />
         </a>
         <figcaption class="absolute px-4 text-lg text-white bottom-6">
           <h5 class="text-base font-semibold text-white">LKR 12,000</h5>
-          <h2 class="text-3xl text-white">Deluxe Room</h2>
+          <h2 class="text-3xl text-white">single Room</h2>
         </figcaption>
       </figure>
       <figure 
@@ -30,13 +30,13 @@
         <a href="#">
           <img
             class="rounded-0"
-            src="/img/room-2 1.png"
+            src="/img/room1_2.png"
             alt="image description"
           />
         </a>
         <figcaption class="absolute px-4 text-lg text-white bottom-6">
           <h5 class="text-base font-semibold text-white">LKR 16,000</h5>
-          <h2 class="text-3xl text-white">Garden View Suite</h2>
+          <h2 class="text-3xl text-white">Double Room</h2>
         </figcaption>
       </figure>
       <figure
@@ -45,23 +45,25 @@
         <a href="#">
           <img
             class="rounded-0"
-            src="/img/room-3 1.png"
+            src="/img/room1_3.png"
             alt="image description"
           />
         </a>
         <figcaption class="absolute px-4 text-lg text-white bottom-6">
           <h5 class="text-base font-semibold text-white">LKR 20,000</h5>
-          <h2 class="text-3xl text-white">Premier Suite</h2>
+          <h2 class="text-3xl text-white">Triple Room</h2>
         </figcaption>
       </figure>
     </div>
     <div class="flex justify-center items-center">
+      <a href="./rooms">
       <button
         type="button"
         class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
       >
         VIEW ALL
       </button>
+    </a>
     </div>
   </div>
 </template>

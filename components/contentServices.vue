@@ -3,7 +3,7 @@
     <!-- services card section -->
     <div class="grid grid-cols-1 justify-items-center">
       <div class="max-w-xl mt-16">
-        <img src="/img/image_resturant.png" alt="resturantImg" class="" />
+        <img src="/img/image_dining.png" alt="resturantImg" class="" />
         <div
           class="flex flex-col justify-center items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"
         >
@@ -17,8 +17,7 @@
           <p
             class="font-extralight md:text-xl text-base text-black-200 dark:text-gray-400 ml-7 mt-4"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing. Suspendisse
-            varius enim in eros elementum tristique
+          Indulge your senses in a culinary journey at our restaurant, where flavors come alive and every dish tells a story. From mouthwatering appetizers to delectable entrees, our menu invites you to savor the finest ingredients crafted with passion and expertise.
           </p>
           <button
             type="button"
@@ -29,22 +28,21 @@
         </div>
       </div>
       <div class="max-w-xl mt-16">
-        <img src="/img/image_roof_top_bar.png" alt="resturantImg" class="" />
+        <img src="/img/image_banquet.png" alt="banquetImg" class="" />
         <div
           class="flex flex-col justify-center items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"
         >
           <h6
             class="md:text-4xl text-xl font-bold text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
           >
-            Drinks
+          banquet Hall
           </h6>
-          <h3 class="md:text-5xl text-3xl text-black-200">Roof Top Bar</h3>
+          <h3 class="md:text-5xl text-3xl text-black-200">Celebrate</h3>
 
           <p
             class="font-extralight md:text-xl text-base text-black-200 dark:text-gray-400 ml-7 mt-4"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing. Suspendisse
-            varius enim in eros elementum tristique
+          Welcome to our exquisite banquet hall, where dreams transform into unforgettable moments. Nestled within the heart of our hotel, our elegant venue offers the perfect setting for your most cherished events.
           </p>
           <button
             type="button"
@@ -55,22 +53,21 @@
         </div>
       </div>
       <div class="max-w-xl mt-16">
-        <img src="/img/image_spa.png" alt="resturantImg" class="" />
+        <img src="/img/image_playground.png" alt="resturantImg" class="" />
         <div
           class="flex flex-col justify-center items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"
         >
           <h6
             class="md:text-4xl text-xl font-bold text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
           >
-            Relax
+          Playtime
           </h6>
-          <h3 class="md:text-5xl text-3xl text-black-200">Spa & Wellness</h3>
+          <h3 class="md:text-5xl text-3xl text-black-200">Sports & Games</h3>
 
           <p
             class="font-extralight md:text-xl text-base text-black-200 dark:text-gray-400 ml-7 mt-4"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing. Suspendisse
-            varius enim in eros elementum tristique
+          Step into our vibrant world of recreation at our hotel's Sports and Games section, where excitement knows no bounds. With our round-the-clock playground and pool illuminated by enchanting night lights, the fun never stops.
           </p>
           <button
             type="button"
@@ -84,12 +81,12 @@
 
     <!-- image gallery -->
     <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-36">
-      <img src="/img/services_1.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/services_2.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/services_3.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/services_4.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/services_5.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/services_6.png" alt="servicesImg" class="max-w-full" />
+      <img src="/img/service-1.png" alt="servicesImg" class="max-w-full" />
+      <img src="/img/service-2.png" alt="servicesImg" class="max-w-full" />
+      <img src="/img/service-3.png" alt="servicesImg" class="max-w-full" />
+      <img src="/img/service-4.png" alt="servicesImg" class="max-w-full" />
+      <img src="/img/service-5.png" alt="servicesImg" class="max-w-full" />
+      <img src="/img/service-6.png" alt="servicesImg" class="max-w-full" />
     </div>
   </div>
 </template>
