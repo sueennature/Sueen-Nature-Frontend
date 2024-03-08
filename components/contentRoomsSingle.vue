@@ -268,16 +268,82 @@
       </li>
     </ul>
     
-    <div class="flex items-baseline justify-center mt-20">
-      <span class="border-t border-black w-1/4 mx-4"></span>
+    <!-- main hero booking options selector -->
+    
+    <div class="relative w-full">
+              <div
+                class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m12.37 15.835l6.43-6.63C19.201 8.79 18.958 8 18.43 8H5.57c-.528 0-.771.79-.37 1.205l6.43 6.63c.213.22.527.22.74 0"
+                  />
+                </svg>
+              </div>
+              <input
+                ref="datepicker1"
+                type="text"
+                class="bg-white w-full border rounded-none border-black-200 text-black-200 placeholder:text-black-200 text-sm placeholder:text-sm focus:ring-blue-500 focus:border-blue-500 block p-4 pe-8 text-right md:padding-left dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Check In"
+              />
+              <div
+                class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
+              >
+                <span class="text-black-200 text-sm">Check In</span>
+              </div>
+            </div>
+            <div class="relative w-full">
+              <div
+                class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m12.37 15.835l6.43-6.63C19.201 8.79 18.958 8 18.43 8H5.57c-.528 0-.771.79-.37 1.205l6.43 6.63c.213.22.527.22.74 0"
+                  />
+                </svg>
+              </div>
+              <input
+                ref="datepicker2"
+                type="text"
+                class="bg-white w-full border rounded-none border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-sm text-sm focus:ring-blue-500 focus:border-blue-500 block p-4 pe-8 text-right dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Check Out"
+              />
+              <div
+                class="absolute inset-y-0 left-0 flex items-center ps-3.5 pointer-events-none"
+              >
+                <span class="text-black-200 text-sm">Check Out</span>
+              </div>
+            </div>
+     
+      <a href="/checkout">
       <button
-        type="button"
-        class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm whitespace-pre px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
+        class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
       >
-        check availability
+        Check Availability
       </button>
-      <span class="border-t border-black w-1/4 mx-4"></span>
-    </div>
+      </a>
+      <div class="md:hidden">
+        <a href="/checkout">
+        <button
+          class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
+        >
+          Check Availability
+        </button>
+        </a>
+      </div>
+   
     
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-center mt-16">
       EXPLORE OTHER ROOMS
