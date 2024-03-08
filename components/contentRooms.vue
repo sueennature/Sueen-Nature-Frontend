@@ -36,7 +36,7 @@
           <!-- Item 1 -->
           <div class="duration-700 ease-in-out" data-carousel-item>
             <img
-              src="../public/img/room_1.jpg"
+              src="../public/img/room_5.jpg"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10"
               alt="..."
             />
@@ -44,7 +44,7 @@
           <!-- Item 2 -->
           <div class="duration-700 ease-in-out" data-carousel-item="active">
             <img
-              src="../public/img/room_2.jpg"
+              src="../public/img/room_3.jpg"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10"
               alt="..."
             />
@@ -52,7 +52,7 @@
           <!-- Item 3 -->
           <div class="duration-700 ease-in-out z-10" data-carousel-item>
             <img
-              src="../public/img/room_3.jpg"
+              src="../public/img/room_5.jpg"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
@@ -152,7 +152,7 @@
           <!-- Item 1 -->
           <div class="duration-700 ease-in-out" data-carousel-item>
             <img
-              src="../public/img/room_4.jpg"
+              src="../public/img/room_1.jpg"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
@@ -168,7 +168,7 @@
           <!-- Item 3 -->
           <div class="duration-700 ease-in-out" data-carousel-item>
             <img
-              src="../public/img/room_3.jpg"
+              src="../public/img/room_1.jpg"
               class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />

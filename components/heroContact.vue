@@ -190,7 +190,7 @@
   <div class="relative">
     <!-- hero image of contact page -->
     <img
-      src="/img/hero-rooms.png"
+      src="/img/hero-contact.png"
       alt="hero-rooms-Img"
       class="w-full z-10 min-h-screen object-cover"
     />  

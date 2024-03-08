@@ -15,7 +15,7 @@
         <a href="#">
           <img
             class="rounded-0"
-            src="/img/room1_1.png"
+            src="/img/room1_4.png"
             alt="image description"
           />
         </a>

@@ -3,7 +3,7 @@
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16">
       <!-- shipping details submiting form -->
       <div>
-        <h2 class="text-black-100 md:text-7xl text-3xl text-left">Contact Info</h2>
+        <h2 class="text-black-100 md:text-7xl text-3xl text-left">Guest Info</h2>
         <form class="mt-12 space-y-8">
           <div>
             <div class="flex gap-2 items-baseline">
@@ -80,7 +80,7 @@
               <label
                 for="address"
                 class="block mb-2 text-base font-bold text-black-200 dark:text-white"
-                >Street Addrress</label
+                >Addrress</label
               >
               <span class="text-base text-black-200 font-normal">required</span>
             </div>
@@ -529,10 +529,10 @@
                 </div>
               </div>
             </div>
-            <h2 class="text-black-100 md:text-4xl text-base text-left">
+            <!-- <h2 class="text-black-100 md:text-4xl text-base text-left">
               Extra Services
-            </h2>
-            <div class="flex flex-row justify-between">
+            </h2> -->
+            <!-- <div class="flex flex-row justify-between">
               <div class="flex items-center mb-4">
                 <input
                   id="room-checkbox"
@@ -639,7 +639,7 @@
                   ></div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <hr
               class="h-px w-full bg-gradient-to-r from-transparent via-neutral-400 to-transparent border-none border-opacity-20 mt-8"
             />
