@@ -19,11 +19,11 @@
       thoughtfully crafted to offer comfort, style, and a seamless blend with
       the breathtaking natural surroundings.
     </p>
-    <!-- single ROOM Section -->
+    <!-- Deluxe ROOM Section -->
     <div>
       <div class="flex items-center justify-center md:mt-20 md:mb-10 my-6">
         <span class="border-t border-black w-1/4 mx-4"></span>
-        <h2 class="md:text-4xl text-xl uppercase text-black-200 mx-4 whitespace-pre">Single ROOM</h2>
+        <h2 class="md:text-4xl text-xl uppercase text-black-200 mx-4 whitespace-pre">Deluxe ROOM</h2>
         <span class="border-t border-black w-1/4 mx-4"></span>
       </div>
       <div
@@ -125,6 +125,7 @@
         <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">View: Pool</h5>
       </div>
      <!-- view all button -->
+     <a href="/deluxeRoom">
       <div class="flex justify-center items-center">
         <button
           type="button"
@@ -133,6 +134,7 @@
           VIEW ALL
         </button>
       </div>
+    </a>  
     </div>
     <!-- double room Section -->
     <div>
@@ -240,13 +242,16 @@
         <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">View: Garden</h5>
       </div>
       <!-- view all button -->
+      
       <div class="flex justify-center items-center">
+        <a href="/doubleRoom">
         <button
           type="button"
           class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
           VIEW ALL
         </button>
+      </a>
       </div>
     </div>
     <!-- Triple room Section -->
@@ -356,12 +361,14 @@
       </div>
       <!-- view all button -->
       <div class="flex justify-center items-center">
+        <a href="/tripleRoom">
         <button
           type="button"
           class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         >
           VIEW ALL
         </button>
+      </a>
       </div>
     </div>
     <!-- Family room Section -->

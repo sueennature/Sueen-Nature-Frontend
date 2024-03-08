@@ -1,7 +1,7 @@
 <template>
   <div class="main overflow-hidden">
     <heroRoomsSingle/>
-    <contentRoomsSingle/>
+    <contentRoomDouble/>
     <footerHome />
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script setup>
 import heroRoomsSingle from "~/components/heroRoomsSingle.vue";
 import footerHome from "~/components/footerHome.vue";
-import contentRoomsSingle from "~/components/contentRoomsSingle.vue";
+import contentRoomDouble from "~/components/contentRoomDouble.vue";
 
 
 </script>

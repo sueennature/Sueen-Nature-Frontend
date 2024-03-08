@@ -21,7 +21,7 @@
         </a>
         <figcaption class="absolute px-4 text-lg text-white bottom-6">
           <h5 class="text-base font-semibold text-white">LKR 12,000</h5>
-          <h2 class="text-3xl text-white">single Room</h2>
+          <h2 class="text-3xl text-white">Deluxe Room</h2>
         </figcaption>
       </figure>
       <figure 

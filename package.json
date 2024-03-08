@@ -15,6 +15,7 @@
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.15.11",
     "@splidejs/vue-splide": "^0.6.12",
+    "@vuepic/vue-datepicker": "^8.2.0",
     "flowbite": "^2.3.0",
     "flowbite-datepicker": "^1.2.6",
     "nuxt": "^3.10.3",
