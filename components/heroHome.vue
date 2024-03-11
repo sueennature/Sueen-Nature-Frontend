@@ -277,6 +277,7 @@
             type="text"
             class="bg-black-200 w-full border rounded-t-lg rounded-b-lg border-l-0 border-r-0 border-t-0 border-b-0 border-white text-white placeholder:text-white text-sm placeholder:text-sm focus:ring-0 focus:border-none block p-4 pe-8 text-left md:padding-left dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="From Date"
+            v-model="fromDate"
           />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
@@ -306,6 +307,7 @@
             type="text"
             class="bg-black-200 w-full border rounded-l rounded-lg border-l-0 border-r-0 border-t-0 border-b-0 border-white text-white placeholder:text-white text-sm placeholder:text-sm focus:ring-0 focus:border-none block p-4 pe-8 text-left md:padding-left dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="To Date"
+            v-model="toDate"
           />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
@@ -314,16 +316,16 @@
           <select
             id="view"
             class="text-white text-sm p-4 bg-black-200 border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="room_type_id"
           >
-            <option selected>Garden View Suit</option>
-            <option value="Deluxe Room">Deluxe Room</option>
-            <option value="Premier Suit">Premier Suit</option>
+            <option v-for="room in room_types" :value="room.id" :key="room.id">{{ room.name }}</option>
           </select>
         </form>
       </div>
       <a href="/checkout">
       <button
         class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
+        @click="checkAvailability"
       >
         Check Availability
       </button>
@@ -343,6 +345,34 @@
   
 <script>
 export default {
+  data() {
+    return {
+      fromDate: '', 
+      toDate: '',
+      roomType: '',
+      room_type_id: null, 
+      room_types: [],
+    };
+  },
+  async checkAvailability() {
+    const body = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        check_in: this.fromDate,
+        check_out: this.toDate,
+        room_type_id: this.roomType,
+      }),
+    };
+
+    try {
+      const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  },
   mounted() {
     Promise.all([
       import("flowbite-datepicker/Datepicker"),
@@ -358,6 +388,19 @@ export default {
         autohide: true, // This will enable autohide feature for the second datepicker
         orientation: "bottom right", // Set orientation for the second datepicker
       });
+    });
+    fetch('https://sueen.website/dashboard/public/api/getRoomTypes')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        this.room_types = data.room_types;
+      })
+      .catch((error) => {
+        console.error('There has been a problem with your fetch operation:', error);
     });
   },
 };
