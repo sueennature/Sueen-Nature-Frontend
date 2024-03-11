@@ -24,10 +24,10 @@
               </svg>
             </div>
             <input
-              ref="datepicker1"
-              type="text"
-              class="bg-transparent w-full border rounded-l-lg border-l-0 border-r-0 border-t-0 border-b-0 border-white text-white placeholder:text-white text-sm placeholder:text-sm focus:ring-0 focus:border-none block p-4 pe-8 text-left lg:padding-left dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              type="date"
+              class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
+              v-model="fromDate"
             />
           </div>
           <div class="w-0.5 bg-white h-8 my-auto lg:flex hidden"></div>
@@ -53,10 +53,10 @@
               </svg>
             </div>
             <input
-              ref="datepicker2"
-              type="text"
-              class="bg-transparent w-full border rounded-l rounded-lg border-l-0 border-r-0 border-t-0 border-b-0 border-white text-white placeholder:text-white text-sm placeholder:text-sm focus:ring-0 focus:border-none block p-4 pe-8 text-left lg:padding-left dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Check Out Date"
+              type="date"
+              class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              placeholder="Check In Date"
+              v-model="toDate"
             />
           </div>
           <div class="w-0.5 bg-white h-8 my-auto lg:flex hidden"></div>
@@ -64,23 +64,23 @@
         <form class="lg:max-w-sm lg:mx-auto">
           <select
             id="view"
-            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text-bg-gray-700 text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="room_type_id"
           >
-            <option selected>Room Type</option>
-            <option value="Deluxe Room">Deluxe Room</option>
-            <option value="Premier Suit">Premier Suit</option>
+            <option v-for="room in room_types" :value="room.id" :key="room.id">{{ room.name }}</option>
           </select>
         </form>
           
           
         </div>
-        <a href="/checkout">
+        
         <button
           class="bg-red-100 text-sm text-white lg:ml-2 lg:p-4 p-2 rounded-r-lg rounded-l-none lg:flex hidden"
+          @click="checkAvailability"
         >
           Check Availability
         </button>
-        </a>
+  
         <div class="lg:hidden">
           <a href="/checkout">
           <button
@@ -96,6 +96,36 @@
     
   <script>
   export default {
+    data() {
+    return {
+        fromDate: '', 
+        toDate: '',
+        room_type_id: null, 
+        room_types: [],
+      };
+    },
+    methods:{
+      async checkAvailability() {
+        const body = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json'  },
+          body: JSON.stringify({
+            check_in: this.fromDate,
+            check_out: this.toDate,
+            room_type_id: this.room_type_id,
+          }),
+        };
+
+        console.log("body", body)
+
+        try {
+          const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
+          const data = await response.json();
+        } catch (error) {
+          console.error(error);
+        }
+      },
+    },
     mounted() {
       Promise.all([
         import("flowbite-datepicker/Datepicker"),
@@ -112,7 +142,21 @@
           orientation: "bottom right", // Set orientation for the second datepicker
         });
       });
+      fetch('https://sueen.website/dashboard/public/api/getRoomTypes')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          this.room_types = data.room_types;
+        })
+        .catch((error) => {
+          console.error('There has been a problem with your fetch operation:', error);
+      });
     },
+
   };
   </script>
   
