@@ -96,6 +96,7 @@
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 whitespace-nowrap"
+                  @click="addItemToRoomsList({ name: 'Bed & Breakfast', price: selectedRoomType.bread_breakfast })"
                 >
                   Add now
                 </button>
@@ -120,6 +121,7 @@
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  @click="addItemToRoomsList({ name: 'Half Board', price: selectedRoomType.half_board})"
                 >
                   Add now
                 </button>
@@ -144,6 +146,7 @@
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  @click="addItemToRoomsList({ name: 'Full Board', price: selectedRoomType.full_board})"
                 >
                   Add now
                 </button>
@@ -168,6 +171,7 @@
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  @click="addItemToRoomsList({ name: 'Room only', price: selectedRoomType.room_only})"
                 >
                   Add now
                 </button>
@@ -208,14 +212,15 @@
         <!-- Card about Single Room - Special Rate  -->
         <div
           class="w-full p-6 bg-white xl:text-lg text-base font-semibold border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
+          v-for="(item, index) in roomsList" :key="index"
         >
-          <h5>Single Room - Special Rate (4 Rooms Available)</h5>
+          <h5>{{selectedRoomType.name}} - Special Rate (4 Rooms Available)</h5>
           <hr
             class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
           />
           <div class="flex items-baseline justify-between mt-4">
             <h5 class="text-black-200 font-medium xl:text-lg text-sm">
-              Full Board
+              {{item.name}}
             </h5>
 
             <form class="max-w-sm">
@@ -712,7 +717,9 @@ export default {
   data() {
     return {
       isModalOpen: false,
-      room_types: []
+      room_types: [],
+      roomsList: [],
+      boardType: [],
     }
   },
   methods: {
@@ -724,7 +731,10 @@ export default {
       } else {
         document.body.classList.remove('overflow-hidden');
       }
-    }
+    },
+    addItemToRoomsList(roomDetails) {
+      this.roomsList.push(roomDetails);
+    },
   },
   computed: {
     roomTypeId() {
