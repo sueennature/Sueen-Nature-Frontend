@@ -364,7 +364,11 @@ export default {
       try {
         const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
         const data = await response.json();
-        this.$router.push({ path: '/booking', query: { roomTypeId: this.room_type_id } });
+        if(response.status===200){
+          this.$router.push({ path: '/booking', query: { roomTypeId: this.room_type_id } });
+        }else{
+          window.alert("Ths room is not available")
+        }       
       } catch (error) {
         window.alert(error);
       }

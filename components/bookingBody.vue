@@ -11,7 +11,7 @@
     <h2 class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10">
       Room Selection
     </h2>
-    <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16">
+    <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16" v-if="selectedRoomType">
       <!-- room image with paragraph -->
       <div>
         <div class="relative">
@@ -23,7 +23,7 @@
           <div
             class="absolute lg:top-10 top-16 bg-white bg-opacity-80 text-xl text-black-200 py-2 px-8 rounded-r-md image-label"
           >
-            Single Room
+            {{ selectedRoomType.name }}
           </div>
         </div>
         <p class="text-gray-300 text-base mt-8">
@@ -70,7 +70,7 @@
             </form>
           </div>
         </div>
-        <h5 class="text-black-200 font-semibold mt-4">Single Room</h5>
+        <h5 class="text-black-200 font-semibold mt-4">{{ selectedRoomType.name }}</h5>
         <hr
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
         />
@@ -89,7 +89,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR 13, 300
+                   LKR {{ selectedRoomType.bread_breakfast}}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -113,7 +113,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR 15, 400
+                   LKR {{ selectedRoomType.half_board}}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -137,7 +137,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR 20, 300
+                  LKR {{selectedRoomType.full_board}}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -161,7 +161,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR 10, 010
+                  LKR {{selectedRoomType.room_only}}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -711,7 +711,8 @@ export default {
   },
   data() {
     return {
-      isModalOpen: false
+      isModalOpen: false,
+      room_types: []
     }
   },
   methods: {
@@ -724,6 +725,30 @@ export default {
         document.body.classList.remove('overflow-hidden');
       }
     }
+  },
+  computed: {
+    roomTypeId() {
+      return this.$route.query.roomTypeId;
+    },
+    selectedRoomType() {
+      if (!this.roomTypeId || !this.room_types.length) return null;
+      return this.room_types.find(room => room.id.toString() === this.roomTypeId.toString());
+    }
+  },
+  mounted(){
+    fetch('https://sueen.website/dashboard/public/api/getRoomTypes')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        this.room_types = data.room_types;
+      })
+      .catch((error) => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
   }
 }
 </script>
