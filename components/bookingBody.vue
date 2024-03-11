@@ -333,6 +333,7 @@
           <button
             type="button"
             class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm px-8 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            @click="removeItemFromRoomsList(index)"
           >
             Remove
           </button>
@@ -735,6 +736,9 @@ export default {
     addItemToRoomsList(roomDetails) {
       this.roomsList.push(roomDetails);
     },
+    removeItemFromRoomsList(index) {
+      this.roomsList.splice(index, 1);
+    }
   },
   computed: {
     roomTypeId() {
