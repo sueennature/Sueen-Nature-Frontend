@@ -321,7 +321,7 @@
           </select>
         </form>
       </div>
-      <a href="/checkout">
+      <a href="/booking">
       <button
         class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
       >
@@ -329,7 +329,7 @@
       </button>
       </a>
       <div class="md:hidden">
-        <a href="/checkout">
+        <a href="/booking">
         <button
           class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
         >
