@@ -322,22 +322,20 @@
           </select>
         </form>
       </div>
-      <a href="/checkout">
       <button
         class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
         @click="checkAvailability"
       >
         Check Availability
       </button>
-      </a>
       <div class="md:hidden">
-        <a href="/checkout">
+
         <button
           class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
         >
           Check Availability
         </button>
-        </a>
+
       </div>
     </div>
   </div>
@@ -349,29 +347,29 @@ export default {
     return {
       fromDate: '', 
       toDate: '',
-      roomType: '',
       room_type_id: null, 
       room_types: [],
     };
   },
-  async checkAvailability() {
-    const body = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        check_in: this.fromDate,
-        check_out: this.toDate,
-        room_type_id: this.roomType,
-      }),
-    };
+  methods:{
+    async checkAvailability() {
+      const body = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          check_in: this.fromDate,
+          check_out: this.toDate,
+          room_type_id: this.room_type_id,
+        }),
+      };
 
-    try {
-      const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
+      try {
+        const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
+        const data = await response.json();
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
   mounted() {
     Promise.all([
