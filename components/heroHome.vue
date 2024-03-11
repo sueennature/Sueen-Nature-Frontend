@@ -364,8 +364,9 @@ export default {
       try {
         const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
         const data = await response.json();
+        this.$router.push({ path: '/booking', query: { roomTypeId: this.room_type_id } });
       } catch (error) {
-        console.error(error);
+        window.alert(error);
       }
     },
   },
