@@ -90,7 +90,7 @@
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 whitespace-nowrap"
-                  @click="addItemToRoomsList({ name: 'Bed & Breakfast', price: selectedRoomType.bread_breakfast })"
+                  @click="addItemToRoomsList({ name: selectedRoomType.name, type: 'Bed & Breakfast', price: selectedRoomType.bread_breakfast, selectedRooms: '' })"
                 >
                   Add now
                 </button>
@@ -115,7 +115,7 @@
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  @click="addItemToRoomsList({ name: 'Half Board', price: selectedRoomType.half_board})"
+                  @click="addItemToRoomsList({ name: selectedRoomType.name, type: 'Half Board', price: selectedRoomType.half_board, selectedRooms: ''})"
                 >
                   Add now
                 </button>
@@ -140,7 +140,7 @@
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  @click="addItemToRoomsList({ name: 'Full Board', price: selectedRoomType.full_board})"
+                  @click="addItemToRoomsList({ name: selectedRoomType.name, type: 'Full Board', price: selectedRoomType.full_board, selectedRooms: ''})"
                 >
                   Add now
                 </button>
@@ -165,7 +165,7 @@
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  @click="addItemToRoomsList({ name: 'Room only', price: selectedRoomType.room_only})"
+                  @click="addItemToRoomsList({ name: selectedRoomType.name, type: 'Room only', price: selectedRoomType.room_only, selectedRooms: ''})"
                 >
                   Add now
                 </button>
@@ -214,28 +214,31 @@
           />
           <div class="flex items-baseline justify-between mt-4">
             <h5 class="text-black-200 font-medium xl:text-lg text-sm">
-              {{item.name}}
+              {{item.type}}
             </h5>
 
             <form class="max-w-sm">
               <select
                 id="rooms"
                 class="bg-white border border-red-100 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                v-model="item.selectedRooms"
+                @change="updateRoomsCount(item, $event)"
               >
                 <option selected>Rooms</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
               </select>
             </form>
           </div>
           <div
             class="lg:flex lg:flex-row flex-col items-baseline justify-between mt-4 space-y-2"
+            v-for="n in roomRaw(item.selectedRooms)" :key="`${index}-${n}`"
           >
             <div class="flex items-center">
               <h5 class="text-black-200 font-medium xl:text-lg text-sm">
-                <span>Room :</span> <span>1</span>
+                <span>Room :</span> <span>{{n}}</span>
               </h5>
             </div>
             <div class="flex lg:space-x-4 space-x-1">
@@ -277,53 +280,7 @@
               </form>
             </div>
           </div>
-          <div
-            class="lg:flex lg:flex-row flex-col items-baseline justify-between mt-4 space-y-2"
-          >
-            <div class="flex items-center">
-              <h5 class="text-black-200 font-medium xl:text-lg text-sm">
-                <span>Room :</span> <span>2</span>
-              </h5>
-            </div>
-            <div class="flex lg:space-x-4 space-x-1">
-              <form class="max-w-sm w-full">
-                <select
-                  id="adults"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected>Adults</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
-              </form>
-              <form class="max-w-sm w-full">
-                <select
-                  id="children"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected>Children</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
-              </form>
-              <form class="max-w-sm w-full">
-                <select
-                  id="infants"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected>Infants</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
-              </form>
-            </div>
-          </div>
+      
           <button
             type="button"
             class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm px-8 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
@@ -342,22 +299,15 @@
         <h5 class="text-red-100 font-medium lg:text-lg text-base mt-8">
           Special Rate (After 30% Discount)
         </h5>
-        <div class="flex justify-between mt-4">
+        <div class="flex justify-between mt-4"  v-for="(item, index) in roomsList" :key="index">
           <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
-            Single Room
+            {{item.name}}-{{item.type}}
           </h5>
           <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
-            LKR 38,000
-          </h5>
-        </div>
-        <div class="flex justify-between mt-4">
-          <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
-            Double Room
-          </h5>
-          <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
-            LKR 23,000
+            LKR {{item.price}}
           </h5>
         </div>
+
         <hr
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-4"
         />
@@ -704,6 +654,7 @@
 
 <script>
 import CheckoutAvailability from "./CheckoutAvailability.vue";
+import { ref, onMounted, onUnmounted } from 'vue';
 
 export default {
   components: {
@@ -715,12 +666,13 @@ export default {
       room_types: [],
       roomsList: [],
       boardType: [],
+      mealPlans: [],
       price: 0,
     }
   },
   methods: {
     toggleModal(event) {
-      event.preventDefault(); // Prevent default behavior of anchor element
+      event.preventDefault(); 
       this.isModalOpen = !this.isModalOpen;
       if (this.isModalOpen) {
         document.body.classList.add('overflow-hidden');
@@ -731,11 +683,22 @@ export default {
     addItemToRoomsList(roomDetails) {
       this.roomsList.push(roomDetails);
       this.price = this.price + parseFloat(roomDetails.price);
+      console.log("list", this.roomsList)
     },
     removeItemFromRoomsList(index) {
       this.price -= parseFloat(this.roomsList[index].price);
       this.roomsList.splice(index, 1);
-    }
+    },
+    updateRoomsCount(item, event) {
+
+      const roomToUpdate = this.roomsList.find(room => room === item);
+      if (roomToUpdate) {
+        roomToUpdate.selectedRooms = event.target.value;
+      }
+    },
+    roomRaw(selectedRooms) {
+      return Array.from({ length: Number(selectedRooms) }, (_, i) => i + 1);
+    },
   },
   computed: {
     roomTypeId() {
@@ -760,6 +723,40 @@ export default {
       .catch((error) => {
         console.error('There has been a problem with your fetch operation:', error);
     });
+  },
+  setup() {
+    const roomsList = ref([]);
+
+    const beforeUnloadListener = (event) => {
+      if (roomsList.value.length > 0) {
+        event.preventDefault();
+        event.returnValue = 'You have unsaved changes! Are you sure you want to leave?';
+      }
+    };
+
+    onMounted(() => {
+      window.addEventListener('beforeunload', beforeUnloadListener);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('beforeunload', beforeUnloadListener);
+    });
+
+    return {
+      roomsList,
+    };
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.roomsList.length > 0) {
+      const answer = window.confirm('You have unsaved changes! Are you sure you want to leave?');
+      if (answer) {
+        next();
+      } else {
+        next(false);
+      }
+    } else {
+      next();
+    }
   }
 }
 </script>
