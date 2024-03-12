@@ -320,6 +320,7 @@
           </select>
         </form>
       </div>
+
       <button
         class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
         @click="checkAvailability"
@@ -327,7 +328,6 @@
         Check Availability
       </button>
       <div class="md:hidden">
-
         <button
           class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
         >
