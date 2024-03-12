@@ -16,7 +16,7 @@
       <div>
         <div class="relative">
           <img
-            src="/img/checkout-room.png"
+            :src="selectedRoomType.image"
             alt="roomImg"
             class="w-full object-cover"
           />
@@ -27,13 +27,7 @@
           </div>
         </div>
         <p class="text-gray-300 text-base mt-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          {{ selectedRoomType.description}}
         </p>
       </div>
       <!-- room selector options -->
@@ -372,7 +366,7 @@
             Total Room Rates
           </h5>
           <h5 class="lg:text-base text-sm font-medium text-black-200">
-            LKR 23,000
+            LKR {{price}}
           </h5>
         </div>
         <div class="flex justify-between mt-4">
@@ -385,7 +379,7 @@
         <div class="flex justify-between mt-4">
           <h5 class="lg:text-base text-sm font-bold text-black-200">Total</h5>
           <h5 class="lg:text-base text-sm font-bold text-black-200">
-            LKR 60,000
+            LKR {{price}}
           </h5>
         </div>
         <button
@@ -721,6 +715,7 @@ export default {
       room_types: [],
       roomsList: [],
       boardType: [],
+      price: 0,
     }
   },
   methods: {
@@ -735,8 +730,10 @@ export default {
     },
     addItemToRoomsList(roomDetails) {
       this.roomsList.push(roomDetails);
+      this.price = this.price + parseFloat(roomDetails.price);
     },
     removeItemFromRoomsList(index) {
+      this.price -= parseFloat(this.roomsList[index].price);
       this.roomsList.splice(index, 1);
     }
   },
