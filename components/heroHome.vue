@@ -188,7 +188,7 @@
     </nav>
     <!-- hero logo image -->
     <div class="absolute top-2 left-0 w-full md:flex hidden items-center">
-      <a href="/home" class="relative mx-auto">
+      <a href="/" class="relative mx-auto">
         <!-- Adjust mx-2 as needed for spacing -->
         <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
         <div
