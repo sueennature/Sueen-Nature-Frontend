@@ -12,7 +12,7 @@
       <div
         class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
       >
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
         </a>
         <div
@@ -52,7 +52,7 @@
           >
             <li>
               <a
-                href="/"
+                href="/home"
                 class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 rounded lg:bg-transparent hover:bg-gray-100 lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >
@@ -98,7 +98,7 @@
           <div
             class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
           >
-            <a href="/checkout">
+            <a href="/booking">
               <button
                 type="button"
                 class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
@@ -141,7 +141,7 @@
             >
               <li>
                 <a
-                  href="/"
+                  href="/home"
                   class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                   >Home</a
                 >
@@ -188,7 +188,7 @@
     </nav>
     <!-- hero logo image -->
     <div class="absolute top-2 left-0 w-full md:flex hidden items-center">
-      <a href="/" class="relative mx-auto">
+      <a href="/home" class="relative mx-auto">
         <!-- Adjust mx-2 as needed for spacing -->
         <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
         <div
@@ -207,7 +207,7 @@
     >
       <div class="flex flex-row justify-center md:space-x-4 space-x-0">
         <a
-          href="/"
+          href="/home"
           aria-current="true"
           class="text-white font-semibold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
@@ -274,7 +274,7 @@
           </div>
           <input
               type="date"
-              class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              class="bg-transparent w-full border-none rounded-lg  text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
               v-model="fromDate"
             />
@@ -303,7 +303,7 @@
           </div>
           <input
             type="date"
-            class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
             placeholder="Check In Date"
             v-model="toDate"
           />

@@ -5,7 +5,7 @@
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
       <a
-        href="/"
+        href="/home"
         class="flex items-center space-x-3 rtl:space-x-reverse"
       >
       <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
@@ -13,7 +13,7 @@
       <div
         class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
       >
-      <a href="/checkout">
+      <a href="/booking">
         <button
           type="button"
           class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
@@ -55,7 +55,7 @@
         >
           <li>
             <a
-              href="/"
+              href="/home"
               class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 hover:bg-gray-100 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
               >Home</a
             >
@@ -99,7 +99,7 @@
       </div>
       <div class="hidden lg:flex lg:flex-row lg:gap-4">
         <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
-          <a href="/checkout">
+          <a href="/booking">
             <button
             type="button"
             class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
@@ -143,7 +143,7 @@
           >
             <li>
               <a
-                href="/"
+                href="/home"
                 class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >

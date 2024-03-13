@@ -1,7 +1,7 @@
 <template>
   <div class="bg-black-300">
     <div class="container pt-20">
-      <a href="/">
+      <a href="/home">
         <img
         src="/img/logoImg.png"
         alt="logoImg"

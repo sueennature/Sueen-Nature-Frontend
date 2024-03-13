@@ -7,7 +7,7 @@
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
       </a>
       <div
@@ -56,7 +56,7 @@
         >
           <li>
             <a
-              href="/"
+              href="/home"
               class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 hover:bg-gray-100 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
               >Home</a
             >
@@ -143,7 +143,7 @@
           >
             <li>
               <a
-                href="/"
+                href="/home"
                 class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >

@@ -25,7 +25,7 @@
             </div>
             <input
               type="date"
-              class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              class="bg-transparent w-full border-none rounded-lg  text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-0  block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
               v-model="fromDate"
             />
@@ -54,7 +54,7 @@
             </div>
             <input
               type="date"
-              class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              class="bg-transparent w-full border-none rounded-lg  text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
               v-model="toDate"
             />
@@ -64,7 +64,7 @@
         <form class="lg:max-w-sm lg:mx-auto">
           <select
             id="view"
-            class="text-bg-gray-700 text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             v-model="room_type_id"
           >
             <option v-for="room in room_types" :value="room.id" :key="room.id">{{ room.name }}</option>
