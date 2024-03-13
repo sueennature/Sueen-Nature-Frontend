@@ -253,7 +253,7 @@
         class="md:flex grid grid-cols-1 justify-center md:space-x-4 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white bg-black-200 bg-opacity-65"
       >
         <div class="relative md:max-w-sm md:mx-auto">
-          <div
+          <!-- <div
             class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
           >
             <svg
@@ -271,7 +271,7 @@
                 d="m7 10l5 5m0 0l5-5"
               />
             </svg>
-          </div>
+          </div> -->
           <input
               type="date"
               class="bg-transparent w-full border-none rounded-lg  text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
@@ -282,7 +282,7 @@
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
         <div class="relative md:max-w-sm md:mx-auto">
-          <div
+          <!-- <div
             class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
           >
             <svg
@@ -300,7 +300,7 @@
                 d="m7 10l5 5m0 0l5-5"
               />
             </svg>
-          </div>
+          </div> -->
           <input
             type="date"
             class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
