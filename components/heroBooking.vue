@@ -222,6 +222,7 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
+  handleScroll(); // Call handleScroll once when the component is mounted
   window.addEventListener("scroll", handleScroll);
   initFlowbite();
 });
