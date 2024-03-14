@@ -4,20 +4,15 @@
     <h2
       class="text-black-200 md:text-4xl text-2xl font-medium text-center max-w-[38ch] mx-auto"
     >
-      "I only get to come home once a year.When we have our annual conference at
-      the Grand Standard"
+    Experience the epitome of comfort and luxury amidst the tranquil surroundings of Sueen Nature Resort. 
     </h2>
    <!-- sub title -->
-    <h6 class="text-black-200 font-semibold md:text-xl text-lg text-center mt-4">
+    <!-- <h6 class="text-black-200 font-semibold md:text-xl text-lg text-center mt-4">
       RECENT GUEST
-    </h6>
+    </h6> -->
     <!-- introduction paragraph -->
-    <p class="text-gray-300 md:text-3xl text-xl text-center mt-10 max-w-[50ch] mx-auto">
-      Immerse yourself in tranquility and luxury as you explore our carefully
-      curated selection of accommodations designed to elevate your stay amidst
-      nature's embrace. From cozy retreats to lavish suites, each room is
-      thoughtfully crafted to offer comfort, style, and a seamless blend with
-      the breathtaking natural surroundings.
+    <p class="text-gray-300 md:text-2xl text-xl text-center mt-10 max-w-[50ch] mx-auto">
+      Our thoughtfully designed rooms and suites offer a perfect blend of contemporary elegance and natural charm, providing guests with an unforgettable retreat away from the hustle and bustle of everyday life. Whether you choose to wake up to the serene beauty of the lake or the majestic mountains, our rooms and suites at Sueen Nature Resort promise a blissful retreat amidst nature's splendor. Immerse yourself in comfort, style, and natural beauty during your stay with us.
     </p>
     <!-- Deluxe ROOM Section -->
     <div>
