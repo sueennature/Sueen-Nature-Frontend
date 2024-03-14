@@ -76,16 +76,14 @@
         
         <button
           class="bg-red-100 text-sm text-white lg:ml-2 lg:p-4 p-2 rounded-r-lg rounded-l-none lg:flex hidden"
-          @click="checkAvailability"
-        >
+          @click="checkAvailability">
           Check Availability
         </button>
   
         <div class="lg:hidden">
           <a href="/checkout">
           <button
-            class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
-          >
+            class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full">
             Check Availability
           </button>
           </a>

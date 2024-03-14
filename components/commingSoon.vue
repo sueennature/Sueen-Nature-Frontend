@@ -52,7 +52,7 @@ export default {
         minutes: 0,
         seconds: 0,
       },
-      targetDate: new Date("2024-03-15T23:00:00").getTime(), // Example target date
+      targetDate: new Date("2024-03-18T23:00:00").getTime(), // Example target date
     };
   },
   mounted() {
