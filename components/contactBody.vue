@@ -17,8 +17,7 @@
         <p
           class="text-base font-bold text-black-50 dark:text-white text-center my-8"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-          convallis, dolor sed consectetur gravida, neque sem tristique.
+        Feel free to reach out to us for any inquiries, reservations, or feedback. Our dedicated team at Sueen Nature Resort is here to assist you.
         </p>
 
         <div class="grid gap-x-4 mb-6 grid-cols-2 gap-y-6">
@@ -133,7 +132,7 @@
               />
             </g>
           </svg>
-          <a href="mailto:info@sueennature.com" class="text-stone-700 hover:underline text-base">info@sueennature.com</a>
+          <a href="mailto:sueennature@gmail.com" class="text-stone-700 hover:underline text-base">sueennature@gmail.com</a>
         </div>
       </div>
       <div
@@ -171,9 +170,10 @@
             </g>
           </svg>
           <a
-            href="tel:+94703321509"
+            href="tel:+94715840000"
             class="text-stone-700 hover:underline text-base"
-            >+(94) - 703 - 321 - 509</a
+            >+(94) 715 - 840 - 000
+</a
           >
         </div>
       </div>
@@ -188,8 +188,8 @@
         <div class="flex flex-row gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="24"
+            width="65"
+            height="30"
             viewBox="0 0 27 24"
             fill="none"
           >
@@ -212,9 +212,9 @@
             </g>
           </svg>
           <a
-            href="mailto:hello@ayamaresort.com"
+            
             class="text-stone-700 hover:underline text-base"
-            >Lathpandura, Baduraliya</a
+            >Sueen Nature, Palangahawatta, Morapitiya Road, Palanda, Baduraliya, Sri Lanka</a
           >
         </div>
       </div>
@@ -253,9 +253,9 @@
             </g>
           </svg>
           <a
-            href="https://wa.me/+94703321509"
+            href="https://wa.me/+94715840000"
             class="text-stone-700 hover:underline text-base"
-            >+(94) - 703 - 321 - 509</a
+            >+(94) - 715 - 840 - 000</a
           >
         </div>
       </div>

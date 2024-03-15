@@ -4,7 +4,7 @@
       <div class="inset-x-0 lg:flex lg:flex-row flex-col lg:justify-center lg:mx-0 mx-4">
         <div class="lg:flex grid grid-cols-1 justify-center lg:space-x-4 border rounded-l-none rounded-r-none lg:rounded-l-lg lg:rounded-r-none shadow-lg border-white bg-black-200 bg-opacity-65">
           <div class="relative lg:max-w-xs lg:mx-auto">
-            <div
+            <!-- <div
               class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
             >
               <svg
@@ -22,10 +22,10 @@
                   d="m7 10l5 5m0 0l5-5"
                 />
               </svg>
-            </div>
+            </div> -->
             <input
               type="date"
-              class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              class=" w-full bg-transparent border-none rounded-lg  text-white placeholder-gray-500 text-sm p-4 focus:ring-0  block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
               v-model="fromDate"
             />
@@ -33,7 +33,7 @@
           <div class="w-0.5 bg-white h-8 my-auto lg:flex hidden"></div>
           <!-- Vertical separator -->
           <div class="relative lg:max-w-xs lg:mx-auto">
-            <div
+            <!-- <div
               class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
             >
               <svg
@@ -51,10 +51,10 @@
                   d="m7 10l5 5m0 0l5-5"
                 />
               </svg>
-            </div>
+            </div> -->
             <input
               type="date"
-              class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              class="w-full border-none bg-transparent rounded-lg  text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
               v-model="toDate"
             />
@@ -64,7 +64,7 @@
         <form class="lg:max-w-sm lg:mx-auto">
           <select
             id="view"
-            class="text-bg-gray-700 text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             v-model="room_type_id"
           >
             <option v-for="room in room_types" :value="room.id" :key="room.id">{{ room.name }}</option>
@@ -76,16 +76,14 @@
         
         <button
           class="bg-red-100 text-sm text-white lg:ml-2 lg:p-4 p-2 rounded-r-lg rounded-l-none lg:flex hidden"
-          @click="checkAvailability"
-        >
+          @click="checkAvailability">
           Check Availability
         </button>
   
         <div class="lg:hidden">
           <a href="/checkout">
           <button
-            class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
-          >
+            class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full">
             Check Availability
           </button>
           </a>
@@ -162,4 +160,15 @@
   
     
   <style  scoped>
+  input[type="date"] { 
+  background: transparent;
+  color: white;
+  outline: none;
+  border: none;
+  color-scheme: dark;
+}
+
+#view{
+  background-position: right 1.25rem center;
+}
   </style>

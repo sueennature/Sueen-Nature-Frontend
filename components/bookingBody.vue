@@ -50,18 +50,21 @@
             </div>
           </div>
           <div class="lg:flex lg:justify-end justify-start">
-            <form class="max-w-xs w-28">
-              <select
-                id="rates"
-                class="text-black-200 bg-transparent pl-0 placeholder:text-black-200 border-none focus:ring-0 xl:text-base text-sm font-semibold block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+             <!-- view Rates button -->
+             <button id="viewRatesButton"
+              type="button"
+              class="text-black-200 lg:text-base text-sm font-semibold bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus:ring-blue-300  rounded-none px-0 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              View Rates
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
               >
-                <option selected>View Rates</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </form>
+                <path fill="currentColor" d="m7 10l5 5l5-5z" />
+              </svg>
+            </button>
           </div>
         </div>
         <h5 class="text-black-200 font-semibold mt-4">{{ selectedRoomType.name }}</h5>
@@ -189,18 +192,21 @@
             </div>
           </div>
           <div class="flex justify-end">
-            <form class="max-w-xs">
-              <select
-                id="rates"
-                class="text-black-200 bg-transparent placeholder:text-black-200 border-none focus:ring-0 xl:text-base text-sm font-semibold block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            <!-- view rate button -->
+            <button
+              type="button" id="viewRatesButton1"
+              class="text-black-200 lg:text-base text-sm font-semibold bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus:ring-blue-300  rounded-none px-0 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              View Rates
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
               >
-                <option selected>View Rates</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-              </select>
-            </form>
+                <path fill="currentColor" d="m7 10l5 5l5-5z" />
+              </svg>
+            </button>
           </div>
         </div>
         <!-- Card about Single Room - Special Rate  -->
@@ -513,13 +519,11 @@
             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
             >Nationality *</label
           >
-          <input
-            type="text"
-            id="nationality"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-          />
+          <select id="nationality" class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option selected>Local</option>
+          <option value="US">Foreign</option>
+    
+          </select>
         </div>
         <div>
           <label
@@ -796,7 +800,8 @@ input {
 #rooms,
 #adults,
 #children,
-#infants {
+#infants,#nationality {
   background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
 }
+
 </style>

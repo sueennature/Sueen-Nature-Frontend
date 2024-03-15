@@ -12,7 +12,7 @@
       <div
         class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
       >
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
         </a>
         <div
@@ -52,7 +52,7 @@
           >
             <li>
               <a
-                href="/"
+                href="/home"
                 class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 rounded lg:bg-transparent hover:bg-gray-100 lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >
@@ -78,13 +78,13 @@
                 >Rooms</a
               >
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="/news"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >News</a
               >
-            </li>
+            </li> -->
             <li>
               <a
                 href="/contact"
@@ -98,7 +98,7 @@
           <div
             class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
           >
-            <a href="/checkout">
+            <a href="/booking">
               <button
                 type="button"
                 class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
@@ -141,7 +141,7 @@
             >
               <li>
                 <a
-                  href="/"
+                  href="/home"
                   class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                   >Home</a
                 >
@@ -167,13 +167,13 @@
                   >Rooms</a
                 >
               </li>
-              <li>
+              <!-- <li>
                 <a
                   href="/news"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >News</a
                 >
-              </li>
+              </li> -->
               <li>
                 <a
                   href="/contact"
@@ -207,7 +207,7 @@
     >
       <div class="flex flex-row justify-center md:space-x-4 space-x-0">
         <a
-          href="/"
+          href="/home"
           aria-current="true"
           class="text-white font-semibold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
@@ -231,12 +231,12 @@
         >
           Rooms
         </a>
-        <a
+        <!-- <a
           href="/news"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
         >
           News
-        </a>
+        </a> -->
         <a
           href="/contact"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
@@ -250,10 +250,10 @@
       class="absolute inset-x-0 bottom-12 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
     >
       <div
-        class="md:flex grid grid-cols-1 justify-center md:space-x-4 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white bg-black-200 bg-opacity-65"
+        class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-4 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
       >
         <div class="relative md:max-w-sm md:mx-auto">
-          <div
+          <!-- <div
             class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
           >
             <svg
@@ -271,10 +271,10 @@
                 d="m7 10l5 5m0 0l5-5"
               />
             </svg>
-          </div>
+          </div> -->
           <input
               type="date"
-              class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
               v-model="fromDate"
             />
@@ -282,7 +282,7 @@
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
         <div class="relative md:max-w-sm md:mx-auto">
-          <div
+          <!-- <div
             class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
           >
             <svg
@@ -300,12 +300,10 @@
                 d="m7 10l5 5m0 0l5-5"
               />
             </svg>
-          </div>
+          </div> -->
           <input
             type="date"
-            class="bg-transparent w-full border rounded-lg border-gray-300 text-gray-900 placeholder-gray-500 text-sm p-4 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            placeholder="Check In Date"
-            v-model="toDate"
+            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" v-model="toDate"
           />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
@@ -313,7 +311,7 @@
         <form class="md:max-w-sm md:mx-auto">
           <select
             id="view"
-            class="text-white text-sm p-4 bg-black-200 border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             v-model="room_type_id"
           >
             <option v-for="room in room_types" :value="room.id" :key="room.id">{{ room.name }}</option>
@@ -409,4 +407,19 @@ export default {
 
   
 <style  scoped>
+input[type="date"] { 
+  background: transparent;
+  color: white;
+  outline: none;
+  border: none;
+  color-scheme: dark;
+}
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    
+     
+} */
+#view{
+  background-position: right 1.25rem center;
+}
+
 </style>

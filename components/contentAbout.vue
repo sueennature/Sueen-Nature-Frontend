@@ -2,29 +2,23 @@
     <div class="container py-20">
     <!--discriptive paragraph of learn page -->
     <h2 class="text-black-200 text-6xl font-medium my-20 text-center">
-    "I've always loved working with people.So working at the Grand Standard was a natural fit."
+      We invite you to experience the essence of tranquility and luxury at Sueen Nature Resort, where every stay is an unforgettable journey.
     </h2>
-    <p class="text-base text-gray-300 mt-2">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <p class="text-base text-gray-300 mt-2 text-center">
+      Welcome to Sueen Nature Resort Established in 2024, Sueen Nature Resort is a premier hospitality destination founded by Mr. Dinusha Sampath Liyanage, Managing Director of Sampath Super Trading (PVT) Ltd. Nestled in the tranquil surroundings of Baduraliya, our resort offers an unparalleled retreat where guests can indulge in luxury amidst nature's beauty.
     </p>
-    <p class="text-base text-gray-300 mt-2">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
-    </p>
-    <h5 class="text-black-200 text-4xl text-center my-8">Our Story</h5>
-    <p class="text-base text-gray-300 pt-2 text-justify">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    
+    <h5 class="text-black-200 text-4xl text-center my-8">
+      Our Vision
+    </h5>
+    <p class="text-base text-gray-300 mt-2 text-center">
+      We aspire to set the standard for exceptional hospitality in Sri Lanka, providing guests with unforgettable experiences that seamlessly blend luxury with the wonders of nature.
     </p>
     <h5 class="text-black-200 text-4xl text-center my-8">
-        Our Philosophy
+      Our Mission
     </h5>
-    <p class="text-base text-gray-300 mt-2 text-justify">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <h5 class="text-black-200 text-4xl text-center my-8">
-        Our Approach
-    </h5>
-    <p class="text-base text-gray-300 mt-2 text-justify">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <p class="text-base text-gray-300 mt-2 text-center">
+      At Sueen Nature Resort, we are dedicated to curating extraordinary experiences for our guests. Our mission is to deliver personalized, friendly, and professional service that surpasses expectations, ensuring each guest enjoys unparalleled comfort, service, and attention to detail.
     </p>
 
     <!-- about us title -->
@@ -33,27 +27,27 @@
 
     <h2 class="text-black-200 text-4xl text-center mt-20">MEET OUR TEAM</h2>
     <!-- team section -->
-    <div class="lg:flex lg:flex-row grid grid-cols-2 justify-center mt-4 lg:space-x-20 gap-y-4">
+    <div class="lg:flex lg:flex-row grid grid-cols-1 justify-center mt-10 lg:space-x-20 gap-y-4">
       <div class="flex flex-col items-center">    
         <img class="rounded-full w-32 h-32" src="../public/img/team1.png" alt="teamImg">
-        <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Emilie Johnson</h3>
-        <h6 class="text-gray-300 font-bold text-sm text-center">Guest Relation</h6>
+        <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Mr. Dinusha Sampath Liyanage</h3>
+        <h6 class="text-gray-300 font-bold text-sm text-center">Chairman</h6>
       </div>
       <div class="flex flex-col items-center">
         <img class="rounded-full w-32 h-32" src="/img/team2.png" alt="teamImg">
-        <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Sam Mitchel</h3>
-        <h6 class="text-gray-300 font-bold text-sm text-center">Head Chef</h6>
+        <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Ms. Lanka Priyangi</h3>
+        <h6 class="text-gray-300 font-bold text-sm text-center">Manager Corporate Affairs</h6>
       </div>
       <div class="flex flex-col items-center">
         <img class="rounded-full w-32 h-32" src="/img/team3.png" alt="teamImg">
-        <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Shianne McCarthy</h3>
-        <h6 class="text-gray-300 font-bold text-sm text-center">Managing Director</h6>
+        <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Mr. Chandima</h3>
+        <h6 class="text-gray-300 font-bold text-sm text-center">Head of Finance</h6>
       </div>
-      <div class="flex flex-col items-center">
+      <!-- <div class="flex flex-col items-center">
         <img class="rounded-full w-32 h-32" src="/img/team4.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Jessie Williams</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Su Chef</h6>
-      </div>
+      </div> -->
 
     </div>
     <!-- <h2 class="text-black-200 text-4xl text-center mt-20 mb-4">EXPLORE OUR JOURNAL</h2> -->

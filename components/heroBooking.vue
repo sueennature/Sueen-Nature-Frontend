@@ -7,7 +7,7 @@
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
       </a>
       <div
@@ -56,7 +56,7 @@
         >
           <li>
             <a
-              href="/"
+              href="/home"
               class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 hover:bg-gray-100 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
               >Home</a
             >
@@ -82,13 +82,13 @@
               >Rooms</a
             >
           </li>
-          <li>
+          <!-- <li>
             <a
               href="/news"
               class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
               >News</a
             >
-          </li>
+          </li> -->
           <li>
             <a
               href="/contact"
@@ -143,7 +143,7 @@
           >
             <li>
               <a
-                href="/"
+                href="/home"
                 class="block py-2 px-3 lg:p-0 text-white lg:hover:text-blue-700 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >
@@ -169,13 +169,13 @@
                 >Rooms</a
               >
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="/news"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >News</a
               >
-            </li>
+            </li> -->
             <li>
               <a
                 href="/contact"
@@ -222,6 +222,7 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
+  handleScroll(); // Call handleScroll once when the component is mounted
   window.addEventListener("scroll", handleScroll);
   initFlowbite();
 });

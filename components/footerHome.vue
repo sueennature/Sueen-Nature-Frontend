@@ -1,7 +1,7 @@
 <template>
   <div class="bg-black-300">
     <div class="container pt-20">
-      <a href="/">
+      <a href="/home">
         <img
         src="/img/logoImg.png"
         alt="logoImg"
@@ -12,10 +12,7 @@
       <p
         class="lg:text-base text-sm text-white font-thin text-center pt-8 max-w-[100ch] mx-auto"
       >
-        Get in touch with us! Our friendly team is here to help. Whether you
-        want to make a reservation, inquire about our services, or provide
-        feedback, we're just a click or call away. Reach out now and let us
-        assist you.
+      Feel free to reach out to us for any inquiries, reservations, or feedback. Our dedicated team at Sueen Nature Resort is here to assist you and ensure that your experience with us is nothing short of exceptional.
       </p>
       <div class="flex justify-center items-center">
         <a
@@ -50,9 +47,10 @@
         </div>
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">Follow</h2>
-          <h3 class="text-black-50 uppercase text-sm mt-3">Facebook</h3>
-          <h3 class="text-black-50 uppercase text-sm mt-1">Twitter</h3>
-          <h3 class="text-black-50 uppercase text-sm mt-1">Instagram</h3>
+          <nuxt-link to="https://www.facebook.com/sueennature" class="text-black-50 uppercase text-sm mt-3 hover:text-blue-500">Facebook</nuxt-link>
+          <!-- <nuxt-link to="https://twitter.com" class="text-black-50 uppercase text-sm mt-1 hover:text-blue-500">Twitter</nuxt-link> -->
+          <nuxt-link to="https://www.instagram.com/sueennature/" class="text-black-50 uppercase text-sm mt-1 hover:text-blue-500">Instagram</nuxt-link>
+
         </div>
       </div>
       <hr class="border-gray-100 border-opacity-20 lg:mt-32 mt-10" />
@@ -75,7 +73,7 @@
 h2 {
   font-family: "Philosopher", sans-serif;
 }
-h3,
+h3,a,
 .buttontext {
   font-family: "Work Sans", sans-serif;
 }
