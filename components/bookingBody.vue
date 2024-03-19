@@ -917,7 +917,7 @@ export default {
     },
   },
   mounted() {
-    fetch("https://sueen.website/dashboard/public/api/getRoomTypes")
+    fetch("https://admin.sueennature.com/api/getRoomTypes")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

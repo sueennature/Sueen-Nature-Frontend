@@ -118,7 +118,7 @@
         console.log("body", body)
 
         try {
-          const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
+          const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
           const data = await response.json();
         } catch (error) {
           console.error(error);
@@ -141,7 +141,7 @@
           orientation: "bottom right", // Set orientation for the second datepicker
         });
       });
-      fetch('https://sueen.website/dashboard/public/api/getRoomTypes')
+      fetch('https://admin.sueennature.com/api/getRoomTypes')
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');

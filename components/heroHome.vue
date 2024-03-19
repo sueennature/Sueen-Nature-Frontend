@@ -360,7 +360,7 @@ export default {
       };
 
       try {
-        const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
+        const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
         if(response.status===200){
           this.$router.push({ path: '/booking', query: { roomTypeId: this.room_type_id } });
@@ -388,7 +388,7 @@ export default {
         orientation: "bottom right", // Set orientation for the second datepicker
       });
     });
-    fetch('https://sueen.website/dashboard/public/api/getRoomTypes')
+    fetch('https://admin.sueennature.com/api/getRoomTypes')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
