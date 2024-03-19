@@ -19,7 +19,7 @@
       <div>
         <div class="relative">
           <img
-            :src="selectedRoomType.image"
+            :src="`https://admin.sueennature.com/uploads/${selectedRoomType.image}`"
             alt="roomImg"
             class="w-full object-cover"
           />
