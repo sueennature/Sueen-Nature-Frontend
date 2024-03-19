@@ -114,6 +114,7 @@
           }),
         };
 
+        this.$router.push({path: this.$route.path, query: { check_in: this.fromDate, check_out: this.toDate, roomTypeId: this.room_type_id }})
         console.log("body", body)
 
         try {

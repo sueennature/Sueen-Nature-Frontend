@@ -11,7 +11,10 @@
     <h2 class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10">
       Room Selection
     </h2>
-    <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16" v-if="selectedRoomType">
+    <div
+      class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16"
+      v-if="selectedRoomType"
+    >
       <!-- room image with paragraph -->
       <div>
         <div class="relative">
@@ -27,7 +30,7 @@
           </div>
         </div>
         <p class="text-gray-300 text-base mt-8">
-          {{ selectedRoomType.description}}
+          {{ selectedRoomType.description }}
         </p>
       </div>
       <!-- room selector options -->
@@ -50,10 +53,11 @@
             </div>
           </div>
           <div class="lg:flex lg:justify-end justify-start">
-             <!-- view Rates button -->
-             <button id="viewRatesButton"
+            <!-- view Rates button -->
+            <button
+              id="viewRatesButton"
               type="button"
-              class="text-black-200 lg:text-base text-sm font-semibold bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus:ring-blue-300  rounded-none px-0 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="text-black-200 lg:text-base text-sm font-semibold bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus:ring-blue-300 rounded-none px-0 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               View Rates
               <svg
@@ -67,7 +71,9 @@
             </button>
           </div>
         </div>
-        <h5 class="text-black-200 font-semibold mt-4">{{ selectedRoomType.name }}</h5>
+        <h5 class="text-black-200 font-semibold mt-4">
+          {{ selectedRoomType.name }}
+        </h5>
         <hr
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
         />
@@ -86,14 +92,22 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                   LKR {{ selectedRoomType.bread_breakfast}}
+                  LKR {{ selectedRoomType.bread_breakfast }}
                 </h5>
               </div>
               <div class="inline-flex">
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 whitespace-nowrap"
-                  @click="addItemToRoomsList({ name: selectedRoomType.name, type: 'Bed & Breakfast', price: selectedRoomType.bread_breakfast, selectedRooms: '' })"
+                  @click="
+                    addItemToRoomsList({
+                      id: selectedRoomType.id,
+                      name: selectedRoomType.name,
+                      type: 'Bed & Breakfast',
+                      price: selectedRoomType.bread_breakfast,
+                      selectedRooms: '',
+                    })
+                  "
                 >
                   Add now
                 </button>
@@ -111,14 +125,22 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                   LKR {{ selectedRoomType.half_board}}
+                  LKR {{ selectedRoomType.half_board }}
                 </h5>
               </div>
               <div class="inline-flex">
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  @click="addItemToRoomsList({ name: selectedRoomType.name, type: 'Half Board', price: selectedRoomType.half_board, selectedRooms: ''})"
+                  @click="
+                    addItemToRoomsList({
+                      id: selectedRoomType.id,
+                      name: selectedRoomType.name,
+                      type: 'Half Board',
+                      price: selectedRoomType.half_board,
+                      selectedRooms: '',
+                    })
+                  "
                 >
                   Add now
                 </button>
@@ -136,14 +158,22 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{selectedRoomType.full_board}}
+                  LKR {{ selectedRoomType.full_board }}
                 </h5>
               </div>
               <div class="inline-flex">
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  @click="addItemToRoomsList({ name: selectedRoomType.name, type: 'Full Board', price: selectedRoomType.full_board, selectedRooms: ''})"
+                  @click="
+                    addItemToRoomsList({
+                      id: selectedRoomType.id,
+                      name: selectedRoomType.name,
+                      type: 'Full Board',
+                      price: selectedRoomType.full_board,
+                      selectedRooms: '',
+                    })
+                  "
                 >
                   Add now
                 </button>
@@ -161,14 +191,22 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{selectedRoomType.room_only}}
+                  LKR {{ selectedRoomType.room_only }}
                 </h5>
               </div>
               <div class="inline-flex">
                 <button
                   type="button"
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  @click="addItemToRoomsList({ name: selectedRoomType.name, type: 'Room only', price: selectedRoomType.room_only, selectedRooms: ''})"
+                  @click="
+                    addItemToRoomsList({
+                      id: selectedRoomType.id,
+                      name: selectedRoomType.name,
+                      type: 'Room only',
+                      price: selectedRoomType.room_only,
+                      selectedRooms: '',
+                    })
+                  "
                 >
                   Add now
                 </button>
@@ -194,8 +232,9 @@
           <div class="flex justify-end">
             <!-- view rate button -->
             <button
-              type="button" id="viewRatesButton1"
-              class="text-black-200 lg:text-base text-sm font-semibold bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus:ring-blue-300  rounded-none px-0 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              type="button"
+              id="viewRatesButton1"
+              class="text-black-200 lg:text-base text-sm font-semibold bg-transparent hover:bg-transparent focus:ring-0 focus:outline-none focus:ring-blue-300 rounded-none px-0 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               View Rates
               <svg
@@ -212,15 +251,18 @@
         <!-- Card about Single Room - Special Rate  -->
         <div
           class="w-full p-6 bg-white xl:text-lg text-base font-semibold border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
-          v-for="(item, index) in roomsList" :key="index"
+          v-for="(item, index) in roomsList"
+          :key="index"
         >
-          <h5>{{selectedRoomType.name}} - Special Rate (4 Rooms Available)</h5>
+          <h5>
+            {{ selectedRoomType.name }} - Special Rate (4 Rooms Available)
+          </h5>
           <hr
             class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
           />
           <div class="flex items-baseline justify-between mt-4">
             <h5 class="text-black-200 font-medium xl:text-lg text-sm">
-              {{item.type}}
+              {{ item.type }}
             </h5>
 
             <form class="max-w-sm">
@@ -240,11 +282,12 @@
           </div>
           <div
             class="lg:flex lg:flex-row flex-col items-baseline justify-between mt-4 space-y-2"
-            v-for="n in roomRaw(item.selectedRooms)" :key="`${index}-${n}`"
+            v-for="n in roomRaw(item.selectedRooms)"
+            :key="`${index}-${n}`"
           >
             <div class="flex items-center">
               <h5 class="text-black-200 font-medium xl:text-lg text-sm">
-                <span>Room :</span> <span>{{n}}</span>
+                <span>Room :</span> <span>{{ n }}</span>
               </h5>
             </div>
             <div class="flex lg:space-x-4 space-x-1">
@@ -252,6 +295,7 @@
                 <select
                   id="adults"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  @change="updateRoomPeopleCount(item, n, 'adults', $event)"
                 >
                   <option selected>Adults</option>
                   <option value="1">1</option>
@@ -264,6 +308,7 @@
                 <select
                   id="children"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  @change="updateRoomPeopleCount(item, n, 'child', $event)"
                 >
                   <option selected>Children</option>
                   <option value="1">1</option>
@@ -276,6 +321,7 @@
                 <select
                   id="infants"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  @change="updateRoomPeopleCount(item, n, 'infants', $event)"
                 >
                   <option selected>Infants</option>
                   <option value="1">1</option>
@@ -286,7 +332,7 @@
               </form>
             </div>
           </div>
-      
+
           <button
             type="button"
             class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm px-8 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
@@ -305,12 +351,20 @@
         <h5 class="text-red-100 font-medium lg:text-lg text-base mt-8">
           Special Rate (After 30% Discount)
         </h5>
-        <div class="flex justify-between mt-4"  v-for="(item, index) in roomsList" :key="index">
+        <div
+          class="flex justify-between mt-4"
+          v-for="(item, index) in roomsList"
+          :key="index"
+        >
           <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
-            {{item.name}}-{{item.type}}
+            {{ item.name }}-{{ item.type }}
           </h5>
           <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
-            LKR {{item.price}}
+            LKR
+            {{
+              parseFloat(item.price) *
+              (item.selectedRooms === "" ? 0 : parseInt(item.selectedRooms))
+            }}
           </h5>
         </div>
 
@@ -322,7 +376,7 @@
             Total Room Rates
           </h5>
           <h5 class="lg:text-base text-sm font-medium text-black-200">
-            LKR {{price}}
+            LKR {{ getTotalRoomRates() }}
           </h5>
         </div>
         <div class="flex justify-between mt-4">
@@ -335,12 +389,13 @@
         <div class="flex justify-between mt-4">
           <h5 class="lg:text-base text-sm font-bold text-black-200">Total</h5>
           <h5 class="lg:text-base text-sm font-bold text-black-200">
-            LKR {{price}}
+            LKR {{ getTotalRoomRates() }}
           </h5>
         </div>
         <button
           type="button"
           class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          @click="scrollToBottom"
         >
           proceed
         </button>
@@ -348,50 +403,55 @@
       </div>
     </div>
 
+    <div ref="paymentInfoRef"></div>
     <!-- Guest Info & Payment section -->
-    <h2 class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10">
+    <h2
+      class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10"
+      ref="paymentInfoRef"
+    >
       Guest Info & Payment
     </h2>
-    <!-- checkbox section -->
-    <div class="flex justify-center space-x-2">
-      <h5 class="text-black-200 lg:text-lg text-sm font-medium">
-        Are you booking for someone else?
+    <form @submit.prevent="handleSubmit">
+      <!-- checkbox section -->
+      <div class="flex justify-center space-x-2">
+        <h5 class="text-black-200 lg:text-lg text-sm font-medium">
+          Are you booking for someone else?
+        </h5>
+        <div class="flex items-center me-4">
+          <input
+            id="inline-radio"
+            type="radio"
+            value=""
+            name="inline-radio-group"
+            class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+          />
+          <label
+            for="inline-radio"
+            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >Yes</label
+          >
+        </div>
+        <div class="flex items-center me-4">
+          <input
+            id="inline-2-radio"
+            type="radio"
+            value=""
+            name="inline-radio-group"
+            class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+          />
+          <label
+            for="inline-2-radio"
+            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >No</label
+          >
+        </div>
+      </div>
+      <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
+        your info
       </h5>
-      <div class="flex items-center me-4">
-        <input
-          id="inline-radio"
-          type="radio"
-          value=""
-          name="inline-radio-group"
-          class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-        />
-        <label
-          for="inline-radio"
-          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >Yes</label
-        >
-      </div>
-      <div class="flex items-center me-4">
-        <input
-          id="inline-2-radio"
-          type="radio"
-          value=""
-          name="inline-radio-group"
-          class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-        />
-        <label
-          for="inline-2-radio"
-          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >No</label
-        >
-      </div>
-    </div>
-    <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
-      your info
-    </h5>
-    <!-- user information form -->
+      <!-- user information form -->
 
-    <form class="mt-4">
+      <!-- <form class="mt-4"> -->
       <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
         <div>
           <label
@@ -405,6 +465,7 @@
             class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
+            v-model="form.first_name"
           />
         </div>
         <div>
@@ -419,6 +480,7 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
+            v-model="form.last_name"
           />
         </div>
         <div>
@@ -433,6 +495,7 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
+            v-model="form.telephone"
           />
         </div>
         <div>
@@ -447,15 +510,16 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
+            v-model="form.email"
           />
         </div>
       </div>
-    </form>
-    <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
-      guest info
-    </h5>
-    <!-- Guest information form -->
-    <form class="mt-4">
+      <!-- </form> -->
+      <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
+        guest info
+      </h5>
+      <!-- Guest information form -->
+      <!-- <form class="mt-4"> -->
       <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
         <div>
           <label
@@ -469,6 +533,7 @@
             class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
+            v-model="form.guest_first_name"
           />
         </div>
         <div>
@@ -483,6 +548,7 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
+            v-model="form.guest_last_name"
           />
         </div>
         <div>
@@ -497,6 +563,7 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
+            v-model="form.guest_telephone"
           />
         </div>
         <div>
@@ -511,6 +578,7 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
+            v-model="form.guest_email"
           />
         </div>
         <div>
@@ -519,10 +587,13 @@
             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
             >Nationality *</label
           >
-          <select id="nationality" class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option selected>Local</option>
-          <option value="US">Foreign</option>
-    
+          <select
+            id="nationality"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="form.guest_nationality"
+          >
+            <option selected>Local</option>
+            <option value="US">Foreign</option>
           </select>
         </div>
         <div>
@@ -536,6 +607,7 @@
             id="address"
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
+            v-model="form.guest_address"
           />
         </div>
       </div>
@@ -545,7 +617,8 @@
         class="lg:text-lg text-base font-medium text-red-100 underline block mt-10"
         data-modal-target="default-modal"
         data-modal-toggle="default-modal"
-        @click.prevent="toggleModal">View Our Terms & Conditions</a
+        @click.prevent="toggleModal"
+        >View Our Terms & Conditions</a
       >
       <!-- Main modal -->
       <div
@@ -647,8 +720,8 @@
       </div>
 
       <button
-        type="button"
         class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        type="submit"
       >
         proceed to pay
       </button>
@@ -658,11 +731,11 @@
 
 <script>
 import CheckoutAvailability from "./CheckoutAvailability.vue";
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from "vue";
 
 export default {
   components: {
-    CheckoutAvailability
+    CheckoutAvailability,
   },
   data() {
     return {
@@ -672,36 +745,164 @@ export default {
       boardType: [],
       mealPlans: [],
       price: 0,
-    }
+      form: {
+        first_name: "",
+        last_name: "",
+        email: "",
+        telephone: "",
+        address: "",
+        nationality: "",
+        check_in: this.$route.query.check_in,
+        check_out: this.$route.query.check_out,
+        rooms: [],
+        guest_first_name: "",
+        guest_last_name: "",
+        guest_email: "",
+        guest_telephone: "",
+        guest_address: "",
+        guest_nationality: "",
+      },
+    };
   },
   methods: {
     toggleModal(event) {
-      event.preventDefault(); 
+      event.preventDefault();
       this.isModalOpen = !this.isModalOpen;
       if (this.isModalOpen) {
-        document.body.classList.add('overflow-hidden');
+        document.body.classList.add("overflow-hidden");
       } else {
-        document.body.classList.remove('overflow-hidden');
+        document.body.classList.remove("overflow-hidden");
       }
     },
     addItemToRoomsList(roomDetails) {
-      this.roomsList.push(roomDetails);
-      this.price = this.price + parseFloat(roomDetails.price);
-      console.log("list", this.roomsList)
+      const isAlreadySelected = this.roomsList.find(
+        (room) =>
+          `${room.id}-${room.type}` === `${roomDetails.id}-${roomDetails.type}`
+      );
+
+      if (!isAlreadySelected) {
+        this.roomsList.push({
+          ...roomDetails,
+          rowId: this.roomsList.length + 1,
+        });
+        this.price = this.price + parseFloat(roomDetails.price);
+        console.log("list", this.roomsList, this.fromDate, this.toDate);
+      }
     },
     removeItemFromRoomsList(index) {
       this.price -= parseFloat(this.roomsList[index].price);
       this.roomsList.splice(index, 1);
     },
     updateRoomsCount(item, event) {
-
-      const roomToUpdate = this.roomsList.find(room => room === item);
+      console.log("updateRoomsCount ", item);
+      const roomToUpdate = this.roomsList.find(
+        (room) => room.rowId === item.rowId
+      );
       if (roomToUpdate) {
         roomToUpdate.selectedRooms = event.target.value;
       }
     },
     roomRaw(selectedRooms) {
       return Array.from({ length: Number(selectedRooms) }, (_, i) => i + 1);
+    },
+    updateRoomPeopleCount(item, n, peopleType, event) {
+      const roomIndex = this.roomsList.findIndex(
+        (room) => room.rowId === item.rowId
+      );
+      if (roomIndex > -1) {
+        const roomToUpdate = this.roomsList[roomIndex];
+
+        const roomDetail = roomToUpdate[n] || {};
+
+        roomDetail[peopleType] = parseInt(event.target.value);
+        roomToUpdate[n] = roomDetail;
+
+        this.roomsList[roomIndex] = roomToUpdate;
+      }
+
+      console.log(
+        "room list with peopole count ",
+        roomIndex,
+        item,
+        n,
+        peopleType,
+        this.roomsList
+      );
+    },
+    getTotalRoomRates() {
+      return this.roomsList.reduce((total, room) => {
+        const roomCount = room.selectedRooms === "" ? "0" : room.selectedRooms;
+        total = total + parseFloat(room.price) * parseInt(roomCount);
+
+        return total;
+      }, 0);
+    },
+    scrollToBottom() {
+      this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
+    },
+    handleSubmit: async function () {
+      const formData = new FormData();
+
+      for (let [key, value] of Object.entries(this.form)) {
+        formData.append(key, value);
+      }
+
+      const mealPlanMap = {
+        'Bed & Breakfast': 1,
+        'Half Board': 2,
+        'Full Board': 3,
+        'Room only': 4
+      }
+
+      const roomsArrangement = this.roomsList.reduce((roomsArrangement, roomData) => {
+        const { id, type, selectedRooms } = roomData;
+
+        for (let index = 1; index <= parseInt(selectedRooms); index++) {
+          const roomPeople = roomData[index];
+          
+          roomsArrangement.push({ 
+            adults: roomPeople['adults'] || 0, 
+            child: roomPeople['child'] || 0,  
+            infants: roomPeople['infants'] || 0,   
+            room_type_id: id, 
+            meal_plan_id: mealPlanMap[type] 
+          })
+        }
+
+        return roomsArrangement;
+      }, [])
+
+      this.form.rooms = roomsArrangement;
+
+      console.log("FORM DATA", this.form);
+    
+      await fetch("https://admin.sueennature.com/api/booking", {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.form)
+      })
+      .then((response) => {
+        console.log("RESPONSE ", response)       
+        return response.json();
+      })
+      .then((data) => {
+        console.log("RESPONSE SUCCESS ", data)
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        window.location.href = data.ipg
+      })
+      .catch((error) => {
+        console.log("RESPONSE ERROR ", error)
+        alert(error);
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      });
     },
   },
   computed: {
@@ -710,14 +911,16 @@ export default {
     },
     selectedRoomType() {
       if (!this.roomTypeId || !this.room_types.length) return null;
-      return this.room_types.find(room => room.id.toString() === this.roomTypeId.toString());
-    }
+      return this.room_types.find(
+        (room) => room.id.toString() === this.roomTypeId.toString()
+      );
+    },
   },
-  mounted(){
-    fetch('https://sueen.website/dashboard/public/api/getRoomTypes')
+  mounted() {
+    fetch("https://sueen.website/dashboard/public/api/getRoomTypes")
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
@@ -725,8 +928,11 @@ export default {
         this.room_types = data.room_types;
       })
       .catch((error) => {
-        console.error('There has been a problem with your fetch operation:', error);
-    });
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      });
   },
   setup() {
     const roomsList = ref([]);
@@ -734,16 +940,17 @@ export default {
     const beforeUnloadListener = (event) => {
       if (roomsList.value.length > 0) {
         event.preventDefault();
-        event.returnValue = 'You have unsaved changes! Are you sure you want to leave?';
+        event.returnValue =
+          "You have unsaved changes! Are you sure you want to leave?";
       }
     };
 
     onMounted(() => {
-      window.addEventListener('beforeunload', beforeUnloadListener);
+      window.addEventListener("beforeunload", beforeUnloadListener);
     });
 
     onUnmounted(() => {
-      window.removeEventListener('beforeunload', beforeUnloadListener);
+      window.removeEventListener("beforeunload", beforeUnloadListener);
     });
 
     return {
@@ -752,7 +959,9 @@ export default {
   },
   beforeRouteLeave(to, from, next) {
     if (this.roomsList.length > 0) {
-      const answer = window.confirm('You have unsaved changes! Are you sure you want to leave?');
+      const answer = window.confirm(
+        "You have unsaved changes! Are you sure you want to leave?"
+      );
       if (answer) {
         next();
       } else {
@@ -761,8 +970,8 @@ export default {
     } else {
       next();
     }
-  }
-}
+  },
+};
 </script>
 
 <style  scoped>
@@ -800,8 +1009,8 @@ input {
 #rooms,
 #adults,
 #children,
-#infants,#nationality {
+#infants,
+#nationality {
   background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
 }
-
 </style>
