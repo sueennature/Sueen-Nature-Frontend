@@ -231,12 +231,7 @@
         >
           Rooms
         </a>
-        <!-- <a
-          href="/news"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
-        >
-          News
-        </a> -->
+
         <a
           href="/contact"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -253,25 +248,7 @@
         class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-4 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
       >
         <div class="relative md:max-w-sm md:mx-auto">
-          <!-- <div
-            class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="none"
-                stroke="#ffffff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="m7 10l5 5m0 0l5-5"
-              />
-            </svg>
-          </div> -->
+       
           <input
               type="date"
               class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
@@ -282,25 +259,6 @@
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
         <div class="relative md:max-w-sm md:mx-auto">
-          <!-- <div
-            class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="none"
-                stroke="#ffffff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="m7 10l5 5m0 0l5-5"
-              />
-            </svg>
-          </div> -->
           <input
             type="date"
             class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" v-model="toDate"
@@ -311,10 +269,12 @@
         <form class="md:max-w-sm md:mx-auto">
           <select
             id="view"
-            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+           
+            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
             v-model="room_type_id"
           >
-            <option v-for="room in room_types" :value="room.id" :key="room.id">{{ room.name }}</option>
+            <option :value="null" disabled selected class="text-gray-300">Choose a Room</option>
+            <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200">{{ room.name }}</option>
           </select>
         </form>
       </div>
@@ -363,7 +323,8 @@ export default {
         const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
         if(response.status===200){
-          this.$router.push({ path: '/booking', query: { roomTypeId: this.room_type_id } });
+          this.$router.push({ path: '/booking', query: { fromDate: this.fromDate, toDate: this.toDate, roomTypeId: this.room_type_id } });
+
         }else{
           window.alert("Ths room is not available")
         }       
@@ -420,6 +381,7 @@ input[type="date"] {
 } */
 #view{
   background-position: right 1.25rem center;
+  
 }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <!-- stiky navbar -->
   <nav
-    class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+    class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600"
     :class="{ 'bg-black-200': isNavbarBackgroundBlack }"
   >
     <div
