@@ -133,8 +133,7 @@
           </div>
         
       </div>
-      <div class="max-w-xl mt-16">
-       
+      <div class="max-w-xl mt-16">   
           <img src="/img/image_banquet.png" alt="banquetImg" class="" />
           <div
             class="flex flex-col justify-center items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"

@@ -421,10 +421,11 @@
           <input
             id="inline-radio"
             type="radio"
-            value=""
+            value="Yes"
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-          />
+            @change="toggleGuestInfo"
+            />
           <label
             for="inline-radio"
             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -435,17 +436,23 @@
           <input
             id="inline-2-radio"
             type="radio"
-            value=""
+            value="No"
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-          />
+            @change="toggleGuestInfo"
+            />
           <label
-            for="inline-2-radio"
+            for="inline-
+            2-radio"
             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >No</label
           >
         </div>
       </div>
+
+
+      
+<div class="text-center mt-10" v-if="showYourInfo">
       <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
         your info
       </h5>
@@ -514,7 +521,10 @@
           />
         </div>
       </div>
+</div>
       <!-- </form> -->
+
+      <div class="text-center mt-10" v-if="showGuestInfo">
       <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
         guest info
       </h5>
@@ -611,6 +621,7 @@
           />
         </div>
       </div>
+    </div>
 
       <a
         href="#"
@@ -739,6 +750,8 @@ export default {
   },
   data() {
     return {
+      showGuestInfo: false,
+      showYourInfo: false,
       isModalOpen: false,
       room_types: [],
       roomsList: [],
@@ -765,6 +778,17 @@ export default {
     };
   },
   methods: {
+    toggleGuestInfo(event) {
+  
+  if (event.target.value === 'Yes') {
+    this.showGuestInfo = true;
+    this.showYourInfo = true; 
+  } else {
+    this.showGuestInfo = false;
+    this.showYourInfo = true; 
+  }
+},
+
     toggleModal(event) {
       event.preventDefault();
       this.isModalOpen = !this.isModalOpen;
