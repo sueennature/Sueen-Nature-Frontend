@@ -2,7 +2,7 @@
   <div class="relative">
     <!-- main hero booking options selector -->
     <div class="inset-x-0 lg:flex lg:flex-row flex-col lg:justify-center lg:mx-0 mx-4">
-      <div class="lg:flex grid grid-cols-1 justify-center lg:space-x-4 border rounded-l-none rounded-r-none lg:rounded-l-lg lg:rounded-r-none shadow-lg border-white bg-black-200 bg-opacity-65">
+      <div class="lg:flex grid grid-cols-1 justify-center lg:space-x-0 border rounded-l-none rounded-r-none lg:rounded-l-lg lg:rounded-r-none shadow-lg border-white bg-black-200 bg-opacity-65">
         <div class="relative lg:max-w-xs lg:mx-auto">
           <!-- <div
             class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
