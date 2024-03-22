@@ -1,6 +1,6 @@
 <template>
   <div class="bg-black-300">
-    <div class="container pt-20">
+    <div class="sm:container px-4 pt-20">
       <a href="/home">
         <img
         src="/img/logoImg.png"
@@ -24,7 +24,7 @@
       </div>
 
       <hr class="border-gray-100 border-opacity-20 my-8" />
-      <div class="grid md:grid-cols-4 grid-cols-2 gap-x-4 lg:gap-y-0 gap-y-16">
+      <div class="grid lg:grid-cols-4 grid-cols-2 gap-x-4 lg:gap-y-0 gap-y-16 items-start">
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">Stay</h2>
           <h3 class="text-black-50 uppercase text-sm mt-3">Stay with us</h3>

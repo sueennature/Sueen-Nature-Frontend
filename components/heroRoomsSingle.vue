@@ -1,6 +1,6 @@
 <template>
   <!-- stiky navbar -->
-  <nav class=" dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600" :class="{ 'bg-black-200': isNavbarBackgroundBlack }">
+  <nav class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600" :class="{ 'bg-black-200': isNavbarBackgroundBlack }">
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
@@ -199,7 +199,7 @@
       class="absolute inset-0 flex flex-col justify-center items-center text-center"
     >
       <h6 class="text-white text-2xl font-semibold">STAY WITH US</h6>
-      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8">
+      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8 hidden lg:block">
         Attention to detail like never before.
       </h2>
       <button type="button" class="text-white buttontext mt-40 bg-black-700 bg-opacity-60 hover:bg-black-200 hover:bg-opacity-60 focus:outline-none focus:ring-0 font-medium rounded-full text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">view Image Gallery</button>

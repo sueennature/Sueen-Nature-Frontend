@@ -1,6 +1,6 @@
 <template>
   <!-- stiky navbar -->
-  <nav class=" dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600" :class="{ 'bg-black-200': isNavbarBackgroundBlack }">
+  <nav class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600" :class="{ 'bg-black-200': isNavbarBackgroundBlack }">
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
@@ -198,7 +198,7 @@
     <div
       class="absolute inset-0 flex flex-col justify-center items-center text-center"
     >
-      <h6 class="text-white text-2xl font-semibold uppercase">Get in touch</h6>
+      <h6 class="text-white text-2xl font-semibold uppercase md:mt-0 mt-28">Get in touch</h6>
       <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8 uppercase">
         contact us
       </h2>

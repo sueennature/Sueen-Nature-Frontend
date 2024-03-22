@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-20">
+  <div class="sm:container px-4 my-20">
     <h2 class="text-black-100 md:text-4xl text-3xl text-center">
       Check Availability
     </h2>

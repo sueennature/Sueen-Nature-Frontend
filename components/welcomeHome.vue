@@ -5,7 +5,7 @@
         alt="backgroundImg"
         class="object-cover w-full min-h-screen"
       />
-      <div class="container top-5 absolute lg:pt-20 pt-2">
+      <div class="sm:container px-4 top-5 absolute lg:pt-20 pt-2">
          <div class="lg:flex lg:flex-row justify-between grid-cols-2">
             <div>
                <h3 class="uppercase text-black-50 md:text-xl text-base">Welcome</h3>

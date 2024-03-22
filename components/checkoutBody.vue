@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-28">
+  <div class="sm:container px-4 my-28">
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16">
       <!-- shipping details submiting form -->
       <div>

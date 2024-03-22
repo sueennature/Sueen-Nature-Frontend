@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-20">
+  <div class="sm:container px-4 py-20">
     <h2 class="uppercase text-black-200 text-2xl text-left tracking-widest">
       Our Blog
     </h2>

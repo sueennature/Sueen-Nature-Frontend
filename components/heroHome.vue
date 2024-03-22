@@ -245,7 +245,7 @@
       class="absolute inset-x-0 bottom-12 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
     >
       <div
-        class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-4 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
+        class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
       >
         <div class="relative md:max-w-sm md:mx-auto">
        
@@ -383,5 +383,6 @@ input[type="date"] {
   background-position: right 1.25rem center;
   
 }
+
 
 </style>

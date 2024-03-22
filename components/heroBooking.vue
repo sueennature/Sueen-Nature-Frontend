@@ -200,7 +200,7 @@
     <div
       class="absolute inset-0 flex flex-col justify-center items-center text-center"
     >
-      <h6 class="text-white text-2xl font-semibold uppercase">Get in touch</h6>
+      <h6 class="text-white text-2xl font-semibold uppercase mt-28">Get in touch</h6>
       <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8 uppercase">
         Checkout
       </h2>

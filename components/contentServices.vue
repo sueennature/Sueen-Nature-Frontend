@@ -1,23 +1,23 @@
 <template>
-  <div class="container py-20">
+  <div class="sm:container px-4 py-20">
     <!-- services card section -->
     <div class="grid xl:grid-cols-3 grid-cols-1 justify-items-center gap-8">
       <div class="max-w-xl mt-16">
         
           <img src="/img/image_dining.png" alt="resturantImg" class="" />
           <div
-            class="flex flex-col justify-center items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"
+            class="h-96 flex flex-col items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"
           >
             <h6
-              class="md:text-4xl text-xl font-bold text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
+              class="2xl:text-4xl text-xl font-bold text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
             >
               Dining
             </h6>
-            <h3 class="md:text-5xl text-3xl text-black-200">Resturant</h3>
+            <h3 class="2xl:text-5xl text-3xl text-black-200">Resturant</h3>
             <p
               class="font-extralight text-base text-center text-black-200 dark:text-gray-400 mt-4"
             >
-              Embark on a culinary adventure through a diverse array of dishes,
+            Embark on a culinary adventure through a diverse array of dishes,
               from traditional Sri Lankan cuisine to international favorites,
               all within the inviting ambiance of our onsite restaurant and bar
               lounge.
@@ -136,14 +136,14 @@
       <div class="max-w-xl mt-16">   
           <img src="/img/image_banquet.png" alt="banquetImg" class="" />
           <div
-            class="flex flex-col justify-center items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"
+            class="h-96 flex flex-col items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"
           >
             <h6
-              class="md:text-4xl text-xl font-bold whitespace-nowrap text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
+              class="2xl:text-4xl text-xl font-bold whitespace-nowrap text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
             >
               banquet Hall
             </h6>
-            <h3 class="md:text-5xl text-3xl text-black-200">Celebrate</h3>
+            <h3 class="2xl:text-5xl text-3xl text-black-200">Celebrate</h3>
             <p
               class="font-extralight text-base text-center text-black-200 dark:text-gray-400 mt-4"
             >
@@ -270,14 +270,14 @@
         
           <img src="/img/image_playground.png" alt="resturantImg" class="" />
           <div
-            class="flex flex-col justify-center items-center p-8 space-y-4 bg-gray-500 borde-none rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
+            class="h-96 flex flex-col items-center p-8 space-y-4 bg-gray-500 borde-none rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
           >
             <h6
-              class="md:text-4xl text-xl font-bold text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
+              class="2xl:text-4xl text-xl font-bold text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
             >
               Playtime
             </h6>
-            <h3 class="md:text-5xl text-3xl text-black-200 whitespace-nowrap">Sports & Games</h3>
+            <h3 class="2xl:text-5xl text-3xl text-black-200 whitespace-nowrap">Sports & Games</h3>
             <p
               class="font-extralight text-base text-center text-black-200 dark:text-gray-400 mt-4"
             >
@@ -633,4 +633,6 @@ li {
 .relaxationCard {
   letter-spacing: 0.6rem;
 }
+
+
 </style>

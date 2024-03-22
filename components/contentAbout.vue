@@ -1,5 +1,5 @@
 <template>
-    <div class="container py-20">
+    <div class="sm:container px-4 py-20">
     <!--discriptive paragraph of learn page -->
     <h2 class="text-black-200 md:text-6xl text-3xl font-medium my-20 text-center">
       We invite you to experience the essence of tranquility and luxury at Sueen Nature Resort, where every stay is an unforgettable journey.

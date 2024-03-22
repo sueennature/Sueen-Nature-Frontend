@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-20">
+  <div class="sm:container px-4 py-20">
     <h2 class="uppercase text-black-100 text-4xl text-center">
       Rooms & Services
     </h2>

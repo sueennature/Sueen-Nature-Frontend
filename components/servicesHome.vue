@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-20">
+  <div class="sm:container px-4 pt-20">
     <h2 class="uppercase text-black-100 text-4xl text-center">Services</h2>
     <h3 class="text-black-50 text-xl pt-1 text-center uppercase tracking-widest">Dine & Relax</h3>
     <div class="grid lg:grid-cols-2 grid-cols-1 pt-10 lg:gap-y-12 gap-y-0">
