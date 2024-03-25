@@ -187,7 +187,7 @@
       </div>
     </nav>
     <!-- hero logo image -->
-    <div class="absolute top-2 left-0 w-full md:flex hidden items-center">
+    <div class="absolute top-8 left-0 w-full md:flex hidden items-center">
       <a href="/" class="relative mx-auto">
         <!-- Adjust mx-2 as needed for spacing -->
         <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
@@ -242,7 +242,7 @@
     </div>
     <!-- main hero booking options selector -->
     <div
-      class="absolute inset-x-0 bottom-12 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
+      class="absolute inset-x-0 bottom-24 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
     >
       <div
         class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
@@ -280,14 +280,14 @@
       </div>
 
       <button
-        class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
+        class="bg-red-100 text-sm buttontext text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
         @click="checkAvailability"
       >
         Check Availability
       </button>
       <div class="md:hidden">
         <button
-          class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
+          class="bg-red-100 buttontext text-sm text-white p-4 rounded-none border border-white w-full"
         >
           Check Availability
         </button>
@@ -382,6 +382,13 @@ input[type="date"] {
 #view{
   background-position: right 1.25rem center;
   
+}
+h2 {
+  font-family: "Philosopher", sans-serif;
+}
+
+p,ul li,a,h6,h3,.buttontext,input,select {
+  font-family: "Barlow", sans-serif;
 }
 
 

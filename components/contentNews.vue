@@ -95,12 +95,10 @@ h5 {
 h2,
 .buttontext,
 h6,
-a {
-  font-family: "Work Sans", sans-serif;
+a,p{
+  font-family: "Barlow", sans-serif;
 }
-p {
-  font-family: "Open Sans", sans-serif;
-}
+
 .relaxationCard{
     letter-spacing: 0.6rem;
 }

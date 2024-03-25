@@ -84,11 +84,7 @@ h2 {
   font-family: "Philosopher", sans-serif;
 }
 h3,
-.buttontext {
-  font-family: "Work Sans", sans-serif;
-}
-p,
-h5 {
-  font-family: "Open Sans", sans-serif;
+.buttontext,p,h5 {
+  font-family: "Barlow", sans-serif;
 }
 </style>

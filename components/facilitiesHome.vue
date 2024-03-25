@@ -290,7 +290,7 @@ h2 {
   font-family: "Philosopher", sans-serif;
 }
 h3 {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Barlow", sans-serif;
 }
 .card-padding {
   padding: 0.5px;

@@ -64,7 +64,7 @@
         </div>
         <a href="/checkout">
         <button
-          class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
+          class="buttontext bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
         >
           Check Availability
         </button>
@@ -72,7 +72,7 @@
         <div class="md:hidden">
           <a href="/checkout">
           <button
-            class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
+            class="buttontext bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
           >
             Check Availability
           </button>
@@ -106,4 +106,7 @@
   
     
   <style  scoped>
+input,select,.buttontext{
+  font-family: "Barlow", sans-serif;
+}
   </style>

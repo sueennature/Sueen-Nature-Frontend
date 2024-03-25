@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Inter: true,
+      Barlow:true,
       'Great+Vibes': [400],
       'Open+Sans': true,
       'Work+Sans': true,

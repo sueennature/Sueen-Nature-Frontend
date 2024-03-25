@@ -1010,12 +1010,9 @@ h3,
 h5,
 label,
 select,
-.buttontext {
-  font-family: "Work Sans", sans-serif;
-}
-p,
+.buttontext,p,
 input {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Barlow", sans-serif;
 }
 ::marker {
   color: #c64816; /* Change this color to the desired color */

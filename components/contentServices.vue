@@ -622,14 +622,10 @@ h5 {
 h2,
 .buttontext,
 h6,
-a {
-  font-family: "Work Sans", sans-serif;
+a,p,ul li {
+  font-family: "Barlow", sans-serif;
 }
-p,
-ul,
-li {
-  font-family: "Open Sans", sans-serif;
-}
+
 .relaxationCard {
   letter-spacing: 0.6rem;
 }

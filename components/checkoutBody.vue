@@ -722,14 +722,11 @@ h2,
   font-family: "Philosopher", sans-serif;
 }
 h3,
-h5 {
-  font-family: "Work Sans", sans-serif;
-}
-p,
+h5,p,
 label,
 select,
 input {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Barlow", sans-serif;
 }
 ::marker {
   color: #c64816; /* Change this color to the desired color */

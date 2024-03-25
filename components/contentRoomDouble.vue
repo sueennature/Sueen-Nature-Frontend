@@ -318,12 +318,8 @@ h2 {
 }
 p,
 h3,
-.buttontext {
-  font-family: "Work Sans", sans-serif;
-}
-h6,
-ul li {
-  font-family: "Open Sans", sans-serif;
+.buttontext,h6,ul li {
+  font-family: "Barlow", sans-serif;
 }
 </style>
 

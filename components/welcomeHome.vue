@@ -16,7 +16,7 @@
             </div>
             <div class="mt-10">
                 <h3 class="uppercase text-black-50 md:text-xl text-sm">Reservation</h3>
-                <h3 class="uppercase text-black-50 md:text-xl text-sm mt-2">+94 11 2 452 894</h3>
+                <h3 class="uppercase text-black-50 md:text-xl text-sm mt-2">+(94) 71 58 4000</h3>
             </div>
 
          </div>
@@ -33,14 +33,7 @@
 h2{
     font-family: "Philosopher", sans-serif;;
 }
-h3 , h4{
-  font-family: "Work Sans", sans-serif;
+h3,h4,h5,p{
+    font-family: "Barlow", sans-serif;
 }
-h5{
-    font-family: "Great Vibes", cursive;
-}
-p{
-    font-family: "Open Sans", sans-serif;;
-}
-
 </style>

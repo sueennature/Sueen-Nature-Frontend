@@ -5,9 +5,9 @@
     >
       <form class="space-y-6" action="#">
         <h3
-          class="text-2xl font-bold text-stone-700 dark:text-white text-center tracking-widest"
+          class="text-2xl font-bold text-stone-700 dark:text-white text-center"
         >
-          GET IN TOUCH
+        Get in Touch
         </h3>
         <h2
           class="text-6xl font-bold text-stone-700 dark:text-white text-center my-6"
@@ -29,7 +29,7 @@
             <input
               type="text"
               id="name"
-              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Name"
               required
             />
@@ -43,7 +43,7 @@
             <input
               type="email"
               id="Email"
-              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Email"
               required
             />
@@ -57,7 +57,7 @@
             <input
               type="tel"
               id="phone"
-              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="+ 1009 12345"
               required
             />
@@ -69,13 +69,11 @@
               >Room</label>
             <select
               id="rooms"
-              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Deluxe Room</option>
-              <option value="premium room">premium room</option>
-              <option value="premium room">premium room</option>
-              <option value="premium room">premium room</option>
-              <option value="premium room">premium room</option>         
+              <option value="Single Room">Single Room</option>
+              <option value="Double Room">Double Room</option>      
             </select>
           </div>
         </div>
@@ -88,7 +86,7 @@
         <textarea
           id="message"
           rows="4"
-          class="block p-2.5 w-full text-sm text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm  bg-white border-black-200 rounded-0 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="block p-2.5 w-full text-sm text-black-200 placeholder:text-black-200 placeholder:text-sm  bg-white border-black-200 rounded-0 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your Message"
         ></textarea>
 
@@ -103,7 +101,7 @@
     <!-- column of contact details inofrmation -->
     <div class="flex flex-col space-y-4">
       <div class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700">
-        <h5 class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white">
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
           EMAIL US
         </h5>
         <div class="flex flex-row gap-1">
@@ -139,7 +137,7 @@
         class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
       >
         <h5
-          class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white"
+          class="mb-2 text-lg font-bold text-stone-700 dark:text-white"
         >
           CALL US
         </h5>
@@ -172,7 +170,7 @@
           <a
             href="tel:+94715840000"
             class="text-stone-700 hover:underline text-base"
-            >+(94) 715 - 840 - 000
+            >+(94) 71 58 4000
 </a
           >
         </div>
@@ -181,7 +179,7 @@
         class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
       >
         <h5
-          class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white"
+          class="mb-2 text-lg font-bold text-stone-700 dark:text-white"
         >
           LOCATION
         </h5>
@@ -211,7 +209,7 @@
               />
             </g>
           </svg>
-          <a
+          <a href="https://maps.app.goo.gl/TaHXpW9rRsbYadZa8"
             
             class="text-stone-700 hover:underline text-base"
             >Sueen Nature, Palangahawatta, Morapitiya Road, Palanda, Baduraliya, Sri Lanka</a
@@ -222,9 +220,9 @@
         class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
       >
         <h5
-          class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white"
+          class="mb-2 text-lg font-bold text-stone-700 dark:text-white"
         >
-          Whatsapp
+          WhatsApp
         </h5>
         <div class="flex flex-row gap-1">
           <svg
@@ -255,7 +253,7 @@
           <a
             href="https://wa.me/+94715840000"
             class="text-stone-700 hover:underline text-base"
-            >+(94) - 715 - 840 - 000</a
+            >+(94) 71 58 4000</a
           >
         </div>
       </div>
@@ -270,15 +268,15 @@
 h2 {
   font-family: "Philosopher", sans-serif;
 }
+
 h3,
 .buttontext,
-h5 {
-  font-family: "Work Sans", sans-serif;
-}
 p,
-a,input,label {
-  font-family: "Open Sans", sans-serif;
+h5,label,input,textarea,a
+{
+  font-family: "Barlow", sans-serif;
 }
+
 #rooms {
   /* Your existing styles here */
   background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");

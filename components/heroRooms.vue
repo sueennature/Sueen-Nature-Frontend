@@ -1,6 +1,6 @@
 <template>
   <!-- stiky navbar -->
-  <nav class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600" :class="{ 'bg-black-200': isNavbarBackgroundBlack }">
+  <nav class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600 md:px-20 px-0" :class="{ 'bg-black-200': isNavbarBackgroundBlack }" :style="{ opacity: isNavbarBackgroundBlack ? '0.7' : '1' }">
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
@@ -205,8 +205,6 @@
       <h6 class="text-white text-2xl font-semibold mt-8 uppercase">
         EXPLORE OUR HOTEL
       </h6>
-      <!-- Vertical line -->
-      <div class="absolute left-1/2 bottom-0 transform -translate-x-1/2 h-24 w-0.5 bg-white hidden xl:flex"></div>
     </div>
   </div>
 </template>
@@ -241,12 +239,8 @@ h2 {
 }
 h3,
 .buttontext,
-h6 {
-  font-family: "Work Sans", sans-serif;
+h6,p,ul li,a {
+  font-family: "Barlow", sans-serif;
 }
-p {
-  font-family: "Open Sans", sans-serif;
-}
-
 
 </style>
