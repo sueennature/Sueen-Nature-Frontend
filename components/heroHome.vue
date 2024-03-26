@@ -270,11 +270,11 @@
           <select
             id="view"
            
-            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-none focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
             v-model="room_type_id"
           >
-            <option :value="null" disabled selected class="text-gray-300">Choose a Room</option>
-            <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200">{{ room.name }}</option>
+            <option :value="null" disabled selected class="text-gray-300 option-text">Choose a Room</option>
+            <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200 option-text">{{ room.name }}</option>
           </select>
         </form>
       </div>
@@ -387,7 +387,7 @@ h2 {
   font-family: "Philosopher", sans-serif;
 }
 
-p,ul li,a,h6,h3,.buttontext,input,select {
+p,ul li,a,h6,h3,.buttontext,input,select,.option-text {
   font-family: "Barlow", sans-serif;
 }
 

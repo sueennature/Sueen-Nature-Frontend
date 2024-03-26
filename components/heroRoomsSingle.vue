@@ -196,10 +196,10 @@
     />  
     <!-- content on hero section -->
     <div
-      class="absolute inset-0 flex flex-col justify-center items-center text-center"
+      class="absolute inset-0 flex flex-col justify-center items-center text-center md:px-40 px-0"
     >
-      <h6 class="text-white text-2xl font-semibold">STAY WITH US</h6>
-      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8 hidden lg:block">
+      <h6 class="text-white text-2xl font-semibold mt-32">STAY WITH US</h6>
+      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-28 hidden lg:block">
         Attention to detail like never before.
       </h2>
       <button type="button" class="text-white buttontext mt-40 bg-black-700 bg-opacity-60 hover:bg-black-200 hover:bg-opacity-60 focus:outline-none focus:ring-0 font-medium rounded-full text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">view Image Gallery</button>

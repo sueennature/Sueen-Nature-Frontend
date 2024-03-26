@@ -29,7 +29,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Air Conditioner
             </h5>
@@ -64,7 +64,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Breakfast
             </h5>
@@ -98,7 +98,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Fiber Wifi
             </h5>
@@ -132,7 +132,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Pool
             </h5>
@@ -171,7 +171,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Room Service
             </h5>
@@ -205,7 +205,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Parking Space
             </h5>
@@ -239,7 +239,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Laundry
             </h5>
@@ -263,7 +263,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Sport
             </h5>
@@ -286,10 +286,10 @@
 </script>
 
 <style scoped>
-h2 {
+h2,h5 {
   font-family: "Philosopher", sans-serif;
 }
-h3 {
+h3,p {
   font-family: "Barlow", sans-serif;
 }
 .card-padding {
