@@ -392,383 +392,22 @@
             LKR {{ getTotalRoomRates() }}
           </h5>
         </div>
-        <!-- Login and Register modal popup -->
+        <!-- Login and Register modal popups -->
         <div class="flex flex-row space-x-4 items-baseline">
-          <button
-            type="button"
-            class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            @click="scrollToBottom"
+          <button class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        type="button"
           >
             Proceed As a Guest
           </button>
           <span class="text-black-200 text-base font-bold">OR</span>
-          <button
-            data-modal-target="static-modal"
-            data-modal-toggle="static-modal"
-            type="button"
-            class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >
-            Sign In
-          </button>
+          <button @click="toggleModal"
+          
+        type="button"
+        class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >
+        Sign In
+      </button>
         </div>
-        <!--Register modal -->
-        <div
-          id="static-modal"
-          data-modal-backdrop="static"
-          tabindex="-1"
-          aria-hidden="true"
-          class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-        >
-          <div class="relative w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <div
-              class="relative bg-white rounded-lg shadow dark:bg-gray-700 px-10 pt-5 pb-14"
-            >
-              <!-- Modal header -->
-              <div
-                class="flex items-center justify-between border-none rounded-t dark:border-gray-600"
-              >
-                <button
-                  type="button"
-                  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                  data-modal-hide="static-modal"
-                >
-                  <svg
-                    class="w-3 h-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 14"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                    />
-                  </svg>
-                  <span class="sr-only">Close modal</span>
-                </button>
-              </div>
-              <!-- Modal body -->
-              <div class="">
-                <h2 class="text-3xl mb-4 text-center">Get Started!</h2>
-                <p class="mb-12 text-center text-black-200 text-opacity-60">
-                  Use your social profile to register
-                </p>
-                <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
-                  <button
-                    class="w-full bg-white border border-gray-400 rounded-md py-1 text-center"
-                  >
-                    <div class="flex items-center justify-center space-x-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="2em"
-                        height="2em"
-                        viewBox="0 0 48 48"
-                      >
-                        <path
-                          fill="#ffc107"
-                          d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
-                        />
-                        <path
-                          fill="#ff3d00"
-                          d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691"
-                        />
-                        <path
-                          fill="#4caf50"
-                          d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44"
-                        />
-                        <path
-                          fill="#1976d2"
-                          d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917"
-                        />
-                      </svg>
-                      <span>Google</span>
-                    </div>
-                  </button>
-
-                  <button
-                    class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
-                  >
-                    <div class="flex items-center justify-center space-x-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="2em"
-                        height="2em"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          fill="#fff"
-                          d="M256 128C256 57.308 198.692 0 128 0C57.308 0 0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445"
-                        />
-                        <path
-                          fill="#3b5998"
-                          d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A128.959 128.959 0 0 0 128 256a128.9 128.9 0 0 0 20-1.555V165z"
-                        />
-                      </svg>
-                      <span>Facebook</span>
-                    </div>
-                  </button>
-                </div>
-                <!-- Centered "or" text -->
-                <!-- Centered "or" text -->
-                <div class="flex items-center justify-center">
-                  <div
-                    class="flex-1 border-t border-black-200 border-opacity-65"
-                  ></div>
-                  <span class="px-4 text-black-200 text-opacity-65 text-sm"
-                    >Or</span
-                  >
-                  <div
-                    class="flex-1 border-t border-black-200 border-opacity-65"
-                  ></div>
-                </div>
-                <form action="#" class="space-y-6 mt-4">
-                  <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Last Name"
-                      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                    />
-                  </div>
-                  <div class="">
-                    <input
-                      type="text"
-                      placeholder="you@email.com"
-                      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                    />
-                  </div>
-                  <div class="">
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                    />
-                  </div>
-
-                  <div class="flex items-start">
-                    <div class="flex items-center h-5">
-                      <input
-                        id="remember"
-                        type="checkbox"
-                        value=""
-                        class="w-4 h-4 border border-gray-300 rounded-none bg-white focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                        required
-                      />
-                    </div>
-                    <label
-                      for="remember"
-                      class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                      >I Agree To The
-                      <a
-                        href="#"
-                        class="font-semibold underline underline-offset-4"
-                        >Terms & Conditions</a
-                      >
-                      And
-                      <a
-                        href="#"
-                        class="font-semibold underline underline-offset-4"
-                        >Privacy Policy</a
-                      >
-                    </label>
-                  </div>
-                  <div class="mt-5">
-                    <button
-                      class="w-full bg-red-100 py-3 text-center text-white rounded-md"
-                    >
-                      REGISTER
-                    </button>
-                  </div>
-
-                  <div
-                    class="flex flex-row mt-4 items-center text-md space-x-1"
-                  >
-                    <p>Already have an account?</p>
-                    <button
-                      data-modal-hide="static-modal"
-                      data-modal-target="default-modal"
-                      data-modal-toggle="default-modal"
-                      id="toggle-modal-button"
-                      class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      type="button"
-                    >
-                      Login Here
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Login modal -->
-        <div
-          id="default-modal"
-          tabindex="-1"
-          aria-hidden="true"
-          class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-        >
-          <div class="relative w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <div
-              class="relative px-10 pt-5 pb-14 bg-white rounded-lg shadow dark:bg-gray-700"
-            >
-              <!-- Modal header -->
-              <div
-                class="flex items-center justify-between border-none rounded-t dark:border-gray-600"
-              >
-                <button
-                  type="button"
-                  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                  data-modal-hide="default-modal"
-                >
-                  <svg
-                    class="w-3 h-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 14"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                    />
-                  </svg>
-                  <span class="sr-only">Close modal</span>
-                </button>
-              </div>
-              <!-- Modal body -->
-              <div class="">
-                <h2 class="text-3xl mb-4 text-center">
-                  Login Into Your Account!
-                </h2>
-                <p class="mb-10 text-center text-black-200 text-opacity-60">
-                  Use your social profile to Login
-                </p>
-                <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
-                  <button
-                    class="w-full bg-white border border-gray-400 rounded-md py-1 text-center"
-                  >
-                    <div class="flex items-center justify-center space-x-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="2em"
-                        height="2em"
-                        viewBox="0 0 48 48"
-                      >
-                        <path
-                          fill="#ffc107"
-                          d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
-                        />
-                        <path
-                          fill="#ff3d00"
-                          d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691"
-                        />
-                        <path
-                          fill="#4caf50"
-                          d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44"
-                        />
-                        <path
-                          fill="#1976d2"
-                          d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917"
-                        />
-                      </svg>
-                      <span>Google</span>
-                    </div>
-                  </button>
-
-                  <button
-                    class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
-                  >
-                    <div class="flex items-center justify-center space-x-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="2em"
-                        height="2em"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          fill="#fff"
-                          d="M256 128C256 57.308 198.692 0 128 0C57.308 0 0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445"
-                        />
-                        <path
-                          fill="#3b5998"
-                          d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A128.959 128.959 0 0 0 128 256a128.9 128.9 0 0 0 20-1.555V165z"
-                        />
-                      </svg>
-                      <span>Facebook</span>
-                    </div>
-                  </button>
-                </div>
-                <!-- Centered "or" text -->
-                <div class="flex items-center justify-center">
-                  <div
-                    class="flex-1 border-t border-black-200 border-opacity-65"
-                  ></div>
-                  <span class="px-4 text-black-200 text-opacity-65 text-sm"
-                    >Or</span
-                  >
-                  <div
-                    class="flex-1 border-t border-black-200 border-opacity-65"
-                  ></div>
-                </div>
-
-                <form action="#" class="space-y-6 mt-4">
-                  <div class="">
-                    <input
-                      type="text"
-                      placeholder="you@email.com"
-                      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                    />
-                  </div>
-                  <div class="">
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                    />
-                  </div>
-                  <div class="mt-5">
-                    <button
-                      class="w-full bg-red-100 py-3 text-center text-white rounded-md"
-                    >
-                      Log In
-                    </button>
-                  </div>
-
-                  <div
-                    class="flex flex-row mt-4 items-center text-md space-x-1"
-                  >
-                    <p>Don't have an account?</p>
-                    <button
-                      data-modal-target="static-modal"
-                      data-modal-toggle="static-modal"
-                      data-modal-hide="default-modal"
-                      id="toggle-modal-button"
-                      class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      type="button"
-                    >
-                      Register Here
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- end of Login and Register modal popup -->
-
         <!-- end of price breakdown section -->
       </div>
     </div>
@@ -994,93 +633,8 @@
       <a
         href="#"
         class="lg:text-lg text-base font-medium text-red-100 underline block mt-10"
-        data-modal-target="default-modal"
-        data-modal-toggle="default-modal"
-        @click.prevent="toggleModal"
         >View Our Terms & Conditions</a
       >
-      <!-- Main modal -->
-      <div
-        id="default-modal"
-        tabindex="-1"
-        aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-      >
-        <div class="relative p-4 w-full max-w-2xl max-h-full">
-          <!-- Modal content -->
-          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <!-- Modal header -->
-            <div
-              class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-            >
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                Terms of Service
-              </h3>
-              <button
-                type="button"
-                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                data-modal-hide="default-modal"
-              >
-                <svg
-                  class="w-3 h-3"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 14"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                  />
-                </svg>
-                <span class="sr-only">Close modal</span>
-              </button>
-            </div>
-            <!-- Modal body -->
-            <div class="p-4 md:p-5 space-y-4">
-              <p
-                class="text-base leading-relaxed text-black-200 dark:text-gray-400"
-              >
-                With less than a month to go before the European Union enacts
-                new consumer privacy laws for its citizens, companies around the
-                world are updating their terms of service agreements to comply.
-              </p>
-              <p
-                class="text-base leading-relaxed text-black-200 dark:text-gray-400"
-              >
-                The European Union’s General Data Protection Regulation
-                (G.D.P.R.) goes into effect on May 25 and is meant to ensure a
-                common set of data rights in the European Union. It requires
-                organizations to notify users as soon as possible of high-risk
-                data breaches that could personally affect them.
-              </p>
-            </div>
-            <!-- Modal footer -->
-            <div
-              class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
-            >
-              <button
-                data-modal-hide="default-modal"
-                type="button"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                I accept
-              </button>
-              <button
-                data-modal-hide="default-modal"
-                type="button"
-                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
-                Decline
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end of modal -->
       <div class="flex items-center mt-4">
         <div class="flex items-center h-5">
           <input
@@ -1105,12 +659,342 @@
         proceed to pay
       </button>
     </form>
+    <!-- Register and Login Modal Popup -->
+     <!-- Register modal -->
+     <div
+      v-show="isModalVisible"
+      @click="closeModal"
+      class="fixed inset-0 bg-black-200 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center"
+      id="modal_1"
+    >
+      <div @click.stop class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 px-10 pt-5 pb-14">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between border-none rounded-t dark:border-gray-600"
+          >
+            <button
+            @click="closeModal"
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="static-modal"
+            >
+              <svg
+                class="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="">
+            <h2 class="text-3xl mb-4 text-center">Get Started!</h2>
+            <p class="mb-12 text-center text-black-200 text-opacity-60">
+              Use your social profile to register
+            </p>
+            <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
+              <button
+                class="w-full bg-white border border-gray-400 rounded-md py-1 text-center"
+              >
+                <div class="flex items-center justify-center space-x-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="2em"
+                    height="2em"
+                    viewBox="0 0 48 48"
+                  >
+                    <path
+                      fill="#ffc107"
+                      d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
+                    />
+                    <path
+                      fill="#ff3d00"
+                      d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691"
+                    />
+                    <path
+                      fill="#4caf50"
+                      d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44"
+                    />
+                    <path
+                      fill="#1976d2"
+                      d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917"
+                    />
+                  </svg>
+                  <span>Google</span>
+                </div>
+              </button>
+  
+              <button
+                class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
+              >
+                <div class="flex items-center justify-center space-x-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="2em"
+                    height="2em"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      fill="#fff"
+                      d="M256 128C256 57.308 198.692 0 128 0C57.308 0 0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445"
+                    />
+                    <path
+                      fill="#3b5998"
+                      d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A128.959 128.959 0 0 0 128 256a128.9 128.9 0 0 0 20-1.555V165z"
+                    />
+                  </svg>
+                  <span>Facebook</span>
+                </div>
+              </button>
+            </div>
+            <!-- Centered "or" text -->
+            <!-- Centered "or" text -->
+            <div class="flex items-center justify-center">
+              <div class="flex-1 border-t border-black-200 border-opacity-65"></div>
+              <span class="px-4 text-black-200 text-opacity-65 text-sm">Or</span>
+              <div class="flex-1 border-t border-black-200 border-opacity-65"></div>
+            </div> 
+            <form action="#" class="space-y-6 mt-4">
+              <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+                />
+              </div>
+              <div class="">
+                <input
+                  type="text"
+                  placeholder="you@email.com"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
+                />
+              </div>
+              <div class="">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
+                />
+              </div>
+  
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input
+                    id="remember"
+                    type="checkbox"
+                    value=""
+                    class="w-4 h-4 border border-gray-300 rounded-none bg-white focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                    required
+                  />
+                </div>
+                <label
+                  for="remember"
+                  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >I Agree To The
+                  <a href="#" class="font-semibold underline underline-offset-4"
+                    >Terms & Conditions</a
+                  >
+                  And
+                  <a href="#" class="font-semibold underline underline-offset-4"
+                    >Privacy Policy</a
+                  >
+                </label>
+              </div>
+              <div class="mt-5">
+                <button
+                  class="w-full bg-red-100 py-3 text-center text-white rounded-md"
+                >
+                  REGISTER
+                </button>
+              </div>
+  
+              <div class="flex flex-row items-center text-md space-x-1">
+                <p>Already have an account?</p>
+                <button
+                @click="toggleModal_1"
+                  id="toggle-modal-button"
+                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                >
+                  Login Here
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+     </div>
+      <!-- Login modal -->
+     <div
+      v-show="isModal2Visible"
+      @click="closeModal_1"
+      class="fixed inset-0 bg-black-200 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center"
+      id="modal_2"
+    >
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div @click.stop class="relative p-6 bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between border-none rounded-t dark:border-gray-600"
+          >
+            <button
+            @click="closeModal_1"
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="default-modal"
+            >
+              <svg
+                class="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="">
+            <h2 class="text-3xl mb-4 text-center">Login Into Your Account!</h2>
+            <p class="mb-10 text-center text-black-200 text-opacity-60">
+              Use your social profile to Login
+            </p>
+            <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
+              <button
+                class="w-full bg-white border border-gray-400 rounded-md py-1 text-center"
+              >
+                <div class="flex items-center justify-center space-x-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="2em"
+                    height="2em"
+                    viewBox="0 0 48 48"
+                  >
+                    <path
+                      fill="#ffc107"
+                      d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
+                    />
+                    <path
+                      fill="#ff3d00"
+                      d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691"
+                    />
+                    <path
+                      fill="#4caf50"
+                      d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44"
+                    />
+                    <path
+                      fill="#1976d2"
+                      d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917"
+                    />
+                  </svg>
+                  <span>Google</span>
+                </div>
+              </button>
+  
+              <button
+                class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
+              >
+                <div class="flex items-center justify-center space-x-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="2em"
+                    height="2em"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      fill="#fff"
+                      d="M256 128C256 57.308 198.692 0 128 0C57.308 0 0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445"
+                    />
+                    <path
+                      fill="#3b5998"
+                      d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A128.959 128.959 0 0 0 128 256a128.9 128.9 0 0 0 20-1.555V165z"
+                    />
+                  </svg>
+                  <span>Facebook</span>
+                </div>
+              </button>
+            </div>
+            <!-- Centered "or" text -->
+            <div class="flex items-center justify-center">
+              <div class="flex-1 border-t border-black-200 border-opacity-65"></div>
+              <span class="px-4 text-black-200 text-opacity-65 text-sm">Or</span>
+              <div class="flex-1 border-t border-black-200 border-opacity-65"></div>
+            </div>
+  
+            <form action="#" class="space-y-6 mt-4">
+              <div class="">
+                <input
+                  type="text"
+                  placeholder="you@email.com"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
+                />
+              </div>
+              <div class="">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
+                />
+              </div>
+              <div class="mt-5">
+                <button
+                  class="w-full bg-red-100 py-3 text-center text-white rounded-md"
+                >
+                  Log In
+                </button>
+              </div>
+  
+              <div class="flex flex-row mt-4 items-center text-md space-x-1">
+                <p>Don't have an account?</p>
+                <button
+                @click="reopenFirstModal"
+                  id="toggle-modal-button"
+                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                >
+                  Register Here
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--End of Register and Login Modal Popup -->
   </div>
+  
 </template>
 
 <script>
 import CheckoutAvailability from "./CheckoutAvailability.vue";
 import { ref, onMounted, onUnmounted } from "vue";
+import { initFlowbite } from "flowbite";
 
 export default {
   components: {
@@ -1121,6 +1005,8 @@ export default {
       showGuestInfo: false,
       showYourInfo: false,
       isModalOpen: false,
+      isModalVisible: false,
+      isModal2Visible:false,
       room_types: [],
       roomsList: [],
       boardType: [],
@@ -1155,16 +1041,33 @@ export default {
         this.showYourInfo = true;
       }
     },
-
-    toggleModal(event) {
-      event.preventDefault();
-      this.isModalOpen = !this.isModalOpen;
-      if (this.isModalOpen) {
-        document.body.classList.add("overflow-hidden");
-      } else {
-        document.body.classList.remove("overflow-hidden");
-      }
+    toggleModal() {
+      this.isModalVisible = !this.isModalVisible;
     },
+    closeModal() {
+      this.isModalVisible = false;
+    },
+    toggleModal_1(){
+      this.isModalVisible = false; // Close the first modal if it's open.
+      this.isModal2Visible = !this.isModal2Visible;
+    },
+    closeModal_1(){
+      this.isModal2Visible = false;
+    },
+    reopenFirstModal() {
+    this.closeModal_1();  // Close the second modal if it's open.
+    this.toggleModal();   // Toggle the first modal (open it).
+   },
+
+    // toggleModal(event) {
+    //   event.preventDefault();
+    //   this.isModalOpen = !this.isModalOpen;
+    //   if (this.isModalOpen) {
+    //     document.body.classList.add("overflow-hidden");
+    //   } else {
+    //     document.body.classList.remove("overflow-hidden");
+    //   }
+    // },
     addItemToRoomsList(roomDetails) {
       const isAlreadySelected = this.roomsList.find(
         (room) =>
@@ -1311,6 +1214,7 @@ export default {
     },
   },
   mounted() {
+    initFlowbite();
     fetch("https://admin.sueennature.com/api/getRoomTypes")
       .then((response) => {
         if (!response.ok) {
