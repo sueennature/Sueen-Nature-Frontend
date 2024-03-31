@@ -3,9 +3,10 @@
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-left mt-8">
       Sueen dashboard
     </h2>
-    <div class="grid grid-cols-3 gap-8">
+    <div class="grid xl:grid-cols-3 grid-cols-1 gap-8">
+      <!-- Card with user profile -->
       <div
-        class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 mt-8"
+        class="w-full bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-4 mt-8 shadow-lg shadow-gray-300"
       >
         <div class="flex flex-col items-center pb-10">
           <img
@@ -55,8 +56,9 @@
           </div>
         </div>
       </div>
+      <!--Personal Info Card -->
       <div
-        class="mt-8 w-full col-span-2 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+        class="mt-8 w-full xl:col-span-2 col-span-1 p-4 bg-white border border-gray-200 rounded-lg sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 shadow-lg shadow-gray-300"
       >
         <form class="space-y-6" action="#">
           <h2
@@ -155,11 +157,11 @@
         </form>
       </div>
     </div>
-
+    <!--Current booking Card -->
     <div
-      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8"
+      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
     >
-      <div class="grid grid-cols-4 gap-20">
+      <div class="grid xl:grid-cols-4 grid-cols-1 xl:gap-80 gap-4">
         <div class="flex flex-col items-start">
           <h2
             class="text-3xl uppercase font-medium text-gray-900 dark:text-white whitespace-nowrap"
@@ -201,17 +203,17 @@
               </svg>
             </div>
             <div class="flex flex-col justify-start items-start">
-              <h5 class="text-sm text-blue-100 font-light">
+              <h5 class="text-sm text-blue-100 font-light whitespace-nowrap">
                 Booking ID #0123456789012
               </h5>
-              <h5 class="text-sm text-black-200 font-bold">
+              <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
                 Queen Deulax A09244
               </h5>
             </div>
           </div>
         </div>
-        <div class="col-span-3">
-          <div class="grid grid-cols-3 gap-2">
+        <div class="xl:col-span-3 col-span-1 mt-6 xl:mt-0">
+          <div class="grid xl:grid-cols-3 grid-cols-1 gap-10 xl:gap-2">
             <div class="flex flex-col items-start">
               <div class="flex flex-row items-center space-x-2">
                 <svg
@@ -288,7 +290,9 @@
                 </svg>
                 <h5 class="text-black-200">Room capacity</h5>
               </div>
-              <h5 class="font-bold text-base text-black-200 mt-10">
+              <h5
+                class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
+              >
                 3-5 Persons
               </h5>
             </div>
@@ -325,7 +329,11 @@
                 </svg>
                 <h5 class="text-black-200">Room capacity</h5>
               </div>
-              <h5 class="font-bold text-base text-black-200 mt-10">Double</h5>
+              <h5
+                class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
+              >
+                Double
+              </h5>
             </div>
             <div class="flex flex-col items-start">
               <div class="flex flex-row items-center space-x-2">
@@ -360,7 +368,9 @@
                 </svg>
                 <h5 class="text-black-200">Booking Date</h5>
               </div>
-              <h5 class="font-bold text-base text-black-200 mt-10">
+              <h5
+                class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
+              >
                 Oct 25th - 28th March 2024
               </h5>
             </div>
@@ -368,55 +378,29 @@
         </div>
       </div>
     </div>
+    <!--Booking History Card -->
     <div
-      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8"
+      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
     >
-      <div class="flex justify-between">
+      <div
+        class="xl:flex xl:justify-between grid grid-cols-1 gap-6 xl:gap-0 justify-items-start"
+      >
         <h2
           class="text-3xl uppercase font-medium text-gray-900 dark:text-white whitespace-nowrap"
         >
           Booking History
         </h2>
         <div class="flex space-x-2">
+          <!-- Hidden Date Input -->
+          <input
+            type="date"
+            ref="datePicker"
+            class="text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm border-none focus:ring-0"
+            @change="dateChanged"
+          />
           <button
             type="button"
-            class="buttontext text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="24"
-              height="24"
-              viewBox="0 0 54 54"
-              fill="none"
-              class="mr-2"
-            >
-              <rect width="54" height="54" fill="url(#pattern8)" />
-              <defs>
-                <pattern
-                  id="pattern8"
-                  patternContentUnits="objectBoundingBox"
-                  width="1"
-                  height="1"
-                >
-                  <use
-                    xlink:href="#image0_1032_334"
-                    transform="scale(0.015625)"
-                  />
-                </pattern>
-                <image
-                  id="image0_1032_334"
-                  width="64"
-                  height="64"
-                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADMElEQVR4nO1bS2sUQRBuL9muickmio+r8QHiwYh4NZ59o+gv0KiIFy9ecwkmSHaqNiYg/grx6AMxKj4OgbDbvbtE0OhJg6AJ8RGkZTZxp5OwyezuJDsz1AfFHrZ7uqq6ur4+fC1ESMgNpfYokje937C+2Yw16oZCmNQERhOU4rxG3Vh0rGxxXqNucAKIK8DwESDuASbRTVANt21V6JzU5PQqkrdss51b/l9YttoaZZ+yzoncUPuW0APPu3BWITzVBPO2ExG1eYXwpEBwJpybF8LLCARVlymCsWIm1VVX8NpNHdMop1dkl2BMkxzRCAORMpIjCuHFiipFOa1I9tQUfJ6cQ5pgtpJJhF+KoL9Em7eJiGNytHW7JritCX5biZjNuU53oA9MjKY7NcGUNXkq8OQIwdtEhfKTFcfHcTfdseZEhXDH33n5pUSp3SKmyGPL3iXHGGFg1QkT2LpDIfysJCAL50TMUUC4YDXFOe+IVB2sEa5au/9GJAQK5btKXK5zuepATfJhpVyycEUkBAWCa9YF6kHVgRqh6DcNObxeN7qNNi8W6xgUVkvATLMvL+tuCDPVE0ARcHADLFgCMAK3u1BvijUmQCQMnADiCjB8BIh7gOEmSMwCpjGqiCmYBYhZwDALELOAYRYgZgHTGFXEFMwCxCxgmAWIWcAwCxCzgGmMKmIKZgFiFjDMAsQsYJgFiFnANEYVMQWzAAXYXEXwozJwULSJhKBEov1/XArheyCJTNFt2S8Sgnym9UAwiQz5IilFcF0kBJrgRjCRFDm9/lmRr0UCYIzYpEi+9RPgXAoslNQI50XMUSB50arquTX1zppg0E+A/ObJTUVMoYZb9nkxWAnoX3PSuJvu8ITFftf0BMfOYREzFBCOKJKfrWr+8P5eZzrQ5JzrdC+Xy2uEodxdZ6eIODwfNclM2WdLG1jMOgdr+pAi2bP8wYQi+Ft+QYLyviboa7YC1HpL1Lfo0yvPx6U+y695Vx6tK5vFTKpLIzxvtrCxbkN4VsimdolGoV04rQkex+LRFMIfjfBIE5wSYWNiNN2ZR+e4JzlfKLsIKEAXVKB9nk+eb56PtQT1D89LmQk6GNfPAAAAAElFTkSuQmCC"
-                />
-              </defs>
-            </svg>
-            Date Filter
-          </button>
-          <button
-            type="button"
-            class="buttontext text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="buttontext whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -451,7 +435,7 @@
           </button>
         </div>
       </div>
-      <div class="grid grid-cols-4 mt-4">
+      <div class="grid xl:grid-cols-4 grid-cols-1 mt-4 xl:gap-40">
         <div class="flex flex-col">
           <div class="flex items-center mt-4">
             <input
@@ -462,7 +446,7 @@
             />
             <label
               for="default-checkbox"
-              class="ms-2 text-xl font-medium text-black-200 dark:text-gray-300"
+              class="ms-4 text-xl font-medium text-black-200 dark:text-gray-300 whitespace-nowrap"
               >Booking name</label
             >
           </div>
@@ -471,7 +455,7 @@
               id="default-checkbox"
               type="checkbox"
               value=""
-              class="w-4 h-4 text-blue-600 bg-white border-black-200 rounded-none focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              class="mr-2 w-4 h-4 text-blue-600 bg-white border-black-200 rounded-none focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <img
               src="/public/img/deluxe_1.jpg"
@@ -479,30 +463,44 @@
               class="bg-cover w-40 h-20"
             />
             <div class="flex flex-col justify-start items-start">
-              <h5 class="text-sm text-blue-100 font-light whitespace-nowrap">
+              <h5 class="text-sm text-blue-100 font-light">
                 Booking ID #0123456789012
               </h5>
-              <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
+              <h5 class="text-sm text-black-200 font-bold">
                 Queen Deulax A09244
               </h5>
             </div>
           </div>
         </div>
-        <div class="flex flex-col space-y-12">
-          <h3 class="font-medium text-xl text-black-200 mt-4">Bed type</h3>
-          <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
+        <div
+          class="flex flex-col xl:space-y-12 space-y-4 items-start xl:mt-0 mt-4"
+        >
+          <h3 class="font-medium text-xl text-black-200 mt-4 whitespace-nowrap">
+            Bed type
+          </h3>
+          <h5
+            class="text-sm text-black-200 font-bold whitespace-nowrap xl:ml-0 ml-2"
+          >
             floor-5 eved
           </h5>
         </div>
-        <div class="flex flex-col space-y-12">
-          <h3 class="font-medium text-xl text-black-200 mt-4">Book date</h3>
-          <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
+        <div class="flex flex-col xl:space-y-12 space-y-4 items-start">
+          <h3 class="font-medium text-xl text-black-200 mt-4 whitespace-nowrap">
+            Book date
+          </h3>
+          <h5
+            class="text-sm text-black-200 font-bold whitespace-nowrap xl:ml-0 ml-2"
+          >
             Access one
           </h5>
         </div>
-        <div class="flex flex-col space-y-12">
-          <h3 class="font-medium text-xl text-black-200 mt-4">Room floor</h3>
-          <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
+        <div class="flex flex-col xl:space-y-12 space-y-4 items-start">
+          <h3 class="font-medium text-xl text-black-200 mt-4 whitespace-nowrap">
+            Room floor
+          </h3>
+          <h5
+            class="text-sm text-black-200 font-bold whitespace-nowrap xl:ml-0 ml-2"
+          >
             Queen Deulax A09244
           </h5>
         </div>
@@ -512,6 +510,13 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import { initFlowbite } from 'flowbite'
+
+// initialize components based on data attribute selectors
+onMounted(() => {
+    initFlowbite();
+})
 </script>
 
 <style scoped>
@@ -526,7 +531,20 @@ label,
 select,
 .buttontext,
 p,
-input {
+input,span {
   font-family: "Barlow", sans-serif;
 }
+
+input[type="date"] { 
+color: #D79109;
+outline: none;
+border: none;
+color-scheme: #D79109;
+}
+
+::-webkit-calendar-picker-indicator {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23D79109" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+}
+
+
 </style>
