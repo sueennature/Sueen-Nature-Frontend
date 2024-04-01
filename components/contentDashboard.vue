@@ -17,7 +17,7 @@
           <h4
             class="mt-4 text-2xl whitespace-nowrap font-light text-blue-100 dark:text-white"
           >
-            Booking ID #0123456789012
+            User ID #0123456789012
           </h4>
           <h3
             class="mt-4 text-3xl whitespace-nowrap font-bold text-black-200 dark:text-white"
@@ -74,33 +74,41 @@
                   class="block mb-2 text-2xl font-bold text-black-200 dark:text-white"
                   >First name</label
                 >
-                <span class="text-blue-200 text-sm">Edit</span>
+                <button
+                  class="text-blue-200 text-sm hover:text-blue-500"
+                  @click="toggleEditFirstName" @click.prevent
+                >
+                  Edit
+                </button>
               </div>
-
               <input
                 type="text"
                 id="first_name"
-                class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="John"
-                required
+                class="bg-white border border-black-200 text-black-200 focus:ring-blue-500 focus:border-blue-500 placeholder:text-black-300 text-sm rounded-lg focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required v-model="firstName"
+    :readonly="!editModeFirstName"
               />
             </div>
             <div>
               <div class="flex items-baseline space-x-2">
                 <label
                   for="last_name"
-                  class="block mb-2 text-2xl font-bold text-black-200 dark:text-white"
+                  class="block mb-2 text-2xl font-bold text-black-200 dark:text-white" 
                   >Last name</label
                 >
-                <span class="text-blue-200 text-sm">Edit</span>
+                <button
+                  class="text-blue-200 text-sm hover:text-blue-500" @click="toggleEditLastName" @click.prevent
+                >
+                  Edit
+                </button>   
+                
               </div>
               <input
                 type="text"
                 id="last_name"
-                class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Doe"
-                required
+                class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required v-model="lastName" :readonly="!editModeLastName" 
               />
+              
             </div>
           </div>
           <div class="mb-6">
@@ -110,16 +118,21 @@
                 class="block mb-2 text-2xl font-bold text-black-200 dark:text-white"
                 >Phone Number</label
               >
-              <span class="text-blue-200 text-sm">Edit</span>
+              <button
+                  class="text-blue-200 text-sm hover:text-blue-500" @click="toggleEditPhoneNumber" @click.prevent
+                >
+                  Edit
+                </button>
+                
             </div>
 
             <input
               type="tel"
               id="phone"
-              class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="0712345698"
-              required
+              class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required v-model="phoneNumber"
+    :readonly="!editModePhoneNumber"
             />
+            
           </div>
           <div class="mb-6">
             <div class="flex items-baseline space-x-2">
@@ -128,16 +141,20 @@
                 class="block mb-2 text-2xl font-bold text-black-200 dark:text-white"
                 >Email</label
               >
-              <span class="text-blue-200 text-sm">Edit</span>
+              <button
+                  class="text-blue-200 text-sm hover:text-blue-500" @click="toggleEditEmail"  @click.prevent
+                >
+                  Edit
+                </button>
+                <!-- @click="toggleEditEmail" -->
             </div>
 
             <input
               type="email"
               id="email"
-              class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="john.doe@company.com"
-              required
+              class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-model="email" required :readonly="!editModeEmail"
             />
+            <!-- v-model="email" required :readonly="!editModeEmail" -->
           </div>
           <div class="flex items-baseline space-x-2">
             <label
@@ -146,20 +163,25 @@
               >Address</label
             >
 
-            <span class="text-blue-200 text-sm">Edit</span>
+            <button
+                  class="text-blue-200 text-sm hover:text-blue-500" @click="toggleEditAddress" @click.prevent
+                >
+                  Edit
+                </button>
+               
           </div>
           <textarea
             id="address"
             rows="4"
-            class="block p-2.5 w-full text-sm bg-white border border-black-200 text-black-200 placeholder:text-black-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="NO:8,  Gall read,  Colombo,  Srilanka."
+            class="block p-2.5 w-full text-sm bg-white border border-black-200 text-black-200 placeholder:text-black-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required  v-model="address"
+    :readonly="!editModeAddress"
           ></textarea>
         </form>
       </div>
     </div>
     <!--Current booking Card -->
     <div
-      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
+      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
     >
       <div class="grid xl:grid-cols-4 grid-cols-1 xl:gap-80 gap-4">
         <div class="flex flex-col items-start">
@@ -174,32 +196,15 @@
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="40"
-                height="40"
-                viewBox="0 0 88 111"
-                fill="none"
+                width="1.5em"
+                height="1.5em"
+                viewBox="0 0 24 24"
+                transform="rotate(-45)"
               >
-                <rect width="88" height="111" fill="url(#pattern0)" />
-                <defs>
-                  <pattern
-                    id="pattern0"
-                    patternContentUnits="objectBoundingBox"
-                    width="1"
-                    height="1"
-                  >
-                    <use
-                      xlink:href="#image0_1007_328"
-                      transform="matrix(0.0262784 0 0 0.0208333 -0.130682 0)"
-                    />
-                  </pattern>
-                  <image
-                    id="image0_1007_328"
-                    width="48"
-                    height="48"
-                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABw0lEQVR4nO2ZvUoDQRRGrz8oaCMqiLHQVkWJXd5CLKwEQSSksBLEaKsY/0qDVoKFD6CNIL6ArY1YqEGtFEEbwRR6ZMgIKbLJkOxOZmAPDCy7M/Ad9g57mRWJiYkJFaAFmALmgGU91HVSPRNXAfqAPeCFYJ6BXTVXXALIAJ+Y8wGkXQjeBhxSP3mgtZkC+zTOTrPCz1YJVQRWgYQeWX0viBnb4TuBQpVA2QprlEQQD0CHTYF0jbJIVFij3kQ1Fm0KXNYhMFRjzYXN8qlWz0EltFZjzbeVMgJGqE1R17zpJv5n2IZAiuhI2RBQfU5UJG0IDEYoMBC5gJZQTVnYFKyE1wKN9D9BHNgUUL39b4jhf4AJawJa4jREgROr4bVAL/AYQvgnoN+6QFkpvTcQ/g2YbEr4Molx4K6O8LfAmLgA0A1sA18GwdWcHNAlrgFsGghsiasAGwYCr9a+uBEJKC6cPCPCXECxIJ4LnIvnAiviscAV0C6eChSa1jqEJHAmroKZgGrDR8VFMN8DR+K5wL14LpARFwGWDMKvi6sAPfqkOYicuA6lc6ObCuHz4guUfvhdl4U/drL7NDjFngemvQsfEyP+8AfwO/pehe7yJQAAAABJRU5ErkJggg=="
-                  />
-                </defs>
+                <path
+                  fill="#ffffff"
+                  d="M8.95 8.6a6.554 6.554 0 0 1 6.55-6.55c3.596 0 6.55 2.819 6.55 6.45a6.554 6.554 0 0 1-6.55 6.55a6.243 6.243 0 0 1-1.552-.204A1.25 1.25 0 0 1 12.7 16.05h-1.75v1.75c0 .69-.56 1.25-1.25 1.25H7.95v1.25a1.75 1.75 0 0 1-1.75 1.75H3.7a1.75 1.75 0 0 1-1.75-1.75v-2.172c0-.73.29-1.429.806-1.944L8.99 9.948a.275.275 0 0 0 .07-.244A6.386 6.386 0 0 1 8.95 8.6m9.3-1.6a1.25 1.25 0 1 0-2.5 0a1.25 1.25 0 0 0 2.5 0"
+                />
               </svg>
             </div>
             <div class="flex flex-col justify-start items-start">
@@ -380,7 +385,7 @@
     </div>
     <!--Booking History Card -->
     <div
-      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
+      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
     >
       <div
         class="xl:flex xl:justify-between grid grid-cols-1 gap-6 xl:gap-0 justify-items-start"
@@ -463,10 +468,10 @@
               class="bg-cover w-40 h-20"
             />
             <div class="flex flex-col justify-start items-start">
-              <h5 class="text-sm text-blue-100 font-light">
+              <h5 class="text-sm text-blue-100 font-light whitespace-nowrap">
                 Booking ID #0123456789012
               </h5>
-              <h5 class="text-sm text-black-200 font-bold">
+              <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
                 Queen Deulax A09244
               </h5>
             </div>
@@ -510,13 +515,54 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { initFlowbite } from 'flowbite'
+import { onMounted, ref } from "vue";
+import { initFlowbite } from "flowbite";
+
+const firstName = ref('Kenu');
+const editModeFirstName = ref(false);
+
+const toggleEditFirstName = () => {
+  editModeFirstName.value = !editModeFirstName.value;
+}
+
+const lastName = ref('Bean');
+const editModeLastName = ref(false);
+
+const toggleEditLastName = () => {
+  editModeLastName.value = !editModeLastName.value;
+}
+
+const phoneNumber = ref('0712345698');
+const editModePhoneNumber = ref(false);
+
+const toggleEditPhoneNumber = () => {
+  console.log("test");
+  editModePhoneNumber.value = !editModePhoneNumber.value;
+}
+
+const address = ref('NO:8,  Gall read,  Colombo,  Srilanka.');
+const editModeAddress = ref(false);
+
+const toggleEditAddress = () => {
+  console.log("testAddress");
+  editModeAddress.value = !editModeAddress.value;
+}
+
+
+const email =ref('youremail@gmail.com');
+const editModeEmail =ref(false);
+
+const toggleEditEmail =()=>{
+  editModeEmail.value = !editModeEmail.value;
+}
+
+
+
 
 // initialize components based on data attribute selectors
 onMounted(() => {
-    initFlowbite();
-})
+  initFlowbite();
+});
 </script>
 
 <style scoped>
@@ -531,20 +577,19 @@ label,
 select,
 .buttontext,
 p,
-input,span {
+input,
+span {
   font-family: "Barlow", sans-serif;
 }
 
-input[type="date"] { 
-color: #D79109;
-outline: none;
-border: none;
-color-scheme: #D79109;
+input[type="date"] {
+  color: #d79109;
+  outline: none;
+  border: none;
+  color-scheme: #d79109;
 }
 
 ::-webkit-calendar-picker-indicator {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23D79109" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
 }
-
-
 </style>
