@@ -394,19 +394,20 @@
         </div>
         <!-- Login and Register modal popups -->
         <div class="flex flex-row space-x-4 items-baseline">
-          <button class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        type="button"
+          <button
+            class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            type="button"
           >
             Proceed As a Guest
           </button>
           <span class="text-black-200 text-base font-bold">OR</span>
-          <button @click="toggleModal"
-          
-        type="button"
-        class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      >
-        Sign In
-      </button>
+          <button
+            @click="toggleModal"
+            type="button"
+            class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          >
+            Sign In
+          </button>
         </div>
         <!-- end of price breakdown section -->
       </div>
@@ -631,7 +632,7 @@
       </div>
 
       <a
-        href="#"
+        href="/privacyPolicy"
         class="lg:text-lg text-base font-medium text-red-100 underline block mt-10"
         >View Our Terms & Conditions</a
       >
@@ -660,8 +661,8 @@
       </button>
     </form>
     <!-- Register and Login Modal Popup -->
-     <!-- Register modal -->
-     <div
+    <!-- Register modal -->
+    <div
       v-show="isModalVisible"
       @click="closeModal"
       class="fixed inset-0 bg-black-200 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center"
@@ -669,13 +670,15 @@
     >
       <div @click.stop class="relative w-full max-w-2xl max-h-full">
         <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 px-10 pt-5 pb-14">
+        <div
+          class="relative bg-white rounded-lg shadow dark:bg-gray-700 px-10 pt-5 pb-14"
+        >
           <!-- Modal header -->
           <div
             class="flex items-center justify-between border-none rounded-t dark:border-gray-600"
           >
             <button
-            @click="closeModal"
+              @click="closeModal"
               type="button"
               class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
               data-modal-hide="static-modal"
@@ -735,7 +738,7 @@
                   <span>Google</span>
                 </div>
               </button>
-  
+
               <button
                 class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
               >
@@ -762,10 +765,16 @@
             <!-- Centered "or" text -->
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
-              <div class="flex-1 border-t border-black-200 border-opacity-65"></div>
-              <span class="px-4 text-black-200 text-opacity-65 text-sm">Or</span>
-              <div class="flex-1 border-t border-black-200 border-opacity-65"></div>
-            </div> 
+              <div
+                class="flex-1 border-t border-black-200 border-opacity-65"
+              ></div>
+              <span class="px-4 text-black-200 text-opacity-65 text-sm"
+                >Or</span
+              >
+              <div
+                class="flex-1 border-t border-black-200 border-opacity-65"
+              ></div>
+            </div>
             <form action="#" class="space-y-6 mt-4">
               <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
                 <input
@@ -793,7 +802,7 @@
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
                 />
               </div>
-  
+
               <div class="flex items-start">
                 <div class="flex items-center h-5">
                   <input
@@ -808,27 +817,32 @@
                   for="remember"
                   class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >I Agree To The
-                  <a href="#" class="font-semibold underline underline-offset-4"
+                  <a
+                    href="/privacyPolicy"
+                    class="font-semibold underline underline-offset-4"
                     >Terms & Conditions</a
                   >
                   And
-                  <a href="#" class="font-semibold underline underline-offset-4"
+                  <a
+                    href="/privacyPolicy"
+                    class="font-semibold underline underline-offset-4"
                     >Privacy Policy</a
                   >
                 </label>
               </div>
               <div class="mt-5">
-                <button
-                  class="w-full bg-red-100 py-3 text-center text-white rounded-md"
+                <nuxt-link
+                  to="/dashboard"
+                  class="w-full bg-red-100 py-3 text-center text-white rounded-md block text-decoration-none"
                 >
                   REGISTER
-                </button>
+                </nuxt-link>
               </div>
-  
+
               <div class="flex flex-row items-center text-md space-x-1">
                 <p>Already have an account?</p>
                 <button
-                @click="toggleModal_1"
+                  @click="toggleModal_1"
                   id="toggle-modal-button"
                   class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   type="button"
@@ -840,23 +854,26 @@
           </div>
         </div>
       </div>
-     </div>
-      <!-- Login modal -->
-     <div
+    </div>
+    <!-- Login modal -->
+    <div
       v-show="isModal2Visible"
       @click="closeModal_1"
       class="fixed inset-0 bg-black-200 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center"
       id="modal_2"
     >
-    <div class="relative p-4 w-full max-w-2xl max-h-full">
+      <div class="relative p-4 w-full max-w-2xl max-h-full">
         <!-- Modal content -->
-        <div @click.stop class="relative p-6 bg-white rounded-lg shadow dark:bg-gray-700">
+        <div
+          @click.stop
+          class="relative p-6 bg-white rounded-lg shadow dark:bg-gray-700"
+        >
           <!-- Modal header -->
           <div
             class="flex items-center justify-between border-none rounded-t dark:border-gray-600"
           >
             <button
-            @click="closeModal_1"
+              @click="closeModal_1"
               type="button"
               class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
               data-modal-hide="default-modal"
@@ -916,7 +933,7 @@
                   <span>Google</span>
                 </div>
               </button>
-  
+
               <button
                 class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
               >
@@ -942,11 +959,17 @@
             </div>
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
-              <div class="flex-1 border-t border-black-200 border-opacity-65"></div>
-              <span class="px-4 text-black-200 text-opacity-65 text-sm">Or</span>
-              <div class="flex-1 border-t border-black-200 border-opacity-65"></div>
+              <div
+                class="flex-1 border-t border-black-200 border-opacity-65"
+              ></div>
+              <span class="px-4 text-black-200 text-opacity-65 text-sm"
+                >Or</span
+              >
+              <div
+                class="flex-1 border-t border-black-200 border-opacity-65"
+              ></div>
             </div>
-  
+
             <form action="#" class="space-y-6 mt-4">
               <div class="">
                 <input
@@ -963,17 +986,18 @@
                 />
               </div>
               <div class="mt-5">
-                <button
-                  class="w-full bg-red-100 py-3 text-center text-white rounded-md"
+                <nuxt-link
+                  to="/dashboard"
+                  class="w-full bg-red-100 py-3 text-center text-white rounded-md block"
                 >
                   Log In
-                </button>
+                </nuxt-link>
               </div>
-  
+
               <div class="flex flex-row mt-4 items-center text-md space-x-1">
                 <p>Don't have an account?</p>
                 <button
-                @click="reopenFirstModal"
+                  @click="reopenFirstModal"
                   id="toggle-modal-button"
                   class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   type="button"
@@ -985,10 +1009,9 @@
           </div>
         </div>
       </div>
-     </div>
-     <!--End of Register and Login Modal Popup -->
+    </div>
+    <!--End of Register and Login Modal Popup -->
   </div>
-  
 </template>
 
 <script>
@@ -1006,7 +1029,7 @@ export default {
       showYourInfo: false,
       isModalOpen: false,
       isModalVisible: false,
-      isModal2Visible:false,
+      isModal2Visible: false,
       room_types: [],
       roomsList: [],
       boardType: [],
@@ -1047,17 +1070,17 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
-    toggleModal_1(){
+    toggleModal_1() {
       this.isModalVisible = false; // Close the first modal if it's open.
       this.isModal2Visible = !this.isModal2Visible;
     },
-    closeModal_1(){
+    closeModal_1() {
       this.isModal2Visible = false;
     },
     reopenFirstModal() {
-    this.closeModal_1();  // Close the second modal if it's open.
-    this.toggleModal();   // Toggle the first modal (open it).
-   },
+      this.closeModal_1(); // Close the second modal if it's open.
+      this.toggleModal(); // Toggle the first modal (open it).
+    },
 
     // toggleModal(event) {
     //   event.preventDefault();

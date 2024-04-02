@@ -3,16 +3,19 @@
     <div class="sm:container px-4 pt-20">
       <a href="/home">
         <img
-        src="/img/logoImg.png"
-        alt="logoImg"
-        class="w-auto h-16 md:h-40 mx-auto"
-      />
+          src="/img/logoImg.png"
+          alt="logoImg"
+          class="w-auto h-16 md:h-40 mx-auto"
+        />
       </a>
-      
+
       <p
         class="lg:text-base text-sm text-white font-thin text-center pt-8 max-w-[100ch] mx-auto"
       >
-      Feel free to reach out to us for any inquiries, reservations, or feedback. Our dedicated team at Sueen Nature Resort is here to assist you and ensure that your experience with us is nothing short of exceptional.
+        Feel free to reach out to us for any inquiries, reservations, or
+        feedback. Our dedicated team at Sueen Nature Resort is here to assist
+        you and ensure that your experience with us is nothing short of
+        exceptional.
       </p>
       <div class="flex justify-center items-center">
         <a
@@ -24,7 +27,9 @@
       </div>
 
       <hr class="border-gray-100 border-opacity-20 my-8" />
-      <div class="grid lg:grid-cols-4 grid-cols-2 gap-x-4 lg:gap-y-0 gap-y-16 items-start">
+      <div
+        class="grid lg:grid-cols-4 grid-cols-2 gap-x-4 lg:gap-y-0 gap-y-16 items-start"
+      >
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">Stay</h2>
           <h3 class="text-black-50 uppercase text-sm mt-3">Stay with us</h3>
@@ -39,18 +44,44 @@
         </div>
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">More</h2>
-          <h3 class="text-black-50 uppercase text-sm mt-3">
-            Celebrate with us
-          </h3>
-          <h3 class="text-black-50 uppercase text-sm mt-1">Meet our team</h3>
-          <h3 class="text-black-50 uppercase text-sm mt-1">upcoming events</h3>
+          <!-- Link to "privacy Policy" -->
+          <a
+            href="/privacyPolicy"
+            class="text-black-50 uppercase text-sm mt-3 block hover:text-blue-500"
+            >Privacy Policy</a
+          >
+          <!-- Link to "Cookies Policy" -->
+          <a
+            href="/cookiesPolicy"
+            class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500"
+            >Cookies Policy</a
+          >
+          <!-- Link to "Safety and security" -->
+          <a
+            href="/safetySecurity"
+            class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500"
+            >Safety and security</a
+          >
+          <!-- Link to "FAQ" -->
+          <a
+            href="/faq"
+            class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500"
+            >FAQ</a
+          >
         </div>
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">Follow</h2>
-          <nuxt-link to="https://www.facebook.com/sueennature" class="text-black-50 uppercase text-sm mt-3 hover:text-blue-500">Facebook</nuxt-link>
+          <nuxt-link
+            to="https://www.facebook.com/sueennature"
+            class="text-black-50 uppercase text-sm mt-3 hover:text-blue-500"
+            >Facebook</nuxt-link
+          >
           <!-- <nuxt-link to="https://twitter.com" class="text-black-50 uppercase text-sm mt-1 hover:text-blue-500">Twitter</nuxt-link> -->
-          <nuxt-link to="https://www.instagram.com/sueennature/" class="text-black-50 uppercase text-sm mt-1 hover:text-blue-500">Instagram</nuxt-link>
-
+          <nuxt-link
+            to="https://www.instagram.com/sueennature/"
+            class="text-black-50 uppercase text-sm mt-1 hover:text-blue-500"
+            >Instagram</nuxt-link
+          >
         </div>
       </div>
       <hr class="border-gray-100 border-opacity-20 lg:mt-32 mt-10" />
@@ -73,8 +104,10 @@
 h2 {
   font-family: "Philosopher", sans-serif;
 }
-h3,a,
-.buttontext,p {
+h3,
+a,
+.buttontext,
+p {
   font-family: "Barlow", sans-serif;
 }
 </style>

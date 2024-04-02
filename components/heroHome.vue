@@ -1,9 +1,9 @@
 <template>
   <div class="relative">
     <img
-      src="/img/sueen-hero-background-2 1.png"
+      src="/img/hero-home.png"
       alt="backgroundImg"
-      class="w-full min-h-screen object-cover"
+      class="w-full min-h-screen object-cover lg:min-h-0"
     />
     <!-- stiky navbar -->
     <nav
@@ -186,9 +186,11 @@
         </div>
       </div>
     </nav>
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black-200 opacity-30 z-20"></div>
     <!-- hero logo image -->
-    <div class="absolute top-8 left-0 w-full md:flex hidden items-center">
-      <a href="/" class="relative mx-auto">
+    <div class="absolute z-40 top-8 left-0 w-full md:flex hidden items-center">
+      <a href="/home" class="relative mx-auto">
         <!-- Adjust mx-2 as needed for spacing -->
         <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
         <div
@@ -203,7 +205,7 @@
     </div>
     <!-- default navbar -->
     <div
-      class="absolute top-20 left-0 right-0 md:flex hidden justify-center md:top-60"
+      class="absolute z-40 top-20 left-0 right-0 md:flex hidden justify-center md:top-60"
     >
       <div class="flex flex-row justify-center md:space-x-4 space-x-0">
         <a
@@ -242,7 +244,7 @@
     </div>
     <!-- main hero booking options selector -->
     <div
-      class="absolute inset-x-0 bottom-24 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
+      class="absolute z-40 inset-x-0 bottom-24 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
     >
       <div
         class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"

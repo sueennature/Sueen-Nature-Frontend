@@ -1,6 +1,6 @@
 <template>
   <!-- stiky navbar -->
-  <nav class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600 md:px-20 px-0" :class="{ 'bg-black-200': isNavbarBackgroundBlack }" :style="{ opacity: isNavbarBackgroundBlack ? '0.7' : '1' }">
+  <nav class="dark:bg-gray-900 fixed w-full z-50 top-0 start-0 border-none dark:border-gray-600 md:px-20 px-0" :class="{ 'bg-black-200': isNavbarBackgroundBlack }" :style="{ opacity: isNavbarBackgroundBlack ? '0.7' : '1' }">
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
@@ -192,14 +192,16 @@
     <img
       src="/img/hero-rooms.png"
       alt="hero-rooms-Img"
-      class="w-full z-10 min-h-screen object-cover"
-    />  
+      class="w-full z-10 min-h-screen object-cover lg:min-h-0"
+    /> 
+     <!-- Overlay -->
+     <div class="absolute inset-0 bg-black-200 opacity-50 z-20"></div> 
     <!-- content on hero section -->
     <div
-      class="absolute inset-0 flex flex-col justify-center items-center text-center md:px-40 px-0"
+      class="absolute inset-0 flex flex-col justify-center items-center text-center md:px-40 px-0 z-40"
     >
-      <h6 class="text-white text-2xl font-semibold mt-32">STAY WITH US</h6>
-      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-28 hidden lg:block">
+      <h6 class="text-white text-xl font-semibold mt-32">STAY WITH US</h6>
+      <h2 class="text-white md:text-6xl text-5xl font-semibold mt-28 hidden lg:block">
         Attention to detail like never before.
       </h2>
       <button type="button" class="text-white buttontext mt-40 bg-black-700 bg-opacity-60 hover:bg-black-200 hover:bg-opacity-60 focus:outline-none focus:ring-0 font-medium rounded-full text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">view Image Gallery</button>

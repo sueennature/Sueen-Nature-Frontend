@@ -463,7 +463,7 @@
               class="mr-2 w-4 h-4 text-blue-600 bg-white border-black-200 rounded-none focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <img
-              src="/public/img/deluxe_1.jpg"
+              src="/img/deluxe_1.jpg"
               alt="roomImg"
               class="bg-cover w-40 h-20"
             />
