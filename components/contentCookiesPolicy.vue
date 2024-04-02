@@ -93,7 +93,7 @@
       58 54
     </p>
     <h5 class="text-black-200 md:text-3xl text-lg font-semibold text-left my-8">
-      Last Updated: [Insert Date Here]
+      Effective Date: 04/04/2024
     </h5>
   </div>
 </template>

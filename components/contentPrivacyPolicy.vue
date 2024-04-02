@@ -94,7 +94,7 @@
         We may update this Privacy Policy from time to time. The latest version will always be posted on our website.
     </p>
     <h5 class="text-black-200 md:text-3xl text-lg font-semibold text-left my-8">
-        Effective Date: [Insert Date]
+      Effective Date: 04/04/2024
     </h5>
   </div>
 </template>
