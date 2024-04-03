@@ -632,7 +632,7 @@
       </div>
 
       <a
-        href="/privacyPolicy"
+        href="/termsAndConditions"
         class="lg:text-lg text-base font-medium text-red-100 underline block mt-10"
         >View Our Terms & Conditions</a
       >
@@ -818,7 +818,7 @@
                   class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >I Agree To The
                   <a
-                    href="/privacyPolicy"
+                    href="/termsAndConditions"
                     class="font-semibold underline underline-offset-4"
                     >Terms & Conditions</a
                   >

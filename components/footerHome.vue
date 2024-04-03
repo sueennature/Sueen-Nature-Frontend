@@ -44,10 +44,16 @@
         </div>
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">More</h2>
+          <!-- Link to "terms & conditions" -->
+          <a
+            href="/termsAndConditions"
+            class="text-black-50 uppercase text-sm mt-3 block hover:text-blue-500"
+            >Terms And Conditions</a
+          >
           <!-- Link to "privacy Policy" -->
           <a
             href="/privacyPolicy"
-            class="text-black-50 uppercase text-sm mt-3 block hover:text-blue-500"
+            class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500"
             >Privacy Policy</a
           >
           <!-- Link to "Cookies Policy" -->
