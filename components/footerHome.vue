@@ -8,7 +8,6 @@
           class="w-auto h-16 md:h-40 mx-auto"
         />
       </a>
-
       <p
         class="lg:text-base text-sm text-white font-thin text-center pt-8 max-w-[100ch] mx-auto"
       >
@@ -25,7 +24,6 @@
           Contact Us
         </a>
       </div>
-
       <hr class="border-gray-100 border-opacity-20 my-8" />
       <div
         class="grid lg:grid-cols-4 grid-cols-2 gap-x-4 lg:gap-y-0 gap-y-16 items-start"

@@ -47,7 +47,9 @@
               class="flex flex-row lg:justify-center items-baseline space-x-2"
             >
               <h5 class="xl:text-lg text-sm text-black-200">Starting:</h5>
-              <h5 class="xl:text-xl text-sm text-black-200 font-semibold">
+              <h5
+                class="xl:text-lg whitespace-nowrap text-sm text-black-200 font-semibold"
+              >
                 LKR 13, 300
               </h5>
             </div>
@@ -341,6 +343,60 @@
             Remove
           </button>
         </div>
+        <!-- Card about Additional services  -->
+        <div
+          class="w-full p-6 bg-white xl:text-lg text-base font-semibold border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
+        >
+          <h5>Additional Services</h5>
+          <hr
+            class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
+          />
+          <div class="flex items-baseline justify-between mt-4 space-x-4">
+            <form class="max-w-sm">
+              <select
+                id="additional_services"
+                class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Select Additional Services</option>
+                <option value="boat">Boat Riding</option>
+                <option value="yoga">Yoga and Meditation Retreats</option>
+                <option value="Adventure Sports">Adventure Sports</option>
+                <option value="Traditional-Dance">
+                  Traditional Dance and Music Performances
+                </option>
+              </select>
+            </form>
+            <button
+              type="button"
+              class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 whitespace-nowrap"
+            >
+              Add now
+            </button>
+          </div>
+          <div class="flex items-baseline justify-between mt-8 space-x-2">
+            <h5
+              class="text-black-200 font-medium xl:text-base text-xs whitespace-nowrap"
+            >
+              Boat Riding
+            </h5>
+            <h5
+              class="text-black-200 font-medium xl:text-base text-xs whitespace-nowrap"
+            >
+              LKR 6000
+            </h5>
+            <a
+              href="/additionalServices"
+              class="text-red-100 font-medium xl:text-base text-xs whitespace-nowrap"
+              >View More</a
+            >
+            <button
+              type="button"
+              class="buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
         <!-- price brakedown section -->
         <h5 class="text-black-200 font-semibold lg:text-lg text-base mt-14">
           Price Breakdown
@@ -380,6 +436,14 @@
           </h5>
         </div>
         <div class="flex justify-between mt-4">
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            Additional Services
+          </h5>
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            LKR 0
+          </h5>
+        </div>
+        <div class="flex justify-between mt-4">
           <h5 class="lg:text-base text-sm font-medium text-black-200">Tax</h5>
           <h5 class="lg:text-base text-sm font-medium text-black-200">0</h5>
         </div>
@@ -395,7 +459,7 @@
         <!-- Login and Register modal popups -->
         <div class="flex flex-row space-x-4 items-baseline">
           <button
-            class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            class="whitespace-nowrap mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             type="button"
           >
             Proceed As a Guest
@@ -404,7 +468,7 @@
           <button
             @click="toggleModal"
             type="button"
-            class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            class="whitespace-nowrap mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
             Sign In
           </button>
@@ -1329,7 +1393,8 @@ input {
 #adults,
 #children,
 #infants,
-#nationality {
+#nationality,
+#additional_services {
   background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
 }
 </style>

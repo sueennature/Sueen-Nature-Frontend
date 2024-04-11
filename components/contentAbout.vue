@@ -6,8 +6,7 @@
     </h2>
     <p class="text-base text-gray-300 mt-2 text-center">
       Welcome to Sueen Nature Resort Established in 2024, Sueen Nature Resort is a premier hospitality destination founded by Mr. Dinusha Sampath Liyanage, Managing Director of Sampath Super Trading (PVT) Ltd. Nestled in the tranquil surroundings of Baduraliya, our resort offers an unparalleled retreat where guests can indulge in luxury amidst nature's beauty.
-    </p>
-    
+    </p>   
     <h5 class="text-black-200 text-4xl text-center my-8">
       Our Vision
     </h5>
@@ -20,16 +19,14 @@
     <p class="text-base text-gray-300 mt-2 text-center">
       At Sueen Nature Resort, we are dedicated to curating extraordinary experiences for our guests. Our mission is to deliver personalized, friendly, and professional service that surpasses expectations, ensuring each guest enjoys unparalleled comfort, service, and attention to detail.
     </p>
-
     <!-- about us title -->
     <h3 class="text-red-100 font-medium text-2xl mt-12 text-center md:text-left">About Us</h3>
     <hr class="h-px w-full bg-neutral-400 border-none border-opacity-20 mt-4"/>
-
     <h2 class="text-black-200 text-4xl text-center mt-20">MEET OUR TEAM</h2>
     <!-- team section -->
     <div class="lg:flex lg:flex-row grid grid-cols-1 justify-center mt-10 lg:space-x-20 gap-y-4">
       <div class="flex flex-col items-center">    
-        <img class="rounded-full w-32 h-32" src="../public/img/team1.png" alt="teamImg">
+        <img class="rounded-full w-32 h-32" src="/img/team1.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Mr. Dinusha Sampath Liyanage</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Chairman</h6>
       </div>
