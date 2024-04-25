@@ -27,8 +27,19 @@ export default defineNuxtConfig({
       }
     }
   },
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:8000/api'
+    }
+  },
+  plugins: [
+    '~/plugins/auth.js',
+    '~/plugins/axios.js'
+  ],
   build: {
-    transpile: ['@vuepic/vue-datepicker']
-  }
+    transpile: ['@vuepic/vue-datepicker','@nuxtjs/axios']
+    
+  },
+  // Add the `auth` configuration here
 
 })

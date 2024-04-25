@@ -249,6 +249,23 @@
           </div>
         </div>
         <!-- Card about Single Room - Special Rate  -->
+
+        <!-- Activities -->
+        <div class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14">
+          <h6 class="text-black-200 xl:text-lg text-base font-bold ">
+              Activities
+            </h6>
+            <div class="flex items-center mb-4 mt-8" v-for="(activity, index) in activities" :key="activity.id">
+                <input :id="'checkbox-' + activity.id" v-model="activity.checked" type="checkbox" :value="activity.id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label :for="'checkbox-' + activity.id" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ activity.name }} - LKR {{ formatPrice(activity.amount) }}</label>
+            </div>
+
+
+
+        </div>
+
+
+
         <div
           class="w-full p-6 bg-white xl:text-lg text-base font-semibold border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
           v-for="(item, index) in roomsList"
@@ -707,61 +724,10 @@
             <p class="mb-12 text-center text-black-200 text-opacity-60">
               Use your social profile to register
             </p>
-            <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
-              <button
-                class="w-full bg-white border border-gray-400 rounded-md py-1 text-center"
-              >
-                <div class="flex items-center justify-center space-x-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="2em"
-                    height="2em"
-                    viewBox="0 0 48 48"
-                  >
-                    <path
-                      fill="#ffc107"
-                      d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
-                    />
-                    <path
-                      fill="#ff3d00"
-                      d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691"
-                    />
-                    <path
-                      fill="#4caf50"
-                      d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44"
-                    />
-                    <path
-                      fill="#1976d2"
-                      d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917"
-                    />
-                  </svg>
-                  <span>Google</span>
-                </div>
-              </button>
+            <!-- SOCIAL MEDIA LOGIN -->
+            <SocialLogin />
 
-              <button
-                class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
-              >
-                <div class="flex items-center justify-center space-x-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="2em"
-                    height="2em"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      fill="#fff"
-                      d="M256 128C256 57.308 198.692 0 128 0C57.308 0 0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445"
-                    />
-                    <path
-                      fill="#3b5998"
-                      d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A128.959 128.959 0 0 0 128 256a128.9 128.9 0 0 0 20-1.555V165z"
-                    />
-                  </svg>
-                  <span>Facebook</span>
-                </div>
-              </button>
-            </div>
+
             <!-- Centered "or" text -->
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
@@ -775,15 +741,21 @@
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
             </div>
-            <form action="#" class="space-y-6 mt-4">
+            <form
+              action="#"
+              class="space-y-6 mt-4"
+              @submit.prevent="register"
+            >
               <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
                 <input
                   type="text"
+                  v-model="registerUser.name"
                   placeholder="Name"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
                 />
                 <input
                   type="text"
+                  v-model.trim="registerUser.lname"
                   placeholder="Last Name"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
                 />
@@ -791,6 +763,7 @@
               <div class="">
                 <input
                   type="text"
+                  v-model.trim="registerUser.email"
                   placeholder="you@email.com"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
                 />
@@ -798,6 +771,7 @@
               <div class="">
                 <input
                   type="password"
+                  v-model.trim="registerUser.password"
                   placeholder="Password"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
                 />
@@ -831,12 +805,14 @@
                 </label>
               </div>
               <div class="mt-5">
-                <nuxt-link
-                  to="/dashboard"
-                  class="w-full bg-red-100 py-3 text-center text-white rounded-md block text-decoration-none"
-                >
-                  REGISTER
-                </nuxt-link>
+                <div class="mt-5">
+                  <button
+                    type="submit"
+                    class="w-full bg-red-100 py-3 text-center text-white rounded-md block text-decoration-none"
+                  >
+                    REGISTER
+                  </button>
+                </div>
               </div>
 
               <div class="flex flex-row items-center text-md space-x-1">
@@ -902,61 +878,9 @@
             <p class="mb-10 text-center text-black-200 text-opacity-60">
               Use your social profile to Login
             </p>
-            <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
-              <button
-                class="w-full bg-white border border-gray-400 rounded-md py-1 text-center"
-              >
-                <div class="flex items-center justify-center space-x-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="2em"
-                    height="2em"
-                    viewBox="0 0 48 48"
-                  >
-                    <path
-                      fill="#ffc107"
-                      d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
-                    />
-                    <path
-                      fill="#ff3d00"
-                      d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691"
-                    />
-                    <path
-                      fill="#4caf50"
-                      d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44"
-                    />
-                    <path
-                      fill="#1976d2"
-                      d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917"
-                    />
-                  </svg>
-                  <span>Google</span>
-                </div>
-              </button>
+            <!-- SOCIAL LOGIN -->
+            <SocialLogin />
 
-              <button
-                class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
-              >
-                <div class="flex items-center justify-center space-x-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="2em"
-                    height="2em"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      fill="#fff"
-                      d="M256 128C256 57.308 198.692 0 128 0C57.308 0 0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445"
-                    />
-                    <path
-                      fill="#3b5998"
-                      d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A128.959 128.959 0 0 0 128 256a128.9 128.9 0 0 0 20-1.555V165z"
-                    />
-                  </svg>
-                  <span>Facebook</span>
-                </div>
-              </button>
-            </div>
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
               <div
@@ -970,41 +894,24 @@
               ></div>
             </div>
 
-            <form action="#" class="space-y-6 mt-4">
-              <div class="">
-                <input
-                  type="text"
-                  placeholder="you@email.com"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                />
+            <form @submit.prevent="login" class="space-y-6 mt-4">
+              <div>
+                <input v-model="loginUser.email" type="text" placeholder="you@email.com" class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md" />
+                <p v-if="errors.email" class="error">{{ errors.email[0] }}</p>
               </div>
-              <div class="">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                />
+              <div>
+                <input v-model="loginUser.password" type="password" placeholder="Password" class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md" />
+                <p v-if="errors.password" class="error">{{ errors.password[0] }}</p>
               </div>
               <div class="mt-5">
-                <nuxt-link
-                  to="/dashboard"
-                  class="w-full bg-red-100 py-3 text-center text-white rounded-md block"
-                >
-                  Log In
-                </nuxt-link>
+                <div class="text"></div>
+                <button type="submit" class="w-full bg-red-100 py-3 text-center text-white rounded-md block">Log In</button>
               </div>
 
-              <div class="flex flex-row mt-4 items-center text-md space-x-1">
+              <!-- <div class="flex flex-row mt-4 items-center text-md space-x-1">
                 <p>Don't have an account?</p>
-                <button
-                  @click="reopenFirstModal"
-                  id="toggle-modal-button"
-                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  type="button"
-                >
-                  Register Here
-                </button>
-              </div>
+                <button @click="redirectToRegister" id="toggle-modal-button" class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Register Here</button>
+              </div>-->
             </form>
           </div>
         </div>
@@ -1018,10 +925,17 @@
 import CheckoutAvailability from "./CheckoutAvailability.vue";
 import { ref, onMounted, onUnmounted } from "vue";
 import { initFlowbite } from "flowbite";
+import { apiRequest } from '@/utils/api';
+import { useNuxtApp } from '#app';
+import SocialLogin from './SocialLogin.vue';
+
+
+
 
 export default {
   components: {
     CheckoutAvailability,
+    SocialLogin,
   },
   data() {
     return {
@@ -1034,6 +948,7 @@ export default {
       roomsList: [],
       boardType: [],
       mealPlans: [],
+      activities:[],
       price: 0,
       form: {
         first_name: "",
@@ -1052,9 +967,65 @@ export default {
         guest_address: "",
         guest_nationality: "",
       },
+      registerUser:{
+        name: '',
+        lname: '',
+        email: '',
+        password:'',
+      },
+      loginUser:{
+        email: '',
+        password: '',
+      },
+      errors: {
+        email: [],
+        password: [],
+      },
     };
   },
   methods: {
+    async login() {
+      try {
+        const response = await apiRequest('http://127.0.0.1:8000/api/login', 'POST', {
+          email: this.loginUser.email,
+          password: this.loginUser.password,
+        });
+
+        // Store the access token
+        this.nuxtApp.$auth.setAuthToken(response.access_token);
+
+        // Redirect to the dashboard page
+        this.$router.push('/dashboard');
+      } catch (error) {
+         // Update the errors object with the received errors
+         console.log(error);
+        // this.errors.email = error.errors.email || [];
+        // this.errors.password = error.errors.password || [];
+      }
+    },
+    async register() {
+      try {
+        const response = await apiRequest('http://127.0.0.1:8000/api/register', 'POST', {
+          name: this.registerUser.name,
+          lname: this.registerUser.lname,
+          email: this.registerUser.email,
+          password: this.registerUser.password,
+        });
+        // Handle successful registration response
+        console.log(response);
+      } catch (error) {
+        // Handle registration error
+        console.error(error);
+      }
+    },
+    formatPrice(value) {
+        let val = (value/1).toFixed(2).replace('.', ',')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    },
+    redirectToRegister() {
+      // Redirect to the registration page
+      this.$router.push('/register');
+    },
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
@@ -1184,6 +1155,7 @@ export default {
               infants: roomPeople["infants"] || 0,
               room_type_id: id,
               meal_plan_id: mealPlanMap[type],
+              service_id: '[1,2,3]',
             });
           }
 
@@ -1254,8 +1226,24 @@ export default {
           error
         );
       });
+
+      fetch('http://127.0.0.1:8000/api/get-services')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        this.activities = data.services;
+      })
+      .catch((error) => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
   },
   setup() {
+    const nuxtApp = useNuxtApp();
     const roomsList = ref([]);
 
     const beforeUnloadListener = (event) => {
@@ -1276,6 +1264,7 @@ export default {
 
     return {
       roomsList,
+      nuxtApp,
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -1295,7 +1284,7 @@ export default {
 };
 </script>
 
-<style  scoped>
+<style scoped>
 h2,
 h6,
 .costSelector,

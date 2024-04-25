@@ -8,6 +8,13 @@
     </div>
 </template>
 
+<script>
+export default {
+    middleware: 'auth',
+  // ...
+};
+</script>
+
 <script setup>
 import navbarDashboard from '../components/navbarDashboard.vue';
 import contentDashboard from '../components/contentDashboard.vue';
