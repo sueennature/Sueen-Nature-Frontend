@@ -255,7 +255,7 @@
               type="date"
               class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
-              v-model="fromDate"
+              v-model="check_in"
             />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
@@ -263,7 +263,7 @@
         <div class="relative md:max-w-sm md:mx-auto">
           <input
             type="date"
-            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" v-model="toDate"
+            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" v-model="check_out"
           />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
@@ -303,8 +303,8 @@
 export default {
   data() {
     return {
-      fromDate: '', 
-      toDate: '',
+      check_in: '', 
+      check_out: '',
       room_type_id: null, 
       room_types: [],
     };
@@ -315,8 +315,8 @@ export default {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          check_in: this.fromDate,
-          check_out: this.toDate,
+          check_in: this.check_in,
+          check_out: this.check_out,
           room_type_id: this.room_type_id,
         }),
       };
@@ -325,7 +325,7 @@ export default {
         const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
         if(response.status===200){
-          this.$router.push({ path: '/booking', query: { fromDate: this.fromDate, toDate: this.toDate, roomTypeId: this.room_type_id } });
+          this.$router.push({ path: '/booking', query: { check_in: this.check_in, check_out: this.check_out, roomTypeId: this.room_type_id } });
 
         }else{
           window.alert("Ths room is not available")

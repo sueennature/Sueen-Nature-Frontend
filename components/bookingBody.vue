@@ -1073,7 +1073,7 @@ export default {
           rowId: this.roomsList.length + 1,
         });
         this.price = this.price + parseFloat(roomDetails.price);
-        console.log("list", this.roomsList, this.fromDate, this.toDate);
+        console.log("list", this.roomsList, this.check_in, this.check_out);
       }
     },
     removeItemFromRoomsList(index) {
