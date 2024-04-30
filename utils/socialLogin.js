@@ -3,7 +3,7 @@ import { useNuxtApp } from '#app';
 
 export async function socialLogin(provider) {
   const nuxtApp = useNuxtApp();
-  const authUrl = `http://127.0.0.1:8000/api/auth/${provider}/redirect`;
+  const authUrl = `https://admin.sueennature.com/api/auth/${provider}/redirect`;
 
   try {
     const response = await window.open(authUrl, '_blank');
