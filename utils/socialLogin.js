@@ -8,7 +8,7 @@ export async function socialLogin(provider) {
   try {
     const response = await window.open(authUrl, '_blank');
 
-    if (response) {
+    if (response.access_token) {
       const accessToken = response.access_token;
       nuxtApp.$auth.setAuthToken(accessToken);
       nuxtApp.$router.push('/dashboard');

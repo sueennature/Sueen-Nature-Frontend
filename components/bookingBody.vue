@@ -986,7 +986,7 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await apiRequest('http://127.0.0.1:8000/api/login', 'POST', {
+        const response = await apiRequest('https://admin.sueennature.com/api/login', 'POST', {
           email: this.loginUser.email,
           password: this.loginUser.password,
         });
@@ -999,20 +999,19 @@ export default {
       } catch (error) {
          // Update the errors object with the received errors
          console.log(error);
-        // this.errors.email = error.errors.email || [];
-        // this.errors.password = error.errors.password || [];
       }
     },
     async register() {
       try {
-        const response = await apiRequest('http://127.0.0.1:8000/api/register', 'POST', {
+        const response = await apiRequest('https://admin.sueennature.com/api/register', 'POST', {
           name: this.registerUser.name,
           lname: this.registerUser.lname,
           email: this.registerUser.email,
           password: this.registerUser.password,
         });
-        // Handle successful registration response
-        console.log(response);
+
+        this.nuxtApp.$auth.setAuthToken(response.access_token);
+        this.$router.push('/dashboard');
       } catch (error) {
         // Handle registration error
         console.error(error);
@@ -1166,6 +1165,9 @@ export default {
 
       this.form.rooms = roomsArrangement;
 
+      // console.log(this.form);
+      // return;
+
       console.log("FORM DATA", this.form);
 
       await fetch("https://admin.sueennature.com/api/booking", {
@@ -1207,6 +1209,7 @@ export default {
         (room) => room.id.toString() === this.roomTypeId.toString()
       );
     },
+    
   },
   mounted() {
     initFlowbite();
@@ -1235,7 +1238,6 @@ export default {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         this.activities = data.services;
       })
       .catch((error) => {
@@ -1254,6 +1256,8 @@ export default {
       }
     };
 
+    const isLoggedIn = computed(() => authStore.token !== null)
+
     onMounted(() => {
       window.addEventListener("beforeunload", beforeUnloadListener);
     });
@@ -1263,6 +1267,7 @@ export default {
     });
 
     return {
+      isLoggedIn,
       roomsList,
       nuxtApp,
     };
