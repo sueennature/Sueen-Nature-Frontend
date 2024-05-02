@@ -221,6 +221,13 @@
         >
           About
         </a>
+     
+              <a
+                href="/additionalActivites"
+                class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+                >Activites</a
+              >
+         
         <a
           href="/services"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -337,7 +344,16 @@ export default {
         const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
         if(response.status===200){
-          this.$router.push({ path: '/booking', query: { check_in: this.check_in, check_out: this.check_out, roomTypeId: this.room_type_id } });
+          setTimeout(() => {
+            this.$router.push({ 
+              path: '/booking', 
+              query: { 
+                check_in: this.check_in, 
+                check_out: this.check_out, 
+                roomTypeId: this.room_type_id 
+              } 
+                });
+              }, 3000);
           this.setupToastSucess("Successfully checked");
 
         }else{
