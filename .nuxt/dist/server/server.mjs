@@ -1,1 +1,1 @@
-export { default } from "file:///G:/CDAZZ%20Work/Menaka%20WebSites/Sueen%20Nature/30Apr2024-FE/Sueen-Nature-Frontend/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///C:/php/sueen-nature/Sueen-Nature-Frontend/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"

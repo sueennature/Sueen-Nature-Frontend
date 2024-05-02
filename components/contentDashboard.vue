@@ -76,7 +76,8 @@
                 >
                 <button
                   class="text-blue-200 text-sm hover:text-blue-500"
-                  @click="toggleEditFirstName" @click.prevent
+                  @click="toggleEditFirstName"
+                  @click.prevent
                 >
                   Edit
                 </button>
@@ -85,30 +86,34 @@
                 type="text"
                 id="first_name"
                 class="bg-white border border-black-200 text-black-200 focus:ring-blue-500 focus:border-blue-500 placeholder:text-black-300 text-sm rounded-lg focus:ring-0 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required v-model="firstName"
-    :readonly="!editModeFirstName"
+                required
+                v-model="firstName"
+                :readonly="!editModeFirstName"
               />
             </div>
             <div>
               <div class="flex items-baseline space-x-2">
                 <label
                   for="last_name"
-                  class="block mb-2 text-2xl font-bold text-black-200 dark:text-white" 
+                  class="block mb-2 text-2xl font-bold text-black-200 dark:text-white"
                   >Last name</label
                 >
                 <button
-                  class="text-blue-200 text-sm hover:text-blue-500" @click="toggleEditLastName" @click.prevent
+                  class="text-blue-200 text-sm hover:text-blue-500"
+                  @click="toggleEditLastName"
+                  @click.prevent
                 >
                   Edit
-                </button>   
-                
+                </button>
               </div>
               <input
                 type="text"
                 id="last_name"
-                class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required v-model="lastName" :readonly="!editModeLastName" 
+                class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+                v-model="lastName"
+                :readonly="!editModeLastName"
               />
-              
             </div>
           </div>
           <div class="mb-6">
@@ -119,20 +124,22 @@
                 >Phone Number</label
               >
               <button
-                  class="text-blue-200 text-sm hover:text-blue-500" @click="toggleEditPhoneNumber" @click.prevent
-                >
-                  Edit
-                </button>
-                
+                class="text-blue-200 text-sm hover:text-blue-500"
+                @click="toggleEditPhoneNumber"
+                @click.prevent
+              >
+                Edit
+              </button>
             </div>
 
             <input
               type="tel"
               id="phone"
-              class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required v-model="phoneNumber"
-    :readonly="!editModePhoneNumber"
+              class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
+              v-model="phoneNumber"
+              :readonly="!editModePhoneNumber"
             />
-            
           </div>
           <div class="mb-6">
             <div class="flex items-baseline space-x-2">
@@ -142,17 +149,22 @@
                 >Email</label
               >
               <button
-                  class="text-blue-200 text-sm hover:text-blue-500" @click="toggleEditEmail"  @click.prevent
-                >
-                  Edit
-                </button>
-                <!-- @click="toggleEditEmail" -->
+                class="text-blue-200 text-sm hover:text-blue-500"
+                @click="toggleEditEmail"
+                @click.prevent
+              >
+                Edit
+              </button>
+              <!-- @click="toggleEditEmail" -->
             </div>
 
             <input
               type="email"
               id="email"
-              class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-model="email" required :readonly="!editModeEmail"
+              class="bg-white border border-black-200 text-black-200 placeholder:text-black-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              v-model="email"
+              required
+              :readonly="!editModeEmail"
             />
             <!-- v-model="email" required :readonly="!editModeEmail" -->
           </div>
@@ -164,17 +176,20 @@
             >
 
             <button
-                  class="text-blue-200 text-sm hover:text-blue-500" @click="toggleEditAddress" @click.prevent
-                >
-                  Edit
-                </button>
-               
+              class="text-blue-200 text-sm hover:text-blue-500"
+              @click="toggleEditAddress"
+              @click.prevent
+            >
+              Edit
+            </button>
           </div>
           <textarea
             id="address"
             rows="4"
-            class="block p-2.5 w-full text-sm bg-white border border-black-200 text-black-200 placeholder:text-black-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required  v-model="address"
-    :readonly="!editModeAddress"
+            class="block p-2.5 w-full text-sm bg-white border border-black-200 text-black-200 placeholder:text-black-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required
+            v-model="address"
+            :readonly="!editModeAddress"
           ></textarea>
         </form>
       </div>
@@ -518,46 +533,42 @@
 import { onMounted, ref } from "vue";
 import { initFlowbite } from "flowbite";
 
-const firstName = ref('Kenu');
+const firstName = ref("Kenu");
 const editModeFirstName = ref(false);
 
 const toggleEditFirstName = () => {
   editModeFirstName.value = !editModeFirstName.value;
-}
+};
 
-const lastName = ref('Bean');
+const lastName = ref("Bean");
 const editModeLastName = ref(false);
 
 const toggleEditLastName = () => {
   editModeLastName.value = !editModeLastName.value;
-}
+};
 
-const phoneNumber = ref('0712345698');
+const phoneNumber = ref("0712345698");
 const editModePhoneNumber = ref(false);
 
 const toggleEditPhoneNumber = () => {
   console.log("test");
   editModePhoneNumber.value = !editModePhoneNumber.value;
-}
+};
 
-const address = ref('NO:8,  Gall read,  Colombo,  Srilanka.');
+const address = ref("NO:8,  Gall read,  Colombo,  Srilanka.");
 const editModeAddress = ref(false);
 
 const toggleEditAddress = () => {
   console.log("testAddress");
   editModeAddress.value = !editModeAddress.value;
-}
+};
 
+const email = ref("youremail@gmail.com");
+const editModeEmail = ref(false);
 
-const email =ref('youremail@gmail.com');
-const editModeEmail =ref(false);
-
-const toggleEditEmail =()=>{
+const toggleEditEmail = () => {
   editModeEmail.value = !editModeEmail.value;
-}
-
-
-
+};
 
 // initialize components based on data attribute selectors
 onMounted(() => {

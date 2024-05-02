@@ -10,7 +10,9 @@
 
 <script>
 export default {
-    middleware: 'auth',
+    router: {
+        middleware: ['auth']
+    },
   // ...
 };
 </script>

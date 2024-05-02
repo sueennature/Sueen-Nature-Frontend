@@ -986,7 +986,7 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await apiRequest('https://admin.sueennature.com/api/login', 'POST', {
+        const response = await apiRequest('https://http://127.0.0.1:8000/api/login', 'POST', {
           email: this.loginUser.email,
           password: this.loginUser.password,
         });
@@ -1001,9 +1001,14 @@ export default {
          console.log(error);
       }
     },
+    logout() {
+      this.$auth.logout()
+      // Redirect to the login page or any other desired page
+      this.$router.push('/login')
+    },
     async register() {
       try {
-        const response = await apiRequest('https://admin.sueennature.com/api/register', 'POST', {
+        const response = await apiRequest('http://127.0.0.1:8000/api/register', 'POST', {
           name: this.registerUser.name,
           lname: this.registerUser.lname,
           email: this.registerUser.email,
@@ -1230,7 +1235,7 @@ export default {
         );
       });
 
-      fetch('https://admin.sueennature.com/api/get-services')
+      fetch('http://127.0.0.1:8000/api/get-services')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

@@ -11,8 +11,11 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/google-fonts',
     'nuxt-icon',
-
+    'nuxt-vue3-google-signin'
   ],
+  googleSignIn: {
+    clientId: '865303988777-4tcvutqa985usae6fahkll4iorpjfb1s.apps.googleusercontent.com',
+  },
   googleFonts: {
     families: {
       Inter: true,
@@ -40,6 +43,7 @@ export default defineNuxtConfig({
     transpile: ['@vuepic/vue-datepicker','@nuxtjs/axios']
     
   },
+  
   // Add the `auth` configuration here
 
 })
