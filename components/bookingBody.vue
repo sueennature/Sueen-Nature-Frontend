@@ -297,10 +297,10 @@
               </select>
             </form>
           </div>
+
+          <div v-for="(n, index) in roomRaw(item.selectedRooms)" :key="`${index}-${n}`">
           <div
             class="lg:flex lg:flex-row flex-col items-baseline justify-between mt-4 space-y-2"
-            v-for="n in roomRaw(item.selectedRooms)"
-            :key="`${index}-${n}`"
           >
             <div class="flex items-center">
               <h5 class="text-black-200 font-medium xl:text-lg text-sm">
@@ -315,10 +315,11 @@
                   @change="updateRoomPeopleCount(item, n, 'adults', $event)"
                 >
                   <option selected>Adults</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                   <option v-for="index in 
+                   ( selectedRoomType.name === 'Single Room' ? 1 
+                   : selectedRoomType.name === 'Double Room' ? 2 
+                   : selectedRoomType.name === 'Deluxe Room' ? 3
+                   : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
               </form>
               <form class="max-w-sm w-full">
@@ -328,10 +329,11 @@
                   @change="updateRoomPeopleCount(item, n, 'child', $event)"
                 >
                   <option selected>Children</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                  <option v-for="index in 
+                   ( selectedRoomType.name === 'Single Room' ? 1 
+                   : selectedRoomType.name === 'Double Room' ? 2 
+                   : selectedRoomType.name === 'Deluxe Room' ? 3
+                   : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
               </form>
               <form class="max-w-sm w-full">
@@ -341,10 +343,23 @@
                   @change="updateRoomPeopleCount(item, n, 'infants', $event)"
                 >
                   <option selected>Infants</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                  <option v-for="index in 4" :key="index" :value="index">{{ index }}</option>
+                </select>
+              </form>
+            </div>
+          </div>
+            <div v-if="item" v-for="(age, index) in item[n]?.infants" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
+              <h5 class="text-black font-medium xl:text-lg text-sm">
+                Select age of infant {{index + 1}}
+              </h5>
+
+              <form class="max-w-sm">
+                <select
+                  :id="'infant-age-' + index"
+                  class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option disabled selected>Age</option>
+                  <option v-for="year in 3" :key="'year-' + year" :value="year - 1">{{ year - 1 }}</option>
                 </select>
               </form>
             </div>
@@ -944,6 +959,8 @@ export default {
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
+      selectedInfants: 0, 
+      infantAges: [], 
       room_types: [],
       roomsList: [],
       boardType: [],
@@ -1078,7 +1095,7 @@ export default {
           rowId: this.roomsList.length + 1,
         });
         this.price = this.price + parseFloat(roomDetails.price);
-        console.log("list", this.roomsList, this.check_in, this.check_out);
+        console.log("rooms list", this.roomsList);
       }
     },
     removeItemFromRoomsList(index) {
@@ -1087,6 +1104,7 @@ export default {
     },
     updateRoomsCount(item, event) {
       console.log("updateRoomsCount ", item);
+      console.log("ROOMS UPDATED", this.roomsList)
       const roomToUpdate = this.roomsList.find(
         (room) => room.rowId === item.rowId
       );
@@ -1107,6 +1125,11 @@ export default {
         const roomDetail = roomToUpdate[n] || {};
 
         roomDetail[peopleType] = parseInt(event.target.value);
+
+        if(peopleType === 'infants'){
+          this.infantAges = Array.from({ length: event.target.value }, () => 0);
+        }
+
         roomToUpdate[n] = roomDetail;
 
         this.roomsList[roomIndex] = roomToUpdate;
