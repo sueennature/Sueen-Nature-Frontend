@@ -221,6 +221,13 @@
         >
           About
         </a>
+     
+              <a
+                href="/additionalActivites"
+                class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+                >Activites</a
+              >
+         
         <a
           href="/services"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -300,7 +307,10 @@
 </template>
   
 <script>
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 export default {
+  
   data() {
     return {
       check_in: '', 
@@ -310,7 +320,16 @@ export default {
     };
   },
   methods:{
+    setupToast(){
+    toast.error("welcome to sda",{
+      autoClose:1000,
+    })
+  },
     async checkAvailability() {
+      if (!this.check_in || !this.check_out || !this.room_type_id) {
+      this.setupToast("Please fill in all fields.");
+      return; 
+    }
       const body = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -325,7 +344,17 @@ export default {
         const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
         if(response.status===200){
-          this.$router.push({ path: '/booking', query: { check_in: this.check_in, check_out: this.check_out, roomTypeId: this.room_type_id } });
+          setTimeout(() => {
+            this.$router.push({ 
+              path: '/booking', 
+              query: { 
+                check_in: this.check_in, 
+                check_out: this.check_out, 
+                roomTypeId: this.room_type_id 
+              } 
+                });
+              }, 3000);
+          this.setupToastSucess("Successfully checked");
 
         }else{
           window.alert("Ths room is not available")
@@ -334,7 +363,17 @@ export default {
         window.alert(error);
       }
     },
+    setupToast(message) {
+    toast.error(message, {
+      autoClose: 3000, 
+    });
   },
+  setupToastSucess(message) {
+    toast.success(message, {
+      autoClose: 3000, 
+    });
+  },
+},
   mounted() {
     Promise.all([
       import("flowbite-datepicker/Datepicker"),

@@ -756,6 +756,7 @@
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
             </div>
+            <!-- Modal -->
             <form
               action="#"
               class="space-y-6 mt-4"
@@ -783,14 +784,20 @@
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
                 />
               </div>
-              <div class="">
-                <input
-                  type="password"
-                  v-model.trim="registerUser.password"
-                  placeholder="Password"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                />
+              <div class="relative">
+                  <input
+                    :type="showPassword ? 'text' : 'password'"
+                    v-model.trim="registerUser.password"
+                    placeholder="Password"
+                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10" 
+                  />
+                  <button @click="togglePasswordVisibility" class="absolute inset-y-0 right-0 flex items-center pr-3">
+                    
+                    <span v-if="showPassword">🔓</span>
+                    <span v-else>🔒</span> 
+                  </button>
               </div>
+
 
               <div class="flex items-start">
                 <div class="flex items-center h-5">
@@ -914,9 +921,20 @@
                 <input v-model="loginUser.email" type="text" placeholder="you@email.com" class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md" />
                 <p v-if="errors.email" class="error">{{ errors.email[0] }}</p>
               </div>
-              <div>
-                <input v-model="loginUser.password" type="password" placeholder="Password" class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md" />
-                <p v-if="errors.password" class="error">{{ errors.password[0] }}</p>
+           
+              <div class="relative">
+                  <input
+                    :type="showPassword ? 'text' : 'password'"
+                    v-model="loginUser.password"                    
+                    placeholder="Password"
+                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10" 
+                  />
+                  <p v-if="errors.password" class="error">{{ errors.password[0] }}</p>
+                  <button @click="togglePasswordVisibility" class="absolute inset-y-0 right-0 flex items-center pr-3">
+                    
+                    <span v-if="showPassword">🔓</span>
+                    <span v-else>🔒</span> 
+                  </button>
               </div>
               <div class="mt-5">
                 <div class="text"></div>
@@ -943,7 +961,8 @@ import { initFlowbite } from "flowbite";
 import { apiRequest } from '@/utils/api';
 import { useNuxtApp } from '#app';
 import SocialLogin from './SocialLogin.vue';
-
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 
 
@@ -954,6 +973,7 @@ export default {
   },
   data() {
     return {
+      showPassword:false,
       showGuestInfo: false,
       showYourInfo: false,
       isModalOpen: false,
@@ -1001,43 +1021,75 @@ export default {
     };
   },
   methods: {
+    togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  },
     async login() {
+      if (!this.loginUser.email || !this.loginUser.password) {
+        this.setupToastError("Please fill in all fields.");
+          return; 
+      }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailPattern.test(this.loginUser.email)){
+          this.setupToastError("Please enter a valid email address.");
+          return;
+        }    
       try {
-        const response = await apiRequest('https://http://127.0.0.1:8000/api/login', 'POST', {
+        const response = await apiRequest('https://admin.sueennature.com/api/login', 'POST', {
           email: this.loginUser.email,
           password: this.loginUser.password,
         });
-
-        // Store the access token
         this.nuxtApp.$auth.setAuthToken(response.access_token);
-
-        // Redirect to the dashboard page
-        this.$router.push('/dashboard');
+        console.log("RES",response)
+        this.setupToastSucess("Succcessfully Logged In")
+          setTimeout(() => {
+          this.$router.push({ path: '/dashboard', });
+            }, 3000); 
       } catch (error) {
-         // Update the errors object with the received errors
-         console.log(error);
+        this.setupToastError("An error occurred. Please try again later.");
+        console.log("ERR",error.message);
+        
       }
     },
+ 
     logout() {
       this.$auth.logout()
-      // Redirect to the login page or any other desired page
       this.$router.push('/login')
     },
     async register() {
-      try {
-        const response = await apiRequest('http://127.0.0.1:8000/api/register', 'POST', {
+      if (!this.registerUser.name || !this.registerUser.lname || !this.registerUser.email || !this.registerUser.password) {
+        this.setupToastError("Please fill in all fields.");
+          return; 
+      }
+
+      if(this.registerUser.password.length < 8){
+        this.setupToastError("The password field must be at least 8 characters");
+        return;
+      }
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(this.registerUser.email)){
+        this.setupToastError("Please enter a valid email address.");
+        return;
+      }
+      const response = await apiRequest('https://admin.sueennature.com/api/register', 'POST', {
           name: this.registerUser.name,
           lname: this.registerUser.lname,
           email: this.registerUser.email,
           password: this.registerUser.password,
         });
-
+      try {
         this.nuxtApp.$auth.setAuthToken(response.access_token);
-        this.$router.push('/dashboard');
-      } catch (error) {
-        // Handle registration error
-        console.error(error);
-      }
+          this.setupToastSucess("Succcessfully Registered")
+          setTimeout(() => {
+          this.$router.push({ path: '/dashboard', });
+            }, 3000); 
+
+      
+  } catch (error) {
+    this.setupToastError("An error occurred. Please try again later.");
+    console.log(error)
+
+  }    
     },
     formatPrice(value) {
         let val = (value/1).toFixed(2).replace('.', ',')
@@ -1073,7 +1125,14 @@ export default {
       this.closeModal_1(); // Close the second modal if it's open.
       this.toggleModal(); // Toggle the first modal (open it).
     },
-
+    setupToastSucess(message) {
+    toast.success(message, {
+      autoClose: 3000, 
+    })},
+    setupToastError(message) {
+    toast.error(message, {
+      autoClose: 3000, 
+    })},
     // toggleModal(event) {
     //   event.preventDefault();
     //   this.isModalOpen = !this.isModalOpen;

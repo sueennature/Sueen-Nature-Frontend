@@ -94,6 +94,8 @@
 </template>
   
 <script>
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 export default {
   data() {
   return {
@@ -121,10 +123,16 @@ export default {
       try {
         const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
+        this.setupToastSucess("Successfully checked the availability")
       } catch (error) {
         console.error(error);
       }
     },
+    setupToastSucess(message) {
+    toast.success(message, {
+      autoClose: 3000, 
+    });
+  },
   },
   mounted() {
 // Retrieve query parameters
