@@ -482,6 +482,7 @@
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
             @change="toggleGuestInfo"
+            checked  
           />
           <label
             for="inline-
@@ -975,7 +976,7 @@ export default {
     return {
       showPassword:false,
       showGuestInfo: false,
-      showYourInfo: false,
+      showYourInfo: true,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
@@ -1102,7 +1103,7 @@ export default {
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
-        this.showYourInfo = true;
+        this.showYourInfo = false;
       } else {
         this.showGuestInfo = false;
         this.showYourInfo = true;
