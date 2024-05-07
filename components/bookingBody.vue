@@ -356,6 +356,7 @@
               <form class="max-w-sm">
                 <select
                   :id="'infant-age-' + index"
+                  required
                   class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
@@ -482,6 +483,7 @@
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
             @change="toggleGuestInfo"
+            checked  
           />
           <label
             for="inline-
@@ -975,7 +977,7 @@ export default {
     return {
       showPassword:false,
       showGuestInfo: false,
-      showYourInfo: false,
+      showYourInfo: true,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
@@ -1102,7 +1104,7 @@ export default {
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
-        this.showYourInfo = true;
+        this.showYourInfo = false;
       } else {
         this.showGuestInfo = false;
         this.showYourInfo = true;
@@ -1274,6 +1276,7 @@ export default {
           if (data.error) {
             throw new Error(data.error);
           }
+          toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
           window.location.href = data.ipg;
         })
         .catch((error) => {
