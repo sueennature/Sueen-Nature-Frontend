@@ -1,8 +1,8 @@
 <template>
   <!-- stiky navbar -->
   <nav
-    class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
-    :class="{ 'bg-black-200': isNavbarBackgroundBlack }"
+    class="dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-none dark:border-gray-600 md:px-20 px-0"
+    :class="{ 'bg-black-200': isNavbarBackgroundBlack }" :style="{ opacity: isNavbarBackgroundBlack ? '0.7' : '1' }"
   >
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
@@ -68,6 +68,13 @@
               >About</a
             >
           </li>
+          <li>
+              <a
+                href="/additionalActivites"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                >Activites</a
+              >
+            </li>
           <li>
             <a
               href="/services"
@@ -157,6 +164,13 @@
             </li>
             <li>
               <a
+                href="/additionalActivites"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                >Activites</a
+              >
+            </li>
+            <li>
+              <a
                 href="/services"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Services</a
@@ -238,10 +252,8 @@ h2 {
 }
 h3,
 .buttontext,
-h6 {
-  font-family: "Work Sans", sans-serif;
+h6,p,ul li,a {
+  font-family: "Barlow", sans-serif;
 }
-p {
-  font-family: "Open Sans", sans-serif;
-}
+
 </style>

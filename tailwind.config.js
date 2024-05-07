@@ -59,11 +59,20 @@ export default {
         green:{
           100:"#008000",
         },
+        blue:{
+          100:"#0E1284",
+          200:"#2043C1",
+        },
+        orange:{
+          50:'#FFE49F',
+          100:'#EA9E08',
+          200:'#D79109',
+        },
 
       },
       container: {
         center: true,
-        padding: "1.5rem",
+        padding: "8rem",
     }
     },
   },

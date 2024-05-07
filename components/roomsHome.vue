@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-20">
+  <div class="sm:container px-4 py-20">
     <h2 class="uppercase text-black-100 text-4xl text-center">
       Rooms & Services
     </h2>
@@ -84,11 +84,7 @@ h2 {
   font-family: "Philosopher", sans-serif;
 }
 h3,
-.buttontext {
-  font-family: "Work Sans", sans-serif;
-}
-p,
-h5 {
-  font-family: "Open Sans", sans-serif;
+.buttontext,p,h5 {
+  font-family: "Barlow", sans-serif;
 }
 </style>

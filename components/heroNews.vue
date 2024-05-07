@@ -1,6 +1,6 @@
 <template>
   <!-- stiky navbar -->
-  <nav class=" dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600" :class="{ 'bg-black-200': isNavbarBackgroundBlack }">
+  <nav class="dark:bg-gray-900 fixed w-full z-50 top-0 start-0 border-none dark:border-gray-600 md:px-20 px-0" :class="{ 'bg-black-200': isNavbarBackgroundBlack }" :style="{ opacity: isNavbarBackgroundBlack ? '0.7' : '1' }">
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
@@ -195,13 +195,15 @@
       src="/img/hero-news.png"
       alt="hero-rooms-Img"
       class="w-full z-10 min-h-screen object-cover"
-    />  
+    /> 
+     <!-- Overlay -->
+     <div class="absolute inset-0 bg-black-200 opacity-30 z-20"></div> 
     <!-- content on hero section -->
     <div
-      class="absolute inset-0 flex flex-col justify-center items-center text-center"
+      class="absolute inset-0 flex flex-col justify-center items-center text-center z-40"
     >
-      <h6 class="text-white text-2xl font-semibold uppercase tracking-widest">blog</h6>
-      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-8">
+      <h6 class="text-white text-xl font-semibold uppercase tracking-widest">blog</h6>
+      <h2 class="text-white md:text-6xl text-5xl font-semibold mt-5">
         News
       </h2>
 
@@ -239,11 +241,8 @@ h2 {
 }
 h3,
 .buttontext,
-h6 {
-  font-family: "Work Sans", sans-serif;
-}
-p {
-  font-family: "Open Sans", sans-serif;
+h6,p,ul li,a {
+  font-family: "Barlow", sans-serif;
 }
 
 

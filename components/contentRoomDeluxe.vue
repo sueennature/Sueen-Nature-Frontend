@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-20">
+  <div class="sm:container px-4 pt-20">
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-center">
       IN YOUR ROOM
     </h2>
@@ -141,17 +141,17 @@
       </div>
     </div>
     <!-- Bottom line details about the room -->
-    <div class="flex flex-row gap-4 justify-center mt-4">
-      <h5 class="md:text-sm text-xs text-black-200 pl-4">
+    <div class="flex flex-row md:gap-4 gap-0 justify-center mt-4">
+      <h5 class="md:text-sm text-xs text-black-200 md:pl-4 pl-0 pr-1 md:pr-0 text-nowrap">
         Size: <span class="italic">49 m<sup>2</sup></span>
       </h5>
-      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+      <h5 class="md:text-sm text-xs text-black-200 border-l md:pl-4 md:px-0 px-2 text-nowrap">
         Beds: 01 King
       </h5>
-      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+      <h5 class="md:text-sm text-xs text-black-200 border-l md:pl-4 pl-1">
         Occupancy: 03 Adults / 02 Adults & 02 Kids
       </h5>
-      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+      <h5 class="md:text-sm text-xs text-black-200 border-l md:pl-4 pl-1">
         View: Direct Pool
       </h5>
     </div>
@@ -284,7 +284,7 @@ export default defineComponent({
         fixedWidth: 104,
         fixedHeight: 58,
         isNavigation: true,
-        gap: 10,
+        gap: 0,
         focus: "center",
         pagination: false,
         cover: true,
@@ -294,7 +294,7 @@ export default defineComponent({
         },
         breakpoints: {
           640: {
-            fixedWidth: 66,
+            fixedWidth: 104,
             fixedHeight: 38,
           },
         },
@@ -318,12 +318,8 @@ h2 {
 }
 p,
 h3,
-.buttontext {
-  font-family: "Work Sans", sans-serif;
-}
-h6,
-ul li {
-  font-family: "Open Sans", sans-serif;
+.buttontext,h6,ul li {
+  font-family: "Barlow", sans-serif;
 }
 </style>
 

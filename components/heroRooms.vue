@@ -1,6 +1,6 @@
 <template>
   <!-- stiky navbar -->
-  <nav class=" dark:bg-gray-900 fixed w-full z-40 top-0 start-0 border-b border-gray-200 dark:border-gray-600" :class="{ 'bg-black-200': isNavbarBackgroundBlack }">
+  <nav class="dark:bg-gray-900 fixed w-full z-50 top-0 start-0 border-none dark:border-gray-600 md:px-20 px-0" :class="{ 'bg-black-200': isNavbarBackgroundBlack }" :style="{ opacity: isNavbarBackgroundBlack ? '0.7' : '1' }">
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
@@ -155,6 +155,13 @@
             </li>
             <li>
               <a
+                href="/additionalActivites"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                >Activites</a
+              >
+            </li>
+            <li>
+              <a
                 href="/services"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Services</a
@@ -192,21 +199,21 @@
     <img
       src="/img/hero-rooms.png"
       alt="hero-rooms-Img"
-      class="w-full z-10 min-h-screen object-cover"
-    />  
+      class="w-full z-10 min-h-screen object-cover lg:min-h-0"
+    /> 
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black-200 opacity-50 z-20"></div>
     <!-- content on hero section -->
     <div
-      class="absolute inset-0 flex flex-col justify-center items-center text-center md:px-40 px-0"
+      class="absolute inset-0 flex flex-col justify-center items-center text-center md:px-40 px-0 z-40"
     >
-      <h6 class="text-white text-2xl font-semibold mt-32">STAY WITH US</h6>
-      <h2 class="text-white md:text-8xl text-6xl font-semibold mt-28 hidden lg:block">
+      <h6 class="text-white text-xl font-semibold mt-32">STAY WITH US</h6>
+      <h2 class="text-white md:text-6xl text-5xl font-semibold mt-14 hidden lg:block">
         Attention to detail like never before.
       </h2>
-      <h6 class="text-white text-2xl font-semibold mt-10 uppercase">
+      <h6 class="text-white text-xl font-semibold mt-5 uppercase">
         EXPLORE OUR HOTEL
       </h6>
-      <!-- Vertical line -->
-      <div class="absolute left-1/2 bottom-0 transform -translate-x-1/2 h-24 w-0.5 bg-white hidden lg:flex"></div>
     </div>
   </div>
 </template>
@@ -241,12 +248,8 @@ h2 {
 }
 h3,
 .buttontext,
-h6 {
-  font-family: "Work Sans", sans-serif;
+h6,p,ul li,a {
+  font-family: "Barlow", sans-serif;
 }
-p {
-  font-family: "Open Sans", sans-serif;
-}
-
 
 </style>

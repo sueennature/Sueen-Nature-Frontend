@@ -1,9 +1,9 @@
 <template>
   <div class="relative">
     <img
-      src="/img/sueen-hero-background-2 1.png"
+      src="/img/hero-home.png"
       alt="backgroundImg"
-      class="w-full min-h-screen object-cover"
+      class="w-full min-h-screen object-cover lg:min-h-0"
     />
     <!-- stiky navbar -->
     <nav
@@ -186,9 +186,11 @@
         </div>
       </div>
     </nav>
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black-200 opacity-30 z-20"></div>
     <!-- hero logo image -->
-    <div class="absolute top-2 left-0 w-full md:flex hidden items-center">
-      <a href="/" class="relative mx-auto">
+    <div class="absolute z-40 top-8 left-0 w-full md:flex hidden items-center">
+      <a href="/home" class="relative mx-auto">
         <!-- Adjust mx-2 as needed for spacing -->
         <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
         <div
@@ -203,7 +205,7 @@
     </div>
     <!-- default navbar -->
     <div
-      class="absolute top-20 left-0 right-0 md:flex hidden justify-center md:top-60"
+      class="absolute z-40 top-20 left-0 right-0 md:flex hidden justify-center md:top-60"
     >
       <div class="flex flex-row justify-center md:space-x-4 space-x-0">
         <a
@@ -219,6 +221,13 @@
         >
           About
         </a>
+     
+              <a
+                href="/additionalActivites"
+                class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+                >Activites</a
+              >
+         
         <a
           href="/services"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -231,12 +240,7 @@
         >
           Rooms
         </a>
-        <!-- <a
-          href="/news"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-neutral-400"
-        >
-          News
-        </a> -->
+
         <a
           href="/contact"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -247,63 +251,26 @@
     </div>
     <!-- main hero booking options selector -->
     <div
-      class="absolute inset-x-0 bottom-12 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
+      class="absolute z-40 inset-x-0 bottom-24 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
     >
       <div
-        class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-4 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
+        class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
       >
         <div class="relative md:max-w-sm md:mx-auto">
-          <!-- <div
-            class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="none"
-                stroke="#ffffff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="m7 10l5 5m0 0l5-5"
-              />
-            </svg>
-          </div> -->
+       
           <input
               type="date"
               class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="Check In Date"
-              v-model="fromDate"
+              v-model="check_in"
             />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
         <div class="relative md:max-w-sm md:mx-auto">
-          <!-- <div
-            class="absolute inset-y-0 end-0 flex items-center pe-2 pointer-events-none"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="none"
-                stroke="#ffffff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="m7 10l5 5m0 0l5-5"
-              />
-            </svg>
-          </div> -->
           <input
             type="date"
-            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" v-model="toDate"
+            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" v-model="check_out"
           />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
@@ -311,23 +278,25 @@
         <form class="md:max-w-sm md:mx-auto">
           <select
             id="view"
-            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+           
+            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-none focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
             v-model="room_type_id"
           >
-            <option v-for="room in room_types" :value="room.id" :key="room.id">{{ room.name }}</option>
+            <option :value="null" disabled selected class="text-gray-300 option-text">Choose a Room</option>
+            <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200 option-text">{{ room.name }}</option>
           </select>
         </form>
       </div>
 
       <button
-        class="bg-red-100 text-sm text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
+        class="bg-red-100 text-sm buttontext text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
         @click="checkAvailability"
       >
         Check Availability
       </button>
       <div class="md:hidden">
         <button
-          class="bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
+          class="bg-red-100 buttontext text-sm text-white p-4 rounded-none border border-white w-full"
         >
           Check Availability
         </button>
@@ -338,32 +307,55 @@
 </template>
   
 <script>
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 export default {
+  
   data() {
     return {
-      fromDate: '', 
-      toDate: '',
+      check_in: '', 
+      check_out: '',
       room_type_id: null, 
       room_types: [],
     };
   },
   methods:{
+    setupToast(){
+    toast.error("welcome to sda",{
+      autoClose:1000,
+    })
+  },
     async checkAvailability() {
+      if (!this.check_in || !this.check_out || !this.room_type_id) {
+      this.setupToast("Please fill in all fields.");
+      return; 
+    }
       const body = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          check_in: this.fromDate,
-          check_out: this.toDate,
+          check_in: this.check_in,
+          check_out: this.check_out,
           room_type_id: this.room_type_id,
         }),
       };
 
       try {
-        const response = await fetch('https://sueen.website/dashboard/public/api/checkAvailability', body);
+        const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
         if(response.status===200){
-          this.$router.push({ path: '/booking', query: { roomTypeId: this.room_type_id } });
+          setTimeout(() => {
+            this.$router.push({ 
+              path: '/booking', 
+              query: { 
+                check_in: this.check_in, 
+                check_out: this.check_out, 
+                roomTypeId: this.room_type_id 
+              } 
+                });
+              }, 3000);
+          this.setupToastSucess("Successfully checked");
+
         }else{
           window.alert("Ths room is not available")
         }       
@@ -371,7 +363,17 @@ export default {
         window.alert(error);
       }
     },
+    setupToast(message) {
+    toast.error(message, {
+      autoClose: 3000, 
+    });
   },
+  setupToastSucess(message) {
+    toast.success(message, {
+      autoClose: 3000, 
+    });
+  },
+},
   mounted() {
     Promise.all([
       import("flowbite-datepicker/Datepicker"),
@@ -388,7 +390,7 @@ export default {
         orientation: "bottom right", // Set orientation for the second datepicker
       });
     });
-    fetch('https://sueen.website/dashboard/public/api/getRoomTypes')
+    fetch('https://admin.sueennature.com/api/getRoomTypes')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -420,6 +422,15 @@ input[type="date"] {
 } */
 #view{
   background-position: right 1.25rem center;
+  
 }
+h2 {
+  font-family: "Philosopher", sans-serif;
+}
+
+p,ul li,a,h6,h3,.buttontext,input,select,.option-text {
+  font-family: "Barlow", sans-serif;
+}
+
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-20">
+  <div class="sm:container px-4 py-20">
     <h2 class="uppercase text-black-200 text-2xl text-left tracking-widest">
       Our Blog
     </h2>
@@ -95,12 +95,10 @@ h5 {
 h2,
 .buttontext,
 h6,
-a {
-  font-family: "Work Sans", sans-serif;
+a,p{
+  font-family: "Barlow", sans-serif;
 }
-p {
-  font-family: "Open Sans", sans-serif;
-}
+
 .relaxationCard{
     letter-spacing: 0.6rem;
 }

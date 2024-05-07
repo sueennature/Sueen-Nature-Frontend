@@ -1,8 +1,8 @@
 <template>
   <div class="bg-gradient-to-r from-stone-500 via-stone-600 to-stone-700">
-    <div class="container pt-20">
-      <h3 class="uppercase text-gray-500 text-xl">Our Facilities</h3>
-      <h2 class="text-gray-500 text-5xl pt-4">Hotel Amenities</h2>
+    <div class="sm:container px-4 pt-20">
+      <h3 class="uppercase text-gray-500 text-xl xl:ml-7">Our Facilities</h3>
+      <h2 class="text-gray-500 text-5xl pt-4 xl:ml-7">Hotel Amenities</h2>
       <hr
         class="h-px w-full bg-gradient-to-r from-transparent via-neutral-400 to-transparent border-none border-opacity-20 mt-8"
       />
@@ -29,7 +29,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Air Conditioner
             </h5>
@@ -64,7 +64,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Breakfast
             </h5>
@@ -98,7 +98,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Fiber Wifi
             </h5>
@@ -132,7 +132,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Pool
             </h5>
@@ -151,7 +151,7 @@
       />
       <div class="grid xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 py-0">
         <div
-          class="xl:border-l border-stone-500 mx-auto max-w-sm rounded-0 dark:bg-gray-800 dark:border-gray-700"
+          class="xl:border-none border-stone-500 mx-auto max-w-sm rounded-0 dark:bg-gray-800 dark:border-gray-700"
         >
           <div class="p-8 bg-transparent">
             <div
@@ -171,7 +171,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Room Service
             </h5>
@@ -205,7 +205,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Parking Space
             </h5>
@@ -239,7 +239,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Laundry
             </h5>
@@ -263,7 +263,7 @@
             </div>
 
             <h5
-              class="my-2 text-xl font-semibold tracking-tight text-white dark:text-white"
+              class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
               Sport
             </h5>
@@ -286,11 +286,11 @@
 </script>
 
 <style scoped>
-h2 {
+h2,h5 {
   font-family: "Philosopher", sans-serif;
 }
-h3 {
-  font-family: "Work Sans", sans-serif;
+h3,p {
+  font-family: "Barlow", sans-serif;
 }
 .card-padding {
   padding: 0.5px;

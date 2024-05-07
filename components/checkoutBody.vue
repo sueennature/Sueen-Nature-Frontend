@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-28">
+  <div class="sm:container px-4 my-28">
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16">
       <!-- shipping details submiting form -->
       <div>
@@ -722,14 +722,11 @@ h2,
   font-family: "Philosopher", sans-serif;
 }
 h3,
-h5 {
-  font-family: "Work Sans", sans-serif;
-}
-p,
+h5,p,
 label,
 select,
 input {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Barlow", sans-serif;
 }
 ::marker {
   color: #c64816; /* Change this color to the desired color */

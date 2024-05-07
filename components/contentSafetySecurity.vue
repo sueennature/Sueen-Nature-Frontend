@@ -1,0 +1,55 @@
+<template>
+  <div class="sm:container px-4 py-20">
+    <!-- main title -->
+    <h2
+      class="text-black-200 md:text-4xl text-xl font-bold text-center max-w-[50ch] mx-auto"
+    >
+      Sueen Nature Resort Safety and Security
+    </h2>
+    <p class="text-base text-gray-300 mt-16">
+      Safety and security are paramount at Sueen Nature Resort, and we are committed to providing a secure environment for all our guests. Here are some of the safety and security measures we have in place:
+    </p>
+    <ol
+      class="w-full mt-4 space-y-6 text-gray-300 list-decimal list-inside dark:text-gray-400"
+    >
+      <li>
+        <strong>Staff Training and Awareness: </strong> All staff members are considered part of the security team and are trained to prioritize guest safety and security. They are vigilant and proactive in identifying and addressing potential security concerns.
+
+      </li>
+      <li>
+        <strong>Closed Circuit Television (CCTV) Surveillance: </strong>We have installed the latest CCTV technology at key areas throughout the resort premises. Trained security officers monitor these cameras 24/7 to ensure the safety of our guests and the security of the property.
+      </li>
+      <li>
+        <strong>Regular Security Audits: </strong>Comprehensive security audits are conducted regularly to assess and enhance security measures. These audits help identify any vulnerabilities and ensure that our security protocols are up to date and effective.
+      </li>
+      <li>
+        <strong>Dedicated Fire/Life/Safety Officers: </strong> We have appointed dedicated Fire/Life/Safety Officers whose primary responsibility is to monitor and maintain all fire, life, and safety systems within the resort. They are trained to respond swiftly and effectively in case of any emergency situations.
+      </li>
+      <li>
+        <strong>Ongoing Staff Training Workshops: </strong> Our security staff regularly participate in training workshops to ensure they are well-equipped to handle various emergency situations. These workshops cover a wide range of scenarios and provide our staff with the necessary skills and knowledge to respond effectively.
+      </li>
+      <li>
+        <strong>24/7 Emergency Response Teams: </strong>We have cross-functional emergency response teams available on-site 24 hours a day, 7 days a week. These teams are trained to respond to emergencies promptly and efficiently, ensuring the safety and well-being of our guests at all times.
+      </li>
+    </ol>  
+    <p class="text-base text-gray-300 mt-6">
+      At Sueen Nature Resort, we prioritize the safety and security of our guests above all else. You can relax and enjoy your stay knowing that we have implemented stringent security measures to protect you and provide you with a safe and secure environment. If you have any concerns or require assistance during your stay, please do not hesitate to contact our staff or security team. Your safety is our top priority.
+    </p>
+  </div>
+</template>
+
+<script setup>
+</script>
+
+<style scoped>
+h2 {
+  font-family: "Philosopher", sans-serif;
+}
+
+h5,
+a,
+p,
+ol li {
+  font-family: "Barlow", sans-serif;
+}
+</style>

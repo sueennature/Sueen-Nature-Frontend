@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-20">
+  <div class="sm:container px-4 py-20">
     <!-- main title -->
     <h2
       class="text-black-200 md:text-4xl text-xl font-medium text-center max-w-[50ch] mx-auto"

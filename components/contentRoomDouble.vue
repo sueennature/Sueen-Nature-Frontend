@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-20">
+  <div class="sm:container px-4 pt-20">
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-center">
       IN YOUR ROOM
     </h2>
@@ -318,12 +318,8 @@ h2 {
 }
 p,
 h3,
-.buttontext {
-  font-family: "Work Sans", sans-serif;
-}
-h6,
-ul li {
-  font-family: "Open Sans", sans-serif;
+.buttontext,h6,ul li {
+  font-family: "Barlow", sans-serif;
 }
 </style>
 

@@ -1,13 +1,15 @@
 <template>
-  <div class="lg:flex lg:flex-row grid grid-cols-1 justify-center justify-items-center gap-8 my-10 p-4 lg:p-0">
+  <div
+    class="lg:flex lg:flex-row grid grid-cols-1 justify-center justify-items-center gap-8 my-10 p-4 lg:p-0"
+  >
     <div
       class="w-full p-4 max-w-lg bg-white border border-gray-200 rounded-none shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
     >
       <form class="space-y-6" action="#">
         <h3
-          class="text-2xl font-bold text-stone-700 dark:text-white text-center tracking-widest"
+          class="text-2xl font-bold text-stone-700 dark:text-white text-center"
         >
-          GET IN TOUCH
+          Get in Touch
         </h3>
         <h2
           class="text-6xl font-bold text-stone-700 dark:text-white text-center my-6"
@@ -17,19 +19,22 @@
         <p
           class="text-base font-bold text-black-50 dark:text-white text-center my-8"
         >
-        Feel free to reach out to us for any inquiries, reservations, or feedback. Our dedicated team at Sueen Nature Resort is here to assist you.
+          Feel free to reach out to us for any inquiries, reservations, or
+          feedback. Our dedicated team at Sueen Nature Resort is here to assist
+          you.
         </p>
 
         <div class="grid gap-x-4 mb-6 grid-cols-2 gap-y-6">
           <div>
             <label
               for="name"
-              class="block mb-2 text-sm  text-black-200 font-bold dark:text-white"
-              >Name</label>
+              class="block mb-2 text-sm text-black-200 font-bold dark:text-white"
+              >Name</label
+            >
             <input
               type="text"
               id="name"
-              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Name"
               required
             />
@@ -43,7 +48,7 @@
             <input
               type="email"
               id="Email"
-              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Email"
               required
             />
@@ -57,7 +62,7 @@
             <input
               type="tel"
               id="phone"
-              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="+ 1009 12345"
               required
             />
@@ -66,16 +71,15 @@
             <label
               for="countries"
               class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
-              >Room</label>
+              >Room</label
+            >
             <select
               id="rooms"
-              class="bg-white border-black-200 text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-white border-black-200 text-black-200 text-opacity-60 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Deluxe Room</option>
-              <option value="premium room">premium room</option>
-              <option value="premium room">premium room</option>
-              <option value="premium room">premium room</option>
-              <option value="premium room">premium room</option>         
+              <option value="Single Room">Single Room</option>
+              <option value="Double Room">Double Room</option>
             </select>
           </div>
         </div>
@@ -88,7 +92,7 @@
         <textarea
           id="message"
           rows="4"
-          class="block p-2.5 w-full text-sm text-black-200 text-opacity-40 placeholder:text-black-200 placeholder:text-opacity-40 placeholder:text-sm  bg-white border-black-200 rounded-0 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="block p-2.5 w-full text-sm text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm bg-white border-black-200 rounded-0 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your Message"
         ></textarea>
 
@@ -102,8 +106,10 @@
     </div>
     <!-- column of contact details inofrmation -->
     <div class="flex flex-col space-y-4">
-      <div class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700">
-        <h5 class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white">
+      <div
+        class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
           EMAIL US
         </h5>
         <div class="flex flex-row gap-1">
@@ -132,15 +138,17 @@
               />
             </g>
           </svg>
-          <a href="mailto:sueennature@gmail.com" class="text-stone-700 hover:underline text-base">sueennature@gmail.com</a>
+          <a
+            href="mailto:sueennature@gmail.com"
+            class="text-stone-700 hover:underline text-base"
+            >sueennature@gmail.com</a
+          >
         </div>
       </div>
       <div
         class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
       >
-        <h5
-          class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white"
-        >
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
           CALL US
         </h5>
         <div class="flex flex-row gap-1">
@@ -172,17 +180,14 @@
           <a
             href="tel:+94715840000"
             class="text-stone-700 hover:underline text-base"
-            >+(94) 715 - 840 - 000
-</a
-          >
+            >+(94) 71 58 4000
+          </a>
         </div>
       </div>
       <div
         class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
       >
-        <h5
-          class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white"
-        >
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
           LOCATION
         </h5>
         <div class="flex flex-row gap-1">
@@ -212,19 +217,18 @@
             </g>
           </svg>
           <a
-            
+            href="https://maps.app.goo.gl/TaHXpW9rRsbYadZa8"
             class="text-stone-700 hover:underline text-base"
-            >Sueen Nature, Palangahawatta, Morapitiya Road, Palanda, Baduraliya, Sri Lanka</a
+            >Sueen Nature, Palangahawatta, Morapitiya Road, Palanda, Baduraliya,
+            Sri Lanka</a
           >
         </div>
       </div>
       <div
         class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
       >
-        <h5
-          class="mb-2 text-lg font-medium tracking-widest text-stone-700 dark:text-white"
-        >
-          Whatsapp
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
+          WhatsApp
         </h5>
         <div class="flex flex-row gap-1">
           <svg
@@ -255,7 +259,7 @@
           <a
             href="https://wa.me/+94715840000"
             class="text-stone-700 hover:underline text-base"
-            >+(94) - 715 - 840 - 000</a
+            >+(94) 71 58 4000</a
           >
         </div>
       </div>
@@ -263,25 +267,52 @@
   </div>
 </template>
 
-<script setup>
+<script>
+export default {
+  data() {
+    return {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    }
+  },
+  methods: {
+    async sendEmail() {
+      try {
+        const response = await this.$axios.$post('/send-email', {
+          name: this.name,
+          email: this.email,
+          subject: this.subject,
+          message: this.message
+        })
+        console.log(response.message)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  }
+}
 </script>
 
 <style scoped>
 h2 {
   font-family: "Philosopher", sans-serif;
 }
+
 h3,
 .buttontext,
-h5 {
-  font-family: "Work Sans", sans-serif;
-}
 p,
-a,input,label {
-  font-family: "Open Sans", sans-serif;
+h5,
+label,
+input,
+textarea,
+a {
+  font-family: "Barlow", sans-serif;
 }
+
 #rooms {
   /* Your existing styles here */
   background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
 }
-
 </style>
