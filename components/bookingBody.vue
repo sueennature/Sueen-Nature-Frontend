@@ -356,6 +356,7 @@
               <form class="max-w-sm">
                 <select
                   :id="'infant-age-' + index"
+                  required
                   class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
@@ -1275,6 +1276,7 @@ export default {
           if (data.error) {
             throw new Error(data.error);
           }
+          toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
           window.location.href = data.ipg;
         })
         .catch((error) => {
