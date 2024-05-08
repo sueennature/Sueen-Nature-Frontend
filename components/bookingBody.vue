@@ -1065,7 +1065,7 @@ export default {
             console.log('Error data:', error.response.data);
 
             if(error.response.data.message === "Invalid Credentials"){
-              if(isSocialLogin){
+              if(this.isSocialLogin){
                 this.register();
               }else{
                 this.setupToastError("Please check your credentials");
