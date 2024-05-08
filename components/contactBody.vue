@@ -305,19 +305,20 @@ export default {
     },
     async submitForm(){
       console.log("DATA",this.formData )
-      // try {
-      //   const response = await this.$axios.$post('https://admin.sueennature.com/api/contact', {
-      //     name: this.formData.name,
-      //     email: this.formData.email,
-      //     message: this.formData.message,
-      //     room: this.formData.room,
-      //     phoneNumber: this.formData.phone
-      //   })
-      //   toast.success("Form Submiited Successfully")
-      //   console.log(response.message)
-      // } catch (error) {
-      //   console.error(error)
-      // }
+      try {
+        const response = await this.$axios.$post('https://admin.sueennature.com/api/contact', {
+          name: this.formData.name,
+          email: this.formData.email,
+          message: this.formData.message,
+          room: this.formData.room,
+          phoneNumber: this.formData.phone
+        })
+        toast.success("Form Submiited Successfully")
+        console.log(response.message)
+      } catch (error) {
+        toast.error("Something went wrong")
+        console.error(error)
+      }
     },
     resetForm(){
       this.formData.name = '';
