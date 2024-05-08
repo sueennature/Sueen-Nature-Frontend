@@ -1045,7 +1045,7 @@ export default {
         console.log("RES",response)
         this.setupToastSucess("Succcessfully Logged In")
           setTimeout(() => {
-          this.$router.push({ path: '/dashboard', });
+            this.$router.push({ path: '/dashboard', query: { email: this.loginUser.email } });
             }, 3000); 
       } catch (error) {
         this.setupToastError("An error occurred. Please try again later.");
@@ -1281,12 +1281,14 @@ export default {
         })
         .catch((error) => {
           console.log("RESPONSE ERROR ", error);
-          alert(error);
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error
-          );
+          console.error("There has been a problem with your fetch operation:", error);
+          if (error instanceof Error) {
+            toast.error(error.message);
+          } else {
+            toast.error("An unknown error occurred.");
+          }
         });
+
     },
   },
   computed: {

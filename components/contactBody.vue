@@ -5,7 +5,7 @@
     <div
       class="w-full p-4 max-w-lg bg-white border border-gray-200 rounded-none shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
     >
-      <form class="space-y-6" action="#">
+      <form class="space-y-6" @submit.prevent="submitForm">
         <h3
           class="text-2xl font-bold text-stone-700 dark:text-white text-center"
         >
@@ -34,6 +34,7 @@
             <input
               type="text"
               id="name"
+              v-model="formData.name"
               class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Name"
               required
@@ -48,6 +49,7 @@
             <input
               type="email"
               id="Email"
+              v-model="formData.email"
               class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Your Email"
               required
@@ -62,6 +64,7 @@
             <input
               type="tel"
               id="phone"
+              v-model="formData.phone"
               class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="+ 1009 12345"
               required
@@ -75,6 +78,7 @@
             >
             <select
               id="rooms"
+              v-model="formData.room"
               class="bg-white border-black-200 text-black-200 text-opacity-60 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option selected>Deluxe Room</option>
@@ -92,12 +96,13 @@
         <textarea
           id="message"
           rows="4"
+          v-model="formData.message"
           class="block p-2.5 w-full text-sm text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm bg-white border-black-200 rounded-0 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your Message"
         ></textarea>
 
         <button
-          type="button"
+          type="submit"
           class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
         >
           send request
@@ -268,13 +273,20 @@
 </template>
 
 <script>
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
 export default {
   data() {
     return {
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
+      formData:{
+        name: '',
+        email: '',
+        phone: '',
+        room:"Deluxe Room",
+        message: ''
+      }
+     
     }
   },
   methods: {
@@ -290,9 +302,32 @@ export default {
       } catch (error) {
         console.error(error)
       }
+    },
+    async submitForm(){
+      console.log("DATA",this.formData )
+      // try {
+      //   const response = await this.$axios.$post('https://admin.sueennature.com/api/contact', {
+      //     name: this.formData.name,
+      //     email: this.formData.email,
+      //     message: this.formData.message,
+      //     room: this.formData.room,
+      //     phoneNumber: this.formData.phone
+      //   })
+      //   toast.success("Form Submiited Successfully")
+      //   console.log(response.message)
+      // } catch (error) {
+      //   console.error(error)
+      // }
+    },
+    resetForm(){
+      this.formData.name = '';
+      this.formData.email = '';
+      this.formData.phone = '';
+      this.formData.room = 'Deluxe Room';
+      this.formData.message = '';
     }
   }
-}
+};
 </script>
 
 <style scoped>
