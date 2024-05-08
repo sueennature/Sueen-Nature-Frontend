@@ -1,6 +1,6 @@
 <template>
   <div class="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
-    <button
+    <!-- <button
       @click="loginWithGoogle"
       class="w-full bg-white border border-gray-400 rounded-md py-1 text-center"
     >
@@ -30,12 +30,19 @@
         </svg>
         <span>Google</span>
       </div>
-    </button>
+    </button> -->
+    <div class="flex items-center justify-center space-x-4" style={{backgroundColor: red}}>
+      <GoogleSignInButton
+        @success="handleLoginSuccess"
+        @error="handleLoginError"
+         scope="https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+      ></GoogleSignInButton>
+    </div>
     <div v-if="error">{{ error }}</div>
 
     <button
       @click="loginWithFacebook"
-      class="w-full bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white"
+      class="bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white mx-8"
     >
       <div class="flex items-center justify-center space-x-4">
         <svg
@@ -59,17 +66,33 @@
   </div>
 </template>
 
-<script>
-import { socialLogin } from "@/utils/socialLogin";
+<script setup lang="ts">
+import { GoogleSignInButton, type CredentialResponse} from "vue3-google-signin";
+import VueJwtDecode from 'vue-jwt-decode';
+import { defineEmits } from 'vue';
 
-export default {
-  methods: {
-    loginWithGoogle() {
-      socialLogin("google");
-    },
-    loginWithFacebook() {
-      socialLogin("facebook");
-    },
-  },
+const emit = defineEmits(['loginSuccess']);
+
+const handleLoginSuccess = (response: CredentialResponse) => {
+  const { credential } = response;
+  console.log("Access Token", credential);
+  console.log("Response", response);
+
+  if(response){
+    const decoded = VueJwtDecode.decode(credential);
+    console.log('Decoded', decoded);
+
+    const email = decoded.email;
+    const password = decoded.sub;
+    const name = decoded.given_name;
+    const lname = decoded.family_name;
+
+    emit('loginSuccess', { name, lname, email, password });
+  }
+
+};
+
+const handleLoginError = () => {
+  console.error("Login failed");
 };
 </script>
