@@ -32,15 +32,14 @@
       >
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">Stay</h2>
-          <h3 class="text-black-50 uppercase text-sm mt-3">Stay with us</h3>
-          <h3 class="text-black-50 uppercase text-sm mt-1">Explore rooms</h3>
-          <h3 class="text-black-50 uppercase text-sm mt-1">enjoy amenities</h3>
+          <a class="text-black-50 uppercase text-sm mt-3" href="/rooms">Stay with us</a>
+          <a class="text-black-50 uppercase text-sm mt-1" href="/rooms">Explore rooms</a>
         </div>
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">Dine</h2>
-          <h3 class="text-black-50 uppercase text-sm mt-3">dine with us</h3>
-          <h3 class="text-black-50 uppercase text-sm mt-1">enjoy a meal</h3>
-          <h3 class="text-black-50 uppercase text-sm mt-1">have a drink</h3>
+          <a class="text-black-50 uppercase text-sm mt-3" href="/services">dine with us</a>
+          <a class="text-black-50 uppercase text-sm mt-1" href="/services">enjoy a meal</a>
+          <a class="text-black-50 uppercase text-sm mt-1" href="/services">have a drink</a>
         </div>
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">More</h2>

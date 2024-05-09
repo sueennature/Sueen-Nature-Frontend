@@ -286,6 +286,17 @@
             <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200 option-text">{{ room.name }}</option>
           </select>
         </form>
+
+        <form class="md:max-w-sm md:mx-auto">
+          <select
+            id="view"       
+            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-none focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            v-model="view_type_id"
+          >
+            <option :value="null" disabled selected class="text-gray-300 option-text">Choose Room View</option>
+            <option v-for="view in view_types" :value="view.id" :key="view.id" class="text-black-200 option-text">{{ view.name }}</option>
+          </select>
+        </form>
       </div>
 
       <button
@@ -317,6 +328,8 @@ export default {
       check_out: '',
       room_type_id: null, 
       room_types: [],
+      view_type_id: null,
+      view_types: [],
     };
   },
   methods:{
@@ -343,22 +356,19 @@ export default {
       try {
         const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
-        if(response.status===200){
-          setTimeout(() => {
-            this.$router.push({ 
-              path: '/booking', 
-              query: { 
-                check_in: this.check_in, 
-                check_out: this.check_out, 
-                roomTypeId: this.room_type_id 
-              } 
-                });
-              }, 3000);
-          this.setupToastSucess("Successfully checked");
-
-        }else{
-          window.alert("Ths room is not available")
-        }       
+        if (response.status === 200) {
+           await this.$router.push({
+                path: '/booking',
+                query: {
+                    check_in: this.check_in,
+                    check_out: this.check_out,
+                    roomTypeId: this.room_type_id
+                }
+            });
+            window.location.reload();
+        } else {
+            window.alert("The room is not available");
+        } 
       } catch (error) {
         window.alert(error);
       }
