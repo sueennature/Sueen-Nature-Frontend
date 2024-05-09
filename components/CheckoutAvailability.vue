@@ -72,7 +72,16 @@
         </select>
       </form>
         
-        
+      <form class="lg:max-w-sm lg:mx-auto">
+        <select
+          id="view"
+          class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          v-model="view_type_id"
+        >
+          <option :value="null" disabled selected class="text-gray-300">Choose Room View</option>
+          <option v-for="view in view_types" :value="view.id" :key="view.id" class="text-black-200">{{ view.name }}</option>
+        </select>
+      </form>
       </div>
       
       <button
@@ -103,6 +112,8 @@ export default {
       check_out: '',
       room_type_id: null, 
       room_types: [],
+      view_type_id: null,
+      view_types: [],
     };
   },
   methods:{
