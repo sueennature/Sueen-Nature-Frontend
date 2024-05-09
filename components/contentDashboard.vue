@@ -22,7 +22,7 @@
           <h3
             class="mt-4 text-3xl whitespace-nowrap font-bold text-black-200 dark:text-white"
           >
-            Kenu Beam
+          {{ firstName }}
           </h3>
           <div class="flex flex-col mt-10 space-y-4">
             <div class="flex items-center space-x-8">
@@ -37,7 +37,7 @@
                   d="M8.656 3c-.523 0-1.039.188-1.469.531l-.062.031l-.031.032l-3.125 3.219l.031.03a3.134 3.134 0 0 0-.844 3.376c.004.008-.004.023 0 .031c.848 2.426 3.016 7.11 7.25 11.344c4.25 4.25 8.996 6.332 11.344 7.25h.031a3.59 3.59 0 0 0 3.469-.688L28.406 25c.828-.828.828-2.266 0-3.094l-4.062-4.062l-.032-.063c-.828-.828-2.296-.828-3.125 0l-2 2a16.176 16.176 0 0 1-4.093-2.812c-1.637-1.563-2.473-3.36-2.781-4.063l2-2c.84-.84.855-2.238-.032-3.062l.031-.032l-.093-.093l-4-4.125l-.031-.031l-.063-.032A2.356 2.356 0 0 0 8.656 3m0 2a.35.35 0 0 1 .219.094l4 4.093l.094.094c-.008-.008.058.098-.063.219l-2.5 2.5l-.469.438l.22.624s1.148 3.075 3.562 5.376l.219.187C16.261 20.746 19 21.906 19 21.906l.625.282l2.969-2.97c.172-.171.14-.171.312 0L27 23.314c.172.171.172.109 0 .28l-3.063 3.063c-.46.395-.949.477-1.53.282c-2.266-.891-6.669-2.825-10.595-6.75c-3.957-3.958-6.023-8.446-6.78-10.625c-.153-.407-.044-1.008.312-1.313l.062-.063l3.032-3.093A.35.35 0 0 1 8.655 5z"
                 />
               </svg>
-              <h4 class="text-xl font-bold text-black-200">+ 94 782 23 59</h4>
+              <h4 class="text-xl font-bold text-black-200"> {{ phoneNumber }}</h4>
             </div>
             <div class="flex items-center space-x-8">
               <svg
@@ -51,7 +51,7 @@
                   d="M15 2.5H1a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1m-1.3 1.25L8.42 8.56a.62.62 0 0 1-.84 0L2.3 3.75zm-12.45 8.5V4.48l5.49 5a1.86 1.86 0 0 0 2.52 0l5.49-5v7.77z"
                 />
               </svg>
-              <h4 class="text-xl font-bold text-black-200">you@gmail.com</h4>
+              <h4 class="text-xl font-bold text-black-200">{{email}}</h4>
             </div>
           </div>
         </div>
@@ -60,7 +60,8 @@
       <div
         class="mt-8 w-full xl:col-span-2 col-span-1 p-4 bg-white border border-gray-200 rounded-lg sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 shadow-lg shadow-gray-300"
       >
-        <form class="space-y-6" action="#">
+        <form class="space-y-6" @submit.prevent="updateUserProfile"
+>
           <h2
             class="text-3xl uppercase font-medium text-gray-900 dark:text-white"
           >
@@ -191,6 +192,9 @@
             v-model="address"
             :readonly="!editModeAddress"
           ></textarea>
+          <div>
+            <button type="submit" class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update</button>
+          </div>
         </form>
       </div>
     </div>
@@ -529,53 +533,129 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { onMounted, ref } from "vue";
 import { initFlowbite } from "flowbite";
 
-const firstName = ref("Kenu");
-const editModeFirstName = ref(false);
+import axios from 'axios';
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
-const toggleEditFirstName = () => {
-  editModeFirstName.value = !editModeFirstName.value;
+export default {
+  mounted() {
+    const email = this.$route.query.email;
+    console.log("Email:", email);
+
+    // Accessing cookies to retrieve the auth token
+    const cookies = document.cookie.split(';');
+    const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+    if (authTokenCookie) {
+      const authToken = authTokenCookie.split('=')[1];
+      console.log("Auth Token:", authToken);
+
+      const headers = {
+        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
+        'Content-Type': 'application/json'
+      };
+
+      const data = {
+        email: email
+      };
+      console.log("Headers",headers)
+      axios.get('https://admin.sueennature.com/api/user/information', {
+        headers: headers,
+        params: data
+      })
+      .then(response => {
+        console.log(response.data.user);
+        this.firstName = response.data.user.name;
+        this.lastName = response.data.user.lname;
+        this.email = response.data.user.email;
+        if (response.data.user.phone === null) {
+          this.phoneNumber = 'Not Available'; 
+        } else {
+          this.phoneNumber = response.data.user.phone;
+        }
+        if (response.data.user.address === null) {
+          this.address = 'Not Available'; 
+        } else {
+          this.address = response.data.user.address;
+        }
+      }
+      )
+      .catch(error => console.error('Error:', error));
+    } else {
+      console.log("Auth Token not found in cookies.");
+    }
+  },
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      address: '',
+      editModeFirstName: false,
+      editModeLastName: false,
+      editModePhoneNumber: false,
+      editModeEmail: false,
+      editModeAddress: false
+    };
+  },
+  methods: {
+    updateUserProfile() {
+      const body = {
+        name: this.firstName,
+        lname: this.lastName,
+        phone: this.phoneNumber,
+        email: this.email,
+        address: this.address
+      };
+
+      const cookies = document.cookie.split(';');
+      const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+      if (!authTokenCookie) {
+        console.error("Auth Token not found in cookies.");
+        return;
+      }
+      const authToken = authTokenCookie.split('=')[1];
+
+      const headers = {
+        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
+        'Content-Type': 'application/json'
+      };
+      console.log("BODY", body)
+      axios.post('https://admin.sueennature.com/api/user/profile', body, {
+        headers: headers
+      })
+      .then(response => {
+        console.log('Update successful:', response.data);
+        toast.success("User Updated Successfully")
+      })
+      .catch(error => {
+        console.error('Error updating profile:', error);
+        this.setupToastError("An error occurred. Please try again later.");
+      }
+      );
+    },
+      toggleEditFirstName() {
+      this.editModeFirstName = !this.editModeFirstName;
+    },
+    toggleEditLastName() {
+      this.editModeLastName = !this.editModeLastName;
+    },
+    toggleEditPhoneNumber() {
+      this.editModePhoneNumber = !this.editModePhoneNumber;
+    },
+    toggleEditEmail() {
+      this.editModeEmail = !this.editModeEmail;
+    },
+    toggleEditAddress() {
+      this.editModeAddress = !this.editModeAddress;
+    }
+  }
 };
-
-const lastName = ref("Bean");
-const editModeLastName = ref(false);
-
-const toggleEditLastName = () => {
-  editModeLastName.value = !editModeLastName.value;
-};
-
-const phoneNumber = ref("0712345698");
-const editModePhoneNumber = ref(false);
-
-const toggleEditPhoneNumber = () => {
-  console.log("test");
-  editModePhoneNumber.value = !editModePhoneNumber.value;
-};
-
-const address = ref("NO:8,  Gall read,  Colombo,  Srilanka.");
-const editModeAddress = ref(false);
-
-const toggleEditAddress = () => {
-  console.log("testAddress");
-  editModeAddress.value = !editModeAddress.value;
-};
-
-const email = ref("youremail@gmail.com");
-const editModeEmail = ref(false);
-
-const toggleEditEmail = () => {
-  editModeEmail.value = !editModeEmail.value;
-};
-
-// initialize components based on data attribute selectors
-onMounted(() => {
-  initFlowbite();
-});
 </script>
-
 <style scoped>
 h2,
 h6 {

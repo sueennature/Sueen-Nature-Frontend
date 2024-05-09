@@ -742,7 +742,7 @@
               Use your social profile to register
             </p>
             <!-- SOCIAL MEDIA LOGIN -->
-            <SocialLogin @login-success="handleGoogleLoginData"/>
+            <SocialLogin />
 
 
             <!-- Centered "or" text -->
@@ -903,7 +903,7 @@
               Use your social profile to Login
             </p>
             <!-- SOCIAL LOGIN -->
-            <SocialLogin @login-success="handleGoogleLoginData"/>
+            <SocialLogin />
 
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
@@ -947,17 +947,6 @@
                 <p>Don't have an account?</p>
                 <button @click="redirectToRegister" id="toggle-modal-button" class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Register Here</button>
               </div>-->
-               <div class="flex flex-row items-center text-md space-x-1">
-                <p>Don't have an account?</p>
-                <button
-                  @click="toggleModal"
-                  id="toggle-modal-button"
-                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  type="button"
-                >
-                  Register Here
-                </button>
-              </div>
             </form>
           </div>
         </div>
@@ -976,7 +965,8 @@ import { useNuxtApp } from '#app';
 import SocialLogin from './SocialLogin.vue';
 import {toast} from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-import axios from 'axios';
+
+
 
 export default {
   components: {
@@ -998,7 +988,6 @@ export default {
       boardType: [],
       mealPlans: [],
       activities:[],
-      isSocialLogin: false,
       price: 0,
       form: {
         first_name: "",
@@ -1047,72 +1036,24 @@ export default {
           this.setupToastError("Please enter a valid email address.");
           return;
         }    
-      // try {
-        const response = await axios.post('https://admin.sueennature.com/api/login', {
+      try {
+        const response = await apiRequest('https://admin.sueennature.com/api/login', 'POST', {
           email: this.loginUser.email,
           password: this.loginUser.password,
-        }).
-          then(response => {
-            console.log('Status:', response.status);
-            console.log('Data:', response.data);
-
-            this.nuxtApp.$auth.setAuthToken(response.access_token);
-            this.$router.push({ path: '/dashboard', });
-            this.setupToastSucess("Successfully Logged In")
-          }).catch(error => {
-          if (error.response) {
-            console.log('Error status:', error.response.status);
-            console.log('Error data:', error.response.data);
-
-            if(error.response.data.message === "Invalid Credentials"){
-              if(this.isSocialLogin){
-                this.register();
-              }else{
-                this.setupToastError("Please check your credentials");
-              }           
-            }
-          } else if (error.request) {
-            console.log('Error request:', error.request);
-          } else {
-            console.log('Error', error.message);
-          }
-
-          // this.setupToastError("An error occurred. Please try again.");
         });
-
-
-      //   this.nuxtApp.$auth.setAuthToken(response.access_token);
-      //   console.log("RES",response)
-      //   this.setupToastSucess("Successfully Logged In")
-      //     // setTimeout(() => {
-      //     this.$router.push({ path: '/dashboard', });
-      //     //   }, 3000); 
-      // } catch (error) {
-      //   // this.setupToastError("An error occurred. Please try again later.");
-
-      //     let errorMessage = "An error occurred. Please try again later.";
-      //     if (error.response && error.response.data && error.response.data.message) {
-      //       errorMessage = error.response.data.message;
-      //     } else if (error.message) {
-      //       errorMessage = error.message;
-      //     }
-
-      //   this.setupToastError("An error occurred. Please try again later.");
-      //   console.log("ERR", error );
+        this.nuxtApp.$auth.setAuthToken(response.access_token);
+        console.log("RES",response)
+        this.setupToastSucess("Succcessfully Logged In")
+          setTimeout(() => {
+            this.$router.push({ path: '/dashboard', query: { email: this.loginUser.email } });
+            }, 3000); 
+      } catch (error) {
+        this.setupToastError("An error occurred. Please try again later.");
+        console.log("ERR",error.message);
         
-      // }
+      }
     },
-    handleGoogleLoginData({ name, lname, email, password }){
-
-      this.isSocialLogin = true,
-      this.registerUser.name = name;
-      this.registerUser.lname = lname;
-      this.registerUser.email = email;
-      this.registerUser.password = password;
-      this.loginUser.email = email;
-      this.loginUser.password = password;
-      this.login();
-    },
+ 
     logout() {
       this.$auth.logout()
       this.$router.push('/login')
@@ -1171,7 +1112,6 @@ export default {
     },
     toggleModal() {
       this.isModalVisible = !this.isModalVisible;
-      this.isModal2Visible = false;
     },
     closeModal() {
       this.isModalVisible = false;
@@ -1341,12 +1281,14 @@ export default {
         })
         .catch((error) => {
           console.log("RESPONSE ERROR ", error);
-          alert(error);
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error
-          );
+          console.error("There has been a problem with your fetch operation:", error);
+          if (error instanceof Error) {
+            toast.error(error.message);
+          } else {
+            toast.error("An unknown error occurred.");
+          }
         });
+
     },
   },
   computed: {
