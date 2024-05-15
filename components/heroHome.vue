@@ -275,26 +275,25 @@
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
-        <form class="md:max-w-sm md:mx-auto">
+        <form class="lg:max-w-sm lg:mx-auto">
           <select
-            id="view"
-           
-            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-none focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            id="room"
+            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             v-model="room_type_id"
+            @change="updateAvailableRooms"
           >
-            <option :value="null" disabled selected class="text-gray-300 option-text">Choose a Room</option>
-            <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200 option-text">{{ room.name }}</option>
+            <option :value="null" disabled selected class="text-gray-300">Choose a Room</option>
+            <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200">{{ room.name }}</option>
           </select>
         </form>
-
-        <form class="md:max-w-sm md:mx-auto">
+        <form class="lg:max-w-sm lg:mx-auto">
           <select
-            id="view"       
-            class="text-white text-sm p-4 w-full bg-transparent border-none rounded-none focus:ring-0 focus:border-white block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            id="view"
+            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             v-model="view_type_id"
           >
-            <option :value="null" disabled selected class="text-gray-300 option-text">Choose Room View</option>
-            <option v-for="view in view_types" :value="view.id" :key="view.id" class="text-black-200 option-text">{{ view.name }}</option>
+            <option :value="null" disabled selected class="text-gray-300">Choose Room View</option>
+            <option v-for="view in filteredViews" :value="view.id" :key="view.id" class="text-black-200">{{ view.location }}</option>
           </select>
         </form>
       </div>
@@ -330,7 +329,14 @@ export default {
       room_types: [],
       view_type_id: null,
       view_types: [],
+      filteredViews: [],
     };
+  },
+  computed: {
+    filteredRooms() {
+      if (!this.room_type_id) return [];
+      return this.rooms.filter(room => room.room_type_id === this.room_type_id);
+    }
   },
   methods:{
     setupToast(){
@@ -338,6 +344,10 @@ export default {
       autoClose:1000,
     })
   },
+  updateAvailableRooms() {
+      const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
+      this.filteredViews = selectedRoom ? selectedRoom.rooms : [];
+    },
     async checkAvailability() {
       if (!this.check_in || !this.check_out || !this.room_type_id) {
       this.setupToast("Please fill in all fields.");
