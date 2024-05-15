@@ -134,6 +134,7 @@ export default {
       try {
         const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
+        console.log("DATA",data)
         this.setupToastSucess("Successfully checked the availability")
       } catch (error) {
         console.error(error);
@@ -163,7 +164,8 @@ fetch('https://admin.sueennature.com/api/getRoomTypes')
     return response.json();
   })
   .then((data) => {
-    this.room_types = data.room_types;
+    this.room_types = data.room_types
+    console.log('Response:', data); 
   })
   .catch((error) => {
     console.error('There has been a problem with your fetch operation:', error);
