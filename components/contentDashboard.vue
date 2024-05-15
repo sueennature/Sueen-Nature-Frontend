@@ -77,10 +77,12 @@
                 >
                 <button
                   class="text-blue-200 text-sm hover:text-blue-500"
+                  :class="{ 'text-red-500 hover:text-red-600': editModeFirstName }"
                   @click="toggleEditFirstName"
                   @click.prevent
                 >
-                  Edit
+                {{!editModeFirstName ? "Edit" : "Save"}}
+
                 </button>
               </div>
               <input
@@ -101,10 +103,12 @@
                 >
                 <button
                   class="text-blue-200 text-sm hover:text-blue-500"
+                  :class="{ 'text-red-500 hover:text-red-600': editModeLastName }"
                   @click="toggleEditLastName"
                   @click.prevent
                 >
-                  Edit
+                {{!editModeLastName ? "Edit" : "Save"}}
+
                 </button>
               </div>
               <input
@@ -127,9 +131,11 @@
               <button
                 class="text-blue-200 text-sm hover:text-blue-500"
                 @click="toggleEditPhoneNumber"
+                :class="{ 'text-red-500 hover:text-red-600': editModePhoneNumber }"
                 @click.prevent
               >
-                Edit
+              {{!editModePhoneNumber ? "Edit" : "Save"}}
+
               </button>
             </div>
 
@@ -152,9 +158,11 @@
               <button
                 class="text-blue-200 text-sm hover:text-blue-500"
                 @click="toggleEditEmail"
+                :class="{ 'text-red-500 hover:text-red-600': editModeEmail }"
                 @click.prevent
               >
-                Edit
+              {{!editModeEmail ? "Edit" : "Save"}}
+
               </button>
               <!-- @click="toggleEditEmail" -->
             </div>
@@ -179,9 +187,10 @@
             <button
               class="text-blue-200 text-sm hover:text-blue-500"
               @click="toggleEditAddress"
+              :class="{ 'text-red-500 hover:text-red-600': editModeAddress }"
               @click.prevent
             >
-              Edit
+               {{!editModeAddress ? "Edit" : "Save"}}
             </button>
           </div>
           <textarea
@@ -604,6 +613,10 @@ export default {
   },
   methods: {
     updateUserProfile() {
+      if (this.editModeFirstName || this.editModeLastName || this.editModeEmail || this.editModePhoneNumber || this.editModeAddress){
+        toast.error("Please save your changes")
+        return;
+      }
       const body = {
         name: this.firstName,
         lname: this.lastName,
