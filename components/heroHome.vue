@@ -347,6 +347,7 @@ export default {
   updateAvailableRooms() {
       const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
       this.filteredViews = selectedRoom ? selectedRoom.rooms : [];
+      this.view_type_id = null;
     },
     async checkAvailability() {
       if (!this.check_in || !this.check_out || !this.room_type_id) {
