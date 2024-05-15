@@ -1083,7 +1083,7 @@ export default {
         this.nuxtApp.$auth.setAuthToken(response.access_token);
           this.setupToastSucess("Succcessfully Registered")
           setTimeout(() => {
-          this.$router.push({ path: '/dashboard', });
+          this.$router.push({ path: '/dashboard',query: { email: this.registerUser.email } });
             }, 3000); 
 
       

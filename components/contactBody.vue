@@ -80,11 +80,14 @@
               id="rooms"
               v-model="formData.room"
               class="bg-white border-black-200 text-black-200 text-opacity-60 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
             >
-              <option selected>Deluxe Room</option>
+            <option value="" disabled selected hidden>Select the room</option>
+              <option value="Deluxe Room">Deluxe Room</option>
               <option value="Single Room">Single Room</option>
               <option value="Double Room">Double Room</option>
             </select>
+
           </div>
         </div>
 
@@ -275,6 +278,7 @@
 <script>
 import {toast} from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import axios from 'axios';
 
 export default {
   data() {
@@ -283,30 +287,21 @@ export default {
         name: '',
         email: '',
         phone: '',
-        room:"Deluxe Room",
+        room:"",
         message: ''
       }
      
     }
   },
   methods: {
-    async sendEmail() {
-      try {
-        const response = await this.$axios.$post('/send-email', {
-          name: this.name,
-          email: this.email,
-          subject: this.subject,
-          message: this.message
-        })
-        console.log(response.message)
-      } catch (error) {
-        console.error(error)
-      }
-    },
+
     async submitForm(){
-      console.log("DATA",this.formData )
+      if (!this.formData.room) {
+    toast.error("Please select a room");
+    return; 
+  }
       try {
-        const response = await this.$axios.$post('https://admin.sueennature.com/api/contact', {
+        const response = await axios.post('https://admin.sueennature.com/api/contact', {
           name: this.formData.name,
           email: this.formData.email,
           message: this.formData.message,
@@ -315,6 +310,7 @@ export default {
         })
         toast.success("Form Submiited Successfully")
         console.log(response.message)
+        this.resetForm()
       } catch (error) {
         toast.error("Something went wrong")
         console.error(error)

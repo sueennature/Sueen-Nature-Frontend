@@ -31,17 +31,14 @@
         <span>Google</span>
       </div>
     </button> -->
-    <div class="flex items-center justify-center space-x-4" style={{backgroundColor: red}}>
+    <div class="flex items-center justify-center space-x-4">
       <GoogleSignInButton
         @success="handleLoginSuccess"
         @error="handleLoginError"
          scope="https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
       ></GoogleSignInButton>
     </div>
-    <div v-if="error">{{ error }}</div>
-
     <button
-      @click="loginWithFacebook"
       class="bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white mx-8"
     >
       <div class="flex items-center justify-center space-x-4">
@@ -68,10 +65,16 @@
 
 <script setup lang="ts">
 import { GoogleSignInButton, type CredentialResponse} from "vue3-google-signin";
+// @ts-ignore
 import VueJwtDecode from 'vue-jwt-decode';
-import { defineEmits } from 'vue';
+import { defineEmits, ref } from 'vue';
+import { useRouter } from 'vue-router'; 
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 const emit = defineEmits(['loginSuccess']);
+const router = useRouter(); 
+const error = ref(null); 
 
 const handleLoginSuccess = (response: CredentialResponse) => {
   const { credential } = response;
@@ -88,11 +91,14 @@ const handleLoginSuccess = (response: CredentialResponse) => {
     const lname = decoded.family_name;
 
     emit('loginSuccess', { name, lname, email, password });
+    toast.success("Successfully Logged In")
+    setTimeout(() => {
+      router.push({ path: '/dashboard', query: { email:email } });
+            }, 3000); 
   }
 
 };
-
 const handleLoginError = () => {
-  console.error("Login failed");
+  toast.error("Something Went Wrong")
 };
 </script>
