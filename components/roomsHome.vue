@@ -9,51 +9,17 @@
       Sueen Nature Resort
     </h3>
     <div class="lg:flex lg:flex-row grid grid-cols-1 lg:justify-center lg:items-baseline justify-items-center gap-6 my-10">
-      <figure
-        class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
-      >
-        <a href="#">
-          <img
-            class="rounded-0"
-            src="/img/room1_4.png"
-            alt="image description"
-          />
+      
+      <figure v-for="room in room_types" :key="room.id" class="relative max-w-sm transition-all duration-300 cursor-pointer filter">
+        <a :href="`#${room.id}`">
+          <img class="rounded-0 w-96 h-72" :src="`https://admin.sueennature.com/uploads/${room.image}`" :alt="room.name + ' image'" />
         </a>
         <figcaption class="absolute px-4 text-lg text-white bottom-6">
-          <h5 class="text-base font-semibold text-white">LKR 12,000</h5>
-          <h2 class="text-3xl text-white">Deluxe Room</h2>
+          <h5 class="text-base font-semibold text-white">LKR {{ room.room_only }}</h5>
+          <h2 class="text-3xl text-white">{{ room.name }}</h2>
         </figcaption>
       </figure>
-      <figure 
-        class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
-      >
-        <a href="#">
-          <img
-            class="rounded-0"
-            src="/img/room1_2.png"
-            alt="image description"
-          />
-        </a>
-        <figcaption class="absolute px-4 text-lg text-white bottom-6">
-          <h5 class="text-base font-semibold text-white">LKR 16,000</h5>
-          <h2 class="text-3xl text-white">Double Room</h2>
-        </figcaption>
-      </figure>
-      <figure
-        class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
-      >
-        <a href="#">
-          <img
-            class="rounded-0"
-            src="/img/room1_3.png"
-            alt="image description"
-          />
-        </a>
-        <figcaption class="absolute px-4 text-lg text-white bottom-6">
-          <h5 class="text-base font-semibold text-white">LKR 20,000</h5>
-          <h2 class="text-3xl text-white">Triple Room</h2>
-        </figcaption>
-      </figure>
+
     </div>
     <div class="flex justify-center items-center">
       <a href="./rooms">
@@ -69,14 +35,34 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
 
 import { initFlowbite } from "flowbite";
+import { ref, onMounted } from "vue";
 
-// initialize components based on data attribute selectors
+const room_types = ref([]);
+
 onMounted(() => {
   initFlowbite();
+  
+  fetch("https://admin.sueennature.com/api/getRoomTypes")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      room_types.value = data.room_types; 
+      console.log("ROOM_DATA", data)
+    })
+    .catch((error) => {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    });
 });
+
 </script>
 
 <style scoped>
