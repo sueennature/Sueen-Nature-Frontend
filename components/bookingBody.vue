@@ -259,9 +259,11 @@
                 <input :id="'checkbox-' + activity.id" v-model="activity.checked" type="checkbox" :value="activity.id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label :for="'checkbox-' + activity.id" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ activity.name }} - LKR {{ formatPrice(activity.amount) }}</label>
             </div>
-
-
-
+            <!-- <img
+            :src="`https://admin.sueennature.com/uploads/${activity.image}`"
+            alt="roomImg"
+            class="w-full object-cover"
+          /> -->
         </div>
 
 
@@ -1322,7 +1324,7 @@ export default {
         );
       });
 
-      fetch('https://admin.sueennature.com//api/get-services')
+      fetch('https://admin.sueennature.com/api/get-services')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -1331,6 +1333,7 @@ export default {
       })
       .then((data) => {
         this.activities = data.services;
+        console.log("SER",data)
       })
       .catch((error) => {
         console.error('There has been a problem with your fetch operation:', error);

@@ -595,6 +595,7 @@ export default {
       .catch(error => console.error('Error:', error));
     } else {
       console.log("Auth Token not found in cookies.");
+      this.$router.push('/home')
     }
   },
   data() {

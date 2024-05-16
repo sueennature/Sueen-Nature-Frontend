@@ -346,6 +346,7 @@ export default {
       autoClose:1000,
     })
   },
+  
   updateAvailableRooms() {
       const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
       this.filteredViews = selectedRoom ? selectedRoom.rooms : [];
