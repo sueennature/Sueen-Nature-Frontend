@@ -141,17 +141,17 @@
       </div>
     </div>
     <!-- Bottom line details about the room -->
-    <div class="flex flex-row md:gap-4 gap-0 justify-center mt-4">
-      <h5 class="md:text-sm text-xs text-black-200 md:pl-4 pl-0 pr-1 md:pr-0 text-nowrap">
+    <div class="flex flex-row gap-4 justify-center mt-4">
+      <h5 class="md:text-sm text-xs text-black-200 pl-4">
         Size: <span class="italic">42 m<sup>2</sup></span>
       </h5>
-      <h5 class="md:text-sm text-xs text-black-200 border-l md:pl-4 md:px-0 px-2 text-nowrap">
-        Beds: 01 King
+      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+        Bed: 01 Queen
       </h5>
-      <h5 class="md:text-sm text-xs text-black-200 border-l md:pl-4 pl-1">
-        2 adults,  1 adult + 1 kid
+      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+        Occupancy: 01 Adult
       </h5>
-      <h5 class="md:text-sm text-xs text-black-200 border-l md:pl-4 pl-1">
+      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
         View: Direct Pool
       </h5>
     </div>
@@ -162,14 +162,11 @@
     <ul
       class="max-w-md text-base space-y-4 text-black-200 list-disc dark:text-gray-400 mx-auto mt-10 list-outside"
     >
-      <li><strong>Beds:</strong> King Bed</li>
-      <!-- <li><strong>Beds:</strong> King Bed or Two Double Queens.</li> -->
+      <li><strong>Beds:</strong> Queen Bed</li>
       <li><strong>Size:</strong> 452 Square Feet</li>
       <li><strong>Views:</strong> Direct Pool.</li>
       <li>
-        <strong>Occupancy:</strong> 2 adults,  1 adult + 1 kid
-       
-      </li>
+        <strong>Occupancy:</strong> 1 Adult       </li>
       <li><strong>Bathroom:</strong> One full granite bathroom.</li>
       <li>
         <strong>Features: </strong> Soothing, modern design, and
@@ -249,7 +246,7 @@
 <script>
 import { defineComponent, ref, onMounted } from "vue";
 import Splide from "@splidejs/splide";
-import "@splidejs/splide/dist/css/themes/splide-default.min.css"; // Import Splide CSS theme
+import "@splidejs/splide/dist/css/themes/splide-default.min.css"; 
 import checkAvailability from './checkAvailability.vue';
 
 
@@ -261,12 +258,12 @@ export default defineComponent({
 
   setup() {
     const slides = ref([
-      { src: "/img/deluxe_1.jpg", alt: "Image 1" },
-      { src: "/img/deluxe_2.jpg", alt: "Image 2" },
-      { src: "/img/deluxe_3.jpg", alt: "Image 3" },
-      { src: "/img/deluxe_1.jpg", alt: "Image 3" },
-      { src: "/img/deluxe_2.jpg", alt: "Image 3" },
-      { src: "/img/deluxe_3.jpg", alt: "Image 3" },
+      { src: "/img/double_1.jpg", alt: "Image 1" },
+      { src: "/img/double_2.jpg", alt: "Image 2" },
+      { src: "/img/double_3.jpg", alt: "Image 3" },
+      { src: "/img/double_1.jpg", alt: "Image 3" },
+      { src: "/img/double_2.jpg", alt: "Image 3" },
+      { src: "/img/double_3.jpg", alt: "Image 3" },
       // Add more images as needed
     ]);
      
@@ -285,7 +282,7 @@ export default defineComponent({
         fixedWidth: 104,
         fixedHeight: 58,
         isNavigation: true,
-        gap: 0,
+        gap: 10,
         focus: "center",
         pagination: false,
         cover: true,
@@ -295,7 +292,7 @@ export default defineComponent({
         },
         breakpoints: {
           640: {
-            fixedWidth: 104,
+            fixedWidth: 66,
             fixedHeight: 38,
           },
         },
@@ -322,5 +319,6 @@ h3,
 .buttontext,h6,ul li {
   font-family: "Barlow", sans-serif;
 }
+
 </style>
 

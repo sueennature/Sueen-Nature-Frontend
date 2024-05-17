@@ -146,10 +146,10 @@
         Size: <span class="italic">49 m<sup>2</sup></span>
       </h5>
       <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
-        Beds: 01 King
+        Beds: 02 Double Queens
       </h5>
       <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
-        Occupancy: 03 Adults / 02 Adults & 02 Kids
+        Occupancy:  03 Adults / 02 Adults & 01 Kid / 01 Adults & 02 Kids
       </h5>
       <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
         View: Direct Pool
@@ -162,12 +162,11 @@
     <ul
       class="max-w-md text-base space-y-4 text-black-200 list-disc dark:text-gray-400 mx-auto mt-10 list-outside"
     >
-      <li><strong>Beds:</strong> King Bed or Two Double Queens.</li>
-      <li><strong>Size:</strong> 455 Square Feet</li>
-      <li><strong>Views:</strong> West and East city views.</li>
+      <li><strong>Beds:</strong> Two Double Queens.</li>
+      <li><strong>Size:</strong> 528 Square Feet</li>
+      <li><strong>Views:</strong> Direct Pool.</li>
       <li>
-        <strong>Occupancy:</strong> 2 adults, or 2 adults + 1 child. Two double
-        beds: 4 guests, including up to 3 children.
+        <strong>Occupancy:</strong> 03 Adults / 02 Adults & 01 Kid / 01 Adults & 02 Kids
       </li>
       <li><strong>Bathroom:</strong> One full granite bathroom.</li>
       <li>

@@ -2,6 +2,7 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
+  
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   postcss: {
@@ -47,6 +48,10 @@ export default defineNuxtConfig({
     
   },
   
+  router: {
+      //@ts-ignore
+    middleware: ['auth'],
+  },
   // Add the `auth` configuration here
 
 })

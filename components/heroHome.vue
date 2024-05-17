@@ -286,6 +286,8 @@
             <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200">{{ room.name }}</option>
           </select>
         </form>
+        <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
+
         <form class="lg:max-w-sm lg:mx-auto">
           <select
             id="view"
@@ -344,6 +346,7 @@ export default {
       autoClose:1000,
     })
   },
+  
   updateAvailableRooms() {
       const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
       this.filteredViews = selectedRoom ? selectedRoom.rooms : [];
