@@ -55,7 +55,7 @@
         <a href="/checkout">
           <button
             class="buttontext bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full">
-            Check Availability
+            Check Availabilitys
           </button>
         </a>
       </div>

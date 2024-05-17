@@ -256,9 +256,21 @@
               Activities
             </h6>
             <div class="flex items-center mb-4 mt-8" v-for="(activity, index) in activities" :key="activity.id">
-                <input :id="'checkbox-' + activity.id" v-model="activity.checked" type="checkbox" :value="activity.id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label :for="'checkbox-' + activity.id" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ activity.name }} - LKR {{ formatPrice(activity.amount) }}</label>
-            </div>
+            <input
+              :id="'checkbox-' + activity.id"
+              v-model="activity.checked"
+              type="checkbox"
+              :value="activity.id"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              :for="'checkbox-' + activity.id"
+              class="ms-2 text-[17px] font-medium text-gray-900 dark:text-gray-300 flex items-center justify-between w-full "
+            >
+              {{ activity.name }} - <strong>LKR  {{ formatPrice(activity.amount) }}</strong>
+            </label>
+          </div>
+
             <!-- <img
             :src="`https://admin.sueennature.com/uploads/${activity.image}`"
             alt="roomImg"
@@ -1137,15 +1149,6 @@ export default {
     toast.error(message, {
       autoClose: 3000, 
     })},
-    // toggleModal(event) {
-    //   event.preventDefault();
-    //   this.isModalOpen = !this.isModalOpen;
-    //   if (this.isModalOpen) {
-    //     document.body.classList.add("overflow-hidden");
-    //   } else {
-    //     document.body.classList.remove("overflow-hidden");
-    //   }
-    // },
     addItemToRoomsList(roomDetails) {
       const isAlreadySelected = this.roomsList.find(
         (room) =>
@@ -1208,13 +1211,22 @@ export default {
       );
     },
     getTotalRoomRates() {
-      return this.roomsList.reduce((total, room) => {
+      let roomRatesTotal = this.roomsList.reduce((total, room) => {
         const roomCount = room.selectedRooms === "" ? "0" : room.selectedRooms;
         total = total + parseFloat(room.price) * parseInt(roomCount);
-
         return total;
       }, 0);
+
+      let activitiesTotal = this.activities.reduce((total, activity) => {
+        if (activity.checked) {
+          total += parseFloat(activity.amount);
+        }
+        return total;
+      }, 0);
+
+      return roomRatesTotal + activitiesTotal;
     },
+
     scrollToBottom() {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
@@ -1231,7 +1243,7 @@ export default {
         "Full Board": 3,
         "Room only": 4,
       };
-
+      const selectedActivities = this.activities.filter(activity => activity.checked).map(activity => activity.id)
       const roomsArrangement = this.roomsList.reduce(
         (roomsArrangement, roomData) => {
           const { id, type, selectedRooms } = roomData;
@@ -1245,7 +1257,7 @@ export default {
               infants: roomPeople["infants"] || 0,
               room_type_id: id,
               meal_plan_id: mealPlanMap[type],
-              service_id: '[1,2,3]',
+              service_id: selectedActivities,
             });
           }
 
