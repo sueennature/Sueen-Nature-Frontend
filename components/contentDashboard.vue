@@ -552,10 +552,8 @@ import 'vue3-toastify/dist/index.css';
 
 export default {
   mounted() {
-    const email = this.$route.query.email;
-    console.log("Email:", email);
-
-    // Accessing cookies to retrieve the auth token
+    const emailToken = this.$route.query.email;
+    console.log("Email:", emailToken);
     const cookies = document.cookie.split(';');
     const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
     if (authTokenCookie) {
@@ -568,7 +566,7 @@ export default {
       };
 
       const data = {
-        email: email
+        email: emailToken
       };
       console.log("Headers",headers)
       axios.get('https://admin.sueennature.com/api/user/information', {
@@ -604,6 +602,7 @@ export default {
       lastName: '',
       phoneNumber: '',
       email: '',
+      emailFromParams: '', 
       address: '',
       editModeFirstName: false,
       editModeLastName: false,
@@ -625,7 +624,7 @@ export default {
         email: this.email,
         address: this.address
       };
-
+    
       const cookies = document.cookie.split(';');
       const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
       if (!authTokenCookie) {
