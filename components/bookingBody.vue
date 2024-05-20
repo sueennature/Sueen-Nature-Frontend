@@ -1231,6 +1231,20 @@ export default {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
     handleSubmit: async function () {
+      const cookies = document.cookie.split(';');
+      const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+      if (!authTokenCookie) {
+        console.error("Auth Token not found in cookies.");
+        return;
+      }
+      const authToken = authTokenCookie.split('=')[1];
+
+      const headers = {
+        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
+        'Content-Type': 'application/json'
+      };
+      console.log("BODYHeader", headers)
+     
       const formData = new FormData();
 
       for (let [key, value] of Object.entries(this.form)) {
@@ -1275,10 +1289,7 @@ export default {
 
       await fetch("https://admin.sueennature.com/api/booking", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+        headers: headers,
         body: JSON.stringify(this.form),
       })
         .then((response) => {
