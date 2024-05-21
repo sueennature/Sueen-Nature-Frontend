@@ -68,7 +68,7 @@
       Meta App Data Deletion Instructions
     </h5>
     <p class="text-base text-gray-300 mt-2">
-  By following these <a class ="text-blue-500 font-bold" href="/facebookPolicy">steps</a>, users can easily request the deletion of user data from our social application, ensuring compliance with Facebook's guidelines to maintaining trust with users.    
+  By following these <a class ="text-blue-500 font-bold" href="/metaAppDataDeletionInstructions">steps</a>, users can easily request the deletion of user data from our social application, ensuring compliance with Facebook's guidelines to maintaining trust with users.    
 </p>
 
   
