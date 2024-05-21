@@ -448,13 +448,15 @@
             Proceed As a Guest
           </button>
           <span class="text-black-200 text-base font-bold">OR</span>
+          <div>
           <button
-            @click="toggleModal"
+            @click="getClickMethod"
             type="button"
             class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
-            Sign In
+            {{ isSignedIn ? 'Sign Off' : 'Sign In' }}
           </button>
+          </div>
         </div>
         <!-- end of price breakdown section -->
       </div>
@@ -992,6 +994,7 @@ export default {
       showPassword:false,
       showGuestInfo: false,
       showYourInfo: true,
+      isSignedIn: false,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
@@ -1037,6 +1040,15 @@ export default {
     };
   },
   methods: {
+    getClickMethod() {
+      if (this.isSignedIn) {
+        localStorage.removeItem('userEmail');
+
+      } else {
+        this.toggleModal();
+
+      }
+    },
     togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   },
@@ -1056,7 +1068,8 @@ export default {
           password: this.loginUser.password,
         });
         this.nuxtApp.$auth.setAuthToken(response.access_token);
-        console.log("RES",response)
+        localStorage.setItem('userEmail', this.loginUser.email);
+
         this.setupToastSucess("Succcessfully Logged In")
           setTimeout(() => {
             this.$router.push({ path: '/dashboard', query: { email: this.loginUser.email } });
@@ -1329,6 +1342,9 @@ export default {
     
   },
   mounted() {
+    const cookies = document.cookie.split(';');
+    const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+    this.isSignedIn = !!authTokenCookie;
     initFlowbite();
     fetch("https://admin.sueennature.com/api/getRoomTypes")
       .then((response) => {
