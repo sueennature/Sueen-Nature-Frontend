@@ -258,13 +258,11 @@ export default defineComponent({
 
   setup() {
     const slides = ref([
-      { src: "/img/double_1.jpg", alt: "Image 1" },
-      { src: "/img/double_2.jpg", alt: "Image 2" },
-      { src: "/img/double_3.jpg", alt: "Image 3" },
-      { src: "/img/double_1.jpg", alt: "Image 3" },
-      { src: "/img/double_2.jpg", alt: "Image 3" },
-      { src: "/img/double_3.jpg", alt: "Image 3" },
-      // Add more images as needed
+        { src: "/img/single_room_one.jpg", alt: "Image 1" },
+        { src: "/img/single_room_two.jpg", alt: "Image 2" },
+        { src: "/img/single_room_five.jpg", alt: "Image 3" },
+        { src: "/img/single_room_four.jpg", alt: "Image 3" },
+        { src: "/img/single_room_five.jpg", alt: "Image 3" },
     ]);
      
 

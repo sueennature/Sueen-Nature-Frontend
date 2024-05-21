@@ -1,7 +1,7 @@
 <template>
   <div class="sm:container px-4 py-20">
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-left mt-8">
-      Sueen dashboard
+    Dashboard
     </h2>
     <div class="grid xl:grid-cols-3 grid-cols-1 gap-8">
       <!-- Card with user profile -->
@@ -11,7 +11,7 @@
         <div class="flex flex-col items-center pb-10">
           <img
             class="w-44 h-44 mb-3 rounded-full shadow-lg"
-            src="../public/img/team1.png"
+            src="../public/img/Sueen_User_Profile.png"
             alt="user image"
           />
           <h4
