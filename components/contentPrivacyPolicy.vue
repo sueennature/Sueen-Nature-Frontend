@@ -63,6 +63,15 @@
     <p class="text-base text-gray-300 mt-2">
         We employ robust technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction.
     </p>
+
+    <h5 class="text-black-200 font-semibold md:text-3xl text-lg text-left my-8">
+      Meta App Data Deletion Instructions
+    </h5>
+    <p class="text-base text-gray-300 mt-2">
+  By following these <a class ="text-blue-500 font-bold" href="/metaAppDataDeletionInstructions">steps</a>, users can easily request the deletion of user data from our social application, ensuring compliance with Facebook's guidelines to maintaining trust with users.    
+</p>
+
+  
     <h5 class="text-black-200 md:text-3xl text-lg font-semibold text-left my-8">
         Your Rights
     </h5>

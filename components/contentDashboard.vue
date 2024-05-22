@@ -1,7 +1,7 @@
 <template>
   <div class="sm:container px-4 py-20">
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-left mt-8">
-      Sueen dashboard
+    Dashboard
     </h2>
     <div class="grid xl:grid-cols-3 grid-cols-1 gap-8">
       <!-- Card with user profile -->
@@ -11,7 +11,7 @@
         <div class="flex flex-col items-center pb-10">
           <img
             class="w-44 h-44 mb-3 rounded-full shadow-lg"
-            src="../public/img/team1.png"
+            src="../public/img/Sueen_User_Profile.png"
             alt="user image"
           />
           <h4
@@ -552,10 +552,8 @@ import 'vue3-toastify/dist/index.css';
 
 export default {
   mounted() {
-    const email = this.$route.query.email;
-    console.log("Email:", email);
-
-    // Accessing cookies to retrieve the auth token
+    const emailToken = this.$route.query.email;
+    console.log("Email:", emailToken);
     const cookies = document.cookie.split(';');
     const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
     if (authTokenCookie) {
@@ -568,7 +566,7 @@ export default {
       };
 
       const data = {
-        email: email
+        email: emailToken
       };
       console.log("Headers",headers)
       axios.get('https://admin.sueennature.com/api/user/information', {
@@ -604,6 +602,7 @@ export default {
       lastName: '',
       phoneNumber: '',
       email: '',
+      emailFromParams: '', 
       address: '',
       editModeFirstName: false,
       editModeLastName: false,
@@ -625,7 +624,7 @@ export default {
         email: this.email,
         address: this.address
       };
-
+    
       const cookies = document.cookie.split(';');
       const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
       if (!authTokenCookie) {

@@ -92,6 +92,15 @@
                 >Contact</a
               >
             </li>
+            <li>
+              <a
+          v-if ="userEmail"
+          @click.prevent="redirectToDashboard"
+          class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+        >
+          Profile
+        </a>
+            </li>
           </ul>
         </div>
         <div class="hidden lg:flex lg:flex-row lg:gap-4">
@@ -234,6 +243,7 @@
         >
           Services
         </a>
+     
         <a
           href="/rooms"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -246,6 +256,13 @@
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Contact
+        </a>
+        <a
+          v-if ="userEmail"
+          @click.prevent="redirectToDashboard"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+        >
+          Profile
         </a>
       </div>
     </div>
@@ -338,6 +355,9 @@ export default {
     filteredRooms() {
       if (!this.room_type_id) return [];
       return this.rooms.filter(room => room.room_type_id === this.room_type_id);
+    },
+    userEmail() {
+      return localStorage.getItem('userEmail');
     }
   },
   methods:{
@@ -346,6 +366,11 @@ export default {
       autoClose:1000,
     })
   },
+  redirectToDashboard() {
+      if (this.userEmail) {
+        this.$router.push({ path: '/dashboard', query: { email: this.userEmail } });
+      }
+    },
   
   updateAvailableRooms() {
       const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);

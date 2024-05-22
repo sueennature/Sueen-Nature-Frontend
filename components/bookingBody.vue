@@ -256,9 +256,21 @@
               Activities
             </h6>
             <div class="flex items-center mb-4 mt-8" v-for="(activity, index) in activities" :key="activity.id">
-                <input :id="'checkbox-' + activity.id" v-model="activity.checked" type="checkbox" :value="activity.id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label :for="'checkbox-' + activity.id" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ activity.name }} - LKR {{ formatPrice(activity.amount) }}</label>
-            </div>
+            <input
+              :id="'checkbox-' + activity.id"
+              v-model="activity.checked"
+              type="checkbox"
+              :value="activity.id"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              :for="'checkbox-' + activity.id"
+              class="ms-2 text-[17px] font-medium text-gray-900 dark:text-gray-300 flex items-center justify-between w-full "
+            >
+              {{ activity.name }} - <strong>LKR  {{ formatPrice(activity.amount) }}</strong>
+            </label>
+          </div>
+
             <!-- <img
             :src="`https://admin.sueennature.com/uploads/${activity.image}`"
             alt="roomImg"
@@ -436,13 +448,15 @@
             Proceed As a Guest
           </button>
           <span class="text-black-200 text-base font-bold">OR</span>
+          <div>
           <button
-            @click="toggleModal"
+            @click="getClickMethod"
             type="button"
             class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
-            Sign In
+            {{ isSignedIn ? 'Sign Off' : 'Sign In' }}
           </button>
+          </div>
         </div>
         <!-- end of price breakdown section -->
       </div>
@@ -980,6 +994,7 @@ export default {
       showPassword:false,
       showGuestInfo: false,
       showYourInfo: true,
+      isSignedIn: false,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
@@ -1025,6 +1040,15 @@ export default {
     };
   },
   methods: {
+    getClickMethod() {
+      if (this.isSignedIn) {
+        localStorage.removeItem('userEmail');
+
+      } else {
+        this.toggleModal();
+
+      }
+    },
     togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   },
@@ -1044,7 +1068,8 @@ export default {
           password: this.loginUser.password,
         });
         this.nuxtApp.$auth.setAuthToken(response.access_token);
-        console.log("RES",response)
+        localStorage.setItem('userEmail', this.loginUser.email);
+
         this.setupToastSucess("Succcessfully Logged In")
           setTimeout(() => {
             this.$router.push({ path: '/dashboard', query: { email: this.loginUser.email } });
@@ -1137,15 +1162,6 @@ export default {
     toast.error(message, {
       autoClose: 3000, 
     })},
-    // toggleModal(event) {
-    //   event.preventDefault();
-    //   this.isModalOpen = !this.isModalOpen;
-    //   if (this.isModalOpen) {
-    //     document.body.classList.add("overflow-hidden");
-    //   } else {
-    //     document.body.classList.remove("overflow-hidden");
-    //   }
-    // },
     addItemToRoomsList(roomDetails) {
       const isAlreadySelected = this.roomsList.find(
         (room) =>
@@ -1208,17 +1224,40 @@ export default {
       );
     },
     getTotalRoomRates() {
-      return this.roomsList.reduce((total, room) => {
+      let roomRatesTotal = this.roomsList.reduce((total, room) => {
         const roomCount = room.selectedRooms === "" ? "0" : room.selectedRooms;
         total = total + parseFloat(room.price) * parseInt(roomCount);
-
         return total;
       }, 0);
+
+      let activitiesTotal = this.activities.reduce((total, activity) => {
+        if (activity.checked) {
+          total += parseFloat(activity.amount);
+        }
+        return total;
+      }, 0);
+
+      return roomRatesTotal + activitiesTotal;
     },
+
     scrollToBottom() {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
     handleSubmit: async function () {
+      const cookies = document.cookie.split(';');
+      const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+      if (!authTokenCookie) {
+        console.error("Auth Token not found in cookies.");
+        return;
+      }
+      const authToken = authTokenCookie.split('=')[1];
+
+      const headers = {
+        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
+        'Content-Type': 'application/json'
+      };
+      console.log("BODYHeader", headers)
+     
       const formData = new FormData();
 
       for (let [key, value] of Object.entries(this.form)) {
@@ -1231,7 +1270,7 @@ export default {
         "Full Board": 3,
         "Room only": 4,
       };
-
+      const selectedActivities = this.activities.filter(activity => activity.checked).map(activity => activity.id)
       const roomsArrangement = this.roomsList.reduce(
         (roomsArrangement, roomData) => {
           const { id, type, selectedRooms } = roomData;
@@ -1245,7 +1284,7 @@ export default {
               infants: roomPeople["infants"] || 0,
               room_type_id: id,
               meal_plan_id: mealPlanMap[type],
-              service_id: '[1,2,3]',
+              service_id: selectedActivities,
             });
           }
 
@@ -1263,10 +1302,7 @@ export default {
 
       await fetch("https://admin.sueennature.com/api/booking", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+        headers: headers,
         body: JSON.stringify(this.form),
       })
         .then((response) => {
@@ -1306,6 +1342,9 @@ export default {
     
   },
   mounted() {
+    const cookies = document.cookie.split(';');
+    const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+    this.isSignedIn = !!authTokenCookie;
     initFlowbite();
     fetch("https://admin.sueennature.com/api/getRoomTypes")
       .then((response) => {

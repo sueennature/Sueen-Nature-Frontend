@@ -1,10 +1,15 @@
 // plugins/auth.js
 import { useCookie } from '#app';
 import { useRouter } from 'vue-router'; 
+import * as jwt_decode from 'jwt-decode';
+
+
 
 export default defineNuxtPlugin((nuxtApp) => {
   const authCookie = useCookie('auth_token');
   console.log(authCookie)
+  const cookievalue = authCookie._rawValue
+  console.log(cookievalue)
   const router = useRouter();
 
   const setAuthToken = (token) => {
@@ -15,17 +20,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     return authCookie.value;
   };
 
-  const isAuthenticated = () => {
-    return !!authCookie.value;
-  };
-
+  
+ 
   const checkAuthentication = () => {
     console.log("hi")
-    if (!isAuthenticated()) {
-      router.push('/home');
+    if (!!authCookie) {
+      router.push('/')
     }
   };
-  checkAuthentication();
 
   const logout = () => {
     authCookie.value = null;
@@ -35,7 +37,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.provide('auth', {
     setAuthToken,
     getAuthToken,
-    isAuthenticated,
     checkAuthentication,
     logout,
   });
