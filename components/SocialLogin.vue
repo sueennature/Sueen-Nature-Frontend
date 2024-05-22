@@ -112,15 +112,21 @@ const handleLoginError = () => {
 const logInWithFacebook = async () => {
       // await loadFacebookSDK(document, "script", "facebook-jssdk");
       // await initFacebook();
-      window.FB.login(function(response) {
-        if (response.authResponse) {
-          console.log("LOGGED IN USER RESPONSE ", response)
-          // Now you can redirect the user or do an AJAX request to
-          // a PHP script that grabs the signed request from the cookie.
+      window.FB.login(function(loginRes) {
+        if (loginRes.authResponse) {
+          window.FB.api('/me', function(response) {
+              const email = response.email;
+              const password = response.id;
+              const name = response.first_name;
+              const lname = response.last_name;
+
+              emit('loginSuccess', { name, lname, email, password });
+              toast.success("Successfully Logged In")
+          });
         } else {
           alert("User cancelled login or did not fully authorize.");
         }
-      }, {scope: 'public_profile,email'});
+      }, {scope: 'first_name,last_name,email'});
       return false;
     }
 </script>
