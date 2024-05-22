@@ -99,9 +99,9 @@ const handleLoginSuccess = (response: CredentialResponse) => {
 
     emit('loginSuccess', { name, lname, email, password });
     toast.success("Successfully Logged In")
-    setTimeout(() => {
-      router.push({ path: '/dashboard', query: { email:email } });
-            }, 3000); 
+    // setTimeout(() => {
+    //   router.push({ path: '/dashboard', query: { email:email } });
+    //         }, 3000); 
   }
 
 };
