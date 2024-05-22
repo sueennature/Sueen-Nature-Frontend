@@ -83,6 +83,13 @@
           </li>
           <li>
             <a
+              href="/additionalActivites"
+              class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+              >Activities</a
+            >
+          </li>
+          <li>
+            <a
               href="/rooms"
               class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
               >Rooms</a
@@ -179,6 +186,13 @@
               >
             </li>
             <li>
+            <a
+              href="/additionalActivites"
+              class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+              >Activities</a
+            >
+          </li>
+            <li>
               <a
                 href="/rooms"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
@@ -217,7 +231,7 @@
   <div class="relative">
     <!-- hero image of Checkout page -->
     <img
-      src="/img/hero-booking.png"
+      :src="imageNav"
       alt="hero-rooms-Img"
       class="w-full z-10 object-cover min-h-screen lg:min-h-0"
     />
@@ -227,10 +241,16 @@
     <div
       class="absolute inset-0 flex flex-col justify-center items-center text-center z-40"
     >
-      <h2 class="text-white md:text-6xl text-5xl font-semibold mt-5 uppercase">
+    <h4 class="text-white md:text-2xl text-1xl  mt-5">
+        {{ pageTitleThree }}
+      </h4>
+      <h2 class="text-white md:text-6xl text-5xl font-semibold mt-5">
         {{ pageTitle }}
 
       </h2>
+      <h4 class="text-white md:text-2xl text-1xl  mt-5">
+        {{ pageTitleTwo }}
+      </h4>
     </div>
   </div>
 </template>
@@ -245,7 +265,7 @@ const router = useRouter();
 const isSignedIn = false;
 
 const userEmail = ref(null);
-const { props } = defineProps(['pageTitle']);
+const { props } = defineProps(['pageTitle', 'pageTitleTwo','pageTitleThree','imageNav']);
 
 const handleScroll = () => {
   const scrollTop = window.scrollY;
