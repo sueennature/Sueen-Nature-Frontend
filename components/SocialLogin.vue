@@ -40,6 +40,7 @@
     </div>
     <button
       class="bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white mx-8"
+      @click="logInWithFacebook"
     >
       <div class="flex items-center justify-center space-x-4">
         <svg
@@ -60,6 +61,7 @@
         <span>Facebook</span>
       </div>
     </button>
+    
   </div>
 </template>
 
@@ -75,6 +77,11 @@ import 'vue3-toastify/dist/index.css';
 const emit = defineEmits(['loginSuccess']);
 const router = useRouter(); 
 const error = ref(null); 
+
+const fbSignInParams = {
+        scope: 'email,user_likes',
+        return_scopes: true
+      }
 
 const handleLoginSuccess = (response: CredentialResponse) => {
   const { credential } = response;
@@ -101,4 +108,19 @@ const handleLoginSuccess = (response: CredentialResponse) => {
 const handleLoginError = () => {
   toast.error("Something Went Wrong")
 };
+
+const logInWithFacebook = async () => {
+      // await loadFacebookSDK(document, "script", "facebook-jssdk");
+      // await initFacebook();
+      window.FB.login(function(response) {
+        if (response.authResponse) {
+          console.log("LOGGED IN USER RESPONSE ", response)
+          // Now you can redirect the user or do an AJAX request to
+          // a PHP script that grabs the signed request from the cookie.
+        } else {
+          alert("User cancelled login or did not fully authorize.");
+        }
+      }, {scope: 'public_profile,email'});
+      return false;
+    }
 </script>
