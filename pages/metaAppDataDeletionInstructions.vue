@@ -1,6 +1,6 @@
 <template>
     <div class="main overflow-hidden">
-        <navbar :pageTitle="'Meta App Data Deletion Instructions'"/>
+      <navbar :pageTitle="'Meta App Data Deletion Instructions'" :imageNav="'/img/hero-booking.png'"/>
       <contentFBPolicy/>  
       <footerHome/>
   
