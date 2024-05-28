@@ -19,7 +19,7 @@
       <div>
         <div class="relative">
           <img
-            :src="`https://admin.sueennature.com/uploads/${selectedRoomType.image}`"
+            :src="`https://admin.sueennature.com/uploads/${JSON.parse(selectedRoomType.image)[0]}`"
             alt="roomImg"
             class="w-full object-cover"
           />
@@ -1248,14 +1248,17 @@ export default {
       const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
       if (!authTokenCookie) {
         console.error("Auth Token not found in cookies.");
-        return;
       }
-      const authToken = authTokenCookie.split('=')[1];
-
+      const authToken = authTokenCookie?.split('=')[1];
+      
       const headers = {
-        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
         'Content-Type': 'application/json'
       };
+
+      if(authToken){
+        headers.Authorization = `Bearer ${authToken.replace(/%7C/g, '|')}`
+      }
+      
       console.log("BODYHeader", headers)
      
       const formData = new FormData();
@@ -1300,32 +1303,32 @@ export default {
 
       console.log("FORM DATA", this.form);
 
-      await fetch("https://admin.sueennature.com/api/booking", {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(this.form),
-      })
-        .then((response) => {
-          console.log("RESPONSE ", response);
-          return response.json();
-        })
-        .then((data) => {
-          console.log("RESPONSE SUCCESS ", data);
-          if (data.error) {
-            throw new Error(data.error);
-          }
-          toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
-          window.location.href = data.ipg;
-        })
-        .catch((error) => {
-          console.log("RESPONSE ERROR ", error);
-          console.error("There has been a problem with your fetch operation:", error);
-          if (error instanceof Error) {
-            toast.error(error.message);
-          } else {
-            toast.error("An unknown error occurred.");
-          }
-        });
+      // await fetch("https://admin.sueennature.com/api/booking", {
+      //   method: "POST",
+      //   headers: headers,
+      //   body: JSON.stringify(this.form),
+      // })
+      //   .then((response) => {
+      //     console.log("RESPONSE ", response);
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     console.log("RESPONSE SUCCESS ", data);
+      //     if (data.error) {
+      //       throw new Error(data.error);
+      //     }
+      //     toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
+      //     // window.location.href = data.ipg;
+      //   })
+      //   .catch((error) => {
+      //     console.log("RESPONSE ERROR ", error);
+      //     console.error("There has been a problem with your fetch operation:", error);
+      //     if (error instanceof Error) {
+      //       toast.error(error.message);
+      //     } else {
+      //       toast.error("An unknown error occurred.");
+      //     }
+      //   });
 
     },
   },
