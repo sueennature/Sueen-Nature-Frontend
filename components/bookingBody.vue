@@ -595,6 +595,21 @@
           </div>
           <div>
             <label
+              for="nationality"
+              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+              >Nationality *</label
+            >
+            <select
+              id="nationality"
+              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              v-model="form.nationality"
+            >
+              <option selected>Local</option>
+              <option value="US">Foreign</option>
+            </select>
+          </div>
+          <div>
+            <label
               for="email"
               class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
               >E-mail *</label

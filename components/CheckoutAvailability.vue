@@ -75,13 +75,12 @@
         Check Availability
       </button>
       <div class="lg:hidden">
-        <a href="/checkout">
-          <button
-            class="buttontext bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
-          >
-            Check Availability
-          </button>
-        </a>
+        <button
+          class="buttontext bg-red-100 text-sm text-white p-4 rounded-none border border-white w-full"
+          @click="checkAvailability"
+        >
+          Check Availability
+        </button>
       </div>
     </div>
   </div>
@@ -131,7 +130,7 @@ export default {
           check_in: this.check_in,
           check_out: this.check_out,
           roomTypeId: this.room_type_id,
-          viewTypeId: this.view_type_id
+          viewTypeId: this.view_type_id,
         },
       });
       console.log("body", body);
@@ -174,7 +173,8 @@ export default {
         console.log("Response:", data);
         // this.updateAvailableRooms();
 
-        const { check_in, check_out, roomTypeId, viewTypeId } = this.$route.query;
+        const { check_in, check_out, roomTypeId, viewTypeId } =
+          this.$route.query;
         this.check_in = check_in || "";
         this.check_out = check_out || "";
         this.room_type_id = roomTypeId ? parseInt(roomTypeId) : null;
