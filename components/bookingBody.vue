@@ -19,7 +19,9 @@
       <div>
         <div class="relative">
           <img
-            :src="`https://admin.sueennature.com/uploads/${JSON.parse(selectedRoomType.image)[0]}`"
+            :src="`https://admin.sueennature.com/uploads/${
+              JSON.parse(selectedRoomType.image)[0]
+            }`"
             alt="roomImg"
             class="w-full object-cover"
           />
@@ -251,11 +253,17 @@
         <!-- Card about Single Room - Special Rate  -->
 
         <!-- Activities -->
-        <div class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14">
-          <h6 class="text-black-200 xl:text-lg text-base font-bold ">
-              Activities
-            </h6>
-            <div class="flex items-center mb-4 mt-8" v-for="(activity, index) in activities" :key="activity.id">
+        <div
+          class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
+        >
+          <h6 class="text-black-200 xl:text-lg text-base font-bold">
+            Activities
+          </h6>
+          <div
+            class="flex items-center mb-4 mt-8"
+            v-for="(activity, index) in activities"
+            :key="activity.id"
+          >
             <input
               :id="'checkbox-' + activity.id"
               v-model="activity.checked"
@@ -265,20 +273,19 @@
             />
             <label
               :for="'checkbox-' + activity.id"
-              class="ms-2 text-[17px] font-medium text-gray-900 dark:text-gray-300 flex items-center justify-between w-full "
+              class="ms-2 text-[17px] font-medium text-gray-900 dark:text-gray-300 flex items-center justify-between w-full"
             >
-              {{ activity.name }} - <strong>LKR  {{ formatPrice(activity.amount) }}</strong>
+              {{ activity.name }} -
+              <strong>LKR {{ formatPrice(activity.amount) }}</strong>
             </label>
           </div>
 
-            <!-- <img
+          <!-- <img
             :src="`https://admin.sueennature.com/uploads/${activity.image}`"
             alt="roomImg"
             class="w-full object-cover"
           /> -->
         </div>
-
-
 
         <div
           class="w-full p-6 bg-white xl:text-lg text-base font-semibold border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
@@ -312,59 +319,89 @@
             </form>
           </div>
 
-          <div v-for="(n, index) in roomRaw(item.selectedRooms)" :key="`${index}-${n}`">
           <div
-            class="lg:flex lg:flex-row flex-col items-baseline justify-between mt-4 space-y-2"
+            v-for="(n, index) in roomRaw(item.selectedRooms)"
+            :key="`${index}-${n}`"
           >
-            <div class="flex items-center">
-              <h5 class="text-black-200 font-medium xl:text-lg text-sm">
-                <span>Room :</span> <span>{{ n }}</span>
-              </h5>
+            <div
+              class="lg:flex lg:flex-row flex-col items-baseline justify-between mt-4 space-y-2"
+            >
+              <div class="flex items-center">
+                <h5 class="text-black-200 font-medium xl:text-lg text-sm">
+                  <span>Room :</span> <span>{{ n }}</span>
+                </h5>
+              </div>
+              <div class="flex lg:space-x-4 space-x-1">
+                <form class="max-w-sm w-full">
+                  <select
+                    id="adults"
+                    class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    @change="updateRoomPeopleCount(item, n, 'adults', $event)"
+                  >
+                    <option selected>Adults</option>
+                    <option
+                      v-for="index in selectedRoomType.name === 'Single Room'
+                        ? 1
+                        : selectedRoomType.name === 'Double Room'
+                        ? 2
+                        : selectedRoomType.name === 'Deluxe Room'
+                        ? 3
+                        : selectedRoomType.name === 'Family Room'
+                        ? 4
+                        : '0'"
+                      :key="index"
+                      :value="index"
+                    >
+                      {{ index }}
+                    </option>
+                  </select>
+                </form>
+                <form class="max-w-sm w-full">
+                  <select
+                    id="children"
+                    class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    @change="updateRoomPeopleCount(item, n, 'child', $event)"
+                  >
+                    <option selected>Children</option>
+                    <option
+                      v-for="index in selectedRoomType.name === 'Single Room'
+                        ? 1
+                        : selectedRoomType.name === 'Double Room'
+                        ? 2
+                        : selectedRoomType.name === 'Deluxe Room'
+                        ? 3
+                        : selectedRoomType.name === 'Family Room'
+                        ? 4
+                        : '0'"
+                      :key="index"
+                      :value="index"
+                    >
+                      {{ index }}
+                    </option>
+                  </select>
+                </form>
+                <form class="max-w-sm w-full">
+                  <select
+                    id="infants"
+                    class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    @change="updateRoomPeopleCount(item, n, 'infants', $event)"
+                  >
+                    <option selected>Infants</option>
+                    <option v-for="index in 4" :key="index" :value="index">
+                      {{ index }}
+                    </option>
+                  </select>
+                </form>
+              </div>
             </div>
-            <div class="flex lg:space-x-4 space-x-1">
-              <form class="max-w-sm w-full">
-                <select
-                  id="adults"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'adults', $event)"
-                >
-                  <option selected>Adults</option>
-                   <option v-for="index in 
-                   ( selectedRoomType.name === 'Single Room' ? 1 
-                   : selectedRoomType.name === 'Double Room' ? 2 
-                   : selectedRoomType.name === 'Deluxe Room' ? 3
-                   : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
-                </select>
-              </form>
-              <form class="max-w-sm w-full">
-                <select
-                  id="children"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'child', $event)"
-                >
-                  <option selected>Children</option>
-                  <option v-for="index in 
-                   ( selectedRoomType.name === 'Single Room' ? 1 
-                   : selectedRoomType.name === 'Double Room' ? 2 
-                   : selectedRoomType.name === 'Deluxe Room' ? 3
-                   : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
-                </select>
-              </form>
-              <form class="max-w-sm w-full">
-                <select
-                  id="infants"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'infants', $event)"
-                >
-                  <option selected>Infants</option>
-                  <option v-for="index in 4" :key="index" :value="index">{{ index }}</option>
-                </select>
-              </form>
-            </div>
-          </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.infants" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
+            <div
+              v-if="item"
+              v-for="(age, index) in item[n]?.infants"
+              :key="'infant-' + index"
+              class="flex items-baseline justify-between mt-4"
+            >
               <h5 class="text-black font-medium xl:text-lg text-sm">
-                Select age of infant {{index + 1}}
+                Select age of infant {{ index + 1 }}
               </h5>
 
               <form class="max-w-sm">
@@ -374,7 +411,13 @@
                   class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
-                  <option v-for="year in 3" :key="'year-' + year" :value="year - 1">{{ year - 1 }}</option>
+                  <option
+                    v-for="year in 3"
+                    :key="'year-' + year"
+                    :value="year - 1"
+                  >
+                    {{ year - 1 }}
+                  </option>
                 </select>
               </form>
             </div>
@@ -449,13 +492,13 @@
           </button>
           <span class="text-black-200 text-base font-bold">OR</span>
           <div>
-          <button
-            @click="getClickMethod"
-            type="button"
-            class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >
-            {{ isSignedIn ? 'Sign Off' : 'Sign In' }}
-          </button>
+            <button
+              @click="getClickMethod"
+              type="button"
+              class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              {{ isSignedIn ? "Sign Off" : "Sign In" }}
+            </button>
           </div>
         </div>
         <!-- end of price breakdown section -->
@@ -499,7 +542,7 @@
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
             @change="toggleGuestInfo"
-            checked  
+            checked
           />
           <label
             for="inline-
@@ -760,7 +803,6 @@
             <!-- SOCIAL MEDIA LOGIN -->
             <SocialLogin />
 
-
             <!-- Centered "or" text -->
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
@@ -775,11 +817,7 @@
               ></div>
             </div>
             <!-- Modal -->
-            <form
-              action="#"
-              class="space-y-6 mt-4"
-              @submit.prevent="register"
-            >
+            <form action="#" class="space-y-6 mt-4" @submit.prevent="register">
               <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
                 <input
                   type="text"
@@ -803,19 +841,20 @@
                 />
               </div>
               <div class="relative">
-                  <input
-                    :type="showPassword ? 'text' : 'password'"
-                    v-model.trim="registerUser.password"
-                    placeholder="Password"
-                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10" 
-                  />
-                  <button @click="togglePasswordVisibility" class="absolute inset-y-0 right-0 flex items-center pr-3">
-                    
-                    <span v-if="showPassword">🔓</span>
-                    <span v-else>🔒</span> 
-                  </button>
+                <input
+                  :type="showPassword ? 'text' : 'password'"
+                  v-model.trim="registerUser.password"
+                  placeholder="Password"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10"
+                />
+                <button
+                  @click="togglePasswordVisibility"
+                  class="absolute inset-y-0 right-0 flex items-center pr-3"
+                >
+                  <span v-if="showPassword">🔓</span>
+                  <span v-else>🔒</span>
+                </button>
               </div>
-
 
               <div class="flex items-start">
                 <div class="flex items-center h-5">
@@ -936,27 +975,41 @@
 
             <form @submit.prevent="login" class="space-y-6 mt-4">
               <div>
-                <input v-model="loginUser.email" type="text" placeholder="you@email.com" class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md" />
+                <input
+                  v-model="loginUser.email"
+                  type="text"
+                  placeholder="you@email.com"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
+                />
                 <p v-if="errors.email" class="error">{{ errors.email[0] }}</p>
               </div>
-           
+
               <div class="relative">
-                  <input
-                    :type="showPassword ? 'text' : 'password'"
-                    v-model="loginUser.password"                    
-                    placeholder="Password"
-                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10" 
-                  />
-                  <p v-if="errors.password" class="error">{{ errors.password[0] }}</p>
-                  <button @click="togglePasswordVisibility" class="absolute inset-y-0 right-0 flex items-center pr-3">
-                    
-                    <span v-if="showPassword">🔓</span>
-                    <span v-else>🔒</span> 
-                  </button>
+                <input
+                  :type="showPassword ? 'text' : 'password'"
+                  v-model="loginUser.password"
+                  placeholder="Password"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10"
+                />
+                <p v-if="errors.password" class="error">
+                  {{ errors.password[0] }}
+                </p>
+                <button
+                  @click="togglePasswordVisibility"
+                  class="absolute inset-y-0 right-0 flex items-center pr-3"
+                >
+                  <span v-if="showPassword">🔓</span>
+                  <span v-else>🔒</span>
+                </button>
               </div>
               <div class="mt-5">
                 <div class="text"></div>
-                <button type="submit" class="w-full bg-red-100 py-3 text-center text-white rounded-md block">Log In</button>
+                <button
+                  type="submit"
+                  class="w-full bg-red-100 py-3 text-center text-white rounded-md block"
+                >
+                  Log In
+                </button>
               </div>
 
               <!-- <div class="flex flex-row mt-4 items-center text-md space-x-1">
@@ -976,13 +1029,11 @@
 import CheckoutAvailability from "./CheckoutAvailability.vue";
 import { ref, onMounted, onUnmounted } from "vue";
 import { initFlowbite } from "flowbite";
-import { apiRequest } from '@/utils/api';
-import { useNuxtApp } from '#app';
-import SocialLogin from './SocialLogin.vue';
-import {toast} from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
-
-
+import { apiRequest } from "@/utils/api";
+import { useNuxtApp } from "#app";
+import SocialLogin from "./SocialLogin.vue";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 
 export default {
   components: {
@@ -991,20 +1042,20 @@ export default {
   },
   data() {
     return {
-      showPassword:false,
+      showPassword: false,
       showGuestInfo: false,
       showYourInfo: true,
       isSignedIn: false,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
-      selectedInfants: 0, 
-      infantAges: [], 
+      selectedInfants: 0,
+      infantAges: [],
       room_types: [],
       roomsList: [],
       boardType: [],
       mealPlans: [],
-      activities:[],
+      activities: [],
       price: 0,
       form: {
         first_name: "",
@@ -1023,15 +1074,15 @@ export default {
         guest_address: "",
         guest_nationality: "",
       },
-      registerUser:{
-        name: '',
-        lname: '',
-        email: '',
-        password:'',
+      registerUser: {
+        name: "",
+        lname: "",
+        email: "",
+        password: "",
       },
-      loginUser:{
-        email: '',
-        password: '',
+      loginUser: {
+        email: "",
+        password: "",
       },
       errors: {
         email: [],
@@ -1042,91 +1093,106 @@ export default {
   methods: {
     getClickMethod() {
       if (this.isSignedIn) {
-        localStorage.removeItem('userEmail');
-
+        localStorage.removeItem("userEmail");
       } else {
         this.toggleModal();
-
       }
     },
     togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-  },
+      this.showPassword = !this.showPassword;
+    },
     async login() {
       if (!this.loginUser.email || !this.loginUser.password) {
         this.setupToastError("Please fill in all fields.");
-          return; 
-      }
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(!emailPattern.test(this.loginUser.email)){
-          this.setupToastError("Please enter a valid email address.");
-          return;
-        }    
-      try {
-        const response = await apiRequest('https://admin.sueennature.com/api/login', 'POST', {
-          email: this.loginUser.email,
-          password: this.loginUser.password,
-        });
-        this.nuxtApp.$auth.setAuthToken(response.access_token);
-        localStorage.setItem('userEmail', this.loginUser.email);
-
-        this.setupToastSucess("Succcessfully Logged In")
-          setTimeout(() => {
-            this.$router.push({ path: '/dashboard', query: { email: this.loginUser.email } });
-            }, 3000); 
-      } catch (error) {
-        this.setupToastError("An error occurred. Please try again later.");
-        console.log("ERR",error.message);
-        
-      }
-    },
- 
-    logout() {
-      this.$auth.logout()
-      this.$router.push('/login')
-    },
-    async register() {
-      if (!this.registerUser.name || !this.registerUser.lname || !this.registerUser.email || !this.registerUser.password) {
-        this.setupToastError("Please fill in all fields.");
-          return; 
-      }
-
-      if(this.registerUser.password.length < 8){
-        this.setupToastError("The password field must be at least 8 characters");
         return;
       }
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!emailPattern.test(this.registerUser.email)){
+      if (!emailPattern.test(this.loginUser.email)) {
         this.setupToastError("Please enter a valid email address.");
         return;
       }
-      const response = await apiRequest('https://admin.sueennature.com/api/register', 'POST', {
+      try {
+        const response = await apiRequest(
+          "https://admin.sueennature.com/api/login",
+          "POST",
+          {
+            email: this.loginUser.email,
+            password: this.loginUser.password,
+          }
+        );
+        this.nuxtApp.$auth.setAuthToken(response.access_token);
+        localStorage.setItem("userEmail", this.loginUser.email);
+
+        this.setupToastSucess("Succcessfully Logged In");
+        setTimeout(() => {
+          this.$router.push({
+            path: "/dashboard",
+            query: { email: this.loginUser.email },
+          });
+        }, 3000);
+      } catch (error) {
+        this.setupToastError("An error occurred. Please try again later.");
+        console.log("ERR", error.message);
+      }
+    },
+
+    logout() {
+      this.$auth.logout();
+      this.$router.push("/login");
+    },
+    async register() {
+      if (
+        !this.registerUser.name ||
+        !this.registerUser.lname ||
+        !this.registerUser.email ||
+        !this.registerUser.password
+      ) {
+        this.setupToastError("Please fill in all fields.");
+        return;
+      }
+
+      if (this.registerUser.password.length < 8) {
+        this.setupToastError(
+          "The password field must be at least 8 characters"
+        );
+        return;
+      }
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(this.registerUser.email)) {
+        this.setupToastError("Please enter a valid email address.");
+        return;
+      }
+      const response = await apiRequest(
+        "https://admin.sueennature.com/api/register",
+        "POST",
+        {
           name: this.registerUser.name,
           lname: this.registerUser.lname,
           email: this.registerUser.email,
           password: this.registerUser.password,
-        });
+        }
+      );
       try {
         this.nuxtApp.$auth.setAuthToken(response.access_token);
-          this.setupToastSucess("Succcessfully Registered")
-          setTimeout(() => {
-          this.$router.push({ path: '/dashboard',query: { email: this.registerUser.email } });
-            }, 3000); 
-
-      
-  } catch (error) {
-    this.setupToastError("An error occurred. Please try again later.");
-    console.log(error)
-
-  }    
+        this.setupToastSucess("Succcessfully Registered");
+        setTimeout(() => {
+          this.$router.push({
+            path: "/dashboard",
+            query: { email: this.registerUser.email },
+          });
+        }, 3000);
+      } catch (error) {
+        this.setupToastError("An error occurred. Please try again later.");
+        console.log(error);
+      }
     },
     formatPrice(value) {
-        let val = (value/1).toFixed(2).replace('.', ',')
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      let val = (value / 1).toFixed(2).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
     redirectToRegister() {
       // Redirect to the registration page
-      this.$router.push('/register');
+      this.$router.push("/register");
     },
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
@@ -1155,13 +1221,15 @@ export default {
       this.toggleModal(); // Toggle the first modal (open it).
     },
     setupToastSucess(message) {
-    toast.success(message, {
-      autoClose: 3000, 
-    })},
+      toast.success(message, {
+        autoClose: 3000,
+      });
+    },
     setupToastError(message) {
-    toast.error(message, {
-      autoClose: 3000, 
-    })},
+      toast.error(message, {
+        autoClose: 3000,
+      });
+    },
     addItemToRoomsList(roomDetails) {
       const isAlreadySelected = this.roomsList.find(
         (room) =>
@@ -1183,7 +1251,7 @@ export default {
     },
     updateRoomsCount(item, event) {
       console.log("updateRoomsCount ", item);
-      console.log("ROOMS UPDATED", this.roomsList)
+      console.log("ROOMS UPDATED", this.roomsList);
       const roomToUpdate = this.roomsList.find(
         (room) => room.rowId === item.rowId
       );
@@ -1205,7 +1273,7 @@ export default {
 
         roomDetail[peopleType] = parseInt(event.target.value);
 
-        if(peopleType === 'infants'){
+        if (peopleType === "infants") {
           this.infantAges = Array.from({ length: event.target.value }, () => 0);
         }
 
@@ -1244,23 +1312,25 @@ export default {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
     handleSubmit: async function () {
-      const cookies = document.cookie.split(';');
-      const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+      const cookies = document.cookie.split(";");
+      const authTokenCookie = cookies.find((cookie) =>
+        cookie.trim().startsWith("auth_token=")
+      );
       if (!authTokenCookie) {
         console.error("Auth Token not found in cookies.");
       }
-      const authToken = authTokenCookie?.split('=')[1];
-      
+      const authToken = authTokenCookie?.split("=")[1];
+
       const headers = {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       };
 
-      if(authToken){
-        headers.Authorization = `Bearer ${authToken.replace(/%7C/g, '|')}`
+      if (authToken) {
+        headers.Authorization = `Bearer ${authToken.replace(/%7C/g, "|")}`;
       }
-      
-      console.log("BODYHeader", headers)
-     
+
+      console.log("BODYHeader", headers);
+
       const formData = new FormData();
 
       for (let [key, value] of Object.entries(this.form)) {
@@ -1273,7 +1343,12 @@ export default {
         "Full Board": 3,
         "Room only": 4,
       };
-      const selectedActivities = this.activities.filter(activity => activity.checked).map(activity => activity.id)
+      const selectedActivities = this.activities
+        .filter((activity) => activity.checked)
+        .map((activity) => ({
+          activity_id: activity.id,
+          activity_name: activity.name,
+        }));
       const roomsArrangement = this.roomsList.reduce(
         (roomsArrangement, roomData) => {
           const { id, type, selectedRooms } = roomData;
@@ -1287,7 +1362,6 @@ export default {
               infants: roomPeople["infants"] || 0,
               room_type_id: id,
               meal_plan_id: mealPlanMap[type],
-              service_id: selectedActivities,
             });
           }
 
@@ -1297,6 +1371,7 @@ export default {
       );
 
       this.form.rooms = roomsArrangement;
+      this.form.activities = selectedActivities;
 
       // console.log(this.form);
       // return;
@@ -1329,7 +1404,6 @@ export default {
       //       toast.error("An unknown error occurred.");
       //     }
       //   });
-
     },
   },
   computed: {
@@ -1342,11 +1416,12 @@ export default {
         (room) => room.id.toString() === this.roomTypeId.toString()
       );
     },
-    
   },
   mounted() {
-    const cookies = document.cookie.split(';');
-    const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+    const cookies = document.cookie.split(";");
+    const authTokenCookie = cookies.find((cookie) =>
+      cookie.trim().startsWith("auth_token=")
+    );
     this.isSignedIn = !!authTokenCookie;
     initFlowbite();
     fetch("https://admin.sueennature.com/api/getRoomTypes")
@@ -1366,20 +1441,23 @@ export default {
         );
       });
 
-      fetch('https://admin.sueennature.com/api/get-services')
+    fetch("https://admin.sueennature.com/api/get-services")
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
       .then((data) => {
         this.activities = data.services;
-        console.log("SER",data)
+        console.log("SER", data);
       })
       .catch((error) => {
-        console.error('There has been a problem with your fetch operation:', error);
-    });
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      });
   },
   setup() {
     const nuxtApp = useNuxtApp();
@@ -1393,7 +1471,7 @@ export default {
       }
     };
 
-    const isLoggedIn = computed(() => authStore.token !== null)
+    const isLoggedIn = computed(() => authStore.token !== null);
 
     onMounted(() => {
       window.addEventListener("beforeunload", beforeUnloadListener);
