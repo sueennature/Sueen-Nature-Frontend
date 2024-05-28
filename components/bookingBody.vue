@@ -362,6 +362,23 @@
               </form>
             </div>
           </div>
+            <div v-if="item" v-for="(age, index) in item[n]?.child" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
+              <h5 class="text-black font-medium xl:text-lg text-sm">
+                Select age of child {{index + 1}}
+              </h5>
+
+              <form class="max-w-sm">
+                <select
+                  :id="'child-age-' + index"
+                  required
+                  class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option disabled selected>Age</option>
+                  <option :key="'year-' + 1" :value="6">3-6</option>
+                  <option :key="'year-' + 2" :value="12">6-12</option>
+                </select>
+              </form>
+            </div>
             <div v-if="item" v-for="(age, index) in item[n]?.infants" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
               <h5 class="text-black font-medium xl:text-lg text-sm">
                 Select age of infant {{index + 1}}
@@ -999,7 +1016,9 @@ export default {
       isModalVisible: false,
       isModal2Visible: false,
       selectedInfants: 0, 
-      infantAges: [], 
+      selectedChildren : 0,
+      infantAges: [],
+      childrenAges: [], 
       room_types: [],
       roomsList: [],
       boardType: [],
@@ -1016,6 +1035,7 @@ export default {
         check_in: this.$route.query.check_in,
         check_out: this.$route.query.check_out,
         rooms: [],
+        activities: [],
         guest_first_name: "",
         guest_last_name: "",
         guest_email: "",
@@ -1209,6 +1229,10 @@ export default {
           this.infantAges = Array.from({ length: event.target.value }, () => 0);
         }
 
+        if(peopleType === 'child'){
+          this.childrenAges = Array.from({ length: event.target.value }, () => 0);
+        }
+
         roomToUpdate[n] = roomDetail;
 
         this.roomsList[roomIndex] = roomToUpdate;
@@ -1273,7 +1297,7 @@ export default {
         "Full Board": 3,
         "Room only": 4,
       };
-      const selectedActivities = this.activities.filter(activity => activity.checked).map(activity => activity.id)
+      const selectedActivities = this.activities.filter(activity => activity.checked).map(activity => activity.id);
       const roomsArrangement = this.roomsList.reduce(
         (roomsArrangement, roomData) => {
           const { id, type, selectedRooms } = roomData;
@@ -1285,9 +1309,9 @@ export default {
               adults: roomPeople["adults"] || 0,
               child: roomPeople["child"] || 0,
               infants: roomPeople["infants"] || 0,
-              room_type_id: id,
+              room_id: id,
+              room_view_id: 4,
               meal_plan_id: mealPlanMap[type],
-              service_id: selectedActivities,
             });
           }
 
@@ -1295,6 +1319,7 @@ export default {
         },
         []
       );
+
 
       this.form.rooms = roomsArrangement;
 
