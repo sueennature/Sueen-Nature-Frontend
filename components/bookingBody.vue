@@ -644,7 +644,7 @@
               class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_first_name"
+              v-model="form.guest_info.guest_first_name"
             />
           </div>
           <div>
@@ -659,7 +659,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_last_name"
+              v-model="form.guest_info.guest_last_name"
             />
           </div>
           <div>
@@ -674,7 +674,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_telephone"
+              v-model="form.guest_info.guest_telephone"
             />
           </div>
           <div>
@@ -689,7 +689,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_email"
+              v-model="form.guest_info.guest_email"
             />
           </div>
           <div>
@@ -701,7 +701,7 @@
             <select
               id="nationality"
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              v-model="form.guest_nationality"
+              v-model="form.guest_info.guest_nationality"
             >
               <option selected>Local</option>
               <option value="US">Foreign</option>
@@ -718,7 +718,7 @@
               id="address"
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
-              v-model="form.guest_address"
+              v-model="form.guest_info.guest_address"
             />
           </div>
         </div>
@@ -1067,12 +1067,14 @@ export default {
         check_in: this.$route.query.check_in,
         check_out: this.$route.query.check_out,
         rooms: [],
-        guest_first_name: "",
-        guest_last_name: "",
-        guest_email: "",
-        guest_telephone: "",
-        guest_address: "",
-        guest_nationality: "",
+        guest_info: {
+          guest_first_name: "",
+          guest_last_name: "",
+          guest_email: "",
+          guest_telephone: "",
+          guest_address: "",
+          guest_nationality: "",
+        },
       },
       registerUser: {
         name: "",
