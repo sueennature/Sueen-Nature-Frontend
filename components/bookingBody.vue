@@ -1351,26 +1351,37 @@ export default {
           activity_id: activity.id,
           activity_name: activity.name,
         }));
-      const roomsArrangement = this.roomsList.reduce(
+        const roomsArrangement = this.roomsList.reduce(
         (roomsArrangement, roomData) => {
-          const { id, type, selectedRooms } = roomData;
+            const { id, type, selectedRooms } = roomData;
+            let adults = 0;
+            let child = 0;
+            let infants = 0;
 
-          for (let index = 1; index <= parseInt(selectedRooms); index++) {
-            const roomPeople = roomData[index];
+            for (let index = 1; index <= parseInt(selectedRooms); index++) {
+                const roomPeople = roomData[index];
+                adults += roomPeople["adults"] || 0;
+                child += roomPeople["child"] || 0;
+                infants += roomPeople["infants"] || 0;
 
-            roomsArrangement.push({
-              adults: roomPeople["adults"] || 0,
-              child: roomPeople["child"] || 0,
-              infants: roomPeople["infants"] || 0,
-              room_type_id: id,
-              meal_plan_id: mealPlanMap[type],
-            });
-          }
+                roomsArrangement.push({
+                    adults: roomPeople["adults"] || 0,
+                    child: roomPeople["child"] || 0,
+                    infants: roomPeople["infants"] || 0,
+                    room_type_id: id,
+                    meal_plan_id: mealPlanMap[type],
+                });
+            }
 
-          return roomsArrangement;
+            // Add total counts to form data
+            this.form.adults = adults;
+            this.form.child = child;
+            this.form.infants = infants;
+
+            return roomsArrangement;
         },
         []
-      );
+    );
 
       this.form.rooms = roomsArrangement;
       this.form.activities = selectedActivities;
