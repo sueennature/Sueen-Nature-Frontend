@@ -333,27 +333,26 @@
                 <select
                   id="adults"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'adults', $event)"
+                  @change="updateRoomPeopleCount(item, n, 'adults', $event, selectedRoomType.name)"
                 >
                   <option selected>Adults</option>
                    <option v-for="index in 
                    ( selectedRoomType.name === 'Single Room' ? 1 
                    : selectedRoomType.name === 'Double Room' ? 2 
-                   : selectedRoomType.name === 'Deluxe Room' ? 3
+                   : selectedRoomType.name === 'Triple Room' ? 3
                    : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
               </form>
-              <form class="max-w-sm w-full">
+              <form class="max-w-sm w-full" v-if="selectedRoomType.name !== 'Single Room'">
                 <select
                   id="children"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'child', $event)"
+                  @change="updateRoomPeopleCount(item, n, 'child', $event, selectedRoomType.name)"
                 >
                   <option selected>Children</option>
                   <option v-for="index in 
-                   ( selectedRoomType.name === 'Single Room' ? 1 
-                   : selectedRoomType.name === 'Double Room' ? 2 
-                   : selectedRoomType.name === 'Deluxe Room' ? 3
+                   ( selectedRoomType.name === 'Double Room' ? 1 
+                   : selectedRoomType.name === 'Triple Room' ? 3
                    : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
               </form>
@@ -361,7 +360,7 @@
                 <select
                   id="infants"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'infants', $event)"
+                  @change="updateRoomPeopleCount(item, n, 'infants', $event, selectedRoomType.name)"
                 >
                   <option selected>Infants</option>
                   <option v-for="index in 4" :key="index" :value="index">{{ index }}</option>
@@ -369,7 +368,7 @@
               </form>
             </div>
           </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.child" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
+            <div v-if="item" v-for="(age, index) in item[n]?.child.count" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
               <h5 class="text-black font-medium xl:text-lg text-sm">
                 Select age of child {{index + 1}}
               </h5>
@@ -378,15 +377,16 @@
                 <select
                   :id="'child-age-' + index"
                   required
+                  @change="updateAges(item, n, 'child', $event)"
                   class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
                   <option :key="'year-' + 1" :value="6">3-6</option>
-                  <option :key="'year-' + 2" :value="12">6-12</option>
+                  <option :key="'year-' + 2" :value="10">6-12</option>
                 </select>
               </form>
             </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.infants" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
+            <div v-if="item" v-for="(age, index) in item[n]?.infants.count" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
               <h5 class="text-black font-medium xl:text-lg text-sm">
                 Select age of infant {{ index + 1 }}
               </h5>
@@ -395,6 +395,7 @@
                 <select
                   :id="'infant-age-' + index"
                   required
+                  @change="updateAges(item, n, 'infants', $event)"
                   class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
@@ -1060,7 +1061,10 @@ export default {
       boardType: [],
       mealPlans: [],
       activities: [],
+      childFormAges: [],
+      infantFormAges: [],
       price: 0,
+      roomPeopleCount:[],
       form: {
         first_name: "",
         last_name: "",
@@ -1268,7 +1272,14 @@ export default {
     roomRaw(selectedRooms) {
       return Array.from({ length: Number(selectedRooms) }, (_, i) => i + 1);
     },
-    updateRoomPeopleCount(item, n, peopleType, event) {
+    handlePeopleSelection(item, n, peopleType, peopleCount, selectedRoomType){
+      if(selectedRoomType === "Double Room"){
+        if(peopleType === 'adults'){
+
+        }
+      }
+    },
+    updateRoomPeopleCount(item, n, peopleType, event, selectedRoomType) {
       const roomIndex = this.roomsList.findIndex(
         (room) => room.rowId === item.rowId
       );
@@ -1277,11 +1288,10 @@ export default {
 
         const roomDetail = roomToUpdate[n] || {};
 
-        roomDetail[peopleType] = parseInt(event.target.value);
-
-        if (peopleType === "infants") {
-          this.infantAges = Array.from({ length: event.target.value }, () => 0);
-        }
+        roomDetail[peopleType] = {
+          count: parseInt(event.target.value),
+          ages: []
+        };
 
         if(peopleType === 'child'){
           this.childrenAges = Array.from({ length: event.target.value }, () => 0);
@@ -1293,13 +1303,32 @@ export default {
       }
 
       console.log(
-        "room list with peopole count ",
+        "room list with people count ",
         roomIndex,
         item,
         n,
         peopleType,
         this.roomsList
       );
+    },
+    updateAges(roomDetails, roomIndex, peopleType, event){
+      const selectedAge = parseInt(event.target.value);
+      const roomListIndex = this.roomsList.findIndex(
+        (room) => room.rowId === roomDetails.rowId
+      );
+      if (roomListIndex > -1) {
+        const roomToUpdate = this.roomsList[roomListIndex];
+
+        const roomDetail = roomToUpdate[roomIndex] || {};
+
+        const roomPeopleDetails = roomDetail[peopleType];
+        roomPeopleDetails.ages.push(selectedAge);
+        roomDetail[peopleType] = roomPeopleDetails;
+
+        roomToUpdate[roomIndex] = roomDetail;
+
+        this.roomsList[roomListIndex] = roomToUpdate;
+      }
     },
     getTotalRoomRates() {
       let roomRatesTotal = this.roomsList.reduce((total, room) => {
@@ -1373,9 +1402,9 @@ export default {
                 infants += roomPeople["infants"] || 0;
 
                 roomsArrangement.push({
-                    adults: roomPeople["adults"] || 0,
-                    child: roomPeople["child"] || 0,
-                    infants: roomPeople["infants"] || 0,
+                    adults: roomPeople["adults"].count || 0,
+                    child: roomPeople["child"].ages || 0,
+                    infants: roomPeople["infants"].ages || 0,
                     room_type_id: id,
                     meal_plan_id: mealPlanMap[type],
                 });
