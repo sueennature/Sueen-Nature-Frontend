@@ -1397,9 +1397,9 @@ export default {
 
             for (let index = 1; index <= parseInt(selectedRooms); index++) {
                 const roomPeople = roomData[index];
-                adults += roomPeople["adults"] || 0;
-                child += roomPeople["child"] || 0;
-                infants += roomPeople["infants"] || 0;
+                adults += roomPeople["adults"].count || 0;
+                child += roomPeople["child"].count || 0;
+                infants += roomPeople["infants"].count || 0;
 
                 roomsArrangement.push({
                     adults: roomPeople["adults"].count || 0,
@@ -1408,6 +1408,7 @@ export default {
                     room_type_id: id,
                     meal_plan_id: mealPlanMap[type],
                 });
+
             }
 
             // Add total counts to form data
