@@ -19,9 +19,7 @@
       <div>
         <div class="relative">
           <img
-            :src="`https://admin.sueennature.com/uploads/${
-              selectedRoomType.images
-            }`"
+            :src="`https://admin.sueennature.com/uploads/${selectedRoomType.images}`"
             alt="roomImg"
             class="w-full object-cover"
           />
@@ -355,7 +353,7 @@
                    : selectedRoomType.name === 'Triple Room' ? 3
                    : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
-              </form>
+              </form> -->
               <form class="max-w-sm w-full">
                 <select
                   id="infants"
@@ -368,7 +366,7 @@
               </form>
             </div>
           </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.child.count" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
+            <div v-if="item" v-for="(age, index) in item[n]?.child?.count" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
               <h5 class="text-black font-medium xl:text-lg text-sm">
                 Select age of child {{index + 1}}
               </h5>
@@ -386,7 +384,7 @@
                 </select>
               </form>
             </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.infants.count" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
+            <div v-if="item" v-for="(age, index) in item[n]?.infants?.count" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
               <h5 class="text-black font-medium xl:text-lg text-sm">
                 Select age of infant {{ index + 1 }}
               </h5>
@@ -647,7 +645,7 @@
               class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_info.guest_first_name"
+              v-model="form.guest_info.first_name"
             />
           </div>
           <div>
@@ -662,7 +660,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_info.guest_last_name"
+              v-model="form.guest_info.last_name"
             />
           </div>
           <div>
@@ -677,7 +675,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_info.guest_telephone"
+              v-model="form.guest_info.telephone"
             />
           </div>
           <div>
@@ -692,7 +690,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_info.guest_email"
+              v-model="form.guest_info.email"
             />
           </div>
           <div>
@@ -704,7 +702,7 @@
             <select
               id="nationality"
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              v-model="form.guest_info.guest_nationality"
+              v-model="form.guest_info.nationality"
             >
               <option selected>Local</option>
               <option value="US">Foreign</option>
@@ -1076,12 +1074,12 @@ export default {
         check_out: this.$route.query.check_out,
         rooms: [],
         guest_info: {
-          guest_first_name: "",
-          guest_last_name: "",
-          guest_email: "",
-          guest_telephone: "",
-          guest_address: "",
-          guest_nationality: "",
+          first_name: "",
+          last_name: "",
+          email: "",
+          telephone: "",
+          address: "",
+          nationality: "",
         },
       },
       registerUser: {
@@ -1101,10 +1099,32 @@ export default {
     };
   },
   methods: {
+  getRoomCapacity(type, adults) {
+    const adultCount = adults?.count;
+    console.log("ADULT", adultCount)
+    switch (this.selectedRoomType.name) {
+      case 'Single Room':
+        return type === 'adults' ? 1 : 0;
+      case 'Double Room':
+        return type === 'adults' ? 2 : (adultCount === 1 ? 2 : (adultCount === 2 ? 1 : 0));
+      case 'Triple Room':
+        return type === 'adults' ? 3 : (adultCount >= 3 ? 1 : (adultCount === 2 ? 2 : 2));
+      case 'Family Room':
+        return type === 'adults' ? 4 : (adultCount >= 4 ? 1 : (adultCount === 3 ? 2 : (adultCount === 2 ? 3 : 3)));
+      default:
+        return 0;
+    }
+  },
     getClickMethod() {
       if (this.isSignedIn) {
-        localStorage.removeItem("userEmail");
-      } else {
+          this.$auth.setAuthToken(null);
+          localStorage.removeItem("userEmail"); 
+          toast.success("Successfully Logged Out");
+          setTimeout(()=>{
+            this.$router.push('/home');      
+          }, 2000)  
+      } 
+      else {
         this.toggleModal();
       }
     },
@@ -1147,8 +1167,9 @@ export default {
     },
 
     logout() {
-      this.$auth.logout();
-      this.$router.push("/login");
+      this.$auth.setAuthToken(null);  
+      localStorage.removeItem("userEmail")  
+      this.$router.push('/home');
     },
     async register() {
       if (
@@ -1184,6 +1205,8 @@ export default {
       );
       try {
         this.nuxtApp.$auth.setAuthToken(response.access_token);
+        localStorage.setItem("userEmail", this.registerUser.email);
+
         this.setupToastSucess("Succcessfully Registered");
         setTimeout(() => {
           this.$router.push({
@@ -1397,15 +1420,15 @@ export default {
 
             for (let index = 1; index <= parseInt(selectedRooms); index++) {
                 const roomPeople = roomData[index];
-                adults += roomPeople["adults"].count || 0;
-                child += roomPeople["child"].count || 0;
-                infants += roomPeople["infants"].count || 0;
+                adults += roomPeople["adults"]?.count || 0;
+                child += roomPeople["child"]?.count || 0;
+                infants += roomPeople["infants"]?.count || 0;
 
                 roomsArrangement.push({
-                    adults: roomPeople["adults"].count || 0,
-                    child: roomPeople["child"].ages || 0,
-                    infants: roomPeople["infants"].ages || 0,
-                    room_type_id: id,
+                    adults: roomPeople["adults"]?.count || 0,
+                    child: roomPeople["child"]?.ages || 0,
+                    infants: roomPeople["infants"]?.ages || 0,
+                    room_id: id,
                     meal_plan_id: mealPlanMap[type],
                 });
 
@@ -1448,7 +1471,7 @@ export default {
       //   })
       //   .catch((error) => {
       //     console.log("RESPONSE ERROR ", error);
-      //     console.error("There has been a problem with your fetch operation:", error);
+      //     console.log("There has been a problem with your fetch operation:", error);
       //     if (error instanceof Error) {
       //       toast.error(error.message);
       //     } else {

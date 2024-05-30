@@ -378,7 +378,7 @@ export default {
       this.view_type_id = null;
     },
     async checkAvailability() {
-      if (!this.check_in || !this.check_out || !this.room_type_id || !this.view_type_id) {
+      if (!this.check_in || !this.check_out || !this.room_type_id ) {
       this.setupToast("Please fill in all fields.");
       return; 
     }

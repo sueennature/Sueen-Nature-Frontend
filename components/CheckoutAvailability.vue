@@ -32,7 +32,6 @@
             id="room"
             class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             v-model="room_type_id"
-            @change="updateAvailableRooms"
           >
             <option :value="null" selected class="text-gray-300">
               Choose a Room
@@ -49,24 +48,24 @@
         </form>
         <div class="w-0.5 bg-white h-8 my-auto lg:flex hidden"></div>
         <form class="lg:max-w-sm lg:mx-auto">
-          <select
-            id="view"
-            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="view_type_id"
-          >
-            <option :value="null" disabled selected class="text-gray-300">
-              Choose Room View
-            </option>
-            <option
-              v-for="view in filteredViews"
-              :value="view.id"
-              :key="view.id"
-              class="text-black-200"
-            >
-              {{ view.location }}
-            </option>
-          </select>
-        </form>
+        <select
+          class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          v-model="selectedView"
+        >
+          <option :value="null" disabled selected class="text-gray-300">
+            Choose Room View
+          </option>
+      <option
+  v-for="view in filteredViews"
+  :value="view" 
+  :key="view.room_no"
+  class="text-black-200"
+>
+  {{ view.view }}
+</option>
+
+        </select>
+      </form>
       </div>
       <button
         class="buttontext bg-red-100 text-sm text-white lg:ml-2 lg:p-4 p-2 rounded-r-lg rounded-l-none lg:flex hidden"
@@ -95,19 +94,40 @@ export default {
       check_out: "",
       room_type_id: null,
       room_types: [],
-      view_type_id: null,
-      view_types: [],
       rooms: [],
-      filteredViews: [],
+      selectedView: null,
+
     };
   },
   computed: {
-    filteredRooms() {
-      if (!this.room_type_id) return [];
-      return this.rooms.filter(
-        (room) => room.room_type_id === this.room_type_id
-      );
-    },
+  filteredViews() {
+    if (!this.room_type_id) return [];
+    const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
+    return selectedRoom ? selectedRoom.views : [];
+  },
+},
+watch: {
+    room_type_id(newVal, oldVal) {
+      const selectedRoom = this.room_types.find(room => room.id === newVal);
+      if (selectedRoom) {
+        this.filteredViews = selectedRoom.views;
+        const roomViewParam = this.$route.query.roomView;
+        if (roomViewParam) {
+          const parsedRoomView = JSON.parse(roomViewParam);
+          const matchingRoomView = this.filteredViews.find(view => view.view === parsedRoomView);
+          if (matchingRoomView) {
+            this.selectedView = matchingRoomView;
+          } else {
+            this.selectedView = null; 
+          }
+        } else {
+          this.selectedView = null; 
+        }
+      } else {
+        this.filteredViews = [];
+        this.selectedView = null;
+      }
+    }
   },
   methods: {
     async checkAvailability() {
@@ -130,7 +150,9 @@ export default {
           check_in: this.check_in,
           check_out: this.check_out,
           roomTypeId: this.room_type_id,
-          viewTypeId: this.view_type_id,
+
+          roomView: JSON.stringify(this.selectedView.view),
+
         },
       });
       console.log("body", body);
@@ -161,69 +183,44 @@ export default {
     },
   },
   mounted() {
+    console.log("ID", this.room_type_id)
     fetch("https://admin.sueennature.com/api/getRoomTypes")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      this.room_types = data.room_types;
+      console.log("Response:", data);
+      
+      const { check_in, check_out, roomTypeId } = this.$route.query;
+      this.check_in = check_in || "";
+      this.check_out = check_out || "";
+      this.room_type_id = roomTypeId ? parseInt(roomTypeId) : null;
+
+      if (this.room_type_id) {
+        const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
+        console.log("first",selectedRoom.name)
+        
+        if (selectedRoom) {
+          this.filteredViews = selectedRoom.views;
+          const roomViewParam = this.$route.query.roomView;
+          if (roomViewParam) {
+            const parsedRoomView = JSON.parse(roomViewParam); 
+            const matchingRoomView = this.filteredViews.find(view => view.view === parsedRoomView);
+            if (matchingRoomView) {
+              this.selectedView = matchingRoomView;
+            }
+            
+          }
         }
-        return response.json();
-      })
-      .then((data) => {
-        this.room_types = data.room_types;
-        console.log("Response:", data);
-        // this.updateAvailableRooms();
-
-        const { check_in, check_out, roomTypeId, viewTypeId } =
-          this.$route.query;
-        this.check_in = check_in || "";
-        this.check_out = check_out || "";
-        this.room_type_id = roomTypeId ? parseInt(roomTypeId) : null;
-        this.view_type_id = viewTypeId ? parseInt(viewTypeId) : null;
-        console.log("VIEW", this.view_type_id);
-
-        if (this.room_type_id) {
-          const selectedRoom = this.room_types.find(
-            (room) => room.id === this.room_type_id
-          );
-          this.filteredViews = selectedRoom ? selectedRoom.rooms : [];
-          console.log(
-            "FILTERED",
-            this.filteredViews,
-            selectedRoom,
-            this.room_type_id,
-            this.room_types
-          );
-        }
-      })
-      .catch((error) => {
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error
-        );
-      });
-
-    //   if (this.room_type_id) {
-    //   this.updateAvailableRooms();
-    //   const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
-    //   if (selectedRoom && selectedRoom.rooms.length > 0) {
-    //     this.view_type_id = selectedRoom.rooms[0].id;
-    //   }
-    // }
-
-    // fetch('https://admin.sueennature.com/api/getRooms')
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     this.rooms = data.rooms;
-    //     console.log('Rooms:', this.rooms);
-    //   })
-    //   .catch((error) => {
-    //     console.error('There has been a problem with your fetch operation:', error);
-    // });
+      }
+    })
+    .catch((error) => {
+      console.error("There has been a problem with your fetch operation:", error);
+    });
 
     Promise.all([
       import("flowbite-datepicker/Datepicker"),
@@ -240,7 +237,25 @@ export default {
         orientation: "bottom right",
       });
     });
+
+    const roomViewParam = this.$route.query.roomView;
+  console.log("roomViewParam:", roomViewParam); 
+
+  if (roomViewParam) {
+    const parsedRoomView = JSON.parse(roomViewParam); 
+    console.log("parsedRoomView:", parsedRoomView); 
+
+    const matchingRoomView = this.filteredViews.find(view => view.view === parsedRoomView);
+    console.log("matchingRoomView:", matchingRoomView); 
+    console.log("filteredViews:", this.filteredViews); 
+
+    if (matchingRoomView) {
+      this.selectedView = matchingRoomView;
+      console.log("selectedView:", this.selectedView); 
+    }
+  }
   },
+  
 };
 </script>
 
