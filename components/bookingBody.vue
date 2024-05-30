@@ -655,7 +655,7 @@
               class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_info.guest_first_name"
+              v-model="form.guest_info.first_name"
             />
           </div>
           <div>
@@ -670,7 +670,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_info.guest_last_name"
+              v-model="form.guest_info.last_name"
             />
           </div>
           <div>
@@ -685,7 +685,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_info.guest_telephone"
+              v-model="form.guest_info.telephone"
             />
           </div>
           <div>
@@ -700,7 +700,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_info.guest_email"
+              v-model="form.guest_info.email"
             />
           </div>
           <div>
@@ -712,7 +712,7 @@
             <select
               id="nationality"
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              v-model="form.guest_info.guest_nationality"
+              v-model="form.guest_info.nationality"
             >
               <option selected>Local</option>
               <option value="US">Foreign</option>
@@ -1084,12 +1084,12 @@ export default {
         check_out: this.$route.query.check_out,
         rooms: [],
         guest_info: {
-          guest_first_name: "",
-          guest_last_name: "",
-          guest_email: "",
-          guest_telephone: "",
-          guest_address: "",
-          guest_nationality: "",
+          first_name: "",
+          last_name: "",
+          email: "",
+          telephone: "",
+          address: "",
+          nationality: "",
         },
       },
       registerUser: {
@@ -1429,7 +1429,7 @@ export default {
                     adults: roomPeople["adults"]?.count || 0,
                     child: roomPeople["child"]?.ages || 0,
                     infants: roomPeople["infants"]?.ages || 0,
-                    room_type_id: id,
+                    room_id: id,
                     meal_plan_id: mealPlanMap[type],
                 });
 
@@ -1453,32 +1453,32 @@ export default {
 
       console.log("FORM DATA", this.form);
 
-      await fetch("https://admin.sueennature.com/api/booking", {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(this.form),
-      })
-        .then((response) => {
-          console.log("RESPONSE ", response);
-          return response.json();
-        })
-        .then((data) => {
-          console.log("RESPONSE SUCCESS ", data);
-          if (data.error) {
-            throw new Error(data.error);
-          }
-          toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
-          // window.location.href = data.ipg;
-        })
-        .catch((error) => {
-          console.log("RESPONSE ERROR ", error);
-          console.log("There has been a problem with your fetch operation:", error);
-          if (error instanceof Error) {
-            toast.error(error.message);
-          } else {
-            toast.error("An unknown error occurred.");
-          }
-        });
+      // await fetch("https://admin.sueennature.com/api/booking", {
+      //   method: "POST",
+      //   headers: headers,
+      //   body: JSON.stringify(this.form),
+      // })
+      //   .then((response) => {
+      //     console.log("RESPONSE ", response);
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     console.log("RESPONSE SUCCESS ", data);
+      //     if (data.error) {
+      //       throw new Error(data.error);
+      //     }
+      //     toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
+      //     // window.location.href = data.ipg;
+      //   })
+      //   .catch((error) => {
+      //     console.log("RESPONSE ERROR ", error);
+      //     console.log("There has been a problem with your fetch operation:", error);
+      //     if (error instanceof Error) {
+      //       toast.error(error.message);
+      //     } else {
+      //       toast.error("An unknown error occurred.");
+      //     }
+      //   });
     },
   },
   computed: {
