@@ -256,26 +256,12 @@
               Activities
             </h6>
             <div class="flex items-center mb-4 mt-8" v-for="(activity, index) in activities" :key="activity.id">
-            <input
-              :id="'checkbox-' + activity.id"
-              v-model="activity.checked"
-              type="checkbox"
-              :value="activity.id"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              :for="'checkbox-' + activity.id"
-              class="ms-2 text-[17px] font-medium text-gray-900 dark:text-gray-300 flex items-center justify-between w-full "
-            >
-              {{ activity.name }} - <strong>LKR  {{ formatPrice(activity.amount) }}</strong>
-            </label>
-          </div>
+                <input :id="'checkbox-' + activity.id" v-model="activity.checked" type="checkbox" :value="activity.id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label :for="'checkbox-' + activity.id" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ activity.name }} - LKR {{ formatPrice(activity.amount) }}</label>
+            </div>
 
-            <!-- <img
-            :src="`https://admin.sueennature.com/uploads/${activity.image}`"
-            alt="roomImg"
-            class="w-full object-cover"
-          /> -->
+
+
         </div>
 
 
@@ -370,7 +356,6 @@
               <form class="max-w-sm">
                 <select
                   :id="'infant-age-' + index"
-                  required
                   class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
@@ -448,15 +433,13 @@
             Proceed As a Guest
           </button>
           <span class="text-black-200 text-base font-bold">OR</span>
-          <div>
           <button
-            @click="getClickMethod"
+            @click="toggleModal"
             type="button"
             class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
-            {{ isSignedIn ? 'Sign Off' : 'Sign In' }}
+            Sign In
           </button>
-          </div>
         </div>
         <!-- end of price breakdown section -->
       </div>
@@ -499,7 +482,6 @@
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
             @change="toggleGuestInfo"
-            checked  
           />
           <label
             for="inline-
@@ -758,7 +740,7 @@
               Use your social profile to register
             </p>
             <!-- SOCIAL MEDIA LOGIN -->
-            <SocialLogin />
+            <SocialLogin @login-success="handleGoogleLoginData"/>
 
 
             <!-- Centered "or" text -->
@@ -919,7 +901,7 @@
               Use your social profile to Login
             </p>
             <!-- SOCIAL LOGIN -->
-            <SocialLogin />
+            <SocialLogin @login-success="handleGoogleLoginData"/>
 
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
@@ -963,6 +945,17 @@
                 <p>Don't have an account?</p>
                 <button @click="redirectToRegister" id="toggle-modal-button" class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Register Here</button>
               </div>-->
+               <div class="flex flex-row items-center text-md space-x-1">
+                <p>Don't have an account?</p>
+                <button
+                  @click="toggleModal"
+                  id="toggle-modal-button"
+                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                >
+                  Register Here
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -981,8 +974,7 @@ import { useNuxtApp } from '#app';
 import SocialLogin from './SocialLogin.vue';
 import {toast} from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-
-
+import axios from 'axios';
 
 export default {
   components: {
@@ -993,8 +985,7 @@ export default {
     return {
       showPassword:false,
       showGuestInfo: false,
-      showYourInfo: true,
-      isSignedIn: false,
+      showYourInfo: false,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
@@ -1005,6 +996,7 @@ export default {
       boardType: [],
       mealPlans: [],
       activities:[],
+      isSocialLogin: false,
       price: 0,
       form: {
         first_name: "",
@@ -1040,15 +1032,6 @@ export default {
     };
   },
   methods: {
-    getClickMethod() {
-      if (this.isSignedIn) {
-        localStorage.removeItem('userEmail');
-
-      } else {
-        this.toggleModal();
-
-      }
-    },
     togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   },
@@ -1062,25 +1045,72 @@ export default {
           this.setupToastError("Please enter a valid email address.");
           return;
         }    
-      try {
-        const response = await apiRequest('https://admin.sueennature.com/api/login', 'POST', {
+      // try {
+        const response = await axios.post('https://admin.sueennature.com/api/login', {
           email: this.loginUser.email,
           password: this.loginUser.password,
-        });
-        this.nuxtApp.$auth.setAuthToken(response.access_token);
-        localStorage.setItem('userEmail', this.loginUser.email);
+        }).
+          then(response => {
+            console.log('Status:', response.status);
+            console.log('Data:', response.data);
 
-        this.setupToastSucess("Succcessfully Logged In")
-          setTimeout(() => {
-            this.$router.push({ path: '/dashboard', query: { email: this.loginUser.email } });
-            }, 3000); 
-      } catch (error) {
-        this.setupToastError("An error occurred. Please try again later.");
-        console.log("ERR",error.message);
+            this.nuxtApp.$auth.setAuthToken(response.access_token);
+            this.$router.push({ path: '/dashboard', });
+            this.setupToastSucess("Successfully Logged In")
+          }).catch(error => {
+          if (error.response) {
+            console.log('Error status:', error.response.status);
+            console.log('Error data:', error.response.data);
+
+            if(error.response.data.message === "Invalid Credentials"){
+              if(this.isSocialLogin){
+                this.register();
+              }else{
+                this.setupToastError("Please check your credentials");
+              }           
+            }
+          } else if (error.request) {
+            console.log('Error request:', error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+
+          // this.setupToastError("An error occurred. Please try again.");
+        });
+
+
+      //   this.nuxtApp.$auth.setAuthToken(response.access_token);
+      //   console.log("RES",response)
+      //   this.setupToastSucess("Successfully Logged In")
+      //     // setTimeout(() => {
+      //     this.$router.push({ path: '/dashboard', });
+      //     //   }, 3000); 
+      // } catch (error) {
+      //   // this.setupToastError("An error occurred. Please try again later.");
+
+      //     let errorMessage = "An error occurred. Please try again later.";
+      //     if (error.response && error.response.data && error.response.data.message) {
+      //       errorMessage = error.response.data.message;
+      //     } else if (error.message) {
+      //       errorMessage = error.message;
+      //     }
+
+      //   this.setupToastError("An error occurred. Please try again later.");
+      //   console.log("ERR", error );
         
-      }
+      // }
     },
- 
+    handleGoogleLoginData({ name, lname, email, password }){
+
+      this.isSocialLogin = true,
+      this.registerUser.name = name;
+      this.registerUser.lname = lname;
+      this.registerUser.email = email;
+      this.registerUser.password = password;
+      this.loginUser.email = email;
+      this.loginUser.password = password;
+      this.login();
+    },
     logout() {
       this.$auth.logout()
       this.$router.push('/login')
@@ -1110,7 +1140,7 @@ export default {
         this.nuxtApp.$auth.setAuthToken(response.access_token);
           this.setupToastSucess("Succcessfully Registered")
           setTimeout(() => {
-          this.$router.push({ path: '/dashboard',query: { email: this.registerUser.email } });
+          this.$router.push({ path: '/dashboard', });
             }, 3000); 
 
       
@@ -1131,7 +1161,7 @@ export default {
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
-        this.showYourInfo = false;
+        this.showYourInfo = true;
       } else {
         this.showGuestInfo = false;
         this.showYourInfo = true;
@@ -1139,6 +1169,7 @@ export default {
     },
     toggleModal() {
       this.isModalVisible = !this.isModalVisible;
+      this.isModal2Visible = false;
     },
     closeModal() {
       this.isModalVisible = false;
@@ -1162,6 +1193,15 @@ export default {
     toast.error(message, {
       autoClose: 3000, 
     })},
+    // toggleModal(event) {
+    //   event.preventDefault();
+    //   this.isModalOpen = !this.isModalOpen;
+    //   if (this.isModalOpen) {
+    //     document.body.classList.add("overflow-hidden");
+    //   } else {
+    //     document.body.classList.remove("overflow-hidden");
+    //   }
+    // },
     addItemToRoomsList(roomDetails) {
       const isAlreadySelected = this.roomsList.find(
         (room) =>
@@ -1224,40 +1264,17 @@ export default {
       );
     },
     getTotalRoomRates() {
-      let roomRatesTotal = this.roomsList.reduce((total, room) => {
+      return this.roomsList.reduce((total, room) => {
         const roomCount = room.selectedRooms === "" ? "0" : room.selectedRooms;
         total = total + parseFloat(room.price) * parseInt(roomCount);
+
         return total;
       }, 0);
-
-      let activitiesTotal = this.activities.reduce((total, activity) => {
-        if (activity.checked) {
-          total += parseFloat(activity.amount);
-        }
-        return total;
-      }, 0);
-
-      return roomRatesTotal + activitiesTotal;
     },
-
     scrollToBottom() {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
     handleSubmit: async function () {
-      const cookies = document.cookie.split(';');
-      const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
-      if (!authTokenCookie) {
-        console.error("Auth Token not found in cookies.");
-        return;
-      }
-      const authToken = authTokenCookie.split('=')[1];
-
-      const headers = {
-        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
-        'Content-Type': 'application/json'
-      };
-      console.log("BODYHeader", headers)
-     
       const formData = new FormData();
 
       for (let [key, value] of Object.entries(this.form)) {
@@ -1270,7 +1287,7 @@ export default {
         "Full Board": 3,
         "Room only": 4,
       };
-      const selectedActivities = this.activities.filter(activity => activity.checked).map(activity => activity.id)
+
       const roomsArrangement = this.roomsList.reduce(
         (roomsArrangement, roomData) => {
           const { id, type, selectedRooms } = roomData;
@@ -1284,7 +1301,7 @@ export default {
               infants: roomPeople["infants"] || 0,
               room_type_id: id,
               meal_plan_id: mealPlanMap[type],
-              service_id: selectedActivities,
+              service_id: '[1,2,3]',
             });
           }
 
@@ -1302,7 +1319,10 @@ export default {
 
       await fetch("https://admin.sueennature.com/api/booking", {
         method: "POST",
-        headers: headers,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(this.form),
       })
         .then((response) => {
@@ -1314,19 +1334,16 @@ export default {
           if (data.error) {
             throw new Error(data.error);
           }
-          toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
           window.location.href = data.ipg;
         })
         .catch((error) => {
           console.log("RESPONSE ERROR ", error);
-          console.error("There has been a problem with your fetch operation:", error);
-          if (error instanceof Error) {
-            toast.error(error.message);
-          } else {
-            toast.error("An unknown error occurred.");
-          }
+          alert(error);
+          console.error(
+            "There has been a problem with your fetch operation:",
+            error
+          );
         });
-
     },
   },
   computed: {
@@ -1342,9 +1359,6 @@ export default {
     
   },
   mounted() {
-    const cookies = document.cookie.split(';');
-    const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
-    this.isSignedIn = !!authTokenCookie;
     initFlowbite();
     fetch("https://admin.sueennature.com/api/getRoomTypes")
       .then((response) => {
@@ -1363,7 +1377,7 @@ export default {
         );
       });
 
-      fetch('https://admin.sueennature.com/api/get-services')
+      fetch('http://127.0.0.1:8000/api/get-services')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -1372,7 +1386,6 @@ export default {
       })
       .then((data) => {
         this.activities = data.services;
-        console.log("SER",data)
       })
       .catch((error) => {
         console.error('There has been a problem with your fetch operation:', error);
