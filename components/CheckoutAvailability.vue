@@ -106,7 +106,29 @@ export default {
     return selectedRoom ? selectedRoom.views : [];
   },
 },
-
+watch: {
+    room_type_id(newVal, oldVal) {
+      const selectedRoom = this.room_types.find(room => room.id === newVal);
+      if (selectedRoom) {
+        this.filteredViews = selectedRoom.views;
+        const roomViewParam = this.$route.query.roomView;
+        if (roomViewParam) {
+          const parsedRoomView = JSON.parse(roomViewParam);
+          const matchingRoomView = this.filteredViews.find(view => view.view === parsedRoomView);
+          if (matchingRoomView) {
+            this.selectedView = matchingRoomView;
+          } else {
+            this.selectedView = null; 
+          }
+        } else {
+          this.selectedView = null; 
+        }
+      } else {
+        this.filteredViews = [];
+        this.selectedView = null;
+      }
+    }
+  },
   methods: {
     async checkAvailability() {
       const body = {
@@ -129,7 +151,7 @@ export default {
           check_out: this.check_out,
           roomTypeId: this.room_type_id,
 
-          roomView: JSON.stringify(this.selectedView.view), // Stringify the selected view object
+          roomView: JSON.stringify(this.selectedView.view),
 
         },
       });
@@ -161,6 +183,7 @@ export default {
     },
   },
   mounted() {
+    console.log("ID", this.room_type_id)
     fetch("https://admin.sueennature.com/api/getRoomTypes")
     .then((response) => {
       if (!response.ok) {
@@ -179,6 +202,8 @@ export default {
 
       if (this.room_type_id) {
         const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
+        console.log("first",selectedRoom.name)
+        
         if (selectedRoom) {
           this.filteredViews = selectedRoom.views;
           const roomViewParam = this.$route.query.roomView;
@@ -188,6 +213,7 @@ export default {
             if (matchingRoomView) {
               this.selectedView = matchingRoomView;
             }
+            
           }
         }
       }

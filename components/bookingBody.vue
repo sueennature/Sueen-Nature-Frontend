@@ -1127,8 +1127,14 @@ export default {
   },
     getClickMethod() {
       if (this.isSignedIn) {
-        localStorage.removeItem("userEmail");
-      } else {
+          this.$auth.setAuthToken(null);
+          localStorage.removeItem("userEmail"); 
+          toast.success("Successfully Logged Out");
+          setTimeout(()=>{
+            this.$router.push('/home');      
+          }, 2000)  
+      } 
+      else {
         this.toggleModal();
       }
     },
@@ -1171,8 +1177,9 @@ export default {
     },
 
     logout() {
-      this.$auth.logout();
-      this.$router.push("/login");
+      this.$auth.setAuthToken(null);  
+      localStorage.removeItem("userEmail")  
+      this.$router.push('/home');
     },
     async register() {
       if (
@@ -1208,6 +1215,8 @@ export default {
       );
       try {
         this.nuxtApp.$auth.setAuthToken(response.access_token);
+        localStorage.setItem("userEmail", this.registerUser.email);
+
         this.setupToastSucess("Succcessfully Registered");
         setTimeout(() => {
           this.$router.push({
