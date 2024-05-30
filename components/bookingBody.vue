@@ -20,7 +20,7 @@
         <div class="relative">
           <img
             :src="`https://admin.sueennature.com/uploads/${
-              JSON.parse(selectedRoomType.image)[0]
+              selectedRoomType.images
             }`"
             alt="roomImg"
             class="w-full object-cover"
@@ -349,7 +349,7 @@
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   @change="updateRoomPeopleCount(item, n, 'child', $event, selectedRoomType.name)"
                 >
-                  <option selected>Children</option>
+                  <option selected value="0">Children</option>
                   <option v-for="index in 
                    ( selectedRoomType.name === 'Double Room' ? 1 
                    : selectedRoomType.name === 'Triple Room' ? 3
@@ -362,7 +362,7 @@
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   @change="updateRoomPeopleCount(item, n, 'infants', $event, selectedRoomType.name)"
                 >
-                  <option selected>Infants</option>
+                  <option selected value="0">Infants</option>
                   <option v-for="index in 4" :key="index" :value="index">{{ index }}</option>
                 </select>
               </form>
