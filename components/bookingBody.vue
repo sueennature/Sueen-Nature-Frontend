@@ -19,9 +19,7 @@
       <div>
         <div class="relative">
           <img
-            :src="`https://admin.sueennature.com/uploads/${
-              JSON.parse(selectedRoomType.image)[0]
-            }`"
+            :src="`https://admin.sueennature.com/uploads/${selectedRoomType.images}`"
             alt="roomImg"
             class="w-full object-cover"
           />
@@ -343,7 +341,17 @@
                    : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
               </form>
-              <form class="max-w-sm w-full" v-if="selectedRoomType.name !== 'Single Room'">
+              <form class="max-w-sm w-full">
+              <select
+                id="children"
+                class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                @change="updateRoomPeopleCount(item, n, 'child', $event, selectedRoomType.name)"
+              >
+                <option selected>Children</option>
+                <option v-for="index in getRoomCapacity('child', item[n]?.adults)" :key="index" :value="index">{{ index }}</option>
+              </select>
+                    </form>
+              <!-- <form class="max-w-sm w-full" v-if="selectedRoomType.name !== 'Single Room'">
                 <select
                   id="children"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -355,7 +363,7 @@
                    : selectedRoomType.name === 'Triple Room' ? 3
                    : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
-              </form>
+              </form> -->
               <form class="max-w-sm w-full">
                 <select
                   id="infants"
@@ -368,7 +376,7 @@
               </form>
             </div>
           </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.child.count" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
+            <div v-if="item" v-for="(age, index) in item[n]?.child?.count" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
               <h5 class="text-black font-medium xl:text-lg text-sm">
                 Select age of child {{index + 1}}
               </h5>
@@ -386,7 +394,7 @@
                 </select>
               </form>
             </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.infants.count" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
+            <div v-if="item" v-for="(age, index) in item[n]?.infants?.count" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
               <h5 class="text-black font-medium xl:text-lg text-sm">
                 Select age of infant {{ index + 1 }}
               </h5>
@@ -1101,6 +1109,22 @@ export default {
     };
   },
   methods: {
+  getRoomCapacity(type, adults) {
+    const adultCount = adults?.count;
+    console.log("ADULT", adultCount)
+    switch (this.selectedRoomType.name) {
+      case 'Single Room':
+        return type === 'adults' ? 1 : 0;
+      case 'Double Room':
+        return type === 'adults' ? 2 : (adultCount === 1 ? 2 : (adultCount === 2 ? 1 : 0));
+      case 'Triple Room':
+        return type === 'adults' ? 3 : (adultCount >= 3 ? 1 : (adultCount === 2 ? 2 : 2));
+      case 'Family Room':
+        return type === 'adults' ? 4 : (adultCount >= 4 ? 1 : (adultCount === 3 ? 2 : (adultCount === 2 ? 3 : 3)));
+      default:
+        return 0;
+    }
+  },
     getClickMethod() {
       if (this.isSignedIn) {
         localStorage.removeItem("userEmail");
