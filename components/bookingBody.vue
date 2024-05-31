@@ -1131,93 +1131,119 @@ export default {
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
     },
-    async login() {
-      if (!this.loginUser.email || !this.loginUser.password) {
+    handleGoogleLoginData({ name, lname, email, password }){
+
+          this.isSocialLogin = true,
+          this.registerUser.name = name;
+          this.registerUser.lname = lname;
+          this.registerUser.email = email;
+          this.registerUser.password = password;
+          this.loginUser.email = email;
+          this.loginUser.password = password;
+          this.login();
+        },
+    async register() {
+      if (!this.registerUser.name || !this.registerUser.lname || !this.registerUser.email || !this.registerUser.password) {
         this.setupToastError("Please fill in all fields.");
+          return; 
+      }
+
+      if(this.registerUser.password.length < 8){
+        this.setupToastError("The password field must be at least 8 characters");
         return;
       }
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(this.loginUser.email)) {
+      if(!emailPattern.test(this.registerUser.email)){
         this.setupToastError("Please enter a valid email address.");
         return;
       }
+      const response = await apiRequest('https://admin.sueennature.com/api/register', 'POST', {
+          name: this.registerUser.name,
+          lname: this.registerUser.lname,
+          email: this.registerUser.email,
+          password: this.registerUser.password,
+        });
       try {
-        const response = await apiRequest(
-          "https://admin.sueennature.com/api/login",
-          "POST",
-          {
-            email: this.loginUser.email,
-            password: this.loginUser.password,
-          }
-        );
         this.nuxtApp.$auth.setAuthToken(response.access_token);
-        localStorage.setItem("userEmail", this.loginUser.email);
-
-        this.setupToastSucess("Succcessfully Logged In");
-        setTimeout(() => {
-          this.$router.push({
-            path: "/dashboard",
-            query: { email: this.loginUser.email },
-          });
-        }, 3000);
+          this.setupToastSucess("Succcessfully Registered")
+          setTimeout(() => {
+          this.$router.push({ path: '/dashboard', });
+            }, 3000); 
       } catch (error) {
         this.setupToastError("An error occurred. Please try again later.");
-        console.log("ERR", error.message);
+        console.log(error)
       }
+    },  
+    async login() {
+      if (!this.loginUser.email || !this.loginUser.password) {
+        this.setupToastError("Please fill in all fields.");
+          return; 
+      }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailPattern.test(this.loginUser.email)){
+          this.setupToastError("Please enter a valid email address.");
+          return;
+        }    
+      // try {
+        const response = await axios.post('https://admin.sueennature.com/api/login', {
+          email: this.loginUser.email,
+          password: this.loginUser.password,
+        }).
+          then(response => {
+            console.log('Status:', response.status);
+            console.log('Data:', response.data);
+
+            this.nuxtApp.$auth.setAuthToken(response.access_token);
+            this.$router.push({ path: '/dashboard', });
+            this.setupToastSucess("Successfully Logged In")
+          }).catch(error => {
+          if (error.response) {
+            console.log('Error status:', error.response.status);
+            console.log('Error data:', error.response.data);
+
+            if(error.response.data.message === "Invalid Credentials"){
+              if(this.isSocialLogin){
+                this.register();
+              }else{
+                this.setupToastError("Please check your credentials");
+              }           
+            }
+          } else if (error.request) {
+            console.log('Error request:', error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+
+          // this.setupToastError("An error occurred. Please try again.");
+        });
+
+
+      //   this.nuxtApp.$auth.setAuthToken(response.access_token);
+      //   console.log("RES",response)
+      //   this.setupToastSucess("Successfully Logged In")
+      //     // setTimeout(() => {
+      //     this.$router.push({ path: '/dashboard', });
+      //     //   }, 3000); 
+      // } catch (error) {
+      //   // this.setupToastError("An error occurred. Please try again later.");
+
+      //     let errorMessage = "An error occurred. Please try again later.";
+      //     if (error.response && error.response.data && error.response.data.message) {
+      //       errorMessage = error.response.data.message;
+      //     } else if (error.message) {
+      //       errorMessage = error.message;
+      //     }
+
+      //   this.setupToastError("An error occurred. Please try again later.");
+      //   console.log("ERR", error );
+        
+      // }
     },
 
     logout() {
       this.$auth.setAuthToken(null);  
       localStorage.removeItem("userEmail")  
       this.$router.push('/home');
-    },
-    async register() {
-      if (
-        !this.registerUser.name ||
-        !this.registerUser.lname ||
-        !this.registerUser.email ||
-        !this.registerUser.password
-      ) {
-        this.setupToastError("Please fill in all fields.");
-        return;
-      }
-
-      if (this.registerUser.password.length < 8) {
-        this.setupToastError(
-          "The password field must be at least 8 characters"
-        );
-        return;
-      }
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(this.registerUser.email)) {
-        this.setupToastError("Please enter a valid email address.");
-        return;
-      }
-      const response = await apiRequest(
-        "https://admin.sueennature.com/api/register",
-        "POST",
-        {
-          name: this.registerUser.name,
-          lname: this.registerUser.lname,
-          email: this.registerUser.email,
-          password: this.registerUser.password,
-        }
-      );
-      try {
-        this.nuxtApp.$auth.setAuthToken(response.access_token);
-        localStorage.setItem("userEmail", this.registerUser.email);
-
-        this.setupToastSucess("Succcessfully Registered");
-        setTimeout(() => {
-          this.$router.push({
-            path: "/dashboard",
-            query: { email: this.registerUser.email },
-          });
-        }, 3000);
-      } catch (error) {
-        this.setupToastError("An error occurred. Please try again later.");
-        console.log(error);
-      }
     },
     formatPrice(value) {
       let val = (value / 1).toFixed(2).replace(".", ",");
