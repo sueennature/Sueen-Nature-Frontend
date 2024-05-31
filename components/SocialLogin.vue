@@ -40,6 +40,7 @@
     </div>
     <button
       class="bg-[#3b5998] boder-2 rounded-md py-1 text-center text-white mx-8"
+      @click="logInWithFacebook"
     >
       <div class="flex items-center justify-center space-x-4">
         <svg
@@ -60,6 +61,7 @@
         <span>Facebook</span>
       </div>
     </button>
+    
   </div>
 </template>
 
@@ -75,6 +77,11 @@ import 'vue3-toastify/dist/index.css';
 const emit = defineEmits(['loginSuccess']);
 const router = useRouter(); 
 const error = ref(null); 
+
+const fbSignInParams = {
+        scope: 'email,user_likes',
+        return_scopes: true
+      }
 
 const handleLoginSuccess = (response: CredentialResponse) => {
   const { credential } = response;
@@ -92,13 +99,34 @@ const handleLoginSuccess = (response: CredentialResponse) => {
 
     emit('loginSuccess', { name, lname, email, password });
     toast.success("Successfully Logged In")
-    setTimeout(() => {
-      router.push({ path: '/dashboard', query: { email:email } });
-            }, 3000); 
+    // setTimeout(() => {
+    //   router.push({ path: '/dashboard', query: { email:email } });
+    //         }, 3000); 
   }
 
 };
 const handleLoginError = () => {
   toast.error("Something Went Wrong")
 };
+
+const logInWithFacebook = async () => {
+      // await loadFacebookSDK(document, "script", "facebook-jssdk");
+      // await initFacebook();
+      window.FB.login(function(loginRes) {
+        if (loginRes.authResponse) {
+          window.FB.api('/me', function(response) {
+              const email = response.email;
+              const password = response.id;
+              const name = response.first_name;
+              const lname = response.last_name;
+
+              emit('loginSuccess', { name, lname, email, password });
+              toast.success("Successfully Logged In")
+          });
+        } else {
+          alert("User cancelled login or did not fully authorize.");
+        }
+      }, {scope: 'first_name,last_name,email'});
+      return false;
+    }
 </script>

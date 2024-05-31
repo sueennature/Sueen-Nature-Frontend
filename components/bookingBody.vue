@@ -802,7 +802,7 @@
               Use your social profile to register
             </p>
             <!-- SOCIAL MEDIA LOGIN -->
-            <SocialLogin />
+            <SocialLogin @login-success="handleGoogleLoginData"/>
 
             <!-- Centered "or" text -->
             <!-- Centered "or" text -->
@@ -959,7 +959,7 @@
               Use your social profile to Login
             </p>
             <!-- SOCIAL LOGIN -->
-            <SocialLogin />
+            <SocialLogin @login-success="handleGoogleLoginData"/>
 
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
@@ -1017,6 +1017,17 @@
                 <p>Don't have an account?</p>
                 <button @click="redirectToRegister" id="toggle-modal-button" class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Register Here</button>
               </div>-->
+               <div class="flex flex-row items-center text-md space-x-1">
+                <p>Don't have an account?</p>
+                <button
+                  @click="toggleModal"
+                  id="toggle-modal-button"
+                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                >
+                  Register Here
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -1030,11 +1041,12 @@
 import CheckoutAvailability from "./CheckoutAvailability.vue";
 import { ref, onMounted, onUnmounted } from "vue";
 import { initFlowbite } from "flowbite";
-import { apiRequest } from "@/utils/api";
-import { useNuxtApp } from "#app";
-import SocialLogin from "./SocialLogin.vue";
-import { toast } from "vue3-toastify";
-import "vue3-toastify/dist/index.css";
+import { apiRequest } from '@/utils/api';
+import { useNuxtApp } from '#app';
+import SocialLogin from './SocialLogin.vue';
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+import axios from 'axios';
 
 export default {
   components: {
@@ -1045,8 +1057,7 @@ export default {
     return {
       showPassword: false,
       showGuestInfo: false,
-      showYourInfo: true,
-      isSignedIn: false,
+      showYourInfo: false,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
@@ -1058,9 +1069,10 @@ export default {
       roomsList: [],
       boardType: [],
       mealPlans: [],
-      activities: [],
       childFormAges: [],
       infantFormAges: [],
+      activities:[],
+      isSocialLogin: false,
       price: 0,
       roomPeopleCount:[],
       form: {
@@ -1141,29 +1153,77 @@ export default {
         this.setupToastError("Please enter a valid email address.");
         return;
       }
-      try {
-        const response = await apiRequest(
-          "https://admin.sueennature.com/api/login",
-          "POST",
-          {
-            email: this.loginUser.email,
-            password: this.loginUser.password,
-          }
-        );
-        this.nuxtApp.$auth.setAuthToken(response.access_token);
-        localStorage.setItem("userEmail", this.loginUser.email);
 
-        this.setupToastSucess("Succcessfully Logged In");
-        setTimeout(() => {
-          this.$router.push({
-            path: "/dashboard",
-            query: { email: this.loginUser.email },
-          });
-        }, 3000);
-      } catch (error) {
-        this.setupToastError("An error occurred. Please try again later.");
-        console.log("ERR", error.message);
-      }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailPattern.test(this.loginUser.email)){
+          this.setupToastError("Please enter a valid email address.");
+          return;
+        }    
+      // try {
+        const response = await axios.post('https://admin.sueennature.com/api/login', {
+          email: this.loginUser.email,
+          password: this.loginUser.password,
+        }).
+          then(response => {
+            console.log('Status:', response.status);
+            console.log('Data:', response.data);
+
+            this.nuxtApp.$auth.setAuthToken(response.access_token);
+            this.$router.push({ path: '/dashboard', });
+            this.setupToastSucess("Successfully Logged In")
+          }).catch(error => {
+          if (error.response) {
+            console.log('Error status:', error.response.status);
+            console.log('Error data:', error.response.data);
+
+            if(error.response.data.message === "Invalid Credentials"){
+              if(this.isSocialLogin){
+                this.register();
+              }else{
+                this.setupToastError("Please check your credentials");
+              }           
+            }
+          } else if (error.request) {
+            console.log('Error request:', error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+
+          // this.setupToastError("An error occurred. Please try again.");
+        });
+
+
+      //   this.nuxtApp.$auth.setAuthToken(response.access_token);
+      //   console.log("RES",response)
+      //   this.setupToastSucess("Successfully Logged In")
+      //     // setTimeout(() => {
+      //     this.$router.push({ path: '/dashboard', });
+      //     //   }, 3000); 
+      // } catch (error) {
+      //   // this.setupToastError("An error occurred. Please try again later.");
+
+      //     let errorMessage = "An error occurred. Please try again later.";
+      //     if (error.response && error.response.data && error.response.data.message) {
+      //       errorMessage = error.response.data.message;
+      //     } else if (error.message) {
+      //       errorMessage = error.message;
+      //     }
+
+      //   this.setupToastError("An error occurred. Please try again later.");
+      //   console.log("ERR", error );
+        
+      // }
+    },
+    handleGoogleLoginData({ name, lname, email, password }){
+
+      this.isSocialLogin = true,
+      this.registerUser.name = name;
+      this.registerUser.lname = lname;
+      this.registerUser.email = email;
+      this.registerUser.password = password;
+      this.loginUser.email = email;
+      this.loginUser.password = password;
+      this.login();
     },
 
     logout() {
@@ -1230,7 +1290,7 @@ export default {
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
-        this.showYourInfo = false;
+        this.showYourInfo = true;
       } else {
         this.showGuestInfo = false;
         this.showYourInfo = true;
@@ -1238,6 +1298,7 @@ export default {
     },
     toggleModal() {
       this.isModalVisible = !this.isModalVisible;
+      this.isModal2Visible = false;
     },
     closeModal() {
       this.isModalVisible = false;
@@ -1354,26 +1415,18 @@ export default {
       }
     },
     getTotalRoomRates() {
-      let roomRatesTotal = this.roomsList.reduce((total, room) => {
+      return this.roomsList.reduce((total, room) => {
         const roomCount = room.selectedRooms === "" ? "0" : room.selectedRooms;
         total = total + parseFloat(room.price) * parseInt(roomCount);
+
         return total;
       }, 0);
-
-      let activitiesTotal = this.activities.reduce((total, activity) => {
-        if (activity.checked) {
-          total += parseFloat(activity.amount);
-        }
-        return total;
-      }, 0);
-
-      return roomRatesTotal + activitiesTotal;
     },
-
     scrollToBottom() {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
     handleSubmit: async function () {
+
       const cookies = document.cookie.split(";");
       const authTokenCookie = cookies.find((cookie) =>
         cookie.trim().startsWith("auth_token=")
@@ -1452,32 +1505,33 @@ export default {
 
       console.log("FORM DATA", this.form);
 
-      // await fetch("https://admin.sueennature.com/api/booking", {
-      //   method: "POST",
-      //   headers: headers,
-      //   body: JSON.stringify(this.form),
-      // })
-      //   .then((response) => {
-      //     console.log("RESPONSE ", response);
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     console.log("RESPONSE SUCCESS ", data);
-      //     if (data.error) {
-      //       throw new Error(data.error);
-      //     }
-      //     toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
-      //     // window.location.href = data.ipg;
-      //   })
-      //   .catch((error) => {
-      //     console.log("RESPONSE ERROR ", error);
-      //     console.log("There has been a problem with your fetch operation:", error);
-      //     if (error instanceof Error) {
-      //       toast.error(error.message);
-      //     } else {
-      //       toast.error("An unknown error occurred.");
-      //     }
-      //   });
+      await fetch("https://admin.sueennature.com/api/booking", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.form),
+      })
+        .then((response) => {
+          console.log("RESPONSE ", response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log("RESPONSE SUCCESS ", data);
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          window.location.href = data.ipg;
+        })
+        .catch((error) => {
+          console.log("RESPONSE ERROR ", error);
+          alert(error);
+          console.error(
+            "There has been a problem with your fetch operation:",
+            error
+          );
+        });
     },
   },
   computed: {
@@ -1524,7 +1578,6 @@ export default {
       })
       .then((data) => {
         this.activities = data.services;
-        console.log("SER", data);
       })
       .catch((error) => {
         console.error(
