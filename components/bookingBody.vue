@@ -1475,6 +1475,7 @@ export default {
                     infants: roomPeople["infants"]?.ages || 0,
                     room_id: id,
                     meal_plan_id: mealPlanMap[type],
+                    room_view_id: this.$route.query.viewTypeId,
                 });
 
             }
