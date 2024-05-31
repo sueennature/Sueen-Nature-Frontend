@@ -644,7 +644,8 @@ export default {
       })
       .then(response => {
         console.log('Update successful:', response.data);
-        toast.success("User Updated Successfully")
+        toast.success("User Updated Successfully");
+        window.location.reload();
       })
       .catch(error => {
         console.error('Error updating profile:', error);

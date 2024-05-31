@@ -353,7 +353,7 @@
                    : selectedRoomType.name === 'Triple Room' ? 3
                    : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
-              </form> -->
+              </form> 
               <form class="max-w-sm w-full">
                 <select
                   id="infants"
@@ -1057,7 +1057,7 @@ export default {
     return {
       showPassword: false,
       showGuestInfo: false,
-      showYourInfo: false,
+      showYourInfo: true,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
@@ -1144,16 +1144,15 @@ export default {
       this.showPassword = !this.showPassword;
     },
     handleGoogleLoginData({ name, lname, email, password }){
-
-          this.isSocialLogin = true,
-          this.registerUser.name = name;
-          this.registerUser.lname = lname;
-          this.registerUser.email = email;
-          this.registerUser.password = password;
-          this.loginUser.email = email;
-          this.loginUser.password = password;
-          this.login();
-        },
+      this.isSocialLogin = true,
+      this.registerUser.name = name;
+      this.registerUser.lname = lname;
+      this.registerUser.email = email;
+      this.registerUser.password = password;
+      this.loginUser.email = email;
+      this.loginUser.password = password;
+      this.login();
+    },
     async register() {
       if (!this.registerUser.name || !this.registerUser.lname || !this.registerUser.email || !this.registerUser.password) {
         this.setupToastError("Please fill in all fields.");
@@ -1176,11 +1175,12 @@ export default {
           password: this.registerUser.password,
         });
       try {
-        this.nuxtApp.$auth.setAuthToken(response.access_token);
-          this.setupToastSucess("Succcessfully Registered")
-          setTimeout(() => {
-          this.$router.push({ path: '/dashboard', });
-            }, 3000); 
+        this.nuxtApp.$auth.setAuthToken(response.data.access_token);
+        this.setAuthTokenInCookie(response.data.access_token);
+        this.$router.push({
+          path: "/dashboard",
+          query: { email: this.registerUser.email },
+        });
       } catch (error) {
         this.setupToastError("An error occurred. Please try again later.");
         console.log(error)
@@ -1205,13 +1205,14 @@ export default {
             console.log('Status:', response.status);
             console.log('Data:', response.data);
 
+            this.setAuthTokenInCookie(response.data.access_token);
             this.nuxtApp.$auth.setAuthToken(response.access_token);
             localStorage.setItem("userEmail", this.loginUser.email);
               this.$router.push({
               path: "/dashboard",
               query: { email: this.loginUser.email },
             });
-            this.setupToastSucess("Successfully Logged In")
+            // this.setupToastSucess("Successfully Logged In")
           }).catch(error => {
           if (error.response) {
             console.log('Error status:', error.response.status);
@@ -1255,7 +1256,16 @@ export default {
         
       // }
     },
+    setAuthTokenInCookie(token) {
+        console.log('Token setAuthTokenInCookie', token)
+        const cookieName = 'auth_token=';
+        const daysValid = 7; 
+        const expiryDate = new Date();
+        expiryDate.setTime(expiryDate.getTime() + (daysValid * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + expiryDate.toUTCString();
 
+        document.cookie = cookieName + token + ';' + expires + ';path=/';
+    },
     logout() {
       this.$auth.setAuthToken(null);  
       localStorage.removeItem("userEmail")  
@@ -1272,7 +1282,7 @@ export default {
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
-        this.showYourInfo = true;
+        this.showYourInfo = false;
       } else {
         this.showGuestInfo = false;
         this.showYourInfo = true;
