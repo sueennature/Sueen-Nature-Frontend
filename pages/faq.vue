@@ -1,20 +1,18 @@
 <template>
-    <div class="main overflow-hidden">
-      <heroFAQ/>
-      <contentFAQ/>  
-      <footerHome/>
-  
-    </div>
-  </template>
-  
-  <script setup>
-  import heroPrivacyPolicy from '~/components/heroFAQ.vue';
-  import contentFAQ from '~/components/contentFAQ.vue';
-  import footerHome from '~/components/footerHome.vue';
-  
-  
-  </script>
-  
-  <style scoped>
-  
-  </style>
+  <div class="main overflow-hidden">
+    <navbar
+      :pageTitle="'FREQUENTLY ASKED QUESTIONS(FAQ)'"
+      :imageNav="'/img/hero-checkout.png'"
+    />
+    <contentFAQ />
+    <footerHome />
+  </div>
+</template>
+
+<script setup>
+import navbar from "~/components/navbar.vue";
+import contentFAQ from "~/components/contentFAQ.vue";
+import footerHome from "~/components/footerHome.vue";
+</script>
+
+<style scoped></style>

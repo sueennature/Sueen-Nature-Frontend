@@ -1,19 +1,20 @@
 <template>
-    <div class="main overflow-hidden">
-        <heroAbout/>
-        <additionalServices/>
-        <footerHome/>
-
-
-    </div>
+  <div class="main overflow-hidden">
+    <navbar
+      :pageTitle="'Attention to detail like never before'"
+      :pageTitleTwo="'EXPLORE OUR HOTEL'"
+      :pageTitleThree="'LEARN ABOUT US'"
+      :imageNav="'/img/service-6.png'"
+    />
+    <additionalServices />
+    <footerHome />
+  </div>
 </template>
 
 <script setup>
-import heroAbout from '~/components/heroAbout.vue';
-import additionalServices from '~/components/contentAdditionalServices';
-import footerHome from '~/components/footerHome.vue';
+import navbar from "~/components/navbar.vue";
+import additionalServices from "~/components/contentAdditionalServices";
+import footerHome from "~/components/footerHome.vue";
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

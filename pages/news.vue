@@ -1,20 +1,19 @@
 <template>
-    <div class="main overflow-hidden">
-        <heroNews/>
-        <contentNews/>
-        <footerHome/>
-
-    </div>
+  <div class="main overflow-hidden">
+    <navbar
+      :pageTitle="'NEWS'"
+      :pageTitleThree="'BLOG'"
+      :imageNav="'/img/hero-news.png'"
+    />
+    <contentNews />
+    <footerHome />
+  </div>
 </template>
 
 <script setup>
-  import heroNews from '~/components/heroNews.vue';
-  import contentNews from '~/components/contentNews.vue';
-  import footerHome from '~/components/footerHome.vue';
-  
-
+import navbar from "~/components/navbar.vue";
+import contentNews from "~/components/contentNews.vue";
+import footerHome from "~/components/footerHome.vue";
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

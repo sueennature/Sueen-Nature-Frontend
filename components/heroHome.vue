@@ -312,7 +312,7 @@
             v-model="view_type_id"
           >
             <option :value="null" disabled selected class="text-gray-300">Choose Room View</option>
-            <option v-for="view in filteredViews" :value="view.id" :key="view.id" class="text-black-200">{{ view.location }}</option>
+            <option v-for="view in filteredViews" :value="view.meal_plan_id" :key="view.meal_plan_id" class="text-black-200">{{ view.view }}</option>
           </select>
         </form>
       </div>
@@ -374,11 +374,12 @@ export default {
   
   updateAvailableRooms() {
       const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
-      this.filteredViews = selectedRoom ? selectedRoom.rooms : [];
-      this.view_type_id = null;
-    },
+      this.filteredViews = selectedRoom ? selectedRoom.views : [];
+      console.log("VIEWS", this.filteredViews)
+      // this.view_type_id = null;
+  },
     async checkAvailability() {
-      if (!this.check_in || !this.check_out || !this.room_type_id) {
+      if (!this.check_in || !this.check_out || !this.room_type_id ) {
       this.setupToast("Please fill in all fields.");
       return; 
     }
@@ -389,6 +390,7 @@ export default {
           check_in: this.check_in,
           check_out: this.check_out,
           room_type_id: this.room_type_id,
+          view_type_id: this.view_type_id
         }),
       };
 
@@ -401,7 +403,8 @@ export default {
                 query: {
                     check_in: this.check_in,
                     check_out: this.check_out,
-                    roomTypeId: this.room_type_id
+                    roomTypeId: this.room_type_id,
+                    viewTypeId: this.view_type_id
                 }
             });
             window.location.reload();

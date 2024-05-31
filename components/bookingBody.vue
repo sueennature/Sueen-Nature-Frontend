@@ -19,7 +19,7 @@
       <div>
         <div class="relative">
           <img
-            :src="`https://admin.sueennature.com/uploads/${selectedRoomType.image}`"
+            :src="`https://admin.sueennature.com/uploads/${selectedRoomType.images}`"
             alt="roomImg"
             class="w-full object-cover"
           />
@@ -251,20 +251,39 @@
         <!-- Card about Single Room - Special Rate  -->
 
         <!-- Activities -->
-        <div class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14">
-          <h6 class="text-black-200 xl:text-lg text-base font-bold ">
-              Activities
-            </h6>
-            <div class="flex items-center mb-4 mt-8" v-for="(activity, index) in activities" :key="activity.id">
-                <input :id="'checkbox-' + activity.id" v-model="activity.checked" type="checkbox" :value="activity.id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label :for="'checkbox-' + activity.id" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ activity.name }} - LKR {{ formatPrice(activity.amount) }}</label>
-            </div>
+        <div
+          class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
+        >
+          <h6 class="text-black-200 xl:text-lg text-base font-bold">
+            Activities
+          </h6>
+          <div
+            class="flex items-center mb-4 mt-8"
+            v-for="(activity, index) in activities"
+            :key="activity.id"
+          >
+            <input
+              :id="'checkbox-' + activity.id"
+              v-model="activity.checked"
+              type="checkbox"
+              :value="activity.id"
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              :for="'checkbox-' + activity.id"
+              class="ms-2 text-[17px] font-medium text-gray-900 dark:text-gray-300 flex items-center justify-between w-full"
+            >
+              {{ activity.name }} -
+              <strong>LKR {{ formatPrice(activity.amount) }}</strong>
+            </label>
+          </div>
 
-
-
+          <!-- <img
+            :src="`https://admin.sueennature.com/uploads/${activity.image}`"
+            alt="roomImg"
+            class="w-full object-cover"
+          /> -->
         </div>
-
-
 
         <div
           class="w-full p-6 bg-white xl:text-lg text-base font-semibold border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
@@ -312,54 +331,79 @@
                 <select
                   id="adults"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'adults', $event)"
+                  @change="updateRoomPeopleCount(item, n, 'adults', $event, selectedRoomType.name)"
                 >
                   <option selected>Adults</option>
                    <option v-for="index in 
                    ( selectedRoomType.name === 'Single Room' ? 1 
                    : selectedRoomType.name === 'Double Room' ? 2 
-                   : selectedRoomType.name === 'Deluxe Room' ? 3
+                   : selectedRoomType.name === 'Triple Room' ? 3
                    : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
               </form>
-              <form class="max-w-sm w-full">
+              <form class="max-w-sm w-full" v-if="selectedRoomType.name !== 'Single Room'">
                 <select
                   id="children"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'child', $event)"
+                  @change="updateRoomPeopleCount(item, n, 'child', $event, selectedRoomType.name)"
                 >
-                  <option selected>Children</option>
+                  <option selected value="0">Children</option>
                   <option v-for="index in 
-                   ( selectedRoomType.name === 'Single Room' ? 1 
-                   : selectedRoomType.name === 'Double Room' ? 2 
-                   : selectedRoomType.name === 'Deluxe Room' ? 3
+                   ( selectedRoomType.name === 'Double Room' ? 1 
+                   : selectedRoomType.name === 'Triple Room' ? 3
                    : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
                 </select>
-              </form>
+              </form> 
               <form class="max-w-sm w-full">
                 <select
                   id="infants"
                   class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'infants', $event)"
+                  @change="updateRoomPeopleCount(item, n, 'infants', $event, selectedRoomType.name)"
                 >
-                  <option selected>Infants</option>
+                  <option selected value="0">Infants</option>
                   <option v-for="index in 4" :key="index" :value="index">{{ index }}</option>
                 </select>
               </form>
             </div>
           </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.infants" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
+            <div v-if="item" v-for="(age, index) in item[n]?.child?.count" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
               <h5 class="text-black font-medium xl:text-lg text-sm">
-                Select age of infant {{index + 1}}
+                Select age of child {{index + 1}}
+              </h5>
+
+              <form class="max-w-sm">
+                <select
+                  :id="'child-age-' + index"
+                  required
+                  @change="updateAges(item, n, 'child', $event)"
+                  class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option disabled selected>Age</option>
+                  <option :key="'year-' + 1" :value="6">3-6</option>
+                  <option :key="'year-' + 2" :value="10">6-12</option>
+                </select>
+              </form>
+            </div>
+            <div v-if="item" v-for="(age, index) in item[n]?.infants?.count" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
+              <h5 class="text-black font-medium xl:text-lg text-sm">
+                Select age of infant {{ index + 1 }}
               </h5>
 
               <form class="max-w-sm">
                 <select
                   :id="'infant-age-' + index"
+                  required
+                  @change="updateAges(item, n, 'infants', $event)"
                   class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
-                  <option v-for="year in 3" :key="'year-' + year" :value="year - 1">{{ year - 1 }}</option>
+                  <option
+                    v-for="year in 3"
+                    :key="'year-' + year"
+                    :value="year - 1"
+                  >
+                    {{ year - 1 }}
+                  </option>
                 </select>
               </form>
             </div>
@@ -433,13 +477,15 @@
             Proceed As a Guest
           </button>
           <span class="text-black-200 text-base font-bold">OR</span>
-          <button
-            @click="toggleModal"
-            type="button"
-            class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >
-            Sign In
-          </button>
+          <div>
+            <button
+              @click="getClickMethod"
+              type="button"
+              class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              {{ isSignedIn ? "Sign Off" : "Sign In" }}
+            </button>
+          </div>
         </div>
         <!-- end of price breakdown section -->
       </div>
@@ -482,6 +528,7 @@
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
             @change="toggleGuestInfo"
+            checked
           />
           <label
             for="inline-
@@ -547,6 +594,21 @@
           </div>
           <div>
             <label
+              for="nationality"
+              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+              >Nationality *</label
+            >
+            <select
+              id="nationality"
+              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              v-model="form.nationality"
+            >
+              <option selected>Local</option>
+              <option value="US">Foreign</option>
+            </select>
+          </div>
+          <div>
+            <label
               for="email"
               class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
               >E-mail *</label
@@ -583,7 +645,7 @@
               class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_first_name"
+              v-model="form.guest_info.first_name"
             />
           </div>
           <div>
@@ -598,7 +660,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_last_name"
+              v-model="form.guest_info.last_name"
             />
           </div>
           <div>
@@ -613,7 +675,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_telephone"
+              v-model="form.guest_info.telephone"
             />
           </div>
           <div>
@@ -628,7 +690,7 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
               required
-              v-model="form.guest_email"
+              v-model="form.guest_info.email"
             />
           </div>
           <div>
@@ -640,7 +702,7 @@
             <select
               id="nationality"
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              v-model="form.guest_nationality"
+              v-model="form.guest_info.nationality"
             >
               <option selected>Local</option>
               <option value="US">Foreign</option>
@@ -657,7 +719,7 @@
               id="address"
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
-              v-model="form.guest_address"
+              v-model="form.guest_info.guest_address"
             />
           </div>
         </div>
@@ -742,7 +804,6 @@
             <!-- SOCIAL MEDIA LOGIN -->
             <SocialLogin @login-success="handleGoogleLoginData"/>
 
-
             <!-- Centered "or" text -->
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
@@ -757,11 +818,7 @@
               ></div>
             </div>
             <!-- Modal -->
-            <form
-              action="#"
-              class="space-y-6 mt-4"
-              @submit.prevent="register"
-            >
+            <form action="#" class="space-y-6 mt-4" @submit.prevent="register">
               <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
                 <input
                   type="text"
@@ -785,19 +842,20 @@
                 />
               </div>
               <div class="relative">
-                  <input
-                    :type="showPassword ? 'text' : 'password'"
-                    v-model.trim="registerUser.password"
-                    placeholder="Password"
-                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10" 
-                  />
-                  <button @click="togglePasswordVisibility" class="absolute inset-y-0 right-0 flex items-center pr-3">
-                    
-                    <span v-if="showPassword">🔓</span>
-                    <span v-else>🔒</span> 
-                  </button>
+                <input
+                  :type="showPassword ? 'text' : 'password'"
+                  v-model.trim="registerUser.password"
+                  placeholder="Password"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10"
+                />
+                <button
+                  @click="togglePasswordVisibility"
+                  class="absolute inset-y-0 right-0 flex items-center pr-3"
+                >
+                  <span v-if="showPassword">🔓</span>
+                  <span v-else>🔒</span>
+                </button>
               </div>
-
 
               <div class="flex items-start">
                 <div class="flex items-center h-5">
@@ -918,27 +976,41 @@
 
             <form @submit.prevent="login" class="space-y-6 mt-4">
               <div>
-                <input v-model="loginUser.email" type="text" placeholder="you@email.com" class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md" />
+                <input
+                  v-model="loginUser.email"
+                  type="text"
+                  placeholder="you@email.com"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
+                />
                 <p v-if="errors.email" class="error">{{ errors.email[0] }}</p>
               </div>
-           
+
               <div class="relative">
-                  <input
-                    :type="showPassword ? 'text' : 'password'"
-                    v-model="loginUser.password"                    
-                    placeholder="Password"
-                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10" 
-                  />
-                  <p v-if="errors.password" class="error">{{ errors.password[0] }}</p>
-                  <button @click="togglePasswordVisibility" class="absolute inset-y-0 right-0 flex items-center pr-3">
-                    
-                    <span v-if="showPassword">🔓</span>
-                    <span v-else>🔒</span> 
-                  </button>
+                <input
+                  :type="showPassword ? 'text' : 'password'"
+                  v-model="loginUser.password"
+                  placeholder="Password"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10"
+                />
+                <p v-if="errors.password" class="error">
+                  {{ errors.password[0] }}
+                </p>
+                <button
+                  @click="togglePasswordVisibility"
+                  class="absolute inset-y-0 right-0 flex items-center pr-3"
+                >
+                  <span v-if="showPassword">🔓</span>
+                  <span v-else>🔒</span>
+                </button>
               </div>
               <div class="mt-5">
                 <div class="text"></div>
-                <button type="submit" class="w-full bg-red-100 py-3 text-center text-white rounded-md block">Log In</button>
+                <button
+                  type="submit"
+                  class="w-full bg-red-100 py-3 text-center text-white rounded-md block"
+                >
+                  Log In
+                </button>
               </div>
 
               <!-- <div class="flex flex-row mt-4 items-center text-md space-x-1">
@@ -969,11 +1041,11 @@
 import CheckoutAvailability from "./CheckoutAvailability.vue";
 import { ref, onMounted, onUnmounted } from "vue";
 import { initFlowbite } from "flowbite";
-import { apiRequest } from '@/utils/api';
-import { useNuxtApp } from '#app';
-import SocialLogin from './SocialLogin.vue';
-import {toast} from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
+import { apiRequest } from "@/utils/api";
+import { useNuxtApp } from "#app";
+import SocialLogin from "./SocialLogin.vue";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 import axios from 'axios';
 
 export default {
@@ -983,21 +1055,26 @@ export default {
   },
   data() {
     return {
-      showPassword:false,
+      showPassword: false,
       showGuestInfo: false,
-      showYourInfo: false,
+      showYourInfo: true,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
       selectedInfants: 0, 
-      infantAges: [], 
+      selectedChildren : 0,
+      infantAges: [],
+      childrenAges: [], 
       room_types: [],
       roomsList: [],
       boardType: [],
       mealPlans: [],
+      childFormAges: [],
+      infantFormAges: [],
       activities:[],
       isSocialLogin: false,
       price: 0,
+      roomPeopleCount:[],
       form: {
         first_name: "",
         last_name: "",
@@ -1008,22 +1085,24 @@ export default {
         check_in: this.$route.query.check_in,
         check_out: this.$route.query.check_out,
         rooms: [],
-        guest_first_name: "",
-        guest_last_name: "",
-        guest_email: "",
-        guest_telephone: "",
-        guest_address: "",
-        guest_nationality: "",
+        guest_info: {
+          first_name: "",
+          last_name: "",
+          email: "",
+          telephone: "",
+          address: "",
+          nationality: "",
+        },
       },
-      registerUser:{
-        name: '',
-        lname: '',
-        email: '',
-        password:'',
+      registerUser: {
+        name: "",
+        lname: "",
+        email: "",
+        password: "",
       },
-      loginUser:{
-        email: '',
-        password: '',
+      loginUser: {
+        email: "",
+        password: "",
       },
       errors: {
         email: [],
@@ -1032,9 +1111,83 @@ export default {
     };
   },
   methods: {
-    togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
+  getRoomCapacity(type, adults) {
+    const adultCount = adults?.count;
+    console.log("ADULT", adultCount)
+    switch (this.selectedRoomType.name) {
+      case 'Single Room':
+        return type === 'adults' ? 1 : 0;
+      case 'Double Room':
+        return type === 'adults' ? 2 : (adultCount === 1 ? 2 : (adultCount === 2 ? 1 : 0));
+      case 'Triple Room':
+        return type === 'adults' ? 3 : (adultCount >= 3 ? 1 : (adultCount === 2 ? 2 : 2));
+      case 'Family Room':
+        return type === 'adults' ? 4 : (adultCount >= 4 ? 1 : (adultCount === 3 ? 2 : (adultCount === 2 ? 3 : 3)));
+      default:
+        return 0;
+    }
   },
+    getClickMethod() {
+      if (this.isSignedIn) {
+          this.$auth.setAuthToken(null);
+          localStorage.removeItem("userEmail"); 
+          toast.success("Successfully Logged Out");
+          setTimeout(()=>{
+            this.$router.push('/home');      
+          }, 2000)  
+      } 
+      else {
+        this.toggleModal();
+      }
+    },
+    togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
+    },
+    handleGoogleLoginData({ name, lname, email, password }){
+      this.isSocialLogin = true,
+      this.registerUser.name = name;
+      this.registerUser.lname = lname;
+      this.registerUser.email = email;
+      this.registerUser.password = password;
+      this.loginUser.email = email;
+      this.loginUser.password = password;
+      this.login();
+    },
+    async register() {
+      if (!this.registerUser.name || !this.registerUser.lname || !this.registerUser.email || !this.registerUser.password) {
+        this.setupToastError("Please fill in all fields.");
+          return; 
+      }
+
+      if(this.registerUser.password.length < 8){
+        this.setupToastError("The password field must be at least 8 characters");
+        return;
+      }
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(this.registerUser.email)){
+        this.setupToastError("Please enter a valid email address.");
+        return;
+      }
+      const response = await apiRequest('https://admin.sueennature.com/api/register', 'POST', {
+          name: this.registerUser.name,
+          lname: this.registerUser.lname,
+          email: this.registerUser.email,
+          password: this.registerUser.password,
+        }).
+        then(response => {
+          console.log("Register response", response);
+          this.nuxtApp.$auth.setAuthToken(response.access_token);
+          this.setAuthTokenInCookie(response.access_token);
+          this.$router.push({
+            path: "/dashboard",
+            query: { email: this.registerUser.email },
+          })
+        }).
+        catch (error => {
+                this.setupToastError("An error occurred. Please try again later.");
+                console.log(error)
+        });
+    },  
     async login() {
       if (!this.loginUser.email || !this.loginUser.password) {
         this.setupToastError("Please fill in all fields.");
@@ -1054,9 +1207,14 @@ export default {
             console.log('Status:', response.status);
             console.log('Data:', response.data);
 
+            this.setAuthTokenInCookie(response.data.access_token);
             this.nuxtApp.$auth.setAuthToken(response.access_token);
-            this.$router.push({ path: '/dashboard', });
-            this.setupToastSucess("Successfully Logged In")
+            localStorage.setItem("userEmail", this.loginUser.email);
+              this.$router.push({
+              path: "/dashboard",
+              query: { email: this.loginUser.email },
+            });
+            // this.setupToastSucess("Successfully Logged In")
           }).catch(error => {
           if (error.response) {
             console.log('Error status:', error.response.status);
@@ -1100,68 +1258,33 @@ export default {
         
       // }
     },
-    handleGoogleLoginData({ name, lname, email, password }){
+    setAuthTokenInCookie(token) {
+        console.log('Token setAuthTokenInCookie', token)
+        const cookieName = 'auth_token=';
+        const daysValid = 7; 
+        const expiryDate = new Date();
+        expiryDate.setTime(expiryDate.getTime() + (daysValid * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + expiryDate.toUTCString();
 
-      this.isSocialLogin = true,
-      this.registerUser.name = name;
-      this.registerUser.lname = lname;
-      this.registerUser.email = email;
-      this.registerUser.password = password;
-      this.loginUser.email = email;
-      this.loginUser.password = password;
-      this.login();
+        document.cookie = cookieName + token + ';' + expires + ';path=/';
     },
     logout() {
-      this.$auth.logout()
-      this.$router.push('/login')
-    },
-    async register() {
-      if (!this.registerUser.name || !this.registerUser.lname || !this.registerUser.email || !this.registerUser.password) {
-        this.setupToastError("Please fill in all fields.");
-          return; 
-      }
-
-      if(this.registerUser.password.length < 8){
-        this.setupToastError("The password field must be at least 8 characters");
-        return;
-      }
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!emailPattern.test(this.registerUser.email)){
-        this.setupToastError("Please enter a valid email address.");
-        return;
-      }
-      const response = await apiRequest('https://admin.sueennature.com/api/register', 'POST', {
-          name: this.registerUser.name,
-          lname: this.registerUser.lname,
-          email: this.registerUser.email,
-          password: this.registerUser.password,
-        });
-      try {
-        this.nuxtApp.$auth.setAuthToken(response.access_token);
-          this.setupToastSucess("Succcessfully Registered")
-          setTimeout(() => {
-          this.$router.push({ path: '/dashboard', });
-            }, 3000); 
-
-      
-  } catch (error) {
-    this.setupToastError("An error occurred. Please try again later.");
-    console.log(error)
-
-  }    
+      this.$auth.setAuthToken(null);  
+      localStorage.removeItem("userEmail")  
+      this.$router.push('/home');
     },
     formatPrice(value) {
-        let val = (value/1).toFixed(2).replace('.', ',')
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      let val = (value / 1).toFixed(2).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
     redirectToRegister() {
       // Redirect to the registration page
-      this.$router.push('/register');
+      this.$router.push("/register");
     },
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
-        this.showYourInfo = true;
+        this.showYourInfo = false;
       } else {
         this.showGuestInfo = false;
         this.showYourInfo = true;
@@ -1186,22 +1309,15 @@ export default {
       this.toggleModal(); // Toggle the first modal (open it).
     },
     setupToastSucess(message) {
-    toast.success(message, {
-      autoClose: 3000, 
-    })},
+      toast.success(message, {
+        autoClose: 3000,
+      });
+    },
     setupToastError(message) {
-    toast.error(message, {
-      autoClose: 3000, 
-    })},
-    // toggleModal(event) {
-    //   event.preventDefault();
-    //   this.isModalOpen = !this.isModalOpen;
-    //   if (this.isModalOpen) {
-    //     document.body.classList.add("overflow-hidden");
-    //   } else {
-    //     document.body.classList.remove("overflow-hidden");
-    //   }
-    // },
+      toast.error(message, {
+        autoClose: 3000,
+      });
+    },
     addItemToRoomsList(roomDetails) {
       const isAlreadySelected = this.roomsList.find(
         (room) =>
@@ -1223,7 +1339,7 @@ export default {
     },
     updateRoomsCount(item, event) {
       console.log("updateRoomsCount ", item);
-      console.log("ROOMS UPDATED", this.roomsList)
+      console.log("ROOMS UPDATED", this.roomsList);
       const roomToUpdate = this.roomsList.find(
         (room) => room.rowId === item.rowId
       );
@@ -1234,7 +1350,14 @@ export default {
     roomRaw(selectedRooms) {
       return Array.from({ length: Number(selectedRooms) }, (_, i) => i + 1);
     },
-    updateRoomPeopleCount(item, n, peopleType, event) {
+    handlePeopleSelection(item, n, peopleType, peopleCount, selectedRoomType){
+      if(selectedRoomType === "Double Room"){
+        if(peopleType === 'adults'){
+
+        }
+      }
+    },
+    updateRoomPeopleCount(item, n, peopleType, event, selectedRoomType) {
       const roomIndex = this.roomsList.findIndex(
         (room) => room.rowId === item.rowId
       );
@@ -1243,10 +1366,13 @@ export default {
 
         const roomDetail = roomToUpdate[n] || {};
 
-        roomDetail[peopleType] = parseInt(event.target.value);
+        roomDetail[peopleType] = {
+          count: parseInt(event.target.value),
+          ages: []
+        };
 
-        if(peopleType === 'infants'){
-          this.infantAges = Array.from({ length: event.target.value }, () => 0);
+        if(peopleType === 'child'){
+          this.childrenAges = Array.from({ length: event.target.value }, () => 0);
         }
 
         roomToUpdate[n] = roomDetail;
@@ -1255,13 +1381,32 @@ export default {
       }
 
       console.log(
-        "room list with peopole count ",
+        "room list with people count ",
         roomIndex,
         item,
         n,
         peopleType,
         this.roomsList
       );
+    },
+    updateAges(roomDetails, roomIndex, peopleType, event){
+      const selectedAge = parseInt(event.target.value);
+      const roomListIndex = this.roomsList.findIndex(
+        (room) => room.rowId === roomDetails.rowId
+      );
+      if (roomListIndex > -1) {
+        const roomToUpdate = this.roomsList[roomListIndex];
+
+        const roomDetail = roomToUpdate[roomIndex] || {};
+
+        const roomPeopleDetails = roomDetail[peopleType];
+        roomPeopleDetails.ages.push(selectedAge);
+        roomDetail[peopleType] = roomPeopleDetails;
+
+        roomToUpdate[roomIndex] = roomDetail;
+
+        this.roomsList[roomListIndex] = roomToUpdate;
+      }
     },
     getTotalRoomRates() {
       return this.roomsList.reduce((total, room) => {
@@ -1275,6 +1420,26 @@ export default {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
     handleSubmit: async function () {
+
+      const cookies = document.cookie.split(";");
+      const authTokenCookie = cookies.find((cookie) =>
+        cookie.trim().startsWith("auth_token=")
+      );
+      if (!authTokenCookie) {
+        console.error("Auth Token not found in cookies.");
+      }
+      const authToken = authTokenCookie?.split("=")[1];
+
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      if (authToken) {
+        headers.Authorization = `Bearer ${authToken.replace(/%7C/g, "|")}`;
+      }
+
+      console.log("BODYHeader", headers);
+
       const formData = new FormData();
 
       for (let [key, value] of Object.entries(this.form)) {
@@ -1287,30 +1452,48 @@ export default {
         "Full Board": 3,
         "Room only": 4,
       };
-
-      const roomsArrangement = this.roomsList.reduce(
+      const selectedActivities = this.activities
+        .filter((activity) => activity.checked)
+        .map((activity) => ({
+          activity_id: activity.id,
+          activity_name: activity.name,
+        }));
+        const roomsArrangement = this.roomsList.reduce(
         (roomsArrangement, roomData) => {
-          const { id, type, selectedRooms } = roomData;
+            const { id, type, selectedRooms } = roomData;
+            let adults = 0;
+            let child = 0;
+            let infants = 0;
 
-          for (let index = 1; index <= parseInt(selectedRooms); index++) {
-            const roomPeople = roomData[index];
+            for (let index = 1; index <= parseInt(selectedRooms); index++) {
+                const roomPeople = roomData[index];
+                adults += roomPeople["adults"]?.count || 0;
+                child += roomPeople["child"]?.count || 0;
+                infants += roomPeople["infants"]?.count || 0;
 
-            roomsArrangement.push({
-              adults: roomPeople["adults"] || 0,
-              child: roomPeople["child"] || 0,
-              infants: roomPeople["infants"] || 0,
-              room_type_id: id,
-              meal_plan_id: mealPlanMap[type],
-              service_id: '[1,2,3]',
-            });
-          }
+                roomsArrangement.push({
+                    adults: roomPeople["adults"]?.count || 0,
+                    child: roomPeople["child"]?.ages || 0,
+                    infants: roomPeople["infants"]?.ages || 0,
+                    room_id: id,
+                    meal_plan_id: mealPlanMap[type],
+                    room_view_id: this.$route.query.viewTypeId,
+                });
 
-          return roomsArrangement;
+            }
+
+            // Add total counts to form data
+            this.form.adults = adults;
+            this.form.child = child;
+            this.form.infants = infants;
+
+            return roomsArrangement;
         },
         []
-      );
+    );
 
       this.form.rooms = roomsArrangement;
+      this.form.activities = selectedActivities;
 
       // console.log(this.form);
       // return;
@@ -1356,9 +1539,13 @@ export default {
         (room) => room.id.toString() === this.roomTypeId.toString()
       );
     },
-    
   },
   mounted() {
+    const cookies = document.cookie.split(";");
+    const authTokenCookie = cookies.find((cookie) =>
+      cookie.trim().startsWith("auth_token=")
+    );
+    this.isSignedIn = !!authTokenCookie;
     initFlowbite();
     fetch("https://admin.sueennature.com/api/getRoomTypes")
       .then((response) => {
@@ -1377,10 +1564,10 @@ export default {
         );
       });
 
-      fetch('http://127.0.0.1:8000/api/get-services')
+    fetch("https://admin.sueennature.com/api/get-services")
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
@@ -1388,8 +1575,11 @@ export default {
         this.activities = data.services;
       })
       .catch((error) => {
-        console.error('There has been a problem with your fetch operation:', error);
-    });
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      });
   },
   setup() {
     const nuxtApp = useNuxtApp();
@@ -1403,7 +1593,7 @@ export default {
       }
     };
 
-    const isLoggedIn = computed(() => authStore.token !== null)
+    const isLoggedIn = computed(() => authStore.token !== null);
 
     onMounted(() => {
       window.addEventListener("beforeunload", beforeUnloadListener);
