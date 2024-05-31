@@ -1017,6 +1017,17 @@
                 <p>Don't have an account?</p>
                 <button @click="redirectToRegister" id="toggle-modal-button" class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Register Here</button>
               </div>-->
+               <div class="flex flex-row items-center text-md space-x-1">
+                <p>Don't have an account?</p>
+                <button
+                  @click="toggleModal"
+                  id="toggle-modal-button"
+                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                >
+                  Register Here
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -1046,8 +1057,7 @@ export default {
     return {
       showPassword: false,
       showGuestInfo: false,
-      showYourInfo: true,
-      isSignedIn: false,
+      showYourInfo: false,
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
@@ -1059,9 +1069,10 @@ export default {
       roomsList: [],
       boardType: [],
       mealPlans: [],
-      activities: [],
       childFormAges: [],
       infantFormAges: [],
+      activities:[],
+      isSocialLogin: false,
       price: 0,
       roomPeopleCount:[],
       form: {
@@ -1261,7 +1272,7 @@ export default {
     toggleGuestInfo(event) {
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
-        this.showYourInfo = false;
+        this.showYourInfo = true;
       } else {
         this.showGuestInfo = false;
         this.showYourInfo = true;
@@ -1269,6 +1280,7 @@ export default {
     },
     toggleModal() {
       this.isModalVisible = !this.isModalVisible;
+      this.isModal2Visible = false;
     },
     closeModal() {
       this.isModalVisible = false;
@@ -1385,26 +1397,18 @@ export default {
       }
     },
     getTotalRoomRates() {
-      let roomRatesTotal = this.roomsList.reduce((total, room) => {
+      return this.roomsList.reduce((total, room) => {
         const roomCount = room.selectedRooms === "" ? "0" : room.selectedRooms;
         total = total + parseFloat(room.price) * parseInt(roomCount);
+
         return total;
       }, 0);
-
-      let activitiesTotal = this.activities.reduce((total, activity) => {
-        if (activity.checked) {
-          total += parseFloat(activity.amount);
-        }
-        return total;
-      }, 0);
-
-      return roomRatesTotal + activitiesTotal;
     },
-
     scrollToBottom() {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
     handleSubmit: async function () {
+
       const cookies = document.cookie.split(";");
       const authTokenCookie = cookies.find((cookie) =>
         cookie.trim().startsWith("auth_token=")
@@ -1483,32 +1487,33 @@ export default {
 
       console.log("FORM DATA", this.form);
 
-      // await fetch("https://admin.sueennature.com/api/booking", {
-      //   method: "POST",
-      //   headers: headers,
-      //   body: JSON.stringify(this.form),
-      // })
-      //   .then((response) => {
-      //     console.log("RESPONSE ", response);
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     console.log("RESPONSE SUCCESS ", data);
-      //     if (data.error) {
-      //       throw new Error(data.error);
-      //     }
-      //     toast.success("Your hotel booking has been successfully confirmed. Proceeding to payment.");
-      //     // window.location.href = data.ipg;
-      //   })
-      //   .catch((error) => {
-      //     console.log("RESPONSE ERROR ", error);
-      //     console.log("There has been a problem with your fetch operation:", error);
-      //     if (error instanceof Error) {
-      //       toast.error(error.message);
-      //     } else {
-      //       toast.error("An unknown error occurred.");
-      //     }
-      //   });
+      await fetch("https://admin.sueennature.com/api/booking", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.form),
+      })
+        .then((response) => {
+          console.log("RESPONSE ", response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log("RESPONSE SUCCESS ", data);
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          window.location.href = data.ipg;
+        })
+        .catch((error) => {
+          console.log("RESPONSE ERROR ", error);
+          alert(error);
+          console.error(
+            "There has been a problem with your fetch operation:",
+            error
+          );
+        });
     },
   },
   computed: {
@@ -1555,7 +1560,6 @@ export default {
       })
       .then((data) => {
         this.activities = data.services;
-        console.log("SER", data);
       })
       .catch((error) => {
         console.error(

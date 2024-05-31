@@ -41,7 +41,9 @@ export default defineNuxtConfig({
   },
   plugins: [
     '~/plugins/auth.js',
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/fb-sdk.js',
+
   ],
   build: {
     transpile: ['@vuepic/vue-datepicker','@nuxtjs/axios']
