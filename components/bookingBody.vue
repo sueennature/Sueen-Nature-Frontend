@@ -1173,18 +1173,20 @@ export default {
           lname: this.registerUser.lname,
           email: this.registerUser.email,
           password: this.registerUser.password,
+        }).
+        then(response => {
+          console.log("Register response", response);
+          this.nuxtApp.$auth.setAuthToken(response.access_token);
+          this.setAuthTokenInCookie(response.access_token);
+          this.$router.push({
+            path: "/dashboard",
+            query: { email: this.registerUser.email },
+          })
+        }).
+        catch (error => {
+                this.setupToastError("An error occurred. Please try again later.");
+                console.log(error)
         });
-      try {
-        this.nuxtApp.$auth.setAuthToken(response.data.access_token);
-        this.setAuthTokenInCookie(response.data.access_token);
-        this.$router.push({
-          path: "/dashboard",
-          query: { email: this.registerUser.email },
-        });
-      } catch (error) {
-        this.setupToastError("An error occurred. Please try again later.");
-        console.log(error)
-      }
     },  
     async login() {
       if (!this.loginUser.email || !this.loginUser.password) {
