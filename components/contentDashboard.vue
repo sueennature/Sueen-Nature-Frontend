@@ -554,6 +554,7 @@ export default {
   mounted() {
     const emailToken = this.$route.query.email;
     console.log("Email:", emailToken);
+    console.log("AMMMOO MALLIYE")
     const cookies = document.cookie.split(';');
     const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
     if (authTokenCookie) {
@@ -593,7 +594,7 @@ export default {
       .catch(error => console.error('Error:', error));
     } else {
       console.log("Auth Token not found in cookies.");
-      this.$router.push('/home')
+      // this.$router.push('/home')
     }
   },
   data() {

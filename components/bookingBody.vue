@@ -802,7 +802,7 @@
               Use your social profile to register
             </p>
             <!-- SOCIAL MEDIA LOGIN -->
-            <SocialLogin />
+            <SocialLogin @login-success="handleGoogleLoginData"/>
 
             <!-- Centered "or" text -->
             <!-- Centered "or" text -->
@@ -959,7 +959,7 @@
               Use your social profile to Login
             </p>
             <!-- SOCIAL LOGIN -->
-            <SocialLogin />
+            <SocialLogin @login-success="handleGoogleLoginData"/>
 
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
@@ -1035,6 +1035,7 @@ import { useNuxtApp } from "#app";
 import SocialLogin from "./SocialLogin.vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+import axios from 'axios';
 
 export default {
   components: {
@@ -1194,7 +1195,11 @@ export default {
             console.log('Data:', response.data);
 
             this.nuxtApp.$auth.setAuthToken(response.access_token);
-            this.$router.push({ path: '/dashboard', });
+            localStorage.setItem("userEmail", this.loginUser.email);
+              this.$router.push({
+              path: "/dashboard",
+              query: { email: this.loginUser.email },
+            });
             this.setupToastSucess("Successfully Logged In")
           }).catch(error => {
           if (error.response) {
