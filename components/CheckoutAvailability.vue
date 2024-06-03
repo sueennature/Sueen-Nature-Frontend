@@ -132,8 +132,7 @@ watch: {
           check_in: this.check_in,
           check_out: this.check_out,
           roomTypeId: this.room_type_id,
-
-          roomView: JSON.stringify(this.selectedView.view),
+          viewTypeId: this.view_type_id
 
         },
       });

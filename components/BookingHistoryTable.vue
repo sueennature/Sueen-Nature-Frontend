@@ -1,15 +1,7 @@
 <template>
-  <div
-    class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
-  >
-    <div
-      class="xl:flex xl:justify-between grid grid-cols-1 gap-6 xl:gap-0 justify-items-start mb-8"
-    >
-      <h2
-        class="text-3xl uppercase font-medium text-gray-900 dark:text-white whitespace-nowrap"
-      >
-        Booking History
-      </h2>
+  <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-3xl uppercase font-medium text-gray-900 dark:text-white">Booking History</h2>
       <div class="flex space-x-2">
         <input
           type="date"
@@ -19,9 +11,16 @@
         />
         <button
           type="button"
-          class="buttontext whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          @click="clearDate"
+          class="button-text whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          <svg
+          Clear
+        </button>
+        <button
+          type="button"
+          class="button-text whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+        <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             width="24"
@@ -54,12 +53,10 @@
         </button>
       </div>
     </div>
-    <table>
+    <table class="min-w-full">
       <thead>
         <tr>
-          <th>
-            <input type="checkbox" :checked="allSelected" @change="selectAll" class="black-checkbox">
-          </th>
+          <th><input type="checkbox" :checked="allSelected" @change="selectAll" class="black-checkbox" /></th>
           <th>Booking Name</th>
           <th>Bed type</th>
           <th>Book date</th>
@@ -67,23 +64,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(booking, index) in bookingHistory" :key="index">
-          <td>
-            <input
-              type="checkbox"
-              :value="index"
-              v-model="selectedRowIndices"
-              @change="updateSelectedRows"
-              class="black-checkbox"
-            />
-          </td>
-          <td>
-            <img
-              src="/img/deluxe_1.jpg"
-              alt="roomImg"
-              class="bg-cover w-40 h-20"
-            />
-          </td>
+        <tr v-for="(booking, index) in filteredBookingHistory" :key="index">
+          <td><input type="checkbox" :value="index" v-model="selectedRowIndices" @change="updateSelectedRows" class="black-checkbox" /></td>
+          <td><img src="/img/deluxe_1.jpg" alt="roomImg" class="bg-cover w-40 h-20" /></td>
           <td>{{ `Booking ${booking.id}` }}</td>
           <td>{{ formatDate(booking.date) }}</td>
           <td>{{ booking.check_in }}</td>
@@ -97,23 +80,19 @@
 import axios from "axios";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+
 export default {
   data() {
     return {
       bookingHistory: [],
+      filteredBookingHistory: [],
       selectedRows: [],
       selectedRowIndices: [],
     };
   },
   computed: {
     allSelected() {
-      return this.selectedRowIndices.length === this.bookingHistory.length;
-    },
-    formattedCheckIN() {
-      return this.formatDate(this.bookingHistory.date);
-    },
-    formattedCheckOut() {
-      return this.formatDate(this.checkOut);
+      return this.selectedRowIndices.length === this.filteredBookingHistory.length;
     },
   },
   mounted() {
@@ -122,74 +101,57 @@ export default {
   methods: {
     formatDate(dateString) {
       const date = new Date(dateString);
-
       const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
       ];
-
-      const month = months[date.getMonth()];
       const day = date.getDate();
       const daySuffix = this.getDaySuffix(day);
-      const year = date.getFullYear();
-
-      return `${month} ${day}${daySuffix} ${year}`;
+      return `${months[date.getMonth()]} ${day}${daySuffix} ${date.getFullYear()}`;
     },
     getDaySuffix(day) {
       if (day > 3 && day < 21) return "th";
       switch (day % 10) {
-        case 1:
-          return "st";
-        case 2:
-          return "nd";
-        case 3:
-          return "rd";
-        default:
-          return "th";
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
       }
     },
-    fetchBookingHistory() {
-      const cookies = document.cookie.split(";");
-      const authTokenCookie = cookies.find((cookie) =>
-        cookie.trim().startsWith("auth_token=")
-      );
-      const authToken = authTokenCookie.split("=")[1];
-
-      const headers = {
-        Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
-        "Content-Type": "application/json",
-      };
-      axios
-        .get("https://admin.sueennature.com/api/user/history-booking", {
-          headers,
-        })
-        .then((response) => {
-          this.bookingHistory = response.data.bookingHistory;
-        })
-        .catch((error) => console.error("Error:", error));
+    async fetchBookingHistory() {
+      try {
+        const cookies = document.cookie.split(";");
+        const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith("auth_token="));
+        const authToken = authTokenCookie.split("=")[1];
+        const headers = {
+          Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
+          "Content-Type": "application/json",
+        };
+        const response = await axios.get("https://admin.sueennature.com/api/user/history-booking", { headers });
+        this.bookingHistory = response.data.bookingHistory;
+        this.filteredBookingHistory = this.bookingHistory;
+      } catch (error) {
+        console.error("Error fetching booking history:", error);
+        toast.error("Error fetching booking history");
+      }
+    },
+    dateChanged(event) {
+      const selectedDate = event.target.value;
+      this.filteredBookingHistory = this.bookingHistory.filter(booking => {
+        const bookingDate = booking.date.split(' ')[0]; 
+        return bookingDate === selectedDate;
+      });
+    },
+    clearDate() {
+      this.$refs.datePicker.value = null;
+      this.filteredBookingHistory = this.bookingHistory;
     },
     selectAll(event) {
-      if (event.target.checked) {
-        this.selectedRowIndices = this.bookingHistory.map((_, index) => index);
-      } else {
-        this.selectedRowIndices = [];
-      }
+      this.selectedRowIndices = event.target.checked ? this.filteredBookingHistory.map((_, index) => index) : [];
       this.updateSelectedRows();
     },
     updateSelectedRows() {
-      this.selectedRows = this.selectedRowIndices.map(
-        (index) => this.bookingHistory[index]
-      );
+      this.selectedRows = this.selectedRowIndices.map(index => this.filteredBookingHistory[index]);
     },
   },
 };
@@ -201,11 +163,11 @@ table {
   border-collapse: collapse;
 }
 
-th,
-td {
+th, td {
   padding: 8px;
   text-align: left;
 }
+
 .black-checkbox {
   border: 1px solid black;
 }
