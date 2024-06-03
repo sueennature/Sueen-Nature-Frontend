@@ -11,7 +11,6 @@
         Booking History
       </h2>
       <div class="flex space-x-2">
-        <!-- Hidden Date Input -->
         <input
           type="date"
           ref="datePicker"
@@ -65,7 +64,6 @@
           <th>Bed type</th>
           <th>Book date</th>
           <th>Room floor</th>
-          <!-- Add more columns as needed -->
         </tr>
       </thead>
       <tbody>
