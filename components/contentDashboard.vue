@@ -237,7 +237,7 @@
             </div>
             <div class="flex flex-col justify-start items-start">
               <h5 class="text-sm text-blue-100 font-light whitespace-nowrap">
-                Booking ID #0123456789012
+                Booking ID {{ refID }}
               </h5>
               <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
                 Queen Deulax A09244
@@ -404,7 +404,7 @@
               <h5
                 class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
               >
-                Oct 25th - 28th March 2024
+               {{formattedCheckIN }} - {{formattedCheckOut}}
               </h5>
             </div>
           </div>
@@ -526,6 +526,11 @@
           >
             Access one
           </h5>
+          <h5
+            class="text-sm text-black-200 font-bold whitespace-nowrap xl:ml-0 ml-2"
+          >
+            Access one
+          </h5>
         </div>
         <div class="flex flex-col xl:space-y-12 space-y-4 items-start">
           <h3 class="font-medium text-xl text-black-200 mt-4 whitespace-nowrap">
@@ -552,9 +557,7 @@ import 'vue3-toastify/dist/index.css';
 
 export default {
   mounted() {
-    const emailToken = this.$route.query.email;
-    console.log("Email:", emailToken);
-    console.log("AMMMOO MALLIYE")
+    const emailToken = this.$route.query.email; 
     const cookies = document.cookie.split(';');
     const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
     if (authTokenCookie) {
@@ -594,8 +597,53 @@ export default {
       .catch(error => console.error('Error:', error));
     } else {
       console.log("Auth Token not found in cookies.");
-      // this.$router.push('/home')
     }
+
+    if (authTokenCookie) {
+      const authToken = authTokenCookie.split('=')[1];
+      console.log("Auth Token:", authToken);
+
+      const headers = {
+        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
+        'Content-Type': 'application/json'
+      };
+      console.log("Headers",headers)
+      axios.get('https://admin.sueennature.com/api/user/current-booking', {
+        headers: headers,
+      })
+      .then(response => {
+        console.log("Booking",response.data.currentBooking);
+        this.refID = response.data.currentBooking.reqid
+        this.checkIN = response.data.currentBooking.check_in
+        this.checkOut = response.data.currentBooking.check_out
+      }
+      )
+      .catch(error => console.error('Error:', error));
+    } else {
+      console.log("Auth Token not found in cookies.");
+    }
+    if (authTokenCookie) {
+      const authToken = authTokenCookie.split('=')[1];
+      console.log("Auth Token:", authToken);
+
+      const headers = {
+        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
+        'Content-Type': 'application/json'
+      };
+      console.log("Headers",headers)
+      axios.get('https://admin.sueennature.com/api/user/history-booking', {
+        headers: headers,
+      })
+      .then(response => {
+        console.log("BookingList",response.data.bookingHistory);
+       
+      }
+      )
+      .catch(error => console.error('Error:', error));
+    } else {
+      console.log("Auth Token not found in cookies.");
+    }
+    
   },
   data() {
     return {
@@ -609,10 +657,47 @@ export default {
       editModeLastName: false,
       editModePhoneNumber: false,
       editModeEmail: false,
-      editModeAddress: false
+      editModeAddress: false,
+      checkIN:"",
+      checkOut:"",
+      refID:"",
+      roomCapacity:"",
+      roomType:"",
     };
   },
+  computed: {
+    formattedCheckIN() {
+      return this.formatDate(this.checkIN);
+    },
+    formattedCheckOut(){
+      return this.formatDate(this.checkOut)
+    }
+  },
   methods: {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      
+      const month = months[date.getMonth()];
+      const day = date.getDate();
+      const daySuffix = this.getDaySuffix(day);
+      const year = date.getFullYear();
+
+      return `${month} ${day}${daySuffix} ${year}`;
+    },
+    getDaySuffix(day) {
+      if (day > 3 && day < 21) return 'th';
+      switch (day % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+      }
+    },
     updateUserProfile() {
       if (this.editModeFirstName || this.editModeLastName || this.editModeEmail || this.editModePhoneNumber || this.editModeAddress){
         toast.error("Please save your changes")
@@ -638,7 +723,6 @@ export default {
         'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
         'Content-Type': 'application/json'
       };
-      console.log("BODY", body)
       axios.post('https://admin.sueennature.com/api/user/profile', body, {
         headers: headers
       })

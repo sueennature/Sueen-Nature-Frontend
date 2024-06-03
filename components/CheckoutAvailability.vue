@@ -48,24 +48,15 @@
         </form>
         <div class="w-0.5 bg-white h-8 my-auto lg:flex hidden"></div>
         <form class="lg:max-w-sm lg:mx-auto">
-        <select
-          class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          v-model="selectedView"
-        >
-          <option :value="null" disabled selected class="text-gray-300">
-            Choose Room View
-          </option>
-      <option
-  v-for="view in filteredViews"
-  :value="view" 
-  :key="view.room_no"
-  class="text-black-200"
->
-  {{ view.view }}
-</option>
-
-        </select>
-      </form>
+          <select
+            id="view"
+            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="view_type_id"
+          >
+            <option :value="null" disabled selected class="text-gray-300">Choose Room View</option>
+            <option v-for="view in filteredViews" :value="view.meal_plan_id" :key="view.meal_plan_id" class="text-black-200">{{ view.view }}</option>
+          </select>
+        </form>
       </div>
       <button
         class="buttontext bg-red-100 text-sm text-white lg:ml-2 lg:p-4 p-2 rounded-r-lg rounded-l-none lg:flex hidden"
@@ -95,6 +86,8 @@ export default {
       room_type_id: null,
       room_types: [],
       rooms: [],
+      view_type_id: null,
+      view_types: [],
       selectedView: null,
 
     };
@@ -111,18 +104,7 @@ watch: {
       const selectedRoom = this.room_types.find(room => room.id === newVal);
       if (selectedRoom) {
         this.filteredViews = selectedRoom.views;
-        const roomViewParam = this.$route.query.roomView;
-        if (roomViewParam) {
-          const parsedRoomView = JSON.parse(roomViewParam);
-          const matchingRoomView = this.filteredViews.find(view => view.view === parsedRoomView);
-          if (matchingRoomView) {
-            this.selectedView = matchingRoomView;
-          } else {
-            this.selectedView = null; 
-          }
-        } else {
-          this.selectedView = null; 
-        }
+    
       } else {
         this.filteredViews = [];
         this.selectedView = null;
@@ -195,27 +177,15 @@ watch: {
       this.room_types = data.room_types;
       console.log("Response:", data);
       
-      const { check_in, check_out, roomTypeId } = this.$route.query;
+      const { check_in, check_out, roomTypeId, viewTypeId  } = this.$route.query;
       this.check_in = check_in || "";
       this.check_out = check_out || "";
       this.room_type_id = roomTypeId ? parseInt(roomTypeId) : null;
+      this.view_type_id = viewTypeId ? parseInt(viewTypeId) : null;
 
       if (this.room_type_id) {
         const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
-        console.log("first",selectedRoom.name)
-        
-        if (selectedRoom) {
-          this.filteredViews = selectedRoom.views;
-          const roomViewParam = this.$route.query.roomView;
-          if (roomViewParam) {
-            const parsedRoomView = JSON.parse(roomViewParam); 
-            const matchingRoomView = this.filteredViews.find(view => view.view === parsedRoomView);
-            if (matchingRoomView) {
-              this.selectedView = matchingRoomView;
-            }
-            
-          }
-        }
+      
       }
     })
     .catch((error) => {
@@ -238,22 +208,6 @@ watch: {
       });
     });
 
-    const roomViewParam = this.$route.query.roomView;
-  console.log("roomViewParam:", roomViewParam); 
-
-  if (roomViewParam) {
-    const parsedRoomView = JSON.parse(roomViewParam); 
-    console.log("parsedRoomView:", parsedRoomView); 
-
-    const matchingRoomView = this.filteredViews.find(view => view.view === parsedRoomView);
-    console.log("matchingRoomView:", matchingRoomView); 
-    console.log("filteredViews:", this.filteredViews); 
-
-    if (matchingRoomView) {
-      this.selectedView = matchingRoomView;
-      console.log("selectedView:", this.selectedView); 
-    }
-  }
   },
   
 };
