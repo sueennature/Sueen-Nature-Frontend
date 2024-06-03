@@ -410,140 +410,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <!--Booking History Card -->
-    <div
-      class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
-    >
-      <div
-        class="xl:flex xl:justify-between grid grid-cols-1 gap-6 xl:gap-0 justify-items-start"
-      >
-        <h2
-          class="text-3xl uppercase font-medium text-gray-900 dark:text-white whitespace-nowrap"
-        >
-          Booking History
-        </h2>
-        <div class="flex space-x-2">
-          <!-- Hidden Date Input -->
-          <input
-            type="date"
-            ref="datePicker"
-            class="text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm border-none focus:ring-0"
-            @change="dateChanged"
-          />
-          <button
-            type="button"
-            class="buttontext whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="24"
-              height="24"
-              viewBox="0 0 49 61"
-              fill="none"
-            >
-              <rect width="49" height="61" fill="url(#pattern12)" />
-              <defs>
-                <pattern
-                  id="pattern12"
-                  patternContentUnits="objectBoundingBox"
-                  width="1"
-                  height="1"
-                >
-                  <use
-                    xlink:href="#image0_1032_340"
-                    transform="matrix(0.0155612 0 0 0.0125 -0.122449 0)"
-                  />
-                </pattern>
-                <image
-                  id="image0_1032_340"
-                  width="80"
-                  height="80"
-                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABnUlEQVR4nO2aQUoDQRREezmtbhW8tMzfeCCDFzAwBeJdFMFsRCXMt7t+aT0IElePR7pmJtqaMcYYY4wxZi6I/lrlta0d293FbVMCBcJJR8SHeBUPuYgoF3A5nn6+3F/eNNWA29oft+iH2R7v0aQi4ruA0Q9Y+wPDQyoiih3h0/vnuLre1uWp/CaiaECZiCi2gZ9/X/44o+AGSkVE4SMscZwhErBsRBTfwPLHGQIbWDoiih3hfa/lSBdvZLLf4tDFG3kD91I3YMzdwD8XUAW6P9gC6v7wBg4KGN7AVEAV6P5gC6j7wxs4fwMx8e/Ee/2ngR0CDpgMWAm6P7yBgwKG7wNTAVWg+6PYRWSGP30D4YBnBAxvYOoTqALdH2wBdX/4PnBQwPCzcCrgT/hZ+IsYTRS6P7yBgwKG7wNTAVWg+6PYRWSG/68CPwsPChjewFRAFej+YAuo+8P3gYMChjcwFVAFuj/YAur+8AYOChjewFRAFej+YAuo+8MbOChgeANTAVWg+4MtoO6Pif+uW+mLWAeMIgGNMcYYY4xp/5Q3MAr4klREn0IAAAAASUVORK5CYII="
-                />
-              </defs>
-            </svg>
-            Generate Report
-          </button>
-        </div>
-      </div>
-      <div class="grid xl:grid-cols-4 grid-cols-1 mt-4 xl:gap-40">
-        <div class="flex flex-col">
-          <div class="flex items-center mt-4">
-            <input
-              id="default-checkbox"
-              type="checkbox"
-              value=""
-              class="w-4 h-4 text-blue-600 bg-white border-black-200 rounded-none focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              for="default-checkbox"
-              class="ms-4 text-xl font-medium text-black-200 dark:text-gray-300 whitespace-nowrap"
-              >Booking name</label
-            >
-          </div>
-          <div class="flex items-center mt-4 space-x-2">
-            <input
-              id="default-checkbox"
-              type="checkbox"
-              value=""
-              class="mr-2 w-4 h-4 text-blue-600 bg-white border-black-200 rounded-none focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <img
-              src="/img/deluxe_1.jpg"
-              alt="roomImg"
-              class="bg-cover w-40 h-20"
-            />
-            <div class="flex flex-col justify-start items-start">
-              <h5 class="text-sm text-blue-100 font-light whitespace-nowrap">
-                Booking ID #0123456789012
-              </h5>
-              <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
-                Queen Deulax A09244
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div
-          class="flex flex-col xl:space-y-12 space-y-4 items-start xl:mt-0 mt-4"
-        >
-          <h3 class="font-medium text-xl text-black-200 mt-4 whitespace-nowrap">
-            Bed type
-          </h3>
-          <h5
-            class="text-sm text-black-200 font-bold whitespace-nowrap xl:ml-0 ml-2"
-          >
-            floor-5 eved
-          </h5>
-        </div>
-        <div class="flex flex-col xl:space-y-12 space-y-4 items-start">
-          <h3 class="font-medium text-xl text-black-200 mt-4 whitespace-nowrap">
-            Book date
-          </h3>
-          <h5
-            class="text-sm text-black-200 font-bold whitespace-nowrap xl:ml-0 ml-2"
-          >
-            Access one
-          </h5>
-          <h5
-            class="text-sm text-black-200 font-bold whitespace-nowrap xl:ml-0 ml-2"
-          >
-            Access one
-          </h5>
-        </div>
-        <div class="flex flex-col xl:space-y-12 space-y-4 items-start">
-          <h3 class="font-medium text-xl text-black-200 mt-4 whitespace-nowrap">
-            Room floor
-          </h3>
-          <h5
-            class="text-sm text-black-200 font-bold whitespace-nowrap xl:ml-0 ml-2"
-          >
-            Queen Deulax A09244
-          </h5>
-        </div>
-      </div>
-    </div>
+    </div>  
+    <SelectableTable />
+
   </div>
 </template>
 
@@ -554,8 +423,12 @@ import { initFlowbite } from "flowbite";
 import axios from 'axios';
 import {toast} from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import SelectableTable from './BookingHistoryTable.vue'
 
 export default {
+  components: {
+    SelectableTable
+  },
   mounted() {
     const emailToken = this.$route.query.email; 
     const cookies = document.cookie.split(';');
