@@ -451,6 +451,7 @@ export default {
       })
       .then((data) => {
         this.room_types = data.room_types;
+        console.log("Data", this.room_types)
       })
       .catch((error) => {
         console.error('There has been a problem with your fetch operation:', error);

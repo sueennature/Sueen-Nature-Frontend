@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.15.11",
+    "@nuxt/ui": "^2.16.0",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/auth-next": "^5.0.0-1667386184.dfbbb54",
     "@nuxtjs/axios": "^5.13.6",

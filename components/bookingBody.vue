@@ -609,6 +609,21 @@
           </div>
           <div>
             <label
+              for="address"
+              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+              >Address</label
+            >
+            <input
+              type="text"
+              id="address"
+              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+              v-model="form.address"
+            />
+          </div>
+          <div>
+            <label
               for="email"
               class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
               >E-mail *</label
@@ -1068,6 +1083,8 @@ export default {
       room_types: [],
       roomsList: [],
       boardType: [],
+      view_type_id: null,
+      view_types: [],
       mealPlans: [],
       childFormAges: [],
       infantFormAges: [],
@@ -1431,14 +1448,16 @@ export default {
       const authToken = authTokenCookie?.split("=")[1];
 
       const headers = {
-        "Content-Type": "application/json",
+        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
+        'Content-Type': 'application/json'
       };
 
-      if (authToken) {
-        headers.Authorization = `Bearer ${authToken.replace(/%7C/g, "|")}`;
-      }
+      // if (authToken) {
+      //   headers.Authorization = `Bearer ${authToken.replace(/%7C/g, "|")}`;
+      //   console.log("asd",headers.Authorization)
+      // }
 
-      console.log("BODYHeader", headers);
+      // console.log("BODYHeader", headers);
 
       const formData = new FormData();
 
@@ -1477,7 +1496,7 @@ export default {
                     infants: roomPeople["infants"]?.ages || 0,
                     room_id: id,
                     meal_plan_id: mealPlanMap[type],
-                    room_view_id: this.$route.query.viewTypeId,
+                    room_view_id: parseInt(this.$route.query.viewTypeId),
                 });
 
             }
@@ -1502,10 +1521,8 @@ export default {
 
       await fetch("https://admin.sueennature.com/api/booking", {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+        headers: headers,
+
         body: JSON.stringify(this.form),
       })
         .then((response) => {
