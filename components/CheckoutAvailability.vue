@@ -174,7 +174,6 @@ watch: {
     })
     .then((data) => {
       this.room_types = data.room_types;
-      console.log("Response:", data);
       
       const { check_in, check_out, roomTypeId, viewTypeId  } = this.$route.query;
       this.check_in = check_in || "";
