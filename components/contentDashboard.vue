@@ -209,6 +209,7 @@
     </div>
     <!--Current booking Card -->
     <div
+    v-if = "apiRespone && apiRespone.status"
       class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
     >
       <div class="grid xl:grid-cols-4 grid-cols-1 xl:gap-80 gap-4">
@@ -402,7 +403,7 @@
                 <h5 class="text-black-200">Booking Date</h5>
               </div>
               <h5
-                class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
+                class="font-bold text-[1a6px] text-black-200 xl:mt-10 "
               >
                {{formattedCheckIN }} - {{formattedCheckOut}}
               </h5>
@@ -411,7 +412,8 @@
         </div>
       </div>
     </div>  
-    <SelectableTable />
+
+    <SelectableTable/>
 
   </div>
 </template>
@@ -486,6 +488,7 @@ export default {
       })
       .then(response => {
         console.log("Booking",response.data.currentBooking);
+        this.apiRespone = response.data.currentBooking
         this.refID = response.data.currentBooking.reqid
         this.checkIN = response.data.currentBooking.check_in
         this.checkOut = response.data.currentBooking.check_out
@@ -536,6 +539,7 @@ export default {
       refID:"",
       roomCapacity:"",
       roomType:"",
+      apiRespone: [],
     };
   },
   computed: {

@@ -5,22 +5,16 @@
       <div class="flex space-x-2">
         <input
           type="date"
-          ref="datePicker"
+          v-model="selectedDate"
           class="text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm border-none focus:ring-0"
-          @change="dateChanged"
+          @input="dateChanged"
         />
         <button
           type="button"
-          @click="clearDate"
-          class="button-text whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Clear
-        </button>
-        <button
-          type="button"
+          @click="generateReport"
           class="button-text whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-        <svg
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             width="24"
@@ -30,49 +24,41 @@
           >
             <rect width="49" height="61" fill="url(#pattern12)" />
             <defs>
-              <pattern
-                id="pattern12"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-              >
-                <use
-                  xlink:href="#image0_1032_340"
-                  transform="matrix(0.0155612 0 0 0.0125 -0.122449 0)"
-                />
+              <pattern id="pattern12" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_1032_340" transform="matrix(0.0155612 0 0 0.0125 -0.122449 0)" />
               </pattern>
-              <image
-                id="image0_1032_340"
-                width="80"
-                height="80"
-                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABnUlEQVR4nO2aQUoDQRREezmtbhW8tMzfeCCDFzAwBeJdFMFsRCXMt7t+aT0IElePR7pmJtqaMcYYY4wxZi6I/lrlta0d293FbVMCBcJJR8SHeBUPuYgoF3A5nn6+3F/eNNWA29oft+iH2R7v0aQi4ruA0Q9Y+wPDQyoiih3h0/vnuLre1uWp/CaiaECZiCi2gZ9/X/44o+AGSkVE4SMscZwhErBsRBTfwPLHGQIbWDoiih3hfa/lSBdvZLLf4tDFG3kD91I3YMzdwD8XUAW6P9gC6v7wBg4KGN7AVEAV6P5gC6j7wxs4fwMx8e/Ee/2ngR0CDpgMWAm6P7yBgwKG7wNTAVWg+6PYRWSGP30D4YBnBAxvYOoTqALdH2wBdX/4PnBQwPCzcCrgT/hZ+IsYTRS6P7yBgwKG7wNTAVWg+6PYRWSG/68CPwsPChjewFRAFej+YAuo+8P3gYMChjcwFVAFuj/YAur+8AYOChjewFRAFej+YAuo+8MbOChgeANTAVWg+4MtoO6Pif+uW+mLWAeMIgGNMcYYY4xp/5Q3MAr4klREn0IAAAAASUVORK5CYII="
-              />
+              <image id="image0_1032_340" width="80" height="80" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABnUlEQVR4nO2aQUoDQRREezmtbhW8tMzfeCCDFzAwBeJdFMFsRCXMt7t+aT0IElePR7pmJtqaMcYYY4wxZi6I/lrlta0d293FbVMCBcJJR8SHeBUPuYgoF3A5nn6+3F/eNNWA29oft+iH2R7v0aQi4ruA0Q9Y+wPDQyoiih3h0/vnuLre1uWp/CaiaECZiCi2gZ9/X/44o+AGSkVE4SMscZwhErBsRBTfwPLHGQIbWDoiih3hfa/lSBdvZLLf4tDFG3kD91I3YMzdwD8XUAW6P9gC6v7wBg4KGN7AVEAV6P5gC6j7wxs4fwMx8e/Ee/2ngR0CDpgMWAm6P7yBgwKG7wNTAVWg+6PYRWSGP30D4YBnBAxvYOoTqALdH2wBdX/4PnBQwPCzcCrgT/hZ+IsYTRS6P7yBgwKG7wNTAVWg+6PYRWSG/68CPwsPChjewFRAFej+YAuo+8P3gYMChjcwFVAFuj/YAur+8AYOChjewFRAFej+YAuo+8MbOChgeANTAVWg+4MtoO6Pif+uW+mLWAeMIgGNMcYYY4xp/5Q3MAr4klREn0IAAAAASUVORK5CYII=" />
             </defs>
           </svg>
           Generate Report
         </button>
       </div>
     </div>
-    <table class="min-w-full">
-      <thead>
-        <tr>
-          <th><input type="checkbox" :checked="allSelected" @change="selectAll" class="black-checkbox" /></th>
-          <th>Booking Name</th>
-          <th>Bed type</th>
-          <th>Book date</th>
-          <th>Room floor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(booking, index) in filteredBookingHistory" :key="index">
-          <td><input type="checkbox" :value="index" v-model="selectedRowIndices" @change="updateSelectedRows" class="black-checkbox" /></td>
-          <td><img src="/img/deluxe_1.jpg" alt="roomImg" class="bg-cover w-40 h-20" /></td>
-          <td>{{ `Booking ${booking.id}` }}</td>
-          <td>{{ formatDate(booking.date) }}</td>
-          <td>{{ booking.check_in }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div v-if="filteredBookingHistory.length > 0">
+      <table class="min-w-full" id="bookingTable">
+        <thead>
+          <tr>
+            <th><input type="checkbox" :checked="allSelected" @change="selectAll" class="black-checkbox checkbox" /></th>
+            <th>Booking Name</th>
+            <th>Bed type</th>
+            <th>Book date</th>
+            <th>Room floor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(booking, index) in filteredBookingHistory" :key="booking.id">
+            <td><input type="checkbox" :value="index" v-model="selectedRowIndices" @change="updateSelectedRows" class="black-checkbox checkbox" /></td>
+            <td><img src="/img/deluxe_1.jpg" alt="roomImg" class="bg-cover w-40 h-20" /></td>
+            <td>{{ `Booking ${booking.id}` }}</td>
+            <td>{{ formatDate(booking.date) }}</td>
+            <td>{{ booking.check_in }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div v-else>
+      <p class="text-gray-500 dark:text-gray-400 text-3xl">You have not booked any rooms</p>
+    </div>
   </div>
 </template>
 
@@ -80,6 +66,8 @@
 import axios from "axios";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 export default {
   data() {
@@ -88,6 +76,7 @@ export default {
       filteredBookingHistory: [],
       selectedRows: [],
       selectedRowIndices: [],
+      selectedDate: null,
     };
   },
   computed: {
@@ -128,22 +117,30 @@ export default {
           "Content-Type": "application/json",
         };
         const response = await axios.get("https://admin.sueennature.com/api/user/history-booking", { headers });
-        this.bookingHistory = response.data.bookingHistory;
-        this.filteredBookingHistory = this.bookingHistory;
+        if (response.data.status === false && response.data.message === "Not Found") {
+          this.bookingHistory = [];
+          this.filteredBookingHistory = [];
+        } else {
+          this.bookingHistory = response.data.bookingHistory;
+          this.filteredBookingHistory = this.bookingHistory;
+        }
       } catch (error) {
         console.error("Error fetching booking history:", error);
         toast.error("Error fetching booking history");
       }
     },
-    dateChanged(event) {
-      const selectedDate = event.target.value;
-      this.filteredBookingHistory = this.bookingHistory.filter(booking => {
-        const bookingDate = booking.date.split(' ')[0]; 
-        return bookingDate === selectedDate;
-      });
+    dateChanged() {
+      if (this.selectedDate) {
+        this.filteredBookingHistory = this.bookingHistory.filter(booking => {
+          const bookingDate = booking.date.split(' ')[0];
+          return bookingDate === this.selectedDate;
+        });
+      } else {
+        this.filteredBookingHistory = this.bookingHistory;
+      }
     },
     clearDate() {
-      this.$refs.datePicker.value = null;
+      this.selectedDate = null;
       this.filteredBookingHistory = this.bookingHistory;
     },
     selectAll(event) {
@@ -152,6 +149,24 @@ export default {
     },
     updateSelectedRows() {
       this.selectedRows = this.selectedRowIndices.map(index => this.filteredBookingHistory[index]);
+    },
+    async generateReport() {
+      // Hide checkboxes
+      document.querySelectorAll('.checkbox').forEach(checkbox => checkbox.style.display = 'none');
+      
+      const doc = new jsPDF('p', 'pt', 'a4');
+      const element = document.getElementById('bookingTable');
+      const canvas = await html2canvas(element);
+      const imgData = canvas.toDataURL('image/png');
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfWidth = doc.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      doc.save('booking-history.pdf');
+      window.open(doc.output('bloburl'), '_blank');
+      
+      // Restore checkboxes
+      document.querySelectorAll('.checkbox').forEach(checkbox => checkbox.style.display = 'block');
     },
   },
 };
@@ -174,5 +189,13 @@ th, td {
 
 input[type="checkbox"] {
   cursor: pointer;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+.dark .text-gray-400 {
+  color: #9ca3af;
 }
 </style>
