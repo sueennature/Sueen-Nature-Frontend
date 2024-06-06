@@ -53,8 +53,9 @@
             class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             v-model="view_type_id"
           >
-            <option :value="null" disabled selected class="text-gray-300">Choose Room View</option>
-            <option v-for="view in filteredViews" :value="view.meal_plan_id" :key="view.meal_plan_id" class="text-black-200">{{ view.view }}</option>
+          <option :value="null" disabled selected class="text-gray-300">Choose Room View</option>
+<option v-for="view in filteredViews" :value="view.id" :key="view.id" class="text-black-200">{{ view.view }}</option>
+
           </select>
         </form>
       </div>
@@ -100,19 +101,22 @@ export default {
   },
 },
 watch: {
-    room_type_id(newVal, oldVal) {
-      const selectedRoom = this.room_types.find(room => room.id === newVal);
-      if (selectedRoom) {
-        this.filteredViews = selectedRoom.views;
-    
-      } else {
-        this.filteredViews = [];
-        this.selectedView = null;
-      }
+  room_type_id(newVal, oldVal) {
+    const selectedRoom = this.room_types.find(room => room.id === newVal);
+    if (selectedRoom) {
+      this.filteredViews = selectedRoom.views;
+    } else {
+      this.filteredViews = [];
     }
-  },
+    this.view_type_id = null;  // Reset view type to "Choose a Room View"
+  }
+},
   methods: {
     async checkAvailability() {
+      if (!this.check_in || !this.check_out || !this.room_type_id || !this.view_type_id ) {
+      toast.error("Please fill in all fields.");
+      return; 
+      }
       const body = {
         method: "POST",
         headers: {
@@ -125,17 +129,25 @@ watch: {
           room_type_id: this.room_type_id,
         }),
       };
+           await this.$router.push({
+                path: '/booking',
+                query: {
+                    check_in: this.check_in,
+                    check_out: this.check_out,
+                    roomTypeId: this.room_type_id,
+                    viewTypeId: this.view_type_id
+                }
+            })
+      // this.$router.push({
+      //   path: this.$route.path,
+      //   query: {
+      //     check_in: this.check_in,
+      //     check_out: this.check_out,
+      //     roomTypeId: this.room_type_id,
+      //     viewTypeId: this.view_type_id
 
-      this.$router.push({
-        path: this.$route.path,
-        query: {
-          check_in: this.check_in,
-          check_out: this.check_out,
-          roomTypeId: this.room_type_id,
-          viewTypeId: this.view_type_id
-
-        },
-      });
+      //   },
+      // });
       console.log("body", body);
 
       try {
@@ -164,8 +176,7 @@ watch: {
     },
   },
   mounted() {
-    console.log("ID", this.room_type_id)
-    fetch("https://admin.sueennature.com/api/getRoomTypes")
+  fetch("https://admin.sueennature.com/api/getRoomTypes")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -174,39 +185,55 @@ watch: {
     })
     .then((data) => {
       this.room_types = data.room_types;
-      
-      const { check_in, check_out, roomTypeId, viewTypeId  } = this.$route.query;
+
+
+      const { check_in, check_out, roomTypeId, viewTypeId } = this.$route.query;
+
+
       this.check_in = check_in || "";
       this.check_out = check_out || "";
+
       this.room_type_id = roomTypeId ? parseInt(roomTypeId) : null;
-      this.view_type_id = viewTypeId ? parseInt(viewTypeId) : null;
 
       if (this.room_type_id) {
         const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
-      
+        this.filteredViews = selectedRoom ? selectedRoom.views : [];
+
+      } else {
+        this.filteredViews = [];
       }
+
+      this.view_type_id = viewTypeId ? parseInt(viewTypeId) : null;
+
+      this.$nextTick(() => {
+        this.view_type_id = viewTypeId ? parseInt(viewTypeId) : null;
+        console.log("View type ID after nextTick:", this.view_type_id);
+      });
     })
     .catch((error) => {
       console.error("There has been a problem with your fetch operation:", error);
     });
 
-    Promise.all([
-      import("flowbite-datepicker/Datepicker"),
-      import("flowbite-datepicker/Datepicker"),
-    ]).then(([DatePicker1, DatePicker2]) => {
-      const datepickerEl1 = this.$refs.datepicker1;
-      const datepickerEl2 = this.$refs.datepicker2;
-      new DatePicker1.default(datepickerEl1, {
-        autohide: true,
-        orientation: "bottom right",
-      });
-      new DatePicker2.default(datepickerEl2, {
-        autohide: true,
-        orientation: "bottom right",
-      });
+  Promise.all([
+    import("flowbite-datepicker/Datepicker"),
+    import("flowbite-datepicker/Datepicker"),
+  ]).then(([DatePicker1, DatePicker2]) => {
+    const datepickerEl1 = this.$refs.datepicker1;
+    const datepickerEl2 = this.$refs.datepicker2;
+    new DatePicker1.default(datepickerEl1, {
+      autohide: true,
+      orientation: "bottom right",
     });
+    new DatePicker2.default(datepickerEl2, {
+      autohide: true,
+      orientation: "bottom right",
+    });
+  });
+}
 
-  },
+
+
+
   
 };
 </script>

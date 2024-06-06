@@ -1,13 +1,18 @@
 <template>
     <div class="main overflow-hidden">
-      <heroRoomsSingle/>
+      <navbar
+      :pageTitle="'Attention to detail like never before.'"
+      :pageTitleTwo="'EXPLORE OUR HOTEL'"
+      :pageTitleThree="'STAY WITH US'"
+      :imageNav="'/img/hero-rooms.png'"
+    />
       <roomComponent/>
       <footerHome />
     </div>
   </template>
   
   <script setup>
-  import heroRoomsSingle from "~/components/heroRoomsSingle.vue";
+  import navbar from "~/components/navbar.vue";
   import footerHome from "~/components/footerHome.vue";
   import roomComponent from "~/components/roomComponet.vue";
   

@@ -1,27 +1,30 @@
 <template>
-    <nav class="bg-black-200 z-40 dark:bg-gray-900 fixed w-full border-none dark:border-gray-600 md:px-20 px-0">
+  <nav
+    class="bg-black-200 z-40 dark:bg-gray-900 fixed w-full border-none dark:border-gray-600 md:px-20 px-0"
+  >
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <a
-        href="/home"
-        class="flex items-center space-x-3 rtl:space-x-reverse"
-      >
-      <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
+      <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img
+          src="/img/logoMobile.png"
+          alt="logoImg"
+          class="w-auto h-8 md:h-10"
+        />
       </a>
       <div
         class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
       >
-      <a href="/booking">
+        <a href="/booking">
+          <button
+            type="button"
+            class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
+          >
+            book now
+          </button>
+        </a>
         <button
-          type="button"
-          class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
-        >
-          book now
-        </button>
-      </a>  
-        <button
-          data-collapse-toggle="navbar-cta"
+          @click="toggleMenu"
           type="button"
           class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-cta"
@@ -46,11 +49,12 @@
         </button>
       </div>
       <div
-        class="lg:hidden items-center justify-between hidden w-full lg:w-auto lg:order-1"
+        :class="{ hidden: !isMenuOpen, flex: isMenuOpen }"
+        class="lg:hidden items-center justify-between w-full lg:w-auto lg:order-1 "
         id="navbar-cta"
       >
         <ul
-          class="flex flex-col font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
+          class="flex flex-col font-medium w-full p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
         >
           <li>
             <a
@@ -93,14 +97,12 @@
         <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
           <a href="/booking">
             <button
-            type="button"
-            class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
-          >
-            book now
-          </button>
-
+              type="button"
+              class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
+            >
+              book now
+            </button>
           </a>
-          
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
@@ -172,13 +174,19 @@
         </div>
       </div>
     </div>
-    </nav>
+  </nav>
 </template>
 
 <script setup>
+import { ref } from "vue";
 
+const isMenuOpen = ref(false);
+
+function toggleMenu() {
+  isMenuOpen.value = !isMenuOpen.value;
+}
 </script>
 
 <style scoped>
-
+/* Your styles here */
 </style>
