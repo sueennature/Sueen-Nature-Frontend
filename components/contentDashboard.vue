@@ -53,6 +53,13 @@
               </svg>
               <h4 class="text-xl font-bold text-black-200">{{email}}</h4>
             </div>
+            <button
+            class="buttontext bg-red-100 text-sm text-white lg:ml-2 lg:p-4 p-2 rounded "
+            @click="logout"
+            >
+              Log out
+            </button>
+
           </div>
         </div>
       </div>
@@ -327,7 +334,7 @@
               <h5
                 class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
               >
-                3-5 Persons
+                  {{totalPeople}}
               </h5>
             </div>
             <div class="flex flex-col items-start">
@@ -492,6 +499,7 @@ export default {
         this.refID = response.data.currentBooking.reqid
         this.checkIN = response.data.currentBooking.check_in
         this.checkOut = response.data.currentBooking.check_out
+        this.roomCapacity = response.data.currentBooking
       }
       )
       .catch(error => console.error('Error:', error));
@@ -543,6 +551,9 @@ export default {
     };
   },
   computed: {
+    totalPeople(){
+      return this.roomCapacity.adults + this.roomCapacity.child
+    },
     formattedCheckIN() {
       return this.formatDate(this.checkIN);
     },
@@ -551,6 +562,14 @@ export default {
     }
   },
   methods: {
+    logout() {
+      this.$auth.setAuthToken(null);  
+      localStorage.removeItem("userEmail")  
+      this.$router.push('/home');
+    },
+    getChildCapacity(childString) {
+      return parseInt(childString.replace(/[\[\]]/g, ''));
+    },
     formatDate(dateString) {
       const date = new Date(dateString);
       

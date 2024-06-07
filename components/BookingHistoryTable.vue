@@ -1,7 +1,7 @@
 <template>
   <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300">
-    <div class="flex justify-between items-center mb-8">
-      <h2 class="text-3xl uppercase font-medium text-gray-900 dark:text-white">Booking History</h2>
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8">
+      <h2 class="text-3xl uppercase font-medium text-gray-900 dark:text-white mb-4 sm:mb-0">Booking History</h2>
       <div class="flex space-x-2">
         <input
           type="date"
@@ -45,7 +45,7 @@
             <th>Room floor</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-white divide-y divide-gray-200 ">
           <tr v-for="(booking, index) in filteredBookingHistory" :key="booking.id">
             <td><input type="checkbox" :value="index" v-model="selectedRowIndices" @change="updateSelectedRows" class="black-checkbox checkbox" /></td>
             <td><img src="/img/deluxe_1.jpg" alt="roomImg" class="bg-cover w-40 h-20" /></td>
@@ -171,8 +171,14 @@ export default {
   },
 };
 </script>
-
 <style scoped>
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -197,5 +203,12 @@ input[type="checkbox"] {
 
 .dark .text-gray-400 {
   color: #9ca3af;
+}
+
+@media (max-width: 640px) {
+  .text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 }
 </style>

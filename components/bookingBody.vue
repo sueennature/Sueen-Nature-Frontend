@@ -1448,7 +1448,7 @@ export default {
       const authToken = authTokenCookie?.split("=")[1];
 
       const headers = {
-        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
+        'Authorization': `Bearer ${authToken?.replace(/%7C/g, '|')}`,
         'Content-Type': 'application/json'
       };
 
