@@ -245,10 +245,10 @@
             </div>
             <div class="flex flex-col justify-start items-start">
               <h5 class="text-sm text-blue-100 font-light whitespace-nowrap">
-                Booking ID {{ refID }}
+               Reference ID: {{ refID }}
               </h5>
               <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
-                Queen Deulax A09244
+                       {{roomType.room_data.name}}
               </h5>
             </div>
           </div>
@@ -368,12 +368,12 @@
                     />
                   </defs>
                 </svg>
-                <h5 class="text-black-200">Room capacity</h5>
+                <h5 class="text-black-200">Room type</h5>
               </div>
               <h5
                 class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
               >
-                Double
+                {{roomType.meal_plan}}
               </h5>
             </div>
             <div class="flex flex-col items-start">
@@ -500,6 +500,7 @@ export default {
         this.checkIN = response.data.currentBooking.check_in
         this.checkOut = response.data.currentBooking.check_out
         this.roomCapacity = response.data.currentBooking
+        this.roomType = response.data.RoomType[0]
       }
       )
       .catch(error => console.error('Error:', error));
@@ -548,6 +549,7 @@ export default {
       roomCapacity:"",
       roomType:"",
       apiRespone: [],
+      roomType: [],
     };
   },
   computed: {

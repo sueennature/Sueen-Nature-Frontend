@@ -5,9 +5,13 @@
         <p>Loading...</p>
       </div>
       
-      <div v-else class="max-w-xl mt-16" v-for="service in services" :key="service.id">
-        <img src="/img/service-4.png" alt="serviceImg" class="" />
-        <div class="h-96 flex flex-col items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700">
+      <div v-else v-for="service in services" :key="service.id" class="max-w-xl mt-16">
+        <img 
+          :src="`https://admin.sueennature.com/uploads/${service.image}`" 
+          alt="serviceImg" 
+          class="max-w-full h-auto max-h-96 object-cover"
+        />
+        <div class="h-96 flex flex-col items-center p-8 bg-gray-500 rounded-lg shadow-lg space-y-4 dark:bg-gray-800 dark:border-gray-700">
           <h3 class="2xl:text-4xl text-2xl text-black-200">{{ service.name }}</h3>
           <p class="font-extralight text-base text-center text-black-200 dark:text-gray-400 mt-4">
             {{ service.description }}
@@ -18,6 +22,19 @@
     <div v-if="error" class="text-red-500">{{ error }}</div>
   </div>
 </template>
+
+<style scoped>
+/* Adjustments for the image and card */
+img {
+  object-fit: cover; /* Maintain aspect ratio and cover container */
+}
+
+/* Additional styling for the card */
+.h-96 {
+  height: 24rem; /* or use max-height: 24rem; if you prefer */
+}
+</style>
+
 
 <script setup>
 import axios from 'axios';

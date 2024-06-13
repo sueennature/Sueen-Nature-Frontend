@@ -145,11 +145,10 @@
         </div>
       </div>
     </div>
-    <!-- Bottom line details about the room -->
-    <div v-for="roomType in matchedRoomTypes" :key="roomType.id">
+    <div v-for="roomType in matchedRoomTypes" :key="roomType.id" class="flex flex-col items-center">
       <div class="flex flex-row gap-4 justify-center mt-4">
         <h5 class="md:text-sm text-xs text-black-200 pl-4">
-          Size: <span class="italic">42 m<sup>2</sup></span>
+          Size: <span class="italic">{{roomType.size}}m<sup>2</sup></span>
         </h5>
         <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
           Bed: 01 Queen
@@ -179,8 +178,9 @@
       <ul
         class="max-w-md text-base space-y-4 text-black-200 list-disc dark:text-gray-400 mx-auto mt-10 list-outside"
       >
-        <li><strong>Beds:</strong> Queen Bed</li>
-        <li><strong>Size:</strong> 452 Square Feet</li>
+        <li><strong>Beds:</strong>{{ roomType.beds }}</li>
+        <li><strong>Size:</strong> {{ roomType.size }}m<sup>2</sup></li>          
+
         <li>
           <strong>Views: </strong>
           <span v-for="(view, index) in roomType.views" :key="index">
@@ -197,10 +197,9 @@
                 (roomType.max_childs > 1 ? " " : " ")
               : ""
           }}</li>
-        <li><strong>Bathroom:</strong> One full granite bathroom.</li>
+        <li><strong>Bathroom: </strong>{{ roomType.bathroom }}</li>
         <li>
-          <strong>Features: </strong> Soothing, modern design, and
-          floor-to-ceiling windows.
+          <strong>Features: </strong> {{ roomType.features }}
         </li>
       </ul>
     </div>
@@ -218,18 +217,18 @@
       <div
         v-for="(room, index) in nonMatchedRoomTypes"
         :key="index"
-        class="flex flex-col gap-4"
+        class="flex flex-col gap-4  mt-4"
       >
         <img
-          :src="`https://admin.sueennature.com/uploads/${room.images}`"
+          :src="`https://admin.sueennature.com/uploads/${Object.values(room.images)[0]}`"
           alt="roomImg"
-          class="h-auto max-w-xs"
+          class="h-60 max-w-72"
         />
-        <h3 class="text-xl text-black-200 font-medium lg:text-center">
+        <h3 class="text-xl text-black-200 font-medium lg:text-center items-center text-center gap-4">
           {{ room.name }}
         </h3>
         <h6
-          class="text-sm text-black-200 font-light max-w-[30ch] lg:mx-auto lg:text-center"
+          class="text-sm text-black-200 font-light  lg:mx-auto lg:text-center text-center "
         >
           {{ room.description }}
         </h6>
@@ -259,13 +258,7 @@ export default defineComponent({
   setup() {
     const matchedRoomTypes = ref([]);
     const nonMatchedRoomTypes = ref([]);
-    const slides = ref([
-      { src: "/img/single_room_one.jpg", alt: "Image 1" },
-      { src: "/img/single_room_two.jpg", alt: "Image 2" },
-      { src: "/img/single_room_five.jpg", alt: "Image 3" },
-      { src: "/img/single_room_four.jpg", alt: "Image 4" },
-      { src: "/img/single_room_five.jpg", alt: "Image 5" },
-    ]);
+    const slides = ref([]);
 
     const route = useRoute();
     const router = useRouter();
@@ -273,68 +266,85 @@ export default defineComponent({
     const navigateToRoomTypePage = (roomTypeName) => {
       router.push({ name: "room", query: { name: roomTypeName } });
     };
-
+  
+      const initializeCarousels = () => {
+        const mainSliderElement = document.getElementById("main-slider");
+        const thumbnailSliderElement = document.getElementById("thumbnail-slider");
+  
+        if (mainSliderElement && thumbnailSliderElement) {
+          const main = new Splide(mainSliderElement, {
+            type: "fade",
+            heightRatio: 0.5,
+            pagination: false,
+            arrows: false,
+            cover: true,
+          });
+  
+          const thumbnails = new Splide(thumbnailSliderElement, {
+            rewind: true,
+            fixedWidth: 80,
+            fixedHeight: 45,
+            isNavigation: true,
+            gap: 10,
+            focus: "center",
+            pagination: false,
+            cover: true,
+            dragMinThreshold: {
+              mouse: 4,
+              touch: 10,
+            },
+            breakpoints: {
+              640: {
+                fixedWidth: 50,
+                fixedHeight: 30,
+              },
+            },
+          });
+  
+          main.sync(thumbnails);
+          main.mount();
+          thumbnails.mount();
+        }
+      };
     onMounted(() => {
-      const main = new Splide("#main-slider", {
-        type: "fade",
-        heightRatio: 0.5,
-        pagination: false,
-        arrows: false,
-        cover: true,
-      });
-
-      const thumbnails = new Splide("#thumbnail-slider", {
-        rewind: true,
-        fixedWidth: 104,
-        fixedHeight: 58,
-        isNavigation: true,
-        gap: 10,
-        focus: "center",
-        pagination: false,
-        cover: true,
-        dragMinThreshold: {
-          mouse: 4,
-          touch: 10,
-        },
-        breakpoints: {
-          640: {
-            fixedWidth: 66,
-            fixedHeight: 38,
-          },
-        },
-      });
-
-      main.sync(thumbnails);
-      main.mount();
-      thumbnails.mount();
+      
 
       fetchData();
     });
-
-    const fetchData = () => {
-      const roomId = route.query.name;
-      fetch("https://admin.sueennature.com/api/getRoomTypes")
-        .then((response) => {
+    const fetchData = async () => {
+        const roomId = route.query.name;
+  
+        try {
+          const response = await fetch("https://admin.sueennature.com/api/getRoomTypes");
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
-          return response.json();
-        })
-        .then((data) => {
+          const data = await response.json();
+  
           matchedRoomTypes.value = data.room_types.filter(
             (room) => room.id == roomId
           );
+  
           nonMatchedRoomTypes.value = data.room_types.filter(
             (room) => room.id != roomId
           );
-        })
-        .catch((error) => {
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error
-          );
-        });
-    };
+  
+          if (matchedRoomTypes.value.length > 0) {
+            const matchedRoom = matchedRoomTypes.value[0];
+            slides.value = Object.values(matchedRoom.images).map((image) => ({
+              src: `https://admin.sueennature.com/uploads/${image}`,
+              alt: matchedRoom.name,
+            }));
+  
+            // Initialize carousels after slides are set
+            nextTick(() => {
+              initializeCarousels();
+            });
+          }
+        } catch (error) {
+          console.error("There was a problem with the fetch operation:", error);
+        }
+      };
 
     watch(() => route.query.name, fetchData);
 
@@ -359,4 +369,15 @@ h6,
 ul li {
   font-family: "Barlow", sans-serif;
 }
+.splide__slide img {
+  display: block;
+  width: 100%; 
+  height: auto;
+  max-width: 600px;
+  max-height: 400px; 
+  margin: 0 auto; 
+  object-fit: cover; 
+}
+
+
 </style>

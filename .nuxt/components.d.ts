@@ -3,6 +3,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     'BookingHistoryTable': typeof import("../components/BookingHistoryTable.vue")['default']
     'CheckoutAvailability': typeof import("../components/CheckoutAvailability.vue")['default']
+    'Sample': typeof import("../components/Sample.vue")['default']
     'SocialLogin': typeof import("../components/SocialLogin.vue")['default']
     'BookingBody': typeof import("../components/bookingBody.vue")['default']
     'CheckAvailability': typeof import("../components/checkAvailability.vue")['default']
@@ -75,6 +76,7 @@ declare module 'vue' {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyBookingHistoryTable': typeof import("../components/BookingHistoryTable.vue")['default']
     'LazyCheckoutAvailability': typeof import("../components/CheckoutAvailability.vue")['default']
+    'LazySample': typeof import("../components/Sample.vue")['default']
     'LazySocialLogin': typeof import("../components/SocialLogin.vue")['default']
     'LazyBookingBody': typeof import("../components/bookingBody.vue")['default']
     'LazyCheckAvailability': typeof import("../components/checkAvailability.vue")['default']
@@ -150,6 +152,7 @@ declare module 'vue' {
 
 export const BookingHistoryTable: typeof import("../components/BookingHistoryTable.vue")['default']
 export const CheckoutAvailability: typeof import("../components/CheckoutAvailability.vue")['default']
+export const Sample: typeof import("../components/Sample.vue")['default']
 export const SocialLogin: typeof import("../components/SocialLogin.vue")['default']
 export const BookingBody: typeof import("../components/bookingBody.vue")['default']
 export const CheckAvailability: typeof import("../components/checkAvailability.vue")['default']
@@ -222,6 +225,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyBookingHistoryTable: typeof import("../components/BookingHistoryTable.vue")['default']
 export const LazyCheckoutAvailability: typeof import("../components/CheckoutAvailability.vue")['default']
+export const LazySample: typeof import("../components/Sample.vue")['default']
 export const LazySocialLogin: typeof import("../components/SocialLogin.vue")['default']
 export const LazyBookingBody: typeof import("../components/bookingBody.vue")['default']
 export const LazyCheckAvailability: typeof import("../components/checkAvailability.vue")['default']

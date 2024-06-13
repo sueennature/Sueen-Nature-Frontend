@@ -12,8 +12,12 @@
       
       <figure v-for="room in room_types" :key="room.id" class="relative max-w-sm transition-all duration-300 cursor-pointer filter">
         <a :href="`#${room.id}`">
-          <img class="rounded-0 w-96 h-72" :src="`https://admin.sueennature.com/uploads/${room.images}`" :alt="room.name + ' image'" />
-        </a>
+          <img
+          class="rounded-0 w-96 h-72"
+          :src="`https://admin.sueennature.com/uploads/${Object.values(room.images)[0]}`"
+          :alt="`${room.name} image`"
+        />        
+      </a>
         <figcaption class="absolute px-4 text-lg text-white bottom-6">
           <h5 class="text-base font-semibold text-white">LKR {{ room.room_only }}</h5>
           <h2 class="text-3xl text-white">{{ room.name }}</h2>
