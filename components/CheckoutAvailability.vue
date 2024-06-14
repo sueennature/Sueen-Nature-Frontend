@@ -138,6 +138,8 @@ watch: {
                     viewTypeId: this.view_type_id
                 }
             })
+
+            window.location.reload()
       // this.$router.push({
       //   path: this.$route.path,
       //   query: {

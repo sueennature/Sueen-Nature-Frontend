@@ -17,16 +17,16 @@
       
           <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
               <img
-                :src="`https://admin.sueennature.com/uploads/${roomType.images}`"
+              :src="`https://admin.sueennature.com/uploads/${Object.values(roomType.images)[0]}`"
                 alt="roomImg"
                 class="w-full object-cover"
           />       
         </div>
         <div class="flex flex-row gap-4 justify-center mt-2">
           <h5 class="md:text-sm text-xs text-black-200 pl-4">
-            Size: <span class="italic">42 m<sup>2</sup></span>
+            Size: <span class="italic">{{roomType.size}}m<sup>2</sup></span>
           </h5>
-          <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">Bed: 01 Queen</h5>
+          <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">Bed: {{roomType.beds}}</h5>
           <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
           Occupancy: Max adult{{ roomType.max_adults > 1 ? 's' : '' }} {{ roomType.max_adults }} 
           {{ roomType.max_childs ? ', Max Children ' + roomType.max_childs + (roomType.max_childs > 1 ? ' ' : ' ') : '' }}

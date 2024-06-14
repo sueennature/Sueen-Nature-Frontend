@@ -13,24 +13,24 @@
     </h2>
     <div
       class="grid lg:grid-cols-2 grid-cols-1 gap-x-20 gap-y-16"
-      v-if="selectedRoomType"
     >
       <!-- room image with paragraph -->
       <div>
         <div class="relative">
           <img
-            :src="`https://admin.sueennature.com/uploads/${selectedRoomType.images}`"
+            :src="room_types.image ? `https://admin.sueennature.com/uploads/${JSON.parse(room_types.image)[0]}` : ''"
             alt="roomImg"
             class="w-full object-cover"
           />
+
           <div
             class="absolute lg:top-10 top-16 bg-white bg-opacity-80 text-xl text-black-200 py-2 px-8 rounded-r-md image-label"
           >
-            {{ selectedRoomType.name }}
+            {{ room_types.name }}
           </div>
         </div>
         <p class="text-gray-300 text-base mt-8">
-          {{ selectedRoomType.description }}
+          {{ room_types.description }}
         </p>
       </div>
       <!-- room selector options -->
@@ -39,17 +39,15 @@
         <div
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
-          <div class="lg:flex grid grid-cols-1 justify-between gap-2">
+          <div class="lg:flex flex-col grid grid-cols-1 justify-between gap-2">
             <h6 class="text-red-100 xl:text-lg text-base font-bold">
-              Special Rate (After 30% Discount)
+              Special Rate (After {{ discount_data.discount}}% Discount)
             </h6>
             <div
-              class="flex flex-row lg:justify-center items-baseline space-x-2"
+              class="flex flex-col lg:justify-center items-baseline space-x-2"
             >
-              <h5 class="xl:text-lg text-sm text-black-200">Starting:</h5>
-              <h5 class="xl:text-xl text-sm text-black-200 font-semibold">
-                LKR 13, 300
-              </h5>
+              <h5 class="xl:text-lg text-sm text-black-200">Starting at: {{ formatDate(discount_data.start_date)}}</h5>
+              <h5 class="xl:text-lg text-sm text-black-200">Ending at: {{ formatDate(discount_data.end_date)}}</h5>
             </div>
           </div>
           <div class="lg:flex lg:justify-end justify-start">
@@ -72,7 +70,7 @@
           </div>
         </div>
         <h5 class="text-black-200 font-semibold mt-4">
-          {{ selectedRoomType.name }}
+          <!-- {{ room_types.name }} -->
         </h5>
         <hr
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
@@ -92,7 +90,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{ selectedRoomType.bread_breakfast }}
+                  LKR {{ formatPrice(room_types.bread_breakfast) }}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -101,10 +99,10 @@
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 whitespace-nowrap"
                   @click="
                     addItemToRoomsList({
-                      id: selectedRoomType.id,
-                      name: selectedRoomType.name,
+                      id: room_types.id,
+                      name: room_types.name,
                       type: 'Bed & Breakfast',
-                      price: selectedRoomType.bread_breakfast,
+                      price: room_types.bread_breakfast,
                       selectedRooms: '',
                     })
                   "
@@ -125,7 +123,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{ selectedRoomType.half_board }}
+                  LKR {{ formatPrice(room_types.half_board) }}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -134,10 +132,10 @@
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                   @click="
                     addItemToRoomsList({
-                      id: selectedRoomType.id,
-                      name: selectedRoomType.name,
+                      id: room_types.id,
+                      name: room_types.name,
                       type: 'Half Board',
-                      price: selectedRoomType.half_board,
+                      price: room_types.half_board,
                       selectedRooms: '',
                     })
                   "
@@ -158,7 +156,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{ selectedRoomType.full_board }}
+                  LKR {{ formatPrice(room_types.full_board )}}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -167,10 +165,10 @@
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                   @click="
                     addItemToRoomsList({
-                      id: selectedRoomType.id,
-                      name: selectedRoomType.name,
+                      id: room_types.id,
+                      name: room_types.name,
                       type: 'Full Board',
-                      price: selectedRoomType.full_board,
+                      price: room_types.full_board,
                       selectedRooms: '',
                     })
                   "
@@ -191,7 +189,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{ selectedRoomType.room_only }}
+                  LKR {{ formatPrice(room_types.room_only) }}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -200,10 +198,10 @@
                   class="buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm xl:text-base text-xs lg:px-8 px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                   @click="
                     addItemToRoomsList({
-                      id: selectedRoomType.id,
-                      name: selectedRoomType.name,
+                      id: room_types.id,
+                      name: room_types.name,
                       type: 'Room only',
-                      price: selectedRoomType.room_only,
+                      price: room_types.room_only,
                       selectedRooms: '',
                     })
                   "
@@ -291,7 +289,7 @@
           :key="index"
         >
           <h5>
-            {{ selectedRoomType.name }} - Special Rate (4 Rooms Available)
+            {{ room_types.name }} - Special Rate (4 Rooms Available)
           </h5>
           <hr
             class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
@@ -317,58 +315,108 @@
             </form>
           </div>
 
-          <div v-for="(n, index) in roomRaw(item.selectedRooms)" :key="`${index}-${n}`">
           <div
-            class="lg:flex lg:flex-row flex-col items-baseline justify-between mt-4 space-y-2"
+            v-for="(n, index) in roomRaw(item.selectedRooms)"
+            :key="`${index}-${n}`"
           >
-            <div class="flex items-center">
-              <h5 class="text-black-200 font-medium xl:text-lg text-sm">
-                <span>Room :</span> <span>{{ n }}</span>
-              </h5>
+            <div
+              class="lg:flex lg:flex-row flex-col items-baseline justify-between mt-4 space-y-2"
+            >
+              <div class="flex items-center">
+                <h5 class="text-black-200 font-medium xl:text-lg text-sm">
+                  <span>Room :</span> <span>{{ n }}</span>
+                </h5>
+              </div>
+              <div class="flex lg:space-x-4 space-x-1">
+                <form class="max-w-sm w-full">
+                  <select
+                    id="adults"
+                    class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    @change="
+                      updateRoomPeopleCount(
+                        item,
+                        n,
+                        'adults',
+                        $event,
+                        room_types.name
+                      )
+                    "
+                  >
+                    <option selected>Adults</option>
+                    <option
+                      v-for="index in room_types.name === 'Single Room'
+                        ? 1
+                        : room_types.name === 'Double Room'
+                        ? 2
+                        : room_types.name === 'Triple Room'
+                        ? 3
+                        : room_types.name === 'Family Room'
+                        ? 4
+                        : '0'"
+                      :key="index"
+                      :value="index"
+                    >
+                      {{ index }}
+                    </option>
+                  </select>
+                </form>
+                <form
+                  class="max-w-sm w-full"
+                  v-if="room_types.name !== 'Single Room'"
+                >
+                  <select
+                    id="children"
+                    class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    @change="
+                      updateRoomPeopleCount(
+                        item,
+                        n,
+                        'child',
+                        $event,
+                        room_types.name
+                      )
+                    "
+                  >
+                    <option selected value="0">Children</option>
+                    <option
+                      v-for="index in getChildrenRoomCapacity(item, n)"
+                      :key="index"
+                      :value="index"
+                    >
+                      {{ index }}
+                    </option>
+                  </select>
+                </form>
+                <form class="max-w-sm w-full">
+                  <select
+                    id="infants"
+                    class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    @change="
+                      updateRoomPeopleCount(
+                        item,
+                        n,
+                        'infants',
+                        $event,
+                        room_types.name
+                      )
+                    "
+                  >
+                    <option selected value="0">Infants</option>
+                    <option v-for="index in 4" :key="index" :value="index">
+                      {{ index }}
+                    </option>
+                  </select>
+                </form>
+              </div>
             </div>
-            <div class="flex lg:space-x-4 space-x-1">
-              <form class="max-w-sm w-full">
-                <select
-                  id="adults"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'adults', $event, selectedRoomType.name)"
-                >
-                  <option selected>Adults</option>
-                   <option v-for="index in 
-                   ( selectedRoomType.name === 'Single Room' ? 1 
-                   : selectedRoomType.name === 'Double Room' ? 2 
-                   : selectedRoomType.name === 'Triple Room' ? 3
-                   : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
-                </select>
-              </form>
-              <form class="max-w-sm w-full" v-if="selectedRoomType.name !== 'Single Room'">
-                <select
-                  id="children"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'child', $event, selectedRoomType.name)"
-                >
-                  <option selected value="0">Children</option>
-                  <option v-for="index in 
-                   ( selectedRoomType.name === 'Double Room' ? 1 
-                   : selectedRoomType.name === 'Triple Room' ? 3
-                   : selectedRoomType.name === 'Family Room' ? 4 : '0')" :key="index" :value="index">{{ index }}</option>
-                </select>
-              </form> 
-              <form class="max-w-sm w-full">
-                <select
-                  id="infants"
-                  class="bg-white border border-black-200 text-black-200 xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full lg:p-2.5 px-1 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  @change="updateRoomPeopleCount(item, n, 'infants', $event, selectedRoomType.name)"
-                >
-                  <option selected value="0">Infants</option>
-                  <option v-for="index in 4" :key="index" :value="index">{{ index }}</option>
-                </select>
-              </form>
-            </div>
-          </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.child?.count" :key="'child-' + index" class="flex items-baseline justify-between mt-4">
+            <div
+              v-if="item"
+              v-for="(age, index) in item[n]?.child?.count"
+              :key="'child-' + index"
+              class="flex items-baseline justify-between mt-4"
+            >
               <h5 class="text-black font-medium xl:text-lg text-sm">
-                Select age of child {{index + 1}}
+                Select age of child {{ index + 1 }}
               </h5>
 
               <form class="max-w-sm">
@@ -379,12 +427,16 @@
                   class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
-                  <option :key="'year-' + 1" :value="6">3-6</option>
-                  <option :key="'year-' + 2" :value="10">6-12</option>
+                  <option :key="'year-' + 1" :value="6">3-10</option>
                 </select>
               </form>
             </div>
-            <div v-if="item" v-for="(age, index) in item[n]?.infants?.count" :key="'infant-' + index" class="flex items-baseline justify-between mt-4">
+            <div
+              v-if="item"
+              v-for="(age, index) in item[n]?.infants?.count"
+              :key="'infant-' + index"
+              class="flex items-baseline justify-between mt-4"
+            >
               <h5 class="text-black font-medium xl:text-lg text-sm">
                 Select age of infant {{ index + 1 }}
               </h5>
@@ -424,9 +476,13 @@
         <hr
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
         />
+
         <h5 class="text-red-100 font-medium lg:text-lg text-base mt-8">
-          Special Rate (After 30% Discount)
+          Special Rate
+          <span v-if="isSpecialRateApplied">({{discount_data.discount}}%)</span>
+          <span v-else>(30%)</span>
         </h5>
+
         <div
           class="flex justify-between mt-4"
           v-for="(item, index) in roomsList"
@@ -438,7 +494,7 @@
           <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
             LKR
             {{
-              parseFloat(item.price) *
+              parseFloat((item.price)) *
               (item.selectedRooms === "" ? 0 : parseInt(item.selectedRooms))
             }}
           </h5>
@@ -452,7 +508,15 @@
             Total Room Rates
           </h5>
           <h5 class="lg:text-base text-sm font-medium text-black-200">
-            LKR {{ getTotalRoomRates() }}
+            LKR {{ formatPrice(getTotalRoomRates()) }}
+          </h5>
+        </div>
+        <div class="flex justify-between mt-4">
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            Total Activities
+          </h5>
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            LKR {{ formatPrice(getTotalActivities()) }}
           </h5>
         </div>
         <div class="flex justify-between mt-4">
@@ -465,9 +529,10 @@
         <div class="flex justify-between mt-4">
           <h5 class="lg:text-base text-sm font-bold text-black-200">Total</h5>
           <h5 class="lg:text-base text-sm font-bold text-black-200">
-            LKR {{ getTotalRoomRates() }}
+            LKR {{ formatPrice(getTotalAmount()) }}
           </h5>
         </div>
+
         <!-- Login and Register modal popups -->
         <div class="flex flex-row space-x-4 items-baseline">
           <button
@@ -817,7 +882,7 @@
               Use your social profile to register
             </p>
             <!-- SOCIAL MEDIA LOGIN -->
-            <SocialLogin @login-success="handleGoogleLoginData"/>
+            <SocialLogin @login-success="handleGoogleLoginData" />
 
             <!-- Centered "or" text -->
             <!-- Centered "or" text -->
@@ -974,7 +1039,7 @@
               Use your social profile to Login
             </p>
             <!-- SOCIAL LOGIN -->
-            <SocialLogin @login-success="handleGoogleLoginData"/>
+            <SocialLogin @login-success="handleGoogleLoginData" />
 
             <!-- Centered "or" text -->
             <div class="flex items-center justify-center">
@@ -1032,7 +1097,7 @@
                 <p>Don't have an account?</p>
                 <button @click="redirectToRegister" id="toggle-modal-button" class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Register Here</button>
               </div>-->
-               <div class="flex flex-row items-center text-md space-x-1">
+              <div class="flex flex-row items-center text-md space-x-1">
                 <p>Don't have an account?</p>
                 <button
                   @click="toggleModal"
@@ -1061,7 +1126,7 @@ import { useNuxtApp } from "#app";
 import SocialLogin from "./SocialLogin.vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   components: {
@@ -1076,22 +1141,25 @@ export default {
       isModalOpen: false,
       isModalVisible: false,
       isModal2Visible: false,
-      selectedInfants: 0, 
-      selectedChildren : 0,
+      selectedInfants: 0,
+      selectedChildren: 0,
+      isSpecialRateApplied: false,
       infantAges: [],
-      childrenAges: [], 
-      room_types: [],
+      childrenAges: [],
+      discount_data: {},
+      room_types: {},
       roomsList: [],
       boardType: [],
+      special_rate: 0,
       view_type_id: null,
       view_types: [],
       mealPlans: [],
       childFormAges: [],
       infantFormAges: [],
-      activities:[],
+      activities: [],
       isSocialLogin: false,
       price: 0,
-      roomPeopleCount:[],
+      roomPeopleCount: [],
       form: {
         first_name: "",
         last_name: "",
@@ -1127,42 +1195,80 @@ export default {
       },
     };
   },
-  methods: {
-  getRoomCapacity(type, adults) {
-    const adultCount = adults?.count;
-    console.log("ADULT", adultCount)
-    switch (this.selectedRoomType.name) {
-      case 'Single Room':
-        return type === 'adults' ? 1 : 0;
-      case 'Double Room':
-        return type === 'adults' ? 2 : (adultCount === 1 ? 2 : (adultCount === 2 ? 1 : 0));
-      case 'Triple Room':
-        return type === 'adults' ? 3 : (adultCount >= 3 ? 1 : (adultCount === 2 ? 2 : 2));
-      case 'Family Room':
-        return type === 'adults' ? 4 : (adultCount >= 4 ? 1 : (adultCount === 3 ? 2 : (adultCount === 2 ? 3 : 3)));
-      default:
-        return 0;
-    }
+  watch: {
+    isSpecialRateApplied(newVal, oldVal) {
+      console.log(`Special rate changed from ${oldVal} to ${newVal}`);
+    },
   },
+
+  methods: {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      
+      const month = months[date.getMonth()];
+      const day = date.getDate();
+      const daySuffix = this.getDaySuffix(day);
+      const year = date.getFullYear();
+
+      return `${month} ${day}${daySuffix} ${year}`;
+    },
+    getDaySuffix(day) {
+      if (day > 3 && day < 21) return 'th';
+      switch (day % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+      }
+    },
+    getChildrenRoomCapacity(roomDataRow, roomTypeRowId) {
+      const type = 'adults'
+      const roomIndex = this.roomsList.findIndex(
+        (room) => room.rowId === roomDataRow.rowId
+      );
+      let adultCount = 0;
+      if (roomIndex > -1) {
+        const roomToUpdate = this.roomsList[roomIndex];
+        const roomDetail = roomToUpdate[roomTypeRowId] || {};
+        adultCount=roomDetail[type]?.count;
+   
+
+      }
+      switch (this.room_types.name) {
+        case "Single Room":
+          return type === "adults" ? 1 : 0;
+        case "Double Room":
+          return adultCount >=1 ? 1 : 0;
+        case "Triple Room":
+          return adultCount >= 3 ? 1 : 2;
+        case "Family Room":
+          return adultCount >= 4 ? 1 : adultCount >= 3 ? 2 :3 
+        default:
+          return 0;
+      }
+    },
     getClickMethod() {
       if (this.isSignedIn) {
-          this.$auth.setAuthToken(null);
-          localStorage.removeItem("userEmail"); 
-          toast.success("Successfully Logged Out");
-          setTimeout(()=>{
-            this.$router.push('/home');      
-          }, 2000)  
-      } 
-      else {
+        this.$auth.setAuthToken(null);
+        localStorage.removeItem("userEmail");
+        toast.success("Successfully Logged Out");
+        setTimeout(() => {
+          this.$router.push("/home");
+        }, 2000);
+      } else {
         this.toggleModal();
       }
     },
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
     },
-    handleGoogleLoginData({ name, lname, email, password }){
-      this.isSocialLogin = true,
-      this.registerUser.name = name;
+    handleGoogleLoginData({ name, lname, email, password }) {
+      (this.isSocialLogin = true), (this.registerUser.name = name);
       this.registerUser.lname = lname;
       this.registerUser.email = email;
       this.registerUser.password = password;
@@ -1171,95 +1277,108 @@ export default {
       this.login();
     },
     async register() {
-      if (!this.registerUser.name || !this.registerUser.lname || !this.registerUser.email || !this.registerUser.password) {
+      if (
+        !this.registerUser.name ||
+        !this.registerUser.lname ||
+        !this.registerUser.email ||
+        !this.registerUser.password
+      ) {
         this.setupToastError("Please fill in all fields.");
-          return; 
+        return;
       }
 
-      if(this.registerUser.password.length < 8){
-        this.setupToastError("The password field must be at least 8 characters");
+      if (this.registerUser.password.length < 8) {
+        this.setupToastError(
+          "The password field must be at least 8 characters"
+        );
         return;
       }
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!emailPattern.test(this.registerUser.email)){
+      if (!emailPattern.test(this.registerUser.email)) {
         this.setupToastError("Please enter a valid email address.");
         return;
       }
-      const response = await apiRequest('https://admin.sueennature.com/api/register', 'POST', {
+      const response = await apiRequest(
+        "https://admin.sueennature.com/api/register",
+        "POST",
+        {
           name: this.registerUser.name,
           lname: this.registerUser.lname,
           email: this.registerUser.email,
           password: this.registerUser.password,
-        }).
-        then(response => {
+        }
+      )
+        .then((response) => {
           console.log("Register response", response);
           this.nuxtApp.$auth.setAuthToken(response.access_token);
           this.setAuthTokenInCookie(response.access_token);
+          localStorage.setItem("userEmail", this.registerUser.email);
           this.$router.push({
             path: "/dashboard",
             query: { email: this.registerUser.email },
-          })
-        }).
-        catch (error => {
-                this.setupToastError("An error occurred. Please try again later.");
-                console.log(error)
+          });
+        })
+        .catch((error) => {
+          this.setupToastError("An error occurred. Please try again later.");
+          console.log(error);
         });
-    },  
+    },
     async login() {
       if (!this.loginUser.email || !this.loginUser.password) {
         this.setupToastError("Please fill in all fields.");
-          return; 
+        return;
       }
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(!emailPattern.test(this.loginUser.email)){
-          this.setupToastError("Please enter a valid email address.");
-          return;
-        }    
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(this.loginUser.email)) {
+        this.setupToastError("Please enter a valid email address.");
+        return;
+      }
       // try {
-        const response = await axios.post('https://admin.sueennature.com/api/login', {
+      const response = await axios
+        .post("https://admin.sueennature.com/api/login", {
           email: this.loginUser.email,
           password: this.loginUser.password,
-        }).
-          then(response => {
-            console.log('Status:', response.status);
-            console.log('Data:', response.data);
+        })
+        .then((response) => {
+          console.log("Status:", response.status);
+          console.log("Data:", response.data);
 
-            this.setAuthTokenInCookie(response.data.access_token);
-            this.nuxtApp.$auth.setAuthToken(response.access_token);
-            localStorage.setItem("userEmail", this.loginUser.email);
-              this.$router.push({
-              path: "/dashboard",
-              query: { email: this.loginUser.email },
-            });
-            // this.setupToastSucess("Successfully Logged In")
-          }).catch(error => {
+          this.setAuthTokenInCookie(response.data.access_token);
+          this.nuxtApp.$auth.setAuthToken(response.access_token);
+          localStorage.setItem("userEmail", this.loginUser.email);
+          this.$router.push({
+            path: "/dashboard",
+            query: { email: this.loginUser.email },
+          });
+          // this.setupToastSucess("Successfully Logged In")
+        })
+        .catch((error) => {
           if (error.response) {
-            console.log('Error status:', error.response.status);
-            console.log('Error data:', error.response.data);
+            console.log("Error status:", error.response.status);
+            console.log("Error data:", error.response.data);
 
-            if(error.response.data.message === "Invalid Credentials"){
-              if(this.isSocialLogin){
+            if (error.response.data.message === "Invalid Credentials") {
+              if (this.isSocialLogin) {
                 this.register();
-              }else{
+              } else {
                 this.setupToastError("Please check your credentials");
-              }           
+              }
             }
           } else if (error.request) {
-            console.log('Error request:', error.request);
+            console.log("Error request:", error.request);
           } else {
-            console.log('Error', error.message);
+            console.log("Error", error.message);
           }
 
           // this.setupToastError("An error occurred. Please try again.");
         });
-
 
       //   this.nuxtApp.$auth.setAuthToken(response.access_token);
       //   console.log("RES",response)
       //   this.setupToastSucess("Successfully Logged In")
       //     // setTimeout(() => {
       //     this.$router.push({ path: '/dashboard', });
-      //     //   }, 3000); 
+      //     //   }, 3000);
       // } catch (error) {
       //   // this.setupToastError("An error occurred. Please try again later.");
 
@@ -1272,27 +1391,28 @@ export default {
 
       //   this.setupToastError("An error occurred. Please try again later.");
       //   console.log("ERR", error );
-        
+
       // }
     },
     setAuthTokenInCookie(token) {
-        console.log('Token setAuthTokenInCookie', token)
-        const cookieName = 'auth_token=';
-        const daysValid = 7; 
-        const expiryDate = new Date();
-        expiryDate.setTime(expiryDate.getTime() + (daysValid * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + expiryDate.toUTCString();
+      console.log("Token setAuthTokenInCookie", token);
+      const cookieName = "auth_token=";
+      const daysValid = 7;
+      const expiryDate = new Date();
+      expiryDate.setTime(
+        expiryDate.getTime() + daysValid * 24 * 60 * 60 * 1000
+      );
+      const expires = "expires=" + expiryDate.toUTCString();
 
-        document.cookie = cookieName + token + ';' + expires + ';path=/';
+      document.cookie = cookieName + token + ";" + expires + ";path=/";
     },
     logout() {
-      this.$auth.setAuthToken(null);  
-      localStorage.removeItem("userEmail")  
-      this.$router.push('/home');
+      this.$auth.setAuthToken(null);
+      localStorage.removeItem("userEmail");
+      this.$router.push("/home");
     },
     formatPrice(value) {
-      let val = (value / 1).toFixed(2).replace(".", ",");
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return value?.toLocaleString('en-US'); 
     },
     redirectToRegister() {
       // Redirect to the registration page
@@ -1353,6 +1473,7 @@ export default {
     removeItemFromRoomsList(index) {
       this.price -= parseFloat(this.roomsList[index].price);
       this.roomsList.splice(index, 1);
+      this.isSpecialRateApplied = false;
     },
     updateRoomsCount(item, event) {
       console.log("updateRoomsCount ", item);
@@ -1367,17 +1488,14 @@ export default {
     roomRaw(selectedRooms) {
       return Array.from({ length: Number(selectedRooms) }, (_, i) => i + 1);
     },
-    handlePeopleSelection(item, n, peopleType, peopleCount, selectedRoomType){
-      if(selectedRoomType === "Double Room"){
-        if(peopleType === 'adults'){
-
+    handlePeopleSelection(item, n, peopleType, peopleCount, room_types) {
+      if (room_types === "Double Room") {
+        if (peopleType === "adults") {
         }
       }
     },
-    updateRoomPeopleCount(item, n, peopleType, event, selectedRoomType) {
-      const roomIndex = this.roomsList.findIndex(
-        (room) => room.rowId === item.rowId
-      );
+    updateRoomPeopleCount(item, n, peopleType, event, room_types) {
+      const roomIndex = this.roomsList.findIndex((room) => room.rowId === item.rowId);
       if (roomIndex > -1) {
         const roomToUpdate = this.roomsList[roomIndex];
 
@@ -1385,11 +1503,14 @@ export default {
 
         roomDetail[peopleType] = {
           count: parseInt(event.target.value),
-          ages: []
+          ages: [],
         };
 
-        if(peopleType === 'child'){
-          this.childrenAges = Array.from({ length: event.target.value }, () => 0);
+        if (peopleType === "child") {
+          this.childrenAges = Array.from(
+            { length: event.target.value },
+            () => 0
+          );
         }
 
         roomToUpdate[n] = roomDetail;
@@ -1397,16 +1518,32 @@ export default {
         this.roomsList[roomIndex] = roomToUpdate;
       }
 
-      console.log(
-        "room list with people count ",
-        roomIndex,
-        item,
-        n,
-        peopleType,
-        this.roomsList
-      );
-    },
-    updateAges(roomDetails, roomIndex, peopleType, event){
+      let allChildCountsZero = true;
+
+      for (let i = 0; i < this.roomsList.length; i++) {
+        const room = this.roomsList[i];
+        console.log(`Checking room ${i}:`, room); 
+        
+        for (const key in room) {
+          const roomDetail = room[key];
+          if (roomDetail && roomDetail['child'] && roomDetail['child']?.count !== 0) {
+            allChildCountsZero = false;
+            break;
+          }
+        }
+
+        if (!allChildCountsZero) {
+          break;
+        }
+      }
+
+  if (allChildCountsZero) {
+    this.removeSpecialRate()
+  }
+
+},
+
+    updateAges(roomDetails, roomIndex, peopleType, event) {
       const selectedAge = parseInt(event.target.value);
       const roomListIndex = this.roomsList.findIndex(
         (room) => room.rowId === roomDetails.rowId
@@ -1423,21 +1560,52 @@ export default {
         roomToUpdate[roomIndex] = roomDetail;
 
         this.roomsList[roomListIndex] = roomToUpdate;
+
+        if (selectedAge >= 3 && selectedAge <= 10) {
+          this.applySpecialRate();
+        } else {
+          this.removeSpecialRate();
+        }
       }
     },
+    applySpecialRate() {
+      this.isSpecialRateApplied = true;
+    },
+    removeSpecialRate() {
+      this.isSpecialRateApplied = false;
+    },
     getTotalRoomRates() {
-      return this.roomsList.reduce((total, room) => {
+      let total = this.roomsList.reduce((total, room) => {
         const roomCount = room.selectedRooms === "" ? "0" : room.selectedRooms;
-        total = total + parseFloat(room.price) * parseInt(roomCount);
+        total += parseFloat(room.price) * parseInt(roomCount);
+        return total;
+      }, 0);
+      if (this.isSpecialRateApplied) {
+        total *= (1-(this.special_rate/100));
+      } else {
+        total *= 0.7;
+      }
 
+      return total;
+    },
+
+    getTotalActivities() {
+      return this.activities.reduce((total, activity) => {
+        if (activity.checked) {
+          total += parseFloat(activity.amount);
+        }
         return total;
       }, 0);
     },
+
+    getTotalAmount() {
+      return this.getTotalActivities() + this.getTotalActivities();
+    },
+
     scrollToBottom() {
       this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
     },
     handleSubmit: async function () {
-
       const cookies = document.cookie.split(";");
       const authTokenCookie = cookies.find((cookie) =>
         cookie.trim().startsWith("auth_token=")
@@ -1448,8 +1616,8 @@ export default {
       const authToken = authTokenCookie?.split("=")[1];
 
       const headers = {
-        'Authorization': `Bearer ${authToken?.replace(/%7C/g, '|')}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${authToken?.replace(/%7C/g, "|")}`,
+        "Content-Type": "application/json",
       };
 
       // if (authToken) {
@@ -1477,42 +1645,42 @@ export default {
           activity_id: activity.id,
           activity_name: activity.name,
         }));
-        const roomsArrangement = this.roomsList.reduce(
+      const roomsArrangement = this.roomsList.reduce(
         (roomsArrangement, roomData) => {
-            const { id, type, selectedRooms } = roomData;
-            let adults = 0;
-            let child = 0;
-            let infants = 0;
+          const { id, type, selectedRooms } = roomData;
+          let adults = 0;
+          let child = 0;
+          let infants = 0;
 
-            for (let index = 1; index <= parseInt(selectedRooms); index++) {
-                const roomPeople = roomData[index];
-                adults += roomPeople["adults"]?.count || 0;
-                child += roomPeople["child"]?.count || 0;
-                infants += roomPeople["infants"]?.count || 0;
+          for (let index = 1; index <= parseInt(selectedRooms); index++) {
+            const roomPeople = roomData[index];
+            adults += roomPeople["adults"]?.count || 0;
+            child += roomPeople["child"]?.count || 0;
+            infants += roomPeople["infants"]?.count || 0;
 
-                roomsArrangement.push({
-                    adults: roomPeople["adults"]?.count || 0,
-                    child: roomPeople["child"]?.ages || 0,
-                    infants: roomPeople["infants"]?.ages || 0,
-                    room_id: id,
-                    meal_plan_id: mealPlanMap[type],
-                    room_view_id: parseInt(this.$route.query.viewTypeId),
-                });
+            roomsArrangement.push({
+              adults: roomPeople["adults"]?.count || 0,
+              child: roomPeople["child"]?.ages || 0,
+              infants: roomPeople["infants"]?.ages || 0,
+              room_id: id,
+              meal_plan_id: mealPlanMap[type],
+              room_view_id: parseInt(this.$route.query.viewTypeId),
+            });
+          }
 
-            }
+          // Add total counts to form data
+          this.form.adults = adults;
+          this.form.child = child;
+          this.form.infants = infants;
 
-            // Add total counts to form data
-            this.form.adults = adults;
-            this.form.child = child;
-            this.form.infants = infants;
-
-            return roomsArrangement;
+          return roomsArrangement;
         },
         []
-    );
+      );
 
       this.form.rooms = roomsArrangement;
       this.form.activities = selectedActivities;
+      // this.form.specialRateApplied = this.isSpecialRateApplied;
 
       // console.log(this.form);
       // return;
@@ -1550,20 +1718,54 @@ export default {
     roomTypeId() {
       return this.$route.query.roomTypeId;
     },
-    selectedRoomType() {
-      if (!this.roomTypeId || !this.room_types.length) return null;
-      return this.room_types.find(
-        (room) => room.id.toString() === this.roomTypeId.toString()
-      );
-    },
+//     room_types() {
+//   if (this.room_type && this.room_type.id.toString() === this.roomTypeId.toString()) {
+//     return this.room_type;
+//   } else {
+//     return null; // or handle the case where room_type doesn't match roomTypeId
+//   }
+// }
+
   },
   mounted() {
+    fetch("https://admin.sueennature.com/api/checkAvailability", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    check_in:this.$route.query.check_in,
+    check_out:this.$route.query.check_out,
+    room_type_id:this.$route.query.roomTypeId
+  })
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    this.room_types = data.room_type;
+    this.discount_data = data.discount_details;
+    this.special_rate = this.discount_data.discount
+    console.log('CE', this.discount_data.discount);
+
+  })
+  .catch((error) => {
+    console.error(
+      "There has been a problem with your fetch operation:",
+      error
+    );
+  });
+
     const cookies = document.cookie.split(";");
     const authTokenCookie = cookies.find((cookie) =>
       cookie.trim().startsWith("auth_token=")
     );
     this.isSignedIn = !!authTokenCookie;
     initFlowbite();
+
     fetch("https://admin.sueennature.com/api/getRoomTypes")
       .then((response) => {
         if (!response.ok) {
@@ -1572,7 +1774,7 @@ export default {
         return response.json();
       })
       .then((data) => {
-        this.room_types = data.room_types;
+        // this.room_types = data.room_types;
       })
       .catch((error) => {
         console.error(
@@ -1580,7 +1782,6 @@ export default {
           error
         );
       });
-
     fetch("https://admin.sueennature.com/api/get-services")
       .then((response) => {
         if (!response.ok) {
