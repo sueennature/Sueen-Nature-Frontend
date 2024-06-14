@@ -39,17 +39,15 @@
         <div
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
-          <div class="lg:flex grid grid-cols-1 justify-between gap-2">
+          <div class="lg:flex flex-col grid grid-cols-1 justify-between gap-2">
             <h6 class="text-red-100 xl:text-lg text-base font-bold">
-              Special Rate (After 30% Discount)
+              Special Rate (After {{ discount_data.discount}}% Discount)
             </h6>
             <div
-              class="flex flex-row lg:justify-center items-baseline space-x-2"
+              class="flex flex-col lg:justify-center items-baseline space-x-2"
             >
-              <h5 class="xl:text-lg text-sm text-black-200">Starting:</h5>
-              <h5 class="xl:text-xl text-sm text-black-200 font-semibold">
-                LKR 13, 300
-              </h5>
+              <h5 class="xl:text-lg text-sm text-black-200">Starting at: {{ formatDate(discount_data.start_date)}}</h5>
+              <h5 class="xl:text-lg text-sm text-black-200">Ending at: {{ formatDate(discount_data.end_date)}}</h5>
             </div>
           </div>
           <div class="lg:flex lg:justify-end justify-start">
@@ -92,7 +90,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{ room_types.bread_breakfast }}
+                  LKR {{ formatPrice(room_types.bread_breakfast) }}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -125,7 +123,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{ room_types.half_board }}
+                  LKR {{ formatPrice(room_types.half_board) }}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -158,7 +156,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{ room_types.full_board }}
+                  LKR {{ formatPrice(room_types.full_board )}}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -191,7 +189,7 @@
                 <h5
                   class="xl:text-xl text-sm font-semibold text-black-200 truncate dark:text-white"
                 >
-                  LKR {{ room_types.room_only }}
+                  LKR {{ formatPrice(room_types.room_only) }}
                 </h5>
               </div>
               <div class="inline-flex">
@@ -381,13 +379,7 @@
                   >
                     <option selected value="0">Children</option>
                     <option
-                      v-for="index in room_types.name === 'Double Room'
-                        ? 1
-                        : room_types.name === 'Triple Room'
-                        ? 3
-                        : room_types.name === 'Family Room'
-                        ? 4
-                        : '0'"
+                      v-for="index in getChildrenRoomCapacity(item, n)"
                       :key="index"
                       :value="index"
                     >
@@ -487,7 +479,7 @@
 
         <h5 class="text-red-100 font-medium lg:text-lg text-base mt-8">
           Special Rate
-          <span v-if="isSpecialRateApplied">(50%)</span>
+          <span v-if="isSpecialRateApplied">({{discount_data.discount}}%)</span>
           <span v-else>(30%)</span>
         </h5>
 
@@ -502,7 +494,7 @@
           <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
             LKR
             {{
-              parseFloat(item.price) *
+              parseFloat((item.price)) *
               (item.selectedRooms === "" ? 0 : parseInt(item.selectedRooms))
             }}
           </h5>
@@ -1158,6 +1150,7 @@ export default {
       room_types: {},
       roomsList: [],
       boardType: [],
+      special_rate: 0,
       view_type_id: null,
       view_types: [],
       mealPlans: [],
@@ -1209,38 +1202,52 @@ export default {
   },
 
   methods: {
-    getRoomCapacity(type, adults) {
-      const adultCount = adults?.count;
-      console.log("ADULT", this.room_types.name);
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      
+      const month = months[date.getMonth()];
+      const day = date.getDate();
+      const daySuffix = this.getDaySuffix(day);
+      const year = date.getFullYear();
+
+      return `${month} ${day}${daySuffix} ${year}`;
+    },
+    getDaySuffix(day) {
+      if (day > 3 && day < 21) return 'th';
+      switch (day % 10) {
+        case 1: return "st";
+        case 2: return "nd";
+        case 3: return "rd";
+        default: return "th";
+      }
+    },
+    getChildrenRoomCapacity(roomDataRow, roomTypeRowId) {
+      const type = 'adults'
+      const roomIndex = this.roomsList.findIndex(
+        (room) => room.rowId === roomDataRow.rowId
+      );
+      let adultCount = 0;
+      if (roomIndex > -1) {
+        const roomToUpdate = this.roomsList[roomIndex];
+        const roomDetail = roomToUpdate[roomTypeRowId] || {};
+        adultCount=roomDetail[type]?.count;
+   
+
+      }
       switch (this.room_types.name) {
         case "Single Room":
           return type === "adults" ? 1 : 0;
         case "Double Room":
-          return type === "adults"
-            ? 2
-            : adultCount === 1
-            ? 2
-            : adultCount === 2
-            ? 1
-            : 0;
+          return adultCount >=1 ? 1 : 0;
         case "Triple Room":
-          return type === "adults"
-            ? 3
-            : adultCount >= 3
-            ? 1
-            : adultCount === 2
-            ? 2
-            : 2;
+          return adultCount >= 3 ? 1 : 2;
         case "Family Room":
-          return type === "adults"
-            ? 4
-            : adultCount >= 4
-            ? 1
-            : adultCount === 3
-            ? 2
-            : adultCount === 2
-            ? 3
-            : 3;
+          return adultCount >= 4 ? 1 : adultCount >= 3 ? 2 :3 
         default:
           return 0;
       }
@@ -1405,8 +1412,7 @@ export default {
       this.$router.push("/home");
     },
     formatPrice(value) {
-      let val = (value / 1).toFixed(2).replace(".", ",");
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return value?.toLocaleString('en-US'); 
     },
     redirectToRegister() {
       // Redirect to the registration page
@@ -1489,9 +1495,7 @@ export default {
       }
     },
     updateRoomPeopleCount(item, n, peopleType, event, room_types) {
-      const roomIndex = this.roomsList.findIndex(
-        (room) => room.rowId === item.rowId
-      );
+      const roomIndex = this.roomsList.findIndex((room) => room.rowId === item.rowId);
       if (roomIndex > -1) {
         const roomToUpdate = this.roomsList[roomIndex];
 
@@ -1514,15 +1518,31 @@ export default {
         this.roomsList[roomIndex] = roomToUpdate;
       }
 
-      console.log(
-        "room list with people count ",
-        roomIndex,
-        item,
-        n,
-        peopleType,
-        this.roomsList
-      );
-    },
+      let allChildCountsZero = true;
+
+      for (let i = 0; i < this.roomsList.length; i++) {
+        const room = this.roomsList[i];
+        console.log(`Checking room ${i}:`, room); 
+        
+        for (const key in room) {
+          const roomDetail = room[key];
+          if (roomDetail && roomDetail['child'] && roomDetail['child']?.count !== 0) {
+            allChildCountsZero = false;
+            break;
+          }
+        }
+
+        if (!allChildCountsZero) {
+          break;
+        }
+      }
+
+  if (allChildCountsZero) {
+    this.removeSpecialRate()
+  }
+
+},
+
     updateAges(roomDetails, roomIndex, peopleType, event) {
       const selectedAge = parseInt(event.target.value);
       const roomListIndex = this.roomsList.findIndex(
@@ -1561,7 +1581,7 @@ export default {
         return total;
       }, 0);
       if (this.isSpecialRateApplied) {
-        total *= 0.5;
+        total *= (1-(this.special_rate/100));
       } else {
         total *= 0.7;
       }
@@ -1667,31 +1687,31 @@ export default {
 
       console.log("FORM DATA", this.form);
 
-      // await fetch("https://admin.sueennature.com/api/booking", {
-      //   method: "POST",
-      //   headers: headers,
+      await fetch("https://admin.sueennature.com/api/booking", {
+        method: "POST",
+        headers: headers,
 
-      //   body: JSON.stringify(this.form),
-      // })
-      //   .then((response) => {
-      //     console.log("RESPONSE ", response);
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     console.log("RESPONSE SUCCESS ", data);
-      //     if (data.error) {
-      //       throw new Error(data.error);
-      //     }
-      //     window.location.href = data.ipg;
-      //   })
-      //   .catch((error) => {
-      //     console.log("RESPONSE ERROR ", error);
-      //     alert(error);
-      //     console.error(
-      //       "There has been a problem with your fetch operation:",
-      //       error
-      //     );
-      //   });
+        body: JSON.stringify(this.form),
+      })
+        .then((response) => {
+          console.log("RESPONSE ", response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log("RESPONSE SUCCESS ", data);
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          window.location.href = data.ipg;
+        })
+        .catch((error) => {
+          console.log("RESPONSE ERROR ", error);
+          alert(error);
+          console.error(
+            "There has been a problem with your fetch operation:",
+            error
+          );
+        });
     },
   },
   computed: {
@@ -1726,8 +1746,10 @@ export default {
     return response.json();
   })
   .then((data) => {
-    console.log('CE', data.room_type.image);
     this.room_types = data.room_type;
+    this.discount_data = data.discount_details;
+    this.special_rate = this.discount_data.discount
+    console.log('CE', this.discount_data.discount);
 
   })
   .catch((error) => {

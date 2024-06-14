@@ -42,7 +42,7 @@
             <th>Booking Name</th>
             <th>Bed type</th>
             <th>Book date</th>
-            <th>Room floor</th>
+            <th>Nights  </th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200 ">
@@ -51,7 +51,7 @@
             <td><img src="/img/deluxe_1.jpg" alt="roomImg" class="bg-cover w-40 h-20" /></td>
             <td>{{ `Booking ${booking.id}` }}</td>
             <td>{{ formatDate(booking.date) }}</td>
-            <td>{{ booking.check_in }}</td>
+            <td>{{ booking.night }}</td>
           </tr>
         </tbody>
       </table>
@@ -72,10 +72,10 @@ import html2canvas from "html2canvas";
 export default {
   data() {
     return {
-      bookingHistory: [],
+      bookingHistory: [], 
       filteredBookingHistory: [],
       selectedRows: [],
-      selectedRowIndices: [],
+      selectedRowIndices: [], 
       selectedDate: null,
     };
   },
@@ -121,7 +121,8 @@ export default {
           this.bookingHistory = [];
           this.filteredBookingHistory = [];
         } else {
-          this.bookingHistory = response.data.bookingHistory;
+          // Assuming response.data is the object with numbered keys
+          this.bookingHistory = Object.values(response.data); // Convert object to array of objects
           this.filteredBookingHistory = this.bookingHistory;
         }
       } catch (error) {
@@ -171,6 +172,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .table-responsive {
   display: block;
