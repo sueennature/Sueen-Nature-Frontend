@@ -1598,7 +1598,7 @@ export default {
     },
 
     getTotalAmount() {
-      return this.getTotalActivities() + this.getTotalActivities();
+      return this.getTotalActivities() + this.getTotalRoomRates();
     },
 
     scrollToBottom() {
