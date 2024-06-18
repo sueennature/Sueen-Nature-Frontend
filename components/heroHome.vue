@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative h-screen">
     <img
       src="/img/hero-home.png"
       alt="backgroundImg"
@@ -281,7 +281,7 @@
     </div>
     <!-- main hero booking options selector -->
     <div
-      class="absolute z-40 inset-x-0 bottom-24 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
+      class="absolute z-40 inset-x-0 bottom-24 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4 "
     >
       <div
         class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
@@ -305,7 +305,7 @@
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
-        <form class="lg:max-w-sm lg:mx-auto">
+        <form class="lg:max-w-sm lg:mx-auto ">
           <select
             id="room"
             class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

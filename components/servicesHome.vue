@@ -13,7 +13,7 @@
         <div class="mt-8 lg:mt-0"> <img src="/img/sueen-banquet 1.png" alt="CelebrateImg" class="bg-cover h-full" /></div>
         <div class="bg-gray-50 bg-opacity-20 p-10">
             <h3 class="text-xl text-black-50 uppercase tracking-widest">Celebrate</h3>
-            <h2 class="text-black-100 text-4xl pt-2">banquet Hall</h2>
+            <h2 class="text-black-100 text-4xl pt-2">Banquet Hall</h2>
             <p class="text-base text-black-50 pt-2">Host unforgettable events in our grand banquet hall, perfect for weddings and corporate functions. Explore customizable event packages and exceptional catering services for a flawless experience. Enjoy exquisite culinary offerings and specialized themes to elevate your event at our restaurant.</p>
             <a href="./services"><button type="button" class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">EXPLORE</button></a>
         </div>
