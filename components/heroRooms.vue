@@ -197,7 +197,7 @@
   <div class="relative">
     <!-- hero image of room page -->
     <img
-      src="/img/hero-rooms.png"
+      src="/img/hero-rooms.webp"
       alt="hero-rooms-Img"
       class="w-full z-10 min-h-screen object-cover lg:min-h-0"
     /> 

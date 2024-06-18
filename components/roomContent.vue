@@ -105,6 +105,15 @@ export default {
 </script>
 
 <style scoped>
+
+h2 {
+  font-family: "Philosopher", sans-serif;
+}
+p,
+h5,
+a,.buttontext {
+  font-family: "Barlow", sans-serif;
+}
 .aspect-ratio-box {
   position: relative;
   width: 100%;

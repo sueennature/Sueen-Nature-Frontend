@@ -4,7 +4,7 @@
       :pageTitle="'Attention to detail like never before.'"
       :pageTitleTwo="'EXPLORE OUR HOTEL'"
       :pageTitleThree="'STAY WITH US'"
-      :imageNav="'/img/hero-rooms.png'"
+      :imageNav="'/img/hero-rooms.webp'"
     />
     <!-- <contentRooms /> -->
     <roomContent/>
