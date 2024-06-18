@@ -22,34 +22,34 @@
     </p>
 
     <!-- about us title -->
-    <h3 class="text-red-100 font-medium text-2xl mt-12 text-center md:text-left">About Us</h3>
+    <!-- <h3 class="text-red-100 font-medium text-2xl mt-12 text-center md:text-left">About Us</h3>
     <hr class="h-px w-full bg-neutral-400 border-none border-opacity-20 mt-4"/>
 
-    <h2 class="text-black-200 text-4xl text-center mt-20">MEET OUR TEAM</h2>
+    <h2 class="text-black-200 text-4xl text-center mt-20">MEET OUR TEAM</h2> -->
     <!-- team section -->
-    <div class="lg:flex lg:flex-row grid grid-cols-1 justify-center mt-10 lg:space-x-20 gap-y-4">
-      <div class="flex flex-col items-center">    
+    <!-- <div class="lg:flex lg:flex-row grid grid-cols-1 justify-center mt-10 lg:space-x-20 gap-y-4"> -->
+      <!-- <div class="flex flex-col items-center">    
         <img class="rounded-full w-32 h-32" src="../public/img/team1.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Mr. Dinusha Sampath Liyanage</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Chairman</h6>
-      </div>
-      <div class="flex flex-col items-center">
+      </div> -->
+      <!-- <div class="flex flex-col items-center">
         <img class="rounded-full w-32 h-32" src="/img/team2.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Ms. Lanka Priyangi</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Manager Corporate Affairs</h6>
-      </div>
-      <div class="flex flex-col items-center">
+      </div> -->
+      <!-- <div class="flex flex-col items-center">
         <img class="rounded-full w-32 h-32" src="/img/team3.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Mr. Chandima</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Head of Finance</h6>
-      </div>
+      </div> -->
       <!-- <div class="flex flex-col items-center">
         <img class="rounded-full w-32 h-32" src="/img/team4.png" alt="teamImg">
         <h3 class="text-sm text-black-200 font-medium text-center mx-auto mt-8">Jessie Williams</h3>
         <h6 class="text-gray-300 font-bold text-sm text-center">Su Chef</h6>
       </div> -->
 
-    </div>
+    <!-- </div> -->
     <!-- <h2 class="text-black-200 text-4xl text-center mt-20 mb-4">EXPLORE OUR JOURNAL</h2> -->
     <!-- journal section -->
     <!-- <div class="lg:flex lg:flex-row grid grid-cols-1 md:space-x-4 gap-y-16 md:mt-20 mt-10">
