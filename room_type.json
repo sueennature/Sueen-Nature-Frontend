@@ -1,0 +1,66 @@
+[
+    {
+        "1": {
+            "adults": {
+                "count": 2,
+                "ages": []
+            },
+            "child": {
+                "count": 1,
+                "ages": []
+            }
+        },
+        "id": 2,
+        "name": "Double Room",
+        "type": "Half Board",
+        "price": 435000,
+        "selectedRooms": "1",
+        "rowId": 1
+    },
+    {
+        "1": {
+            "adults": {
+                "count": 2,
+                "ages": []
+            },
+            "child": {
+                "count": 1,
+                "ages": []
+            }
+        },
+        "id": 2,
+        "name": "Double Room",
+        "type": "Full Board",
+        "price": 555000,
+        "selectedRooms": "1",
+        "rowId": 2
+    },
+    {
+        "1": {
+            "adults": {
+                "count": 2,
+                "ages": []
+            },
+            "child": {
+                "count": 1,
+                "ages": []
+            }
+        },
+        "2": {
+            "adults": {
+                "count": 1,
+                "ages": []
+            },
+            "child": {
+                "count": 1,
+                "ages": []
+            }
+        },
+        "id": 2,
+        "name": "Double Room",
+        "type": "Bed & Breakfast",
+        "price": 345000,
+        "selectedRooms": "2",
+        "rowId": 3
+    }
+]
