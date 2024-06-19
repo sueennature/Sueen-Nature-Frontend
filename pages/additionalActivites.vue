@@ -4,7 +4,7 @@
       :pageTitle="'Attention to detail like never before'"
       :pageTitleTwo="'EXPLORE OUR HOTEL'"
       :pageTitleThree="'LEARN ABOUT US'"
-      :imageNav="'/img/service-6.png'"
+      :imageNav="'/img/hero-activities.webp'"
     />
     <additionalServices />
     <footerHome />

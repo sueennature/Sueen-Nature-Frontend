@@ -197,7 +197,7 @@
   <div class="relative">
     <!-- hero image of contact page -->
     <img
-      src="/img/hero-contact.png"
+      src="/img/hero-contact.webp"
       alt="hero-rooms-Img"
       class="w-full z-10 min-h-screen lg:min-h-0 object-cover"
     />  

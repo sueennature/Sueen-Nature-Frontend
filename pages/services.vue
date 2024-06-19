@@ -3,7 +3,7 @@
     <navbar
       :pageTitle="'Services'"
       :pageTitleThree="'GET IN TOUCH'"
-      :imageNav="'/img/hero-services.png'"
+      :imageNav="'/img/hero-services.webp'"
     />
     <ContentServices />
     <footerHome />

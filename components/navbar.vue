@@ -16,7 +16,7 @@
         />
       </a>
       <div
-        class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
+        class="xl:hidden flex xl:order-2 space-x-3 xl:space-x-0 rtl:space-x-reverse"
       >
         <a href="/booking">
           <button
@@ -54,7 +54,7 @@
       </div>
       <!-- Mobile -->
       <div
-        class="lg:hidden items-center justify-between hidden w-full lg:w-auto lg:order-1"
+        class="xl:hidden items-center justify-between hidden w-full lg:w-auto lg:order-1"
         id="navbar-cta"
       >
         <ul
@@ -121,7 +121,7 @@
           </li>
         </ul>
       </div>
-      <div class="hidden lg:flex lg:flex-row lg:gap-4">
+      <div class="hidden xl:flex xl:flex-row xl:gap-4">
         <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
           <a href="/booking">
             <button
@@ -307,7 +307,7 @@ onUnmounted(() => {
 h2 {
   font-family: "Philosopher", sans-serif;
 }
-h3,
+h3,h4,
 .buttontext,
 h6,
 p,

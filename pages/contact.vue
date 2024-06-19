@@ -3,7 +3,7 @@
     <navbar
       :pageTitle="'CONTACT US'"
       :pageTitleThree="'GET IN TOUCH'"
-      :imageNav="'/img/hero-contact.png'"
+      :imageNav="'/img/hero-contact.webp'"
     />
     <contactBody />
     <footerHome />

@@ -1593,7 +1593,6 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
     this.removeSpecialRate();
   }
 
-  console.log("ROOMS", this.roomsList);
 },
 
 

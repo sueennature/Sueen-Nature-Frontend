@@ -2,7 +2,7 @@
   <div class="main overflow-hidden">
     <navbar
       :pageTitle="'FREQUENTLY ASKED QUESTIONS(FAQ)'"
-      :imageNav="'/img/hero-checkout.png'"
+      :imageNav="'/img/hero-booking.png'"
     />
     <contentFAQ />
     <footerHome />

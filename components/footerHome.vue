@@ -43,36 +43,11 @@
         </div>
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">More</h2>
-          <!-- Link to "terms & conditions" -->
-          <a
-            href="/termsAndConditions"
-            class="text-black-50 uppercase text-sm mt-3 block hover:text-blue-500"
-            >Terms And Conditions</a
-          >
-          <!-- Link to "privacy Policy" -->
-          <a
-            href="/privacyPolicy"
-            class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500"
-            >Privacy Policy</a
-          >
-          <!-- Link to "Cookies Policy" -->
-          <a
-            href="/cookiesPolicy"
-            class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500"
-            >Cookies Policy</a
-          >
-          <!-- Link to "Safety and security" -->
-          <a
-            href="/safetySecurity"
-            class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500"
-            >Safety and security</a
-          >
-          <!-- Link to "FAQ" -->
-          <a
-            href="/faq"
-            class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500"
-            >FAQ</a
-          >
+          <nuxt-link to="/termsAndConditions" class="text-black-50 uppercase text-sm mt-3 block hover:text-blue-500" active-class="text-blue-500">Terms And Conditions</nuxt-link>
+          <nuxt-link to="/privacyPolicy" class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500" active-class="text-blue-500">Privacy Policy</nuxt-link>
+          <nuxt-link to="/cookiesPolicy" class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500" active-class="text-blue-500">Cookies Policy</nuxt-link>
+          <nuxt-link to="/safetySecurity" class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500" active-class="text-blue-500">Safety and security</nuxt-link>
+          <nuxt-link to="/faq" class="text-black-50 uppercase text-sm mt-1 block hover:text-blue-500" active-class="text-blue-500">FAQ</nuxt-link>
         </div>
         <div class="flex flex-col justify-center items-center">
           <h2 class="text-white lg:text-4xl text-xl">Follow</h2>
@@ -102,8 +77,6 @@
   </div>
 </template>
 
-<script setup>
-</script>
 
 <style scoped>
 h2 {
