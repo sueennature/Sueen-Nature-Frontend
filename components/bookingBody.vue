@@ -415,7 +415,7 @@
               class="flex items-baseline justify-between mt-4"
             >
               <h5 class="text-black font-medium xl:text-lg text-sm">
-                Select age of child {{ index + 1 }}
+                Select age of child {{ index + 1 }}  {{item[n]?.child?.childFee > 0 ? " 50%" : "Check"}}
               </h5>
 
               <form class="max-w-sm">
@@ -423,9 +423,10 @@
                   :id="'child-age-' + index"
                   required
                   @change="updateAges(item, n, 'child', $event)"
-                  class="bg-white border border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  class="bg-white border  border-gray-100 text-black xl:text-base text-xs rounded-md focus:ring-none focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
                   <option disabled selected>Age</option>
+                  
                   <option :key="'year-' + 1" :value="6">3-10</option>
                 </select>
               </form>
@@ -475,11 +476,11 @@
         <hr
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
         />
-
+<!-- 
         <h5 class="text-red-100 font-medium lg:text-lg text-base mt-8">
           Special Rate
           <span v-if="isSpecialRateApplied">({{discount_data.discount}}%)</span>
-        </h5> 
+        </h5>  -->
       
         <div
           class="flex justify-between mt-4"
@@ -1493,55 +1494,110 @@ export default {
       }
     },
     updateRoomPeopleCount(item, n, peopleType, event, room_types) {
-      const roomIndex = this.roomsList.findIndex((room) => room.rowId === item.rowId);
-      if (roomIndex > -1) {
-        const roomToUpdate = this.roomsList[roomIndex];
+      const double_room_max_adult_count = 2;
+      const triple_room_max_adult_count = 3;
+      const family_room_max_adult_count = 4;
+      const roomTypeMap = {
+        "Full Board": "full_board",
+        "Bed & Breakfast": "bread_breakfast",
+        "Half Board": "half_board"
+      };
 
-        const roomDetail = roomToUpdate[n] || {};
+  console.log("Item", item);
 
-        roomDetail[peopleType] = {
-          count: parseInt(event.target.value),
-          ages: [],
-        };
+  const roomIndex = this.roomsList.findIndex((room) => room.rowId === item.rowId);
+  if (roomIndex > -1) {
+    const roomToUpdate = this.roomsList[roomIndex];
 
-        if (peopleType === "child") {
-          this.childrenAges = Array.from(
-            { length: event.target.value },
-            () => 0
-          );
-        }
+    const roomDetail = roomToUpdate[n] || {};
+    const newPeopleCount = parseInt(event.target.value);
 
-        roomToUpdate[n] = roomDetail;
-
-        this.roomsList[roomIndex] = roomToUpdate;
+    let shouldSetChildFeeToZero = false;
+    if (roomToUpdate.name === "Double Room" && roomDetail.adults.count <= double_room_max_adult_count) {
+        shouldSetChildFeeToZero = true;
+      } else if (roomToUpdate.name === "Triple Room" && roomDetail.adults?.count <= triple_room_max_adult_count) {
+        shouldSetChildFeeToZero = true;
+      } else if (roomToUpdate.name === "Family Room" && roomDetail.adults.count <= family_room_max_adult_count) {
+        shouldSetChildFeeToZero = true;
       }
 
-      let allChildCountsZero = true;
+    roomDetail["child"] = roomDetail["child"] || {
+      count: 0,
+      ages: [],
+      childFee: 0
+    };
 
-      for (let i = 0; i < this.roomsList.length; i++) {
-        const room = this.roomsList[i];
-        console.log(`Checking room ${i}:`, room); 
-        
-        for (const key in room) {
-          const roomDetail = room[key];
-          if (roomDetail && roomDetail['child'] && roomDetail['child']?.count !== 0) {
-            allChildCountsZero = false;
-            break;
-          }
-        }
+    if (peopleType === "adults") {
+      roomDetail["adults"] = {
+        count: newPeopleCount,
+        ages: [], 
+      };
+    }
+    if (peopleType === "infants") {
+      roomDetail["infants"] = {
+        count: newPeopleCount,
+        ages: [], 
+      };
+    }
+    if (peopleType === "child") {
+      console.log("LOWERED");
+      roomDetail["child"] = {
+        count: newPeopleCount,
+        ages: [], 
+        childFee: shouldSetChildFeeToZero || newPeopleCount === 0 ? 0 : roomDetail["child"].childFee
+      };
+}
 
-        if (!allChildCountsZero) {
-          break;
-        }
+
+
+if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
+  roomDetail["child"].childFee = 0;
+}
+
+
+    if (["Full Board", "Bed & Breakfast", "Half Board"].includes(roomToUpdate.type)) {
+      if (roomToUpdate.name === "Double Room" && roomDetail.adults.count === double_room_max_adult_count) {
+        roomDetail["child"].childFee = (this.room_types[roomTypeMap[roomToUpdate.type]] - this.room_types.room_only) / (double_room_max_adult_count * 2);
       }
 
+      if (roomToUpdate.name === "Triple Room" && roomDetail.adults.count === triple_room_max_adult_count) {
+        roomDetail["child"].childFee = (this.room_types[roomTypeMap[roomToUpdate.type]] - this.room_types.room_only) / (triple_room_max_adult_count * 2);
+      }
+
+      if (roomToUpdate.name === "Family Room" && roomDetail.adults.count === family_room_max_adult_count) {
+        roomDetail["child"].childFee = (this.room_types[roomTypeMap[roomToUpdate.type]] - this.room_types.room_only) / (family_room_max_adult_count * 2);
+      }
+    }
+
+    roomToUpdate[n] = roomDetail;
+    this.roomsList[roomIndex] = roomToUpdate;
+  }
+
+  let allChildCountsZero = true;
+  for (let i = 0; i < this.roomsList.length; i++) {
+    const room = this.roomsList[i];
+    for (const key in room) {
+      const roomDetail = room[key];
+      if (roomDetail && roomDetail['child'] && roomDetail['child']?.count !== 0) {
+        allChildCountsZero = false;
+        break;
+      }
+    }
+    if (!allChildCountsZero) {
+      break;
+    }
+  }
+
+  // Remove special rate if all child counts are zero
   if (allChildCountsZero) {
-    this.removeSpecialRate()
+    this.removeSpecialRate();
   }
 
 },
 
+
     updateAges(roomDetails, roomIndex, peopleType, event) {
+    console.log("AGE", roomDetails, roomIndex, peopleType, event)
       const selectedAge = parseInt(event.target.value);
       const roomListIndex = this.roomsList.findIndex(
         (room) => room.rowId === roomDetails.rowId
@@ -1578,13 +1634,12 @@ export default {
         total += parseFloat(room.price) * parseInt(roomCount);
         return total;
       }, 0);
-      if (this.isSpecialRateApplied) {
-        total *= (1-(this.special_rate/100));
-      } else {
-        total *= 0.7;
-      }
-
+      // if (this.isSpecialRateApplied) {
+      //   total *= (1-(this.special_rate/100));
+      // } 
       return total;
+
+      
     },
 
     getTotalActivities() {
@@ -1747,7 +1802,7 @@ export default {
     this.room_types = data.room_type;
     this.discount_data = data.discount_details;
     this.special_rate = this.discount_data.discount
-    console.log('CE', this.discount_data.discount);
+    console.log('CE',  this.room_types);
 
   })
   .catch((error) => {
