@@ -3,7 +3,7 @@
     <navbar
       :pageTitle="'NEWS'"
       :pageTitleThree="'BLOG'"
-      :imageNav="'/img/hero-news.png'"
+      :imageNav="'/img/hero-contact.png'"
     />
     <contentNews />
     <footerHome />

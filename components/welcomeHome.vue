@@ -11,8 +11,8 @@
                <h3 class="uppercase text-black-50 md:text-xl text-base">Welcome</h3>
                <h2 class="text-black-100 md:text-5xl text-3xl mt-4">Embodiment of tranquility</h2>
                <p class="max-w-[80ch] md:text-base text-sm text-black-50 mt-2">Embrace the endless vista of pure greenery with Sueen Nature – Baduraliya, escaping the hustle and bustle of everyday routine. Rustling leaves, the songs of birds, and the burbling of water offer you the perfect tonic to relax.  We heartily welcome all to your ideal place of tranquillity.</p>
-               <h5 class="text-black-100 text-xl mt-2">Ajith Muthukumara</h5>
-               <h4 class="text-black-50 text-base mt-2">Sueen Nature Resort - General Manager</h4>
+               <!-- <h5 class="text-black-100 text-xl mt-2">Ajith Muthukumara</h5>
+               <h4 class="text-black-50 text-base mt-2">Sueen Nature Resort - General Manager</h4> -->
             </div>
             <div class="mt-10">
                 <h3 class="uppercase text-black-50 md:text-xl text-sm">Reservation</h3>

@@ -1,13 +1,13 @@
 <template>
-  <div class="relative">
+  <div class="relative h-screen">
     <img
-      src="/img/hero-home.png"
+      src="/img/hero-home 1.webp"
       alt="backgroundImg"
-      class="w-full min-h-screen object-cover lg:min-h-0"
+      class="w-full min-h-screen object-cover"
     />
     <!-- stiky navbar -->
     <nav
-      class="fixed z-40 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
+      class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
     >
       <div
         class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
@@ -73,18 +73,19 @@
             </li>
             <li>
               <a
+                href="/news"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                >News</a
+              >
+            </li>
+            <li>
+              <a
                 href="/rooms"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Rooms</a
               >
             </li>
-            <!-- <li>
-              <a
-                href="/news"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >News</a
-              >
-            </li> -->
+          
             <li>
               <a
                 href="/contact"
@@ -171,6 +172,13 @@
               </li>
               <li>
                 <a
+                  href="/news"
+                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                  >News</a
+                >
+              </li>
+              <li>
+                <a
                   href="/rooms"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >Rooms</a
@@ -243,7 +251,12 @@
         >
           Services
         </a>
-     
+        <a
+          href="/news"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+        >
+          News
+        </a>
         <a
           href="/rooms"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -268,7 +281,7 @@
     </div>
     <!-- main hero booking options selector -->
     <div
-      class="absolute z-40 inset-x-0 bottom-24 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
+      class="absolute z-40 inset-x-0 bottom-32 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4 "
     >
       <div
         class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
@@ -292,7 +305,7 @@
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <!-- Vertical separator -->
-        <form class="lg:max-w-sm lg:mx-auto">
+        <form class="lg:max-w-sm lg:mx-auto ">
           <select
             id="room"
             class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

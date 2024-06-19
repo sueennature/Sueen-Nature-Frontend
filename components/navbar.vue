@@ -16,7 +16,7 @@
         />
       </a>
       <div
-        class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
+        class="xl:hidden flex xl:order-2 space-x-3 xl:space-x-0 rtl:space-x-reverse"
       >
         <a href="/booking">
           <button
@@ -54,7 +54,7 @@
       </div>
       <!-- Mobile -->
       <div
-        class="lg:hidden items-center justify-between hidden w-full lg:w-auto lg:order-1"
+        class="xl:hidden items-center justify-between hidden w-full lg:w-auto lg:order-1"
         id="navbar-cta"
       >
         <ul
@@ -81,6 +81,7 @@
               >Services</a
             >
           </li>
+    
           <li>
             <a
               href="/additionalActivites"
@@ -95,13 +96,13 @@
               >Rooms</a
             >
           </li>
-          <!-- <li>
+          <li>
               <a
                 href="/news"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >News</a
               >
-            </li> -->
+            </li>
           <li>
             <a
               href="/contact"
@@ -120,7 +121,7 @@
           </li>
         </ul>
       </div>
-      <div class="hidden lg:flex lg:flex-row lg:gap-4">
+      <div class="hidden xl:flex xl:flex-row xl:gap-4">
         <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
           <a href="/booking">
             <button
@@ -185,6 +186,13 @@
                 >Services</a
               >
             </li>
+            <li>
+            <a
+              href="/news"
+              class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+              >News</a
+            >
+          </li>
             <li>
             <a
               href="/additionalActivites"
@@ -299,7 +307,7 @@ onUnmounted(() => {
 h2 {
   font-family: "Philosopher", sans-serif;
 }
-h3,
+h3,h4,
 .buttontext,
 h6,
 p,

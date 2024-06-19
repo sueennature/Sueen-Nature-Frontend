@@ -121,8 +121,7 @@ export default {
           this.bookingHistory = [];
           this.filteredBookingHistory = [];
         } else {
-          // Assuming response.data is the object with numbered keys
-          this.bookingHistory = Object.values(response.data); // Convert object to array of objects
+          this.bookingHistory = Object.values(response.data); 
           this.filteredBookingHistory = this.bookingHistory;
         }
       } catch (error) {
@@ -133,7 +132,7 @@ export default {
     dateChanged() {
       if (this.selectedDate) {
         this.filteredBookingHistory = this.bookingHistory.filter(booking => {
-          const bookingDate = booking.date.split(' ')[0];
+          const bookingDate = booking.date?.split(' ')[0];
           return bookingDate === this.selectedDate;
         });
       } else {

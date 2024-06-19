@@ -36,7 +36,7 @@
       <!-- room selector options -->
       <div>
         <!-- Card about special rate -->
-        <!-- <div
+         <div
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
           <div class="lg:flex flex-col grid grid-cols-1 justify-between gap-2">
@@ -67,9 +67,9 @@
               </svg>
             </button>
           </div>
-        </div> -->
+        </div>
         <h5 class="text-black-200 font-semibold mt-4">
-          <!-- {{ room_types.name }} -->
+          {{ room_types.name }}
         </h5>
         <hr
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
@@ -476,11 +476,10 @@
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
         />
 
-        <!-- <h5 class="text-red-100 font-medium lg:text-lg text-base mt-8">
+        <h5 class="text-red-100 font-medium lg:text-lg text-base mt-8">
           Special Rate
           <span v-if="isSpecialRateApplied">({{discount_data.discount}}%)</span>
-          <span v-else>(30%)</span>
-        </h5> -->
+        </h5> 
       
         <div
           class="flex justify-between mt-4"
@@ -1579,11 +1578,11 @@ export default {
         total += parseFloat(room.price) * parseInt(roomCount);
         return total;
       }, 0);
-      // if (this.isSpecialRateApplied) {
-      //   total *= (1-(this.special_rate/100));
-      // } else {
-      //   total *= 0.7;
-      // }
+      if (this.isSpecialRateApplied) {
+        total *= (1-(this.special_rate/100));
+      } else {
+        total *= 0.7;
+      }
 
       return total;
     },
