@@ -3,7 +3,7 @@
     <navbar
       :pageTitle="'CHECKOUT'"
       :pageTitleThree="'GET IN TOUCH'"
-      :imageNav="'/img/hero-checkout.png'"
+      :imageNav="'/img/hero-booking.png'"
     />
     <bookingBody />
     <footerHome />

@@ -42,16 +42,20 @@
             <th>Booking Name</th>
             <th>Bed type</th>
             <th>Book date</th>
-            <th>Nights  </th>
+            <th>Nights</th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200 ">
           <tr v-for="(booking, index) in filteredBookingHistory" :key="booking.id">
             <td><input type="checkbox" :value="index" v-model="selectedRowIndices" @change="updateSelectedRows" class="black-checkbox checkbox" /></td>
-            <td><img src="/img/deluxe_1.jpg" alt="roomImg" class="bg-cover w-40 h-20" /></td>
-            <td>{{ `Booking ${booking.id}` }}</td>
-            <td>{{ formatDate(booking.date) }}</td>
-            <td>{{ booking.night }}</td>
+            <td>
+              <img v-if="booking.booking_details[0]?.room_details[0]?.images.length > 0"
+                  :src="`https://admin.sueennature.com/uploads/${booking.booking_details[0].room_details[0].images[0]}`"
+                  alt="roomImg" class="bg-cover w-40 h-20" />            
+              </td>
+            <td>{{booking?.booking_details[0]?.room_details[0]?.beds }}</td>
+            <td>{{ formatDate(booking.booking.date) }}</td>
+            <td>{{ `${booking.booking.night} nights` }}</td>
           </tr>
         </tbody>
       </table>
@@ -67,7 +71,8 @@ import axios from "axios";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import "jspdf-autotable";
+
 
 export default {
   data() {
@@ -123,8 +128,9 @@ export default {
         } else {
           this.bookingHistory = Object.values(response.data); 
           this.filteredBookingHistory = this.bookingHistory;
+          console.log("AS", this.filteredBookingHistory)
         }
-      } catch (error) {
+      } catch (error) { 
         console.error("Error fetching booking history:", error);
         toast.error("Error fetching booking history");
       }
@@ -151,23 +157,55 @@ export default {
       this.selectedRows = this.selectedRowIndices.map(index => this.filteredBookingHistory[index]);
     },
     async generateReport() {
-      // Hide checkboxes
-      document.querySelectorAll('.checkbox').forEach(checkbox => checkbox.style.display = 'none');
-      
-      const doc = new jsPDF('p', 'pt', 'a4');
-      const element = document.getElementById('bookingTable');
-      const canvas = await html2canvas(element);
-      const imgData = canvas.toDataURL('image/png');
-      const imgProps = doc.getImageProperties(imgData);
-      const pdfWidth = doc.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      doc.save('booking-history.pdf');
-      window.open(doc.output('bloburl'), '_blank');
-      
-      // Restore checkboxes
-      document.querySelectorAll('.checkbox').forEach(checkbox => checkbox.style.display = 'block');
-    },
+  try {
+    // Initialize jsPDF
+    const doc = new jsPDF('p', 'pt', 'a4');
+
+    // Header for the PDF
+    doc.setFontSize(18);
+    doc.text("Booking History Report", 40, 40);
+
+    // Prepare table data
+    const tableData = this.filteredBookingHistory.map(booking => ({
+      bedType: booking?.booking_details[0]?.room_details[0]?.beds || '',
+      bookDate: this.formatDate(booking.booking.date),
+      nights: `${booking.booking.night} nights`
+    }));
+
+    // Use jsPDF autoTable plugin to generate table
+    doc.autoTable({
+      head: [
+        ['Bed type', 'Book date', 'Nights']
+      ],
+      body: tableData.map(row => [row.bedType, row.bookDate, row.nights]),
+      startY: 70,
+      margin: { top: 80 },
+      didDrawPage: function (data) {
+        // Header text for each page
+        doc.setFontSize(18);
+        doc.setTextColor(40);
+        doc.text("Booking History Report", 40, 40);
+      },
+      styles: {
+  head: {
+    fillColor: [173, 216, 230], // Light blue background
+    textColor: [173, 216, 230] // White text color
+  },
+  body: {
+    textColor: [0, 0, 0] // Black text color for body rows
+}
+      }
+    });
+
+    // Save or open the PDF
+    doc.save('booking-history.pdf');
+  } catch (error) {
+    console.error('Error generating PDF:', error);
+    toast.error('Error generating PDF');
+  }
+},
+
+
   },
 };
 </script>

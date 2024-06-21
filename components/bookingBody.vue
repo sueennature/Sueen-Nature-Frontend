@@ -50,7 +50,7 @@
               <h5 class="xl:text-lg text-sm text-black-200">Ending at: {{ formatDate(discount_data.end_date)}}</h5>
             </div>
           </div>
-          <div class="lg:flex lg:justify-end justify-start">
+          <!-- <div class="lg:flex lg:justify-end justify-start">
             <button
               id="viewRatesButton"
               type="button"
@@ -66,7 +66,7 @@
                 <path fill="currentColor" d="m7 10l5 5l5-5z" />
               </svg>
             </button>
-          </div>
+          </div> -->
         </div>
         <h5 class="text-black-200 font-semibold mt-4">
           {{ room_types.name }}
@@ -212,7 +212,7 @@
           </li>
         </ul>
         <!-- Card about Basic rates -->
-        <div
+        <!-- <div
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
           <div class="flex justify-between items-center">
@@ -227,7 +227,6 @@
             </div>
           </div>
           <div class="flex justify-end">
-            <!-- view rate button -->
             <button
               type="button"
               id="viewRatesButton1"
@@ -244,7 +243,7 @@
               </svg>
             </button>
           </div>
-        </div>
+        </div> -->
         <!-- Card about Single Room - Special Rate  -->
 
         <!-- Activities -->
@@ -476,11 +475,11 @@
         <hr
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
         />
-<!-- 
-        <h5 class="text-red-100 font-medium lg:text-lg text-base mt-8">
+
+        <h5 v-if="isSpecialRateApplied" class="text-red-100 font-medium lg:text-lg text-base mt-8">
           Special Rate
-          <span v-if="isSpecialRateApplied">({{discount_data.discount}}%)</span>
-        </h5>  -->
+          <span >({{discount_data.discount}}%)</span>
+        </h5>  
       
         <div
           class="flex justify-between mt-4"
@@ -493,8 +492,7 @@
           <h5 class="lg:text-base text-sm text-black-200 text-opacity-80">
             LKR
             {{
-              parseFloat((item.price)) *
-              (item.selectedRooms === "" ? 0 : parseInt(item.selectedRooms))
+              formatPrice((item.price) * (item.selectedRooms === "" ? 0 : parseInt(item.selectedRooms)))
             }}
           </h5>
         </div>
@@ -507,7 +505,7 @@
             Total Room Rates
           </h5>
           <h5 class="lg:text-base text-sm font-medium text-black-200">
-            LKR {{ formatPrice(getTotalRoomRates()) }}
+            LKR {{ formatPrice(Math.round(getTotalRoomRates())) }}
           </h5>
         </div>
         <div class="flex justify-between mt-4">
@@ -528,7 +526,7 @@
         <div class="flex justify-between mt-4">
           <h5 class="lg:text-base text-sm font-bold text-black-200">Total</h5>
           <h5 class="lg:text-base text-sm font-bold text-black-200">
-            LKR {{ formatPrice(getTotalAmount()) }}
+            LKR {{ formatPrice(Math.round(getTotalAmount())) }}
           </h5>
         </div>
 
@@ -1513,11 +1511,11 @@ export default {
     const newPeopleCount = parseInt(event.target.value);
 
     let shouldSetChildFeeToZero = false;
-    if (roomToUpdate.name === "Double Room" && roomDetail.adults.count <= double_room_max_adult_count) {
+    if (roomToUpdate.name === "Double Room" && roomDetail.adults?.count <= double_room_max_adult_count) {
         shouldSetChildFeeToZero = true;
       } else if (roomToUpdate.name === "Triple Room" && roomDetail.adults?.count <= triple_room_max_adult_count) {
         shouldSetChildFeeToZero = true;
-      } else if (roomToUpdate.name === "Family Room" && roomDetail.adults.count <= family_room_max_adult_count) {
+      } else if (roomToUpdate.name === "Family Room" && roomDetail.adults?.count <= family_room_max_adult_count) {
         shouldSetChildFeeToZero = true;
       }
 
@@ -1540,7 +1538,6 @@ export default {
       };
     }
     if (peopleType === "child") {
-      console.log("LOWERED");
       roomDetail["child"] = {
         count: newPeopleCount,
         ages: [], 
@@ -1556,11 +1553,11 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
 
 
     if (["Full Board", "Bed & Breakfast", "Half Board"].includes(roomToUpdate.type)) {
-      if (roomToUpdate.name === "Double Room" && roomDetail.adults.count === double_room_max_adult_count) {
+      if (roomToUpdate.name === "Double Room" && roomDetail.adults.count === double_room_max_adult_count && roomDetail.child.count > 0) {
         roomDetail["child"].childFee = (this.room_types[roomTypeMap[roomToUpdate.type]] - this.room_types.room_only) / (double_room_max_adult_count * 2);
       }
 
-      if (roomToUpdate.name === "Triple Room" && roomDetail.adults.count === triple_room_max_adult_count) {
+      if (roomToUpdate.name === "Triple Room" && roomDetail.adults.count === triple_room_max_adult_count && roomDetail.child.count > 0) {
         roomDetail["child"].childFee = (this.room_types[roomTypeMap[roomToUpdate.type]] - this.room_types.room_only) / (triple_room_max_adult_count * 2);
       }
 
@@ -1629,18 +1626,74 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
       this.isSpecialRateApplied = false;
     },
     getTotalRoomRates() {
-      let total = this.roomsList.reduce((total, room) => {
-        const roomCount = room.selectedRooms === "" ? "0" : room.selectedRooms;
-        total += parseFloat(room.price) * parseInt(roomCount);
-        return total;
-      }, 0);
-      // if (this.isSpecialRateApplied) {
-      //   total *= (1-(this.special_rate/100));
-      // } 
-      return total;
+  let childFees = [];
 
-      
-    },
+  const checkInDate = new Date(this.$route.query.check_in);
+  const checkOutDate = new Date(this.$route.query.check_out);
+  const specialRateStartDate = new Date(this.discount_data.start_date);
+  const specialRateEndDate = new Date(this.discount_data.end_date);
+
+  const totalRoomDays = Math.round((checkOutDate - checkInDate) / (1000 * 3600 * 24));
+  console.log("TOTAL", totalRoomDays);
+
+  let total = this.roomsList.reduce((total, room) => {
+    const roomCount = room.selectedRooms === "" ? 0 : parseInt(room.selectedRooms);
+    total += parseFloat(room.price) * roomCount;
+
+    for (let key in room) {
+      if (room[key]?.child && room[key].child?.childFee) {
+        childFees.push(room[key].child.childFee);
+      }
+    }
+
+    return total;
+  }, 0);
+
+  const totalChildFee = childFees.reduce((sum, fee) => sum + fee, 0);
+  total -= totalChildFee;
+
+  let discountDays = 0;
+  let regularDays = totalRoomDays;
+
+  if (checkInDate >= specialRateStartDate && checkOutDate <= specialRateEndDate) {
+    discountDays = Math.round((checkOutDate - checkInDate) / (1000 * 3600 * 24));
+    regularDays = totalRoomDays - discountDays;
+    console.log("Condition_1", discountDays, regularDays)
+
+  } 
+  else if (checkInDate >= specialRateStartDate && checkOutDate > specialRateEndDate && checkInDate <= specialRateEndDate) {
+    discountDays = Math.round((specialRateEndDate - checkInDate) / (1000 * 3600 * 24));
+    regularDays = totalRoomDays - discountDays;
+    console.log("Condition_2", discountDays, regularDays)
+  } 
+  else if (checkInDate < specialRateStartDate && checkOutDate >= specialRateStartDate) {
+    if (checkOutDate <= specialRateEndDate) {
+      discountDays = Math.round((checkOutDate - specialRateStartDate) / (1000 * 3600 * 24));
+    } else {
+      discountDays = Math.round((specialRateEndDate - specialRateStartDate) / (1000 * 3600 * 24));
+    }
+    regularDays = totalRoomDays - discountDays;
+  }
+
+  if (discountDays > 0) {
+    let discountRate = this.discount_data.discount / 100;
+    let discountedAmount = (total / totalRoomDays) * discountDays * discountRate;
+    let regularAmount = (total / totalRoomDays) * regularDays;
+    total = discountedAmount + regularAmount;
+    this.isSpecialRateApplied = true;
+  }
+
+  console.log("Total after discount:", total);
+  return total;
+},
+
+getTotalAmount() {
+  console.log("Total Room Rates:", this.getTotalRoomRates());
+  return this.getTotalActivities() + this.getTotalRoomRates();
+}
+,
+
+    
 
     getTotalActivities() {
       return this.activities.reduce((total, activity) => {
@@ -1652,6 +1705,7 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
     },
 
     getTotalAmount() {
+      console.log("sad",this.getTotalRoomRates())
       return this.getTotalActivities() + this.getTotalRoomRates();
     },
 
@@ -1802,7 +1856,7 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
     this.room_types = data.room_type;
     this.discount_data = data.discount_details;
     this.special_rate = this.discount_data.discount
-    console.log('CE',  this.room_types);
+    // console.log('CE',  this.room_types);
 
   })
   .catch((error) => {
