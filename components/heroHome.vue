@@ -95,7 +95,7 @@
             </li>
             <li>
               <a
-          v-if ="userEmail"
+              v-if ="userEmail && authToken"
           @click.prevent="redirectToDashboard"
           class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
         >
@@ -271,11 +271,11 @@
           Contact
         </a>
         <a
-          v-if ="userEmail"
+          v-if ="userEmail && authToken"
           @click.prevent="redirectToDashboard"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
-          Profile
+          Profiles
         </a>
       </div>
     </div>
@@ -370,7 +370,15 @@ export default {
     },
     userEmail() {
       return localStorage.getItem('userEmail');
-    }
+    },
+    authToken(){
+      const cookies = document.cookie.split(";");
+      const authTokenCookie = cookies.find((cookie) =>
+        cookie.trim().startsWith("auth_token=")
+      );
+      return  authTokenCookie?.split("=")[1];
+
+    },
   },
   methods:{
     setupToast(){

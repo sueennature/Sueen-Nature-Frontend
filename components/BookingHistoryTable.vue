@@ -138,7 +138,7 @@ export default {
     dateChanged() {
       if (this.selectedDate) {
         this.filteredBookingHistory = this.bookingHistory.filter(booking => {
-          const bookingDate = booking.date?.split(' ')[0];
+          const bookingDate = booking.booking.date?.split(' ')[0];
           return bookingDate === this.selectedDate;
         });
       } else {
@@ -157,22 +157,18 @@ export default {
       this.selectedRows = this.selectedRowIndices.map(index => this.filteredBookingHistory[index]);
     },
     async generateReport() {
-  try {
-    // Initialize jsPDF
-    const doc = new jsPDF('p', 'pt', 'a4');
+      try {
+        const doc = new jsPDF('p', 'pt', 'a4');
 
-    // Header for the PDF
-    doc.setFontSize(18);
-    doc.text("Booking History Report", 40, 40);
+        doc.setFontSize(18);
+        doc.text("Booking History Report", 40, 40);
 
-    // Prepare table data
-    const tableData = this.filteredBookingHistory.map(booking => ({
-      bedType: booking?.booking_details[0]?.room_details[0]?.beds || '',
-      bookDate: this.formatDate(booking.booking.date),
-      nights: `${booking.booking.night} nights`
-    }));
+        const tableData = this.filteredBookingHistory.map(booking => ({
+          bedType: booking?.booking_details[0]?.room_details[0]?.beds || '',
+          bookDate: this.formatDate(booking.booking.date),
+          nights: `${booking.booking.night} nights`
+        }));
 
-    // Use jsPDF autoTable plugin to generate table
     doc.autoTable({
       head: [
         ['Bed type', 'Book date', 'Nights']
@@ -181,15 +177,14 @@ export default {
       startY: 70,
       margin: { top: 80 },
       didDrawPage: function (data) {
-        // Header text for each page
         doc.setFontSize(18);
         doc.setTextColor(40);
         doc.text("Booking History Report", 40, 40);
       },
       styles: {
   head: {
-    fillColor: [173, 216, 230], // Light blue background
-    textColor: [173, 216, 230] // White text color
+    fillColor: [173, 216, 230], 
+    textColor: [173, 216, 230] 
   },
   body: {
     textColor: [0, 0, 0] // Black text color for body rows

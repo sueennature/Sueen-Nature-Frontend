@@ -18,14 +18,14 @@
       <div
         class="xl:hidden flex xl:order-2 space-x-3 xl:space-x-0 rtl:space-x-reverse"
       >
-        <a href="/booking">
+        <!-- <a href="/booking">
           <button
             type="button"
             class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
           >
             Book Now
           </button>
-        </a>
+        </a> -->
 
         <button
           data-collapse-toggle="navbar-cta"
@@ -112,7 +112,7 @@
           </li>
           <li>
             <a
-              v-if="userEmail"
+                v-if="userEmail && authToken"
               @click.prevent="handleNavigate"
               class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
             >
@@ -121,8 +121,8 @@
           </li>
         </ul>
       </div>
-      <div class="hidden xl:flex xl:flex-row xl:gap-4">
-        <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
+      <div class="lg:flex lg:flex-row  xl:flex xl:flex-row xl:gap-4 sm:hidden">
+        <!-- <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
           <a href="/booking">
             <button
               type="button"
@@ -156,7 +156,7 @@
               />
             </svg>
           </button>
-        </div>
+        </div> -->
         <!-- Standard View -->
         <div
           class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1"
@@ -223,7 +223,7 @@
             </li>
             <li>
               <a
-                v-if="userEmail"
+                v-if="userEmail && authToken"
                 @click.prevent="handleNavigate"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
               >
@@ -274,6 +274,7 @@ const isSignedIn = false;
 
 const userEmail = ref(null);
 const { props } = defineProps(['pageTitle', 'pageTitleTwo','pageTitleThree','imageNav']);
+const authToken = ref(null);
 
 const handleScroll = () => {
   const scrollTop = window.scrollY;
@@ -292,6 +293,11 @@ onMounted(() => {
 
   window.addEventListener("scroll", handleScroll);
   initFlowbite();
+  const cookies = document.cookie.split(";");
+  const authTokenCookie = cookies.find((cookie) =>
+    cookie.trim().startsWith("auth_token=")
+  );
+  authToken.value = authTokenCookie?.split("=")[1];
 
   if (typeof localStorage !== "undefined") {
     userEmail.value = localStorage.getItem("userEmail");
