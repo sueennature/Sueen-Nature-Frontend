@@ -275,7 +275,7 @@
           @click.prevent="redirectToDashboard"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
-          Profiles
+          Profile
         </a>
       </div>
     </div>
