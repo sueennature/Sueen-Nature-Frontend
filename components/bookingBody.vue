@@ -16,12 +16,16 @@
     >
       <!-- room image with paragraph -->
       <div>
-        <div class="relative">
+        <div class="relative" >
           <img
-            :src="room_types.image ? `https://admin.sueennature.com/uploads/${JSON.parse(room_types.image)[0]}` : ''"
-            alt="roomImg"
-            class="w-full object-cover"
-          />
+      v-if="room_types.image"
+      :src="`https://admin.sueennature.com/uploads/${JSON.parse(room_types.image)[0]}`"
+      alt="roomImg"
+      class="w-full object-cover"
+    />
+    <div v-else class="w-full h-full font-semibold flex items-center justify-center bg-gray-200">
+      Select a Check Availability please
+    </div>
 
           <div
             class="absolute lg:top-10 top-16 bg-white bg-opacity-80 text-xl text-black-200 py-2 px-8 rounded-r-md image-label"
@@ -34,9 +38,10 @@
         </p>
       </div>
       <!-- room selector options -->
-      <div>
+      <div >
         <!-- Card about special rate -->
          <div
+         v-if ="discount_data.discount"
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
           <div class="lg:flex flex-col grid grid-cols-1 justify-between gap-2">
@@ -75,13 +80,13 @@
           class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-2"
         />
 
-        <ul class="w-full mt-4">
+        <ul class="w-full mt-4" v-if="room_types.bread_breakfast">
           <li class="pb-3 sm:pb-4">
             <div
               class="flex items-center justify-between space-x-4 rtl:space-x-reverse"
             >
               <div class="flex-shrink-0 lg:w-40 w-14">
-                <h5 class="xl:text-lg text-sm text-black-200">
+                <h5 class="xl:text-lg text-sm text-black-200" >
                   Bed & Breakfast
                 </h5>
               </div>
@@ -182,7 +187,7 @@
               class="flex items-center justify-between space-x-4 rtl:space-x-reverse"
             >
               <div class="flex-shrink-0 lg:w-40 w-14">
-                <h5 class="xl:text-lg text-sm text-red-100">Room Only</h5>
+                <h5 class="xl:text-lg text-sm ">Room Only</h5>
               </div>
               <div class="">
                 <h5
@@ -413,9 +418,11 @@
               :key="'child-' + index"
               class="flex items-baseline justify-between mt-4"
             >
-              <h5 class="text-black font-medium xl:text-lg text-sm">
-                Select age of child {{ index + 1 }}  {{item[n]?.child?.childFee > 0 ? " 50%" : "Check"}}
-              </h5>
+            <h5 class="text-black font-medium xl:text-lg text-sm">
+              Select age of child {{ index + 1 }}  
+              <span style="color: red; margin-left : 10px">{{ item[n]?.child?.childFee > 0 ? "50%" : "" }}</span>
+            </h5>
+
 
               <form class="max-w-sm">
                 <select
@@ -535,7 +542,9 @@
           <button
             class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             type="button"
-          >
+            @click="scrollToPaymentInfo"
+
+        >
             Proceed As a Guest
           </button>
           <span class="text-black-200 text-base font-bold">OR</span>
@@ -553,7 +562,7 @@
       </div>
     </div>
 
-    <div ref="paymentInfoRef"></div>
+    <div ref="paymentInfoRef"> </div>
     <!-- Guest Info & Payment section -->
     <h2
       class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10"
@@ -574,13 +583,13 @@
             value="Yes"
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+            v-model="bookingForSomeoneElse"
             @change="toggleGuestInfo"
           />
           <label
             for="inline-radio"
             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >Yes</label
-          >
+          >Yes</label>
         </div>
         <div class="flex items-center me-4">
           <input
@@ -589,17 +598,16 @@
             value="No"
             name="inline-radio-group"
             class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+            v-model="bookingForSomeoneElse"
             @change="toggleGuestInfo"
-            checked
           />
           <label
-            for="inline-
-            2-radio"
+            for="inline-2-radio"
             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >No</label
-          >
+          >No</label>
         </div>
-      </div>
+</div>
+
 
       <div class="text-center mt-10" v-if="showYourInfo">
         <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
@@ -831,6 +839,7 @@
         proceed to pay
       </button>
     </form>
+ 
     <!-- Register and Login Modal Popup -->
     <!-- Register modal -->
     <div
@@ -1132,6 +1141,7 @@ export default {
   },
   data() {
     return {
+      bookingForSomeoneElse: 'No', 
       showPassword: false,
       showGuestInfo: false,
       showYourInfo: true,
@@ -1140,6 +1150,7 @@ export default {
       isModal2Visible: false,
       selectedInfants: 0,
       selectedChildren: 0,
+      total_rate:0,
       isSpecialRateApplied: false,
       infantAges: [],
       childrenAges: [],
@@ -1199,6 +1210,11 @@ export default {
   },
 
   methods: {
+    scrollToPaymentInfo() {
+      this.$nextTick(() => {
+        this.$refs.paymentInfoRef.scrollIntoView({ behavior: 'smooth' });
+      });
+    },
     formatDate(dateString) {
       const date = new Date(dateString);
       
@@ -1306,7 +1322,7 @@ export default {
         }
       )
         .then((response) => {
-          console.log("Register response", response);
+          // console.log("Register response", response);
           this.nuxtApp.$auth.setAuthToken(response.access_token);
           this.setAuthTokenInCookie(response.access_token);
           localStorage.setItem("userEmail", this.registerUser.email);
@@ -1337,8 +1353,8 @@ export default {
           password: this.loginUser.password,
         })
         .then((response) => {
-          console.log("Status:", response.status);
-          console.log("Data:", response.data);
+          // console.log("Status:", response.status);
+          // console.log("Data:", response.data);
 
           this.setAuthTokenInCookie(response.data.access_token);
           this.nuxtApp.$auth.setAuthToken(response.access_token);
@@ -1351,8 +1367,8 @@ export default {
         })
         .catch((error) => {
           if (error.response) {
-            console.log("Error status:", error.response.status);
-            console.log("Error data:", error.response.data);
+            // console.log("Error status:", error.response.status);
+            // console.log("Error data:", error.response.data);
 
             if (error.response.data.message === "Invalid Credentials") {
               if (this.isSocialLogin) {
@@ -1392,7 +1408,7 @@ export default {
       // }
     },
     setAuthTokenInCookie(token) {
-      console.log("Token setAuthTokenInCookie", token);
+      // console.log("Token setAuthTokenInCookie", token);
       const cookieName = "auth_token=";
       const daysValid = 7;
       const expiryDate = new Date();
@@ -1415,7 +1431,12 @@ export default {
       // Redirect to the registration page
       this.$router.push("/register");
     },
+    toggleButtonGuestInfo(){
+        this.showGuestInfo = true;
+        this.showYourInfo = false;
+    },
     toggleGuestInfo(event) {
+      this.bookingForSomeoneElse = event.target.value;
       if (event.target.value === "Yes") {
         this.showGuestInfo = true;
         this.showYourInfo = false;
@@ -1464,7 +1485,7 @@ export default {
           rowId: this.roomsList.length + 1,
         });
         this.price = this.price + parseFloat(roomDetails.price);
-        console.log("rooms list", this.roomsList);
+        // console.log("rooms list", this.roomsList);
       }
     },
     removeItemFromRoomsList(index) {
@@ -1473,8 +1494,8 @@ export default {
       this.isSpecialRateApplied = false;
     },
     updateRoomsCount(item, event) {
-      console.log("updateRoomsCount ", item);
-      console.log("ROOMS UPDATED", this.roomsList);
+      // console.log("updateRoomsCount ", item);
+      // console.log("ROOMS UPDATED", this.roomsList);
       const roomToUpdate = this.roomsList.find(
         (room) => room.rowId === item.rowId
       );
@@ -1501,7 +1522,7 @@ export default {
         "Half Board": "half_board"
       };
 
-  console.log("Item", item);
+  // console.log("Item", item);
 
   const roomIndex = this.roomsList.findIndex((room) => room.rowId === item.rowId);
   if (roomIndex > -1) {
@@ -1594,7 +1615,7 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
 
 
     updateAges(roomDetails, roomIndex, peopleType, event) {
-    console.log("AGE", roomDetails, roomIndex, peopleType, event)
+    // console.log("AGE", roomDetails, roomIndex, peopleType, event)
       const selectedAge = parseInt(event.target.value);
       const roomListIndex = this.roomsList.findIndex(
         (room) => room.rowId === roomDetails.rowId
@@ -1634,7 +1655,7 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
   const specialRateEndDate = new Date(this.discount_data.end_date);
 
   const totalRoomDays = Math.round((checkOutDate - checkInDate) / (1000 * 3600 * 24));
-  console.log("TOTAL", totalRoomDays);
+  // console.log("TOTAL", totalRoomDays);
 
   let total = this.roomsList.reduce((total, room) => {
     const roomCount = room.selectedRooms === "" ? 0 : parseInt(room.selectedRooms);
@@ -1658,13 +1679,13 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
   if (checkInDate >= specialRateStartDate && checkOutDate <= specialRateEndDate) {
     discountDays = Math.round((checkOutDate - checkInDate) / (1000 * 3600 * 24));
     regularDays = totalRoomDays - discountDays;
-    console.log("Condition_1", discountDays, regularDays)
+    // console.log("Condition_1", discountDays, regularDays)
 
   } 
   else if (checkInDate >= specialRateStartDate && checkOutDate > specialRateEndDate && checkInDate <= specialRateEndDate) {
     discountDays = Math.round((specialRateEndDate - checkInDate) / (1000 * 3600 * 24));
     regularDays = totalRoomDays - discountDays;
-    console.log("Condition_2", discountDays, regularDays)
+    // console.log("Condition_2", discountDays, regularDays)
   } 
   else if (checkInDate < specialRateStartDate && checkOutDate >= specialRateStartDate) {
     if (checkOutDate <= specialRateEndDate) {
@@ -1683,12 +1704,12 @@ if (roomDetail["child"].count === 0 || shouldSetChildFeeToZero) {
     this.isSpecialRateApplied = true;
   }
 
-  console.log("Total after discount:", total);
+  // console.log("Total after discount:", total);
   return total;
 },
 
 getTotalAmount() {
-  console.log("Total Room Rates:", this.getTotalRoomRates());
+  // console.log("Total Room Rates:", this.getTotalRoomRates());
   return this.getTotalActivities() + this.getTotalRoomRates();
 }
 ,
@@ -1788,11 +1809,12 @@ getTotalAmount() {
       this.form.rooms = roomsArrangement;
       this.form.activities = selectedActivities;
       // this.form.specialRateApplied = this.isSpecialRateApplied;
+      this.form.totalAmount = this.getTotalAmount();
 
-      // console.log(this.form);
+      console.log(this.form);
       // return;
 
-      console.log("FORM DATA", this.form);
+      // console.log("FORM DATA", this.form);
 
       await fetch("https://admin.sueennature.com/api/booking", {
         method: "POST",
@@ -1801,11 +1823,11 @@ getTotalAmount() {
         body: JSON.stringify(this.form),
       })
         .then((response) => {
-          console.log("RESPONSE ", response);
+          // console.log("RESPONSE ", response);
           return response.json();
         })
         .then((data) => {
-          console.log("RESPONSE SUCCESS ", data);
+          // console.log("RESPONSE SUCCESS ", data);
           if (data.error) {
             throw new Error(data.error);
           }
