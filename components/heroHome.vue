@@ -18,13 +18,14 @@
         <div
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
         >
-          <button
-            data-collapse-toggle="navbar-cta-2"
-            type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-cta-2"
-            aria-expanded="false"
-          >
+        <button
+  data-collapse-toggle="navbar-cta-2"
+  @click="toggleMobileNav('#navbar-cta-2')"
+  type="button"
+  class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+  aria-controls="navbar-cta-2"
+  aria-expanded="false"
+>
             <span class="sr-only">Open main menu</span>
             <svg
               class="w-5 h-5"
@@ -369,7 +370,7 @@ export default {
       return this.rooms.filter(room => room.room_type_id === this.room_type_id);
     },
     userEmail() {
-      return localStorage.getItem('userEmail');
+      return localStorage?.getItem('userEmail');
     },
     authToken(){
       const cookies = document.cookie.split(";");
@@ -381,6 +382,12 @@ export default {
     },
   },
   methods:{
+    toggleMobileNav(navId) {
+    const navElement = document.querySelector(navId);
+    if (navElement) {
+      navElement.classList.toggle('hidden');
+    }
+  },
     setupToast(){
     toast.error("welcome to sda",{
       autoClose:1000,
