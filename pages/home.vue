@@ -1,11 +1,11 @@
 <template>
   <div class="main overflow-hidden">
     <heroHome/>
-    <!-- <welcomeHome/>
+    <welcomeHome/>
     <roomsHome/>
     <facilitiesHome/>
     <servicesHome/>
-    <footerHome/> -->
+    <footerHome/>
 
   </div>
 </template>

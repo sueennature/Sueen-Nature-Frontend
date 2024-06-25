@@ -1,11 +1,13 @@
 <template>
   <div class="relative h-screen">
-    <img
-      src="/img/hero-home 1.webp"
-      alt="backgroundImg"
-      class="w-full min-h-screen object-cover"
-    />
-    <!-- stiky navbar -->
+    <div class="carousel">
+      <img
+        v-bind:src="currentImage"
+        alt="backgroundImg"
+        class="w-full min-h-screen object-cover transition-opacity duration-1000"
+        :key="currentIndex"
+      />
+    </div>
     <nav
       class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
     >
@@ -19,13 +21,13 @@
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
         >
         <button
-  data-collapse-toggle="navbar-cta-2"
-  @click="toggleMobileNav('#navbar-cta-2')"
-  type="button"
-  class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-  aria-controls="navbar-cta-2"
-  aria-expanded="false"
->
+        data-collapse-toggle="navbar-cta-2"
+        @click="toggleMobileNav('#navbar-cta-2')"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-cta-2"
+        aria-expanded="false"
+        >
             <span class="sr-only">Open main menu</span>
             <svg
               class="w-5 h-5"
@@ -362,9 +364,23 @@ export default {
       view_type_id: null,
       view_types: [],
       filteredViews: [],
+      currentIndex: 0,
+      images: [
+        "/img/hero-home 1.webp",
+        "/img/hero-home 2.webp",
+        "/img/hero-home 3.webp",
+        "/img/hero-home 4.webp",
+        "/img/hero-home 5.webp",
+        // Add more images as needed
+      ],
+      intervalId: null,
+      intervalDuration: 5000, // Interval duration in milliseconds (e.g., 5000 for 5 seconds)
     };
   },
   computed: {
+    currentImage() {
+      return this.images[this.currentIndex];
+    },
     filteredRooms() {
       if (!this.room_type_id) return [];
       return this.rooms.filter(room => room.room_type_id === this.room_type_id);
@@ -382,6 +398,11 @@ export default {
     },
   },
   methods:{
+    startCarousel() {
+      this.intervalId = setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      }, this.intervalDuration);
+    },
     toggleMobileNav(navId) {
     const navElement = document.querySelector(navId);
     if (navElement) {
@@ -452,7 +473,11 @@ export default {
     });
   },
 },
+beforeDestroy() {
+    clearInterval(this.intervalId);
+  },
   mounted() {
+    
     Promise.all([
       import("flowbite-datepicker/Datepicker"),
       import("flowbite-datepicker/Datepicker"),
@@ -460,14 +485,16 @@ export default {
       const datepickerEl1 = this.$refs.datepicker1;
       const datepickerEl2 = this.$refs.datepicker2;
       new DatePicker1.default(datepickerEl1, {
-        autohide: true, // This will enable autohide feature for the first datepicker
-        orientation: "bottom right", // Set orientation for the first datepicker
+        autohide: true, 
+        orientation: "bottom right",
       });
       new DatePicker2.default(datepickerEl2, {
-        autohide: true, // This will enable autohide feature for the second datepicker
-        orientation: "bottom right", // Set orientation for the second datepicker
+        autohide: true, 
+        orientation: "bottom right", 
       });
     });
+    this.startCarousel();
+
     fetch('https://admin.sueennature.com/api/getRoomTypes')
       .then((response) => {
         if (!response.ok) {
