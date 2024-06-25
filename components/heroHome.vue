@@ -72,13 +72,13 @@
                 >Services</a
               >
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="/news"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >News</a
               >
-            </li>
+            </li> -->
             <li>
               <a
                 href="/rooms"
@@ -171,13 +171,13 @@
                   >Services</a
                 >
               </li>
-              <li>
+              <!-- <li>
                 <a
                   href="/news"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >News</a
                 >
-              </li>
+              </li> -->
               <li>
                 <a
                   href="/rooms"
@@ -252,12 +252,12 @@
         >
           Services
         </a>
-        <a
+        <!-- <a
           href="/news"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           News
-        </a>
+        </a> -->
         <a
           href="/rooms"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
