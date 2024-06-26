@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
         <img
-        src="/img/welcomeImg.png"
+        src="/img/welcomeImg.webp"
         alt="backgroundImg"
         class="object-cover w-full min-h-screen"
       />
