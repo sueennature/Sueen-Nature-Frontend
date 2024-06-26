@@ -13,14 +13,14 @@
         <div
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
         >
-        <a href="/booking">
+        <!-- <a href="/booking">
           <button
             type="button"
             class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
           >
             book now
           </button>
-        </a>  
+        </a>   -->
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
@@ -114,7 +114,7 @@
         </div>
         <div class="hidden lg:flex lg:flex-row lg:gap-4">
           <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
-            <a href="/booking">
+            <!-- <a href="/booking">
               <button
               type="button"
               class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
@@ -122,7 +122,7 @@
               book now
             </button>
   
-            </a>
+            </a> -->
             
             <button
               data-collapse-toggle="navbar-cta"

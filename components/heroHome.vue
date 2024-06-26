@@ -1,13 +1,40 @@
 <template>
-  <div class="relative h-screen">
-    <div class="carousel">
-      <img
-        v-bind:src="currentImage"
-        alt="backgroundImg"
-        class="w-full min-h-screen object-cover transition-opacity duration-1000"
-        :key="currentIndex"
-      />
-    </div>
+  <div class="relative">
+    <!-- <img
+      src="/img/hero-home 1.webp"
+      alt="backgroundImg"
+      class="w-full min-h-screen object-cover"
+    /> -->
+    
+      <swiper
+    :spaceBetween="30"
+    :navigation="true"
+    :autoplay="{ delay: 2500, disableOnInteraction: false }"
+    :pagination="{
+      clickable: true,
+    }"
+    :modules="modules"
+    class="mySwiper"
+  >
+    <swiper-slide
+      ><img
+        src="/img/hero-home 1.webp" class="object-cover w-full min-h-screen" /></swiper-slide
+    ><swiper-slide
+      ><img
+        src="/img/hero-home 2.webp" class="object-cover w-full min-h-screen" /></swiper-slide
+    ><swiper-slide
+      ><img
+        src="/img/hero-home 3.webp" class="object-cover w-full min-h-screen" /></swiper-slide
+    ><swiper-slide
+      ><img src="/img/hero-home 4.webp" class="object-cover w-full min-h-screen"
+    /></swiper-slide>
+    <swiper-slide
+      ><img src="/img/hero-home 5.webp" class="object-cover w-full min-h-screen"
+    /></swiper-slide>
+  </swiper>
+    
+   
+    <!-- stiky navbar -->
     <nav
       class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
     >
@@ -20,14 +47,13 @@
         <div
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
         >
-        <button
-        data-collapse-toggle="navbar-cta-2"
-        @click="toggleMobileNav('#navbar-cta-2')"
-        type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-cta-2"
-        aria-expanded="false"
-        >
+          <button
+            data-collapse-toggle="navbar-cta-2"
+            type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-cta-2"
+            aria-expanded="false"
+          >
             <span class="sr-only">Open main menu</span>
             <svg
               class="w-5 h-5"
@@ -207,7 +233,7 @@
       </div>
     </nav>
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-black-200 opacity-30 z-20"></div>
+    <!-- <div class="absolute inset-0 bg-black-200 opacity-30 z-20"></div>  -->
     <!-- hero logo image -->
     <div class="absolute z-40 top-8 left-0 w-full md:flex hidden items-center">
       <a href="/home" class="relative mx-auto">
@@ -274,7 +300,7 @@
           Contact
         </a>
         <a
-          v-if ="userEmail && authToken"
+        v-if ="userEmail && authToken"
           @click.prevent="redirectToDashboard"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
@@ -282,7 +308,8 @@
         </a>
       </div>
     </div>
-    <div
+    <!-- main hero booking options selector -->
+    <!-- <div
       class="absolute z-40 inset-x-0 bottom-32 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4 "
     >
       <div
@@ -298,7 +325,6 @@
             />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
-        <!-- Vertical separator -->
         <div class="relative md:max-w-sm md:mx-auto">
           <input
             type="date"
@@ -306,7 +332,6 @@
           />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
-        <!-- Vertical separator -->
         <form class="lg:max-w-sm lg:mx-auto ">
           <select
             id="room"
@@ -346,14 +371,27 @@
         </button>
 
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
   
 <script>
 import {toast} from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { EffectFade, Navigation, Pagination,Autoplay } from 'swiper/modules';
+
+
+  // Import Swiper styles
+  
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
   
   data() {
     return {
@@ -364,23 +402,10 @@ export default {
       view_type_id: null,
       view_types: [],
       filteredViews: [],
-      currentIndex: 0,
-      images: [
-        "/img/hero-home 1.webp",
-        "/img/hero-home 2.webp",
-        "/img/hero-home 3.webp",
-        "/img/hero-home 4.webp",
-        "/img/hero-home 5.webp",
-        // Add more images as needed
-      ],
-      intervalId: null,
-      intervalDuration: 5000, // Interval duration in milliseconds (e.g., 5000 for 5 seconds)
+      modules: [EffectFade, Navigation, Pagination,Autoplay],
     };
   },
   computed: {
-    currentImage() {
-      return this.images[this.currentIndex];
-    },
     filteredRooms() {
       if (!this.room_type_id) return [];
       return this.rooms.filter(room => room.room_type_id === this.room_type_id);
@@ -398,17 +423,6 @@ export default {
     },
   },
   methods:{
-    startCarousel() {
-      this.intervalId = setInterval(() => {
-        this.currentIndex = (this.currentIndex + 1) % this.images.length;
-      }, this.intervalDuration);
-    },
-    toggleMobileNav(navId) {
-    const navElement = document.querySelector(navId);
-    if (navElement) {
-      navElement.classList.toggle('hidden');
-    }
-  },
     setupToast(){
     toast.error("welcome to sda",{
       autoClose:1000,
@@ -473,11 +487,7 @@ export default {
     });
   },
 },
-beforeDestroy() {
-    clearInterval(this.intervalId);
-  },
   mounted() {
-    
     Promise.all([
       import("flowbite-datepicker/Datepicker"),
       import("flowbite-datepicker/Datepicker"),
@@ -485,16 +495,14 @@ beforeDestroy() {
       const datepickerEl1 = this.$refs.datepicker1;
       const datepickerEl2 = this.$refs.datepicker2;
       new DatePicker1.default(datepickerEl1, {
-        autohide: true, 
-        orientation: "bottom right",
+        autohide: true, // This will enable autohide feature for the first datepicker
+        orientation: "bottom right", // Set orientation for the first datepicker
       });
       new DatePicker2.default(datepickerEl2, {
-        autohide: true, 
-        orientation: "bottom right", 
+        autohide: true, // This will enable autohide feature for the second datepicker
+        orientation: "bottom right", // Set orientation for the second datepicker
       });
     });
-    this.startCarousel();
-
     fetch('https://admin.sueennature.com/api/getRoomTypes')
       .then((response) => {
         if (!response.ok) {
