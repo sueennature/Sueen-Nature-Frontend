@@ -203,9 +203,9 @@
         </li>
       </ul>
     </div>
-    <div class="mt-8">
+    <!-- <div class="mt-8">
       <CheckoutAvailability />
-    </div>
+    </div> -->
 
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-center mt-16">
       EXPLORE OTHER ROOMS
