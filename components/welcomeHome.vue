@@ -17,6 +17,7 @@
             <div class="mt-10">
                 <h3 class="uppercase text-black-50 md:text-xl text-sm">Reservation</h3>
                 <h3 class="uppercase text-black-50 md:text-xl text-sm mt-2">+(94) 71 584 0000</h3>
+
             </div>
 
          </div>
