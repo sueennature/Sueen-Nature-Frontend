@@ -9,7 +9,7 @@
       <swiper
           :spaceBetween="30"
       :navigation="true"
-      :autoplay="{ delay: 2500, disableOnInteraction: false }"
+      :autoplay="{ delay: 7500, disableOnInteraction: false }"
       :pagination="{ clickable: true }"
       :loop="true"
       :loopedSlides="5"
