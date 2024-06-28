@@ -188,7 +188,7 @@
           <a
             href="tel:+94715840000"
             class="text-stone-700 hover:underline text-base"
-            >+(94) 71 58 4000
+            >+(94) 71 58 40000
           </a>
         </div>
       </div>
@@ -267,7 +267,7 @@
           <a
             href="https://wa.me/+94715840000"
             class="text-stone-700 hover:underline text-base"
-            >+(94) 71 58 4000</a
+            >+(94) 71 58 40000</a
           >
         </div>
       </div>
