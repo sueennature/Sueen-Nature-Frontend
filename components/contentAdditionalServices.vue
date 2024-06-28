@@ -11,7 +11,7 @@
           alt="serviceImg" 
           class="flex-grow object-cover rounded-t-md"
         />
-        <div class="h-96 flex flex-col items-center p-8 bg-gray-500 rounded-lg shadow-lg space-y-4 dark:bg-gray-800 dark:border-gray-700 flex-grow">
+        <div class="h-96 flex flex-col items-center p-8 bg-gray-500 rounded-lg shadow-lg space-y-4 dark:bg-gray-800 dark:border-gray-700 flex-grow rounded-t-sm">
           <h3 class="2xl:text-4xl text-2xl text-black-200">{{ service.name }}</h3>
           <p class="font-extralight text-base text-center text-black-200 dark:text-gray-400 mt-4">
             {{ service.description }}
