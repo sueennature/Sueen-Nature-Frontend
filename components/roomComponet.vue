@@ -51,7 +51,7 @@
           />
         </svg>
 
-        <h6 class="mt-4 text-gray-300 text-xs">Fiber Wifi</h6>
+        <h6 class="mt-4 text-gray-300 text-xs"> Wifi</h6>
       </div>
       <div class="flex flex-col justify-center items-center">
         <svg
@@ -172,7 +172,8 @@
         </h5>
       </div>
       <!-- room detils section -->
-      <h3 class="text-black-200 md:text-4xl text-3xl text-center mt-10">
+      <div class="p-4">
+        <h3 class="text-black-200 md:text-4xl text-3xl text-center mt-10">
         Details
       </h3>
       <ul
@@ -202,6 +203,8 @@
           <strong>Features: </strong> {{ roomType.features }}
         </li>
       </ul>
+      </div>
+   
     </div>
     <!-- <div class="mt-8">
       <CheckoutAvailability />

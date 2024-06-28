@@ -7,14 +7,15 @@
     /> -->
     
       <swiper
-    :spaceBetween="30"
-    :navigation="true"
-    :autoplay="{ delay: 2500, disableOnInteraction: false }"
-    :pagination="{
-      clickable: true,
-    }"
-    :modules="modules"
-    class="mySwiper"
+          :spaceBetween="30"
+      :navigation="true"
+      :autoplay="{ delay: 2500, disableOnInteraction: false }"
+      :pagination="{ clickable: true }"
+      :loop="true"
+      :loopedSlides="5"
+      :loopAdditionalSlides="5"
+      :modules="modules"
+      class="mySwiper"
   >
     <swiper-slide
       ><img
@@ -34,7 +35,6 @@
   </swiper>
     
    
-    <!-- stiky navbar -->
     <nav
       class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
     >
@@ -47,12 +47,14 @@
         <div
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
         >
-          <button
-            data-collapse-toggle="navbar-cta-2"
+        <button
+            data-collapse-toggle="navbar-cta"
             type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-cta-2"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-transparent dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-cta"
             aria-expanded="false"
+             @click="toggleMenu"
+
           >
             <span class="sr-only">Open main menu</span>
             <svg
@@ -82,35 +84,42 @@
             <li>
               <a
                 href="/home"
-                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 rounded lg:bg-transparent hover:bg-gray-100 lg:text-white lg:dark:text-blue-500 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 rounded lg:bg-transparent hover:bg-slate-500  lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >
             </li>
             <li>
               <a
                 href="/about"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >About</a
               >
             </li>
             <li>
               <a
+                href="/additionalActivites"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                >Activities</a
+              >
+            </li>
+            <li>
+              <a
                 href="/services"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Services</a
               >
             </li>
             <!-- <li>
               <a
                 href="/news"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >News</a
               >
             </li> -->
             <li>
               <a
                 href="/rooms"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Rooms</a
               >
             </li>
@@ -118,7 +127,7 @@
             <li>
               <a
                 href="/contact"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Contact</a
               >
             </li>
@@ -126,7 +135,7 @@
               <a
               v-if ="userEmail && authToken"
           @click.prevent="redirectToDashboard"
-          class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+          class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
         >
           Profile
         </a>
@@ -137,14 +146,14 @@
           <div
             class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
           >
-            <a href="/booking">
+            <!-- <a href="/booking">
               <button
                 type="button"
                 class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
               >
                 Book Now
               </button>
-            </a>
+            </a> -->
 
             <button
               data-collapse-toggle="navbar-cta"
@@ -188,6 +197,13 @@
               <li>
                 <a
                   href="/about"
+                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/additionalActivites"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >About</a
                 >
@@ -423,6 +439,44 @@ export default {
     },
   },
   methods:{
+    toggleMenu() {
+    const button = document.querySelector('[data-collapse-toggle="navbar-cta"]');
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+    button.setAttribute('aria-expanded', String(!isOpen));
+
+    // Toggle the menu visibility
+    const menu = document.getElementById('navbar-cta-2');
+    menu.classList.toggle('hidden'); // Toggle the hidden class on the menu
+
+    // Update the SVG icon based on the isOpen state
+    const icon = button.querySelector('svg');
+
+    if (!isOpen) {
+      icon.innerHTML = `
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 1L1 13M1 1l12 12"
+        />
+      `;
+    } else {
+      icon.innerHTML = `
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"
+        />
+      `;
+    }
+  },
+
+
+
     setupToast(){
     toast.error("welcome to sda",{
       autoClose:1000,

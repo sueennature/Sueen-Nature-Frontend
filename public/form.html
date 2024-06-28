@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 25px;
+        }
+        .booking-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100vh;
+        }
+        .booking-form h2 {
+            margin-top: 0;
+        }
+        .booking-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .booking-form input,
+        .booking-form select {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .buttoncheck{
+            width: calc(100% - 20px);
+            padding: 10px;
+            background: gray;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 24px;
+        }
+        .buttonAvailable{
+            width: calc(100% - 20px);
+            padding: 10px;
+            background: gray;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 4px;
+            margin-bottom: 50px;
+        }
+        .total-price {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .book_part{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .vertical{
+            border-bottom: 2px solid black;
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="booking-form">
+        <h2>Room Booking</h2>
+        <label for="checkin">Check-in Date:</label>
+        <input type="date" id="checkin" name="checkin">
+        <label for="checkout">Check-out Date:</label>
+        <input type="date" id="checkout" name="checkout">
+        <label for="room_view">Room View:</label>
+        <select id="room_view" name="room_view">
+            <option value="garden">Garden View</option>
+        </select>  
+
+        <button  class="buttonAvailable">Check Availability</button>
+        <label for="room_type">Room Type:</label>
+
+        <select id="room_type" name="room_type">
+            <option>Single Room</option>
+            <option>Double Room</option>
+            <option>Triple Room</option>
+            <option>Family Room</option>
+        </select>
+          
+        <label for="meal_plan">Meal Plan:</label>
+        <select id="meal_plan" name="meal_plan">
+            <option>Full Board</option>
+            <option>Half Board</option>
+            <option>Bed and Breakfast</option>
+            <option>Room Only</option>
+        </select>
+        <label for="activities">Activities:</label>
+        <select id="activities" name="activities">
+            <option>Serene Boat Rides on the Nature Lake</option>
+            <option>Enjoy a Game of Billiards</option>
+            <option>State-of-the-Art Fitness Center</option>
+            <option>Fun-Filled Hand Football</option>
+            <option>Play Football Amidst Nature</option>
+            <option>Volleyball in the Open Air</option>
+            <option>Explore Local Attractions</option>
+        </select>    
+        <div class="book_part">
+            <div class="total-price" id="total-room-price">Total Room Price:</div>
+            <div class="total-price">$100,000</div>
+        </div>
+        <div class="book_part">
+            <div class="total-price" id="total-activities-price">Total Activities:</div>
+            <div class="total-price">$100,000</div>
+        </div>
+        <div class="vertical"></div>
+        <div class="book_part">
+            <div class="total-price" id="total-price">Total Price:</div>
+            <div class="total-price">$100,000</div>
+        </div>
+        <button type="button" class="buttoncheck">Proceed to pay</button>
+    </div>
+</body>
+</html>
