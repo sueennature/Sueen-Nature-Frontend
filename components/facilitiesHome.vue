@@ -100,11 +100,11 @@
             <h5
               class="my-2 text-xl font-semibold tracking-wider text-white dark:text-white"
             >
-              Fiber Wifi
+               Wifi
             </h5>
 
             <p class="font-normal text-white dark:text-gray-400">
-              Stay connected with high-speed fiber WiFi throughout your stay.
+              Stay connected with  WiFi throughout your stay.
             </p>
           </div>
         </div>

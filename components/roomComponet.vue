@@ -51,7 +51,7 @@
           />
         </svg>
 
-        <h6 class="mt-4 text-gray-300 text-xs">Fiber Wifi</h6>
+        <h6 class="mt-4 text-gray-300 text-xs"> Wifi</h6>
       </div>
       <div class="flex flex-col justify-center items-center">
         <svg
