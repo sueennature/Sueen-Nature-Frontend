@@ -63,7 +63,7 @@
     </h5>
     <h6 class="text-base text-black-200 mt-2 font-semibold">If booking is made through the internet payment gateway</h6>
     <p class="text-base text-gray-300 mt-2">
-      <span class="bg-orange-50">Please do not reply to your auto generated booking confirmation email.</span> Should you like to contact us regarding your reservation please email us on <span class="bg-orange-50">reservations@sueennature.com</span> and mention your booking reference number, including name and date. You can also call us on +(94) 34 330 7500 , +(94) 71 58 4000 <span class="bg-orange-50">(Monday to Saturday between 9.00am to 6.00pm and on Sundays from 9.00am to 2.00pm, excluding Sri Lankan holidays)</span>
+      <span class="bg-orange-50">Please do not reply to your auto generated booking confirmation email.</span> Should you like to contact us regarding your reservation please email us on <span class="bg-orange-50">reservations@sueennature.com</span> and mention your booking reference number, including name and date. You can also call us on +(94) 34 330 7500 , +(94) 71 584 0000 <span class="bg-orange-50">(Monday to Saturday between 9.00am to 6.00pm and on Sundays from 9.00am to 2.00pm, excluding Sri Lankan holidays)</span>
     </p>
     <h6 class="text-base text-black-200 mt-2 font-semibold">Rates</h6>
     <p class="text-base text-gray-300 mt-2">
