@@ -129,7 +129,7 @@
   </h2>
   <div id="accordion-color-body-10" class="hidden" aria-labelledby="accordion-color-heading-10">
     <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-      <p class="mb-2 text-black-200 dark:text-gray-400">You can contact us via email at sueennature@gmail.com or by phone at +(94) 34 330 7500 , +(94) 71 58 4000. Our staff will be happy to assist you with any further inquiries or assistance you may need.</p>
+      <p class="mb-2 text-black-200 dark:text-gray-400">You can contact us via email at sueennature@gmail.com or by phone at +(94) 34 330 7500 , +(94) 71 584 0000. Our staff will be happy to assist you with any further inquiries or assistance you may need.</p>
     </div>
   </div>
 </div>

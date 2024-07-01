@@ -94,7 +94,7 @@
         Contact Us
     </h5>
     <p class="text-base text-gray-300 mt-2">
-        For any inquiries or concerns regarding your personal data, please contact us at sueennature@gmail.com or call us at +(94) 34 330 7500 , +(94) 71 58 4000.
+        For any inquiries or concerns regarding your personal data, please contact us at sueennature@gmail.com or call us at +(94) 34 330 7500 , +(94) 71 584 0000.
     </p>
     <h5 class="text-black-200 md:text-3xl text-lg font-semibold text-left my-8">
         Changes to the Privacy Policy
