@@ -919,7 +919,7 @@ function createServerHead(options = {}) {
 
 const unheadPlugins = [];
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Discover Sueen Nature, a luxury resort offering breathtaking experiences in nature. Book your stay now and enjoy comfort and tranquility."},{"hid":"keywords","name":"keywords","content":"luxury resort, nature experiences, book your stay, resort room booking, enjoy your stay."},{"hid":"og:title","property":"og:title","content":"Sueen Nature - Luxury Resort | Book Your Stay Now"},{"hid":"og:description","property":"og:description","content":"Discover Sueen Nature, a luxury resort offering breathtaking experiences in nature. Book your stay now and enjoy comfort and tranquility."},{"hid":"og:image","property":"og:image","content":"/public/Logo.png"},{"hid":"og:url","property":"og:url","content":"https://sueennature.com"},{"hid":"robots","name":"robots","content":"index, follow"}],"link":[{"rel":"icon","type":"image/png","href":"/public/favicon.ico"}],"style":[],"script":[],"noscript":[],"title":"Sueen Nature - Luxury Resort | Book Your Stay Now","htmlAttrs":{"lang":"en"}};
 
 const appRootId = "__nuxt";
 

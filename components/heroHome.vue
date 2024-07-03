@@ -41,7 +41,7 @@
       <div
         class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
       >
-        <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
         </a>
         <div
@@ -83,7 +83,7 @@
           >
             <li>
               <a
-                href="/home"
+                href="/"
                 class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 rounded lg:bg-transparent hover:bg-slate-500  lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >
@@ -189,7 +189,7 @@
             >
               <li>
                 <a
-                  href="/home"
+                  href="/"
                   class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                   >Home</a
                 >
@@ -252,7 +252,7 @@
     <!-- <div class="absolute inset-0 bg-black-200 opacity-30 z-20"></div>  -->
     <!-- hero logo image -->
     <div class="absolute z-40 top-8 left-0 w-full md:flex hidden items-center">
-      <a href="/home" class="relative mx-auto">
+      <a href="/" class="relative mx-auto">
         <!-- Adjust mx-2 as needed for spacing -->
         <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
         <div
@@ -271,7 +271,7 @@
     >
       <div class="flex flex-row justify-center md:space-x-4 space-x-0">
         <a
-          href="/home"
+          href="/"
           aria-current="true"
           class="text-white font-semibold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
