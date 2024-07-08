@@ -4,7 +4,7 @@
     <div class="grid xl:grid-cols-3 grid-cols-1 justify-items-center gap-8">
       
       <div class="max-w-xl mt-16">
-        <img src="/img/IMG_9019.jpg" alt="restaurantImg" style="height: auto; max-height: 230px; width: 100%;" />
+        <img src="/img/image_dining.png" alt="resturantImg" class="" />
         <div class="h-96 flex flex-col items-center p-8 bg-gray-500 rounded-lg shadow-lg space-y-4 dark:bg-gray-800 dark:border-gray-700 flex-grow rounded-t-sm">
 
             <h6
