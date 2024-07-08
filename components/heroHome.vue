@@ -521,7 +521,7 @@ export default {
         swiper.params.autoplay.delay = 30000; // 10 seconds delay for video slide
         videoElement.play();
       } else {
-        swiper.params.autoplay.delay = 2000; // 5 seconds delay for other slides
+        swiper.params.autoplay.delay = 10000; // 5 seconds delay for other slides
         videoElement.pause();
       }
       swiper.autoplay.start();
