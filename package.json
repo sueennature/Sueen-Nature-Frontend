@@ -21,6 +21,7 @@
     "@nuxtjs/dotenv": "^1.4.2",
     "@splidejs/vue-splide": "^0.6.12",
     "@vuepic/vue-datepicker": "^8.2.0",
+    "@vueuse/head": "^2.0.0",
     "axios": "^1.6.8",
     "cookie-universal-nuxt": "^2.2.2",
     "flowbite": "^2.3.0",

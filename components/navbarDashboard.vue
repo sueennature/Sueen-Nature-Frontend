@@ -1,7 +1,7 @@
 <template>
   <nav class="bg-black-200 z-40 dark:bg-gray-900 fixed w-full border-none dark:border-gray-600 md:px-20 px-0">
     <div class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
       </a>
       <div class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
@@ -42,7 +42,7 @@
       <div :class="{ hidden: !isMenuOpen, flex: isMenuOpen }" class="lg:hidden items-center justify-between w-full lg:w-auto lg:order-1" id="navbar-cta">
         <ul class="flex flex-col font-medium w-full p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700">
           <li>
-            <a href="/home" class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 hover:bg-slate-500  rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase">Home</a>
+            <a href="/" class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 hover:bg-slate-500  rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase">Home</a>
           </li>
           <li>
             <a href="/about" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">About</a>
@@ -99,7 +99,7 @@
         <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="navbar-cta">
           <ul class="flex flex-col font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a href="/home" class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase">Home</a>
+              <a href="/" class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase">Home</a>
             </li>
             <li>
               <a href="/about" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">About</a>

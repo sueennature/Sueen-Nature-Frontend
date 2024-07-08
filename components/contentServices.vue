@@ -2,12 +2,11 @@
   <div class="sm:container px-4 py-20">
     <!-- services card section -->
     <div class="grid xl:grid-cols-3 grid-cols-1 justify-items-center gap-8">
+      
       <div class="max-w-xl mt-16">
-        
-          <img src="/img/image_dining.png" alt="resturantImg" class="" />
-          <div
-            class="h-96 flex flex-col items-center p-8 bg-gray-500 borde-none rounded-none shadow space-y-4 dark:bg-gray-800 dark:border-gray-700"
-          >
+        <img src="/img/IMG_9019.jpg" alt="restaurantImg" style="height: auto; max-height: 230px; width: 100%;" />
+        <div class="h-96 flex flex-col items-center p-8 bg-gray-500 rounded-lg shadow-lg space-y-4 dark:bg-gray-800 dark:border-gray-700 flex-grow rounded-t-sm">
+
             <h6
               class="2xl:text-4xl text-xl font-bold text-gray-900 dark:text-white tracking-widest uppercase text-center md:text-left"
             >
@@ -601,12 +600,12 @@
 
     <!-- image gallery -->
     <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-36">
-      <img src="/img/service-1.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-2.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-3.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-4.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-5.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-6.png" alt="servicesImg" class="max-w-full" />
+      <img src="/img/IMG_0302.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/IMG_0712.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/CM4A8505.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/IMG_0675.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/IMG_0443.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/IMG_0698.jpg" alt="servicesImg" class="max-w-full max-h-full" />
     </div>
   </div>
 </template>

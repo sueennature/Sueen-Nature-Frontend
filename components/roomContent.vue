@@ -16,13 +16,11 @@
         <span class="border-t border-black w-1/4 mx-4"></span>
       </div>
     
-      <div class="overflow-hidden rounded-lg aspect-ratio-box">
   <img
     :src="`https://admin.sueennature.com/uploads/${Object.values(roomType.images)[0]}`"
     alt="roomImg"
     class="w-full h-full object-cover"
   />
-</div>
       <div class="flex flex-row gap-4 justify-center mt-2">
         <h5 class="md:text-sm text-xs text-black-200 pl-4">
           Size: <span class="italic">{{roomType.size}}m<sup>2</sup></span>

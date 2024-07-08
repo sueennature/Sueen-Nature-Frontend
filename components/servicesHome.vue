@@ -47,7 +47,7 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                  src="/img/sueen-resturant 1.webp"
+                  src="/img/IMG_0575.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
@@ -58,7 +58,7 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                  src="/img/sueen-resturant 2.webp"
+                  src="/img/IMG_0580.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
@@ -69,7 +69,7 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                  src="/img/sueen-resturant 3.webp"
+                  src="/img/IMG_0590.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
@@ -80,7 +80,7 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                  src="/img/sueen-resturant 4.webp"
+                  src="/img/IMG_0592.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
@@ -91,7 +91,7 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                  src="/img/sueen-resturant 5.webp"
+                  src="/img/IMG_0594.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
@@ -102,7 +102,51 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                  src="/img/sueen-resturant 6.webp"
+                  src="/img/IMG_0596.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                  src="/img/IMG_0600.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                  src="/img/IMG_0607.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                  src="/img/IMG_0626.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                  src="/img/IMG_0640.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
@@ -111,8 +155,8 @@
             </swiper-slide>
           </swiper>
         </div>
-       
       </div>
+
       <div class="flex flex-col items-center lg:flex-row mt-8 p-4 gap-4">
         <div class="flex-1 w-[45vh] h-[40vh] flex">
           <swiper
@@ -130,7 +174,7 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                    src="/img/sueen-banquet 1.webp"
+                    src="/img/IMG_0762-Edit.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
@@ -141,7 +185,7 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                    src="/img/sueen-banquet 2.webp"
+                    src="/img/IMG_0763.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
@@ -152,7 +196,62 @@
               <div class="flex lg:flex-row flex-col h-full w-full">
                 <div class="w-full h-full">
                   <img
-                    src="/img/sueen-banquet 3.webp"
+                    src="/img/IMG_0774-Edit.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                    src="/img/IMG_0784.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                    src="/img/IMG_0790.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                    src="/img/IMG_0797-Edit.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                    src="/img/IMG_0803.jpg"
+                    alt="RestaurantImg"
+                    class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
+                  />
+                </div>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="flex lg:flex-row flex-col h-full w-full">
+                <div class="w-full h-full">
+                  <img
+                    src="/img/IMG_0803-Edit.jpg"
                     alt="RestaurantImg"
                     class="object-cover h-full w-full rounded-b-md lg:rounded-r-md"
                   />
