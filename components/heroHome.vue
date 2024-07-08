@@ -6,55 +6,79 @@
       class="w-full min-h-screen object-cover"
     /> -->
     
-      <swiper
-          :spaceBetween="30"
-      :navigation="true"
-      :autoplay="{ delay: 7500, disableOnInteraction: false }"
-      :pagination="{ clickable: true }"
-      :loop="true"
-      :loopedSlides="5"
-      :loopAdditionalSlides="5"
-      :modules="modules"
-      class="mySwiper"
+    <swiper
+    :spaceBetween="30"
+    :autoplay="autoplayConfig"
+    :navigation="true"
+    :pagination="{
+      clickable: true,
+    }"
+    :modules="modules"
+    class="mySwiper"
+    @slideChange="onSlideChange"
   >
-    <swiper-slide
-      ><img
-        src="/img/hero-home 1.webp" class="object-cover w-full min-h-screen" /></swiper-slide
-    ><swiper-slide
-      ><img
-        src="/img/hero-home 2.webp" class="object-cover w-full min-h-screen" /></swiper-slide
-    ><swiper-slide
-      ><img
-        src="/img/hero-home 3.webp" class="object-cover w-full min-h-screen" /></swiper-slide
-    ><swiper-slide
-      ><img src="/img/hero-home 4.webp" class="object-cover w-full min-h-screen"
-    /></swiper-slide>
-    <swiper-slide
-      ><img src="/img/hero-home 5.webp" class="object-cover w-full min-h-screen"
-    /></swiper-slide>
+    <swiper-slide>
+      <video
+        ref="video"
+        src="/img/home_video.mp4"
+        class="object-cover w-full min-h-screen"
+        autoplay
+        muted
+        loop
+      ></video>
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 1.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 2.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 3.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 4.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 5.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
   </swiper>
     
    
+    <!-- stiky navbar -->
     <nav
       class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
     >
       <div
         class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
       >
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
         </a>
         <div
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
         >
-        <button
-            data-collapse-toggle="navbar-cta"
+          <button
+            data-collapse-toggle="navbar-cta-2"
             type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-transparent dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-cta"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-cta-2"
             aria-expanded="false"
-             @click="toggleMenu"
-
           >
             <span class="sr-only">Open main menu</span>
             <svg
@@ -84,42 +108,35 @@
             <li>
               <a
                 href="/"
-                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 rounded lg:bg-transparent hover:bg-slate-500  lg:text-white lg:dark:text-blue-500 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 rounded lg:bg-transparent hover:bg-gray-100 lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >
             </li>
             <li>
               <a
                 href="/about"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >About</a
               >
             </li>
             <li>
               <a
-                href="/additionalActivites"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Activities</a
-              >
-            </li>
-            <li>
-              <a
                 href="/services"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Services</a
               >
             </li>
             <!-- <li>
               <a
                 href="/news"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >News</a
               >
             </li> -->
             <li>
               <a
                 href="/rooms"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Rooms</a
               >
             </li>
@@ -127,15 +144,15 @@
             <li>
               <a
                 href="/contact"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Contact</a
               >
             </li>
             <li>
               <a
-              v-if ="userEmail && authToken"
+          v-if ="userEmail"
           @click.prevent="redirectToDashboard"
-          class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+          class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
         >
           Profile
         </a>
@@ -146,14 +163,14 @@
           <div
             class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
           >
-            <!-- <a href="/booking">
+            <a href="/booking">
               <button
                 type="button"
                 class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
               >
                 Book Now
               </button>
-            </a> -->
+            </a>
 
             <button
               data-collapse-toggle="navbar-cta"
@@ -197,13 +214,6 @@
               <li>
                 <a
                   href="/about"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/additionalActivites"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >About</a
                 >
@@ -316,7 +326,7 @@
           Contact
         </a>
         <a
-        v-if ="userEmail && authToken"
+          v-if ="userEmail"
           @click.prevent="redirectToDashboard"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
@@ -392,17 +402,14 @@
 </template>
   
 <script>
-import {toast} from 'vue3-toastify';
+import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { EffectFade, Navigation, Pagination,Autoplay } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
 
-
-  // Import Swiper styles
-  
 export default {
   components: {
     Swiper,
@@ -418,86 +425,49 @@ export default {
       view_type_id: null,
       view_types: [],
       filteredViews: [],
-      modules: [EffectFade, Navigation, Pagination,Autoplay],
+      modules: [EffectFade, Navigation, Pagination, Autoplay],
+      autoplayConfig: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
     };
   },
+  
   computed: {
     filteredRooms() {
       if (!this.room_type_id) return [];
       return this.rooms.filter(room => room.room_type_id === this.room_type_id);
     },
     userEmail() {
-      return localStorage?.getItem('userEmail');
-    },
-    authToken(){
-      const cookies = document.cookie.split(";");
-      const authTokenCookie = cookies.find((cookie) =>
-        cookie.trim().startsWith("auth_token=")
-      );
-      return  authTokenCookie?.split("=")[1];
-
-    },
-  },
-  methods:{
-    toggleMenu() {
-    const button = document.querySelector('[data-collapse-toggle="navbar-cta"]');
-    const isOpen = button.getAttribute('aria-expanded') === 'true';
-
-    button.setAttribute('aria-expanded', String(!isOpen));
-
-    // Toggle the menu visibility
-    const menu = document.getElementById('navbar-cta-2');
-    menu.classList.toggle('hidden'); // Toggle the hidden class on the menu
-
-    // Update the SVG icon based on the isOpen state
-    const icon = button.querySelector('svg');
-
-    if (!isOpen) {
-      icon.innerHTML = `
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M13 1L1 13M1 1l12 12"
-        />
-      `;
-    } else {
-      icon.innerHTML = `
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M1 1h15M1 7h15M1 13h15"
-        />
-      `;
+      return localStorage.getItem('userEmail');
     }
   },
-
-
-
-    setupToast(){
-    toast.error("welcome to sda",{
-      autoClose:1000,
-    })
-  },
-  redirectToDashboard() {
+  
+  methods: {
+    setupToast() {
+      toast.error("welcome to sda", {
+        autoClose: 1000,
+      });
+    },
+    
+    redirectToDashboard() {
       if (this.userEmail) {
         this.$router.push({ path: '/dashboard', query: { email: this.userEmail } });
       }
     },
-  
-  updateAvailableRooms() {
+    
+    updateAvailableRooms() {
       const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
       this.filteredViews = selectedRoom ? selectedRoom.views : [];
       this.view_type_id = null;
-  },
+    },
+    
     async checkAvailability() {
-      if (!this.check_in || !this.check_out || !this.room_type_id || !this.view_type_id ) {
-      this.setupToast("Please fill in all fields.");
-      return; 
-    }
+      if (!this.check_in || !this.check_out || !this.room_type_id || !this.view_type_id) {
+        this.setupToast("Please fill in all fields.");
+        return; 
+      }
+
       const body = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -513,34 +483,51 @@ export default {
         const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
         const data = await response.json();
         if (response.status === 200) {
-           await this.$router.push({
-                path: '/booking',
-                query: {
-                    check_in: this.check_in,
-                    check_out: this.check_out,
-                    roomTypeId: this.room_type_id,
-                    viewTypeId: this.view_type_id
-                }
-            });
-            window.location.reload();
+          await this.$router.push({
+            path: '/booking',
+            query: {
+              check_in: this.check_in,
+              check_out: this.check_out,
+              roomTypeId: this.room_type_id,
+              viewTypeId: this.view_type_id
+            }
+          });
+          window.location.reload();
         } else {
-            window.alert("The room is not available");
+          window.alert("The room is not available");
         } 
       } catch (error) {
         window.alert(error);
       }
     },
+    
     setupToast(message) {
-    toast.error(message, {
-      autoClose: 3000, 
-    });
+      toast.error(message, {
+        autoClose: 3000, 
+      });
+    },
+    
+    setupToastSuccess(message) {
+      toast.success(message, {
+        autoClose: 3000, 
+      });
+    },
+    
+    onSlideChange(swiper) {
+      const activeSlide = swiper.slides[swiper.activeIndex];
+      const videoElement = this.$refs.video;
+
+      if (activeSlide.contains(videoElement)) {
+        swiper.params.autoplay.delay = 30000; // 10 seconds delay for video slide
+        videoElement.play();
+      } else {
+        swiper.params.autoplay.delay = 2000; // 5 seconds delay for other slides
+        videoElement.pause();
+      }
+      swiper.autoplay.start();
+    },
   },
-  setupToastSucess(message) {
-    toast.success(message, {
-      autoClose: 3000, 
-    });
-  },
-},
+  
   mounted() {
     Promise.all([
       import("flowbite-datepicker/Datepicker"),
@@ -549,14 +536,15 @@ export default {
       const datepickerEl1 = this.$refs.datepicker1;
       const datepickerEl2 = this.$refs.datepicker2;
       new DatePicker1.default(datepickerEl1, {
-        autohide: true, // This will enable autohide feature for the first datepicker
-        orientation: "bottom right", // Set orientation for the first datepicker
+        autohide: true,
+        orientation: "bottom right",
       });
       new DatePicker2.default(datepickerEl2, {
-        autohide: true, // This will enable autohide feature for the second datepicker
-        orientation: "bottom right", // Set orientation for the second datepicker
+        autohide: true,
+        orientation: "bottom right",
       });
     });
+    
     fetch('https://admin.sueennature.com/api/getRoomTypes')
       .then((response) => {
         if (!response.ok) {
@@ -566,11 +554,11 @@ export default {
       })
       .then((data) => {
         this.room_types = data.room_types;
-        console.log("Data", this.room_types)
+        console.log("Data", this.room_types);
       })
       .catch((error) => {
         console.error('There has been a problem with your fetch operation:', error);
-    });
+      });
   },
 };
 </script>

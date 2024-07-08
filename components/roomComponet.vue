@@ -51,7 +51,7 @@
           />
         </svg>
 
-        <h6 class="mt-4 text-gray-300 text-xs"> Wifi</h6>
+        <h6 class="mt-4 text-gray-300 text-xs">Wifi</h6>
       </div>
       <div class="flex flex-col justify-center items-center">
         <svg
@@ -115,40 +115,178 @@
       will enjoy their experience in Riga, and take with them many fond memories
       of this historic city.
     </p>
-    <!-- single room slider -->
-    <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
-      <div id="main-slider" class="splide">
-        <div class="splide__track">
-          <ul class="splide__list">
-            <li
-              v-for="(slide, index) in slides"
-              :key="index"
-              class="splide__slide"
-            >
-              <img :src="slide.src" :alt="slide.alt" />
-            </li>
-          </ul>
+    <div v-for="roomType in matchedRoomTypes" :key="roomType.id">
+
+      <div v-if="roomType.name === 'Double Room'"> 
+        <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
+        <div id="main-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slidesDouble"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <div id="thumbnail-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slidesDouble"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       </div>
 
-      <div id="thumbnail-slider" class="splide">
-        <div class="splide__track">
-          <ul class="splide__list">
-            <li
-              v-for="(slide, index) in slides"
-              :key="index"
-              class="splide__slide"
-            >
-              <img :src="slide.src" :alt="slide.alt" />
-            </li>
-          </ul>
+      <div v-else-if="roomType.name === 'Single Room'">
+         <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
+        <div id="main-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slidesSingle"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="thumbnail-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slidesSingle"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+      </div>
+
+      <div v-else-if="roomType.name === 'Triple Room'">
+         <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
+        <div id="main-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slidesTriple"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="thumbnail-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slidesTriple"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div>
+      
+      <div v-else-if="roomType.name === 'Family Room'">
+         <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
+        <div id="main-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slidesFamily"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="thumbnail-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slidesFamily"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+      <!-- Dynamic -->
+<!-- 
+      <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
+        <div id="main-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slides"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="thumbnail-slider" class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li
+                v-for="(slide, index) in slides"
+                :key="index"
+                class="splide__slide"
+              >
+                <img :src="slide.src" :alt="slide.alt" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
     </div>
-    <div v-for="roomType in matchedRoomTypes" :key="roomType.id" class="flex flex-col items-center">
+    <div
+      v-for="roomType in matchedRoomTypes"
+      :key="roomType.id"
+      class="flex flex-col items-center"
+    >
       <div class="flex flex-row gap-4 justify-center mt-4">
         <h5 class="md:text-sm text-xs text-black-200 pl-4">
-          Size: <span class="italic">{{roomType.size}}m<sup>2</sup></span>
+          Size: <span class="italic">{{ roomType.size }}m<sup>2</sup></span>
         </h5>
         <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
           Bed: 01 Queen
@@ -174,37 +312,38 @@
       <!-- room detils section -->
       <div class="p-4">
         <h3 class="text-black-200 md:text-4xl text-3xl text-center mt-10">
-        Details
-      </h3>
-      <ul
-        class="max-w-md text-base space-y-4 text-black-200 list-disc dark:text-gray-400 mx-auto mt-10 list-outside"
-      >
-        <li><strong>Beds:</strong>{{ roomType.beds }}</li>
-        <li><strong>Size:</strong> {{ roomType.size }}m<sup>2</sup></li>          
+          Details
+        </h3>
+        <ul
+          class="max-w-md text-base space-y-4 text-black-200 list-disc dark:text-gray-400 mx-auto mt-10 list-outside"
+        >
+          <li><strong>Beds:</strong>{{ roomType.beds }}</li>
+          <li><strong>Size:</strong> {{ roomType.size }}m<sup>2</sup></li>
 
-        <li>
-          <strong>Views: </strong>
-          <span v-for="(view, index) in roomType.views" :key="index">
-            {{ view.view }}{{ index !== roomType.views.length - 1 ? ", " : "" }}
-          </span>
-        </li>
-        <li><strong>Occupancy:</strong> 
-          Max adult{{ roomType.max_adults > 1 ? "s" : "" }}
-          {{ roomType.max_adults }}
-          {{
-            roomType.max_childs
-              ? ", Max Children " +
-                roomType.max_childs +
-                (roomType.max_childs > 1 ? " " : " ")
-              : ""
-          }}</li>
-        <li><strong>Bathroom: </strong>{{ roomType.bathroom }}</li>
-        <li>
-          <strong>Features: </strong> {{ roomType.features }}
-        </li>
-      </ul>
+          <li>
+            <strong>Views: </strong>
+            <span v-for="(view, index) in roomType.views" :key="index">
+              {{ view.view
+              }}{{ index !== roomType.views.length - 1 ? ", " : "" }}
+            </span>
+          </li>
+          <li>
+            <strong>Occupancy:</strong> Max adult{{
+              roomType.max_adults > 1 ? "s" : ""
+            }}
+            {{ roomType.max_adults }}
+            {{
+              roomType.max_childs
+                ? ", Max Children " +
+                  roomType.max_childs +
+                  (roomType.max_childs > 1 ? " " : " ")
+                : ""
+            }}
+          </li>
+          <li><strong>Bathroom: </strong>{{ roomType.bathroom }}</li>
+          <li><strong>Features: </strong> {{ roomType.features }}</li>
+        </ul>
       </div>
-   
     </div>
     <!-- <div class="mt-8">
       <CheckoutAvailability />
@@ -220,18 +359,22 @@
       <div
         v-for="(room, index) in nonMatchedRoomTypes"
         :key="index"
-        class="flex flex-col gap-4  mt-4"
+        class="flex flex-col gap-4 mt-4"
       >
         <img
-          :src="`https://admin.sueennature.com/uploads/${Object.values(room.images)[0]}`"
+          :src="`https://admin.sueennature.com/uploads/${
+            Object.values(room.images)[0]
+          }`"
           alt="roomImg"
           class="h-60 max-w-72"
         />
-        <h3 class="text-xl text-black-200 font-medium lg:text-center items-center text-center gap-4">
+        <h3
+          class="text-xl text-black-200 font-medium lg:text-center items-center text-center gap-4"
+        >
           {{ room.name }}
         </h3>
         <h6
-          class="text-sm text-black-200 font-light  lg:mx-auto lg:text-center text-center "
+          class="text-sm text-black-200 font-light lg:mx-auto lg:text-center text-center"
         >
           {{ room.description }}
         </h6>
@@ -261,98 +404,136 @@ export default defineComponent({
   setup() {
     const matchedRoomTypes = ref([]);
     const nonMatchedRoomTypes = ref([]);
-    const slides = ref([]);
 
+    // Double
+    const slidesDouble = ref([
+      { src: "/img/IMG_0384.jpg", alt: "Image 1" },
+      { src: "/img/IMG_0386.jpg", alt: "Image 2" },
+      { src: "/img/IMG_0393.jpg", alt: "Image 3" },
+      { src: "/img/IMG_0399.jpg", alt: "Image 3" },
+      { src: "/img/IMG_0430.jpg", alt: "Image 3" },
+      { src: "/img/IMG_0507.jpg", alt: "Image 3" },
+      { src: "/img/IMG_0532.jpg", alt: "Image 3" },
+    ]);
+
+    //Single
+    const slidesSingle = ref([
+      { src: "/img/IMG_0426.jpg", alt: "Image 1" },
+      { src: "/img/IMG_0380-Edit.jpg", alt: "Image 2" },
+      { src: "/img/IMG_0403.jpg", alt: "Image 3" },
+    ]);
+
+  //Triple
+  const slidesTriple = ref([
+      { src: "/img/IMG_0472.jpg", alt: "Image 1" },
+      { src: "/img/IMG_0475.jpg", alt: "Image 2" },
+      { src: "/img/IMG_0507.jpg", alt: "Image 3" },
+      { src: "/img/PXL_20231207_101424899 copy 2.jpg", alt: "Image 4" },
+
+    ]);
+
+  //Family
+  const slidesFamily = ref([
+      { src: "/img/IMG_0473.jpg", alt: "Image 1" },
+      { src: "/img/IMG_0489.jpg", alt: "Image 2" },
+      { src: "/img/IMG_0490.jpg", alt: "Image 3" },
+      { src: "/img/IMG_0511.jpg", alt: "Image 4" },
+
+    ]);
     const route = useRoute();
     const router = useRouter();
 
     const navigateToRoomTypePage = (roomTypeName) => {
       router.push({ name: "room", query: { name: roomTypeName } });
     };
-  
-      const initializeCarousels = () => {
-        const mainSliderElement = document.getElementById("main-slider");
-        const thumbnailSliderElement = document.getElementById("thumbnail-slider");
-  
-        if (mainSliderElement && thumbnailSliderElement) {
-          const main = new Splide(mainSliderElement, {
-            type: "fade",
-            heightRatio: 0.5,
-            pagination: false,
-            arrows: false,
-            cover: true,
-          });
-  
-          const thumbnails = new Splide(thumbnailSliderElement, {
-            rewind: true,
-            fixedWidth: 80,
-            fixedHeight: 45,
-            isNavigation: true,
-            gap: 10,
-            focus: "center",
-            pagination: false,
-            cover: true,
-            dragMinThreshold: {
-              mouse: 4,
-              touch: 10,
-            },
-            breakpoints: {
-              640: {
-                fixedWidth: 50,
-                fixedHeight: 30,
-              },
-            },
-          });
-  
-          main.sync(thumbnails);
-          main.mount();
-          thumbnails.mount();
-        }
-      };
-    onMounted(() => {
-      
 
+    const initializeCarousels = () => {
+      const mainSliderElement = document.getElementById("main-slider");
+      const thumbnailSliderElement =
+        document.getElementById("thumbnail-slider");
+
+      if (mainSliderElement && thumbnailSliderElement) {
+        const main = new Splide(mainSliderElement, {
+          type: "fade",
+          heightRatio: 0.5,
+          pagination: false,
+          arrows: false,
+          cover: true,
+        });
+
+        const thumbnails = new Splide(thumbnailSliderElement, {
+          rewind: true,
+          fixedWidth: 80,
+          fixedHeight: 45,
+          isNavigation: true,
+          gap: 10,
+          focus: "center",
+          pagination: false,
+          cover: true,
+          dragMinThreshold: {
+            mouse: 4,
+            touch: 10,
+          },
+          breakpoints: {
+            640: {
+              fixedWidth: 50,
+              fixedHeight: 30,
+            },
+          },
+        });
+
+        main.sync(thumbnails);
+        main.mount();
+        thumbnails.mount();
+      }
+    };
+    onMounted(() => {
       fetchData();
     });
     const fetchData = async () => {
-        const roomId = route.query.name;
-  
-        try {
-          const response = await fetch("https://admin.sueennature.com/api/getRoomTypes");
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          const data = await response.json();
-  
-          matchedRoomTypes.value = data.room_types.filter(
-            (room) => room.id == roomId
-          );
-  
-          nonMatchedRoomTypes.value = data.room_types.filter(
-            (room) => room.id != roomId
-          );
-  
-          if (matchedRoomTypes.value.length > 0) {
-            const matchedRoom = matchedRoomTypes.value[0];
-            slides.value = Object.values(matchedRoom.images).map((image) => ({
-              src: `https://admin.sueennature.com/uploads/${image}`,
-              alt: matchedRoom.name,
-            }));
-  
-            // Initialize carousels after slides are set
-            nextTick(() => {
-              initializeCarousels();
-            });
-          }
-        } catch (error) {
-          console.error("There was a problem with the fetch operation:", error);
+      const roomId = route.query.name;
+
+      try {
+        const response = await fetch(
+          "https://admin.sueennature.com/api/getRoomTypes"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
-      };
+        const data = await response.json();
+
+        matchedRoomTypes.value = data.room_types.filter(
+          (room) => room.id == roomId
+        );
+
+        nonMatchedRoomTypes.value = data.room_types.filter(
+          (room) => room.id != roomId
+        );
+
+        if (matchedRoomTypes.value.length > 0) {
+          const matchedRoom = matchedRoomTypes.value[0];
+          // slides.value = Object.values(matchedRoom.images).map((image) => ({
+          //   src: `https://admin.sueennature.com/uploads/${image}`,
+          //   alt: matchedRoom.name,
+          // }));
+
+          // Initialize carousels after slides are set
+          nextTick(() => {
+            initializeCarousels();
+          });
+        }
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+      }
+    };
 
     watch(() => route.query.name, fetchData);
 
     return {
-      slides,
+      slidesDouble,
+      slidesSingle,
+      slidesTriple,
+      slidesFamily,
       matchedRoomTypes,
       nonMatchedRoomTypes,
       navigateToRoomTypePage,
@@ -374,13 +555,11 @@ ul li {
 }
 .splide__slide img {
   display: block;
-  width: 100%; 
+  width: 100%;
   height: auto;
   max-width: 600px;
-  max-height: 400px; 
-  margin: 0 auto; 
-  object-fit: cover; 
+  max-height: 400px;
+  margin: 0 auto;
+  object-fit: cover;
 }
-
-
 </style>
