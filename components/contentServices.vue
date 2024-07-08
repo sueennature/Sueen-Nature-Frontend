@@ -600,12 +600,12 @@
 
     <!-- image gallery -->
     <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-36">
-      <img src="/img/service-1.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-2.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-3.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-4.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-5.png" alt="servicesImg" class="max-w-full" />
-      <img src="/img/service-6.png" alt="servicesImg" class="max-w-full" />
+      <img src="/img/IMG_0302.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/IMG_0712.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/CM4A8505.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/IMG_0675.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/IMG_0443.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img src="/img/IMG_0698.jpg" alt="servicesImg" class="max-w-full max-h-full" />
     </div>
   </div>
 </template>
