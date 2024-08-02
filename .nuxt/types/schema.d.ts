@@ -18,7 +18,7 @@ declare module 'nuxt/schema' {
    },
   }
   interface PublicRuntimeConfig {
-   apiBaseUrl: string,
+   DATABASE_ID: string,
 
    googleSignIn: {
       clientId: string,

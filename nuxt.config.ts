@@ -2,12 +2,16 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
+  env: {
+    NUXT_ENV_MY_VAR: process.env.NUXT_ENV_MY_VAR
+  },
   app: {
     head: {
       title: 'Sueen Nature - Luxury Resort | Book Your Stay Now',
       htmlAttrs: {
         lang: 'en',
       },
+      
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -57,7 +61,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:8000/api'
+      DATABASE_ID: process.env.NUXT_DATABASE_ID,
     }
   },
   plugins: [

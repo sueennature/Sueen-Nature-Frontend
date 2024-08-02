@@ -7,7 +7,7 @@
       
       <div v-else v-for="service in services" :key="service.id" class="max-w-xl mt-16 flex flex-col">
         <img 
-          :src="`https://admin.sueennature.com/uploads/${service.image}`" 
+          :src="service.images" 
           alt="serviceImg" 
           class="flex-grow object-cover rounded-t-md"
         />
@@ -46,19 +46,26 @@ import { ref, onMounted } from 'vue';
 const services = ref([]);
 const error = ref(null);
 const isLoading = ref(false);
+const runtimeConfig = useRuntimeConfig();
 
 const fetchData = async () => {
-  isLoading.value = true; 
+  isLoading.value = true;
   try {
-    const response = await axios.get('https://admin.sueennature.com/api/get-services');
-    services.value = response.data.services;
+    const response = await axios.get('https://api.sueennature.com/activities', {
+      headers: {
+        "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
+      }
+    });
+    services.value =  response.data.data;
+    console.log("AS", response.data.data)
   } catch (error) {
     console.error('Error fetching data:', error);
     error.value = 'Failed to fetch services. Please try again later.';
   } finally {
-    isLoading.value = false; 
+    isLoading.value = false;
   }
 };
+
 
 onMounted(() => {
   fetchData();
