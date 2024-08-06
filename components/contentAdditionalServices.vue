@@ -7,10 +7,10 @@
       
       <div v-else v-for="service in services" :key="service.id" class="max-w-xl mt-16 flex flex-col">
         <img 
-          :src="service.images" 
-          alt="serviceImg" 
-          class="flex-grow object-cover rounded-t-md"
-        />
+    :src="service.media[0] ? `https://api.sueennature.com/${service.media[0]}` : ''" 
+    alt="serviceImg" 
+    class="flex-grow object-cover rounded-t-md"
+  />
         <div class="h-96 flex flex-col items-center p-8 bg-gray-500 rounded-lg shadow-lg space-y-4 dark:bg-gray-800 dark:border-gray-700 flex-grow rounded-t-sm">
           <h3 class="2xl:text-4xl text-2xl text-black-200">{{ service.name }}</h3>
           <p class="font-extralight text-base text-center text-black-200 dark:text-gray-400 mt-4">

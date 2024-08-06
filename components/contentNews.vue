@@ -7,7 +7,7 @@
       
       <div v-else v-for="service in services" :key="service.id" class="max-w-xl mt-16 flex flex-col">
         <img 
-          :src="service.images" 
+          :src="`https://api.sueennature.com/${service.images[0]}`" 
           alt="serviceImg" 
           class="flex-grow object-cover rounded-t-md"
         />

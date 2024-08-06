@@ -335,7 +335,7 @@
       </div>
     </div>
     <!-- main hero booking options selector -->
-    <!-- <div
+    <div
       class="absolute z-40 inset-x-0 bottom-32 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4 "
     >
       <div
@@ -397,7 +397,7 @@
         </button>
 
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
   
