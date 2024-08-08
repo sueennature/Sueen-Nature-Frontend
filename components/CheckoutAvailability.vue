@@ -31,19 +31,16 @@
           <select
             id="room"
             class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="room_type_id"
-          >
-            <option :value="null" selected class="text-gray-300">
-              Choose a Room
-            </option>
-            <option
-              v-for="room in room_types"
-              :value="room.id"
-              :key="room.id"
-              class="text-black-200"
+            v-model="roomCategory"
             >
-              {{ room.name }}
-            </option>
+            <option :value="null"  disabled>
+      Choose a Room
+    </option>
+    <option value="Single" class="text-gray-900">Single</option>
+    <option value="Deluxe" class="text-gray-900">Deluxe</option>
+    <option value="Double" class="text-gray-900">Double</option>
+    <option value="Family" class="text-gray-900">Family</option>
+    <option value="Triple" class="text-gray-900">Triple</option>
           </select>
         </form>
         <div class="w-0.5 bg-white h-8 my-auto lg:flex hidden"></div>
@@ -51,12 +48,25 @@
           <select
             id="view"
             class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="view_type_id"
+            v-model="roomView"
           >
-          <option :value="null" disabled selected class="text-gray-300">Choose Room View</option>
-<option v-for="view in filteredViews" :value="view.id" :key="view.id" class="text-black-200">{{ view.view }}</option>
+          <option :value="null" disabled selected class="text-gray-900">
+              Choose Room View
+            </option>
+            <option value="LAKE" class="text-gray-900">LAKE</option>
+            <option value="MOUNTAIN" class="text-gray-900">MOUNTAIN</option>
 
           </select>
+        </form>
+        <div class="w-0.5 bg-white h-8 my-auto lg:flex hidden"></div>
+
+        <form class="lg:max-w-sm lg:mx-auto">
+          <input
+            v-model="discount_code"
+            type="text"
+            placeholder="Discount"
+            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
         </form>
       </div>
       <button
@@ -79,166 +89,120 @@
 <script>
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+
 export default {
   data() {
     return {
       check_in: "",
       check_out: "",
-      room_type_id: null,
-      room_types: [],
-      rooms: [],
-      view_type_id: null,
-      view_types: [],
-      selectedView: null,
-
+      roomCategory: null,  
+      roomView: null,
+      discount_code: "",
     };
   },
-  computed: {
-  filteredViews() {
-    if (!this.room_type_id) return [];
-    const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
-    return selectedRoom ? selectedRoom.views : [];
-  },
-},
-watch: {
-  room_type_id(newVal, oldVal) {
-    const selectedRoom = this.room_types.find(room => room.id === newVal);
-    if (selectedRoom) {
-      this.filteredViews = selectedRoom.views;
-    } else {
-      this.filteredViews = [];
-    }
-    this.view_type_id = null;  // Reset view type to "Choose a Room View"
-  }
-},
+
   methods: {
     async checkAvailability() {
-      if (!this.check_in || !this.check_out || !this.room_type_id || !this.view_type_id ) {
-      toast.error("Please fill in all fields.");
-      return; 
-      }
-      const body = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          check_in: this.check_in,
-          check_out: this.check_out,
-          room_type_id: this.room_type_id,
-        }),
+      const formatDateToISO = (dateString) => {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+        return date.toISOString();
       };
-          //  await this.$router.push({
-          //       path: '/booking',
-          //       query: {
-          //           check_in: this.check_in,
-          //           check_out: this.check_out,
-          //           roomTypeId: this.room_type_id,
-          //           viewTypeId: this.view_type_id
-          //       }
-          //   })
 
-          //   window.location.reload()
-      // this.$router.push({
-      //   path: this.$route.path,
-      //   query: {
-      //     check_in: this.check_in,
-      //     check_out: this.check_out,
-      //     roomTypeId: this.room_type_id,
-      //     viewTypeId: this.view_type_id
+      if (new Date(this.check_in) >= new Date(this.check_out)) {
+        this.setupToastError("Check-out date must be after check-in date.");
+        return;
+      }
 
-      //   },
-      // });
-      console.log("body", body);
+      const formattedCheckIn = formatDateToISO(this.check_in);
+      const formattedCheckOut = formatDateToISO(this.check_out);
+      const runtimeConfig = useRuntimeConfig();
+
+      const baseUrl = "https://api.sueennature.com/rooms/availability/";
+      const params = new URLSearchParams({
+        check_in: formattedCheckIn,
+        check_out: formattedCheckOut,
+        category: this.roomCategory,
+        view: this.roomView,
+        discount_code: this.discount_code,
+      });
+
+      const url = `${baseUrl}?${params.toString()}`;
 
       try {
-        const response = await fetch(
-          "https://admin.sueennature.com/api/checkAvailability",
-          body
-        );
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "x-api-key": runtimeConfig.public.DATABASE_ID,
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
-        console.log("DATA", data);
-        this.setupToastSucess("Successfully checked the availability");
+        setTimeout(()=>{
+          window.location.reload()
+        },1500)
+        this.$router.push({
+          path: '/booking',
+          query: {
+            fromDate: this.check_in,
+            toDate: this.check_out,
+            roomType: this.roomCategory,
+            view: this.roomView,
+            discount: this.discount_code
+          }
+        });
+
+
+        this.setupToastSuccess("Availability checked successfully.");
       } catch (error) {
-        console.error(error);
+        this.setupToastError(`An error occurred: ${error.message}`);
       }
     },
-    setupToastSucess(message) {
-      toast.success(message, {
-        autoClose: 3000,
-      });
+
+    setupToastSuccess(message) {
+      toast.success(message, { autoClose: 3000 });
     },
-    updateAvailableRooms() {
-      const selectedRoom = this.room_types.find(
-        (room) => room.id === this.room_type_id
-      );
-      this.filteredViews = selectedRoom ? selectedRoom.rooms : [];
-      this.view_type_id = null;
+
+    setupToastError(message) {
+      toast.error(message, { autoClose: 3000 });
     },
+
+    populateFieldsFromQuery() {
+      const { fromDate, toDate, roomType, view, discount } = this.$route.query;
+      this.check_in = fromDate || "";
+      this.check_out = toDate || "";
+      this.roomCategory = roomType || null;
+      this.roomView = view || null;
+      this.discount_code = discount || "";
+    }
   },
   mounted() {
-  fetch("https://admin.sueennature.com/api/getRoomTypes")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      this.room_types = data.room_types;
+    this.populateFieldsFromQuery();
 
-
-      const { check_in, check_out, roomTypeId, viewTypeId } = this.$route.query;
-
-
-      this.check_in = check_in || "";
-      this.check_out = check_out || "";
-
-      this.room_type_id = roomTypeId ? parseInt(roomTypeId) : null;
-
-      if (this.room_type_id) {
-        const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
-        this.filteredViews = selectedRoom ? selectedRoom.views : [];
-
-      } else {
-        this.filteredViews = [];
-      }
-
-      this.view_type_id = viewTypeId ? parseInt(viewTypeId) : null;
-
-      this.$nextTick(() => {
-        this.view_type_id = viewTypeId ? parseInt(viewTypeId) : null;
-        console.log("View type ID after nextTick:", this.view_type_id);
+    Promise.all([
+      import("flowbite-datepicker/Datepicker"),
+      import("flowbite-datepicker/Datepicker"),
+    ]).then(([DatePicker1, DatePicker2]) => {
+      const datepickerEl1 = this.$refs.datepicker1;
+      const datepickerEl2 = this.$refs.datepicker2;
+      new DatePicker1.default(datepickerEl1, {
+        autohide: true,
+        orientation: "bottom right",
       });
-    })
-    .catch((error) => {
-      console.error("There has been a problem with your fetch operation:", error);
+      new DatePicker2.default(datepickerEl2, {
+        autohide: true,
+        orientation: "bottom right",
+      });
     });
-
-  Promise.all([
-    import("flowbite-datepicker/Datepicker"),
-    import("flowbite-datepicker/Datepicker"),
-  ]).then(([DatePicker1, DatePicker2]) => {
-    const datepickerEl1 = this.$refs.datepicker1;
-    const datepickerEl2 = this.$refs.datepicker2;
-    new DatePicker1.default(datepickerEl1, {
-      autohide: true,
-      orientation: "bottom right",
-    });
-    new DatePicker2.default(datepickerEl2, {
-      autohide: true,
-      orientation: "bottom right",
-    });
-  });
-}
-
-
-
-
-  
+  }
 };
 </script>
+
 
 <style scoped>
 input[type="date"] {
