@@ -5,8 +5,9 @@
       alt="backgroundImg"
       class="w-full min-h-screen object-cover"
     /> -->
-    
+
     <swiper
+
     :spaceBetween="30"
     :autoplay="autoplayConfig"
     :navigation="true"
@@ -59,7 +60,6 @@
     </swiper-slide>
   </swiper>
     
-   
     <!-- stiky navbar -->
     <nav
       class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
@@ -68,7 +68,11 @@
         class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
       >
         <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
+          <img
+            src="/img/logoMobile.png"
+            alt="logoImg"
+            class="w-auto h-8 md:h-10"
+          />
         </a>
         <div
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
@@ -140,7 +144,7 @@
                 >Rooms</a
               >
             </li>
-          
+
             <li>
               <a
                 href="/contact"
@@ -150,12 +154,12 @@
             </li>
             <li>
               <a
-          v-if ="userEmail"
-          @click.prevent="redirectToDashboard"
-          class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-        >
-          Profile
-        </a>
+                v-if="userEmail"
+                @click.prevent="redirectToDashboard"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+              >
+                Profile
+              </a>
             </li>
           </ul>
         </div>
@@ -293,13 +297,13 @@
         >
           About
         </a>
-     
-              <a
-                href="/additionalActivites"
-                class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-                >Activites</a
-              >
-         
+
+        <a
+          href="/additionalActivites"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          >Activites</a
+        >
+
         <a
           href="/services"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -326,7 +330,7 @@
           Contact
         </a>
         <a
-          v-if ="userEmail"
+          v-if="userEmail"
           @click.prevent="redirectToDashboard"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
@@ -336,50 +340,72 @@
     </div>
     <!-- main hero booking options selector -->
     <div
+
       class="absolute z-40 inset-x-0 bottom-56 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4 "
+
     >
       <div
         class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
       >
         <div class="relative md:max-w-sm md:mx-auto">
-       
           <input
-              type="date"
-              class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              placeholder="Check In Date"
-              v-model="check_in"
-            />
+            type="date"
+            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            placeholder="Check In Date"
+            v-model="check_in"
+          />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
         <div class="relative md:max-w-sm md:mx-auto">
           <input
             type="date"
-            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" v-model="check_out"
+            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            v-model="check_out"
           />
         </div>
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
-        <form class="lg:max-w-sm lg:mx-auto ">
-          <select
-            id="room"
-            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="room_type_id"
-            @change="updateAvailableRooms"
-          >
-            <option :value="null" disabled selected class="text-gray-300">Choose a Room</option>
-            <option v-for="room in room_types" :value="room.id" :key="room.id" class="text-black-200">{{ room.name }}</option>
-          </select>
-        </form>
+        <form class="lg:max-w-sm lg:mx-auto">
+  <select
+    id="category"
+    v-model="roomCategory"
+    class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+  >
+  <option value=null disabled>
+      Choose a Room
+    </option>
+    <option value="Single" class="text-gray-900">Single</option>
+    <option value="Deluxe" class="text-gray-900">Deluxe</option>
+    <option value="Double" class="text-gray-900">Double</option>
+    <option value="Family" class="text-gray-900">Family</option>
+    <option value="Triple" class="text-gray-900">Triple</option>
+  </select>
+</form>
+
+
         <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
 
         <form class="lg:max-w-sm lg:mx-auto">
           <select
             id="view"
+            v-model="roomView"
             class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="view_type_id"
           >
-            <option :value="null" disabled selected class="text-gray-300">Choose Room View</option>
-            <option v-for="view in filteredViews" :value="view.id" :key="view.id" class="text-black-200">{{ view.view }}</option>
+            <option :value="null" disabled selected class="text-gray-900">
+              Choose Room View
+            </option>
+            <option value="LAKE" class="text-gray-900">LAKE</option>
+            <option value="MOUNTAIN" class="text-gray-900">MOUNTAIN</option>
           </select>
+        </form>
+        <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
+
+        <form class="lg:max-w-sm lg:mx-auto">
+          <input
+            v-model="discount_code"
+            type="text"
+            placeholder="Discount"
+            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
         </form>
       </div>
 
@@ -395,124 +421,120 @@
         >
           Check Availability
         </button>
-
       </div>
     </div>
   </div>
 </template>
-  
+
 <script>
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { EffectFade, Navigation, Pagination, Autoplay } from "swiper/modules";
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
   },
-  
+
   data() {
     return {
-      check_in: '', 
-      check_out: '',
-      room_type_id: null, 
-      room_types: [],
-      view_type_id: null,
-      view_types: [],
-      filteredViews: [],
       modules: [EffectFade, Navigation, Pagination, Autoplay],
       autoplayConfig: {
         delay: 5000,
         disableOnInteraction: false,
       },
+      check_in: "",
+      check_out: "",
+      roomCategory: null,  // Ensure this is initially null or an appropriate default value
+      roomView: null,
+      discount_code: "",
     };
   },
-  
-  computed: {
-    filteredRooms() {
-      if (!this.room_type_id) return [];
-      return this.rooms.filter(room => room.room_type_id === this.room_type_id);
-    },
-    userEmail() {
-      return localStorage.getItem('userEmail');
+
+  computed: {},
+  watch: {
+  roomCategory(newVal) {
+    if (newVal === null) {
+      this.roomCategory = ''; // Set default value if needed
     }
-  },
-  
+  }
+},
+
   methods: {
     setupToast() {
       toast.error("welcome to sda", {
         autoClose: 1000,
       });
     },
-    
+
     redirectToDashboard() {
       if (this.userEmail) {
-        this.$router.push({ path: '/dashboard', query: { email: this.userEmail } });
+        this.$router.push({
+          path: "/dashboard",
+          query: { email: this.userEmail },
+        });
       }
     },
-    
-    updateAvailableRooms() {
-      const selectedRoom = this.room_types.find(room => room.id === this.room_type_id);
-      this.filteredViews = selectedRoom ? selectedRoom.views : [];
-      this.view_type_id = null;
-    },
-    
-    async checkAvailability() {
-      if (!this.check_in || !this.check_out || !this.room_type_id || !this.view_type_id) {
-        this.setupToast("Please fill in all fields.");
-        return; 
-      }
 
-      const body = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          check_in: this.check_in,
-          check_out: this.check_out,
-          room_type_id: this.room_type_id,
-          view_type_id: this.view_type_id
-        }),
+    async checkAvailability() {
+      const runtimeConfig = useRuntimeConfig();
+      const formatDateToISO = (dateString) => {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+        return date.toISOString();
       };
+      const formattedCheckIn = formatDateToISO(this.check_in);
+      const formattedCheckOut = formatDateToISO(this.check_out);
+
+      const baseUrl = "https://api.sueennature.com/rooms/availability/";
+      const params = new URLSearchParams({
+        check_in: formattedCheckIn,
+        check_out: formattedCheckOut,
+        category: this.roomCategory,
+        view: this.roomView,
+        discount_code: this.discount_code,
+      });
+
+      const url = `${baseUrl}?${params.toString()}`;
 
       try {
-        const response = await fetch('https://admin.sueennature.com/api/checkAvailability', body);
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "x-api-key": runtimeConfig.public.DATABASE_ID, // Replace with your actual API key
+            "Content-Type": "application/json", // Optional, as it's a GET request
+          },
+        });
+
         const data = await response.json();
-        if (response.status === 200) {
-          await this.$router.push({
-            path: '/booking',
-            query: {
-              check_in: this.check_in,
-              check_out: this.check_out,
-              roomTypeId: this.room_type_id,
-              viewTypeId: this.view_type_id
-            }
-          });
-          window.location.reload();
-        } else {
-          window.alert("The room is not available");
-        } 
+        console.log("first", data)
+          this.$router.push({ path: '/booking', query: { fromDate: this.check_in, toDate: this.check_out, roomType: this.roomCategory, view:this.roomView , discount:this.discount_code} });
+
+       
+        // Handle the data
+        console.log(data);
       } catch (error) {
         window.alert(error);
       }
     },
-    
+
     setupToast(message) {
       toast.error(message, {
-        autoClose: 3000, 
+        autoClose: 3000,
       });
     },
-    
+
     setupToastSuccess(message) {
       toast.success(message, {
-        autoClose: 3000, 
+        autoClose: 3000,
       });
     },
-    
+
     onSlideChange(swiper) {
       const activeSlide = swiper.slides[swiper.activeIndex];
       const videoElement = this.$refs.video;
@@ -527,7 +549,7 @@ export default {
       swiper.autoplay.start();
     },
   },
-  
+
   mounted() {
     Promise.all([
       import("flowbite-datepicker/Datepicker"),
@@ -544,29 +566,12 @@ export default {
         orientation: "bottom right",
       });
     });
-    
-    fetch('https://admin.sueennature.com/api/getRoomTypes')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        this.room_types = data.room_types;
-        // console.log("Data", this.room_types);
-      })
-      .catch((error) => {
-        console.error('There has been a problem with your fetch operation:', error);
-      });
-
   },
 };
 </script>
 
-  
-<style  scoped>
-input[type="date"] { 
+<style scoped>
+input[type="date"] {
   background: transparent;
   color: white;
   outline: none;
@@ -577,17 +582,26 @@ input[type="date"] {
     
      
 } */
-#view{
+
+#category option[value=""]:not(:checked) {
+  display: none;
+}
+#view {
   background-position: right 1.25rem center;
-  
 }
 h2 {
   font-family: "Philosopher", sans-serif;
 }
 
-p,ul li,a,h6,h3,.buttontext,input,select,.option-text {
+p,
+ul li,
+a,
+h6,
+h3,
+.buttontext,
+input,
+select,
+.option-text {
   font-family: "Barlow", sans-serif;
 }
-
-
 </style>

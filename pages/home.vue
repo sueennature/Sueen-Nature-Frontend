@@ -6,7 +6,7 @@
     <facilitiesHome/>
     <servicesHome/>
     <footerHome/>
-
+    <!-- <Sample/> -->
   </div>
 </template>
 
@@ -17,6 +17,7 @@ import facilitiesHome from '~/components/facilitiesHome.vue';
 import servicesHome from '~/components/servicesHome.vue';
 import footerHome from '~/components/footerHome.vue';
 import roomsHome from '~/components/roomsHome.vue';
+import Sample from '~/components/Sample.vue'
 
 </script>
 
