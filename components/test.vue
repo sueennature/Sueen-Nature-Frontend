@@ -81,9 +81,8 @@
             </select>
       
             </div>
+        <div v-if="selectedRoomNumbers.length" >
             <h3 class="text-lg font-bold mb-2 mt-4">Room Details:</h3>
-
-        <div v-if="selectedRoomNumbers.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
 
             <div v-for="(room, index) in selectedRoomNumbers" :key="room" class="mb-4 flex gap-4 items-start justify-start">
             <h4 class="text-md font-semibold border border-gray-300 p-2 mb-1 rounded text-center h-fit "> {{ room }}</h4>
@@ -135,11 +134,10 @@
             </div>
             </div>
             </div>
-            <div v-if="selectedRoomNumbers.length" >
+            
             <button        
              class="mt-8 buttontext rounded-xl text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             @click="submitPayload">Please Click  to get final rates</button>
-          </div>
 
         <!-- Login and Register modal popups -->
       
