@@ -905,94 +905,160 @@
             </div>
             <!-- Modal -->
             <form action="#" class="space-y-6 mt-4" @submit.prevent="register">
-              <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
-                <input
-                  type="text"
-                  v-model="registerUser.name"
-                  placeholder="Name"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-                <input
-                  type="text"
-                  v-model.trim="registerUser.lname"
-                  placeholder="Last Name"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-              </div>
-              <div class="">
-                <input
-                  type="text"
-                  v-model.trim="registerUser.email"
-                  placeholder="you@email.com"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                />
-              </div>
-              <div class="relative">
-                <input
-                  :type="showPassword ? 'text' : 'password'"
-                  v-model.trim="registerUser.password"
-                  placeholder="Password"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10"
-                />
-                <button
-                  @click="togglePasswordVisibility"
-                  class="absolute inset-y-0 right-0 flex items-center pr-3"
-                >
-                  <span v-if="showPassword">🔓</span>
-                  <span v-else>🔒</span>
-                </button>
-              </div>
+  <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
+    <input
+      type="text"
+      v-model="registerUser.name"
+      placeholder="Name"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    />
+    <input
+      type="text"
+      v-model.trim="registerUser.lname"
+      placeholder="Last Name"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    />
+  </div>
+  <div class="">
+    <input
+      type="text"
+      v-model.trim="registerUser.email"
+      placeholder="you@email.com"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
+    />
+  </div>
+  <div class="relative">
+    <input
+      :type="showPassword ? 'text' : 'password'"
+      v-model.trim="registerUser.password"
+      placeholder="Password"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10"
+    />
+    <button
+      @click="togglePasswordVisibility"
+      class="absolute inset-y-0 right-0 flex items-center pr-3"
+    >
+      <span v-if="showPassword">🔓</span>
+      <span v-else>🔒</span>
+    </button>
+  </div>
 
-              <div class="flex items-start">
-                <div class="flex items-center h-5">
-                  <input
-                    id="remember"
-                    type="checkbox"
-                    value=""
-                    class="w-4 h-4 border border-gray-300 rounded-none bg-white focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                    required
-                  />
-                </div>
-                <label
-                  for="remember"
-                  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >I Agree To The
-                  <a
-                    href="/termsAndConditions"
-                    class="font-semibold underline underline-offset-4"
-                    >Terms & Conditions</a
-                  >
-                  And
-                  <a
-                    href="/privacyPolicy"
-                    class="font-semibold underline underline-offset-4"
-                    >Privacy Policy</a
-                  >
-                </label>
-              </div>
-              <div class="mt-5">
-                <div class="mt-5">
-                  <button
-                    type="submit"
-                    class="w-full bg-red-100 py-3 text-center text-white rounded-md block text-decoration-none"
-                  >
-                    REGISTER
-                  </button>
-                </div>
-              </div>
+  <div class="grid md:grid-cols-2 grid-cols-1 gap-5 mt-5">
+    <!-- Additional fields for createGuest API -->
+    <input
+      type="text"
+      v-model="guestDetails.telephone"
+      placeholder="Telephone"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    />
+    <input
+      type="text"
+      v-model="guestDetails.address"
+      placeholder="Address"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    />
+    <select
+      v-model="guestDetails.nationality"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    >
+      <option value="" disabled>Select Nationality</option>
+      <option value="american">American</option>
+      <option value="british">British</option>
+      <option value="canadian">Canadian</option>
+      <!-- Add more options as needed -->
+    </select>
+    <select
+      v-model="guestDetails.identification_type"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    >
+      <option value="" disabled>Select Identification Type</option>
+      <option value="passport">Passport</option>
+      <option value="driver_license">Driver's License</option>
+      <option value="id_card">ID Card</option>
+      <!-- Add more options as needed -->
+    </select>
+    <input
+      type="text"
+      v-model="guestDetails.identification_no"
+      placeholder="Identification No"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    />
+    <input
+      type="date"
+      v-model="guestDetails.identification_issue_date"
+      placeholder="Identification Issue Date"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    />
+    <input
+      type="date"
+      v-model="guestDetails.dob"
+      placeholder="Date of Birth"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    />
+    <select
+      v-model="guestDetails.gender"
+      class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    >
+      <option value="" disabled>Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
 
-              <div class="flex flex-row items-center text-md space-x-1">
-                <p>Already have an account?</p>
-                <button
-                  @click="toggleModal_1"
-                  id="toggle-modal-button"
-                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  type="button"
-                >
-                  Login Here
-                </button>
-              </div>
-            </form>
+  <div class="flex items-start mt-5">
+    <div class="flex items-center h-5">
+      <input
+        id="remember"
+        type="checkbox"
+        value=""
+        class="w-4 h-4 border border-gray-300 rounded-none bg-white focus:ring-3 focus:ring-blue-300"
+        required
+      />
+    </div>
+    <label
+      for="remember"
+      class="ms-2 text-sm font-medium text-gray-900"
+    >
+      I Agree To The
+      <a
+        href="/termsAndConditions"
+        class="font-semibold underline underline-offset-4"
+      >
+        Terms & Conditions
+      </a>
+      And
+      <a
+        href="/privacyPolicy"
+        class="font-semibold underline underline-offset-4"
+      >
+        Privacy Policy
+      </a>
+    </label>
+  </div>
+
+  <div class="mt-5">
+    <button
+      type="submit"
+      class="w-full bg-red-100 py-3 text-center text-white rounded-md block text-decoration-none"
+    >
+      REGISTER
+    </button>
+  </div>
+
+  <div class="flex flex-row items-center text-md space-x-1 mt-5">
+    <p>Already have an account?</p>
+    <button
+      @click="toggleModal_1"
+      id="toggle-modal-button"
+      class="block text-red-100 font-medium text-md text-center"
+      type="button"
+    >
+      Login Here
+    </button>
+  </div>
+</form>
+
           </div>
         </div>
       </div>
@@ -1193,6 +1259,17 @@ export default {
         email: "",
         password: "",
       },
+      guestDetails: {
+      telephone: '',
+      address: '',
+      nationality: '',
+      // profile_image: [],
+      identification_type: '',
+      identification_no: '',
+      identification_issue_date: '',
+      dob: '',
+      gender: ''
+    },
       loginUser: {
         email: "",
         password: "",
@@ -1290,53 +1367,71 @@ export default {
       this.login();
     },
     async register() {
-      if (
-        !this.registerUser.name ||
-        !this.registerUser.lname ||
-        !this.registerUser.email ||
-        !this.registerUser.password
-      ) {
-        this.setupToastError("Please fill in all fields.");
-        return;
-      }
+  try {
+    // Step 1: Create guest
+    const guestPayload = {
+      first_name: this.registerUser.name,
+      last_name: this.registerUser.lname,
+      email: this.registerUser.email,
+      telephone: this.guestDetails.telephone || '',
+      address: this.guestDetails.address || '',
+      nationality: this.guestDetails.nationality || '',
+      profile_image: this.registerUser.profile_image || [],
+      identification_type: this.registerUser.identification_type || '',
+      identification_no: this.guestDetails.identification_no || '',
+      identification_issue_date: this.registerUser.identification_issue_date || new Date().toISOString(),
+      dob: this.registerUser.dob || new Date().toISOString(),
+      gender: this.guestDetails.gender || '',
+      password: this.registerUser.password
+    };
 
-      if (this.registerUser.password.length < 8) {
-        this.setupToastError(
-          "The password field must be at least 8 characters"
-        );
-        return;
+    const { data: guestResponse } = await axios.post('https://api.sueennature.com/guests', guestPayload, {
+      headers: {
+        'x-api-key': this.$config.public.DATABASE_ID,
+        'Content-Type': 'application/json'
       }
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(this.registerUser.email)) {
-        this.setupToastError("Please enter a valid email address.");
-        return;
+    });
+
+    console.log("Create guest response", guestPayload);
+
+    // Step 2: Register user
+    const { data: registerResponse } = await axios.post('https://api.sueennature.com/users/register', {
+      username: this.registerUser.name + ' ' + this.registerUser.lname,
+      email: this.registerUser.email,
+      role: 'guest',
+      password: this.registerUser.password
+    }, {
+      headers: {
+        'x-api-key': this.$config.public.DATABASE_ID,
+        'Content-Type': 'application/json'
       }
-      const response = await apiRequest(
-        "https://admin.sueennature.com/api/register",
-        "POST",
-        {
-          name: this.registerUser.name,
-          lname: this.registerUser.lname,
-          email: this.registerUser.email,
-          password: this.registerUser.password,
-        }
-      )
-        .then((response) => {
-          // console.log("Register response", response);
-          this.nuxtApp.$auth.setAuthToken(response.access_token);
-          this.setAuthTokenInCookie(response.access_token);
-          localStorage.setItem("userEmail", this.registerUser.email);
-          this.$router.push({
-            path: "/dashboard",
-            query: { email: this.registerUser.email },
-          });
-        })
-        .catch((error) => {
-          this.setupToastError("An error occurred. Please try again later.");
-          console.log(error);
-        });
-    },
+    });
+
+    console.log("Register response", registerResponse);
+
+    // Set auth token and other necessary operations
+    this.nuxtApp.$auth.setAuthToken(registerResponse.access_token);
+    this.setAuthTokenInCookie(registerResponse.access_token);
+    localStorage.setItem("userEmail", this.registerUser.email);
+    this.$router.push({
+      path: "/dashboard",
+      query: { email: this.registerUser.email },
+    });
+  } catch (error) {
+    console.error("An error occurred:", error);
+    this.setupToastError("An error occurred. Please try again later.");
+  }
+}
+
+,
+
     async login() {
+      const { public: { DATABASE_ID } } = useRuntimeConfig();
+
+      const headers = {
+    'x-api-key': DATABASE_ID, // Set the X-API-Key header
+        'Content-Type': 'application/json'
+      };
       if (!this.loginUser.email || !this.loginUser.password) {
         this.setupToastError("Please fill in all fields.");
         return;
@@ -1347,18 +1442,37 @@ export default {
         return;
       }
       // try {
-      const response = await axios
-        .post("https://admin.sueennature.com/api/login", {
+        const queryParams = new URLSearchParams({
           email: this.loginUser.email,
           password: this.loginUser.password,
-        })
-        .then((response) => {
-          // console.log("Status:", response.status);
-          // console.log("Data:", response.data);
+    }).toString();
 
-          this.setAuthTokenInCookie(response.data.access_token);
-          this.nuxtApp.$auth.setAuthToken(response.access_token);
+    const response = await fetch(`https://api.sueennature.com/users/login?${queryParams}`, {
+        method: 'POST', 
+        headers: {
+          'x-api-key': DATABASE_ID, // Set the X-API-Key header
+        }
+    })
+        .then(async (response) => {
+          // console.log("Status:", response.status);
           localStorage.setItem("userEmail", this.loginUser.email);
+          const data = await response.json();
+          console.log(data)
+          this.setAuthTokenInCookie(data.access_token);
+          this.nuxtApp.$auth.setAuthToken(data.access_token);
+          if (data.access_token) {
+     
+      this.$router.push({
+        path: "/dashboard",
+        query: { email: this.loginUser.email },
+      });
+      
+      return toast.success(`Successfully logged In`);
+    } else if ((data.detail = "Invalid credentials")) {
+      return toast.error(`Invalid Credentials`);
+    } else {
+      return toast.error("Something went wrong");
+    }
           this.$router.push({
             path: "/dashboard",
             query: { email: this.loginUser.email },

@@ -61,7 +61,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "apiBaseUrl": "http://localhost:8000/api",
+    "DATABASE_ID": "1PFbYJ6WxYAiYKnGTlKluk9X6Wdpo4p6M9Ibod4RT44=",
     "googleSignIn": {
       "clientId": "865303988777-4tcvutqa985usae6fahkll4iorpjfb1s.apps.googleusercontent.com"
     }

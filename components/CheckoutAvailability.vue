@@ -129,17 +129,17 @@ watch: {
           room_type_id: this.room_type_id,
         }),
       };
-           await this.$router.push({
-                path: '/booking',
-                query: {
-                    check_in: this.check_in,
-                    check_out: this.check_out,
-                    roomTypeId: this.room_type_id,
-                    viewTypeId: this.view_type_id
-                }
-            })
+          //  await this.$router.push({
+          //       path: '/booking',
+          //       query: {
+          //           check_in: this.check_in,
+          //           check_out: this.check_out,
+          //           roomTypeId: this.room_type_id,
+          //           viewTypeId: this.view_type_id
+          //       }
+          //   })
 
-            window.location.reload()
+          //   window.location.reload()
       // this.$router.push({
       //   path: this.$route.path,
       //   query: {

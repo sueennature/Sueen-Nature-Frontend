@@ -36,7 +36,7 @@
           />
         </svg>
 
-        <h6 class="mt-4 text-gray-300 text-xs">Breakfast</h6>
+        <h6 class="mt-4 text-gray-300 text-xs">Breakfsast</h6>
       </div>
       <div class="flex flex-col justify-center items-center">
         <svg
@@ -115,141 +115,7 @@
       will enjoy their experience in Riga, and take with them many fond memories
       of this historic city.
     </p>
-    <div v-for="roomType in matchedRoomTypes" :key="roomType.id">
-
-      <div v-if="roomType.name === 'Double Room'"> 
-        <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
-        <div id="main-slider" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li
-                v-for="(slide, index) in slidesDouble"
-                :key="index"
-                class="splide__slide"
-              >
-                <img :src="slide.src" :alt="slide.alt" />
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="thumbnail-slider" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li
-                v-for="(slide, index) in slidesDouble"
-                :key="index"
-                class="splide__slide"
-              >
-                <img :src="slide.src" :alt="slide.alt" />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </div>
-
-      <div v-else-if="roomType.name === 'Single Room'">
-         <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
-        <div id="main-slider" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li
-                v-for="(slide, index) in slidesSingle"
-                :key="index"
-                class="splide__slide"
-              >
-                <img :src="slide.src" :alt="slide.alt" />
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="thumbnail-slider" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li
-                v-for="(slide, index) in slidesSingle"
-                :key="index"
-                class="splide__slide"
-              >
-                <img :src="slide.src" :alt="slide.alt" />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </div>
-
-      <div v-else-if="roomType.name === 'Triple Room'">
-         <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
-        <div id="main-slider" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li
-                v-for="(slide, index) in slidesTriple"
-                :key="index"
-                class="splide__slide"
-              >
-                <img :src="slide.src" :alt="slide.alt" />
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="thumbnail-slider" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li
-                v-for="(slide, index) in slidesTriple"
-                :key="index"
-                class="splide__slide"
-              >
-                <img :src="slide.src" :alt="slide.alt" />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </div>
-      
-      <div v-else-if="roomType.name === 'Family Room'">
-         <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
-        <div id="main-slider" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li
-                v-for="(slide, index) in slidesFamily"
-                :key="index"
-                class="splide__slide"
-              >
-                <img :src="slide.src" :alt="slide.alt" />
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="thumbnail-slider" class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li
-                v-for="(slide, index) in slidesFamily"
-                :key="index"
-                class="splide__slide"
-              >
-                <img :src="slide.src" :alt="slide.alt" />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </div>
-
-
-
-      <!-- Dynamic -->
-<!-- 
-      <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
+    <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
         <div id="main-slider" class="splide">
           <div class="splide__track">
             <ul class="splide__list">
@@ -277,120 +143,66 @@
             </ul>
           </div>
         </div>
-      </div> -->
-    </div>
-    <div
-      v-for="roomType in matchedRoomTypes"
-      :key="roomType.id"
-      class="flex flex-col items-center"
-    >
-      <div class="flex flex-row gap-4 justify-center mt-4">
-        <h5 class="md:text-sm text-xs text-black-200 pl-4">
-          Size: <span class="italic">{{ roomType.size }}m<sup>2</sup></span>
-        </h5>
-        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
-          Bed: 01 Queen
-        </h5>
-        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
-          Occupancy: Max adult{{ roomType.max_adults > 1 ? "s" : "" }}
-          {{ roomType.max_adults }}
-          {{
-            roomType.max_childs
-              ? ", Max Children " +
-                roomType.max_childs +
-                (roomType.max_childs > 1 ? " " : " ")
-              : ""
-          }}
-        </h5>
-        <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
-          View:
-          <span v-for="(view, index) in roomType.views" :key="index">
-            {{ view.view }}{{ index !== roomType.views.length - 1 ? ", " : "" }}
-          </span>
-        </h5>
       </div>
-      <!-- room detils section -->
-      <div class="p-4">
-        <h3 class="text-black-200 md:text-4xl text-3xl text-center mt-10">
-          Details
-        </h3>
-        <ul
-          class="max-w-md text-base space-y-4 text-black-200 list-disc dark:text-gray-400 mx-auto mt-10 list-outside"
-        >
-          <li><strong>Beds:</strong>{{ roomType.beds }}</li>
-          <li><strong>Size:</strong> {{ roomType.size }}m<sup>2</sup></li>
+      <div v-if="roomData">
+  <div class="flex flex-col items-center">
+    <div class="flex flex-row gap-4 justify-center mt-4">
+      <h5 class="md:text-sm text-xs text-black-200 pl-4">
+        Size: <span class="italic">{{ roomData.size }}m<sup>2</sup></span>
+      </h5>
+      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+        Bed: {{ roomData.beds || '01 Queen' }}
+      </h5>
+      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+        Occupancy: Max adult{{ roomData.max_adults > 1 ? "s" : "" }} {{ roomData.max_adults }}
+        {{ roomData.max_childs ? ", Max Children " + roomData.max_childs + (roomData.max_childs > 1 ? " " : " ") : "" }}
+      </h5>
+    </div>
+  </div>
+</div>
 
-          <li>
-            <strong>Views: </strong>
-            <span v-for="(view, index) in roomType.views" :key="index">
-              {{ view.view
-              }}{{ index !== roomType.views.length - 1 ? ", " : "" }}
-            </span>
-          </li>
-          <li>
-            <strong>Occupancy:</strong> Max adult{{
-              roomType.max_adults > 1 ? "s" : ""
-            }}
-            {{ roomType.max_adults }}
-            {{
-              roomType.max_childs
-                ? ", Max Children " +
-                  roomType.max_childs +
-                  (roomType.max_childs > 1 ? " " : " ")
-                : ""
-            }}
-          </li>
-          <li><strong>Bathroom: </strong>{{ roomType.bathroom }}</li>
-          <li><strong>Features: </strong> {{ roomType.features }}</li>
-        </ul>
-      </div>
-    </div>
+
     <!-- <div class="mt-8">
       <CheckoutAvailability />
     </div> -->
 
-    <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-center mt-16">
+     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-center mt-16">
       EXPLORE OTHER ROOMS
-    </h2>
-    <!-- images of other rooms  -->
-    <div
-      class="lg:flex lg:flex-row grid grid-cols-1 justify-center justify-items-center gap-4 my-20"
-    >
-      <div
-        v-for="(room, index) in nonMatchedRoomTypes"
-        :key="index"
-        class="flex flex-col gap-4 mt-4"
+    </h2> 
+    <div v-if="unSelectedRoomData?.length > 0"       class="lg:flex lg:flex-row grid grid-cols-1 justify-center justify-items-center gap-4 my-20"
       >
-        <img
-          :src="`https://admin.sueennature.com/uploads/${
-            Object.values(room.images)[0]
-          }`"
-          alt="roomImg"
-          class="h-60 max-w-72"
-        />
-        <h3
-          class="text-xl text-black-200 font-medium lg:text-center items-center text-center gap-4"
-        >
-          {{ room.name }}
-        </h3>
-        <h6
-          class="text-sm text-black-200 font-light lg:mx-auto lg:text-center text-center"
-        >
-          {{ room.description }}
-        </h6>
+    <div v-for="(category, categoryIndex) in unSelectedRoomData" :key="categoryIndex" class="category-section">
+      <div v-for="(room, roomIndex) in category.rooms" :key="roomIndex" class="room-card">
+        
+        <!-- Display images -->
+        <div v-if="room.images.length > 0" class="image-gallery">
+          <img :src="`https://api.sueennature.com/${room.images[0]}`" alt="Room Image" class="room-image" />
+        </div>
+      </div>
+      <h2 class="text-xl mt-2 mb-2 text-center">{{ category.category }}</h2>
+
+      <div v-for="(room, roomIndex) in category.rooms" :key="roomIndex" class="room-card">
+        <p class="text-center text-[14px]"> {{ room.description }}</p>
+  
+        
+      </div>
+      <div class="text-center mt-2 mb-2">
         <button
-          @click="navigateToRoomTypePage(room.id)"
+          @click="navigateToRoomTypePage(category.category )"
           class="text-red-100 font-bold text-sm lg:text-center"
         >
           VIEW DETAILS
         </button>
       </div>
+   
     </div>
+  </div>
+
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, watch } from "vue";
+import { defineComponent, ref, onMounted, nextTick } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import Splide from "@splidejs/splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
@@ -404,47 +216,60 @@ export default defineComponent({
   setup() {
     const matchedRoomTypes = ref([]);
     const nonMatchedRoomTypes = ref([]);
+    const slides = ref([]);
+    const roomData = ref(null);
+    const unSelectedRoomData = ref([]);
 
-    // Double
-    const slidesDouble = ref([
-      { src: "/img/IMG_0384.jpg", alt: "Image 1" },
-      { src: "/img/IMG_0386.jpg", alt: "Image 2" },
-      { src: "/img/IMG_0393.jpg", alt: "Image 3" },
-      { src: "/img/IMG_0399.jpg", alt: "Image 3" },
-      { src: "/img/IMG_0430.jpg", alt: "Image 3" },
-      { src: "/img/IMG_0507.jpg", alt: "Image 3" },
-      { src: "/img/IMG_0532.jpg", alt: "Image 3" },
-    ]);
-
-    //Single
-    const slidesSingle = ref([
-      { src: "/img/IMG_0426.jpg", alt: "Image 1" },
-      { src: "/img/IMG_0380-Edit.jpg", alt: "Image 2" },
-      { src: "/img/IMG_0403.jpg", alt: "Image 3" },
-    ]);
-
-  //Triple
-  const slidesTriple = ref([
-      { src: "/img/IMG_0472.jpg", alt: "Image 1" },
-      { src: "/img/IMG_0475.jpg", alt: "Image 2" },
-      { src: "/img/IMG_0507.jpg", alt: "Image 3" },
-      { src: "/img/PXL_20231207_101424899 copy 2.jpg", alt: "Image 4" },
-
-    ]);
-
-  //Family
-  const slidesFamily = ref([
-      { src: "/img/IMG_0473.jpg", alt: "Image 1" },
-      { src: "/img/IMG_0489.jpg", alt: "Image 2" },
-      { src: "/img/IMG_0490.jpg", alt: "Image 3" },
-      { src: "/img/IMG_0511.jpg", alt: "Image 4" },
-
-    ]);
     const route = useRoute();
     const router = useRouter();
 
+    const fetchRoomData = async (roomId) => {
+      const runtimeConfig = useRuntimeConfig();
+
+      try {
+        const response = await fetch("https://api.sueennature.com/rooms/types", {
+          method: "GET",
+          headers: {
+            "x-api-key": runtimeConfig.public.DATABASE_ID,
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+
+        matchedRoomTypes.value = data.room_types.filter(
+          (room) => room.category === roomId
+        );
+
+        nonMatchedRoomTypes.value = data.room_types.filter(
+          (room) => room.category !== roomId
+        );
+        unSelectedRoomData.value = nonMatchedRoomTypes.value;
+
+        const matchedRoom = matchedRoomTypes.value[0]?.rooms[0];
+        roomData.value = matchedRoom;
+
+        if (matchedRoomTypes.value.length > 0) {
+          slides.value = (matchedRoom.images)?.map((image) => ({
+            src: `https://api.sueennature.com/${image}`,
+            alt: matchedRoom.name,
+          }));
+
+          // Initialize carousels after slides are set
+          nextTick(() => {
+            initializeCarousels();
+          });
+        }
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+      }
+    };
+
     const navigateToRoomTypePage = (roomTypeName) => {
-      router.push({ name: "room", query: { name: roomTypeName } });
+      // Update the URL without reloading the page
+      router.push({ query: { name: roomTypeName } });
+      
+      // Fetch data for the new room type
+      fetchRoomData(roomTypeName);
     };
 
     const initializeCarousels = () => {
@@ -487,60 +312,22 @@ export default defineComponent({
         thumbnails.mount();
       }
     };
+
     onMounted(() => {
-      fetchData();
+      fetchRoomData(route.query.name);
     });
-    const fetchData = async () => {
-      const roomId = route.query.name;
-
-      try {
-        const response = await fetch(
-          "https://admin.sueennature.com/api/getRoomTypes"
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-
-        matchedRoomTypes.value = data.room_types.filter(
-          (room) => room.id == roomId
-        );
-
-        nonMatchedRoomTypes.value = data.room_types.filter(
-          (room) => room.id != roomId
-        );
-
-        if (matchedRoomTypes.value.length > 0) {
-          const matchedRoom = matchedRoomTypes.value[0];
-          // slides.value = Object.values(matchedRoom.images).map((image) => ({
-          //   src: `https://admin.sueennature.com/uploads/${image}`,
-          //   alt: matchedRoom.name,
-          // }));
-
-          // Initialize carousels after slides are set
-          nextTick(() => {
-            initializeCarousels();
-          });
-        }
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-      }
-    };
-
-    watch(() => route.query.name, fetchData);
 
     return {
-      slidesDouble,
-      slidesSingle,
-      slidesTriple,
-      slidesFamily,
-      matchedRoomTypes,
-      nonMatchedRoomTypes,
+      slides,
+      roomData,
+      unSelectedRoomData,
       navigateToRoomTypePage,
     };
   },
 });
 </script>
+
+
 
 <style scoped>
 h2 {

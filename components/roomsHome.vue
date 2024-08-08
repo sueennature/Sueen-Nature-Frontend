@@ -4,39 +4,40 @@
       <h2 class="uppercase text-black-100 text-4xl text-center">
         Rooms & Services
       </h2>
-
-      <div class="lg:flex flex-col justify-between gap-2">
-        
-      </div>
     </div>
 
     <h3
       class="text-black-50 text-xl pt-1 text-center tracking-widest uppercase"
     >
-      Sueen Nature Resort 
+      Sueen Nature Resort
     </h3>
     <div
       class="lg:flex lg:flex-row grid grid-cols-1 lg:justify-center lg:items-baseline justify-items-center gap-6 my-10"
     >
       <figure
         v-for="room in room_types"
-        :key="room.id"
+        :key="room.room_number"
         class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
       >
-        <a :href="`#${room.id}`">
-          <img
-            class="rounded-0 w-96 h-72"
-            :src="`https://admin.sueennature.com/uploads/${
-              Object.values(room.images)[0]
-            }`"
-            :alt="`${room.name} image`"
-          />
-        </a>
+        <!-- Use room_number as the key for better performance -->
+        <img
+          v-if="room.image"
+          class="rounded-0 w-96 h-72"
+          :src="`https://admin.sueennature.com/uploads/${room.image}`"
+          :alt="`${room.name} image`"
+        />
         <figcaption class="absolute px-4 text-lg text-white bottom-6">
           <h5 class="text-base font-semibold text-white">
-            LKR {{ room.room_only }}
+            LKR {{ room.price || 'N/A' }}
           </h5>
-          <h2 class="text-3xl text-white">{{ room.name }}</h2>
+          <h2 class="text-3xl text-white">{{ room.category }}</h2>
+          <p class="text-white">
+            View: {{ room.view }}<br />
+            Max Adults: {{ room.max_adults }}<br />
+            Max Children: {{ room.max_childs }}<br />
+            Max People: {{ room.max_people }}<br />
+            Description: {{ room.short_description || 'No description available' }}
+          </p>
         </figcaption>
       </figure>
     </div>
@@ -53,34 +54,40 @@
   </div>
 </template>
 
+
 <script setup>
-import { initFlowbite } from "flowbite";
 import { ref, onMounted } from "vue";
 
 const room_types = ref([]);
+const runtimeConfig = useRuntimeConfig();
+
+async function fetchRoomTypes() {
+  try {
+    const response = await fetch("https://api.sueennature.com/rooms", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+    room_types.value = data.room_types || []; // Ensure room_types is an array
+
+  } catch (error) {
+    console.error("There has been a problem with your fetch operation:", error);
+  }
+}
 
 onMounted(() => {
-  initFlowbite();
-
-  fetch("https://admin.sueennature.com/api/getRoomTypes")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      room_types.value = data.room_types;
-      console.log("ROOM_DATA", data);
-    })
-    .catch((error) => {
-      console.error(
-        "There has been a problem with your fetch operation:",
-        error
-      );
-    });
+  fetchRoomTypes();
 });
 </script>
+
 
 <style scoped>
 h2 {
