@@ -6,41 +6,40 @@
       </h2>
     </div>
 
-    <h3
-      class="text-black-50 text-xl pt-1 text-center tracking-widest uppercase"
-    >
+    <h3 class="text-black-50 text-xl pt-1 text-center tracking-widest uppercase">
       Sueen Nature Resort
     </h3>
-    <div
-      class="lg:flex lg:flex-row grid grid-cols-1 lg:justify-center lg:items-baseline justify-items-center gap-6 my-10"
-    >
+
+    <div class="lg:flex lg:flex-row grid grid-cols-1 lg:justify-center lg:items-baseline justify-items-center gap-6 my-10">
       <figure
-        v-for="room in room_types"
-        :key="room.room_number"
+        v-for="(category, index) in room_types"
+        :key="index"
         class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
       >
-        <!-- Use room_number as the key for better performance -->
-        <img
-          v-if="room.image"
-          class="rounded-0 w-96 h-72"
-          :src="`https://admin.sueennature.com/uploads/${room.image}`"
-          :alt="`${room.name} image`"
-        />
-        <figcaption class="absolute px-4 text-lg text-white bottom-6">
-          <h5 class="text-base font-semibold text-white">
-            LKR {{ room.price || 'N/A' }}
-          </h5>
-          <h2 class="text-3xl text-white">{{ room.category }}</h2>
-          <p class="text-white">
-            View: {{ room.view }}<br />
-            Max Adults: {{ room.max_adults }}<br />
-            Max Children: {{ room.max_childs }}<br />
-            Max People: {{ room.max_people }}<br />
-            Description: {{ room.short_description || 'No description available' }}
-          </p>
-        </figcaption>
+        <!-- <h4 class="text-2xl font-semibold text-center mb-4">{{ category.category }}</h4> -->
+        <div
+          v-for="room in category.rooms"
+          :key="room.room_number"
+          class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
+        >
+          <!-- Use room_number as the key for better performance -->
+          <img
+            v-if="room.images && room.images.length > 0"
+            class="rounded-0 w-60 max-w-md h-60"
+            :src="`https://api.sueennature.com/${room.images[0]}`"
+            :alt="`${room.category} image`"
+          />
+          <figcaption class="absolute px-4 text-lg text-white bottom-6">
+            <h5 class="text-base font-semibold text-white">
+              LKR {{ room.room_only || 'N/A' }}
+            </h5>
+            <h2 class="text-3xl text-white">{{ room.category }} Room</h2>
+          
+          </figcaption>
+        </div>
       </figure>
     </div>
+
     <div class="flex justify-center items-center">
       <a href="./rooms">
         <button
@@ -55,28 +54,31 @@
 </template>
 
 
+
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted } from 'vue';
 
 const room_types = ref([]);
 const runtimeConfig = useRuntimeConfig();
 
 async function fetchRoomTypes() {
   try {
-    const response = await fetch("https://api.sueennature.com/rooms", {
+    const response = await fetch("https://api.sueennature.com/rooms/types", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
+        "x-api-key": runtimeConfig.public.DATABASE_ID,
       },
     });
 
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-
     const data = await response.json();
-    room_types.value = data.room_types || []; // Ensure room_types is an array
+    console.log(data);
+
+    room_types.value = data.room_types || []; 
+    console.log("Room types:", room_types.value);
 
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
