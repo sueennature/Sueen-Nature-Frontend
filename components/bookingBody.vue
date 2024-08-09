@@ -75,66 +75,91 @@
         </div>
         <div class="flex flex-col items-start w-full mt-4 gap-4">
           <div class="font-bold text-lg mt-10">Select a rooms to further process</div>
-              <select id="my-select" v-model="selectedNumberOfRooms" @change="updateRoomNumbers" class="mb-4">
-            <option disabled value="">Choose Rooms</option>
-            <option v-for="num in numberOfRooms" :key="num" :value="num">{{ num }}</option>
-            </select>
-      
+          <div class="mt-4">
+  <h4 class="text-lg font-bold">Available Rooms</h4>
+  <select v-model="selectedRoom" @change="toggleRoom">
+      <option value="" disabled>Select a room</option>
+      <option 
+        v-for="room in rooms" 
+        :key="room.room_number" 
+        :value="room.room_number"
+        :disabled="selectedRoomNumbers.includes(room.room_number)"
+      >
+        Room {{ room.room_number }}
+      </option>
+    </select>
+
+    <!-- Display selected rooms with close icons -->
+    <div v-if="selectedRoomNumbers.length">
+      <span v-for="roomNumber in selectedRoomNumbers" :key="roomNumber" class="selected-room">
+        Room {{ roomNumber }}
+        <button @click="removeRoom(roomNumber)" class="close-icon">
+          &times;
+        </button>
+      </span>
+    </div>
+</div>
+
+
             </div>
             <h3 class="text-lg font-bold mb-2 mt-4">Room Details:</h3>
 
-        <div v-if="selectedRoomNumbers.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+            <div v-if="selectedRoomNumbers.length" class="flex flex-col items-start gap-8">
+  <div v-for="room in selectedRoomNumbers" :key="room" class="mb-4 flex gap-4 items-start justify-start">
+    <h4 class="text-md font-semibold border border-gray-300 p-2 mb-1 rounded text-center h-fit">Room {{ room }}</h4>
 
-            <div v-for="(room, index) in selectedRoomNumbers" :key="room" class="mb-4 flex gap-4 items-start justify-start">
-            <h4 class="text-md font-semibold border border-gray-300 p-2 mb-1 rounded text-center h-fit "> {{ room }}</h4>
+    <!-- Select fields for each room -->
+    <div class="flex flex-col lg:flex-row xl:flex-row items-start gap-4">
+      <div class="mb-2">
+        <label for="adults-{{ room }}" class="block mb-1">Adults:</label>
+        <select id="adults-{{ room }}" v-model="roomDetails[room].adults" class="border border-gray-300 p-2 rounded">
+          <option v-for="num in adultOptions(room)" :key="num" :value="num">{{ num }}</option>
+        </select>
+      </div>
 
-            <!-- Select fields for each room -->
-            <div class="flex flex-col lg:flex-row xl:flex-row items-start   gap-4">
-            <div class="mb-2">
-            <label for="adults-{{ room }}" class="block mb-1">Adults:</label>
-            <select id="adults-{{ room }}" v-model="roomDetails[room].adults" class="border border-gray-300 p-2 rounded">
-              <option v-for="num in adultOptions(room)" :key="num" :value="num">{{ num }}</option>
+      <div class="mb-2">
+        <label for="children-{{ room }}" class="block mb-1">Children:</label>
+        <select id="children-{{ room }}" v-model="roomDetails[room].children" class="border border-gray-300 p-2 rounded">
+          <option v-for="num in childOptions(room)" :key="num" :value="num">{{ num }}</option>
+        </select>
+        <div v-if="roomDetails[room].children > 0" class="mb-4">
+          <div v-for="index in roomDetails[room].children" :key="'child-age-' + index" class="mb-2">
+            <label :for="'child-age-' + room + '-' + index" class="block mb-1 font-bold">Child {{ index }} Age:</label>
+            <select :id="'child-age-' + room + '-' + index" v-model="roomDetails[room].childrenAges[index - 1]" class="border border-gray-300 p-2 rounded">
+              <option v-for="age in childAgeOptions" :key="age" :value="age">{{ age }}</option>
             </select>
-            </div>
+          </div>
+        </div>
+      </div>
 
-            <div>
-            <div class="mb-2">
-            <label for="children-{{ room }}" class="block mb-1">Children:</label>
-            <select id="children-{{ room }}" v-model="roomDetails[room].children" class="border border-gray-300 p-2 rounded">
-              <option v-for="num in childOptions(room)" :key="num" :value="num">{{ num }}</option>
+      <div class="mb-2">
+        <label for="infants-{{ room }}" class="block mb-1">Infants:</label>
+        <select id="infants-{{ room }}" v-model="roomDetails[room].infants" class="border border-gray-300 p-2 rounded">
+          <option v-for="num in [0, 1, 2]" :key="num" :value="num">{{ num }}</option>
+        </select>
+        <div v-if="roomDetails[room].infants > 0" class="mb-4">
+          <div v-for="index in roomDetails[room].infants" :key="'infant-age-' + index" class="mb-2">
+            <label :for="'infant-age-' + room + '-' + index" class="block mb-1 font-bold">Infant {{ index }} Age:</label>
+            <select :id="'infant-age-' + room + '-' + index" v-model="roomDetails[room].infantAges[index - 1]" class="border border-gray-300 p-2 rounded">
+              <option v-for="age in infantAgeOptions" :key="age" :value="age">{{ age }}</option>
             </select>
-            </div>
-            <div v-if="roomDetails[room].children > 0" class="mb-4">
-            <div v-for="index in roomDetails[room].children" :key="'child-age-' + index" class="mb-2">
-              <label :for="'child-age-' + room + '-' + index" class="block mb-1 font-bold">Child {{ index }} Age:</label>
-              <select :id="'child-age-' + room + '-' + index" v-model="roomDetails[room].childrenAges[index - 1]" class="border border-gray-300 p-2 rounded">
-                <option v-for="age in childAgeOptions" :key="age" :value="age">{{ age }}</option>
-              </select>
-            </div>
-            </div>
-            </div>
-            <div>
-            <div class="mb-2">
-            <label for="infants-{{ room }}" class="block mb-1">Infants:</label>
-            <select id="infants-{{ room }}" v-model="roomDetails[room].infants" class="border border-gray-300 p-2 rounded">
-              <option v-for="num in [0, 1, 2]" :key="num" :value="num">{{ num }}</option>
-            </select>
-            </div>
-            <div v-if="roomDetails[room].infants > 0" class="mb-4">
-            <div v-for="index in roomDetails[room].infants" :key="'infant-age-' + index" class="mb-2">
-              <label :for="'infant-age-' + room + '-' + index" class="block mb-1 font-bold">Infant {{ index }} Age:</label>
-              <select :id="'infant-age-' + room + '-' + index" v-model="roomDetails[room].infantAges[index - 1]" class="border border-gray-300 p-2 rounded">
-                <option v-for="age in infantAgeOptions" :key="age" :value="age">{{ age }}</option>
-              </select>
-            </div>
-            </div>
-            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Meal time selection -->
+      <div class="mb-2">
+        <label for="meal-time-{{ room }}" class="block mb-1">Meal Time:</label>
+        <select id="meal-time-{{ room }}" v-model="roomDetails[room].mealTime" class="border border-gray-300 p-2 rounded">
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-            </div>
-            </div>
-            </div>
             <div v-if="selectedRoomNumbers.length" >
             <button        
              class="mt-8 buttontext rounded-xl text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
@@ -145,6 +170,65 @@
       
         <!-- end of price breakdown section -->
       </div>
+      <div class="mt-8">
+  <div class="text-xl font-bold">Total Rates</div>
+  <div v-if="Object.keys(total_rate).length > 0">
+    <div class="flex justify-between mt-4">
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        Total Activities
+      </h5>
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        {{ total_rate.total_activities_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_activities_amount) }`}}
+      </h5>
+    </div>
+    <div class="flex justify-between mt-4">
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        Total Rooms
+      </h5>
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        {{ total_rate.total_rooms_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_rooms_amount) }`}}
+      </h5>
+    </div>
+    <div class="flex justify-between mt-4">
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        Total Meal Plan
+      </h5>
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        {{ total_rate.total_meal_plan_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_meal_plan_amount) }`}}
+      </h5>
+    </div>
+    <div class="flex justify-between mt-4">
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        Total Taxes
+      </h5>
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        {{ total_rate.total_tax_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_tax_amount) }`}}
+      </h5>
+    </div>
+    <div class="flex justify-between mt-4">
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        Total Discounts
+      </h5>
+      <h5 class="lg:text-base text-sm font-medium text-red-400">
+        {{ total_rate.total_discount_amount === 0 ? "-" : `- LKR ${formatPrice(total_rate.total_discount_amount)}` }}
+      </h5>
+    </div>
+    <hr class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-4" />
+    <div class="flex justify-between mt-4">
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        Total Room Rates
+      </h5>
+      <h5 class="lg:text-base text-sm font-medium text-black-200">
+        {{ total_rate.total_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_amount) }`}}
+      </h5>
+    </div>
+  </div>
+  <div v-else>
+    <p class="text-sm text-gray-500">No data available</p>
+  </div>
+</div>
+
+    
     <div class="flex flex-col w-full mt-8 ">
 
 
@@ -177,7 +261,7 @@
     >
       Guest Info & Payment
     </h2>
-    <form @submit.prevent="handleSubmit">
+    <form >
       <!-- checkbox section -->
       <div class="flex justify-center space-x-2">
         <h5 class="text-black-200 lg:text-lg text-sm font-medium">
@@ -443,6 +527,7 @@
       <button
         class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
         type="submit"
+        @click="handleSubmit"
       >
         proceed to pay
       </button>
@@ -848,6 +933,7 @@ export default {
       isSocialLogin: false,
       price: 0,
       roomPeopleCount: [],
+      
       form: {
         first_name: "",
         last_name: "",
@@ -857,7 +943,6 @@ export default {
         nationality: "",
         check_in: this.$route.query.check_in,
         check_out: this.$route.query.check_out,
-        rooms: [],
         guest_info: {
           first_name: "",
           last_name: "",
@@ -900,6 +985,7 @@ export default {
     },
   },
   computed: {
+    
     // Calculate the number of rooms
     numberOfRooms() {
       return this.rooms.length ? Array.from({ length: this.rooms.length }, (_, i) => i + 1) : [];
@@ -916,6 +1002,48 @@ export default {
   },
 
   methods: {
+    toggleRoom() {
+      const roomNumber = this.selectedRoom;
+      const index = this.selectedRoomNumbers.indexOf(roomNumber);
+
+      if (index === -1) {
+        // Room number is not in the array, add it
+        this.selectedRoomNumbers.push(roomNumber);
+      } else {
+        // Room number is in the array, remove it
+        this.selectedRoomNumbers.splice(index, 1);
+      }
+
+      this.selectedRoom = ''; // Reset the select dropdown
+      this.updateRoomDetails(); // Update only the details of selected rooms
+    },
+    removeRoom(roomNumber) {
+      const index = this.selectedRoomNumbers.indexOf(roomNumber);
+      if (index > -1) {
+        this.selectedRoomNumbers.splice(index, 1);
+        this.updateRoomDetails(); // Update only the details of selected rooms
+      }
+    },
+
+  
+    updateRoomDetails() {
+  this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
+    const room = this.rooms.find(r => r.room_number === roomNumber);
+    if (room) {
+      acc[roomNumber] = {
+        adults: this.roomDetails[roomNumber]?.adults ?? Math.min(1, room.max_adults),
+        children: this.roomDetails[roomNumber]?.children ?? Math.min(0, room.max_childs),
+        mealPlan: this.roomDetails[roomNumber]?.mealPlan ?? 'room_only',
+        infants: this.roomDetails[roomNumber]?.infants ?? 0,
+        childrenAges: this.roomDetails[roomNumber]?.childrenAges ?? Array(this.roomDetails[roomNumber]?.children || 0).fill(0),
+        infantAges: this.roomDetails[roomNumber]?.infantAges ?? Array(this.roomDetails[roomNumber]?.infants || 0).fill(0),
+        mealTime: this.roomDetails[roomNumber]?.mealTime ?? 'breakfast' // Default to breakfast if not set
+      };
+    }
+    return acc;
+  }, {});
+}
+,
     formatDatePayload(dateString) {
     const date = new Date(dateString);
     return date.toISOString(); // Converts to ISO 8601 format: "YYYY-MM-DDTHH:mm:ss.sssZ"
@@ -927,64 +1055,115 @@ export default {
       checked: false
     }));
   },
-    preparePayload() {
-      const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-      const checkOutDate = this.formatDatePayload(this.$route.query.toDate);    
-      const discountCode = this.$route.query.discount;    
+  preparePayload() {
+  const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
+  const checkOutDate = this.formatDatePayload(this.$route.query.toDate);    
+  const discountCode = this.$route.query.discount;    
+  const taxes = this.taxes.map(tax => ({ tax_id: tax.id }));
+  const discounts = this.discounts.map(discount => ({ discount_id: discount.id }));
+  const selectedActivities = this.activities
+    .filter(activity => activity.checked)
+    .map(activity => ({ activity_id: activity.id }));
 
-      const taxes = this.taxes.map(tax => ({ tax_id: tax.id }));
-      const discounts = this.discounts.map(discount => ({ discount_id: discount.id }));
-      const selectedActivities = this.activities
-      .filter(activity => activity.checked)
-      .map(activity => ({ activity_id: activity.id }));
+  return {
+    check_in: checkInDate,
+    check_out: checkOutDate,
+    rooms: this.selectedRoomNumbers.map(roomNumber => {
+      const room = this.rooms.find(r => r.room_number === roomNumber);
       return {
-        check_in: checkInDate,
-        check_out: checkOutDate,
-      rooms: this.selectedRoomNumbers.map(room => {
-        const details = this.roomDetails[room];
-        
-        return {
-          room_id: parseInt(room), 
-          adults: details.adults,
-          children: details.childrenAges.map(age => age || 0), // Array of ages for children
-          infants: details.infantAges.map(age => age || 0), // Array of ages for infants
-          meal_plan: details.mealPlan
-        };
-      }),
-      taxes: taxes,
-      discounts: discounts,
-      activities: selectedActivities, // Include selected activities with "activity_id" format
-      discount_code : discountCode
-    };
-  },
+        room_id: room.id,
+        adults: this.roomDetails[roomNumber]?.adults || 0,
+        children: this.roomDetails[roomNumber]?.childrenAges.map(age => age || 0) || [],
+        infants: this.roomDetails[roomNumber]?.infantAges.map(age => age || 0) || [],
+        meal_plan: this.roomDetails[roomNumber]?.mealPlan || 'room_only',
+      };
+    }),
+    taxes: taxes,
+    discounts: discounts,
+    activities: selectedActivities,
+    discount_code: discountCode,
+  };
+}
+,
 
+preparePayloadBooking() {
+  const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
+  const checkOutDate = this.formatDatePayload(this.$route.query.toDate);    
+  const discountCode = this.$route.query.discount;    
+  const taxes = this.taxes.map(tax => ({ tax_id: tax.id }));
+  const discounts = this.discounts.map(discount => ({ discount_id: discount.id }));
+  const selectedActivities = this.activities
+    .filter(activity => activity.checked)
+    .map(activity => ({ activity_id: activity.id }));
+
+  return {
+    check_in: checkInDate,
+    check_out: checkOutDate,
+    rooms: this.selectedRoomNumbers.map(roomNumber => {
+      const room = this.rooms.find(r => r.room_number === roomNumber); // Find the room object
+      console.log(room);
+      return {
+        room_id: room.id, // Use the room id
+        adults: this.roomDetails[roomNumber]?.adults || 0,
+        children: this.roomDetails[roomNumber]?.childrenAges.map(age => age || 0) || [], // Array of ages for children
+        infants: this.roomDetails[roomNumber]?.infantAges.map(age => age || 0) || [], // Array of ages for infants
+        meal_plan: this.roomDetails[roomNumber]?.mealPlan || 'room_only',
+        starting_meals_with: this.roomDetails[roomNumber]?.mealTime || 'breakfast' // Include mealTime
+
+      };
+    }),
+    taxes: taxes,
+    discounts: discounts,
+    activities: selectedActivities, // Include selected activities with "activity_id" format
+    discount_code: discountCode,
+    total_taxes: this.total_rate.total_tax_amount,
+    total_rooms_charge: this.total_rate.total_rooms_amount,
+    total_activities_charge: this.total_rate.total_activities_amount,
+    total_discount_amount: this.total_rate.total_discount_amount,
+    total_amount: this.total_rate.total_meal_plan_amount,
+    agent_info: {
+      first_name: this.form.first_name,
+      last_name: this.form.last_name,
+      email: this.form.email,
+      telephone: this.form.telephone,
+      address: this.form.address,
+      nationality: this.form.nationality
+    }
+
+  };
+},
 
   async submitPayload() {
     try {
     const payload = this.preparePayload(); // Call the function to get the payload
     const runtimeConfig = useRuntimeConfig();
       console.log(payload)
-    // const response = await fetch("https://api.sueennature.com/rooms/get-rates/", {
-    //   method: "POST", // Change method to POST
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
-    //   },
-    //   body: JSON.stringify(payload), // Pass the payload as the request body
-    // });
+    const response = await fetch("https://api.sueennature.com/rooms/get-rates/", {
+      method: "POST", // Change method to POST
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
+      },
+      body: JSON.stringify(payload), // Pass the payload as the request body
+    });
 
-    // if (!response.ok) {
-    //   throw new Error("Network response was not ok");
-    // }
-    // const data = await response.json();
-    // console.log(data);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    console.log(data);
+    this.total_rate = data
+    console.log("RATES", this.total_rate)
 
-    // room_types.value = data.room_types || []; // Access the room_types property
-    // console.log("Room types:", room_types.value); // Ensure room_types is an array
 
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
   }
+  },
+  async handleSubmit(){
+    const payload = this.preparePayloadBooking(); // Call the function to get the payload'
+  console.log(payload)
+
   },
     updateRoomNumbers() {
       if (this.selectedNumberOfRooms) {
@@ -997,19 +1176,21 @@ export default {
       }
     },
     initializeRoomDetails() {
-      this.roomDetails = this.selectedRoomNumbers.reduce((acc, room) => {
+    // Initialize room details for selected rooms only
+    this.selectedRoomNumbers.forEach(room => {
+      if (!this.roomDetails[room]) {
         const roomData = this.rooms.find(r => r.room_number === room);
-        acc[room] = {
-          adults: Math.min(1, roomData.max_adults), // Ensure initial value is 1 or maximum number of adults
-          children: Math.min(0, roomData.max_childs), // Ensure initial value is 0 or maximum number of children
+        this.$set(this.roomDetails, room, {
+          adults: Math.min(1, roomData.max_adults),
+          children: Math.min(0, roomData.max_childs),
           mealPlan: 'room_only',
           infants: 0,
-          childrenAges: Array(Math.min(0, roomData.max_childs)).fill(0), // Initialize with default values
-          infantAges: Array(0).fill(0), // Initialize with default values
-        };
-        return acc;
-      }, {});
-    },
+          childrenAges: Array(Math.min(0, roomData.max_childs)).fill(0),
+          infantAges: Array(0).fill(0),
+        });
+      }
+    });
+  },
     adultOptions(room) {
       const maxAdults = this.rooms.find(r => r.room_number === room).max_adults;
       return Array.from({ length: maxAdults }, (_, i) => i + 1);
@@ -1302,7 +1483,6 @@ export default {
 
   mounted() {
     this.initializeActivities();
-
     const formatDateToISO = (dateString) => {
       if (!dateString) return "";
       const date = new Date(dateString);
@@ -1416,5 +1596,22 @@ input {
 #infants,
 #nationality {
   background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
+}
+.selected-room {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.close-icon {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: red;
+  cursor: pointer;
+  margin-left: 5px;
 }
 </style>
