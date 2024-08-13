@@ -16,7 +16,7 @@
         :key="index"
         class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
       >
-        <h4 class="text-2xl font-semibold text-center mb-4">{{ category.category }}</h4>
+        <!-- <h4 class="text-2xl font-semibold text-center mb-4">{{ category.category }}</h4> -->
         <div
           v-for="room in category.rooms"
           :key="room.room_number"
@@ -25,7 +25,7 @@
           <!-- Use room_number as the key for better performance -->
           <img
             v-if="room.images && room.images.length > 0"
-            class="rounded-0 w-96 h-72"
+            class="rounded-0 w-60 max-w-md h-60"
             :src="`https://api.sueennature.com/${room.images[0]}`"
             :alt="`${room.category} image`"
           />
@@ -33,7 +33,7 @@
             <h5 class="text-base font-semibold text-white">
               LKR {{ room.room_only || 'N/A' }}
             </h5>
-            <h2 class="text-3xl text-white">{{ room.category }}</h2>
+            <h2 class="text-3xl text-white">{{ room.category }} Room</h2>
           
           </figcaption>
         </div>
