@@ -492,8 +492,8 @@ export default {
       const params = new URLSearchParams({
         check_in: formattedCheckIn,
         check_out: formattedCheckOut,
-        category: this.roomCategory,
-        view: this.roomView,
+        categories: this.roomCategory,
+        views: this.roomView,
         discount_code: this.discount_code,
       });
 

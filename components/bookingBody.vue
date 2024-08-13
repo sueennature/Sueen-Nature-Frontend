@@ -4,13 +4,14 @@
       Check Availability
     </h2>
     <div class="mt-8">
-      <CheckoutAvailability/>
+      <CheckoutAvailability />
     </div>
 
-      <div>
-      
-        <div class="flex flex-col lg-flex-row xl:flex-row items-center justify-between  w-full gap-8">
-          <div
+    <div>
+      <div
+        class="flex flex-col lg-flex-row xl:flex-row items-start justify-between w-full gap-8"
+      >
+        <div
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
         >
           <h6 class="text-black-200 xl:text-lg text-base font-bold">
@@ -72,188 +73,317 @@
             class="w-full object-cover"
           /> -->
         </div>
+      </div>
+      <div class="flex flex-col items-start w-full mt-4 gap-4">
+        <div class="font-bold text-xl mt-10">
+          Select a rooms to further process
         </div>
-        <div class="flex flex-col items-start w-full mt-4 gap-4">
-          <div class="font-bold text-lg mt-10">Select a rooms to further process</div>
-          <div class="mt-4">
-  <h4 class="text-lg font-bold">Available Rooms</h4>
-  <select v-model="selectedRoom" @change="toggleRoom">
-      <option value="" disabled>Select a room</option>
-      <option 
-        v-for="room in rooms" 
-        :key="room.room_number" 
-        :value="room.room_number"
-        :disabled="selectedRoomNumbers.includes(room.room_number)"
-      >
-        Room {{ room.room_number }}
-      </option>
-    </select>
-
-    <!-- Display selected rooms with close icons -->
-    <div v-if="selectedRoomNumbers.length">
-      <span v-for="roomNumber in selectedRoomNumbers" :key="roomNumber" class="selected-room">
-        Room {{ roomNumber }}
-        <button @click="removeRoom(roomNumber)" class="close-icon">
-          &times;
-        </button>
-      </span>
-    </div>
-</div>
-
-
-            </div>
-            <h3 class="text-lg font-bold mb-2 mt-4">Room Details:</h3>
-
-            <div v-if="selectedRoomNumbers.length" class="flex flex-col items-start gap-8">
-  <div v-for="room in selectedRoomNumbers" :key="room" class="mb-4 flex gap-4 items-start justify-start">
-    <h4 class="text-md font-semibold border border-gray-300 p-2 mb-1 rounded text-center h-fit">Room {{ room }}</h4>
-
-    <!-- Select fields for each room -->
-    <div class="flex flex-col lg:flex-row xl:flex-row items-start gap-4">
-      <div class="mb-2">
-        <label for="adults-{{ room }}" class="block mb-1">Adults:</label>
-        <select id="adults-{{ room }}" v-model="roomDetails[room].adults" class="border border-gray-300 p-2 rounded">
-          <option v-for="num in adultOptions(room)" :key="num" :value="num">{{ num }}</option>
-        </select>
-      </div>
-
-      <div class="mb-2">
-        <label for="children-{{ room }}" class="block mb-1">Children:</label>
-        <select id="children-{{ room }}" v-model="roomDetails[room].children" class="border border-gray-300 p-2 rounded">
-          <option v-for="num in childOptions(room)" :key="num" :value="num">{{ num }}</option>
-        </select>
-        <div v-if="roomDetails[room].children > 0" class="mb-4">
-          <div v-for="index in roomDetails[room].children" :key="'child-age-' + index" class="mb-2">
-            <label :for="'child-age-' + room + '-' + index" class="block mb-1 font-bold">Child {{ index }} Age:</label>
-            <select :id="'child-age-' + room + '-' + index" v-model="roomDetails[room].childrenAges[index - 1]" class="border border-gray-300 p-2 rounded">
-              <option v-for="age in childAgeOptions" :key="age" :value="age">{{ age }}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-2">
-        <label for="infants-{{ room }}" class="block mb-1">Infants:</label>
-        <select id="infants-{{ room }}" v-model="roomDetails[room].infants" class="border border-gray-300 p-2 rounded">
-          <option v-for="num in [0, 1, 2]" :key="num" :value="num">{{ num }}</option>
-        </select>
-        <div v-if="roomDetails[room].infants > 0" class="mb-4">
-          <div v-for="index in roomDetails[room].infants" :key="'infant-age-' + index" class="mb-2">
-            <label :for="'infant-age-' + room + '-' + index" class="block mb-1 font-bold">Infant {{ index }} Age:</label>
-            <select :id="'infant-age-' + room + '-' + index" v-model="roomDetails[room].infantAges[index - 1]" class="border border-gray-300 p-2 rounded">
-              <option v-for="age in infantAgeOptions" :key="age" :value="age">{{ age }}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- Meal time selection -->
-      <div class="mb-2">
-        <label for="meal-time-{{ room }}" class="block mb-1">Meal Time:</label>
-        <select id="meal-time-{{ room }}" v-model="roomDetails[room].mealTime" class="border border-gray-300 p-2 rounded">
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-        </select>
-      </div>
-    </div>
-  </div>
-</div>
-
-            <div v-if="selectedRoomNumbers.length" >
-            <button        
-             class="mt-8 buttontext rounded-xl text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            @click="submitPayload">Please Click  to get final rates</button>
-          </div>
-
-        <!-- Login and Register modal popups -->
-      
-        <!-- end of price breakdown section -->
-      </div>
-      <div class="mt-8">
-  <div class="text-xl font-bold">Total Rates</div>
-  <div v-if="Object.keys(total_rate).length > 0">
-    <div class="flex justify-between mt-4">
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        Total Activities
-      </h5>
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        {{ total_rate.total_activities_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_activities_amount) }`}}
-      </h5>
-    </div>
-    <div class="flex justify-between mt-4">
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        Total Rooms
-      </h5>
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        {{ total_rate.total_rooms_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_rooms_amount) }`}}
-      </h5>
-    </div>
-    <div class="flex justify-between mt-4">
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        Total Meal Plan
-      </h5>
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        {{ total_rate.total_meal_plan_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_meal_plan_amount) }`}}
-      </h5>
-    </div>
-    <div class="flex justify-between mt-4">
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        Total Taxes
-      </h5>
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        {{ total_rate.total_tax_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_tax_amount) }`}}
-      </h5>
-    </div>
-    <div class="flex justify-between mt-4">
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        Total Discounts
-      </h5>
-      <h5 class="lg:text-base text-sm font-medium text-red-400">
-        {{ total_rate.total_discount_amount === 0 ? "-" : `- LKR ${formatPrice(total_rate.total_discount_amount)}` }}
-      </h5>
-    </div>
-    <hr class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-4" />
-    <div class="flex justify-between mt-4">
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        Total Room Rates
-      </h5>
-      <h5 class="lg:text-base text-sm font-medium text-black-200">
-        {{ total_rate.total_amount === 0 ? "-" : `LKR ${formatPrice(total_rate.total_amount) }`}}
-      </h5>
-    </div>
-  </div>
-  <div v-else>
-    <p class="text-sm text-gray-500">No data available</p>
-  </div>
-</div>
-
-    
-    <div class="flex flex-col w-full mt-8 ">
-
-
-</div>
-
-<div class="flex flex-row space-x-4 items-baseline">
-          <button
-            class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            type="button"
-            @click="scrollToPaymentInfo"
-          >
-            Proceed As a Guest
-          </button>
-          <span class="text-black-200 text-base font-bold">OR</span>
-          <div>
-            <button
-              @click="getClickMethod"
-              type="button"
-              class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        <div class="mt-4">
+          <h4 class="text-lg ">Available Rooms</h4>
+          <select v-model="selectedRoom" @change="toggleRoom" class="w-72 border border-gray-600 rounded-lg">
+            <option value=null disabled>Select a room</option>
+            <option
+              v-for="room in rooms"
+              :key="room.room_number"
+              :value="room.room_number"
+              :disabled="selectedRoomNumbers.includes(room.room_number)"
             >
-              {{ isSignedIn ? "Sign Off" : "Sign In" }}
-            </button>
+              Room {{ room.room_number }}
+            </option>
+          </select>
+
+          <!-- Display selected rooms with close icons -->
+          <div v-if="selectedRoomNumbers.length">
+            <span
+              v-for="roomNumber in selectedRoomNumbers"
+              :key="roomNumber"
+              class="selected-room"
+            >
+              Room {{ roomNumber }}
+              <button @click="removeRoom(roomNumber)" class="close-icon">
+                &times;
+              </button>
+            </span>
           </div>
         </div>
+      </div>
+      <h3 class="text-lg font-bold mb-2 mt-4">Room Details:</h3>
+
+      <div
+        v-if="selectedRoomNumbers.length"
+        class="flex flex-col items-start gap-8"
+      >
+        <div
+          v-for="room in selectedRoomNumbers"
+          :key="room"
+          class="mb-4 flex gap-4 items-start justify-start"
+        >
+          <h4
+            class="text-md font-semibold border border-gray-300 p-2 mb-1 rounded text-center h-fit"
+          >
+            Room {{ room }}
+          </h4>
+
+          <!-- Select fields for each room -->
+          <div class="flex flex-col lg:flex-row xl:flex-row items-start gap-4">
+            <div class="mb-2">
+              <label for="adults-{{ room }}" class="block mb-1">Adults:</label>
+              <select
+                id="adults-{{ room }}"
+                v-model="roomDetails[room].adults"
+                class="border border-gray-300 p-2 rounded"
+              >
+                <option
+                  v-for="num in adultOptions(room)"
+                  :key="num"
+                  :value="num"
+                >
+                  {{ num }}
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-2">
+              <label for="children-{{ room }}" class="block mb-1"
+                >Children:</label
+              >
+              <select
+                id="children-{{ room }}"
+                v-model="roomDetails[room].children"
+                class="border border-gray-300 p-2 rounded"
+              >
+                <option
+                  v-for="num in childOptions(room)"
+                  :key="num"
+                  :value="num"
+                >
+                  {{ num }}
+                </option>
+              </select>
+              <div v-if="roomDetails[room].children > 0" class="mb-4">
+                <div
+                  v-for="index in roomDetails[room].children"
+                  :key="'child-age-' + index"
+                  class="mb-2 mt-4"
+                >
+                  <label
+                    :for="'child-age-' + room + '-' + index"
+                    class="block mb-1 font-bold"
+                    >Child {{ index }} Age</label
+                  >
+                  <select
+                    :id="'child-age-' + room + '-' + index"
+                    v-model="roomDetails[room].childrenAges[index - 1]"
+                    class="border border-gray-300 p-2 rounded"
+                  >
+                    <option
+                      v-for="age in childAgeOptions"
+                      :key="age"
+                      :value="age"
+                    >
+                      {{ age }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label for="infants-{{ room }}" class="block mb-1"
+                >Infants:</label
+              >
+              <select
+                id="infants-{{ room }}"
+                v-model="roomDetails[room].infants"
+                class="border border-gray-300 p-2 rounded"
+              >
+                <option v-for="num in [0, 1, 2]" :key="num" :value="num">
+                  {{ num }}
+                </option>
+              </select>
+              <div v-if="roomDetails[room].infants > 0" class="mb-4">
+                <div
+                  v-for="index in roomDetails[room].infants"
+                  :key="'infant-age-' + index"
+                  class="mb-2 mt-4"
+                >
+                  <label
+                    :for="'infant-age-' + room + '-' + index"
+                    class="block mb-1 font-bold"
+                    >Infant {{ index }} Age</label
+                  >
+                  <select
+                    :id="'infant-age-' + room + '-' + index"
+                    v-model="roomDetails[room].infantAges[index - 1]"
+                    class="border border-gray-300 p-2 rounded"
+                  >
+                    <option
+                      v-for="age in infantAgeOptions"
+                      :key="age"
+                      :value="age"
+                    >
+                      {{ age }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Meal time selection -->
+            <div class="mb-2">
+              <label for="meal-time-{{ room }}" class="block mb-1"
+                >Meal Time:</label
+              >
+              <select
+                id="meal-time-{{ room }}"
+                v-model="roomDetails[room].mealTime"
+                class="border border-gray-300 p-2 rounded"
+              >
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="selectedRoomNumbers.length">
+        <button
+          class="mt-8 buttontext rounded-xl text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold  lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          @click="submitPayload"
+        >
+          Please Click to get final rates to proceed further
+        </button>
+      </div>
+
+      <!-- Login and Register modal popups -->
+
+      <!-- end of price breakdown section -->
+    </div>
+    <div class="mt-8">
+      <div  v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">Total Rates</div>
+      <div v-if="Object.keys(total_rate).length > 0">
+        <div class="flex justify-between mt-4">
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            Total Activities
+          </h5>
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            {{
+              total_rate.total_activities_amount === 0
+                ? "-"
+                : `LKR ${formatPrice(total_rate.total_activities_amount)}`
+            }}
+          </h5>
+        </div>
+        <div class="flex justify-between mt-4">
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            Total Rooms
+          </h5>
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            {{
+              total_rate.total_rooms_amount === 0
+                ? "-"
+                : `LKR ${formatPrice(total_rate.total_rooms_amount)}`
+            }}
+          </h5>
+        </div>
+        <div class="flex justify-between mt-4">
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            Total Meal Plan
+          </h5>
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            {{
+              total_rate.total_meal_plan_amount === 0
+                ? "-"
+                : `LKR ${formatPrice(total_rate.total_meal_plan_amount)}`
+            }}
+          </h5>
+        </div>
+        <div class="flex justify-between mt-4">
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            Total Taxes
+          </h5>
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            {{
+              total_rate.total_tax_amount === 0
+                ? "-"
+                : `LKR ${formatPrice(total_rate.total_tax_amount)}`
+            }}
+          </h5>
+        </div>
+        <div class="flex justify-between mt-4">
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            Total Discounts
+          </h5>
+          <h5 class="lg:text-base text-sm font-medium text-red-400">
+            {{
+              total_rate.total_discount_amount === 0
+                ? "-"
+                : `- LKR ${formatPrice(total_rate.total_discount_amount)}`
+            }}
+          </h5>
+        </div>
+        <hr
+          class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-4"
+        />
+        <div class="flex justify-between mt-4">
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            Total Room Rates
+          </h5>
+          <h5 class="lg:text-base text-sm font-medium text-black-200">
+            {{
+              total_rate.total_amount === 0
+                ? "-"
+                : `LKR ${formatPrice(total_rate.total_amount)}`
+            }}
+          </h5>
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="flex flex-col w-full mt-8"></div>
+
+    <div class="flex flex-row space-x-4 items-baseline">
+      <button
+        class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        type="button"
+        @click="scrollToPaymentInfo"
+      >
+        Proceed As a Guest
+      </button>
+      <span class="text-black-200 text-base font-bold">OR</span>
+      <div>
+        <button
+          @click="getClickMethod"
+          type="button"
+          class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        >
+          {{ isSignedIn ? "Sign Off" : "Sign In" }}
+        </button>
+      </div>
+    </div>
     <div ref="paymentInfoRef"></div>
+<div class="flex flex-col lg:flex-row xl:flex-row gap-8 mt-12">
+  <div class="flex flex-col w-72">
+    <label class="text-xl font-bold mb-5">Booking Notes</label>
+    <textarea
+  v-model="booking_note"
+  placeholder="Comments..."
+  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+></textarea>
+  </div>
+  <div class="flex flex-col w-72">
+    <label class="text-xl font-bold mb-5">Payment Notes</label>
+    <textarea
+      type="text"
+       v-model="payment_note"
+        placeholder="Comments..."
+        class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+        ></textarea>
+  </div>
+</div>
     <!-- Guest Info & Payment section -->
     <h2
       class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10"
@@ -261,7 +391,6 @@
     >
       Guest Info & Payment
     </h2>
-    <form >
       <!-- checkbox section -->
       <div class="flex justify-center space-x-2">
         <h5 class="text-black-200 lg:text-lg text-sm font-medium">
@@ -307,7 +436,6 @@
         </h5>
         <!-- user information form -->
 
-        <!-- <form class="mt-4"> -->
         <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
           <div>
             <label
@@ -354,7 +482,7 @@
               v-model="form.telephone"
             />
           </div>
-          <div>
+         <div>
             <label
               for="nationality"
               class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
@@ -365,10 +493,13 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               v-model="form.nationality"
             >
-              <option selected>Local</option>
-              <option value="US">Foreign</option>
+            <option value="" disabled>Select Nationality</option>
+          <option v-for="country in countries" :key="country.code" :value="country.name">
+            {{ country.name }}
+          </option>
             </select>
-          </div>
+         
+          </div> 
           <div>
             <label
               for="address"
@@ -400,8 +531,8 @@
             />
           </div>
         </div>
+
       </div>
-      <!-- </form> -->
 
       <div class="text-center mt-10" v-if="showGuestInfo">
         <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
@@ -481,8 +612,10 @@
               class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               v-model="form.guest_info.nationality"
             >
-              <option selected>Local</option>
-              <option value="US">Foreign</option>
+            <option value="" disabled>Select Nationality</option>
+          <option v-for="country in countries" :key="country.code" :value="country.name">
+            {{ country.name }}
+          </option>
             </select>
           </div>
           <div>
@@ -523,15 +656,14 @@
           >I have read and I agree to the terms and conditions.</label
         >
       </div>
-
-      <button
+      <div  v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">   <button
         class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        type="submit"
         @click="handleSubmit"
       >
         proceed to pay
-      </button>
-    </form>
+      </button></div>
+
+   
 
     <!-- Register and Login Modal Popup -->
     <!-- Register modal -->
@@ -651,15 +783,14 @@
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
                 />
                 <select
-                  v-model="guestDetails.nationality"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                >
-                  <option value="" disabled>Select Nationality</option>
-                  <option value="american">American</option>
-                  <option value="british">British</option>
-                  <option value="canadian">Canadian</option>
-                  <!-- Add more options as needed -->
-                </select>
+    v-model="guestDetails.nationality"
+    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+  >
+    <option value="" disabled>Select Nationality</option>
+    <option v-for="country in countries" :key="country.code" :value="country.name">
+      {{ country.name }}
+    </option>
+  </select>
                 <select
                   v-model="guestDetails.identification_type"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
@@ -676,18 +807,7 @@
                   placeholder="Identification No"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
                 />
-                <input
-                  type="date"
-                  v-model="guestDetails.identification_issue_date"
-                  placeholder="Identification Issue Date"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-                <input
-                  type="date"
-                  v-model="guestDetails.dob"
-                  placeholder="Date of Birth"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
+          
                 <select
                   v-model="guestDetails.gender"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
@@ -697,6 +817,24 @@
                   <option value="female">Female</option>
                   <option value="other">Other</option>
                 </select>
+               <div class="flex  flex-col">
+                <label>Date of Birth</label>
+                <input
+                  type="date"
+                  v-model="guestDetails.dob"
+                  placeholder="Date of Birth"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+                />
+               </div>
+               <div class="flex  flex-col">
+                <label>Identification Issue Date</label>
+                <input
+                  type="date"
+                  v-model="guestDetails.identification_issue_date"
+                  placeholder="Identification Issue Date"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+                />
+               </div>
               </div>
 
               <div class="flex items-start mt-5">
@@ -886,6 +1024,7 @@ import SocialLogin from "./SocialLogin.vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import axios from "axios";
+import countries from './countries.json'; // Adjust the path according to where you put your JSON file
 
 export default {
   components: {
@@ -904,23 +1043,25 @@ export default {
       selectedInfants: 0,
       selectedChildren: 0,
       total_rate: 0,
+      countries: countries,
       isSpecialRateApplied: false,
       infantAges: [],
       childrenAges: [],
       discount_data: {},
       rooms: [],
-      selectedNumberOfRooms: '', // Selected number of rooms from the dropdown
-      selectedRoomNumbers: [] ,
+      selectedNumberOfRooms: "", // Selected number of rooms from the dropdown
+      selectedRoomNumbers: [],
       roomDetails: {}, // Object to store details for each room
-      mealPlans: [ // Example meal plan options
-        { value: 'room_only', label: 'Room Only' },
-        { value: 'bread_breakfast', label: 'Bed & Breakfast' },
-        { value: 'half_board', label: 'Half Board' },
-        { value: 'full_board', label: 'Full Board' }
+      mealPlans: [
+        // Example meal plan options
+        { value: "room_only", label: "Room Only" },
+        { value: "bread_breakfast", label: "Bed & Breakfast" },
+        { value: "half_board", label: "Half Board" },
+        { value: "full_board", label: "Full Board" },
       ],
       childAgeOptions: [3, 4, 5, 6], // Options for children's ages
       infantAgeOptions: [0, 1, 2], // Age options for children
-      selectedOption: '',
+      selectedOption: "",
       boardType: [],
       special_rate: 0,
       view_type_id: null,
@@ -929,11 +1070,12 @@ export default {
       infantFormAges: [],
       activities: [],
       discounts: [],
-      taxes :[],
+      taxes: [],
       isSocialLogin: false,
       price: 0,
       roomPeopleCount: [],
-      
+      booking_note:"",
+      payment_note:"",
       form: {
         first_name: "",
         last_name: "",
@@ -985,20 +1127,20 @@ export default {
     },
   },
   computed: {
-    
     // Calculate the number of rooms
     numberOfRooms() {
-      return this.rooms.length ? Array.from({ length: this.rooms.length }, (_, i) => i + 1) : [];
+      return this.rooms.length
+        ? Array.from({ length: this.rooms.length }, (_, i) => i + 1)
+        : [];
     },
     childrenAges() {
       const ages = {};
-      this.selectedRoomNumbers.forEach(room => {
+      this.selectedRoomNumbers.forEach((room) => {
         const numChildren = this.roomDetails[room]?.children || 0;
         ages[room] = Array.from({ length: numChildren }, (_, i) => i); // Use indices for children
       });
       return ages;
-    }
-
+    },
   },
 
   methods: {
@@ -1014,7 +1156,7 @@ export default {
         this.selectedRoomNumbers.splice(index, 1);
       }
 
-      this.selectedRoom = ''; // Reset the select dropdown
+      this.selectedRoom = ""; // Reset the select dropdown
       this.updateRoomDetails(); // Update only the details of selected rooms
     },
     removeRoom(roomNumber) {
@@ -1025,150 +1167,194 @@ export default {
       }
     },
 
-  
     updateRoomDetails() {
-  this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
-    const room = this.rooms.find(r => r.room_number === roomNumber);
-    if (room) {
-      acc[roomNumber] = {
-        adults: this.roomDetails[roomNumber]?.adults ?? Math.min(1, room.max_adults),
-        children: this.roomDetails[roomNumber]?.children ?? Math.min(0, room.max_childs),
-        mealPlan: this.roomDetails[roomNumber]?.mealPlan ?? 'room_only',
-        infants: this.roomDetails[roomNumber]?.infants ?? 0,
-        childrenAges: this.roomDetails[roomNumber]?.childrenAges ?? Array(this.roomDetails[roomNumber]?.children || 0).fill(0),
-        infantAges: this.roomDetails[roomNumber]?.infantAges ?? Array(this.roomDetails[roomNumber]?.infants || 0).fill(0),
-        mealTime: this.roomDetails[roomNumber]?.mealTime ?? 'breakfast' // Default to breakfast if not set
-      };
-    }
-    return acc;
-  }, {});
-}
-,
+      this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
+        const room = this.rooms.find((r) => r.room_number === roomNumber);
+        if (room) {
+          acc[roomNumber] = {
+            adults:
+              this.roomDetails[roomNumber]?.adults ??
+              Math.min(1, room.max_adults),
+            children:
+              this.roomDetails[roomNumber]?.children ??
+              Math.min(0, room.max_childs),
+            mealPlan: this.roomDetails[roomNumber]?.mealPlan ?? "room_only",
+            infants: this.roomDetails[roomNumber]?.infants ?? 0,
+            childrenAges:
+              this.roomDetails[roomNumber]?.childrenAges ??
+              Array(this.roomDetails[roomNumber]?.children || 0).fill(0),
+            infantAges:
+              this.roomDetails[roomNumber]?.infantAges ??
+              Array(this.roomDetails[roomNumber]?.infants || 0).fill(0),
+            mealTime: this.roomDetails[roomNumber]?.mealTime ?? "breakfast", // Default to breakfast if not set
+          };
+        }
+        return acc;
+      }, {});
+    },
     formatDatePayload(dateString) {
-    const date = new Date(dateString);
-    return date.toISOString(); // Converts to ISO 8601 format: "YYYY-MM-DDTHH:mm:ss.sssZ"
-  },
+      const date = new Date(dateString);
+      return date.toISOString(); // Converts to ISO 8601 format: "YYYY-MM-DDTHH:mm:ss.sssZ"
+    },
 
     initializeActivities() {
-    this.activities = this.activities.map(activity => ({
-      ...activity,
-      checked: false
-    }));
-  },
-  preparePayload() {
-  const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-  const checkOutDate = this.formatDatePayload(this.$route.query.toDate);    
-  const discountCode = this.$route.query.discount;    
-  const taxes = this.taxes.map(tax => ({ tax_id: tax.id }));
-  const discounts = this.discounts.map(discount => ({ discount_id: discount.id }));
-  const selectedActivities = this.activities
-    .filter(activity => activity.checked)
-    .map(activity => ({ activity_id: activity.id }));
+      this.activities = this.activities.map((activity) => ({
+        ...activity,
+        checked: false,
+      }));
+    },
+    preparePayload() {
+      const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
+      const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
+      const discountCode = this.$route.query.discount;
+      const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
+      const discounts = this.discounts.map((discount) => ({
+        discount_id: discount.id,
+      }));
+      const selectedActivities = this.activities
+        .filter((activity) => activity.checked)
+        .map((activity) => ({ activity_id: activity.id }));
 
-  return {
-    check_in: checkInDate,
-    check_out: checkOutDate,
-    rooms: this.selectedRoomNumbers.map(roomNumber => {
-      const room = this.rooms.find(r => r.room_number === roomNumber);
       return {
-        room_id: room.id,
-        adults: this.roomDetails[roomNumber]?.adults || 0,
-        children: this.roomDetails[roomNumber]?.childrenAges.map(age => age || 0) || [],
-        infants: this.roomDetails[roomNumber]?.infantAges.map(age => age || 0) || [],
-        meal_plan: this.roomDetails[roomNumber]?.mealPlan || 'room_only',
+        check_in: checkInDate,
+        check_out: checkOutDate,
+        rooms: this.selectedRoomNumbers.map((roomNumber) => {
+          const room = this.rooms.find((r) => r.room_number === roomNumber);
+          return {
+            room_id: room.id,
+            adults: this.roomDetails[roomNumber]?.adults || 0,
+            children:
+              this.roomDetails[roomNumber]?.childrenAges.map(
+                (age) => age || 0
+              ) || [],
+            infants:
+              this.roomDetails[roomNumber]?.infantAges.map((age) => age || 0) ||
+              [],
+            meal_plan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
+          };
+        }),
+        taxes: taxes,
+        discounts: discounts,
+        activities: selectedActivities,
+        discount_code: discountCode,
       };
-    }),
-    taxes: taxes,
-    discounts: discounts,
-    activities: selectedActivities,
-    discount_code: discountCode,
-  };
-}
-,
+    },
+    preparePayloadBooking() {
+      const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
+      const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
+      const discountCode = this.$route.query.discount;
+      const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
+      const discounts = this.discounts.map((discount) => ({
+        discount_id: discount.id,
+      }));
+      const selectedActivities = this.activities
+        .filter((activity) => activity.checked)
+        .map((activity) => ({ activity_id: activity.id, activity_name : activity.name }));
 
-preparePayloadBooking() {
-  const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-  const checkOutDate = this.formatDatePayload(this.$route.query.toDate);    
-  const discountCode = this.$route.query.discount;    
-  const taxes = this.taxes.map(tax => ({ tax_id: tax.id }));
-  const discounts = this.discounts.map(discount => ({ discount_id: discount.id }));
-  const selectedActivities = this.activities
-    .filter(activity => activity.checked)
-    .map(activity => ({ activity_id: activity.id }));
-
-  return {
-    check_in: checkInDate,
-    check_out: checkOutDate,
-    rooms: this.selectedRoomNumbers.map(roomNumber => {
-      const room = this.rooms.find(r => r.room_number === roomNumber); // Find the room object
-      console.log(room);
       return {
-        room_id: room.id, // Use the room id
-        adults: this.roomDetails[roomNumber]?.adults || 0,
-        children: this.roomDetails[roomNumber]?.childrenAges.map(age => age || 0) || [], // Array of ages for children
-        infants: this.roomDetails[roomNumber]?.infantAges.map(age => age || 0) || [], // Array of ages for infants
-        meal_plan: this.roomDetails[roomNumber]?.mealPlan || 'room_only',
-        starting_meals_with: this.roomDetails[roomNumber]?.mealTime || 'breakfast' // Include mealTime
+        check_in: checkInDate,
+        check_out: checkOutDate,
+        rooms: this.selectedRoomNumbers.map((roomNumber) => {
+          const room = this.rooms.find((r) => r.room_number === roomNumber);
+          console.log(room);
+          return {
+            room_id: room.id,
+            room_number:room.room_number,
+            category:this.$route.query.roomType,
+            adults: this.roomDetails[roomNumber]?.adults || 0,
+            children:
+              this.roomDetails[roomNumber]?.childrenAges.map(
+                (age) => age || 0
+              ) || [], 
+            infants:
+              this.roomDetails[roomNumber]?.infantAges.map((age) => age || 0) ||
+              [], 
+            meal_plan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
+            starting_meals_with: this.roomDetails[roomNumber]?.mealTime || "breakfast", 
+            view:this.$route.query.view
 
+          };
+        }),
+        taxes: taxes,
+        discounts: discounts,
+        activities: selectedActivities, 
+        discount_code: discountCode,
+        total_taxes: this.total_rate.total_tax_amount,
+        total_rooms_charge: this.total_rate.total_rooms_amount,
+        total_activities_charge: this.total_rate.total_activities_amount,
+        total_discount_amount: this.total_rate.total_discount_amount,
+        total_amount: this.total_rate.total_meal_plan_amount,
+        agent_info: {
+          first_name: this.form.first_name,
+          last_name: this.form.last_name,
+          email: this.form.email,
+          telephone: this.form.telephone,
+          address: this.form.address,
+          nationality: this.form.nationality,
+        },
+      guest_info: {
+        first_name: this.form.guest_info.first_name, 
+        last_name: this.form.guest_info.last_name,
+        email: this.form.guest_info.email,
+        telephone: this.form.guest_info.telephone,
+        address: this.form.guest_info.guest_address,
+        nationality: this.form.guest_info.nationality,
+        identification_type: "<string>",
+        identification_no: "<string>",
+        gender: "<string>",
+        profile_image: [
+          "<string>",
+          "<string>"
+        ],
+        identification_issue_date: "<dateTime>",
+        dob: "<dateTime>"
+        },
+        booking_note:this.booking_note,
+        payment_note: this.payment_note
       };
-    }),
-    taxes: taxes,
-    discounts: discounts,
-    activities: selectedActivities, // Include selected activities with "activity_id" format
-    discount_code: discountCode,
-    total_taxes: this.total_rate.total_tax_amount,
-    total_rooms_charge: this.total_rate.total_rooms_amount,
-    total_activities_charge: this.total_rate.total_activities_amount,
-    total_discount_amount: this.total_rate.total_discount_amount,
-    total_amount: this.total_rate.total_meal_plan_amount,
-    agent_info: {
-      first_name: this.form.first_name,
-      last_name: this.form.last_name,
-      email: this.form.email,
-      telephone: this.form.telephone,
-      address: this.form.address,
-      nationality: this.form.nationality
-    }
+    },
 
-  };
-},
+    async submitPayload() {
+      try {
+        const payload = this.preparePayload(); 
+        const runtimeConfig = useRuntimeConfig();
+        console.log(payload);
+        const response = await fetch(
+          "https://api.sueennature.com/rooms/get-rates/",
+          {
+            method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": runtimeConfig.public.DATABASE_ID,
+            },
+            body: JSON.stringify(payload), 
+          }
+        );
 
-  async submitPayload() {
-    try {
-    const payload = this.preparePayload(); // Call the function to get the payload
-    const runtimeConfig = useRuntimeConfig();
-      console.log(payload)
-    const response = await fetch("https://api.sueennature.com/rooms/get-rates/", {
-      method: "POST", // Change method to POST
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
-      },
-      body: JSON.stringify(payload), // Pass the payload as the request body
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const data = await response.json();
-    console.log(data);
-    this.total_rate = data
-    console.log("RATES", this.total_rate)
-
-
-  } catch (error) {
-    console.error("There has been a problem with your fetch operation:", error);
-  }
-  },
-  async handleSubmit(){
-    const payload = this.preparePayloadBooking(); // Call the function to get the payload'
-  console.log(payload)
-
-  },
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+        this.total_rate = data;
+        console.log("RATES", this.total_rate);
+      } catch (error) {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      }
+    },
+    async handleSubmit() {
+      const payload = this.preparePayloadBooking(); 
+      console.log("Submiited payload");
+    },
     updateRoomNumbers() {
       if (this.selectedNumberOfRooms) {
         const num = parseInt(this.selectedNumberOfRooms, 10);
-        this.selectedRoomNumbers = this.rooms.slice(0, num).map(room => room.room_number);
+        this.selectedRoomNumbers = this.rooms
+          .slice(0, num)
+          .map((room) => room.room_number);
         this.initializeRoomDetails();
       } else {
         this.selectedRoomNumbers = [];
@@ -1176,27 +1362,31 @@ preparePayloadBooking() {
       }
     },
     initializeRoomDetails() {
-    // Initialize room details for selected rooms only
-    this.selectedRoomNumbers.forEach(room => {
-      if (!this.roomDetails[room]) {
-        const roomData = this.rooms.find(r => r.room_number === room);
-        this.$set(this.roomDetails, room, {
-          adults: Math.min(1, roomData.max_adults),
-          children: Math.min(0, roomData.max_childs),
-          mealPlan: 'room_only',
-          infants: 0,
-          childrenAges: Array(Math.min(0, roomData.max_childs)).fill(0),
-          infantAges: Array(0).fill(0),
-        });
-      }
-    });
-  },
+      // Initialize room details for selected rooms only
+      this.selectedRoomNumbers.forEach((room) => {
+        if (!this.roomDetails[room]) {
+          const roomData = this.rooms.find((r) => r.room_number === room);
+          this.$set(this.roomDetails, room, {
+            adults: Math.min(1, roomData.max_adults),
+            children: Math.min(0, roomData.max_childs),
+            mealPlan: "room_only",
+            infants: 0,
+            childrenAges: Array(Math.min(0, roomData.max_childs)).fill(0),
+            infantAges: Array(0).fill(0),
+          });
+        }
+      });
+    },
     adultOptions(room) {
-      const maxAdults = this.rooms.find(r => r.room_number === room).max_adults;
+      const maxAdults = this.rooms.find(
+        (r) => r.room_number === room
+      ).max_adults;
       return Array.from({ length: maxAdults }, (_, i) => i + 1);
     },
     childOptions(room) {
-      const maxChildren = this.rooms.find(r => r.room_number === room).max_childs;
+      const maxChildren = this.rooms.find(
+        (r) => r.room_number === room
+      ).max_childs;
       return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
     },
     scrollToPaymentInfo() {
@@ -1319,6 +1509,7 @@ preparePayloadBooking() {
         );
 
         console.log("Register response", registerResponse);
+        localStorage.setItem("userEmail", this.registerUser.email);
 
         // Set auth token and other necessary operations
         this.nuxtApp.$auth.setAuthToken(registerResponse.access_token);
@@ -1504,8 +1695,8 @@ preparePayloadBooking() {
     const params = new URLSearchParams({
       check_in: formattedCheckIn,
       check_out: formattedCheckOut,
-      category: this.$route.query.roomType,
-      view: this.$route.query.view,
+      categories: this.$route.query.roomType,
+      views: this.$route.query.view,
       discount_code: this.$route.query.discount,
     });
     const url = `${baseUrl}?${params.toString()}`;
@@ -1526,9 +1717,9 @@ preparePayloadBooking() {
       .then((data) => {
         console.log("Response Data:", data);
         this.activities = data.activities;
-        this.rooms = data.rooms
+        this.rooms = data.rooms;
         this.discounts = data.discounts;
-        this.taxes = data.taxes
+        this.taxes = data.taxes;
         console.log(this.rooms);
       })
       .catch((error) => {
@@ -1540,23 +1731,17 @@ preparePayloadBooking() {
     );
     this.isSignedIn = !!authTokenCookie;
     initFlowbite();
-
-   
   },
   setup() {
     const nuxtApp = useNuxtApp();
 
-
-
     const isLoggedIn = computed(() => authStore.token !== null);
-
 
     return {
       isLoggedIn,
       nuxtApp,
     };
   },
-
 };
 </script>
 
