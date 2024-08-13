@@ -7,58 +7,59 @@
     /> -->
 
     <swiper
-      :spaceBetween="30"
-      :autoplay="autoplayConfig"
-      :navigation="true"
-      :pagination="{
-        clickable: true,
-      }"
-      :modules="modules"
-      class="mySwiper"
-      @slideChange="onSlideChange"
-    >
-      <swiper-slide>
-        <video
-          ref="video"
-          src="/img/home_video.mp4"
-          class="object-cover w-full min-h-screen"
-          autoplay
-          muted
-          loop
-        ></video>
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 1.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 2.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 3.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 4.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 5.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-    </swiper>
 
+    :spaceBetween="30"
+    :autoplay="autoplayConfig"
+    :navigation="true"
+    :pagination="{
+      clickable: true,
+    }"
+    :modules="modules"
+    class="mySwiper"
+    @slideChange="onSlideChange"
+  >
+    <swiper-slide>
+      <video
+        ref="video"
+        src="/img/home_video.mp4"
+        class="object-cover w-full min-h-screen"
+        autoplay
+        muted
+        loop
+      ></video>
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 1.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 2.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 3.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home4.jpg"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+    <swiper-slide>
+      <img
+        src="/img/hero-home 5.webp"
+        class="object-cover w-full min-h-screen"
+      />
+    </swiper-slide>
+  </swiper>
+    
     <!-- stiky navbar -->
     <nav
       class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
@@ -339,7 +340,9 @@
     </div>
     <!-- main hero booking options selector -->
     <div
-      class="absolute z-40 inset-x-0 bottom-32 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4"
+
+      class="absolute z-40 inset-x-0 bottom-56 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4 "
+
     >
       <div
         class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"

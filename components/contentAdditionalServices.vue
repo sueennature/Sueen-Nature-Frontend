@@ -57,7 +57,7 @@ const fetchData = async () => {
       }
     });
     services.value =  response.data.data;
-    console.log("AS", response.data.data)
+    console.log("AS", services.value)
   } catch (error) {
     console.error('Error fetching data:', error);
     error.value = 'Failed to fetch services. Please try again later.';
