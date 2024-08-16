@@ -75,13 +75,17 @@
         </div>
       </div>
       <div class="flex flex-col items-start w-full mt-4 gap-4">
-        <div class="font-bold text-lg mt-10">
+        <div class="font-bold text-xl mt-10">
           Select a rooms to further process
         </div>
         <div class="mt-4">
           <h4 class="text-lg font-bold">Available Rooms</h4>
-          <select v-model="selectedRoom" @change="toggleRoom">
-            <option value="" disabled>Select a room</option>
+          <select
+            v-model="selectedRoom"
+            @change="toggleRoom"
+            class="w-72 border border-gray-600 rounded-lg"
+          >
+            <option value="null" disabled>Select a room</option>
             <option
               v-for="room in rooms"
               :key="room.room_number"
@@ -228,6 +232,22 @@
                 </div>
               </div>
             </div>
+            <div class="mb-2">
+  <label for="meal-plan-{{ room }}" class="block mb-1">Meal Plan:</label>
+  <select
+    id="meal-plan-{{ room }}"
+    v-model="roomDetails[room].mealPlan"
+    class="border border-gray-300 p-2 rounded"
+  >
+    <option
+      v-for="plan in mealPlans"
+      :key="plan.value"
+      :value="plan.value"
+    >
+      {{ plan.label }}
+    </option>
+  </select>
+</div>
 
             <!-- Meal time selection -->
             <div class="mb-2">
@@ -250,7 +270,7 @@
 
       <div v-if="selectedRoomNumbers.length">
         <button
-          class="mt-8 buttontext rounded-xl text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold  lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          class="mt-8 buttontext rounded-xl text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           @click="submitPayload"
         >
           Please Click to get final rates to proceed further
@@ -262,7 +282,9 @@
       <!-- end of price breakdown section -->
     </div>
     <div class="mt-8">
-      <div  v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">Total Rates</div>
+      <div v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">
+        Total Rates
+      </div>
       <div v-if="Object.keys(total_rate).length > 0">
         <div class="flex justify-between mt-4">
           <h5 class="lg:text-base text-sm font-medium text-black-200">
@@ -340,9 +362,6 @@
           </h5>
         </div>
       </div>
-      <div v-else>
-        <p class="text-xl font-bold text-red-500">Please get the rates</p>
-      </div>
     </div>
 
     <div class="flex flex-col w-full mt-8"></div>
@@ -367,25 +386,25 @@
       </div>
     </div>
     <div ref="paymentInfoRef"></div>
-<div class="flex flex-col lg:flex-row xl:flex-row gap-8 mt-12">
-  <div class="flex flex-col w-72">
-    <label class="text-xl font-bold mb-5">Booking Notes</label>
-    <textarea
-  v-model="booking_note"
-  placeholder="Comments..."
-  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-></textarea>
-  </div>
-  <div class="flex flex-col w-72">
-    <label class="text-xl font-bold mb-5">Payment Notes</label>
-    <textarea
-      type="text"
-       v-model="payment_note"
-        placeholder="Comments..."
-        class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+    <div class="flex flex-col lg:flex-row xl:flex-row gap-8 mt-12">
+      <div class="flex flex-col w-72">
+        <label class="text-xl font-bold mb-5">Booking Notes</label>
+        <textarea
+          v-model="booking_note"
+          placeholder="Comments..."
+          class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
         ></textarea>
-  </div>
-</div>
+      </div>
+      <div class="flex flex-col w-72">
+        <label class="text-xl font-bold mb-5">Payment Notes</label>
+        <textarea
+          type="text"
+          v-model="payment_note"
+          placeholder="Comments..."
+          class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+        ></textarea>
+      </div>
+    </div>
     <!-- Guest Info & Payment section -->
     <h2
       class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10"
@@ -393,278 +412,286 @@
     >
       Guest Info & Payment
     </h2>
-      <!-- checkbox section -->
-      <div class="flex justify-center space-x-2">
-        <h5 class="text-black-200 lg:text-lg text-sm font-medium">
-          Are you booking for someone else?
-        </h5>
-        <div class="flex items-center me-4">
-          <input
-            id="inline-radio"
-            type="radio"
-            value="Yes"
-            name="inline-radio-group"
-            class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-            v-model="bookingForSomeoneElse"
-            @change="toggleGuestInfo"
-          />
-          <label
-            for="inline-radio"
-            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >Yes</label
-          >
-        </div>
-        <div class="flex items-center me-4">
-          <input
-            id="inline-2-radio"
-            type="radio"
-            value="No"
-            name="inline-radio-group"
-            class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-            v-model="bookingForSomeoneElse"
-            @change="toggleGuestInfo"
-          />
-          <label
-            for="inline-2-radio"
-            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >No</label
-          >
-        </div>
-      </div>
-
-      <div class="text-center mt-10" v-if="showYourInfo">
-        <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
-          your info
-        </h5>
-        <!-- user information form -->
-
-        <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
-          <div>
-            <label
-              for="first_name"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >First name *</label
-            >
-            <input
-              type="text"
-              id="first_name"
-              class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.first_name"
-            />
-          </div>
-          <div>
-            <label
-              for="last_name"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >Last name *</label
-            >
-            <input
-              type="text"
-              id="last_name"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.last_name"
-            />
-          </div>
-          <div>
-            <label
-              for="phone"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >Phone *</label
-            >
-            <input
-              type="tel"
-              id="phone"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.telephone"
-            />
-          </div>
-         <div>
-            <label
-              for="nationality"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >Nationality *</label
-            >
-            <select
-              id="nationality"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              v-model="form.nationality"
-            >
-            <option value="" disabled>Select Nationality</option>
-          <option v-for="country in countries" :key="country.code" :value="country.name">
-            {{ country.name }}
-          </option>
-            </select>
-         
-          </div> 
-          <div>
-            <label
-              for="address"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >Address</label
-            >
-            <input
-              type="text"
-              id="address"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.address"
-            />
-          </div>
-          <div>
-            <label
-              for="email"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >E-mail *</label
-            >
-            <input
-              type="email"
-              id="email"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.email"
-            />
-          </div>
-        </div>
-
-      </div>
-
-      <div class="text-center mt-10" v-if="showGuestInfo">
-        <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
-          guest info
-        </h5>
-        <!-- Guest information form -->
-        <!-- <form class="mt-4"> -->
-        <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
-          <div>
-            <label
-              for="first_name"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >First name *</label
-            >
-            <input
-              type="text"
-              id="first_name"
-              class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.guest_info.first_name"
-            />
-          </div>
-          <div>
-            <label
-              for="last_name"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >Last name *</label
-            >
-            <input
-              type="text"
-              id="last_name"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.guest_info.last_name"
-            />
-          </div>
-          <div>
-            <label
-              for="phone"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >Phone *</label
-            >
-            <input
-              type="tel"
-              id="phone"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.guest_info.telephone"
-            />
-          </div>
-          <div>
-            <label
-              for="email"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >E-mail *</label
-            >
-            <input
-              type="email"
-              id="email"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-              v-model="form.guest_info.email"
-            />
-          </div>
-          <div>
-            <label
-              for="nationality"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >Nationality *</label
-            >
-            <select
-              id="nationality"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              v-model="form.guest_info.nationality"
-            >
-            <option value="" disabled>Select Nationality</option>
-          <option v-for="country in countries" :key="country.code" :value="country.name">
-            {{ country.name }}
-          </option>
-            </select>
-          </div>
-          <div>
-            <label
-              for="address"
-              class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-              >Address</label
-            >
-            <input
-              type="text"
-              id="address"
-              class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              v-model="form.guest_info.guest_address"
-            />
-          </div>
-        </div>
-      </div>
-
-      <a
-        href="/termsAndConditions"
-        class="lg:text-lg text-base font-medium text-red-100 underline block mt-10"
-        >View Our Terms & Conditions</a
-      >
-      <div class="flex items-center mt-4">
-        <div class="flex items-center h-5">
-          <input
-            id="remember"
-            type="checkbox"
-            value=""
-            class="w-4 h-4 border border-black-200 rounded bg-gray-50 focus:ring-0 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-            required
-          />
-        </div>
+    <!-- checkbox section -->
+    <div class="flex justify-center space-x-2">
+      <h5 class="text-black-200 lg:text-lg text-sm font-medium">
+        Are you booking for someone else?
+      </h5>
+      <div class="flex items-center me-4">
+        <input
+          id="inline-radio"
+          type="radio"
+          value="Yes"
+          name="inline-radio-group"
+          class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+          v-model="bookingForSomeoneElse"
+          @change="toggleGuestInfo"
+        />
         <label
-          for="remember"
-          class="ms-2 lg:text-lg text-sm font-medium text-black-200 dark:text-gray-300"
-          >I have read and I agree to the terms and conditions.</label
+          for="inline-radio"
+          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          >Yes</label
         >
       </div>
+      <div class="flex items-center me-4">
+        <input
+          id="inline-2-radio"
+          type="radio"
+          value="No"
+          name="inline-radio-group"
+          class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+          v-model="bookingForSomeoneElse"
+          @change="toggleGuestInfo"
+        />
+        <label
+          for="inline-2-radio"
+          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          >No</label
+        >
+      </div>
+    </div>
 
-      <button
-        class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        @click="handleSubmit"
+    <div class="text-center mt-10" v-if="showYourInfo">
+      <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
+        your info
+      </h5>
+      <!-- user information form -->
+
+      <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
+        <div>
+          <label
+            for="first_name"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >First name *</label
+          >
+          <input
+            type="text"
+            id="first_name"
+            class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.first_name"
+          />
+        </div>
+        <div>
+          <label
+            for="last_name"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Last name *</label
+          >
+          <input
+            type="text"
+            id="last_name"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.last_name"
+          />
+        </div>
+        <div>
+          <label
+            for="phone"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Phone *</label
+          >
+          <input
+            type="tel"
+            id="phone"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.telephone"
+          />
+        </div>
+        <div>
+          <label
+            for="nationality"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Nationality *</label
+          >
+          <select
+            id="nationality"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="form.nationality"
+          >
+            <option value="" disabled>Select Nationality</option>
+            <option
+              v-for="country in countries"
+              :key="country.code"
+              :value="country.name"
+            >
+              {{ country.name }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label
+            for="address"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Address</label
+          >
+          <input
+            type="text"
+            id="address"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.address"
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >E-mail *</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.email"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-10" v-if="showGuestInfo">
+      <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
+        guest info
+      </h5>
+      <!-- Guest information form -->
+      <!-- <form class="mt-4"> -->
+      <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
+        <div>
+          <label
+            for="first_name"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >First name *</label
+          >
+          <input
+            type="text"
+            id="first_name"
+            class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.guest_info.first_name"
+          />
+        </div>
+        <div>
+          <label
+            for="last_name"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Last name *</label
+          >
+          <input
+            type="text"
+            id="last_name"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.guest_info.last_name"
+          />
+        </div>
+        <div>
+          <label
+            for="phone"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Phone *</label
+          >
+          <input
+            type="tel"
+            id="phone"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.guest_info.telephone"
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >E-mail *</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.guest_info.email"
+          />
+        </div>
+        <div>
+          <label
+            for="nationality"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Nationality *</label
+          >
+          <select
+            id="nationality"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="form.guest_info.nationality"
+          >
+            <option value="" disabled>Select Nationality</option>
+            <option
+              v-for="country in countries"
+              :key="country.code"
+              :value="country.name"
+            >
+              {{ country.name }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label
+            for="address"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Address</label
+          >
+          <input
+            type="text"
+            id="address"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            v-model="form.guest_info.guest_address"
+          />
+        </div>
+      </div>
+    </div>
+
+    <a
+      href="/termsAndConditions"
+      class="lg:text-lg text-base font-medium text-red-100 underline block mt-10"
+      >View Our Terms & Conditions</a
+    >
+    <div class="flex items-center mt-4">
+      <div class="flex items-center h-5">
+        <input
+          id="remember"
+          type="checkbox"
+          value=""
+          class="w-4 h-4 border border-black-200 rounded bg-gray-50 focus:ring-0 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+          required
+        />
+      </div>
+      <label
+        for="remember"
+        class="ms-2 lg:text-lg text-sm font-medium text-black-200 dark:text-gray-300"
+        >I have read and I agree to the terms and conditions.</label
       >
-        proceed to pay
-      </button>
+    </div>
+    <div      v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">
+      <button
+      v-if="isRoomSelected"
+      class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      @click="handleSubmit"
+    >
+      Proceed to Pay
+    </button>
+    </div>
 
     <!-- Register and Login Modal Popup -->
     <!-- Register modal -->
@@ -784,14 +811,18 @@
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
                 />
                 <select
-    v-model="guestDetails.nationality"
-    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-  >
-    <option value="" disabled>Select Nationality</option>
-    <option v-for="country in countries" :key="country.code" :value="country.name">
-      {{ country.name }}
-    </option>
-  </select>
+                  v-model="guestDetails.nationality"
+                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+                >
+                  <option value="" disabled>Select Nationality</option>
+                  <option
+                    v-for="country in countries"
+                    :key="country.code"
+                    :value="country.name"
+                  >
+                    {{ country.name }}
+                  </option>
+                </select>
                 <select
                   v-model="guestDetails.identification_type"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
@@ -808,7 +839,7 @@
                   placeholder="Identification No"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
                 />
-          
+
                 <select
                   v-model="guestDetails.gender"
                   class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
@@ -818,24 +849,24 @@
                   <option value="female">Female</option>
                   <option value="other">Other</option>
                 </select>
-               <div class="flex  flex-col">
-                <label>Date of Birth</label>
-                <input
-                  type="date"
-                  v-model="guestDetails.dob"
-                  placeholder="Date of Birth"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-               </div>
-               <div class="flex  flex-col">
-                <label>Identification Issue Date</label>
-                <input
-                  type="date"
-                  v-model="guestDetails.identification_issue_date"
-                  placeholder="Identification Issue Date"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-               </div>
+                <div class="flex flex-col">
+                  <label>Date of Birth</label>
+                  <input
+                    type="date"
+                    v-model="guestDetails.dob"
+                    placeholder="Date of Birth"
+                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+                  />
+                </div>
+                <div class="flex flex-col">
+                  <label>Identification Issue Date</label>
+                  <input
+                    type="date"
+                    v-model="guestDetails.identification_issue_date"
+                    placeholder="Identification Issue Date"
+                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+                  />
+                </div>
               </div>
 
               <div class="flex items-start mt-5">
@@ -1025,7 +1056,7 @@ import SocialLogin from "./SocialLogin.vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import axios from "axios";
-import countries from './countries.json'; // Adjust the path according to where you put your JSON file
+import countries from "./countries.json"; // Adjust the path according to where you put your JSON file
 
 export default {
   components: {
@@ -1075,8 +1106,8 @@ export default {
       isSocialLogin: false,
       price: 0,
       roomPeopleCount: [],
-      booking_note:"",
-      payment_note:"",
+      booking_note: "",
+      payment_note: "",
       form: {
         first_name: "",
         last_name: "",
@@ -1126,8 +1157,30 @@ export default {
     isSpecialRateApplied(newVal, oldVal) {
       console.log(`Special rate changed from ${oldVal} to ${newVal}`);
     },
+    selectedRoomNumbers(newVal, oldVal) {
+      this.submitPayload();
+    },
+    roomDetails(newVal, oldVal) {
+      this.submitPayload();
+    },
+    activities(newVal, oldVal) {
+      this.submitPayload();
+    },
+    taxes(newVal, oldVal) {
+      this.submitPayload();
+    },
+    discounts(newVal, oldVal) {
+      this.submitPayload();
+    },
+    $route(query) {
+      // If route parameters change
+      this.submitPayload();
+    }
   },
   computed: {
+    isRoomSelected() {
+      return this.selectedRoomNumbers.length > 0;
+    },
     // Calculate the number of rooms
     numberOfRooms() {
       return this.rooms.length
@@ -1250,41 +1303,49 @@ export default {
       }));
       const selectedActivities = this.activities
         .filter((activity) => activity.checked)
-        .map((activity) => ({ activity_id: activity.id, activity_name : activity.name }));
+        .map((activity) => ({
+          activity_id: activity.id,
+          activity_name: activity.name,
+        }));
 
       return {
         check_in: checkInDate,
         check_out: checkOutDate,
+        booking_type:"online",
         rooms: this.selectedRoomNumbers.map((roomNumber) => {
           const room = this.rooms.find((r) => r.room_number === roomNumber);
           console.log(room);
           return {
             room_id: room.id,
-            room_number:room.room_number,
-            category:this.$route.query.roomType,
+            room_number: room.room_number,
+            category: this.$route.query.roomType,
             adults: this.roomDetails[roomNumber]?.adults || 0,
             children:
               this.roomDetails[roomNumber]?.childrenAges.map(
                 (age) => age || 0
-              ) || [], 
+              ) || [],
             infants:
               this.roomDetails[roomNumber]?.infantAges.map((age) => age || 0) ||
-              [], 
+              [],
             meal_plan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
-            starting_meals_with: this.roomDetails[roomNumber]?.mealTime || "breakfast", 
-            view:this.$route.query.view
-
+            starting_meals_with:
+              this.roomDetails[roomNumber]?.mealTime || "breakfast",
+            view: this.$route.query.view,
           };
         }),
         taxes: taxes,
         discounts: discounts,
-        activities: selectedActivities, 
+        activities: selectedActivities,
         discount_code: discountCode,
         total_taxes: this.total_rate.total_tax_amount,
         total_rooms_charge: this.total_rate.total_rooms_amount,
         total_activities_charge: this.total_rate.total_activities_amount,
         total_discount_amount: this.total_rate.total_discount_amount,
         total_amount: this.total_rate.total_meal_plan_amount,
+        total_additional_services_amount: 0,
+        payment_method: "sueen_web",
+        is_partial_payment: false,
+        paid_amount: 0,
         agent_info: {
           first_name: this.form.first_name,
           last_name: this.form.last_name,
@@ -1293,42 +1354,39 @@ export default {
           address: this.form.address,
           nationality: this.form.nationality,
         },
-      guest_info: {
-        first_name: this.form.guest_info.first_name, 
-        last_name: this.form.guest_info.last_name,
-        email: this.form.guest_info.email,
-        telephone: this.form.guest_info.telephone,
-        address: this.form.guest_info.guest_address,
-        nationality: this.form.guest_info.nationality,
-        identification_type: "<string>",
-        identification_no: "<string>",
-        gender: "<string>",
-        profile_image: [
-          "<string>",
-          "<string>"
-        ],
-        identification_issue_date: "<dateTime>",
-        dob: "<dateTime>"
+        guest_info: {
+          first_name: this.form.guest_info.first_name,
+          last_name: this.form.guest_info.last_name,
+          email: this.form.guest_info.email,
+          telephone: this.form.guest_info.telephone,
+          address: this.form.guest_info.guest_address,
+          nationality: this.form.guest_info.nationality,
+          identification_type: "<string>",
+          identification_no: "<string>",
+          gender: "<string>",
+          profile_image: ["<string>", "<string>"],
+          identification_issue_date: "<dateTime>",
+          dob: "<dateTime>",
         },
-        booking_note:this.booking_note,
-        payment_note: this.payment_note
+        booking_note: this.booking_note,
+        payment_note: this.payment_note,
       };
     },
 
     async submitPayload() {
       try {
-        const payload = this.preparePayload(); // Call the function to get the payload
+        const payload = this.preparePayload();
         const runtimeConfig = useRuntimeConfig();
         console.log(payload);
         const response = await fetch(
           "https://api.sueennature.com/rooms/get-rates/",
           {
-            method: "POST", // Change method to POST
+            method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
+              "x-api-key": runtimeConfig.public.DATABASE_ID,
             },
-            body: JSON.stringify(payload), // Pass the payload as the request body
+            body: JSON.stringify(payload),
           }
         );
 
@@ -1347,8 +1405,8 @@ export default {
       }
     },
     async handleSubmit() {
-      const payload = this.preparePayloadBooking(); // Call the function to get the payload'
-      console.log(payload);
+      const payload = this.preparePayloadBooking();
+      console.log("Submiited payload",payload);
     },
     updateRoomNumbers() {
       if (this.selectedNumberOfRooms) {
@@ -1696,8 +1754,8 @@ export default {
     const params = new URLSearchParams({
       check_in: formattedCheckIn,
       check_out: formattedCheckOut,
-      category: this.$route.query.roomType,
-      view: this.$route.query.view,
+      categories: this.$route.query.roomType,
+      views: this.$route.query.view,
       discount_code: this.$route.query.discount,
     });
     const url = `${baseUrl}?${params.toString()}`;
