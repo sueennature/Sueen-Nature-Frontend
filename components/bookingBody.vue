@@ -12,6 +12,7 @@
         class="flex flex-col lg-flex-row xl:flex-row items-start justify-between w-full gap-8"
       >
         <div
+          v-if="discounts.length > 0"
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
         >
           <h6 class="text-black-200 xl:text-lg text-base font-bold">
@@ -41,7 +42,7 @@
         <!-- Activities -->
 
         <div
-          class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
+          class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow mt-14"
         >
           <h6 class="text-black-200 xl:text-lg text-base font-bold">
             Activities
@@ -113,163 +114,187 @@
           </div>
         </div>
       </div>
-      <h3 class="text-lg font-bold mb-2 mt-4">Room Details:</h3>
-
       <div
         v-if="selectedRoomNumbers.length"
-        class="flex flex-col items-start gap-8"
+        class="w-full p-0 bg-gray-800 border border-gray-200 rounded-lg shadow mt-4"
       >
-        <div
-          v-for="room in selectedRoomNumbers"
-          :key="room"
-          class="mb-4 flex gap-4 items-start justify-start"
-        >
-          <h4
-            class="text-md font-semibold border border-gray-300 p-2 mb-1 rounded text-center h-fit"
+        <div class="p-4">
+          <h3 class="text-lg font-bold mb-2 ">Room Details:</h3>
+
+          <div
+            v-if="selectedRoomNumbers.length"
+            class="flex flex-col items-start gap-8"
           >
-            Room {{ room }}
-          </h4>
-
-          <!-- Select fields for each room -->
-          <div class="flex flex-col lg:flex-row xl:flex-row items-start gap-4">
-            <div class="mb-2">
-              <label for="adults-{{ room }}" class="block mb-1">Adults:</label>
-              <select
-                id="adults-{{ room }}"
-                v-model="roomDetails[room].adults"
-                class="border border-gray-300 p-2 rounded"
+            <div
+              v-for="room in selectedRoomNumbers"
+              :key="room"
+              class="mb-4 flex gap-4 items-start justify-start"
+            >
+              <h4
+                class="text-md font-semibold border border-gray-300 p-2 mb-1 rounded text-center h-fit"
               >
-                <option
-                  v-for="num in adultOptions(room)"
-                  :key="num"
-                  :value="num"
-                >
-                  {{ num }}
-                </option>
-              </select>
-            </div>
+                Room {{ room }}
+              </h4>
 
-            <div class="mb-2">
-  <label v-if="roomCategory !== 'Single'"  for="children-{{ room }}" class="block mb-1">
-    Children:
-  </label>
-  <select
-    id="children-{{ room }}"
-    v-model="roomDetails[room].children"
-    class="border border-gray-300 p-2 rounded"
-    v-if="roomCategory !== 'Single'" 
-  >
-    <option
-      v-for="num in childOptions(room)"
-      :key="num"
-      :value="num"
-    >
-      {{ num }}
-    </option>
-  </select>
-  <div v-if="roomCategory !== 'Single' && roomDetails[room].children > 0" class="mb-4"> <!-- Add this line -->
-    <div
-      v-for="index in roomDetails[room].children"
-      :key="'child-age-' + index"
-      class="mb-2 mt-4"
-    >
-      <label
-        :for="'child-age-' + room + '-' + index"
-        class="block mb-1 font-bold"
-      >
-        Child {{ index }} Age
-      </label>
-      <select
-        :id="'child-age-' + room + '-' + index"
-        v-model="roomDetails[room].childrenAges[index - 1]"
-        class="border border-gray-300 p-2 rounded"
-      >
-        <option
-          v-for="age in childAgeOptions"
-          :key="age"
-          :value="age"
-        >
-          {{ age }}
-        </option>
-      </select>
-    </div>
-  </div>
-</div>
-
-
-            <div class="mb-2">
-              <label for="infants-{{ room }}" class="block mb-1"
-                >Infants:</label
+              <!-- Select fields for each room -->
+              <div
+                class="flex flex-col lg:flex-row xl:flex-row items-start gap-4"
               >
-              <select
-                id="infants-{{ room }}"
-                v-model="roomDetails[room].infants"
-                class="border border-gray-300 p-2 rounded"
-              >
-                <option v-for="num in [0, 1, 2]" :key="num" :value="num">
-                  {{ num }}
-                </option>
-              </select>
-              <div v-if="roomDetails[room].infants > 0" class="mb-4">
-                <div
-                  v-for="index in roomDetails[room].infants"
-                  :key="'infant-age-' + index"
-                  class="mb-2 mt-4"
-                >
-                  <label
-                    :for="'infant-age-' + room + '-' + index"
-                    class="block mb-1 font-bold"
-                    >Infant {{ index }} Age</label
+                <div class="mb-2">
+                  <label for="adults-{{ room }}" class="block mb-1"
+                    >Adults:</label
                   >
                   <select
-                    :id="'infant-age-' + room + '-' + index"
-                    v-model="roomDetails[room].infantAges[index - 1]"
+                    id="adults-{{ room }}"
+                    v-model="roomDetails[room].adults"
                     class="border border-gray-300 p-2 rounded"
                   >
                     <option
-                      v-for="age in infantAgeOptions"
-                      :key="age"
-                      :value="age"
+                      v-for="num in adultOptions(room)"
+                      :key="num"
+                      :value="num"
                     >
-                      {{ age }}
+                      {{ num }}
                     </option>
                   </select>
                 </div>
-              </div>
-            </div>
-            <div class="mb-2">
-              <label for="meal-plan-{{ room }}" class="block mb-1"
-                >Meal Plan:</label
-              >
-              <select
-                id="meal-plan-{{ room }}"
-                v-model="roomDetails[room].mealPlan"
-                class="border border-gray-300 p-2 rounded"
-              >
-                <option
-                  v-for="plan in mealPlans"
-                  :key="plan.value"
-                  :value="plan.value"
-                >
-                  {{ plan.label }}
-                </option>
-              </select>
-            </div>
 
-            <!-- Meal time selection -->
-            <div class="mb-2">
-              <label for="meal-time-{{ room }}" class="block mb-1"
-                >Meal Time:</label
-              >
-              <select
-                id="meal-time-{{ room }}"
-                v-model="roomDetails[room].mealTime"
-                class="border border-gray-300 p-2 rounded"
-              >
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-              </select>
+                <div class="mb-2">
+                  <label
+                    v-if="roomCategory !== 'Single'"
+                    for="children-{{ room }}"
+                    class="block mb-1"
+                  >
+                    Children:
+                  </label>
+                  <select
+                    id="children-{{ room }}"
+                    v-model="roomDetails[room].children"
+                    class="border border-gray-300 p-2 rounded"
+                    v-if="roomCategory !== 'Single'"
+                  >
+                    <option
+                      v-for="num in childOptions(room)"
+                      :key="num"
+                      :value="num"
+                    >
+                      {{ num }}
+                    </option>
+                  </select>
+                  <div
+                    v-if="
+                      roomCategory !== 'Single' &&
+                      roomDetails[room].children > 0
+                    "
+                    class="mb-4"
+                  >
+                    <!-- Add this line -->
+                    <div
+                      v-for="index in roomDetails[room].children"
+                      :key="'child-age-' + index"
+                      class="mb-2 mt-4"
+                    >
+                      <label
+                        :for="'child-age-' + room + '-' + index"
+                        class="block mb-1 font-bold"
+                      >
+                        Child {{ index }} Age
+                      </label>
+                      <select
+                        :id="'child-age-' + room + '-' + index"
+                        v-model="roomDetails[room].childrenAges[index - 1]"
+                        class="border border-red-500 p-2 rounded"
+                      >
+                        <option
+                          v-for="age in childAgeOptions"
+                          :key="age"
+                          :value="age"
+                        >
+                          {{ age }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-2">
+                  <label                     v-if="roomCategory !== 'Single'"
+                  for="infants-{{ room }}" class="block mb-1"
+                    >Infants:</label
+                  >
+                  <select
+                    id="infants-{{ room }}"
+                    v-model="roomDetails[room].infants"
+                    v-if="roomCategory !== 'Single'"
+
+                    class="border border-gray-300 p-2 rounded"
+                  >
+                    <option v-for="num in [0, 1, 2]" :key="num" :value="num">
+                      {{ num }}
+                    </option>
+                  </select>
+                  <div v-if="roomDetails[room].infants > 0" class="mb-4">
+                    <div
+                      v-for="index in roomDetails[room].infants"
+                      :key="'infant-age-' + index"
+                      class="mb-2 mt-4"
+                    >
+                      <label
+                        :for="'infant-age-' + room + '-' + index"
+                        class="block mb-1 font-bold"
+                        >Infant {{ index }} Age</label
+                      >
+                      <select
+                        :id="'infant-age-' + room + '-' + index"
+                        v-model="roomDetails[room].infantAges[index - 1]"
+                        class="border border-red-500 p-2 rounded"
+                      >
+                        <option
+                          v-for="age in infantAgeOptions"
+                          :key="age"
+                          :value="age"
+                        >
+                          {{ age }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-2">
+                  <label for="meal-plan-{{ room }}" class="block mb-1"
+                    >Meal Plan:</label
+                  >
+                  <select
+                    id="meal-plan-{{ room }}"
+                    v-model="roomDetails[room].mealPlan"
+                    class="border border-gray-300 p-2 rounded"
+                  >
+                    <option
+                      v-for="plan in mealPlans"
+                      :key="plan.value"
+                      :value="plan.value"
+                    >
+                      {{ plan.label }}
+                    </option>
+                  </select>
+                </div>
+
+                <!-- Meal time selection -->
+                <div class="mb-2">
+                  <label for="meal-time-{{ room }}" class="block mb-1"
+                    >Meal Time:</label
+                  >
+                  <select
+                    id="meal-time-{{ room }}"
+                    v-model="roomDetails[room].mealTime"
+                    class="border border-gray-300 p-2 rounded"
+                  >
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -607,8 +632,10 @@
           </select>
         </div>
         <div class="flex flex-col">
-          <label             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-          >Date of Birth *</label>
+          <label
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Date of Birth *</label
+          >
           <input
             type="date"
             v-model="form.guest_info.dob"
@@ -617,8 +644,10 @@
           />
         </div>
         <div class="flex flex-col">
-          <label             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-          >Identification Issue Date *</label>
+          <label
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Identification Issue Date *</label
+          >
           <input
             type="date"
             v-model="form.guest_info.identification_issue_date"
@@ -778,8 +807,10 @@
           </select>
         </div>
         <div class="flex flex-col">
-          <label             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-          >Date of Birth *</label>
+          <label
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Date of Birth *</label
+          >
           <input
             type="date"
             v-model="form.guest_info.dob"
@@ -788,8 +819,10 @@
           />
         </div>
         <div class="flex flex-col">
-          <label             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-          >Identification Issue Date *</label>
+          <label
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Identification Issue Date *</label
+          >
           <input
             type="date"
             v-model="form.guest_info.identification_issue_date"
@@ -900,10 +933,6 @@
             v-model="form.address"
           />
         </div>
-        
-      
-
-       
       </div>
     </div>
 
@@ -1326,7 +1355,7 @@ export default {
       childrenAges: [],
       discount_data: {},
       rooms: [],
-      roomCategory:"",
+      roomCategory: "",
       selectedNumberOfRooms: "", // Selected number of rooms from the dropdown
       selectedRoomNumbers: [],
       roomDetails: {}, // Object to store details for each room
@@ -1575,19 +1604,23 @@ export default {
           activity_id: activity.id,
           activity_name: activity.name,
         }));
-        const agentInfo = this.showGuestInfo ? {
-    first_name: this.form.first_name || "",
-    last_name: this.form.last_name || "",
-    email: this.form.email || "",
-    telephone: this.form.telephone || "",
-    address: this.form.address || "",
-    nationality: this.form.nationality || "",
-  } : { first_name:  "",
-    last_name:  "",
-    email:  "",
-    telephone:  "",
-    address:"",
-    nationality:  "",};
+      const agentInfo = this.showGuestInfo
+        ? {
+            first_name: this.form.first_name || "",
+            last_name: this.form.last_name || "",
+            email: this.form.email || "",
+            telephone: this.form.telephone || "",
+            address: this.form.address || "",
+            nationality: this.form.nationality || "",
+          }
+        : {
+            first_name: "",
+            last_name: "",
+            email: "",
+            telephone: "",
+            address: "",
+            nationality: "",
+          };
 
       return {
         check_in: checkInDate,
@@ -1639,13 +1672,16 @@ export default {
           identification_no: this.form?.guest_info?.identification_no || "",
           gender: this.form?.guest_info?.gender || "",
           profile_image: this.form?.guest_info?.profile_image || [],
-          identification_issue_date: this.form?.guest_info?.identification_issue_date 
-    ? this.formatDatePayload(this.form.guest_info.identification_issue_date) 
-    : "",
-  dob: this.form?.guest_info?.dob 
-    ? this.formatDatePayload(this.form.guest_info.dob) 
-    : "",
-},
+          identification_issue_date: this.form?.guest_info
+            ?.identification_issue_date
+            ? this.formatDatePayload(
+                this.form.guest_info.identification_issue_date
+              )
+            : "",
+          dob: this.form?.guest_info?.dob
+            ? this.formatDatePayload(this.form.guest_info.dob)
+            : "",
+        },
         booking_note: this.booking_note || "",
         payment_note: this.payment_note || "",
       };
@@ -2040,9 +2076,9 @@ export default {
 
   mounted() {
     const { fromDate, toDate, roomType, view, discount } = this.$route.query;
-    
-      this.roomCategory = roomType || null;
-    console.log("ROOM", this.roomCategory)
+
+    this.roomCategory = roomType || null;
+    console.log("ROOM", this.roomCategory);
     this.initializeActivities();
     const formatDateToISO = (dateString) => {
       if (!dateString) return "";
