@@ -280,20 +280,21 @@
                 </div>
 
                 <!-- Meal time selection -->
-                <div class="mb-2">
-                  <label for="meal-time-{{ room }}" class="block mb-1"
-                    >Meal Time:</label
-                  >
-                  <select
-                    id="meal-time-{{ room }}"
-                    v-model="roomDetails[room].mealTime"
-                    class="border border-gray-300 p-2 rounded"
-                  >
-                    <option value="breakfast">Breakfast</option>
-                    <option value="lunch">Lunch</option>
-                    <option value="dinner">Dinner</option>
-                  </select>
-                </div>
+                <div
+  class="mb-2"
+  v-if="roomDetails[room].mealPlan !== 'room_only' && roomDetails[room].mealPlan !== 'bread_breakfast'"
+>
+  <label for="meal-time-{{ room }}" class="block mb-1">Meal Time:</label>
+  <select
+    id="meal-time-{{ room }}"
+    v-model="roomDetails[room].mealTime"
+    class="border border-gray-300 p-2 rounded"
+  >
+    <option value="breakfast">Breakfast</option>
+    <option value="lunch">Lunch</option>
+    <option value="dinner">Dinner</option>
+  </select>
+</div>
               </div>
             </div>
           </div>
@@ -1582,6 +1583,8 @@ export default {
             children: childrenAges, // This will be an empty array if count is 0
             infants: infantAges, // This will be an empty array if count is 0
             meal_plan: roomDetail.mealPlan || "room_only",
+            category: this.$route.query.roomType
+
           };
         }),
         taxes: taxes,
@@ -1614,18 +1617,18 @@ export default {
             nationality: this.form.nationality || "",
           }
         : {
-            first_name: "",
-            last_name: "",
-            email: "",
-            telephone: "",
-            address: "",
-            nationality: "",
+            first_name: "asd",
+            last_name: "sss",
+            email: "Demo@gmail.com",
+            telephone: "123213",
+            address: "asdas",
+            nationality: "USA",
           };
 
       return {
         check_in: checkInDate,
         check_out: checkOutDate,
-        booking_type: "online",
+        booking_type: "website",
         rooms: this.selectedRoomNumbers.map((roomNumber) => {
           const room = this.rooms.find((r) => r.room_number === roomNumber);
           return {
@@ -1643,7 +1646,7 @@ export default {
                 : [],
             meal_plan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
             starting_meals_with:
-              this.roomDetails[roomNumber]?.mealTime || "breakfast",
+              this.roomDetails[roomNumber]?.mealTime || "",
             view: this.$route.query.view || "default",
           };
         }),
@@ -1655,7 +1658,7 @@ export default {
         total_rooms_charge: this.total_rate?.total_rooms_amount || 0,
         total_activities_charge: this.total_rate?.total_activities_amount || 0,
         total_discount_amount: this.total_rate?.total_discount_amount || 0,
-        total_amount: this.total_rate?.total_meal_plan_amount || 0,
+        total_amount: this.total_rate?.total_amount || 0,
         total_additional_services_amount: 0,
         payment_method: "sueen_web",
         is_partial_payment: false,
@@ -1722,33 +1725,28 @@ export default {
       const payload = this.preparePayloadBooking();
       console.log("Submitted payload", payload);
 
-      // // Check if access_token is present in cookies
-      // const accessToken = document.cookie.split('; ').find(row => row.startsWith('access_token='))?.split('=')[1];
 
-      // // Configure headers conditionally
-      // const headers = {
-      //   "x-api-key": this.$config.public.DATABASE_ID,
-      //   "Content-Type": "application/json",
-      // };
+      const headers = {
+        "x-api-key": this.$config.public.DATABASE_ID,
+        "Content-Type": "application/json",
+      };
 
-      // if (accessToken) {
-      //   headers["Authorization"] = `Bearer ${accessToken}`;
-      // }
-
-      // axios.post(
-      //   "https://api.sueennature.com/bookings/",
-      //   payload,
-      //   { headers }
-      // )
-      // .then(response => {
-      //   // Print the response data
-      //   console.log("Response received:", response.data);
-      //   // You can also process the response here if needed
-      // })
-      // .catch(error => {
-      //   console.error("An error occurred:", error);
-      //   this.setupToastError("An error occurred. Please try again later.");
-      // });
+      axios.post(
+        "https://api.sueennature.com/bookings/",
+        payload,
+        { headers }
+      )
+      .then(response => {
+        console.log("Response received:", response.data);
+        toast.success("Proceeding to payment")
+        setTimeout(()=>{
+          window.location.href =  response.data.payment_url;
+        },1500)
+      })
+      .catch(error => {
+        console.error("An error occurred:", error);
+        this.setupToastError("An error occurred. Please try again later.");
+      });
     },
     updateRoomNumbers() {
       if (this.selectedNumberOfRooms) {
