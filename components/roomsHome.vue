@@ -12,31 +12,22 @@
 
     <div class="lg:flex lg:flex-row grid grid-cols-1 lg:justify-center lg:items-baseline justify-items-center gap-6 my-10">
       <figure
-        v-for="(category, index) in room_types"
+        v-for="(category, index) in groupedRoomTypes"
         :key="index"
         class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
       >
-        <!-- <h4 class="text-2xl font-semibold text-center mb-4">{{ category.category }}</h4> -->
-        <div
-          v-for="room in category.rooms"
-          :key="room.room_number"
-          class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
-        >
-          <!-- Use room_number as the key for better performance -->
-          <img
-            v-if="room.images && room.images.length > 0"
-            class="rounded-0 w-60 max-w-md h-60"
-            :src="`https://api.sueennature.com/${room.images[0]}`"
-            :alt="`${room.category} image`"
-          />
-          <figcaption class="absolute px-4 text-lg text-white bottom-6">
-            <h5 class="text-base font-semibold text-white">
-              LKR {{ room.room_only || 'N/A' }}
-            </h5>
-            <h2 class="text-3xl text-white">{{ room.category }} Room</h2>
-          
-          </figcaption>
-        </div>
+        <img
+          v-if="category.rooms[0].images && category.rooms[0].images.length > 0"
+          class="rounded-0 w-72 max-w-md h-60"
+          :src="`https://api.sueennature.com/${category.rooms[0].images[0]}`"
+          :alt="`${category.category} Room image`"
+        />
+        <figcaption class="absolute px-4 text-lg text-white bottom-6">
+          <h5 class="text-base font-semibold text-white">
+            LKR {{ category.rooms[0].room_only || 'N/A' }}
+          </h5>
+          <h2 class="text-3xl text-white">{{ category.category }} Room</h2>
+        </figcaption>
       </figure>
     </div>
 
@@ -53,13 +44,26 @@
   </div>
 </template>
 
-
-
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 const room_types = ref([]);
 const runtimeConfig = useRuntimeConfig();
+
+// Group rooms by their category
+const groupedRoomTypes = computed(() => {
+  const grouped = {};
+  room_types.value.forEach((type) => {
+    if (!grouped[type.category]) {
+      grouped[type.category] = {
+        category: type.category,
+        rooms: []
+      };
+    }
+    grouped[type.category].rooms.push(...type.rooms);
+  });
+  return Object.values(grouped);
+});
 
 async function fetchRoomTypes() {
   try {
@@ -75,11 +79,7 @@ async function fetchRoomTypes() {
       throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    console.log(data);
-
-    room_types.value = data.room_types || []; 
-    console.log("Room types:", room_types.value);
-
+    room_types.value = data.room_types || [];
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
   }
@@ -89,7 +89,6 @@ onMounted(() => {
   fetchRoomTypes();
 });
 </script>
-
 
 <style scoped>
 h2 {
@@ -102,3 +101,4 @@ h5 {
   font-family: "Barlow", sans-serif;
 }
 </style>
+
