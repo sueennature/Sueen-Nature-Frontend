@@ -172,20 +172,22 @@
     <div v-if="unSelectedRoomData?.length > 0"       class="lg:flex lg:flex-row grid grid-cols-1 justify-center justify-items-center gap-4 my-20"
       >
     <div v-for="(category, categoryIndex) in unSelectedRoomData" :key="categoryIndex" class="category-section">
-      <div v-for="(room, roomIndex) in category.rooms" :key="roomIndex" class="room-card">
+      <!-- <div v-for="(room, roomIndex) in category.rooms" :key="roomIndex" class="room-card"> -->
         
         <!-- Display images -->
-        <div v-if="room.images.length > 0" class="image-gallery">
-          <img :src="`https://api.sueennature.com/${room.images[0]}`" alt="Room Image" class="room-image" />
+        <div v-if="category.rooms.length > 0" class="room-card">
+        <div v-if="category.rooms[0].images.length > 0" class="image-gallery">
+          <img :src="`https://api.sueennature.com/${category.rooms[0].images[0]}`" alt="Room Image" class="room-image" />
         </div>
       </div>
+      <!-- </div> -->
       <h2 class="text-xl mt-2 mb-2 text-center">{{ category.category }}</h2>
-
-      <div v-for="(room, roomIndex) in category.rooms" :key="roomIndex" class="room-card">
-        <p class="text-center text-[14px]"> {{ room.description }}</p>
+      
+      
+        <p class="text-center text-[14px]"> {{ category.rooms[0].description }}</p>
   
         
-      </div>
+    
       <div class="text-center mt-2 mb-2">
         <button
           @click="navigateToRoomTypePage(category.category )"
