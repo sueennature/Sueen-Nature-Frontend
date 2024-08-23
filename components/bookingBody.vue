@@ -119,7 +119,7 @@
         class="w-full p-0 bg-gray-800 border border-gray-200 rounded-lg shadow mt-4"
       >
         <div class="p-4">
-          <h3 class="text-lg font-bold mb-2 ">Room Details:</h3>
+          <h3 class="text-lg font-bold mb-2">Room Details:</h3>
 
           <div
             v-if="selectedRoomNumbers.length"
@@ -218,15 +218,16 @@
                 </div>
 
                 <div class="mb-2">
-                  <label                     v-if="roomCategory !== 'Single'"
-                  for="infants-{{ room }}" class="block mb-1"
+                  <label
+                    v-if="roomCategory !== 'Single'"
+                    for="infants-{{ room }}"
+                    class="block mb-1"
                     >Infants:</label
                   >
                   <select
                     id="infants-{{ room }}"
                     v-model="roomDetails[room].infants"
                     v-if="roomCategory !== 'Single'"
-
                     class="border border-gray-300 p-2 rounded"
                   >
                     <option v-for="num in [0, 1, 2]" :key="num" :value="num">
@@ -281,20 +282,25 @@
 
                 <!-- Meal time selection -->
                 <div
-  class="mb-2"
-  v-if="roomDetails[room].mealPlan !== 'room_only' && roomDetails[room].mealPlan !== 'bread_breakfast'"
->
-  <label for="meal-time-{{ room }}" class="block mb-1">Meal Time:</label>
-  <select
-    id="meal-time-{{ room }}"
-    v-model="roomDetails[room].mealTime"
-    class="border border-gray-300 p-2 rounded"
-  >
-    <option value="breakfast">Breakfast</option>
-    <option value="lunch">Lunch</option>
-    <option value="dinner">Dinner</option>
-  </select>
-</div>
+                  class="mb-2"
+                  v-if="
+                    roomDetails[room].mealPlan !== 'room_only' &&
+                    roomDetails[room].mealPlan !== 'bread_breakfast'
+                  "
+                >
+                  <label for="meal-time-{{ room }}" class="block mb-1"
+                    >Meal Time:</label
+                  >
+                  <select
+                    id="meal-time-{{ room }}"
+                    v-model="roomDetails[room].mealTime"
+                    class="border border-gray-300 p-2 rounded"
+                  >
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -1583,8 +1589,7 @@ export default {
             children: childrenAges, // This will be an empty array if count is 0
             infants: infantAges, // This will be an empty array if count is 0
             meal_plan: roomDetail.mealPlan || "room_only",
-            category: this.$route.query.roomType
-
+            category: this.$route.query.roomType,
           };
         }),
         taxes: taxes,
@@ -1617,12 +1622,12 @@ export default {
             nationality: this.form.nationality || "",
           }
         : {
-            first_name: "asd",
-            last_name: "sss",
-            email: "Demo@gmail.com",
-            telephone: "123213",
-            address: "asdas",
-            nationality: "USA",
+            first_name: "",
+            last_name: "",
+            email: "",
+            telephone: "",
+            address: "",
+            nationality: "",
           };
 
       return {
@@ -1645,8 +1650,7 @@ export default {
                 ? this.roomDetails[roomNumber].infantAges
                 : [],
             meal_plan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
-            starting_meals_with:
-              this.roomDetails[roomNumber]?.mealTime || "",
+            starting_meals_with: this.roomDetails[roomNumber]?.mealTime || "",
             view: this.$route.query.view || "default",
           };
         }),
@@ -1656,6 +1660,7 @@ export default {
         discount_code: discountCode || "",
         total_taxes: this.total_rate?.total_tax_amount || 0,
         total_rooms_charge: this.total_rate?.total_rooms_amount || 0,
+        total_meal_plan_amount: this.total_rate?.total_meal_plan_amount || 0,
         total_activities_charge: this.total_rate?.total_activities_amount || 0,
         total_discount_amount: this.total_rate?.total_discount_amount || 0,
         total_amount: this.total_rate?.total_amount || 0,
@@ -1725,28 +1730,24 @@ export default {
       const payload = this.preparePayloadBooking();
       console.log("Submitted payload", payload);
 
-
       const headers = {
         "x-api-key": this.$config.public.DATABASE_ID,
         "Content-Type": "application/json",
       };
 
-      axios.post(
-        "https://api.sueennature.com/bookings/",
-        payload,
-        { headers }
-      )
-      .then(response => {
-        console.log("Response received:", response.data);
-        toast.success("Proceeding to payment")
-        setTimeout(()=>{
-          window.location.href =  response.data.payment_url;
-        },1500)
-      })
-      .catch(error => {
-        console.error("An error occurred:", error);
-        this.setupToastError("An error occurred. Please try again later.");
-      });
+      axios
+        .post("https://api.sueennature.com/bookings/", payload, { headers })
+        .then((response) => {
+          console.log("Response received:", response.data);
+          toast.success("Proceeding to payment");
+          setTimeout(() => {
+            window.location.href = response.data.payment_url;
+          }, 1500);
+        })
+        .catch((error) => {
+          console.error("An error occurred:", error);
+          this.setupToastError("An error occurred. Please try again later.");
+        });
     },
     updateRoomNumbers() {
       if (this.selectedNumberOfRooms) {
@@ -1859,6 +1860,15 @@ export default {
 
     async register() {
       try {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(this.registerUser.email)) {
+          this.setupToastError("Please enter a valid email address.");
+          return;
+        }
+        if (this.registerUser.password.length < 8) {
+          this.setupToastError("Password must be at least 8 characters long.");
+          return;
+        }
         // Step 1: Create guest
         const guestPayload = {
           first_name: this.registerUser.name,
@@ -1919,9 +1929,27 @@ export default {
           path: "/dashboard",
           query: { email: this.registerUser.email },
         });
+        if ((data.detail = "Email already registered")) {
+          return toast.error(`Invalid Credentials`);
+        }
       } catch (error) {
         console.error("An error occurred:", error);
-        this.setupToastError("An error occurred. Please try again later.");
+
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.detail === "Email already registered"
+        ) {
+          this.setupToastError("Email already registered");
+        } else if (
+          error.response &&
+          error.response.data &&
+          error.response.data.detail === "Username already exists"
+        ) {
+          this.setupToastError("Username already exists");
+        } else {
+          this.setupToastError("An error occurred. Please try again later.");
+        }
       }
     },
 
