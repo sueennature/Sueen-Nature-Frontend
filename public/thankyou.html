@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Booking! - Sueen Nature Resort</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 75%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            margin: auto;
+        }
+        .logo {
+            margin-bottom: 20px;
+            background-color: #343a40;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+        h1 {
+            color: #343a40;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #495057;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 10px 0;
+        }
+        .details {
+            border-top: 1px solid #dee2e6;
+            padding-top: 5px;
+            margin-top: 5px;
+            text-align: left;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .footer {
+            margin-top: 5px;
+            color: #6c757d;
+            font-size: 14px;
+            text-align: center;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .success-message {
+            color: #28a745;
+            font-size: 32px; /* Bigger text size */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        // Function to get query parameters
+        function getQueryParam(param) {
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Function to populate the page with data from the query parameters
+        function populatePage() {
+            const guestName = getQueryParam('guest_name');
+            const bookingId = getQueryParam('booking_id');
+            const refNo = getQueryParam('client_ref');
+
+            document.getElementById('guestName').innerText = guestName ? guestName : 'Guest';
+            document.getElementById('bookingId').innerText = bookingId ? bookingId : 'N/A';
+            document.getElementById('refNo').innerText = refNo ? refNo : 'N/A';
+        }
+
+        // Call the function on page load
+        window.onload = populatePage;
+    </script>
+    <script>
+        setTimeout(function() {{
+            window.location.href = '/';
+        }}, 10000); // Redirect after 10 seconds
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <!-- Replace with your logo path -->
+            <img src="./Logo.png" alt="Sueen Nature Logo">
+        </div>
+        <div class="success-message">Payment Successful!</div>
+        <h1>Thank You for Your Booking!</h1>
+        <p>Dear <span id="guestName"></span>,</p>
+        <p>Thank you for booking a room with Sueen Nature. We are delighted to confirm your reservation and look forward to providing you with an exceptional experience at our resort.</p>
+        <div class="details">
+            <p><strong>SUEENN NATURE RESORT</strong></p>
+            <p><strong>Reference Number:</strong> <span id="refNo"></span></p>
+            <p><strong>Booking ID:</strong> <span id="bookingId"></span></p>
+        </div>
+        <div class="footer">
+            <p>If you have any questions or need further assistance, please do not hesitate to <a href="mailto:sueennaturebooking@gmail.com">contact us</a>.<br />
+            The page will redirect automatically. If it does not, please click this <a href="#">redirect</a>.<br />
+            Best regards,<br />
+            The Sueen Nature Team</p>
+        </div>
+    </div>
+</body>
+</html>
