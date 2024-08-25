@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Cancelled! - Sueen Nature Resort</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .logo {
+            margin-bottom: 20px;
+            background-color: #343a40;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+        h1 {
+            color: #ffc107;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .cancel-message {
+            color: #ffc107;
+            font-size: 32px; /* Bigger text size */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #856404;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 10px 0;
+        }
+        .details {
+            border-top: 1px solid #ffeeba;
+            padding-top: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            color: #6c757d;
+            font-size: 14px;
+            text-align: center;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Function to get query parameters
+        function getQueryParam(param) {
+            let urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Function to populate the page with data from the query parameters
+        function populatePage() {
+            const guestName = getQueryParam('guest_name');
+            const bookingId = getQueryParam('booking_id');
+            const refNo = getQueryParam('client_ref');
+
+            document.getElementById('guestName').innerText = guestName ? guestName : 'Guest';
+            document.getElementById('bookingId').innerText = bookingId ? bookingId : 'N/A';
+            document.getElementById('refNo').innerText = refNo ? refNo : 'N/A';
+        }
+
+        // Call the function on page load
+        window.onload = populatePage;
+    </script>
+    <script>
+        setTimeout(function() {{
+            window.location.href = '/';
+        }}, 10000); // Redirect after 10 seconds
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <!-- Replace with your logo path -->
+            <img src="./Logo.png" alt="Sueen Nature Logo">
+        </div>
+        <div class="cancel-message">Payment Cancelled</div>
+        <h1>Your Booking Has Been Cancelled</h1>
+        <p>Dear <span id="guestName"></span>,</p>
+        <p>You have successfully cancelled your payment with Sueen Nature. No charges have been applied to your account.</p>
+        <div class="details">
+            <p><strong>Reference Number:</strong> <span id="refNo"></span></p>
+            <p><strong>Booking ID:</strong> <span id="bookingId"></span></p>
+        </div>
+        <div class="footer">
+            <p>If you have any questions or need assistance, please <a href="mailto:info@sueennature.com">contact us</a>, and we will be happy to help.</p>
+            <p>The page will redirect automatically. If it does not, please click this <a href="#">redirect</a>.</p>
+            <p>Best regards,</p>
+            <p>The Sueen Nature Team</p>
+        </div>
+    </div>
+</body>
+</html>
