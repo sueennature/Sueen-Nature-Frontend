@@ -1559,10 +1559,10 @@ export default {
       const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
       const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
       const discountCode = this.$route.query.discount;
-      const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
-      const discounts = this.discounts.map((discount) => ({
-        discount_id: discount.id,
-      }));
+      // const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
+      // const discounts = this.discounts.map((discount) => ({
+      //   discount_id: discount.id,
+      // }));
       const selectedActivities = this.activities
         .filter((activity) => activity.checked)
         .map((activity) => ({ activity_id: activity.id }));
@@ -1602,10 +1602,10 @@ export default {
       const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
       const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
       const discountCode = this.$route.query.discount;
-      const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
-      const discounts = this.discounts.map((discount) => ({
-        discount_id: discount.id,
-      }));
+      // const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
+      // const discounts = this.discounts.map((discount) => ({
+      //   discount_id: discount.id,
+      // }));
       const selectedActivities = this.activities
         .filter((activity) => activity.checked)
         .map((activity) => ({
