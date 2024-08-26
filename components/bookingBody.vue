@@ -1563,6 +1563,9 @@ export default {
       // const discounts = this.discounts.map((discount) => ({
       //   discount_id: discount.id,
       // }));
+       // Temporarily setting taxes and discounts to empty arrays
+      const taxes = []; 
+      const discounts = []; 
       const selectedActivities = this.activities
         .filter((activity) => activity.checked)
         .map((activity) => ({ activity_id: activity.id }));
@@ -1606,6 +1609,9 @@ export default {
       // const discounts = this.discounts.map((discount) => ({
       //   discount_id: discount.id,
       // }));
+      // Temporarily setting taxes and discounts to empty arrays
+      const taxes = []; 
+      const discounts = []; 
       const selectedActivities = this.activities
         .filter((activity) => activity.checked)
         .map((activity) => ({
