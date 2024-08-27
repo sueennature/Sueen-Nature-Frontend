@@ -7,59 +7,58 @@
     /> -->
 
     <swiper
+      :spaceBetween="30"
+      :autoplay="autoplayConfig"
+      :navigation="true"
+      :pagination="{
+        clickable: true,
+      }"
+      :modules="modules"
+      class="mySwiper"
+      @slideChange="onSlideChange"
+    >
+      <swiper-slide>
+        <video
+          ref="video"
+          src="/img/home_video.mp4"
+          class="object-cover w-full min-h-screen"
+          autoplay
+          muted
+          loop
+        ></video>
+      </swiper-slide>
+      <swiper-slide>
+        <img
+          src="/img/hero-home 1.webp"
+          class="object-cover w-full min-h-screen"
+        />
+      </swiper-slide>
+      <swiper-slide>
+        <img
+          src="/img/hero-home 2.webp"
+          class="object-cover w-full min-h-screen"
+        />
+      </swiper-slide>
+      <swiper-slide>
+        <img
+          src="/img/hero-home 3.webp"
+          class="object-cover w-full min-h-screen"
+        />
+      </swiper-slide>
+      <swiper-slide>
+        <img
+          src="/img/hero-home4.jpg"
+          class="object-cover w-full min-h-screen"
+        />
+      </swiper-slide>
+      <swiper-slide>
+        <img
+          src="/img/hero-home 5.webp"
+          class="object-cover w-full min-h-screen"
+        />
+      </swiper-slide>
+    </swiper>
 
-    :spaceBetween="30"
-    :autoplay="autoplayConfig"
-    :navigation="true"
-    :pagination="{
-      clickable: true,
-    }"
-    :modules="modules"
-    class="mySwiper"
-    @slideChange="onSlideChange"
-  >
-    <swiper-slide>
-      <video
-        ref="video"
-        src="/img/home_video.mp4"
-        class="object-cover w-full min-h-screen"
-        autoplay
-        muted
-        loop
-      ></video>
-    </swiper-slide>
-    <swiper-slide>
-      <img
-        src="/img/hero-home 1.webp"
-        class="object-cover w-full min-h-screen"
-      />
-    </swiper-slide>
-    <swiper-slide>
-      <img
-        src="/img/hero-home 2.webp"
-        class="object-cover w-full min-h-screen"
-      />
-    </swiper-slide>
-    <swiper-slide>
-      <img
-        src="/img/hero-home 3.webp"
-        class="object-cover w-full min-h-screen"
-      />
-    </swiper-slide>
-    <swiper-slide>
-      <img
-        src="/img/hero-home4.jpg"
-        class="object-cover w-full min-h-screen"
-      />
-    </swiper-slide>
-    <swiper-slide>
-      <img
-        src="/img/hero-home 5.webp"
-        class="object-cover w-full min-h-screen"
-      />
-    </swiper-slide>
-  </swiper>
-    
     <!-- stiky navbar -->
     <nav
       class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
@@ -340,51 +339,100 @@
     </div>
     <!-- main hero booking options selector -->
     <div
-
-      class="absolute z-40 inset-x-0 bottom-56 md:flex md:flex-row flex-col md:justify-center md:mx-0 mx-4 "
-
+      class="absolute z-40 inset-x-0 bottom-56 lg:flex lg:flex-col xl:flex-row flex-col lg:justify-center md:mx-0 mx-4"
     >
+   
       <div
-        class="md:flex grid grid-cols-1 bg-black-200 bg-opacity-60 justify-center md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
+        class="xl:flex grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 items-center justify-center bg-black-200 bg-opacity-60  md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
       >
         <div class="relative md:max-w-sm md:mx-auto">
           <input
-            type="date"
+            type="datetime-local"
             class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            placeholder="Check In Date"
+            placeholder="Check In Date and Time"
             v-model="check_in"
           />
         </div>
-        <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
+        <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
         <div class="relative md:max-w-sm md:mx-auto">
           <input
-            type="date"
+            type="datetime-local"
             class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            placeholder="Check Out Date and Time"
             v-model="check_out"
           />
         </div>
-        <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
-        <form class="lg:max-w-sm lg:mx-auto">
-  <select
-    id="category"
-    v-model="roomCategory"
-    class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-  >
-  <option value=null disabled>
-      Choose a Room
-    </option>
-    <option value="Single" class="text-gray-900">Single</option>
-    <option value="Deluxe" class="text-gray-900">Deluxe</option>
-    <option value="Double" class="text-gray-900">Double</option>
-    <option value="Family" class="text-gray-900">Family</option>
-    <option value="Triple" class="text-gray-900">Triple</option>
-  </select>
-</form>
 
+        <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
+        <div class="lg:max-w-sm lg:mx-auto">
+          <div class="relative">
+            <div
+              @click="toggleDropdown"
+              ref="dropdownContainer"
+              class="text-white text-sm p-4 xl:w-60 lg:w-60 md-48:w-6 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer flex justify-between items-center"
+            >
+            <div class="overflow-hidden text-ellipsis whitespace-nowrap w-24">
+              <span v-if="selectedCategories.length === 0">Choose Rooms</span>
+                <span v-else>{{ selectedCategories.join(", ") }}</span>
+              </div>
+              <div class="ml-1">
+                <svg
+                  v-if="dropdownOpen"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 3a1 1 0 01.707.293l7 7a1 1 0 11-1.414 1.414L10 5.414l-6.293 6.293a1 1 0 01-1.414-1.414l7-7A1 1 0 0110 3z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <svg
+                  v-else
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 17a1 1 0 01-.707-.293l-7-7a1 1 0 011.414-1.414L10 14.586l6.293-6.293a1 1 0 111.414 1.414l-7 7A1 1 0 0110 17z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
 
-        <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
+            <!-- Dropdown Options -->
+            <div
+              v-if="dropdownOpen"
+              class="absolute mt-2 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg z-10"
+            >
+              <div
+                v-for="room in room_types"
+                :key="room.value"
+                class="p-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center"
+                @click.stop="selectCategory(room.category)"
+              >
+                <input
+                  type="checkbox"
+                  :value="room.category"
+                  :checked="selectedCategories.includes(room.category)"
+                  @change="selectCategory(room.category)"
+                  class="mr-2"
+                />
+                <span class="text-gray-900 dark:text-white">{{
+                  room.category
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
 
-        <form class="lg:max-w-sm lg:mx-auto">
+        <div class="lg:max-w-sm lg:mx-auto">
           <select
             id="view"
             v-model="roomView"
@@ -396,33 +444,82 @@
             <option value="LAKE" class="text-gray-900">LAKE</option>
             <option value="MOUNTAIN" class="text-gray-900">MOUNTAIN</option>
           </select>
-        </form>
-        <div class="w-0.5 bg-white h-8 my-auto md:flex hidden"></div>
+        </div>
+        <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
 
-        <form class="lg:max-w-sm lg:mx-auto">
+        <div class="lg:max-w-sm lg:mx-auto">
           <input
             v-model="discount_code"
             type="text"
-            placeholder="Discount"
+            placeholder="Discount Code"
             class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
-        </form>
+        </div>
       </div>
-
       <button
-        class="bg-red-100 text-sm buttontext text-white md:ml-2 md:p-4 p-2 rounded-r-lg rounded-l-none md:flex hidden"
-        @click="checkAvailability"
+      class="bg-red-100 hover:bg-red-500 text-sm  text-center text-white p-2 md:p-4 rounded xl:rounded-r-lg xl:rounded-l-none hidden  justify-center lg:flex"
+      @click="checkAvailability"
       >
-        Check Availability
+        <span v-if="loading" class="flex">
+          <!-- Loader Icon or Text -->
+          <svg
+            class="animate-spin h-5 w-5 mr-3 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z"
+            ></path>
+          </svg>
+          Loading...
+        </span>
+        <span v-else> Check Availability </span>
       </button>
-      <div class="md:hidden">
+      <div class="lg:hidden">
         <button
-          class="bg-red-100 buttontext text-sm text-white p-4 rounded-none border border-white w-full"
+          class="bg-red-100 hover:bg-red-500 buttontext text-sm text-white p-4 rounded-none border border-white w-full"
+          @click="checkAvailability"
         >
-          Check Availability
+          <span v-if="loading" class="flex items-center justify-center">
+            <!-- Loader Icon or Text -->
+            <svg
+              class="animate-spin h-5 w-5 mr-3 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z"
+              ></path>
+            </svg>
+            Loading...
+          </span>
+          <span v-else> Check Availability </span>
         </button>
       </div>
     </div>
+    <div></div>
   </div>
 </template>
 
@@ -450,22 +547,77 @@ export default {
       },
       check_in: "",
       check_out: "",
-      roomCategory: null,  // Ensure this is initially null or an appropriate default value
+      roomCategory: null, // Ensure this is initially null or an appropriate default value
       roomView: null,
+      room_types: [],
+      loading: false,
+      selectedCategories: [],
+      dropdownOpen: false, // Holds the selected categories
+
       discount_code: "",
     };
   },
 
   computed: {},
   watch: {
-  roomCategory(newVal) {
-    if (newVal === null) {
-      this.roomCategory = ''; // Set default value if needed
-    }
-  }
-},
+    roomCategory(newVal) {
+      if (newVal === null) {
+        this.roomCategory = ""; // Set default value if needed
+      }
+    },
+  },
 
   methods: {
+    handleClickOutside(event) {
+      if (
+        this.dropdownOpen &&
+        !this.$refs.dropdownContainer.contains(event.target)
+      ) {
+        this.dropdownOpen = false;
+      }
+    },
+    toggleDropdown() {
+      this.dropdownOpen = !this.dropdownOpen;
+    },
+    selectCategory(category) {
+      if (this.selectedCategories.includes(category)) {
+        this.selectedCategories = this.selectedCategories.filter(
+          (c) => c !== category
+        );
+      } else {
+        this.selectedCategories.push(category);
+      }
+    },
+    closeDropdown() {
+      this.dropdownOpen = false;
+    },
+    async fetchRoomTypes() {
+      try {
+        const response = await fetch(
+          "https://api.sueennature.com/rooms/types",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": this.$config.public.DATABASE_ID, // Adjust the runtime config reference according to your environment
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        this.room_types = data.room_types || [];
+        console.log("ROOMS", this.room_types);
+      } catch (error) {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+      }
+    },
     setupToast() {
       toast.error("welcome to sda", {
         autoClose: 1000,
@@ -483,46 +635,89 @@ export default {
 
     async checkAvailability() {
       const runtimeConfig = useRuntimeConfig();
-      const formatDateToISO = (dateString) => {
+      if (
+        !this.check_in ||
+        !this.check_out ||
+        !this.roomView ||
+        this.selectedCategories.length === 0
+      ) {
+        return toast.error("Please all fields");
+      }
+      const checkInDate = new Date(this.check_in);
+      const checkOutDate = new Date(this.check_out);
+
+      if (checkOutDate <= checkInDate) {
+        return toast.error("Check-out date must be after check-in date");
+      }
+      const formatDateToCustom = (dateString) => {
         if (!dateString) return "";
         const date = new Date(dateString);
-        return date.toISOString();
-      };
-      const formattedCheckIn = formatDateToISO(this.check_in);
-      const formattedCheckOut = formatDateToISO(this.check_out);
 
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-based
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        // Format the string
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      };
+
+      const formattedCheckIn = formatDateToCustom(this.check_in);
+      const formattedCheckOut = formatDateToCustom(this.check_out);
+      console.log("DATES", formattedCheckIn, formattedCheckOut);
       const baseUrl = "https://api.sueennature.com/rooms/availability/";
-      const params = new URLSearchParams({
+
+      // Construct the categories query string manually
+      const categoriesParam = this.selectedCategories
+        .map((category) => `categories=${encodeURIComponent(category)}`)
+        .join("&");
+
+      // Construct other parameters
+      const otherParams = new URLSearchParams({
         check_in: formattedCheckIn,
         check_out: formattedCheckOut,
-        categories: this.roomCategory,
-        views: this.roomView,
-        discount_code: this.discount_code,
-      });
+      }).toString();
 
-      const url = `${baseUrl}?${params.toString()}`;
+      // Combine parameters in the desired order
+      const fullUrl = `${baseUrl}?${otherParams}&${categoriesParam}&views=${encodeURIComponent(
+        this.roomView
+      )}&discount_code=${encodeURIComponent(this.discount_code)}`;
+
+      console.log("Constructed URL:", fullUrl);
+      this.loading = true;
 
       try {
-        const response = await fetch(url, {
+        const response = await fetch(fullUrl, {
           method: "GET",
           headers: {
-            "x-api-key": runtimeConfig.public.DATABASE_ID, // Replace with your actual API key
-            "Content-Type": "application/json", // Optional, as it's a GET request
+            "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+            "Content-Type": "application/json", // Optional for GET requests
           },
         });
 
         const data = await response.json();
-        console.log("first", data)
-          this.$router.push({ path: '/booking', query: { fromDate: this.check_in, toDate: this.check_out, roomType: this.roomCategory, view:this.roomView , discount:this.discount_code} });
+        this.loading = false;
+        console.log("API Response Data:", data);
 
-       
-        // Handle the data
-        console.log(data);
+        this.$router.push({
+          path: "/booking",
+          query: {
+            fromDate: this.check_in,
+            toDate: this.check_out,
+            categories: this.selectedCategories.join(","),
+            view: this.roomView,
+            discount: this.discount_code,
+          },
+        });
       } catch (error) {
-        window.alert(error);
+        this.loading = false;
+
+        console.error("Error during fetch operation:", error);
+        window.alert(`An error occurred: ${error.message}`);
       }
     },
-
     setupToast(message) {
       toast.error(message, {
         autoClose: 3000,
@@ -551,6 +746,9 @@ export default {
   },
 
   mounted() {
+    this.fetchRoomTypes();
+    document.addEventListener("click", this.handleClickOutside);
+
     Promise.all([
       import("flowbite-datepicker/Datepicker"),
       import("flowbite-datepicker/Datepicker"),
@@ -566,6 +764,9 @@ export default {
         orientation: "bottom right",
       });
     });
+  },
+  beforeDestroy() {
+    document.removeEventListener("click", this.handleClickOutside);
   },
 };
 </script>
