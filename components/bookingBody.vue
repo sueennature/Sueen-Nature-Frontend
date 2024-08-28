@@ -11,7 +11,7 @@
       <div
         class="flex flex-col lg-flex-row xl:flex-row items-start justify-between w-full gap-8"
       >
-        <div
+        <!-- <div
           v-if="discounts.length > 0"
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
         >
@@ -38,7 +38,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- Activities -->
 
         <div
@@ -81,12 +81,30 @@
         <div class="font-bold text-xl mt-10">
           Select a rooms to further process
         </div>
-        <div class="mt-4">
-          <h4 class="text-lg font-bold">Available Rooms</h4>
+        <div class="mt-4 w-full ">
+          <h4 class="text-lg font-bold ">Available Rooms</h4>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div
+    v-for="room in rooms"
+    :key="room.room_number"
+    :value="room.room_number"
+    class="w-full flex items-start"
+    :disabled="selectedRoomNumbers.includes(room.room_number)"
+  >
+    <span class="border flex flex-col border-gray-700 rounded-lg p-2">
+      <span><strong>Room:</strong> {{ room.room_number }}</span> {{ " " }}
+      <span><strong>Category:</strong> {{ room.category }}</span> {{ " " }}
+      <span><strong>Second Category:</strong> {{ room.secondary_category }}</span> {{ " " }}
+      <span><strong>View:</strong> {{ room.view }}</span> {{ " " }}
+    </span>
+  </div>
+</div>
+
           <select
             v-model="selectedRoom"
             @change="toggleRoom"
-            class="w-72 border border-gray-600 rounded-lg"
+            class="w-72 border border-gray-600 rounded-lg mt-8"
           >
             <option value="null" disabled>Select a room</option>
             <option
@@ -95,7 +113,9 @@
               :value="room.room_number"
               :disabled="selectedRoomNumbers.includes(room.room_number)"
             >
-              Room {{ room.room_number }}
+              <span class="flex justify-between w-full gap-4">
+                <span>Room: {{ room.room_number }}</span> {{ " " }}
+              </span>
             </option>
           </select>
 
@@ -289,7 +309,7 @@
                   "
                 >
                   <label for="meal-time-{{ room }}" class="block mb-1"
-                    >Meal Time:</label
+                    >Starting Meal:</label
                   >
                   <select
                     id="meal-time-{{ room }}"
@@ -425,8 +445,7 @@
       </div>
     </div>
     <div ref="paymentInfoRef"></div>
-    <!-- <div class="flex flex-col lg:flex-row xl:flex-row gap-8 mt-12">
-      <div class="flex flex-col w-72">
+    <div class="flex flex-col w-72 mt-16">
         <label class="text-xl font-bold mb-5">Booking Notes</label>
         <textarea
           v-model="booking_note"
@@ -434,7 +453,9 @@
           class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
         ></textarea>
       </div>
-      <div class="flex flex-col w-72">
+     <!--  <div class="flex flex-col lg:flex-row xl:flex-row gap-8 mt-12">
+    
+    <div class="flex flex-col w-72">
         <label class="text-xl font-bold mb-5">Payment Notes</label>
         <textarea
           type="text"
@@ -1383,6 +1404,7 @@ export default {
       childFormAges: [],
       infantFormAges: [],
       activities: [],
+      categories: [],
       discounts: [],
       taxes: [],
       isSocialLogin: false,
@@ -1563,9 +1585,9 @@ export default {
       // const discounts = this.discounts.map((discount) => ({
       //   discount_id: discount.id,
       // }));
-       // Temporarily setting taxes and discounts to empty arrays
-      const taxes = []; 
-      const discounts = []; 
+      // Temporarily setting taxes and discounts to empty arrays
+      const taxes = [];
+      const discounts = [];
       const selectedActivities = this.activities
         .filter((activity) => activity.checked)
         .map((activity) => ({ activity_id: activity.id }));
@@ -1602,16 +1624,30 @@ export default {
       };
     },
     preparePayloadBooking() {
-      const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-      const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
+      const formatDateToISO = (dateString) => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+
+  // Get the local timezone offset in minutes
+  const offset = date.getTimezoneOffset();
+  
+  // Adjust date by subtracting the offset
+  const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+
+  // Convert to ISO format
+  return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
+};
+
+      const checkInDate = formatDateToISO(this.$route.query.fromDate);
+      const checkOutDate = formatDateToISO(this.$route.query.toDate);
       const discountCode = this.$route.query.discount;
       // const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
       // const discounts = this.discounts.map((discount) => ({
       //   discount_id: discount.id,
       // }));
       // Temporarily setting taxes and discounts to empty arrays
-      const taxes = []; 
-      const discounts = []; 
+      const taxes = [];
+      const discounts = [];
       const selectedActivities = this.activities
         .filter((activity) => activity.checked)
         .map((activity) => ({
@@ -1645,7 +1681,7 @@ export default {
           return {
             room_id: room.id,
             room_number: room.room_number,
-            category: this.$route.query.roomType || "unknown",
+            category: room.category || "unknown",
             adults: this.roomDetails[roomNumber]?.adults || 0,
             children:
               this.roomDetails[roomNumber]?.childrenAges.length > 0
@@ -2107,38 +2143,70 @@ export default {
   },
 
   mounted() {
-    const { fromDate, toDate, roomType, view, discount } = this.$route.query;
+    const queryParams = this.$route.query;
 
-    this.roomCategory = roomType || null;
-    console.log("ROOM", this.roomCategory);
-    this.initializeActivities();
-    const formatDateToISO = (dateString) => {
-      if (!dateString) return "";
-      const date = new Date(dateString);
-      return date.toISOString();
-    };
-
-    if (
-      new Date(this.$route.query.fromDate) >= new Date(this.$route.query.toDate)
-    ) {
-      this.setupToastError("Check-out date must be after check-in date.");
-      return;
+    if (queryParams.categories) {
+      this.categories = queryParams.categories
+        .replace(/[\[\]']+/g, "")
+        .split(",");
     }
 
-    const formattedCheckIn = formatDateToISO(this.$route.query.fromDate);
-    const formattedCheckOut = formatDateToISO(this.$route.query.toDate);
-    const runtimeConfig = useRuntimeConfig();
+    console.log("Categories:", this.categories);
 
-    const baseUrl = "https://api.sueennature.com/rooms/availability/";
-    const params = new URLSearchParams({
-      check_in: formattedCheckIn,
-      check_out: formattedCheckOut,
-      categories: this.$route.query.roomType,
-      views: this.$route.query.view,
-      discount_code: this.$route.query.discount,
-    });
+    const { fromDate, toDate, view, discount, categories } = this.$route.query;
+
+    const categoryList = Array.isArray(categories)
+      ? categories
+      : categories
+      ? categories.split(",")
+      : [];
+
+    this.initializeActivities();
+
+  // Adjusted formatDateToISO function
+const formatDateToISO = (dateString) => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+
+  // Get the local timezone offset in minutes
+  const offset = date.getTimezoneOffset();
+  
+  // Adjust date by subtracting the offset
+  const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+
+  // Convert to ISO format
+  return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
+};
+
+// Ensure check-out date is after check-in date
+if (new Date(fromDate) >= new Date(toDate)) {
+  this.setupToastError("Check-out date must be after check-in date.");
+  return;
+}
+
+// Format dates
+const formattedCheckIn = formatDateToISO(fromDate);
+const formattedCheckOut = formatDateToISO(toDate);
+
+console.log("BOOKING_FORMAT", fromDate, formattedCheckIn, toDate, formattedCheckOut);
+
+const runtimeConfig = useRuntimeConfig();
+
+const baseUrl = "https://api.sueennature.com/rooms/availability/";
+
+const params = new URLSearchParams();
+params.append("check_in", formattedCheckIn);
+params.append("check_out", formattedCheckOut);
+params.append("views", view);
+params.append("discount_code", discount || "");
+
+categoryList.forEach((category) => params.append("categories", category));
+
+// Proceed with API call or other logic
+
+
     const url = `${baseUrl}?${params.toString()}`;
-
+    console.log("BOOKING",url)
     fetch(url, {
       method: "GET",
       headers: {
@@ -2163,6 +2231,7 @@ export default {
       .catch((error) => {
         console.error("Error:", error);
       });
+
     const cookies = document.cookie.split(";");
     const authTokenCookie = cookies.find((cookie) =>
       cookie.trim().startsWith("auth_token=")
@@ -2170,6 +2239,7 @@ export default {
     this.isSignedIn = !!authTokenCookie;
     initFlowbite();
   },
+
   setup() {
     const nuxtApp = useNuxtApp();
 
