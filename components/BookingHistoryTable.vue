@@ -2,6 +2,8 @@
   <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300">
     <div class="flex flex-col sm:flex-row justify-between items-center mb-8">
       <h2 class="text-3xl uppercase font-medium text-gray-900 dark:text-white mb-4 sm:mb-0">Booking History</h2>
+
+    
       <div class="flex space-x-2">
         <input
           type="date"
@@ -9,7 +11,7 @@
           class="text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm border-none focus:ring-0"
           @input="dateChanged"
         />
-        <button
+        <!-- <button
           type="button"
           @click="generateReport"
           class="button-text whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -31,38 +33,48 @@
             </defs>
           </svg>
           Generate Report
-        </button>
+        </button> -->
       </div>
     </div>
-    <div v-if="filteredBookingHistory.length > 0">
-      <table class="min-w-full" id="bookingTable">
-        <thead>
-          <tr>
-            <th><input type="checkbox" :checked="allSelected" @change="selectAll" class="black-checkbox checkbox" /></th>
-            <th>Booking Name</th>
-            <th>Bed type</th>
-            <th>Book date</th>
-            <th>Nights</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200 ">
-          <tr v-for="(booking, index) in filteredBookingHistory" :key="booking.id">
-            <td><input type="checkbox" :value="index" v-model="selectedRowIndices" @change="updateSelectedRows" class="black-checkbox checkbox" /></td>
-            <td>
-              <img v-if="booking.booking_details[0]?.room_details[0]?.images.length > 0"
-                  :src="`https://admin.sueennature.com/uploads/${booking.booking_details[0].room_details[0].images[0]}`"
-                  alt="roomImg" class="bg-cover w-40 h-20" />            
-              </td>
-            <td>{{booking?.booking_details[0]?.room_details[0]?.beds }}</td>
-            <td>{{ formatDate(booking.booking.date) }}</td>
-            <td>{{ `${booking.booking.night} nights` }}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+      
+      <div class="overflow-x-auto">
+  <table class="min-w-full" id="bookingTable">
+    <thead>
+      <tr>
+        <th>
+          <input type="checkbox" :checked="allSelected" @change="selectAll" class="black-checkbox checkbox" />
+        </th>
+        <th>Booking Id</th>
+        <th>Room No</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>View</th>
+        <th>Room Category</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <tr v-for="(booking, index) in filteredBookingHistory" :key="booking.id">
+        <td>
+          <input type="checkbox" :value="index" v-model="selectedRowIndices" @change="updateSelectedRows" class="black-checkbox checkbox" />
+        </td>
+        <td>{{booking?.id}}</td>
+        <td>{{booking?.rooms[0]?.room_number}}</td>
+        <td>{{formatDate(booking?.check_in)}}</td>
+        <td>{{formatDate(booking?.check_out)}}</td>
+        <td>{{booking?.rooms[0]?.view}}</td>
+        <td>{{booking?.rooms[0]?.category}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
     </div>
-    <div v-else>
+    <!-- <div v-else>
       <p class="text-gray-500 dark:text-gray-400 text-3xl">You have not booked any rooms</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -77,9 +89,9 @@ import "jspdf-autotable";
 export default {
   data() {
     return {
-      bookingHistory: [], 
       filteredBookingHistory: [],
       selectedRows: [],
+      originalBookingHistory: [], // Store the original data here
       selectedRowIndices: [], 
       selectedDate: null,
     };
@@ -90,7 +102,7 @@ export default {
     },
   },
   mounted() {
-    this.fetchBookingHistory();
+    this.getBookingHistory();
   },
   methods: {
     formatDate(dateString) {
@@ -112,42 +124,70 @@ export default {
         default: return "th";
       }
     },
-    async fetchBookingHistory() {
-      try {
-        const cookies = document.cookie.split(";");
-        const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith("auth_token="));
-        const authToken = authTokenCookie.split("=")[1];
-        const headers = {
-          Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
-          "Content-Type": "application/json",
-        };
-        const response = await axios.get("https://admin.sueennature.com/api/user/history-booking", { headers });
-        if (response.data.status === false && response.data.message === "Not Found") {
-          this.bookingHistory = [];
-          this.filteredBookingHistory = [];
-        } else {
-          this.bookingHistory = Object.values(response.data); 
-          this.filteredBookingHistory = this.bookingHistory;
-          console.log("AS", this.filteredBookingHistory)
-        }
-      } catch (error) { 
-        console.error("Error fetching booking history:", error);
-        toast.error("Error fetching booking history");
-      }
-    },
-    dateChanged() {
-      if (this.selectedDate) {
-        this.filteredBookingHistory = this.bookingHistory.filter(booking => {
-          const bookingDate = booking.booking.date?.split(' ')[0];
-          return bookingDate === this.selectedDate;
-        });
-      } else {
-        this.filteredBookingHistory = this.bookingHistory;
-      }
-    },
+  
+    async getBookingHistory() {
+  const runtimeConfig = useRuntimeConfig();
+  const guest_id = this.$route.query.guest_id; 
+
+  if (this.editModeFirstName || this.editModeLastName || this.editModeEmail || this.editModePhoneNumber || this.editModeAddress) {
+    toast.error("Please save your changes");
+    return;
+  }
+
+  const body = {
+    guest_id: guest_id
+  };
+
+  const cookies = document.cookie.split(';');
+  const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+  if (!authTokenCookie) {
+    console.error("Auth Token not found in cookies.");
+    return;
+  }
+  const authToken = authTokenCookie.split('=')[1];
+  console.log("TOKEN", authToken);
+
+  const headers = {
+    'Authorization': `Bearer ${authToken}`,
+    'Content-Type': 'application/json',
+    "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+
+  };
+
+  try {
+    const response = await axios.post(`https://api.sueennature.com/bookings/guest/history`, body, { headers });
+    this.originalBookingHistory = response.data;
+    console.log("History", response.data)
+    
+    this.filteredBookingHistory = [...this.originalBookingHistory]; 
+
+    toast.success("Retrived Successfully");
+    // window.location.reload();
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    this.setupToastError("An error occurred. Please try again later.");
+  }
+},
+dateChanged() {
+    if (this.selectedDate) {
+      const selectedDate = new Date(this.selectedDate);
+      selectedDate.setHours(0, 0, 0, 0);
+
+      // Filter the original data based on the selected date
+      this.filteredBookingHistory = this.originalBookingHistory.filter(booking => {
+        const checkInDate = new Date(booking.check_in);
+        checkInDate.setHours(0, 0, 0, 0);
+        return checkInDate.getTime() === selectedDate.getTime();
+      });
+    } else {
+      // Reset to original data if no date is selected
+      this.filteredBookingHistory = [...this.originalBookingHistory];
+    }
+  },
+
+
     clearDate() {
       this.selectedDate = null;
-      this.filteredBookingHistory = this.bookingHistory;
     },
     selectAll(event) {
       this.selectedRowIndices = event.target.checked ? this.filteredBookingHistory.map((_, index) => index) : [];
@@ -157,6 +197,16 @@ export default {
       this.selectedRows = this.selectedRowIndices.map(index => this.filteredBookingHistory[index]);
     },
     async generateReport() {
+     const formatDate=(dateString) =>{
+      const date = new Date(dateString);
+      const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const day = date.getDate();
+      const daySuffix = this.getDaySuffix(day);
+      return `${months[date.getMonth()]} ${day}${daySuffix} ${date.getFullYear()}`;
+    }
       try {
         const doc = new jsPDF('p', 'pt', 'a4');
 
@@ -164,16 +214,21 @@ export default {
         doc.text("Booking History Report", 40, 40);
 
         const tableData = this.filteredBookingHistory.map(booking => ({
-          bedType: booking?.booking_details[0]?.room_details[0]?.beds || '',
-          bookDate: this.formatDate(booking.booking.date),
-          nights: `${booking.booking.night} nights`
+        
+        RoomNo :booking?.rooms[0]?.room_number,
+        Check_IN :formatDate(booking?.check_in),
+        Check_Out :formatDate(booking?.check_out),
+        Category :booking?.rooms[0]?.category,
+        View :booking?.rooms[0]?.view
+
+       
         }));
 
     doc.autoTable({
       head: [
-        ['Bed type', 'Book date', 'Nights']
+        ['Room Number', 'Check In', 'Check Out', 'Category', 'View']
       ],
-      body: tableData.map(row => [row.bedType, row.bookDate, row.nights]),
+      body: tableData.map(row => [row.RoomNo, row.Check_IN, row.Check_Out,row.Category,row.View]),
       startY: 70,
       margin: { top: 80 },
       didDrawPage: function (data) {
@@ -206,6 +261,11 @@ export default {
 </script>
 
 <style scoped>
+ @media screen and (max-width: 640px) {
+    #bookingTable th, #bookingTable td {
+      white-space: nowrap;
+    }
+  }
 .table-responsive {
   display: block;
   width: 100%;

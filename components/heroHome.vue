@@ -67,19 +67,16 @@
         class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
       >
         <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            src="/img/logoMobile.png"
-            alt="logoImg"
-            class="w-auto h-8 md:h-10"
-          />
+          <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
         </a>
         <div
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
         >
           <button
             data-collapse-toggle="navbar-cta-2"
+            @click="toggleMenu" 
             type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 bg-transparent focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-cta-2"
             aria-expanded="false"
           >
@@ -102,15 +99,16 @@
           </button>
         </div>
         <div
-          class="lg:hidden items-center justify-between hidden w-full lg:w-auto lg:order-1"
-          id="navbar-cta-2"
-        >
+        :class="{'hidden': !isMenuOpen, 'flex': isMenuOpen}"
+        class="lg:hidden items-center justify-between w-full lg:w-auto lg:order-1"
+        id="navbar-cta-2"
+      >
           <ul
-            class="flex flex-col font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
+            class="flex flex-col font-medium p-4 w-full lg:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
           >
             <li>
               <a
-                href="/"
+                href="/home"
                 class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 rounded lg:bg-transparent hover:bg-gray-100 lg:text-white lg:dark:text-blue-500 uppercase"
                 >Home</a
               >
@@ -129,7 +127,7 @@
                 >Services</a
               >
             </li>
-            <li>
+           <li>
               <a
                 href="/news"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
@@ -143,7 +141,7 @@
                 >Rooms</a
               >
             </li>
-
+          
             <li>
               <a
                 href="/contact"
@@ -151,14 +149,15 @@
                 >Contact</a
               >
             </li>
+
             <li>
               <a
-                v-if="userEmail"
-                @click.prevent="redirectToDashboard"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-              >
-                Profile
-              </a>
+              v-if ="userEmail && authToken"
+          @click.prevent="redirectToDashboard"
+          class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+        >
+          Profile
+        </a>
             </li>
           </ul>
         </div>
@@ -209,7 +208,7 @@
             >
               <li>
                 <a
-                  href="/"
+                  href="/home"
                   class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
                   >Home</a
                 >
@@ -228,13 +227,13 @@
                   >Services</a
                 >
               </li>
-              <li>
+              <!-- <li>
                 <a
                   href="/news"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >News</a
                 >
-              </li>
+              </li> -->
               <li>
                 <a
                   href="/rooms"
@@ -242,18 +241,26 @@
                   >Rooms</a
                 >
               </li>
-              <li>
+               <li>
                 <a
                   href="/news"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >News</a
                 >
-              </li>
+              </li> 
               <li>
                 <a
                   href="/contact"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >Contact</a
+                >
+              </li>
+              <li>
+                <a
+                 v-if="userEmail && authToken"
+          @click.prevent="redirectToDashboard"
+                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                  >Profile</a
                 >
               </li>
             </ul>
@@ -329,7 +336,7 @@
           Contact
         </a>
         <a
-          v-if="userEmail"
+          v-if="userEmail && authToken"
           @click.prevent="redirectToDashboard"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
@@ -355,13 +362,15 @@
         </div>
         <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
         <div class="relative md:max-w-sm md:mx-auto">
-          <input
-            type="datetime-local"
-            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            placeholder="Check Out Date and Time"
-            v-model="check_out"
-          />
-        </div>
+  <input
+    type="datetime-local"
+    class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block "
+    placeholder="Check Out Date and Time"
+    v-model="check_out"
+  />
+
+</div>
+
 
         <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
         <div class="lg:max-w-sm lg:mx-auto">
@@ -553,8 +562,11 @@ export default {
       loading: false,
       selectedCategories: [],
       dropdownOpen: false, // Holds the selected categories
-
+      userEmail:'',
       discount_code: "",
+      isMenuOpen: false,
+      authToken:""
+
     };
   },
 
@@ -568,6 +580,9 @@ export default {
   },
 
   methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
     handleClickOutside(event) {
       if (
         this.dropdownOpen &&
@@ -625,12 +640,16 @@ export default {
     },
 
     redirectToDashboard() {
-      if (this.userEmail) {
-        this.$router.push({
-          path: "/dashboard",
-          query: { email: this.userEmail },
-        });
-      }
+      // if (this.userEmail) {
+      //   this.$router.push({
+      //     path: "/dashboard",
+      //     query: { email: this.userEmail },
+      //   });
+      // }
+      this.$router.push({
+              path: "/dashboard",
+              query: { guest_id: 30 },
+            });
     },
 
     async checkAvailability() {
@@ -715,7 +734,6 @@ export default {
         this.loading = false;
 
         console.error("Error during fetch operation:", error);
-        window.alert(`An error occurred: ${error.message}`);
       }
     },
     setupToast(message) {
@@ -746,6 +764,17 @@ export default {
   },
 
   mounted() {
+    const cookies = document.cookie.split(";");
+  const authTokenCookie = cookies.find((cookie) =>
+    cookie.trim().startsWith("auth_token=")
+  );
+  this.authToken = authTokenCookie?.split("=")[1];
+  console.log("HOME", this.authToken)
+
+     if (process.client) {
+      this.userEmail = localStorage.getItem('userEmail') || '';
+      console.log("first",this.userEmail)
+    }
     this.fetchRoomTypes();
     document.addEventListener("click", this.handleClickOutside);
 
@@ -804,5 +833,13 @@ input,
 select,
 .option-text {
   font-family: "Barlow", sans-serif;
+}
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* Style for the custom icon */
+.relative svg {
+  pointer-events: none; /* Ensure the icon does not interfere with input interactions */
 }
 </style>

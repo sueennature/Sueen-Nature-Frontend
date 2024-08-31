@@ -213,7 +213,7 @@
             </li>
             <li>
               <a
-                v-if="userEmail && authToken"
+              v-if="userEmail && authToken"
                 @click.prevent="handleNavigate"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Profile</a
@@ -305,7 +305,9 @@ const toggleMenu = () => {
 };
 const handleNavigate = () => {
   if (userEmail.value) {
-    router.push({ path: "/dashboard", query: { email: userEmail.value } });
+    router.push({ path: "/dashboard", query: { guest_id: 30  } });
+
+   
   }
 };
 
