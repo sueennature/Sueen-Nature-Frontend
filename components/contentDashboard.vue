@@ -1,7 +1,7 @@
 <template>
   <div class="sm:container px-4 py-20">
     <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-left mt-8">
-    Dashboard
+      Dashboard
     </h2>
     <div class="grid xl:grid-cols-3 grid-cols-1 gap-8">
       <!-- Card with user profile -->
@@ -22,7 +22,7 @@
           <h3
             class="mt-4 text-3xl whitespace-nowrap font-bold text-black-200 dark:text-white"
           >
-          {{ firstName }}
+            {{ firstName }}
           </h3>
           <div class="flex flex-col mt-10 space-y-4">
             <div class="flex items-center space-x-8">
@@ -37,7 +37,9 @@
                   d="M8.656 3c-.523 0-1.039.188-1.469.531l-.062.031l-.031.032l-3.125 3.219l.031.03a3.134 3.134 0 0 0-.844 3.376c.004.008-.004.023 0 .031c.848 2.426 3.016 7.11 7.25 11.344c4.25 4.25 8.996 6.332 11.344 7.25h.031a3.59 3.59 0 0 0 3.469-.688L28.406 25c.828-.828.828-2.266 0-3.094l-4.062-4.062l-.032-.063c-.828-.828-2.296-.828-3.125 0l-2 2a16.176 16.176 0 0 1-4.093-2.812c-1.637-1.563-2.473-3.36-2.781-4.063l2-2c.84-.84.855-2.238-.032-3.062l.031-.032l-.093-.093l-4-4.125l-.031-.031l-.063-.032A2.356 2.356 0 0 0 8.656 3m0 2a.35.35 0 0 1 .219.094l4 4.093l.094.094c-.008-.008.058.098-.063.219l-2.5 2.5l-.469.438l.22.624s1.148 3.075 3.562 5.376l.219.187C16.261 20.746 19 21.906 19 21.906l.625.282l2.969-2.97c.172-.171.14-.171.312 0L27 23.314c.172.171.172.109 0 .28l-3.063 3.063c-.46.395-.949.477-1.53.282c-2.266-.891-6.669-2.825-10.595-6.75c-3.957-3.958-6.023-8.446-6.78-10.625c-.153-.407-.044-1.008.312-1.313l.062-.063l3.032-3.093A.35.35 0 0 1 8.655 5z"
                 />
               </svg>
-              <h4 class="text-xl font-bold text-black-200"> {{ phoneNumber }}</h4>
+              <h4 class="text-xl font-bold text-black-200">
+                {{ phoneNumber }}
+              </h4>
             </div>
             <div class="flex items-center space-x-8">
               <svg
@@ -51,15 +53,14 @@
                   d="M15 2.5H1a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1m-1.3 1.25L8.42 8.56a.62.62 0 0 1-.84 0L2.3 3.75zm-12.45 8.5V4.48l5.49 5a1.86 1.86 0 0 0 2.52 0l5.49-5v7.77z"
                 />
               </svg>
-              <h4 class="text-xl font-bold text-black-200">{{email}}</h4>
+              <h4 class="text-xl font-bold text-black-200">{{ email }}</h4>
             </div>
             <button
-            class="buttontext bg-red-100 text-sm text-white lg:ml-2 lg:p-4 p-2 rounded "
-            @click="logout"
+              class="buttontext bg-red-100 text-sm text-white lg:ml-2 lg:p-4 p-2 rounded"
+              @click="logout"
             >
               Log out
             </button>
-
           </div>
         </div>
       </div>
@@ -67,8 +68,7 @@
       <div
         class="mt-8 w-full xl:col-span-2 col-span-1 p-4 bg-white border border-gray-200 rounded-lg sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 shadow-lg shadow-gray-300"
       >
-        <form class="space-y-6" @submit.prevent="updateUserProfile"
->
+        <div class="space-y-6">
           <h2
             class="text-3xl uppercase font-medium text-gray-900 dark:text-white"
           >
@@ -84,12 +84,13 @@
                 >
                 <button
                   class="text-blue-200 text-sm hover:text-blue-500"
-                  :class="{ 'text-red-500 hover:text-red-600': editModeFirstName }"
+                  :class="{
+                    'text-red-500 hover:text-red-600': editModeFirstName,
+                  }"
                   @click="toggleEditFirstName"
                   @click.prevent
                 >
-                {{!editModeFirstName ? "Edit" : "Save"}}
-
+                  {{ !editModeFirstName ? "Edit" : "Save" }}
                 </button>
               </div>
               <input
@@ -110,12 +111,13 @@
                 >
                 <button
                   class="text-blue-200 text-sm hover:text-blue-500"
-                  :class="{ 'text-red-500 hover:text-red-600': editModeLastName }"
+                  :class="{
+                    'text-red-500 hover:text-red-600': editModeLastName,
+                  }"
                   @click="toggleEditLastName"
                   @click.prevent
                 >
-                {{!editModeLastName ? "Edit" : "Save"}}
-
+                  {{ !editModeLastName ? "Edit" : "Save" }}
                 </button>
               </div>
               <input
@@ -138,11 +140,12 @@
               <button
                 class="text-blue-200 text-sm hover:text-blue-500"
                 @click="toggleEditPhoneNumber"
-                :class="{ 'text-red-500 hover:text-red-600': editModePhoneNumber }"
+                :class="{
+                  'text-red-500 hover:text-red-600': editModePhoneNumber,
+                }"
                 @click.prevent
               >
-              {{!editModePhoneNumber ? "Edit" : "Save"}}
-
+                {{ !editModePhoneNumber ? "Edit" : "Save" }}
               </button>
             </div>
 
@@ -168,8 +171,7 @@
                 :class="{ 'text-red-500 hover:text-red-600': editModeEmail }"
                 @click.prevent
               >
-              {{!editModeEmail ? "Edit" : "Save"}}
-
+                {{ !editModeEmail ? "Edit" : "Save" }}
               </button>
               <!-- @click="toggleEditEmail" -->
             </div>
@@ -197,7 +199,7 @@
               :class="{ 'text-red-500 hover:text-red-600': editModeAddress }"
               @click.prevent
             >
-               {{!editModeAddress ? "Edit" : "Save"}}
+              {{ !editModeAddress ? "Edit" : "Save" }}
             </button>
           </div>
           <textarea
@@ -209,24 +211,34 @@
             :readonly="!editModeAddress"
           ></textarea>
           <div>
-            <button type="submit" class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update</button>
+            <button
+              @click="updateUserProfile"
+              class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Update
+            </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
+
     <!--Current booking Card -->
     <div
-    v-if = "apiRespone && apiRespone.status"
+      v-if="latestBookingHistory"
       class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300"
     >
-      <div class="grid xl:grid-cols-4 grid-cols-1 xl:gap-80 gap-4">
+      <div class="">
         <div class="flex flex-col items-start">
           <h2
             class="text-3xl uppercase font-medium text-gray-900 dark:text-white whitespace-nowrap"
           >
             Current booking
           </h2>
-          <div class="flex flex-row items-center space-x-3 mt-8">
+        
+        </div>
+        <div class="mt-6 xl:mt-0">
+          <div class="flex flex-col justify-start gap-6">
+            <div class="flex flex-row items-center space-x-3 mt-8">
             <div
               class="flex bg-orange-100 rounded-full w-12 h-12 items-center justify-center"
             >
@@ -243,101 +255,68 @@
                 />
               </svg>
             </div>
-            <div class="flex flex-col justify-start items-start">
+            <div class="flex  items-start flex-col ">
               <h5 class="text-sm text-blue-100 font-light whitespace-nowrap">
-               Reference ID: {{ refID }}
+                Room No: {{ latestBookingHistory?.rooms[0]?.room_number }}
               </h5>
-              <h5 class="text-sm text-black-200 font-bold whitespace-nowrap">
-                       {{roomType.room_data.name}}
+              <h5 class="text-sm text-blue-100 font-light whitespace-nowrap">
+                Booking Id : {{ latestBookingHistory.id }}
               </h5>
+
+          
             </div>
           </div>
-        </div>
-        <div class="xl:col-span-3 col-span-1 mt-6 xl:mt-0">
-          <div class="grid xl:grid-cols-3 grid-cols-1 gap-10 xl:gap-2">
-            <div class="flex flex-col items-start">
+            <div class="flex flex-row items-center  gap-6">
               <div class="flex flex-row items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
                   width="40"
                   height="40"
-                  viewBox="0 0 63 58"
+                  viewBox="0 0 64 64"
                   fill="none"
                 >
-                  <g filter="url(#filter0_d_999_258)">
-                    <rect
-                      x="4"
-                      width="55"
-                      height="50"
-                      fill="url(#pattern6)"
-                      shape-rendering="crispEdges"
-                    />
-                  </g>
-                  <defs>
-                    <filter
-                      id="filter0_d_999_258"
-                      x="0"
-                      y="0"
-                      width="63"
-                      height="58"
-                      filterUnits="userSpaceOnUse"
-                      color-interpolation-filters="sRGB"
-                    >
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                      <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                      />
-                      <feOffset dy="4" />
-                      <feGaussianBlur stdDeviation="2" />
-                      <feComposite in2="hardAlpha" operator="out" />
-                      <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in2="BackgroundImageFix"
-                        result="effect1_dropShadow_999_258"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in="SourceGraphic"
-                        in2="effect1_dropShadow_999_258"
-                        result="shape"
-                      />
-                    </filter>
-                    <pattern
-                      id="pattern6"
-                      patternContentUnits="objectBoundingBox"
-                      width="1"
-                      height="1"
-                    >
-                      <use
-                        xlink:href="#image0_999_258"
-                        transform="matrix(0.0208333 0 0 0.0229167 0 -0.05)"
-                      />
-                    </pattern>
-                    <image
-                      id="image0_999_258"
-                      width="48"
-                      height="48"
-                      xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACyUlEQVR4nO2ZS2xNQRjHf9JKpK1HvEOkEiUW9boogliVJYnYCvFKY2NHCLEjSKkNEUSIjTYsrDwW4pWIepUiHiUV0g1KUFFUvuR/k9n03nOOe+9Mub9kkpN7vv/M/5w7Z+abGSjy75ECDgAPgU8qdr0fmEHADAGOA7+Bnl6K3TsGDCYwRgH3ZPIbUA/UAINUavQPdCnmLjCSQOgP3JCxVmBChtgq4LFirwOlBMAOGWoDhkeIt5hX0mzFM9aXO2VmQQzdQmk+qIt5Y4OMXEigvSTtOjxyTiZWJdCukbYJj7yUCfs44zJJ2hd45ItMlCXQlktrdXh/ADMTlwppP+ORPt+FzsrE6gTatdI24pH1MnExgfaytPYg3rBJ6KOM2OQUlUXSvAcG4pltMmPpwYgI8RbzWpotBECpErMeJWoTs3y4TxR7DSghECw1viNjXVrQzFGuZGUu0AB8V0xzxH+r4N/D0SwLml/AkRD6fSama/HS4iwpW7TImZZRWeQ/pgSYCWxSemxr3nbgq0q7fmtSTCqUEWgMsBl4k+HD7a10ALuBSh/GRwMngZ+OoWcahVbqDY9Tml2m65TuWcxzR9cNnCjULkU/YKOTPti4fgqYl6Cu+cBpZ26w9XGd2sgLA9Rg+s2dB8bnoN6xwBmn3saEC6Ssfb3ZeVNLc90AsEx1Wxu31E1zNsM+cBYfk8kfVcBTtfVI25V/veuWztttNh1K/hkm8+ntGvOQmHpV9FYjSaGoBN6p7b1JK5mlYfKHrgvNbA2x3Um25Uuc9HgX/tgjD7fjztwrnA3bnA9pMSh3NoKXxxFelcj2Pn1TJy9XogqmStCpzSffVDg74FOiCPYp+CDh0CBP5i0rNxVcSzjUypOdBEV+gMWEwxLnWCorOxVsh3bV+KcauC9P26PmPumDuJBKa5zjKMtHDmvV5Nt4B3CoQHlYkSL0Nf4AU7gii/wb2wwAAAAASUVORK5CYII="
-                    />
-                  </defs>
+                  <circle
+                    cx="48"
+                    cy="16"
+                    r="8"
+                    stroke="black"
+                    stroke-width="2"
+                    fill="none"
+                  />
+
+                  <path
+                    d="M0 48C10.667 44 21.333 44 32 48C42.667 52 53.333 52 64 48V52C53.333 56 42.667 56 32 52C21.333 48 10.667 48 0 52V48Z"
+                    fill="black"
+                  />
+                  <path
+                    d="M0 40C10.667 36 21.333 36 32 40C42.667 44 53.333 44 64 40V44C53.333 48 42.667 48 32 44C21.333 40 10.667 40 0 44V40Z"
+                    fill="black"
+                  />
+
+                  <rect x="20" y="28" width="4" height="20" fill="black" />
+
+                  <path
+                    d="M22 28C28 24 34 24 40 28C36 24 34 16 28 20C26 14 20 18 22 28Z"
+                    fill="black"
+                  />
+                  <path
+                    d="M22 28C16 24 10 24 4 28C8 24 10 16 16 20C18 14 24 18 22 28Z"
+                    fill="black"
+                  />
+
+                  <circle cx="21" cy="34" r="2" fill="black" />
+                  <circle cx="25" cy="34" r="2" fill="black" />
                 </svg>
-                <h5 class="text-black-200">Room capacity</h5>
+
+                <h5 class="text-black-200">Room View</h5>
               </div>
               <h5
-                class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
+                class="font-bold text-base text-black-200  xl:ml-0 ml-2"
               >
-                  {{totalPeople}}
+                {{ latestBookingHistory?.rooms[0]?.view }}
               </h5>
             </div>
-            <div class="flex flex-col items-start">
+            <div class="flex flex-row items-center gap-6">
               <div class="flex flex-row items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -371,12 +350,12 @@
                 <h5 class="text-black-200">Room type</h5>
               </div>
               <h5
-                class="font-bold text-base text-black-200 xl:mt-10 mt-4 xl:ml-0 ml-2"
+                class="font-bold text-base text-black-200  xl:ml-0 ml-2"
               >
-                {{roomType.meal_plan}}
-              </h5>
+              {{ latestBookingHistory?.rooms[0]?.category }}
+            </h5>
             </div>
-            <div class="flex flex-col items-start">
+            <div class="flex flex-row items-center gap-3">
               <div class="flex flex-row items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -409,19 +388,18 @@
                 </svg>
                 <h5 class="text-black-200">Booking Date</h5>
               </div>
-              <h5
-                class="font-bold text-[1a6px] text-black-200 xl:mt-10 "
-              >
-               {{formattedCheckIN }} - {{formattedCheckOut}}
+              <h5 class="font-bold text-[1a6px] text-black-200 ">
+                {{ formatDate(latestBookingHistory?.check_in) }} - {{ formatDate(latestBookingHistory?.check_out) }}
+
               </h5>
             </div>
+            
           </div>
         </div>
       </div>
-    </div>  
+    </div>
 
-    <SelectableTable/>
-
+    <SelectableTable />
   </div>
 </template>
 
@@ -429,157 +407,182 @@
 import { onMounted, ref } from "vue";
 import { initFlowbite } from "flowbite";
 
-import axios from 'axios';
-import {toast} from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
-import SelectableTable from './BookingHistoryTable.vue'
+import axios from "axios";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+import SelectableTable from "./BookingHistoryTable.vue";
 
 export default {
   components: {
-    SelectableTable
+    SelectableTable,
   },
   mounted() {
-    const emailToken = this.$route.query.email; 
-    const cookies = document.cookie.split(';');
-    const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+    this.getBookingHistory();
+    const runtimeConfig = useRuntimeConfig();
+    const guest_id = this.$route.query.guest_id;
+    const cookies = document.cookie.split(";");
+    const authTokenCookie = cookies.find((cookie) =>
+      cookie.trim().startsWith("auth_token=")
+    );
     if (authTokenCookie) {
-      const authToken = authTokenCookie.split('=')[1];
+      const authToken = authTokenCookie.split("=")[1];
       console.log("Auth Token:", authToken);
 
       const headers = {
-        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
+        "Content-Type": "application/json",
+        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
       };
 
-      const data = {
-        email: emailToken
-      };
-      console.log("Headers",headers)
-      axios.get('https://admin.sueennature.com/api/user/information', {
-        headers: headers,
-        params: data
-      })
-      .then(response => {
-        console.log(response.data.user);
-        this.firstName = response.data.user.name;
-        this.lastName = response.data.user.lname;
-        this.email = response.data.user.email;
-        if (response.data.user.phone === null) {
-          this.phoneNumber = 'Not Available'; 
-        } else {
-          this.phoneNumber = response.data.user.phone;
-        }
-        if (response.data.user.address === null) {
-          this.address = 'Not Available'; 
-        } else {
-          this.address = response.data.user.address;
-        }
-      }
-      )
-      .catch(error => console.error('Error:', error));
+      console.log("Headers", headers);
+      axios
+        .get(`https://api.sueennature.com/guests/guest/${guest_id}`, {
+          headers: headers,
+        })
+        .then((response) => {
+          console.log("RES", response.data);
+          this.firstName = response.data.first_name;
+          this.lastName = response.data.last_name;
+          this.email = response.data.email;
+          if (response.data.telephone === null) {
+            this.phoneNumber = "Not Available";
+          } else {
+            this.phoneNumber = response.data.telephone;
+          }
+          if (response.data.address === null) {
+            this.address = "Not Available";
+          } else {
+            this.address = response.data.address;
+          }
+        })
+        .catch((error) => console.error("Error:", error));
     } else {
       console.log("Auth Token not found in cookies.");
+         // }
+         toast.error("Please login again through booking page")
+         setTimeout(()=>{
+          this.$router.push({
+              path: "/",
+            });
+         },1500)
     }
 
     if (authTokenCookie) {
-      const authToken = authTokenCookie.split('=')[1];
+      const authToken = authTokenCookie.split("=")[1];
       console.log("Auth Token:", authToken);
 
       const headers = {
-        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
+        "Content-Type": "application/json",
+        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
       };
-      console.log("Headers",headers)
-      axios.get('https://admin.sueennature.com/api/user/current-booking', {
-        headers: headers,
-      })
-      .then(response => {
-        console.log("Booking",response.data.currentBooking);
-        this.apiRespone = response.data.currentBooking
-        this.refID = response.data.currentBooking.reqid
-        this.checkIN = response.data.currentBooking.check_in
-        this.checkOut = response.data.currentBooking.check_out
-        this.roomCapacity = response.data.currentBooking
-        this.roomType = response.data.RoomType[0]
-      }
-      )
-      .catch(error => console.error('Error:', error));
+      console.log("Headers", headers);
+      axios
+        .get("https://admin.sueennature.com/api/user/current-booking", {
+          headers: headers,
+        })
+        .then((response) => {
+          console.log("Booking", response.data.currentBooking);
+          this.apiRespone = response.data.currentBooking;
+          this.refID = response.data.currentBooking.reqid;
+          this.checkIN = response.data.currentBooking.check_in;
+          this.checkOut = response.data.currentBooking.check_out;
+          this.roomCapacity = response.data.currentBooking;
+          this.roomType = response.data.RoomType[0];
+        })
+        .catch((error) => console.error("Error:", error));
     } else {
       console.log("Auth Token not found in cookies.");
     }
     if (authTokenCookie) {
-      const authToken = authTokenCookie.split('=')[1];
+      const authToken = authTokenCookie.split("=")[1];
       console.log("Auth Token:", authToken);
 
       const headers = {
-        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
       };
-      console.log("Headers",headers)
-      axios.get('https://admin.sueennature.com/api/user/history-booking', {
-        headers: headers,
-      })
-      .then(response => {
-        console.log("BookingList",response.data.bookingHistory);
-       
-      }
-      )
-      .catch(error => console.error('Error:', error));
+      console.log("Headers", headers);
+      axios
+        .get("https://admin.sueennature.com/api/user/history-booking", {
+          headers: headers,
+        })
+        .then((response) => {
+          console.log("BookingList", response.data.bookingHistory);
+        })
+        .catch((error) => console.error("Error:", error));
     } else {
       console.log("Auth Token not found in cookies.");
+      toast.error("Please login again through booking page")
+         setTimeout(()=>{
+          this.$router.push({
+              path: "/",
+            });
+         },1500)
     }
-    
   },
   data() {
     return {
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      email: '',
-      emailFromParams: '', 
-      address: '',
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      email: "",
+      emailFromParams: "",
+      address: "",
       editModeFirstName: false,
       editModeLastName: false,
       editModePhoneNumber: false,
       editModeEmail: false,
+      latestBookingHistory: "",
       editModeAddress: false,
-      checkIN:"",
-      checkOut:"",
-      refID:"",
-      roomCapacity:"",
-      roomType:"",
+      checkIN: "",
+      checkOut: "",
+      refID: "",
+      roomCapacity: "",
+      roomType: "",
       apiRespone: [],
       roomType: [],
     };
   },
   computed: {
-    totalPeople(){
-      return this.roomCapacity.adults + this.roomCapacity.child
+    totalPeople() {
+      return this.roomCapacity.adults + this.roomCapacity.child;
     },
     formattedCheckIN() {
       return this.formatDate(this.checkIN);
     },
-    formattedCheckOut(){
-      return this.formatDate(this.checkOut)
-    }
+    formattedCheckOut() {
+      return this.formatDate(this.checkOut);
+    },
   },
   methods: {
     logout() {
-      this.$auth.setAuthToken(null);  
-      localStorage.removeItem("userEmail")  
-      this.$router.push('/home');
+      this.$auth.setAuthToken(null);
+      localStorage.removeItem("userEmail");
+      this.$router.push("/home");
     },
     getChildCapacity(childString) {
-      return parseInt(childString.replace(/[\[\]]/g, ''));
+      return parseInt(childString.replace(/[\[\]]/g, ""));
     },
     formatDate(dateString) {
       const date = new Date(dateString);
-      
+
       const months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
       ];
-      
+
       const month = months[date.getMonth()];
       const day = date.getDate();
       const daySuffix = this.getDaySuffix(day);
@@ -588,54 +591,132 @@ export default {
       return `${month} ${day}${daySuffix} ${year}`;
     },
     getDaySuffix(day) {
-      if (day > 3 && day < 21) return 'th';
+      if (day > 3 && day < 21) return "th";
       switch (day % 10) {
-        case 1: return "st";
-        case 2: return "nd";
-        case 3: return "rd";
-        default: return "th";
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
       }
     },
-    updateUserProfile() {
-      if (this.editModeFirstName || this.editModeLastName || this.editModeEmail || this.editModePhoneNumber || this.editModeAddress){
-        toast.error("Please save your changes")
+    async updateUserProfile() {
+      const runtimeConfig = useRuntimeConfig();
+      const guest_id = this.$route.query.guest_id;
+
+      if (
+        this.editModeFirstName ||
+        this.editModeLastName ||
+        this.editModeEmail ||
+        this.editModePhoneNumber ||
+        this.editModeAddress
+      ) {
+        toast.error("Please save your changes");
         return;
       }
+
       const body = {
         name: this.firstName,
         lname: this.lastName,
         phone: this.phoneNumber,
         email: this.email,
-        address: this.address
+        address: this.address,
       };
-    
-      const cookies = document.cookie.split(';');
-      const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+
+      const cookies = document.cookie.split(";");
+      const authTokenCookie = cookies.find((cookie) =>
+        cookie.trim().startsWith("auth_token=")
+      );
       if (!authTokenCookie) {
         console.error("Auth Token not found in cookies.");
         return;
       }
-      const authToken = authTokenCookie.split('=')[1];
+      const authToken = authTokenCookie.split("=")[1];
+      console.log("TOKEN", authToken);
 
       const headers = {
-        'Authorization': `Bearer ${authToken.replace(/%7C/g, '|')}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
       };
-      axios.post('https://admin.sueennature.com/api/user/profile', body, {
-        headers: headers
-      })
-      .then(response => {
-        console.log('Update successful:', response.data);
+
+      try {
+        const response = await axios.put(
+          `https://api.sueennature.com/guests/${guest_id}`,
+          body,
+          { headers }
+        );
+        console.log("Update successful:", response.data);
         toast.success("User Updated Successfully");
-        window.location.reload();
-      })
-      .catch(error => {
-        console.error('Error updating profile:', error);
+        // window.location.reload();
+      } catch (error) {
+        console.error("Error updating profile:", error);
         this.setupToastError("An error occurred. Please try again later.");
       }
-      );
     },
-      toggleEditFirstName() {
+    async getBookingHistory() {
+      const runtimeConfig = useRuntimeConfig();
+      const guest_id = this.$route.query.guest_id;
+
+      if (
+        this.editModeFirstName ||
+        this.editModeLastName ||
+        this.editModeEmail ||
+        this.editModePhoneNumber ||
+        this.editModeAddress
+      ) {
+        toast.error("Please save your changes");
+        return;
+      }
+
+      const body = {
+        guest_id: guest_id,
+      };
+
+      const cookies = document.cookie.split(";");
+      const authTokenCookie = cookies.find((cookie) =>
+        cookie.trim().startsWith("auth_token=")
+      );
+      if (!authTokenCookie) {
+        console.error("Auth Token not found in cookies.");
+        return;
+      }
+      const authToken = authTokenCookie.split("=")[1];
+      console.log("TOKEN", authToken);
+
+      const headers = {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+      };
+
+      try {
+        const response = await axios.post(
+          `https://api.sueennature.com/bookings/guest/history`,
+          body,
+          { headers }
+        );
+        this.originalBookingHistory = response.data;
+        if (
+          this.originalBookingHistory &&
+          this.originalBookingHistory.length > 0
+        ) {
+          const latestBooking =
+            this.originalBookingHistory[this.originalBookingHistory.length - 1];
+          this.latestBookingHistory = latestBooking;
+          console.log(this.latestBooking);
+        }
+
+        toast.success("Retrived Successfully");
+      } catch (error) {
+        console.error("Error updating profile:", error);
+        this.setupToastError("An error occurred. Please try again later.");
+      }
+    },
+    toggleEditFirstName() {
       this.editModeFirstName = !this.editModeFirstName;
     },
     toggleEditLastName() {
@@ -649,8 +730,8 @@ export default {
     },
     toggleEditAddress() {
       this.editModeAddress = !this.editModeAddress;
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
