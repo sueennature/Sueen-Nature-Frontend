@@ -715,21 +715,33 @@ export default {
             "Content-Type": "application/json", // Optional for GET requests
           },
         });
+        console.log("first",response)
 
         const data = await response.json();
         this.loading = false;
-        console.log("API Response Data:", data);
-
-        this.$router.push({
-          path: "/booking",
-          query: {
-            fromDate: this.check_in,
-            toDate: this.check_out,
-            categories: this.selectedCategories.join(","),
-            view: this.roomView,
-            discount: this.discount_code,
-          },
-        });
+        if (response.status === 200) {
+          toast.success("Availability checked successfully.");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+          this.$router.push({
+            path: "/booking",
+            query: {
+              fromDate: this.check_in,
+              toDate: this.check_out,
+              categories: this.selectedCategories.join(","),
+              view: this.roomView,
+              discount: this.discount_code,
+            },
+          });
+        } else if (response.status === 204) {
+          toast.error("No rooms available.");
+        } else {
+          const errorData = await response.json();
+          this.setupToastError(
+            `An error occurred: ${errorData.message || "Unknown error"}`
+          );
+        }
       } catch (error) {
         this.loading = false;
 

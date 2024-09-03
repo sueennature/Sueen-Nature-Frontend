@@ -1912,17 +1912,33 @@ preparePayloadBooking() {
       });
     },
     adultOptions(room) {
-      const maxAdults = this.rooms.find(
-        (r) => r.room_number === room
-      ).max_adults;
-      return Array.from({ length: maxAdults }, (_, i) => i + 1);
-    },
-    childOptions(room) {
-      const maxChildren = this.rooms.find(
-        (r) => r.room_number === room
-      ).max_childs;
-      return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
-    },
+  const roomDetails = this.rooms.find((r) => r.room_number === room);
+  const selectedCategory = this.roomDetails[room]?.selectedCategory;
+
+  let maxAdults;
+  if (selectedCategory === roomDetails.secondary_category) {
+    maxAdults = roomDetails.secondary_max_adults;
+  } else {
+    maxAdults = roomDetails.max_adults;
+  }
+
+  return Array.from({ length: maxAdults }, (_, i) => i + 1);
+}
+,
+childOptions(room) {
+  const roomDetails = this.rooms.find((r) => r.room_number === room);
+  const selectedCategory = this.roomDetails[room]?.selectedCategory;
+
+  let maxChildren;
+  if (selectedCategory === roomDetails.secondary_category) {
+    maxChildren = roomDetails.secondary_max_childs;
+  } else {
+    maxChildren = roomDetails.max_childs;
+  }
+
+  return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
+}
+,
     scrollToPaymentInfo() {
       this.$nextTick(() => {
         this.$refs.paymentInfoRef.scrollIntoView({ behavior: "smooth" });
