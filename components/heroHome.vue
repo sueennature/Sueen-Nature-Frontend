@@ -67,14 +67,18 @@
         class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
       >
         <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
+          <img
+            src="/img/logoMobile.png"
+            alt="logoImg"
+            class="w-auto h-8 md:h-10"
+          />
         </a>
         <div
           class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
         >
           <button
             data-collapse-toggle="navbar-cta-2"
-            @click="toggleMenu" 
+            @click="toggleMenu"
             type="button"
             class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-cta-2"
@@ -99,10 +103,10 @@
           </button>
         </div>
         <div
-        :class="{'hidden': !isMenuOpen, 'flex': isMenuOpen}"
-        class="lg:hidden items-center justify-between w-full lg:w-auto lg:order-1"
-        id="navbar-cta-2"
-      >
+          :class="{ hidden: !isMenuOpen, flex: isMenuOpen }"
+          class="lg:hidden items-center justify-between w-full lg:w-auto lg:order-1"
+          id="navbar-cta-2"
+        >
           <ul
             class="flex flex-col font-medium p-4 w-full lg:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
           >
@@ -127,7 +131,7 @@
                 >Services</a
               >
             </li>
-           <li>
+            <li>
               <a
                 href="/news"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
@@ -141,7 +145,13 @@
                 >Rooms</a
               >
             </li>
-          
+            <li>
+              <a
+                href="/gallery"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                >Gallery</a
+              >
+            </li>
             <li>
               <a
                 href="/contact"
@@ -152,12 +162,12 @@
 
             <li>
               <a
-              v-if ="userEmail && authToken"
-          @click.prevent="redirectToDashboard"
-          class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-        >
-          Profile
-        </a>
+                v-if="userEmail && authToken"
+                @click.prevent="redirectToDashboard"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+              >
+                Profile
+              </a>
             </li>
           </ul>
         </div>
@@ -241,13 +251,13 @@
                   >Rooms</a
                 >
               </li>
-               <li>
+              <li>
                 <a
                   href="/news"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >News</a
                 >
-              </li> 
+              </li>
               <li>
                 <a
                   href="/contact"
@@ -257,8 +267,8 @@
               </li>
               <li>
                 <a
-                 v-if="userEmail && authToken"
-          @click.prevent="redirectToDashboard"
+                  v-if="userEmail && authToken"
+                  @click.prevent="redirectToDashboard"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >Profile</a
                 >
@@ -328,7 +338,12 @@
         >
           Rooms
         </a>
-
+        <a
+          href="/gallery"
+          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+        >
+          Gallery
+        </a>
         <a
           href="/contact"
           class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
@@ -348,9 +363,8 @@
     <div
       class="absolute z-40 inset-x-0 bottom-56 lg:flex lg:flex-col xl:flex-row flex-col lg:justify-center md:mx-0 mx-4"
     >
-   
       <div
-        class="xl:flex grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 items-center justify-center bg-black-200 bg-opacity-60  md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
+        class="xl:flex grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 items-center justify-center bg-black-200 bg-opacity-60 md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
       >
         <div class="relative md:max-w-sm md:mx-auto">
           <input
@@ -362,15 +376,13 @@
         </div>
         <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
         <div class="relative md:max-w-sm md:mx-auto">
-  <input
-    type="datetime-local"
-    class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block "
-    placeholder="Check Out Date and Time"
-    v-model="check_out"
-  />
-
-</div>
-
+          <input
+            type="datetime-local"
+            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block"
+            placeholder="Check Out Date and Time"
+            v-model="check_out"
+          />
+        </div>
 
         <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
         <div class="lg:max-w-sm lg:mx-auto">
@@ -380,8 +392,8 @@
               ref="dropdownContainer"
               class="text-white text-sm p-4 xl:w-60 lg:w-60 md-48:w-6 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer flex justify-between items-center"
             >
-            <div class="overflow-hidden text-ellipsis whitespace-nowrap w-24">
-              <span v-if="selectedCategories.length === 0">Choose Rooms</span>
+              <div class="overflow-hidden text-ellipsis whitespace-nowrap w-24">
+                <span v-if="selectedCategories.length === 0">Choose Rooms</span>
                 <span v-else>{{ selectedCategories.join(", ") }}</span>
               </div>
               <div class="ml-1">
@@ -466,8 +478,8 @@
         </div>
       </div>
       <button
-      class="bg-red-100 hover:bg-red-500 text-sm  text-center text-white p-2 md:p-4 rounded xl:rounded-r-lg xl:rounded-l-none hidden  justify-center lg:flex"
-      @click="checkAvailability"
+        class="bg-red-100 hover:bg-red-500 text-sm text-center text-white p-2 md:p-4 rounded xl:rounded-r-lg xl:rounded-l-none hidden justify-center lg:flex"
+        @click="checkAvailability"
       >
         <span v-if="loading" class="flex">
           <!-- Loader Icon or Text -->
@@ -562,11 +574,10 @@ export default {
       loading: false,
       selectedCategories: [],
       dropdownOpen: false, // Holds the selected categories
-      userEmail:'',
+      userEmail: "",
       discount_code: "",
       isMenuOpen: false,
-      authToken:""
-
+      authToken: "",
     };
   },
 
@@ -647,9 +658,9 @@ export default {
       //   });
       // }
       this.$router.push({
-              path: "/dashboard",
-              query: { guest_id: 30 },
-            });
+        path: "/dashboard",
+        query: { guest_id: 30 },
+      });
     },
 
     async checkAvailability() {
@@ -664,10 +675,18 @@ export default {
       }
       const checkInDate = new Date(this.check_in);
       const checkOutDate = new Date(this.check_out);
+      const checkInDateOnly = checkInDate.toISOString().split("T")[0];
+      const checkOutDateOnly = checkOutDate.toISOString().split("T")[0];
 
+      if (checkInDateOnly === checkOutDateOnly) {
+        return toast.error(
+          "Check-out date must be different from check-in date."
+        );
+      }
       if (checkOutDate <= checkInDate) {
         return toast.error("Check-out date must be after check-in date");
       }
+
       const formatDateToCustom = (dateString) => {
         if (!dateString) return "";
         const date = new Date(dateString);
@@ -715,7 +734,7 @@ export default {
             "Content-Type": "application/json", // Optional for GET requests
           },
         });
-        console.log("first",response)
+        console.log("first", response);
 
         const data = await response.json();
         this.loading = false;
@@ -777,15 +796,15 @@ export default {
 
   mounted() {
     const cookies = document.cookie.split(";");
-  const authTokenCookie = cookies.find((cookie) =>
-    cookie.trim().startsWith("auth_token=")
-  );
-  this.authToken = authTokenCookie?.split("=")[1];
-  console.log("HOME", this.authToken)
+    const authTokenCookie = cookies.find((cookie) =>
+      cookie.trim().startsWith("auth_token=")
+    );
+    this.authToken = authTokenCookie?.split("=")[1];
+    console.log("HOME", this.authToken);
 
-     if (process.client) {
-      this.userEmail = localStorage.getItem('userEmail') || '';
-      console.log("first",this.userEmail)
+    if (process.client) {
+      this.userEmail = localStorage.getItem("userEmail") || "";
+      console.log("first", this.userEmail);
     }
     this.fetchRoomTypes();
     document.addEventListener("click", this.handleClickOutside);
@@ -847,7 +866,7 @@ select,
   font-family: "Barlow", sans-serif;
 }
 ::-webkit-calendar-picker-indicator {
-    filter: invert(1);
+  filter: invert(1);
 }
 
 /* Style for the custom icon */

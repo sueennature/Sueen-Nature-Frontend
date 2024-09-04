@@ -316,7 +316,14 @@ export default {
 
       const checkInDate = new Date(this.check_in);
       const checkOutDate = new Date(this.check_out);
+      const checkInDateOnly = checkInDate.toISOString().split("T")[0];
+      const checkOutDateOnly = checkOutDate.toISOString().split("T")[0];
 
+      if (checkInDateOnly === checkOutDateOnly) {
+        return toast.error(
+          "Check-out date must be different from check-in date."
+        );
+      }
       if (checkOutDate <= checkInDate) {
         return this.setupToastError(
           "Check-out date must be after check-in date"

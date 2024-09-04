@@ -560,6 +560,7 @@ export default {
     logout() {
       this.$auth.setAuthToken(null);
       localStorage.removeItem("userEmail");
+      localStorage.removeItem("guest_id");
       this.$router.push("/home");
     },
     getChildCapacity(childString) {

@@ -174,21 +174,21 @@
                     </h4>
                   </td>
                   <td class="py-2 px-4 min-w-[200px]">
-                            <div class="mb-2">
-                                <select
-                                    v-model="roomDetails[room].selectedCategory"
-                                    @change="updateCategory(room)"
-                                    class="border border-gray-300 p-2 rounded w-full"
-                                >
-                                    <option :value="roomDetails[room].primaryCategory">
-                                        {{ roomDetails[room].primaryCategory }}
-                                    </option>
-                                    <option :value="roomDetails[room].secondaryCategory">
-                                        {{ roomDetails[room].secondaryCategory }}
-                                    </option>
-                                </select>
-                            </div>
-                        </td>
+                    <div class="mb-2">
+                      <select
+                        v-model="roomDetails[room].selectedCategory"
+                        @change="updateCategory(room)"
+                        class="border border-gray-300 p-2 rounded w-full"
+                      >
+                        <option :value="roomDetails[room].primaryCategory">
+                          {{ roomDetails[room].primaryCategory }}
+                        </option>
+                        <option :value="roomDetails[room].secondaryCategory">
+                          {{ roomDetails[room].secondaryCategory }}
+                        </option>
+                      </select>
+                    </div>
+                  </td>
                   <td class="py-2 px-4 min-w-[100px]">
                     <div class="mb-2">
                       <select
@@ -208,10 +208,7 @@
                   </td>
                   <td class="py-2 px-4 min-w-[100px]">
                     <div
-                      v-if="
-                        rooms.find((r) => r.room_number === room).category !==
-                        'Single'
-                      "
+                    
                       class="mb-2"
                     >
                       <select
@@ -1344,14 +1341,14 @@
           <!-- Modal body -->
           <div class="">
             <h2 class="text-3xl mb-4 text-center">Login Into Your Account!</h2>
-            <p class="mb-10 text-center text-black-200 text-opacity-60">
+            <!-- <p class="mb-10 text-center text-black-200 text-opacity-60">
               Use your social profile to Login
-            </p>
+            </p> -->
             <!-- SOCIAL LOGIN -->
-            <SocialLogin @login-success="handleGoogleLoginData" />
+            <!-- <SocialLogin @login-success="handleGoogleLoginData" /> -->
 
             <!-- Centered "or" text -->
-            <div class="flex items-center justify-center">
+            <!-- <div class="flex items-center justify-center">
               <div
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
@@ -1361,7 +1358,7 @@
               <div
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
-            </div>
+            </div> -->
 
             <form @submit.prevent="login" class="space-y-6 mt-4">
               <div>
@@ -1614,44 +1611,50 @@ export default {
       }
     },
     updateCategory(roomNumber) {
-        const selectedCategory = this.roomDetails[roomNumber].selectedCategory;
-        const room = this.rooms.find((r) => r.room_number === roomNumber);
-        
-        if (selectedCategory === room.category) {
-            // If primary category is selected, reset to primary room limits
-            this.roomDetails[roomNumber].adults = Math.min(1, room.max_adults);
-            this.roomDetails[roomNumber].children = 0;
-            this.roomDetails[roomNumber].infants = 0;
-        } else if (selectedCategory === room.secondary_category) {
-            // If secondary category is selected, reset to secondary room limits
-            this.roomDetails[roomNumber].adults = Math.min(1, room.secondary_max_adults);
-            this.roomDetails[roomNumber].children = 0;
-            this.roomDetails[roomNumber].infants = 0;
-        }
-        
-        // Adjust other properties as necessary based on the selected category
+      const selectedCategory = this.roomDetails[roomNumber].selectedCategory;
+      const room = this.rooms.find((r) => r.room_number === roomNumber);
+
+      if (selectedCategory === room.category) {
+        // If primary category is selected, reset to primary room limits
+        this.roomDetails[roomNumber].adults = Math.min(1, room.max_adults);
+        this.roomDetails[roomNumber].children = 0;
+        this.roomDetails[roomNumber].infants = 0;
+      } else if (selectedCategory === room.secondary_category) {
+        // If secondary category is selected, reset to secondary room limits
+        this.roomDetails[roomNumber].adults = Math.min(
+          1,
+          room.secondary_max_adults
+        );
+        this.roomDetails[roomNumber].children = 0;
+        this.roomDetails[roomNumber].infants = 0;
+      }
+
+      // Adjust other properties as necessary based on the selected category
     },
     updateRoomDetails() {
-    this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
+      this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
         const room = this.rooms.find((r) => r.room_number === roomNumber);
         if (room) {
-            const selectedCategory = this.roomDetails[roomNumber]?.selectedCategory || room.category;
-            acc[roomNumber] = {
-                selectedCategory: selectedCategory,
-                primaryCategory: room.category,
-                secondaryCategory: room.secondary_category,
-                adults: this.roomDetails[roomNumber]?.adults || Math.min(1, room.max_adults),
-                children: this.roomDetails[roomNumber]?.children || 0,
-                infants: this.roomDetails[roomNumber]?.infants || 0,
-                mealPlan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
-                childrenAges: this.roomDetails[roomNumber]?.childrenAges || [],
-                infantAges: this.roomDetails[roomNumber]?.infantAges || [],
-                mealTime: this.roomDetails[roomNumber]?.mealTime || " "
-            };
+          const selectedCategory =
+            this.roomDetails[roomNumber]?.selectedCategory || room.category;
+          acc[roomNumber] = {
+            selectedCategory: selectedCategory,
+            primaryCategory: room.category,
+            secondaryCategory: room.secondary_category,
+            adults:
+              this.roomDetails[roomNumber]?.adults ||
+              Math.min(1, room.max_adults),
+            children: this.roomDetails[roomNumber]?.children || 0,
+            infants: this.roomDetails[roomNumber]?.infants || 0,
+            mealPlan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
+            childrenAges: this.roomDetails[roomNumber]?.childrenAges || [],
+            infantAges: this.roomDetails[roomNumber]?.infantAges || [],
+            mealTime: this.roomDetails[roomNumber]?.mealTime || " ",
+          };
         }
         return acc;
-    }, {});
-},
+      }, {});
+    },
 
     formatDatePayload(dateString) {
       const date = new Date(dateString);
@@ -1665,157 +1668,160 @@ export default {
       }));
     },
     preparePayload() {
-  const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-  const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
-  const discountCode = this.$route.query.discount;
-  const taxes = [];  // Temporarily setting taxes to an empty array
-  const discounts = [];  // Temporarily setting discounts to an empty array
-  const selectedActivities = this.activities
-    .filter((activity) => activity.checked)
-    .map((activity) => ({ activity_id: activity.id }));
-
-  return {
-    check_in: checkInDate,
-    check_out: checkOutDate,
-    rooms: this.selectedRoomNumbers.map((roomNumber) => {
-      const room = this.rooms.find((r) => r.room_number === roomNumber);
-      const roomDetail = this.roomDetails[roomNumber] || {};
-      const childrenCount = roomDetail.children || 0;
-      const childrenAges = childrenCount > 0
-        ? roomDetail.childrenAges || Array(childrenCount).fill(0)
-        : []; // Reset children ages if count is 0
-      const infantAges = roomDetail.infants > 0
-        ? roomDetail.infantAges || Array(roomDetail.infants).fill(0)
-        : []; // Reset infant ages if count is 0
+      const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
+      const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
+      const discountCode = this.$route.query.discount;
+      const taxes = []; // Temporarily setting taxes to an empty array
+      const discounts = []; // Temporarily setting discounts to an empty array
+      const selectedActivities = this.activities
+        .filter((activity) => activity.checked)
+        .map((activity) => ({ activity_id: activity.id }));
 
       return {
-        room_id: room.id,
-        adults: roomDetail.adults || 0,
-        children: childrenAges,  // This will be an empty array if count is 0
-        infants: infantAges,  // This will be an empty array if count is 0
-        meal_plan: roomDetail.mealPlan || "room_only",
-        category: roomDetail.selectedCategory || room.category,  // Pass the selected category
+        check_in: checkInDate,
+        check_out: checkOutDate,
+        rooms: this.selectedRoomNumbers.map((roomNumber) => {
+          const room = this.rooms.find((r) => r.room_number === roomNumber);
+          const roomDetail = this.roomDetails[roomNumber] || {};
+          const childrenCount = roomDetail.children || 0;
+          const childrenAges =
+            childrenCount > 0
+              ? roomDetail.childrenAges || Array(childrenCount).fill(0)
+              : []; // Reset children ages if count is 0
+          const infantAges =
+            roomDetail.infants > 0
+              ? roomDetail.infantAges || Array(roomDetail.infants).fill(0)
+              : []; // Reset infant ages if count is 0
+
+          return {
+            room_id: room.id,
+            adults: roomDetail.adults || 0,
+            children: childrenAges, // This will be an empty array if count is 0
+            infants: infantAges, // This will be an empty array if count is 0
+            meal_plan: roomDetail.mealPlan || "room_only",
+            category: roomDetail.selectedCategory || room.category, // Pass the selected category
+          };
+        }),
+        taxes: taxes,
+        discounts: discounts,
+        activities: selectedActivities,
+        discount_code: discountCode,
       };
-    }),
-    taxes: taxes,
-    discounts: discounts,
-    activities: selectedActivities,
-    discount_code: discountCode,
-  };
-},
-
-preparePayloadBooking() {
-  const formatDateToISO = (dateString) => {
-    if (!dateString) return "";
-    const date = new Date(dateString);
-
-    // Get the local timezone offset in minutes
-    const offset = date.getTimezoneOffset();
-
-    // Adjust date by subtracting the offset
-    const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
-
-    // Convert to ISO format
-    return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
-  };
-
-  const checkInDate = formatDateToISO(this.$route.query.fromDate);
-  const checkOutDate = formatDateToISO(this.$route.query.toDate);
-  const discountCode = this.$route.query.discount;
-
-  // Temporarily setting taxes and discounts to empty arrays
-  const taxes = [];
-  const discounts = [];
-  const selectedActivities = this.activities
-    .filter((activity) => activity.checked)
-    .map((activity) => ({
-      activity_id: activity.id,
-      activity_name: activity.name,
-    }));
-
-  const agentInfo = this.showGuestInfo
-    ? {
-        first_name: this.form.first_name || "",
-        last_name: this.form.last_name || "",
-        email: this.form.email || "",
-        telephone: this.form.telephone || "",
-        address: this.form.address || "",
-        nationality: this.form.nationality || "",
-      }
-    : {
-        first_name: "",
-        last_name: "",
-        email: "",
-        telephone: "",
-        address: "",
-        nationality: "",
-      };
-
-  return {
-    check_in: checkInDate,
-    check_out: checkOutDate,
-    booking_type: "website",
-    rooms: this.selectedRoomNumbers.map((roomNumber) => {
-      const room = this.rooms.find((r) => r.room_number === roomNumber);
-      const roomDetail = this.roomDetails[roomNumber] || {};
-
-      return {
-        room_id: room.id,
-        room_number: room.room_number,
-        category: roomDetail.selectedCategory || room.category || "unknown", // Include selected category
-        adults: roomDetail.adults || 0,
-        children: roomDetail.childrenAges?.length > 0
-          ? roomDetail.childrenAges
-          : [],
-        infants: roomDetail.infantAges?.length > 0
-          ? roomDetail.infantAges
-          : [],
-        meal_plan: roomDetail.mealPlan || "room_only",
-        starting_meals_with: roomDetail.mealTime || "",
-        view: this.$route.query.view || "default",
-      };
-    }),
-    taxes,
-    discounts,
-    activities: selectedActivities,
-    discount_code: discountCode || "",
-    total_taxes: this.total_rate?.total_tax_amount || 0,
-    total_rooms_charge: this.total_rate?.total_rooms_amount || 0,
-    total_meal_plan_amount: this.total_rate?.total_meal_plan_amount || 0,
-    total_activities_charge: this.total_rate?.total_activities_amount || 0,
-    total_discount_amount: this.total_rate?.total_discount_amount || 0,
-    total_amount: this.total_rate?.total_amount || 0,
-    total_additional_services_amount: 0,
-    payment_method: "sueen_web",
-    is_partial_payment: false,
-    paid_amount: 0,
-    agent_info: agentInfo,
-    guest_info: {
-      first_name: this.form.guest_info.first_name,
-      last_name: this.form.guest_info.last_name,
-      email: this.form.guest_info.email,
-      telephone: this.form.guest_info.telephone,
-      address: this.form.guest_info.guest_address,
-      nationality: this.form.guest_info.nationality,
-      identification_type: this.form?.guest_info?.identification_type || "",
-      identification_no: this.form?.guest_info?.identification_no || "",
-      gender: this.form?.guest_info?.gender || "",
-      profile_image: this.form?.guest_info?.profile_image || [],
-      identification_issue_date: this.form?.guest_info?.identification_issue_date
-        ? this.formatDatePayload(this.form.guest_info.identification_issue_date)
-        : "",
-      dob: this.form?.guest_info?.dob
-        ? this.formatDatePayload(this.form.guest_info.dob)
-        : "",
     },
-    booking_note: this.booking_note || "",
-    payment_note: this.payment_note || "",
-  };
-},
 
+    preparePayloadBooking() {
+      const formatDateToISO = (dateString) => {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+
+        // Get the local timezone offset in minutes
+        const offset = date.getTimezoneOffset();
+
+        // Adjust date by subtracting the offset
+        const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+
+        // Convert to ISO format
+        return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
+      };
+
+      const checkInDate = formatDateToISO(this.$route.query.fromDate);
+      const checkOutDate = formatDateToISO(this.$route.query.toDate);
+      const discountCode = this.$route.query.discount;
+
+      // Temporarily setting taxes and discounts to empty arrays
+      const taxes = [];
+      const discounts = [];
+      const selectedActivities = this.activities
+        .filter((activity) => activity.checked)
+        .map((activity) => ({
+          activity_id: activity.id,
+          activity_name: activity.name,
+        }));
+
+      const agentInfo = this.showGuestInfo
+        ? {
+            first_name: this.form.first_name || "",
+            last_name: this.form.last_name || "",
+            email: this.form.email || "",
+            telephone: this.form.telephone || "",
+            address: this.form.address || "",
+            nationality: this.form.nationality || "",
+          }
+        : {
+            first_name: "",
+            last_name: "",
+            email: "",
+            telephone: "",
+            address: "",
+            nationality: "",
+          };
+
+      return {
+        check_in: checkInDate,
+        check_out: checkOutDate,
+        booking_type: "website",
+        rooms: this.selectedRoomNumbers.map((roomNumber) => {
+          const room = this.rooms.find((r) => r.room_number === roomNumber);
+          const roomDetail = this.roomDetails[roomNumber] || {};
+
+          return {
+            room_id: room.id,
+            room_number: room.room_number,
+            category: roomDetail.selectedCategory || room.category || "unknown", // Include selected category
+            adults: roomDetail.adults || 0,
+            children:
+              roomDetail.childrenAges?.length > 0
+                ? roomDetail.childrenAges
+                : [],
+            infants:
+              roomDetail.infantAges?.length > 0 ? roomDetail.infantAges : [],
+            meal_plan: roomDetail.mealPlan || "room_only",
+            starting_meals_with: roomDetail.mealTime || "",
+            view: this.$route.query.view || "default",
+          };
+        }),
+        taxes,
+        discounts,
+        activities: selectedActivities,
+        discount_code: discountCode || "",
+        total_taxes: this.total_rate?.total_tax_amount || 0,
+        total_rooms_charge: this.total_rate?.total_rooms_amount || 0,
+        total_meal_plan_amount: this.total_rate?.total_meal_plan_amount || 0,
+        total_activities_charge: this.total_rate?.total_activities_amount || 0,
+        total_discount_amount: this.total_rate?.total_discount_amount || 0,
+        total_amount: this.total_rate?.total_amount || 0,
+        total_additional_services_amount: 0,
+        payment_method: "sueen_web",
+        is_partial_payment: false,
+        paid_amount: 0,
+        agent_info: agentInfo,
+        guest_info: {
+          first_name: this.form.guest_info.first_name,
+          last_name: this.form.guest_info.last_name,
+          email: this.form.guest_info.email,
+          telephone: this.form.guest_info.telephone,
+          address: this.form.guest_info.guest_address,
+          nationality: this.form.guest_info.nationality,
+          identification_type: this.form?.guest_info?.identification_type || "",
+          identification_no: this.form?.guest_info?.identification_no || "",
+          gender: this.form?.guest_info?.gender || "",
+          profile_image: this.form?.guest_info?.profile_image || [],
+          identification_issue_date: this.form?.guest_info
+            ?.identification_issue_date
+            ? this.formatDatePayload(
+                this.form.guest_info.identification_issue_date
+              )
+            : null,
+          dob: this.form?.guest_info?.dob
+            ? this.formatDatePayload(this.form.guest_info.dob)
+            : null,
+        },
+        booking_note: this.booking_note || "",
+        payment_note: this.payment_note || "",
+      };
+    },
 
     async submitPayload() {
-      
       try {
         const payload = this.preparePayload();
         const runtimeConfig = useRuntimeConfig();
@@ -1912,33 +1918,31 @@ preparePayloadBooking() {
       });
     },
     adultOptions(room) {
-  const roomDetails = this.rooms.find((r) => r.room_number === room);
-  const selectedCategory = this.roomDetails[room]?.selectedCategory;
+      const roomDetails = this.rooms.find((r) => r.room_number === room);
+      const selectedCategory = this.roomDetails[room]?.selectedCategory;
 
-  let maxAdults;
-  if (selectedCategory === roomDetails.secondary_category) {
-    maxAdults = roomDetails.secondary_max_adults;
-  } else {
-    maxAdults = roomDetails.max_adults;
-  }
+      let maxAdults;
+      if (selectedCategory === roomDetails.secondary_category) {
+        maxAdults = roomDetails.secondary_max_adults;
+      } else {
+        maxAdults = roomDetails.max_adults;
+      }
 
-  return Array.from({ length: maxAdults }, (_, i) => i + 1);
-}
-,
-childOptions(room) {
-  const roomDetails = this.rooms.find((r) => r.room_number === room);
-  const selectedCategory = this.roomDetails[room]?.selectedCategory;
+      return Array.from({ length: maxAdults }, (_, i) => i + 1);
+    },
+    childOptions(room) {
+      const roomDetails = this.rooms.find((r) => r.room_number === room);
+      const selectedCategory = this.roomDetails[room]?.selectedCategory;
 
-  let maxChildren;
-  if (selectedCategory === roomDetails.secondary_category) {
-    maxChildren = roomDetails.secondary_max_childs;
-  } else {
-    maxChildren = roomDetails.max_childs;
-  }
+      let maxChildren;
+      if (selectedCategory === roomDetails.secondary_category) {
+        maxChildren = roomDetails.secondary_max_childs;
+      } else {
+        maxChildren = roomDetails.max_childs;
+      }
 
-  return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
-}
-,
+      return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
+    },
     scrollToPaymentInfo() {
       this.$nextTick(() => {
         this.$refs.paymentInfoRef.scrollIntoView({ behavior: "smooth" });
@@ -2070,9 +2074,10 @@ childOptions(room) {
 
         console.log("Register response", registerResponse);
         localStorage.setItem("userEmail", this.registerUser.email);
-
+          this.toggleModal_1()
         // Set auth token and other necessary operations
         this.nuxtApp.$auth.setAuthToken(registerResponse.access_token);
+        // localStorage.setItem("guest_id", data.guest_id);
         this.setAuthTokenInCookie(registerResponse.access_token);
         localStorage.setItem("userEmail", this.registerUser.email);
         // this.$router.push({
@@ -2080,13 +2085,13 @@ childOptions(room) {
         //   query: { email: this.registerUser.email },
 
         // });
-        this.$router.push({
-              path: "/dashboard",
-              query: { guest_id: 30 },
-            });
-        if ((data.detail = "Email already registered")) {
-          return toast.error(`Invalid Credentials`);
-        }
+        // this.$router.push({
+        //   path: "/dashboard",
+        //   query: { guest_id: data.guest_id },
+        // });
+        // if ((data.detail = "Email already registered")) {
+        //   return toast.error(`Invalid Credentials`);
+        // }
       } catch (error) {
         console.error("An error occurred:", error);
 
@@ -2147,11 +2152,13 @@ childOptions(room) {
           const data = await response.json();
           console.log(data);
           this.setAuthTokenInCookie(data.access_token);
+          localStorage.setItem("guest_id", data.guest_id);
+          this.setAuthTokenInCookie(data.guest_id);
           this.nuxtApp.$auth.setAuthToken(data.access_token);
           if (data.access_token) {
             this.$router.push({
               path: "/dashboard",
-              query: { guest_id: 30 },
+              query: { guest_id: data.guest_id },
             });
 
             return toast.success(`Successfully logged In`);
@@ -2199,6 +2206,7 @@ childOptions(room) {
     logout() {
       this.$auth.setAuthToken(null);
       localStorage.removeItem("userEmail");
+      localStorage.removeItem("guest_id");
       this.$router.push("/home");
     },
     formatPrice(value) {
