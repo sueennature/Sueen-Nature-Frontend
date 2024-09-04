@@ -96,6 +96,13 @@
           </li>
           <li>
               <a
+                href="/gallery"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                >Gallery</a
+              >
+            </li>
+          <li>
+              <a
                 href="/news"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >News</a
@@ -190,11 +197,19 @@
                 >Services</a
               >
             </li>
+            
             <li>
               <a
                 href="/rooms"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Rooms</a
+              >
+            </li>
+            <li>
+              <a
+                href="/gallery"
+                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
+                >Gallery</a
               >
             </li>
             <li>

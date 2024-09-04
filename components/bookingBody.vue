@@ -149,6 +149,7 @@
               <thead>
                 <tr>
                   <th class="py-2 px-4 border-b min-w-[150px]">Room Number</th>
+                  <th class="py-2 px-4 border-b min-w-[200px]">Category</th>
                   <th class="py-2 px-4 border-b min-w-[100px]">Adults</th>
                   <th class="py-2 px-4 border-b min-w-[100px]">Children</th>
                   <th class="py-2 px-4 border-b min-w-[100px]">Infants</th>
@@ -172,6 +173,22 @@
                       Room {{ room }}
                     </h4>
                   </td>
+                  <td class="py-2 px-4 min-w-[200px]">
+                    <div class="mb-2">
+                      <select
+                        v-model="roomDetails[room].selectedCategory"
+                        @change="updateCategory(room)"
+                        class="border border-gray-300 p-2 rounded w-full"
+                      >
+                        <option :value="roomDetails[room].primaryCategory">
+                          {{ roomDetails[room].primaryCategory }}
+                        </option>
+                        <option :value="roomDetails[room].secondaryCategory">
+                          {{ roomDetails[room].secondaryCategory }}
+                        </option>
+                      </select>
+                    </div>
+                  </td>
                   <td class="py-2 px-4 min-w-[100px]">
                     <div class="mb-2">
                       <select
@@ -191,10 +208,7 @@
                   </td>
                   <td class="py-2 px-4 min-w-[100px]">
                     <div
-                      v-if="
-                        rooms.find((r) => r.room_number === room).category !==
-                        'Single'
-                      "
+                    
                       class="mb-2"
                     >
                       <select
@@ -1327,14 +1341,14 @@
           <!-- Modal body -->
           <div class="">
             <h2 class="text-3xl mb-4 text-center">Login Into Your Account!</h2>
-            <p class="mb-10 text-center text-black-200 text-opacity-60">
+            <!-- <p class="mb-10 text-center text-black-200 text-opacity-60">
               Use your social profile to Login
-            </p>
+            </p> -->
             <!-- SOCIAL LOGIN -->
-            <SocialLogin @login-success="handleGoogleLoginData" />
+            <!-- <SocialLogin @login-success="handleGoogleLoginData" /> -->
 
             <!-- Centered "or" text -->
-            <div class="flex items-center justify-center">
+            <!-- <div class="flex items-center justify-center">
               <div
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
@@ -1344,7 +1358,7 @@
               <div
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
-            </div>
+            </div> -->
 
             <form @submit.prevent="login" class="space-y-6 mt-4">
               <div>
@@ -1596,33 +1610,52 @@ export default {
         this.updateRoomDetails(); // Update only the details of selected rooms
       }
     },
+    updateCategory(roomNumber) {
+      const selectedCategory = this.roomDetails[roomNumber].selectedCategory;
+      const room = this.rooms.find((r) => r.room_number === roomNumber);
 
+      if (selectedCategory === room.category) {
+        // If primary category is selected, reset to primary room limits
+        this.roomDetails[roomNumber].adults = Math.min(1, room.max_adults);
+        this.roomDetails[roomNumber].children = 0;
+        this.roomDetails[roomNumber].infants = 0;
+      } else if (selectedCategory === room.secondary_category) {
+        // If secondary category is selected, reset to secondary room limits
+        this.roomDetails[roomNumber].adults = Math.min(
+          1,
+          room.secondary_max_adults
+        );
+        this.roomDetails[roomNumber].children = 0;
+        this.roomDetails[roomNumber].infants = 0;
+      }
+
+      // Adjust other properties as necessary based on the selected category
+    },
     updateRoomDetails() {
       this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
         const room = this.rooms.find((r) => r.room_number === roomNumber);
         if (room) {
-          const childrenCount = this.roomDetails[roomNumber]?.children ?? 0;
+          const selectedCategory =
+            this.roomDetails[roomNumber]?.selectedCategory || room.category;
           acc[roomNumber] = {
+            selectedCategory: selectedCategory,
+            primaryCategory: room.category,
+            secondaryCategory: room.secondary_category,
             adults:
-              this.roomDetails[roomNumber]?.adults ??
+              this.roomDetails[roomNumber]?.adults ||
               Math.min(1, room.max_adults),
-            children: childrenCount,
-            mealPlan: this.roomDetails[roomNumber]?.mealPlan ?? "room_only",
-            infants: this.roomDetails[roomNumber]?.infants ?? 0,
-            childrenAges:
-              childrenCount === 0
-                ? []
-                : this.roomDetails[roomNumber]?.childrenAges ??
-                  Array(childrenCount).fill(0),
-            infantAges:
-              this.roomDetails[roomNumber]?.infantAges ??
-              Array(this.roomDetails[roomNumber]?.infants || 0).fill(0),
-            mealTime: this.roomDetails[roomNumber]?.mealTime ?? "breakfast",
+            children: this.roomDetails[roomNumber]?.children || 0,
+            infants: this.roomDetails[roomNumber]?.infants || 0,
+            mealPlan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
+            childrenAges: this.roomDetails[roomNumber]?.childrenAges || [],
+            infantAges: this.roomDetails[roomNumber]?.infantAges || [],
+            mealTime: this.roomDetails[roomNumber]?.mealTime || " ",
           };
         }
         return acc;
       }, {});
     },
+
     formatDatePayload(dateString) {
       const date = new Date(dateString);
       return date.toISOString(); // Converts to ISO 8601 format: "YYYY-MM-DDTHH:mm:ss.sssZ"
@@ -1638,13 +1671,8 @@ export default {
       const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
       const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
       const discountCode = this.$route.query.discount;
-      // const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
-      // const discounts = this.discounts.map((discount) => ({
-      //   discount_id: discount.id,
-      // }));
-      // Temporarily setting taxes and discounts to empty arrays
-      const taxes = [];
-      const discounts = [];
+      const taxes = []; // Temporarily setting taxes to an empty array
+      const discounts = []; // Temporarily setting discounts to an empty array
       const selectedActivities = this.activities
         .filter((activity) => activity.checked)
         .map((activity) => ({ activity_id: activity.id }));
@@ -1671,7 +1699,7 @@ export default {
             children: childrenAges, // This will be an empty array if count is 0
             infants: infantAges, // This will be an empty array if count is 0
             meal_plan: roomDetail.mealPlan || "room_only",
-            category: this.$route.query.roomType,
+            category: roomDetail.selectedCategory || room.category, // Pass the selected category
           };
         }),
         taxes: taxes,
@@ -1680,6 +1708,7 @@ export default {
         discount_code: discountCode,
       };
     },
+
     preparePayloadBooking() {
       const formatDateToISO = (dateString) => {
         if (!dateString) return "";
@@ -1698,10 +1727,7 @@ export default {
       const checkInDate = formatDateToISO(this.$route.query.fromDate);
       const checkOutDate = formatDateToISO(this.$route.query.toDate);
       const discountCode = this.$route.query.discount;
-      // const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
-      // const discounts = this.discounts.map((discount) => ({
-      //   discount_id: discount.id,
-      // }));
+
       // Temporarily setting taxes and discounts to empty arrays
       const taxes = [];
       const discounts = [];
@@ -1711,6 +1737,7 @@ export default {
           activity_id: activity.id,
           activity_name: activity.name,
         }));
+
       const agentInfo = this.showGuestInfo
         ? {
             first_name: this.form.first_name || "",
@@ -1735,21 +1762,21 @@ export default {
         booking_type: "website",
         rooms: this.selectedRoomNumbers.map((roomNumber) => {
           const room = this.rooms.find((r) => r.room_number === roomNumber);
+          const roomDetail = this.roomDetails[roomNumber] || {};
+
           return {
             room_id: room.id,
             room_number: room.room_number,
-            category: room.category || "unknown",
-            adults: this.roomDetails[roomNumber]?.adults || 0,
+            category: roomDetail.selectedCategory || room.category || "unknown", // Include selected category
+            adults: roomDetail.adults || 0,
             children:
-              this.roomDetails[roomNumber]?.childrenAges.length > 0
-                ? this.roomDetails[roomNumber].childrenAges
+              roomDetail.childrenAges?.length > 0
+                ? roomDetail.childrenAges
                 : [],
             infants:
-              this.roomDetails[roomNumber]?.infantAges.length > 0
-                ? this.roomDetails[roomNumber].infantAges
-                : [],
-            meal_plan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
-            starting_meals_with: this.roomDetails[roomNumber]?.mealTime || "",
+              roomDetail.infantAges?.length > 0 ? roomDetail.infantAges : [],
+            meal_plan: roomDetail.mealPlan || "room_only",
+            starting_meals_with: roomDetail.mealTime || "",
             view: this.$route.query.view || "default",
           };
         }),
@@ -1784,10 +1811,10 @@ export default {
             ? this.formatDatePayload(
                 this.form.guest_info.identification_issue_date
               )
-            : "",
+            : null,
           dob: this.form?.guest_info?.dob
             ? this.formatDatePayload(this.form.guest_info.dob)
-            : "",
+            : null,
         },
         booking_note: this.booking_note || "",
         payment_note: this.payment_note || "",
@@ -1891,15 +1918,29 @@ export default {
       });
     },
     adultOptions(room) {
-      const maxAdults = this.rooms.find(
-        (r) => r.room_number === room
-      ).max_adults;
+      const roomDetails = this.rooms.find((r) => r.room_number === room);
+      const selectedCategory = this.roomDetails[room]?.selectedCategory;
+
+      let maxAdults;
+      if (selectedCategory === roomDetails.secondary_category) {
+        maxAdults = roomDetails.secondary_max_adults;
+      } else {
+        maxAdults = roomDetails.max_adults;
+      }
+
       return Array.from({ length: maxAdults }, (_, i) => i + 1);
     },
     childOptions(room) {
-      const maxChildren = this.rooms.find(
-        (r) => r.room_number === room
-      ).max_childs;
+      const roomDetails = this.rooms.find((r) => r.room_number === room);
+      const selectedCategory = this.roomDetails[room]?.selectedCategory;
+
+      let maxChildren;
+      if (selectedCategory === roomDetails.secondary_category) {
+        maxChildren = roomDetails.secondary_max_childs;
+      } else {
+        maxChildren = roomDetails.max_childs;
+      }
+
       return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
     },
     scrollToPaymentInfo() {
@@ -2033,9 +2074,10 @@ export default {
 
         console.log("Register response", registerResponse);
         localStorage.setItem("userEmail", this.registerUser.email);
-
+          this.toggleModal_1()
         // Set auth token and other necessary operations
         this.nuxtApp.$auth.setAuthToken(registerResponse.access_token);
+        // localStorage.setItem("guest_id", data.guest_id);
         this.setAuthTokenInCookie(registerResponse.access_token);
         localStorage.setItem("userEmail", this.registerUser.email);
         // this.$router.push({
@@ -2043,13 +2085,13 @@ export default {
         //   query: { email: this.registerUser.email },
 
         // });
-        this.$router.push({
-              path: "/dashboard",
-              query: { guest_id: 30 },
-            });
-        if ((data.detail = "Email already registered")) {
-          return toast.error(`Invalid Credentials`);
-        }
+        // this.$router.push({
+        //   path: "/dashboard",
+        //   query: { guest_id: data.guest_id },
+        // });
+        // if ((data.detail = "Email already registered")) {
+        //   return toast.error(`Invalid Credentials`);
+        // }
       } catch (error) {
         console.error("An error occurred:", error);
 
@@ -2110,11 +2152,13 @@ export default {
           const data = await response.json();
           console.log(data);
           this.setAuthTokenInCookie(data.access_token);
+          localStorage.setItem("guest_id", data.guest_id);
+          this.setAuthTokenInCookie(data.guest_id);
           this.nuxtApp.$auth.setAuthToken(data.access_token);
           if (data.access_token) {
             this.$router.push({
               path: "/dashboard",
-              query: { guest_id: 30 },
+              query: { guest_id: data.guest_id },
             });
 
             return toast.success(`Successfully logged In`);
@@ -2162,6 +2206,7 @@ export default {
     logout() {
       this.$auth.setAuthToken(null);
       localStorage.removeItem("userEmail");
+      localStorage.removeItem("guest_id");
       this.$router.push("/home");
     },
     formatPrice(value) {

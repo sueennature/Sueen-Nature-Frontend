@@ -121,7 +121,7 @@
         </form>
       </div>
       <button
-        class="bg-red-100 hover:bg-red-500 text-sm  text-center text-white p-2 md:p-4 rounded xl:rounded-r-lg xl:rounded-l-none hidden  justify-center lg:flex"
+        class="bg-red-100 hover:bg-red-500 text-sm text-center text-white p-2 md:p-4 rounded xl:rounded-r-lg xl:rounded-l-none hidden justify-center lg:flex"
         @click="checkAvailability"
       >
         <span v-if="loading" class="flex">
@@ -316,7 +316,14 @@ export default {
 
       const checkInDate = new Date(this.check_in);
       const checkOutDate = new Date(this.check_out);
+      const checkInDateOnly = checkInDate.toISOString().split("T")[0];
+      const checkOutDateOnly = checkOutDate.toISOString().split("T")[0];
 
+      if (checkInDateOnly === checkOutDateOnly) {
+        return toast.error(
+          "Check-out date must be different from check-in date."
+        );
+      }
       if (checkOutDate <= checkInDate) {
         return this.setupToastError(
           "Check-out date must be after check-in date"
@@ -364,20 +371,29 @@ export default {
 
         const data = await response.json();
         this.loading = false;
-        this.setupToastSuccess("Availability checked successfully.");
-        setTimeout(() => {
-          window.location.reload();
-        }, 1500);
-        this.$router.push({
-          path: "/booking",
-          query: {
-            fromDate: this.check_in,
-            toDate: this.check_out,
-            categories: this.selectedCategories.join(","),
-            view: this.roomView,
-            discount: this.discount_code,
-          },
-        });
+        if (response.status === 200) {
+          this.setupToastSuccess("Availability checked successfully.");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+          this.$router.push({
+            path: "/booking",
+            query: {
+              fromDate: this.check_in,
+              toDate: this.check_out,
+              categories: this.selectedCategories.join(","),
+              view: this.roomView,
+              discount: this.discount_code,
+            },
+          });
+        } else if (response.status === 204) {
+          this.setupToastError("No rooms available.");
+        } else {
+          const errorData = await response.json();
+          this.setupToastError(
+            `An error occurred: ${errorData.message || "Unknown error"}`
+          );
+        }
         // Handle response data as needed
       } catch (error) {
         this.loading = false;

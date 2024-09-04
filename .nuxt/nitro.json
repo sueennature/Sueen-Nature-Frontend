@@ -1,5 +1,6 @@
 {
-  "date": "2024-09-03T19:09:08.538Z",
+  "date": "2024-09-04T04:08:40.988Z",
+
   "preset": "nitro-dev",
   "framework": {
     "name": "nuxt",
@@ -9,9 +10,10 @@
     "nitro": "2.8.1"
   },
   "dev": {
-    "pid": 64320,
+    "pid": 5184,
     "workerAddress": {
-      "socketPath": "\\\\.\\pipe\\nitro\\worker-64320-1.sock"
+      "socketPath": "\\\\.\\pipe\\nitro\\worker-5184-1.sock"
+
     }
   }
 }
