@@ -20,17 +20,59 @@
             <h2 class="md:text-4xl text-2xl uppercase text-black-200 mx-4 whitespace-pre">{{ roomType.category }}</h2>
             <span class="border-t border-black w-1/4 mx-4"></span>
           </div>
-          <img :src="roomType.rooms[0].images[0].length > 0 ?  `https://api.sueennature.com/${roomType.rooms[0].images[0]}` : 'default-image-url.jpg'" alt="serviceImg" class="flex-grow w-[800px] text-center object-cover  rounded-md"/>
+          <img :src="roomType.rooms[0].images[0].length > 0 ?  `https://api.sueennature.com/${roomType.rooms[0].images[0]}` : 'default-image-url.jpg'" alt="serviceImg" class="flex-grow w-[800px] h-[400px] text-center object-cover  rounded-md"/>
           <div class="flex flex-row gap-4 justify-center mt-2">
-            <h5 class="md:text-sm text-xs text-black-200 pl-4">
-              Size: <span class="italic">{{roomType.rooms[0].size}}</span> 
+            <h5 class="md:text-sm text-xs text-black-200 pl-4 whitespace-nowrap">
+              Size: <span class="italic">{{ 
+            roomType.category === roomType.rooms[0].category 
+            ? roomType.rooms[0].size 
+            : roomType.category === roomType.rooms[0].secondary_category 
+            ? roomType.rooms[0].secondary_size 
+            : '' 
+          }}&nbsp;m<sup>2</sup></span> 
               <!-- Size: <span class="italic">{{roomType.size}}m<sup>2</sup></span> -->
 
             </h5>
-         <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">Bed:{{roomType.rooms[0].beds}}</h5>
+         <h5 class="md:text-sm text-xs text-black-200 border-l pl-4 whitespace-nowrap">Bed:&nbsp;{{ 
+          roomType.category === roomType.rooms[0].category 
+          ? roomType.rooms[0].beds 
+          : roomType.category === roomType.rooms[0].secondary_category 
+          ? roomType.rooms[0].secondary_beds 
+          : '' 
+        }}</h5>
             <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
-              Occupancy: Max adult{{ roomType.rooms[0].max_adults > 1 ? 's' : '' }} {{roomType.rooms[0].max_adults}}
-              {{ roomType.rooms[0].max_childs ? ', Max Children ' + roomType.rooms[0].max_childs + (roomType.rooms[0].max_childs > 1 ? ' ' : ' ') : '' }}
+              Occupancy: Max adult{{ 
+        (roomType.category === roomType.rooms[0].category 
+        ? roomType.rooms[0].max_adults 
+        : roomType.category === roomType.rooms[0].secondary_category 
+        ? roomType.rooms[0].secondary_max_adults 
+        : 0) > 1 ? 's' : '' 
+      }} {{ 
+        roomType.category === roomType.rooms[0].category 
+        ? roomType.rooms[0].max_adults 
+        : roomType.category === roomType.rooms[0].secondary_category 
+        ? roomType.rooms[0].secondary_max_adults 
+        : 0 
+      }}
+              {{ 
+        (roomType.category === roomType.rooms[0].category 
+        ? roomType.rooms[0].max_childs 
+        : roomType.category === roomType.rooms[0].secondary_category 
+        ? roomType.rooms[0].secondary_max_childs 
+        : 0) 
+        ? ', Max Children ' + 
+          (roomType.category === roomType.rooms[0].category 
+          ? roomType.rooms[0].max_childs 
+          : roomType.category === roomType.rooms[0].secondary_category 
+          ? roomType.rooms[0].secondary_max_childs 
+          : 0) + 
+          ((roomType.category === roomType.rooms[0].category 
+          ? roomType.rooms[0].max_childs 
+          : roomType.category === roomType.rooms[0].secondary_category 
+          ? roomType.rooms[0].secondary_max_childs 
+          : 0) > 1 ? ' ' : ' ')
+        : '' 
+      }}
             </h5>
             <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
               View:
