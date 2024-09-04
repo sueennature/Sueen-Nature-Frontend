@@ -1,8 +1,8 @@
 <template>
     <div class="main overflow-hidden">
       <navbar
-        :pageTitle="'CONTACT US'"
-        :pageTitleThree="'GET IN TOUCH'"
+        :pageTitle="'GALLERY'"
+        :pageTitleThree="'EXPLORE OUR SPACES'"
         :imageNav="'/img/hero-contact.webp'"
       />
       <galleryBody />
