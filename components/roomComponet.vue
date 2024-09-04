@@ -148,7 +148,7 @@
   <div class="flex flex-col items-center">
     <div class="flex flex-row gap-4 justify-center mt-4">
       <h5 class="md:text-sm text-xs text-black-200 pl-4">
-        Size: <span class="italic">{{ roomData.size }}m<sup>2</sup></span>
+        Size: <span class="italic">{{ roomData.size }}&nbsp;m<sup>2</sup></span>
       </h5>
       <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
         Bed: {{ roomData.beds || '01 Queen' }}
@@ -177,7 +177,7 @@
         <!-- Display images -->
         <div v-if="category.rooms.length > 0" class="room-card">
         <div v-if="category.rooms[0].images.length > 0" class="image-gallery">
-          <img :src="`https://api.sueennature.com/${category.rooms[0].images[0]}`" alt="Room Image" class="room-image" />
+          <img :src="`https://api.sueennature.com/${category.rooms[0].images[0]}`" alt="Room Image" class="room-image w-[300px] h-[300px]" />
         </div>
       </div>
       <!-- </div> -->
@@ -248,7 +248,29 @@ export default defineComponent({
         unSelectedRoomData.value = nonMatchedRoomTypes.value;
 
         const matchedRoom = matchedRoomTypes.value[0]?.rooms[0];
-        roomData.value = matchedRoom;
+        // roomData.value = matchedRoom;
+        if (matchedRoom) {
+          // Check if the secondary category matches the room ID
+      if (matchedRoom.secondary_category === roomId) {
+        roomData.value = {
+          ...matchedRoom,
+          max_adults: matchedRoom.secondary_max_adults,
+          max_childs: matchedRoom.secondary_max_childs,
+          max_people: matchedRoom.secondary_max_people,
+          size: matchedRoom.secondary_size ,
+          beds: matchedRoom.secondary_beds,
+        };
+      } else if (matchedRoom.category === roomId) {
+        roomData.value = {
+          ...matchedRoom,
+          max_adults: matchedRoom.max_adults,
+          max_childs: matchedRoom.max_childs,
+          max_people: matchedRoom.max_people,
+          size: matchedRoom.size,
+          beds: matchedRoom.beds,
+        };
+      }
+    }
 
         if (matchedRoomTypes.value.length > 0) {
           slides.value = (matchedRoom.images)?.map((image) => ({
@@ -261,6 +283,7 @@ export default defineComponent({
             initializeCarousels();
           });
         }
+      
       } catch (error) {
         console.error("There was a problem with the fetch operation:", error);
       }
