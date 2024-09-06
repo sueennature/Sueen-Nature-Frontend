@@ -3,9 +3,9 @@
     <div
       class="wrapper grid lg:grid-cols-3 grid-cols-1 gap-4 h-auto mt-10 md:mt-20"
     >
-      <div v-for="(carousel, index) in carousels" :key="index">
+      <div v-for="(carousel, index) in filteredCarousels" :key="index">
         <h2 class="font-semibold text-xl text-center mb-2">
-          {{ carousel.tags ? carousel.tags : carousel.title }}
+          {{carousel.title }}
         </h2>
 
         <!-- Main Slider for each carousel -->
@@ -150,6 +150,7 @@ export default defineComponent({
             src: url,
             type: carousel.media_type,
           })),
+          tags: carousel.tags || "", // Ensure tags is a string
         }));
 
         nextTick(() => {
@@ -206,7 +207,7 @@ export default defineComponent({
     };
 
     const openLightbox = (carouselIndex, mediaIndex) => {
-      lightboxImages.value = carousels.value[carouselIndex].media_urls.map(item => ({
+      lightboxImages.value = filteredCarousels.value[carouselIndex].media_urls.map(item => ({
         src: "https://api.sueennature.com/" + item.src,
         type: item.type
       }));
@@ -218,12 +219,19 @@ export default defineComponent({
       lightboxVisible.value = false;
     };
 
+    // Computed property to filter carousels with "Gallery" in tags
+    const filteredCarousels = computed(() => {
+      return carousels.value.filter(carousel =>
+        carousel.tags.includes("Gallery")
+      );
+    });
+
     onMounted(() => {
       fetchRoomData();
     });
 
     return {
-      carousels,
+      filteredCarousels,
       lightboxVisible,
       lightboxImages,
       lightboxIndex,
@@ -252,17 +260,28 @@ ul li {
   display: block;
   width: 100%;
   height: auto;
-  max-width: 600px;
-  max-height: 400px;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
-  object-fit: cover;
+ 
+  object-fit: contain; /* Ensures that content is visible without cropping */
   
 }
 .thumbnail-image {
   width: 100%;
   height: auto;
+  object-fit: contain; 
  
 }
+
+.slider-media,
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures that content is visible without cropping */
+  object-position: center;
+}
+
 .lightbox-overlay {
   position: fixed;
   top: 0;
@@ -311,9 +330,9 @@ ul li {
 
 .lightbox-image,
 .lightbox-video {
-  width: 640px; /* Fixed width */
-  height: 360px; /* Fixed height */
-  object-fit: cover; /* Ensure content covers the area */
+  width: 100%; /* Fixed width */
+  height: 100%; /* Fixed height */
+  object-fit: contain;
 }
 
 </style>
