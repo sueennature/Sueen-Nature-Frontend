@@ -2023,31 +2023,34 @@ preparePayloadBooking() {
       });
     },
     adultOptions(room) {
-      const roomDetails = this.rooms.find((r) => r.room_number === room);
-      const selectedCategory = this.roomDetails[room]?.selectedCategory;
+  const roomDetails = this.rooms.find((r) => r.room_number === room);
+  const randomizedCategory = this.randomizedRoomCategories[room] || roomDetails.category; 
 
-      let maxAdults;
-      if (selectedCategory === roomDetails.secondary_category) {
-        maxAdults = roomDetails.secondary_max_adults;
-      } else {
-        maxAdults = roomDetails.max_adults;
-      }
+  let maxAdults;
+  if (randomizedCategory === roomDetails.secondary_category) {
+    maxAdults = roomDetails.secondary_max_adults;
+  } else {
+    maxAdults = roomDetails.max_adults;
+  }
 
-      return Array.from({ length: maxAdults }, (_, i) => i + 1);
-    },
-    childOptions(room) {
-      const roomDetails = this.rooms.find((r) => r.room_number === room);
-      const selectedCategory = this.roomDetails[room]?.selectedCategory;
+  return Array.from({ length: maxAdults }, (_, i) => i + 1);
+}
 
-      let maxChildren;
-      if (selectedCategory === roomDetails.secondary_category) {
-        maxChildren = roomDetails.secondary_max_childs;
-      } else {
-        maxChildren = roomDetails.max_childs;
-      }
+,
+childOptions(room) {
+  const roomDetails = this.rooms.find((r) => r.room_number === room);
+  const randomizedCategory = this.randomizedRoomCategories[room] || roomDetails.category; 
 
-      return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
-    },
+  let maxChildren;
+  if (randomizedCategory === roomDetails.secondary_category) {
+    maxChildren = roomDetails.secondary_max_childs;
+  } else {
+    maxChildren = roomDetails.max_childs;
+  }
+
+  return Array.from({ length: maxChildren + 1 }, (_, i) => i);
+}
+,
     scrollToPaymentInfo() {
       this.$nextTick(() => {
         this.$refs.paymentInfoRef.scrollIntoView({ behavior: "smooth" });
