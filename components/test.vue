@@ -11,7 +11,8 @@
       <div
         class="flex flex-col lg-flex-row xl:flex-row items-start justify-between w-full gap-8"
       >
-        <div
+        <!-- <div
+          v-if="discounts.length > 0"
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
         >
           <h6 class="text-black-200 xl:text-lg text-base font-bold">
@@ -37,11 +38,11 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- Activities -->
 
         <div
-          class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
+          class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow mt-14"
         >
           <h6 class="text-black-200 xl:text-lg text-base font-bold">
             Activities
@@ -56,8 +57,10 @@
               v-model="activity.checked"
               type="checkbox"
               :value="activity.id"
+              @change="handleActivityChange"
               class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
+
             <label
               :for="'checkbox-' + activity.id"
               class="ms-2 text-[17px] font-medium text-gray-900 dark:text-gray-300 flex items-center justify-between w-full"
@@ -78,12 +81,36 @@
         <div class="font-bold text-xl mt-10">
           Select a rooms to further process
         </div>
-        <div class="mt-4">
+        <div class="mt-4 w-full">
           <h4 class="text-lg font-bold">Available Rooms</h4>
+
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div
+  v-for="(room, index) in rooms"
+  :key="room.room_number"
+  :value="room.room_number"
+  class="w-full flex items-start"
+  :disabled="selectedRoomNumbers.includes(room.room_number)"
+>
+  <span class="border flex flex-col border-gray-700 rounded-lg p-2 w-40">
+    <span><strong>Room:</strong> {{ room.room_number }}</span>
+    {{ " " }}
+    <span>
+      <strong>Category:</strong>
+      {{ randomizedRoomCategories[room.room_number] || 'Unknown' }}
+    </span>
+    {{ " " }}
+    <span><strong>View:</strong> {{ room.view }}</span>
+  </span>
+</div>
+
+          </div>
+
           <select
             v-model="selectedRoom"
             @change="toggleRoom"
-            class="w-72 border border-gray-600 rounded-lg"
+            class="w-72 border border-gray-600 rounded-lg mt-8"
           >
             <option value="null" disabled>Select a room</option>
             <option
@@ -92,7 +119,9 @@
               :value="room.room_number"
               :disabled="selectedRoomNumbers.includes(room.room_number)"
             >
-              Room {{ room.room_number }}
+              <span class="flex justify-between w-full gap-4">
+                <span>Room: {{ room.room_number }}</span> {{ " " }}
+              </span>
             </option>
           </select>
 
@@ -111,159 +140,226 @@
           </div>
         </div>
       </div>
-      <h3 class="text-lg font-bold mb-2 mt-4">Room Details:</h3>
+      <div v-if="selectedRoomNumbers.length" class="w-full p-0 mt-4">
+        <div class="p-4">
+          <h3 class="text-lg font-bold mb-2">Room Details:</h3>
 
-      <div
-        v-if="selectedRoomNumbers.length"
-        class="flex flex-col items-start gap-8"
-      >
-        <div
-          v-for="room in selectedRoomNumbers"
-          :key="room"
-          class="mb-4 flex gap-4 items-start justify-start"
-        >
-          <h4
-            class="text-md font-semibold border border-gray-300 p-2 mb-1 rounded text-center h-fit"
-          >
-            Room {{ room }}
-          </h4>
-
-          <!-- Select fields for each room -->
-          <div class="flex flex-col lg:flex-row xl:flex-row items-start gap-4">
-            <div class="mb-2">
-              <label for="adults-{{ room }}" class="block mb-1">Adults:</label>
-              <select
-                id="adults-{{ room }}"
-                v-model="roomDetails[room].adults"
-                class="border border-gray-300 p-2 rounded"
-              >
-                <option
-                  v-for="num in adultOptions(room)"
-                  :key="num"
-                  :value="num"
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-lg border border-gray-100">
+              <thead>
+                <tr>
+                  <th class="py-2 px-4 border-b min-w-[150px]">Room Number</th>
+                  <th class="py-2 px-4 border-b min-w-[200px]">Category</th>
+                  <th class="py-2 px-4 border-b min-w-[100px]">Adults</th>
+                  <th class="py-2 px-4 border-b min-w-[100px]">Children</th>
+                  <th class="py-2 px-4 border-b min-w-[100px]">Infants</th>
+                  <th class="py-2 px-4 border-b min-w-[200px]">Meal Plan</th>
+                  <th class="py-2 px-4 border-b min-w-[120px]">
+                    Starting Meal
+                  </th>
+                  <th class="py-2 px-4 border-b min-w-[100px]">Action</th>
+                </tr>
+              </thead>
+              <tbody v-if="selectedRoomNumbers.length">
+                <tr
+                  v-for="room in selectedRoomNumbers"
+                  :key="room"
+                  class="border-t"
                 >
-                  {{ num }}
-                </option>
-              </select>
-            </div>
-
-            <div class="mb-2">
-              <label for="children-{{ room }}" class="block mb-1"
-                >Children:</label
-              >
-              <select
-                id="children-{{ room }}"
-                v-model="roomDetails[room].children"
-                class="border border-gray-300 p-2 rounded"
-              >
-                <option
-                  v-for="num in childOptions(room)"
-                  :key="num"
-                  :value="num"
-                >
-                  {{ num }}
-                </option>
-              </select>
-              <div v-if="roomDetails[room].children > 0" class="mb-4">
-                <div
-                  v-for="index in roomDetails[room].children"
-                  :key="'child-age-' + index"
-                  class="mb-2 mt-4"
-                >
-                  <label
-                    :for="'child-age-' + room + '-' + index"
-                    class="block mb-1 font-bold"
-                    >Child {{ index }} Age</label
-                  >
-                  <select
-                    :id="'child-age-' + room + '-' + index"
-                    v-model="roomDetails[room].childrenAges[index - 1]"
-                    class="border border-gray-300 p-2 rounded"
-                  >
-                    <option
-                      v-for="age in childAgeOptions"
-                      :key="age"
-                      :value="age"
+                  <td class="py-2 px-4 min-w-[150px]">
+                    <h4
+                      class="text-md font-semibold border border-gray-300 p-2 rounded text-center"
                     >
-                      {{ age }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-2">
-              <label for="infants-{{ room }}" class="block mb-1"
-                >Infants:</label
-              >
-              <select
-                id="infants-{{ room }}"
-                v-model="roomDetails[room].infants"
-                class="border border-gray-300 p-2 rounded"
-              >
-                <option v-for="num in [0, 1, 2]" :key="num" :value="num">
-                  {{ num }}
-                </option>
-              </select>
-              <div v-if="roomDetails[room].infants > 0" class="mb-4">
-                <div
-                  v-for="index in roomDetails[room].infants"
-                  :key="'infant-age-' + index"
-                  class="mb-2 mt-4"
-                >
-                  <label
-                    :for="'infant-age-' + room + '-' + index"
-                    class="block mb-1 font-bold"
-                    >Infant {{ index }} Age</label
-                  >
-                  <select
-                    :id="'infant-age-' + room + '-' + index"
-                    v-model="roomDetails[room].infantAges[index - 1]"
-                    class="border border-gray-300 p-2 rounded"
-                  >
-                    <option
-                      v-for="age in infantAgeOptions"
-                      :key="age"
-                      :value="age"
+                      Room {{ room }}
+                    </h4>
+                  </td>
+                  <td class="py-2 px-4 min-w-[200px]">
+                    <div class="mb-2  text-center">
+                      <span class="border flex flex-col border-gray-700 rounded-lg p-2">
+                {{ randomizedRoomCategories[room] || 'Unknown' }}
+              </span>
+              
+                    </div>
+                  </td>
+                  <td class="py-2 px-4 min-w-[100px]">
+                    <div class="mb-2">
+                      <select
+                        id="adults-{{ room }}"
+                        v-model="roomDetails[room].adults"
+                        class="border border-gray-300 p-2 rounded w-full"
+                      >
+                        <option
+                          v-for="num in adultOptions(room)"
+                          :key="num"
+                          :value="num"
+                        >
+                          {{ num }}
+                        </option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-2 px-4 min-w-[100px]">
+                    <div
+                    
+                      class="mb-2"
                     >
-                      {{ age }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="mb-2">
-  <label for="meal-plan-{{ room }}" class="block mb-1">Meal Plan:</label>
-  <select
-    id="meal-plan-{{ room }}"
-    v-model="roomDetails[room].mealPlan"
-    class="border border-gray-300 p-2 rounded"
-  >
-    <option
-      v-for="plan in mealPlans"
-      :key="plan.value"
-      :value="plan.value"
-    >
-      {{ plan.label }}
-    </option>
-  </select>
-</div>
+                      <select
+                        id="children-{{ room }}"
+                        v-model="roomDetails[room].children"
+                        class="border border-gray-300 p-2 rounded w-full"
+                      >
+                        <option
+                          v-for="num in childOptions(room)"
+                          :key="num"
+                          :value="num"
+                        >
+                          {{ num }}
+                        </option>
+                      </select>
 
-            <!-- Meal time selection -->
-            <div class="mb-2">
-              <label for="meal-time-{{ room }}" class="block mb-1"
-                >Meal Time:</label
-              >
-              <select
-                id="meal-time-{{ room }}"
-                v-model="roomDetails[room].mealTime"
-                class="border border-gray-300 p-2 rounded"
-              >
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="dinner">Dinner</option>
-              </select>
-            </div>
+                      <div
+                        v-if="roomDetails[room].children > 0"
+                        class="mt-4"
+                        style="min-height: 100px"
+                      >
+                        <div
+                          v-for="index in roomDetails[room].children"
+                          :key="'child-age-' + index"
+                          class="mb-2"
+                        >
+                          <label
+                            :for="'child-age-' + room + '-' + index"
+                            class="block mb-1 font-bold"
+                          >
+                            Child {{ index }} Age
+                          </label>
+                          <select
+                            :id="'child-age-' + room + '-' + index"
+                            v-model="roomDetails[room].childrenAges[index - 1]"
+                            class="border border-red-500 p-2 rounded w-full"
+                          >
+                            <option
+                              v-for="age in childAgeOptions"
+                              :key="age"
+                              :value="age"
+                            >
+                              {{ age }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-2 px-4 min-w-[100px]">
+                    <div
+                      v-if="
+                        rooms.find((r) => r.room_number === room).category !==
+                        'Single'
+                      "
+                      class="mb-2"
+                    >
+                      <select
+                        id="infants-{{ room }}"
+                        v-model="roomDetails[room].infants"
+                        class="border border-gray-300 p-2 rounded w-full"
+                      >
+                        <option
+                          v-for="num in [0, 1, 2]"
+                          :key="num"
+                          :value="num"
+                        >
+                          {{ num }}
+                        </option>
+                      </select>
+
+                      <div v-if="roomDetails[room].infants > 0" class="mt-4">
+                        <div
+                          v-for="index in roomDetails[room].infants"
+                          :key="'infant-age-' + index"
+                          class="mb-2"
+                        >
+                          <label
+                            :for="'infant-age-' + room + '-' + index"
+                            class="block mb-1 font-bold"
+                          >
+                            Infant {{ index }} Age
+                          </label>
+                          <select
+                            :id="'infant-age-' + room + '-' + index"
+                            v-model="roomDetails[room].infantAges[index - 1]"
+                            class="border border-red-500 p-2 rounded w-full"
+                          >
+                            <option
+                              v-for="age in infantAgeOptions"
+                              :key="age"
+                              :value="age"
+                            >
+                              {{ age }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-2 px-4 min-w-[200px]">
+                    <div
+                      v-if="
+                        rooms.find((r) => r.room_number === room).category !==
+                        'Single'
+                      "
+                      class="mb-2"
+                    >
+                      <select
+                        id="meal-plan-{{ room }}"
+                        v-model="roomDetails[room].mealPlan"
+                        class="border border-gray-300 p-2 rounded w-full"
+                      >
+                        <option
+                          v-for="plan in mealPlans"
+                          :key="plan.value"
+                          :value="plan.value"
+                        >
+                          {{ plan.label }}
+                        </option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-2 px-4 min-w-[150px]">
+                    <div
+                      v-if="
+                        roomDetails[room].mealPlan !== 'room_only' &&
+                        roomDetails[room].mealPlan !== 'bread_breakfast' &&
+                        rooms.find((r) => r.room_number === room).category !==
+                          'Single'
+                      "
+                      class="mb-2"
+                    >
+                      <select
+                        id="meal-time-{{ room }}"
+                        v-model="roomDetails[room].mealTime"
+                        class="border border-gray-300 p-2 rounded w-full"
+                      >
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td class="py-2 px-4 min-w-[150px] text-center">
+                    <button
+                      @click="removeRoom(room)"
+                      class="mb-2 text-red-400 font-semibold border border-red-400 w-4 p-3 h-4 rounded-lg hover:text-red-600"
+                    >
+                      <span
+                        class="flex items-center justify-center text-center w-full h-full"
+                      >
+                        X</span
+                      >
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -386,16 +482,17 @@
       </div>
     </div>
     <div ref="paymentInfoRef"></div>
-    <div class="flex flex-col lg:flex-row xl:flex-row gap-8 mt-12">
-      <div class="flex flex-col w-72">
-        <label class="text-xl font-bold mb-5">Booking Notes</label>
-        <textarea
-          v-model="booking_note"
-          placeholder="Comments..."
-          class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-        ></textarea>
-      </div>
-      <div class="flex flex-col w-72">
+    <div class="flex flex-col w-72 mt-16">
+      <label class="text-xl font-bold mb-5">Booking Notes</label>
+      <textarea
+        v-model="booking_note"
+        placeholder="Comments..."
+        class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+      ></textarea>
+    </div>
+    <!--  <div class="flex flex-col lg:flex-row xl:flex-row gap-8 mt-12">
+    
+    <div class="flex flex-col w-72">
         <label class="text-xl font-bold mb-5">Payment Notes</label>
         <textarea
           type="text"
@@ -404,7 +501,7 @@
           class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
         ></textarea>
       </div>
-    </div>
+    </div> -->
     <!-- Guest Info & Payment section -->
     <h2
       class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10"
@@ -470,7 +567,7 @@
             class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
-            v-model="form.first_name"
+            v-model="form.guest_info.first_name"
           />
         </div>
         <div>
@@ -485,7 +582,7 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
-            v-model="form.last_name"
+            v-model="form.guest_info.last_name"
           />
         </div>
         <div>
@@ -500,7 +597,22 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             required
-            v-model="form.telephone"
+            v-model="form.guest_info.telephone"
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >E-mail *</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.guest_info.email"
           />
         </div>
         <div>
@@ -512,7 +624,7 @@
           <select
             id="nationality"
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="form.nationality"
+            v-model="form.guest_info.nationality"
           >
             <option value="" disabled>Select Nationality</option>
             <option
@@ -528,30 +640,84 @@
           <label
             for="address"
             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Address</label
+            >Address *</label
           >
           <input
             type="text"
             id="address"
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
-            required
-            v-model="form.address"
+            v-model="form.guest_info.guest_address"
           />
         </div>
         <div>
           <label
-            for="email"
+            for="address"
             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >E-mail *</label
+            >Identification Type *</label
+          >
+          <select
+            v-model="form.guest_info.identification_type"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option value="" disabled>Select Identification Type</option>
+            <option value="passport">Passport</option>
+            <option value="driver_license">Driver's License</option>
+            <option value="id_card">ID Card</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+        <div>
+          <label
+            for="address"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Identification No *</label
           >
           <input
-            type="email"
-            id="email"
+            type="text"
+            v-model="form.guest_info.identification_no"
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.email"
+          />
+        </div>
+
+        <div>
+          <label
+            for="address"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Gender
+          </label>
+          <select
+            v-model="form.guest_info.gender"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option value="" disabled>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="flex flex-col">
+          <label
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Date of Birth
+          </label>
+          <input
+            type="date"
+            v-model="form.guest_info.dob"
+            placeholder="Date of Birth"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Identification Issue Date
+          </label>
+          <input
+            type="date"
+            v-model="form.guest_info.identification_issue_date"
+            placeholder="Identification Issue Date"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
       </div>
@@ -649,7 +815,7 @@
           <label
             for="address"
             class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Address</label
+            >Address *</label
           >
           <input
             type="text"
@@ -657,6 +823,179 @@
             class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             v-model="form.guest_info.guest_address"
+          />
+        </div>
+        <div>
+          <label
+            for="address"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Identification Type *</label
+          >
+          <select
+            v-model="form.guest_info.identification_type"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option value="" disabled>Select Identification Type</option>
+            <option value="passport">Passport</option>
+            <option value="driver_license">Driver's License</option>
+            <option value="id_card">ID Card</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+        <div>
+          <label
+            for="address"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Identification No *</label
+          >
+          <input
+            type="text"
+            v-model="form.guest_info.identification_no"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label
+            for="address"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Gender *</label
+          >
+          <select
+            v-model="form.guest_info.gender"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option value="" disabled>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="flex flex-col">
+          <label
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Date of Birth *</label
+          >
+          <input
+            type="date"
+            v-model="form.guest_info.dob"
+            placeholder="Date of Birth"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Identification Issue Date *</label
+          >
+          <input
+            type="date"
+            v-model="form.guest_info.identification_issue_date"
+            placeholder="Identification Issue Date"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
+        your info
+      </h5>
+      <!-- Guest information form -->
+      <!-- <form class="mt-4"> -->
+      <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
+        <div>
+          <label
+            for="first_name"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >First name *</label
+          >
+          <input
+            type="text"
+            id="first_name"
+            class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.first_name"
+          />
+        </div>
+        <div>
+          <label
+            for="last_name"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Last name *</label
+          >
+          <input
+            type="text"
+            id="last_name"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.last_name"
+          />
+        </div>
+        <div>
+          <label
+            for="phone"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Phone *</label
+          >
+          <input
+            type="tel"
+            id="phone"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.telephone"
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >E-mail *</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            required
+            v-model="form.email"
+          />
+        </div>
+        <div>
+          <label
+            for="nationality"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Nationality *</label
+          >
+          <select
+            id="nationality"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="form.nationality"
+          >
+            <option value="" disabled>Select Nationality</option>
+            <option
+              v-for="country in countries"
+              :key="country.code"
+              :value="country.name"
+            >
+              {{ country.name }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label
+            for="address"
+            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
+            >Address *</label
+          >
+          <input
+            type="text"
+            id="address"
+            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            v-model="form.address"
           />
         </div>
       </div>
@@ -683,14 +1022,39 @@
         >I have read and I agree to the terms and conditions.</label
       >
     </div>
-    <div      v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">
+    <div v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">
       <button
-      v-if="isRoomSelected"
-      class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      @click="handleSubmit"
-    >
-      Proceed to Pay
-    </button>
+        v-if="isRoomSelected"
+        class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        @click="handleSubmit"
+        :disabled="book_loading"
+      >
+        <span v-if="book_loading" class="flex items-center justify-center">
+          <!-- Loader Icon or Text -->
+          <svg
+            class="animate-spin h-5 w-5 mr-3 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z"
+            ></path>
+          </svg>
+          Loading...
+        </span>
+        <span v-else> Proceed to Pay</span>
+      </button>
     </div>
 
     <!-- Register and Login Modal Popup -->
@@ -737,15 +1101,15 @@
           <!-- Modal body -->
           <div class="">
             <h2 class="text-3xl mb-4 text-center">Get Started!</h2>
-            <p class="mb-12 text-center text-black-200 text-opacity-60">
+            <!-- <p class="mb-12 text-center text-black-200 text-opacity-60">
               Use your social profile to register
-            </p>
+            </p> -->
             <!-- SOCIAL MEDIA LOGIN -->
-            <SocialLogin @login-success="handleGoogleLoginData" />
+            <!-- <SocialLogin @login-success="handleGoogleLoginData" /> -->
 
             <!-- Centered "or" text -->
             <!-- Centered "or" text -->
-            <div class="flex items-center justify-center">
+            <!-- <div class="flex items-center justify-center">
               <div
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
@@ -755,7 +1119,7 @@
               <div
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
-            </div>
+            </div> -->
             <!-- Modal -->
             <form action="#" class="space-y-6 mt-4" @submit.prevent="register">
               <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
@@ -969,14 +1333,14 @@
           <!-- Modal body -->
           <div class="">
             <h2 class="text-3xl mb-4 text-center">Login Into Your Account!</h2>
-            <p class="mb-10 text-center text-black-200 text-opacity-60">
+            <!-- <p class="mb-10 text-center text-black-200 text-opacity-60">
               Use your social profile to Login
-            </p>
+            </p> -->
             <!-- SOCIAL LOGIN -->
-            <SocialLogin @login-success="handleGoogleLoginData" />
+            <!-- <SocialLogin @login-success="handleGoogleLoginData" /> -->
 
             <!-- Centered "or" text -->
-            <div class="flex items-center justify-center">
+            <!-- <div class="flex items-center justify-center">
               <div
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
@@ -986,7 +1350,7 @@
               <div
                 class="flex-1 border-t border-black-200 border-opacity-65"
               ></div>
-            </div>
+            </div> -->
 
             <form @submit.prevent="login" class="space-y-6 mt-4">
               <div>
@@ -1081,8 +1445,11 @@ export default {
       childrenAges: [],
       discount_data: {},
       rooms: [],
+      roomCategory: "",
       selectedNumberOfRooms: "", // Selected number of rooms from the dropdown
       selectedRoomNumbers: [],
+      randomizedCategories: {} // to store randomized categories for each room
+,
       roomDetails: {}, // Object to store details for each room
       mealPlans: [
         // Example meal plan options
@@ -1091,16 +1458,19 @@ export default {
         { value: "half_board", label: "Half Board" },
         { value: "full_board", label: "Full Board" },
       ],
-      childAgeOptions: [3, 4, 5, 6], // Options for children's ages
+      childAgeOptions: [3, 4, 5, 6, 7, 8, 9, 10], // Options for children's ages
       infantAgeOptions: [0, 1, 2], // Age options for children
       selectedOption: "",
       boardType: [],
       special_rate: 0,
+      roomCategories: [],
       view_type_id: null,
       view_types: [],
       childFormAges: [],
       infantFormAges: [],
       activities: [],
+      categories: [],
+      book_loading: false,
       discounts: [],
       taxes: [],
       isSocialLogin: false,
@@ -1124,6 +1494,11 @@ export default {
           telephone: "",
           address: "",
           nationality: "",
+          identification_type: "",
+          identification_no: "",
+          identification_issue_date: "",
+          dob: "",
+          gender: "",
         },
       },
       registerUser: {
@@ -1154,30 +1529,90 @@ export default {
     };
   },
   watch: {
-    isSpecialRateApplied(newVal, oldVal) {
-      console.log(`Special rate changed from ${oldVal} to ${newVal}`);
-    },
     selectedRoomNumbers(newVal, oldVal) {
+      console.log("selectedRoomNumbers changed:", { newVal, oldVal });
       this.submitPayload();
     },
-    roomDetails(newVal, oldVal) {
-      this.submitPayload();
+    roomDetails: {
+      handler(newVal, oldVal) {
+        console.log("roomDetails changed:", { newVal, oldVal });
+        this.submitPayload();
+      },
+      deep: true, // Enables deep watching for nested properties
     },
     activities(newVal, oldVal) {
+      console.log("activities changed:", { newVal, oldVal });
       this.submitPayload();
     },
     taxes(newVal, oldVal) {
+      console.log("taxes changed:", { newVal, oldVal });
       this.submitPayload();
     },
     discounts(newVal, oldVal) {
+      console.log("discounts changed:", { newVal, oldVal });
       this.submitPayload();
     },
     $route(query) {
-      // If route parameters change
+      console.log("Route changed:", query);
       this.submitPayload();
-    }
+    },
   },
+
   computed: {
+    randomizedRoomCategories() {
+    const categoriesFromUrl = this.$route.query.categories
+      ? this.$route.query.categories.split(',')
+      : [];
+
+    // Only compute if not already done
+    if (Object.keys(this.randomizedCategories).length === 0) {
+      this.randomizedCategories = this.rooms.reduce((acc, room) => {
+        const availableCategories = [];
+        if (categoriesFromUrl.includes(room.category)) {
+          availableCategories.push(room.category);
+        }
+        if (categoriesFromUrl.includes(room.secondary_category)) {
+          availableCategories.push(room.secondary_category);
+        }
+
+        // Shuffle categories and assign the first one
+        const shuffledCategories = this.shuffleArray(availableCategories);
+        acc[room.room_number] = shuffledCategories[0] || 'Unknown';
+        return acc;
+      }, {});
+    }
+
+    return this.randomizedCategories;
+
+},
+    categoriesFromUrl() {
+    const urlCategories = this.$route.query.categories;
+    return urlCategories ? urlCategories.split(",") : [];
+  },
+  
+  // Method to get random category, ensuring it is consistent
+  roomCategories() {
+    return this.rooms.map(room => {
+      const urlCategories = this.categoriesFromUrl;
+      const roomCategories = [];
+
+      if (urlCategories.includes(room.category)) {
+        roomCategories.push(room.category);
+      }
+
+      if (urlCategories.includes(room.secondary_category)) {
+        roomCategories.push(room.secondary_category);
+      }
+
+      // Return a random category from the filtered ones
+      if (roomCategories.length === 0) {
+        return "No matching category";
+      }
+      
+      const randomIndex = Math.floor(Math.random() * roomCategories.length);
+      return roomCategories[randomIndex];
+    });
+  },
     isRoomSelected() {
       return this.selectedRoomNumbers.length > 0;
     },
@@ -1198,6 +1633,53 @@ export default {
   },
 
   methods: {
+    shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  },
+   // Function to get the categories from URL
+   getCategoriesFromUrl() {
+    // Accessing categories from URL, assuming Vue Router is used
+    const urlCategories = this.$route.query.categories;
+
+    // If categories exist, split by comma and return them as an array
+    return urlCategories ? urlCategories.split(",") : [];
+  },
+
+  // Randomly select a category if it matches the ones in URL
+  getRandomCategory(room) {
+    // Extract the categories from the URL
+    const urlCategories = this.getCategoriesFromUrl();
+
+    // Prepare the list of room categories to choose from
+    const roomCategories = [];
+
+    // Check if the room's primary category matches the ones in the URL
+    if (urlCategories.includes(room.category)) {
+      roomCategories.push(room.category);
+    }
+
+    // Check if the room's secondary category matches the ones in the URL
+    if (urlCategories.includes(room.secondary_category)) {
+      roomCategories.push(room.secondary_category);
+    }
+
+    // If there's no match, return an empty string or fallback message
+    if (roomCategories.length === 0) {
+      return "No matching category";
+    }
+
+    // Randomly select between matching categories
+    const randomIndex = Math.floor(Math.random() * roomCategories.length);
+    return roomCategories[randomIndex];
+  },
+    handleActivityChange() {
+      console.log("Updated activities:", this.activities);
+      this.submitPayload(); // Ensure submitPayload is updated to handle changes in activities
+    },
     toggleRoom() {
       const roomNumber = this.selectedRoom;
       const index = this.selectedRoomNumbers.indexOf(roomNumber);
@@ -1220,32 +1702,57 @@ export default {
         this.updateRoomDetails(); // Update only the details of selected rooms
       }
     },
+    updateCategory(roomNumber) {
+      const selectedCategory = this.roomDetails[roomNumber].selectedCategory;
+      const room = this.rooms.find((r) => r.room_number === roomNumber);
 
-    updateRoomDetails() {
-      this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
-        const room = this.rooms.find((r) => r.room_number === roomNumber);
-        if (room) {
-          acc[roomNumber] = {
-            adults:
-              this.roomDetails[roomNumber]?.adults ??
-              Math.min(1, room.max_adults),
-            children:
-              this.roomDetails[roomNumber]?.children ??
-              Math.min(0, room.max_childs),
-            mealPlan: this.roomDetails[roomNumber]?.mealPlan ?? "room_only",
-            infants: this.roomDetails[roomNumber]?.infants ?? 0,
-            childrenAges:
-              this.roomDetails[roomNumber]?.childrenAges ??
-              Array(this.roomDetails[roomNumber]?.children || 0).fill(0),
-            infantAges:
-              this.roomDetails[roomNumber]?.infantAges ??
-              Array(this.roomDetails[roomNumber]?.infants || 0).fill(0),
-            mealTime: this.roomDetails[roomNumber]?.mealTime ?? "breakfast", // Default to breakfast if not set
-          };
-        }
-        return acc;
-      }, {});
+      if (selectedCategory === room.category) {
+        // If primary category is selected, reset to primary room limits
+        this.roomDetails[roomNumber].adults = Math.min(1, room.max_adults);
+        this.roomDetails[roomNumber].children = 0;
+        this.roomDetails[roomNumber].infants = 0;
+      } else if (selectedCategory === room.secondary_category) {
+        // If secondary category is selected, reset to secondary room limits
+        this.roomDetails[roomNumber].adults = Math.min(
+          1,
+          room.secondary_max_adults
+        );
+        this.roomDetails[roomNumber].children = 0;
+        this.roomDetails[roomNumber].infants = 0;
+      }
+
+      // Adjust other properties as necessary based on the selected category
     },
+    updateRoomDetails() {
+  this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
+    const room = this.rooms.find((r) => r.room_number === roomNumber);
+    if (room) {
+      const selectedCategory =
+        this.roomDetails[roomNumber]?.selectedCategory || room.category;
+      
+      // Get current number of children
+      const currentChildren = this.roomDetails[roomNumber]?.children || 0;
+      // Truncate or adjust the childrenAges array to match the current number of children
+      const currentChildrenAges = (this.roomDetails[roomNumber]?.childrenAges || []).slice(0, currentChildren);
+
+      acc[roomNumber] = {
+        selectedCategory: selectedCategory,
+        primaryCategory: room.category,
+        secondaryCategory: room.secondary_category,
+        adults: this.roomDetails[roomNumber]?.adults || Math.min(1, room.max_adults),
+        children: currentChildren,
+        infants: this.roomDetails[roomNumber]?.infants || 0,
+        mealPlan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
+        childrenAges: currentChildrenAges, // Adjusted childrenAges array
+        infantAges: this.roomDetails[roomNumber]?.infantAges || [],
+        mealTime: this.roomDetails[roomNumber]?.mealTime || " ",
+      };
+    }
+    return acc;
+  }, {});
+},
+
+
     formatDatePayload(dateString) {
       const date = new Date(dateString);
       return date.toISOString(); // Converts to ISO 8601 format: "YYYY-MM-DDTHH:mm:ss.sssZ"
@@ -1258,120 +1765,166 @@ export default {
       }));
     },
     preparePayload() {
-      const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-      const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
-      const discountCode = this.$route.query.discount;
-      const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
-      const discounts = this.discounts.map((discount) => ({
-        discount_id: discount.id,
-      }));
-      const selectedActivities = this.activities
-        .filter((activity) => activity.checked)
-        .map((activity) => ({ activity_id: activity.id }));
+  const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
+  const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
+  const discountCode = this.$route.query.discount;
+  const taxes = [];
+  const discounts = [];
+  const selectedActivities = this.activities
+    .filter((activity) => activity.checked)
+    .map((activity) => ({ activity_id: activity.id }));
+
+  return {
+    check_in: checkInDate,
+    check_out: checkOutDate,
+    rooms: this.selectedRoomNumbers.map((roomNumber) => {
+      const room = this.rooms.find((r) => r.room_number === roomNumber);
+      const roomDetail = this.roomDetails[roomNumber] || {};
+      const childrenCount = roomDetail.children || 0;
+      const childrenAges = roomDetail.childrenAges.slice(0, childrenCount); // Ensure only valid ages are passed
+      const infantAges = roomDetail.infants > 0
+        ? roomDetail.infantAges.slice(0, roomDetail.infants) // Truncate if needed
+        : [];
+
+      // Get the randomized category for this room
+      const randomizedCategory = this.randomizedCategories[roomNumber] || room.category;
 
       return {
-        check_in: checkInDate,
-        check_out: checkOutDate,
-        rooms: this.selectedRoomNumbers.map((roomNumber) => {
-          const room = this.rooms.find((r) => r.room_number === roomNumber);
-          return {
-            room_id: room.id,
-            adults: this.roomDetails[roomNumber]?.adults || 0,
-            children:
-              this.roomDetails[roomNumber]?.childrenAges.map(
-                (age) => age || 0
-              ) || [],
-            infants:
-              this.roomDetails[roomNumber]?.infantAges.map((age) => age || 0) ||
-              [],
-            meal_plan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
-          };
-        }),
-        taxes: taxes,
-        discounts: discounts,
-        activities: selectedActivities,
-        discount_code: discountCode,
+        room_id: room.id,
+        adults: roomDetail.adults || 0,
+        children: childrenAges, // Trimmed childrenAges
+        infants: infantAges, // Trimmed infantAges
+        meal_plan: roomDetail.mealPlan || "room_only",
+        category: randomizedCategory, // Use randomized category here
       };
-    },
-    preparePayloadBooking() {
-      const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-      const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
-      const discountCode = this.$route.query.discount;
-      const taxes = this.taxes.map((tax) => ({ tax_id: tax.id }));
-      const discounts = this.discounts.map((discount) => ({
-        discount_id: discount.id,
-      }));
-      const selectedActivities = this.activities
-        .filter((activity) => activity.checked)
-        .map((activity) => ({
-          activity_id: activity.id,
-          activity_name: activity.name,
-        }));
+    }),
+    taxes: taxes,
+    discounts: discounts,
+    activities: selectedActivities,
+    discount_code: discountCode,
+  };
+}
+
+
+,
+
+preparePayloadBooking() {
+  const formatDateToISO = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+
+    // Get the local timezone offset in minutes
+    const offset = date.getTimezoneOffset();
+
+    // Adjust date by subtracting the offset
+    const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+
+    // Convert to ISO format
+    return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
+  };
+
+  const checkInDate = formatDateToISO(this.$route.query.fromDate);
+  const checkOutDate = formatDateToISO(this.$route.query.toDate);
+  const discountCode = this.$route.query.discount;
+
+  // Temporarily setting taxes and discounts to empty arrays
+  const taxes = [];
+  const discounts = [];
+  const selectedActivities = this.activities
+    .filter((activity) => activity.checked)
+    .map((activity) => ({
+      activity_id: activity.id,
+      activity_name: activity.name,
+    }));
+
+  const agentInfo = this.showGuestInfo
+    ? {
+        first_name: this.form.first_name || "",
+        last_name: this.form.last_name || "",
+        email: this.form.email || "",
+        telephone: this.form.telephone || "",
+        address: this.form.address || "",
+        nationality: this.form.nationality || "",
+      }
+    : {
+        first_name: "",
+        last_name: "",
+        email: "",
+        telephone: "",
+        address: "",
+        nationality: "",
+      };
+
+  return {
+    check_in: checkInDate,
+    check_out: checkOutDate,
+    booking_type: "website",
+    rooms: this.selectedRoomNumbers.map((roomNumber) => {
+      const room = this.rooms.find((r) => r.room_number === roomNumber);
+      const roomDetail = this.roomDetails[roomNumber] || {};
+
+      // Get the randomized category for this room
+      const randomizedCategory = this.randomizedCategories[roomNumber] || room.category;
+
+      // Get the number of children and infants to properly slice their respective age arrays
+      const childrenCount = roomDetail.children || 0;
+      const infantsCount = roomDetail.infants || 0;
 
       return {
-        check_in: checkInDate,
-        check_out: checkOutDate,
-        booking_type:"online",
-        rooms: this.selectedRoomNumbers.map((roomNumber) => {
-          const room = this.rooms.find((r) => r.room_number === roomNumber);
-          console.log(room);
-          return {
-            room_id: room.id,
-            room_number: room.room_number,
-            category: this.$route.query.roomType,
-            adults: this.roomDetails[roomNumber]?.adults || 0,
-            children:
-              this.roomDetails[roomNumber]?.childrenAges.map(
-                (age) => age || 0
-              ) || [],
-            infants:
-              this.roomDetails[roomNumber]?.infantAges.map((age) => age || 0) ||
-              [],
-            meal_plan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
-            starting_meals_with:
-              this.roomDetails[roomNumber]?.mealTime || "breakfast",
-            view: this.$route.query.view,
-          };
-        }),
-        taxes: taxes,
-        discounts: discounts,
-        activities: selectedActivities,
-        discount_code: discountCode,
-        total_taxes: this.total_rate.total_tax_amount,
-        total_rooms_charge: this.total_rate.total_rooms_amount,
-        total_activities_charge: this.total_rate.total_activities_amount,
-        total_discount_amount: this.total_rate.total_discount_amount,
-        total_amount: this.total_rate.total_meal_plan_amount,
-        total_additional_services_amount: 0,
-        payment_method: "sueen_web",
-        is_partial_payment: false,
-        paid_amount: 0,
-        agent_info: {
-          first_name: this.form.first_name,
-          last_name: this.form.last_name,
-          email: this.form.email,
-          telephone: this.form.telephone,
-          address: this.form.address,
-          nationality: this.form.nationality,
-        },
-        guest_info: {
-          first_name: this.form.guest_info.first_name,
-          last_name: this.form.guest_info.last_name,
-          email: this.form.guest_info.email,
-          telephone: this.form.guest_info.telephone,
-          address: this.form.guest_info.guest_address,
-          nationality: this.form.guest_info.nationality,
-          identification_type: "<string>",
-          identification_no: "<string>",
-          gender: "<string>",
-          profile_image: ["<string>", "<string>"],
-          identification_issue_date: "<dateTime>",
-          dob: "<dateTime>",
-        },
-        booking_note: this.booking_note,
-        payment_note: this.payment_note,
+        room_id: room.id,
+        room_number: room.room_number,
+        category: randomizedCategory, // Use randomized category here
+        adults: roomDetail.adults || 0,
+        children:
+          childrenCount > 0
+            ? (roomDetail.childrenAges || []).slice(0, childrenCount) // Ensure only valid number of children ages are passed
+            : [],
+        infants:
+          infantsCount > 0
+            ? (roomDetail.infantAges || []).slice(0, infantsCount) // Ensure only valid number of infant ages are passed
+            : [],
+        meal_plan: roomDetail.mealPlan || "room_only",
+        starting_meals_with: roomDetail.mealTime || "",
+        view: this.$route.query.view || "default",
       };
+    }),
+    taxes,
+    discounts,
+    activities: selectedActivities,
+    discount_code: discountCode || "",
+    total_taxes: this.total_rate?.total_tax_amount || 0,
+    total_rooms_charge: this.total_rate?.total_rooms_amount || 0,
+    total_meal_plan_amount: this.total_rate?.total_meal_plan_amount || 0,
+    total_activities_charge: this.total_rate?.total_activities_amount || 0,
+    total_discount_amount: this.total_rate?.total_discount_amount || 0,
+    total_amount: this.total_rate?.total_amount || 0,
+    total_additional_services_amount: 0,
+    payment_method: "sueen_web",
+    is_partial_payment: false,
+    paid_amount: 0,
+    agent_info: agentInfo,
+    guest_info: {
+      first_name: this.form.guest_info.first_name,
+      last_name: this.form.guest_info.last_name,
+      email: this.form.guest_info.email,
+      telephone: this.form.guest_info.telephone,
+      address: this.form.guest_info.guest_address,
+      nationality: this.form.guest_info.nationality,
+      identification_type: this.form?.guest_info?.identification_type || "",
+      identification_no: this.form?.guest_info?.identification_no || "",
+      gender: this.form?.guest_info?.gender || "",
+      profile_image: this.form?.guest_info?.profile_image || [],
+      identification_issue_date: this.form.guest_info?.identification_issue_date
+        ? this.formatDatePayload(this.form.guest_info.identification_issue_date)
+        : null,
+      dob: this.form.guest_info?.dob
+        ? this.formatDatePayload(this.form.guest_info.dob)
+        : null,
     },
+    booking_note: this.booking_note || "",
+    payment_note: this.payment_note || "",
+  };
+},
 
     async submitPayload() {
       try {
@@ -1404,9 +1957,42 @@ export default {
         );
       }
     },
-    async handleSubmit() {
+    handleSubmit() {
       const payload = this.preparePayloadBooking();
-      console.log("Submiited payload",payload);
+      console.log("Submitted payload", payload);
+      if (
+        !payload.guest_info.first_name |
+        !payload.guest_info.nationality |
+        !payload.guest_info.last_name |
+        !payload.guest_info.telephone |
+        !payload.guest_info.address |
+        !payload.guest_info.identification_no |
+        !payload.guest_info.identification_type
+      ) {
+        return toast.error("Please fill fields in Guest info & Payment");
+      }
+      const headers = {
+        "x-api-key": this.$config.public.DATABASE_ID,
+        "Content-Type": "application/json",
+      };
+
+      this.book_loading = true;
+
+      axios
+        .post("https://api.sueennature.com/bookings/", payload, { headers })
+        .then((response) => {
+          console.log("Response received:", response.data);
+          this.book_loading = false;
+          toast.success("Proceeding to payment");
+          setTimeout(() => {
+            window.location.href = response.data.payment_url;
+          }, 1500);
+        })
+        .catch((error) => {
+          console.error("An error occurred:", error);
+          this.book_loading = false;
+          this.setupToastError("An error occurred. Please try again later.");
+        });
     },
     updateRoomNumbers() {
       if (this.selectedNumberOfRooms) {
@@ -1437,17 +2023,34 @@ export default {
       });
     },
     adultOptions(room) {
-      const maxAdults = this.rooms.find(
-        (r) => r.room_number === room
-      ).max_adults;
-      return Array.from({ length: maxAdults }, (_, i) => i + 1);
-    },
-    childOptions(room) {
-      const maxChildren = this.rooms.find(
-        (r) => r.room_number === room
-      ).max_childs;
-      return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
-    },
+  const roomDetails = this.rooms.find((r) => r.room_number === room);
+  const randomizedCategory = this.randomizedRoomCategories[room] || roomDetails.category; 
+
+  let maxAdults;
+  if (randomizedCategory === roomDetails.secondary_category) {
+    maxAdults = roomDetails.secondary_max_adults;
+  } else {
+    maxAdults = roomDetails.max_adults;
+  }
+
+  return Array.from({ length: maxAdults }, (_, i) => i + 1);
+}
+
+,
+childOptions(room) {
+  const roomDetails = this.rooms.find((r) => r.room_number === room);
+  const randomizedCategory = this.randomizedRoomCategories[room] || roomDetails.category; 
+
+  let maxChildren;
+  if (randomizedCategory === roomDetails.secondary_category) {
+    maxChildren = roomDetails.secondary_max_childs;
+  } else {
+    maxChildren = roomDetails.max_childs;
+  }
+
+  return Array.from({ length: maxChildren + 1 }, (_, i) => i);
+}
+,
     scrollToPaymentInfo() {
       this.$nextTick(() => {
         this.$refs.paymentInfoRef.scrollIntoView({ behavior: "smooth" });
@@ -1516,8 +2119,18 @@ export default {
       this.loginUser.password = password;
       this.login();
     },
+
     async register() {
       try {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(this.registerUser.email)) {
+          this.setupToastError("Please enter a valid email address.");
+          return;
+        }
+        if (this.registerUser.password.length < 8) {
+          this.setupToastError("Password must be at least 8 characters long.");
+          return;
+        }
         // Step 1: Create guest
         const guestPayload = {
           first_name: this.registerUser.name,
@@ -1569,18 +2182,42 @@ export default {
 
         console.log("Register response", registerResponse);
         localStorage.setItem("userEmail", this.registerUser.email);
-
+          this.toggleModal_1()
         // Set auth token and other necessary operations
         this.nuxtApp.$auth.setAuthToken(registerResponse.access_token);
+        // localStorage.setItem("guest_id", data.guest_id);
         this.setAuthTokenInCookie(registerResponse.access_token);
         localStorage.setItem("userEmail", this.registerUser.email);
-        this.$router.push({
-          path: "/dashboard",
-          query: { email: this.registerUser.email },
-        });
+        // this.$router.push({
+        //   path: "/dashboard",
+        //   query: { email: this.registerUser.email },
+
+        // });
+        // this.$router.push({
+        //   path: "/dashboard",
+        //   query: { guest_id: data.guest_id },
+        // });
+        // if ((data.detail = "Email already registered")) {
+        //   return toast.error(`Invalid Credentials`);
+        // }
       } catch (error) {
         console.error("An error occurred:", error);
-        this.setupToastError("An error occurred. Please try again later.");
+
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.detail === "Email already registered"
+        ) {
+          this.setupToastError("Email already registered");
+        } else if (
+          error.response &&
+          error.response.data &&
+          error.response.data.detail === "Username already exists"
+        ) {
+          this.setupToastError("Username already exists");
+        } else {
+          this.setupToastError("An error occurred. Please try again later.");
+        }
       }
     },
 
@@ -1623,11 +2260,13 @@ export default {
           const data = await response.json();
           console.log(data);
           this.setAuthTokenInCookie(data.access_token);
+          localStorage.setItem("guest_id", data.guest_id);
+          this.setAuthTokenInCookie(data.guest_id);
           this.nuxtApp.$auth.setAuthToken(data.access_token);
           if (data.access_token) {
             this.$router.push({
               path: "/dashboard",
-              query: { email: this.loginUser.email },
+              query: { guest_id: data.guest_id },
             });
 
             return toast.success(`Successfully logged In`);
@@ -1638,7 +2277,7 @@ export default {
           }
           this.$router.push({
             path: "/dashboard",
-            query: { email: this.loginUser.email },
+            query: { id: 30 },
           });
           // this.setupToastSucess("Successfully Logged In")
         })
@@ -1675,6 +2314,7 @@ export default {
     logout() {
       this.$auth.setAuthToken(null);
       localStorage.removeItem("userEmail");
+      localStorage.removeItem("guest_id");
       this.$router.push("/home");
     },
     formatPrice(value) {
@@ -1732,34 +2372,75 @@ export default {
   },
 
   mounted() {
+    const queryParams = this.$route.query;
+
+    if (queryParams.categories) {
+      this.categories = queryParams.categories
+        .replace(/[\[\]']+/g, "")
+        .split(",");
+    }
+
+    console.log("Categories:", this.categories);
+
+    const { fromDate, toDate, view, discount, categories } = this.$route.query;
+
+    const categoryList = Array.isArray(categories)
+      ? categories
+      : categories
+      ? categories.split(",")
+      : [];
+
     this.initializeActivities();
+
+    // Adjusted formatDateToISO function
     const formatDateToISO = (dateString) => {
       if (!dateString) return "";
       const date = new Date(dateString);
-      return date.toISOString();
+
+      // Get the local timezone offset in minutes
+      const offset = date.getTimezoneOffset();
+
+      // Adjust date by subtracting the offset
+      const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+
+      // Convert to ISO format
+      return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
     };
 
-    if (
-      new Date(this.$route.query.fromDate) >= new Date(this.$route.query.toDate)
-    ) {
+    // Ensure check-out date is after check-in date
+    if (new Date(fromDate) >= new Date(toDate)) {
       this.setupToastError("Check-out date must be after check-in date.");
       return;
     }
 
-    const formattedCheckIn = formatDateToISO(this.$route.query.fromDate);
-    const formattedCheckOut = formatDateToISO(this.$route.query.toDate);
+    // Format dates
+    const formattedCheckIn = formatDateToISO(fromDate);
+    const formattedCheckOut = formatDateToISO(toDate);
+
+    console.log(
+      "BOOKING_FORMAT",
+      fromDate,
+      formattedCheckIn,
+      toDate,
+      formattedCheckOut
+    );
+
     const runtimeConfig = useRuntimeConfig();
 
     const baseUrl = "https://api.sueennature.com/rooms/availability/";
-    const params = new URLSearchParams({
-      check_in: formattedCheckIn,
-      check_out: formattedCheckOut,
-      categories: this.$route.query.roomType,
-      views: this.$route.query.view,
-      discount_code: this.$route.query.discount,
-    });
-    const url = `${baseUrl}?${params.toString()}`;
 
+    const params = new URLSearchParams();
+    params.append("check_in", formattedCheckIn);
+    params.append("check_out", formattedCheckOut);
+    params.append("views", view);
+    params.append("discount_code", discount || "");
+
+    categoryList.forEach((category) => params.append("categories", category));
+
+    // Proceed with API call or other logic
+
+    const url = `${baseUrl}?${params.toString()}`;
+    console.log("BOOKING", url);
     fetch(url, {
       method: "GET",
       headers: {
@@ -1784,6 +2465,7 @@ export default {
       .catch((error) => {
         console.error("Error:", error);
       });
+
     const cookies = document.cookie.split(";");
     const authTokenCookie = cookies.find((cookie) =>
       cookie.trim().startsWith("auth_token=")
@@ -1791,6 +2473,7 @@ export default {
     this.isSignedIn = !!authTokenCookie;
     initFlowbite();
   },
+
   setup() {
     const nuxtApp = useNuxtApp();
 
@@ -1857,5 +2540,16 @@ input {
   color: red;
   cursor: pointer;
   margin-left: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  min-height: 120px; /* Adjust this value based on your content */
+}
+
+td {
+  vertical-align: top; /* Ensure content aligns to the top */
 }
 </style>

@@ -84,27 +84,27 @@
         <div class="mt-4 w-full">
           <h4 class="text-lg font-bold">Available Rooms</h4>
 
+
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div
-              v-for="room in rooms"
-              :key="room.room_number"
-              :value="room.room_number"
-              class="w-full flex items-start"
-              :disabled="selectedRoomNumbers.includes(room.room_number)"
-            >
-              <span class="border flex flex-col border-gray-700 rounded-lg p-2">
-                <span><strong>Room:</strong> {{ room.room_number }}</span>
-                {{ " " }}
-                <span><strong>Category:</strong> {{ room.category }}</span>
-                {{ " " }}
-                <span
-                  ><strong>Second Category:</strong>
-                  {{ room.secondary_category }}</span
-                >
-                {{ " " }} <span><strong>View:</strong> {{ room.view }}</span>
-                {{ " " }}
-              </span>
-            </div>
+  v-for="(room, index) in rooms"
+  :key="room.room_number"
+  :value="room.room_number"
+  class="w-full flex items-start"
+  :disabled="selectedRoomNumbers.includes(room.room_number)"
+>
+  <span class="border flex flex-col border-gray-700 rounded-lg p-2 w-40">
+    <span><strong>Room:</strong> {{ room.room_number }}</span>
+    {{ " " }}
+    <span>
+      <strong>Category:</strong>
+      {{ randomizedRoomCategories[room.room_number] || 'Unknown' }}
+    </span>
+    {{ " " }}
+    <span><strong>View:</strong> {{ room.view }}</span>
+  </span>
+</div>
+
           </div>
 
           <select
@@ -174,19 +174,11 @@
                     </h4>
                   </td>
                   <td class="py-2 px-4 min-w-[200px]">
-                    <div class="mb-2">
-                      <select
-                        v-model="roomDetails[room].selectedCategory"
-                        @change="updateCategory(room)"
-                        class="border border-gray-300 p-2 rounded w-full"
-                      >
-                        <option :value="roomDetails[room].primaryCategory">
-                          {{ roomDetails[room].primaryCategory }}
-                        </option>
-                        <option :value="roomDetails[room].secondaryCategory">
-                          {{ roomDetails[room].secondaryCategory }}
-                        </option>
-                      </select>
+                    <div class="mb-2  text-center">
+                      <span class="border flex flex-col border-gray-700 rounded-lg p-2">
+                {{ randomizedRoomCategories[room] || 'Unknown' }}
+              </span>
+              
                     </div>
                   </td>
                   <td class="py-2 px-4 min-w-[100px]">
@@ -1456,6 +1448,8 @@ export default {
       roomCategory: "",
       selectedNumberOfRooms: "", // Selected number of rooms from the dropdown
       selectedRoomNumbers: [],
+      randomizedCategories: {} // to store randomized categories for each room
+,
       roomDetails: {}, // Object to store details for each room
       mealPlans: [
         // Example meal plan options
@@ -1464,11 +1458,12 @@ export default {
         { value: "half_board", label: "Half Board" },
         { value: "full_board", label: "Full Board" },
       ],
-      childAgeOptions: [3, 4, 5, 6], // Options for children's ages
+      childAgeOptions: [3, 4, 5, 6, 7, 8, 9, 10], // Options for children's ages
       infantAgeOptions: [0, 1, 2], // Age options for children
       selectedOption: "",
       boardType: [],
       special_rate: 0,
+      roomCategories: [],
       view_type_id: null,
       view_types: [],
       childFormAges: [],
@@ -1564,6 +1559,60 @@ export default {
   },
 
   computed: {
+    randomizedRoomCategories() {
+    const categoriesFromUrl = this.$route.query.categories
+      ? this.$route.query.categories.split(',')
+      : [];
+
+    // Only compute if not already done
+    if (Object.keys(this.randomizedCategories).length === 0) {
+      this.randomizedCategories = this.rooms.reduce((acc, room) => {
+        const availableCategories = [];
+        if (categoriesFromUrl.includes(room.category)) {
+          availableCategories.push(room.category);
+        }
+        if (categoriesFromUrl.includes(room.secondary_category)) {
+          availableCategories.push(room.secondary_category);
+        }
+
+        // Shuffle categories and assign the first one
+        const shuffledCategories = this.shuffleArray(availableCategories);
+        acc[room.room_number] = shuffledCategories[0] || 'Unknown';
+        return acc;
+      }, {});
+    }
+
+    return this.randomizedCategories;
+
+},
+    categoriesFromUrl() {
+    const urlCategories = this.$route.query.categories;
+    return urlCategories ? urlCategories.split(",") : [];
+  },
+  
+  // Method to get random category, ensuring it is consistent
+  roomCategories() {
+    return this.rooms.map(room => {
+      const urlCategories = this.categoriesFromUrl;
+      const roomCategories = [];
+
+      if (urlCategories.includes(room.category)) {
+        roomCategories.push(room.category);
+      }
+
+      if (urlCategories.includes(room.secondary_category)) {
+        roomCategories.push(room.secondary_category);
+      }
+
+      // Return a random category from the filtered ones
+      if (roomCategories.length === 0) {
+        return "No matching category";
+      }
+      
+      const randomIndex = Math.floor(Math.random() * roomCategories.length);
+      return roomCategories[randomIndex];
+    });
+  },
     isRoomSelected() {
       return this.selectedRoomNumbers.length > 0;
     },
@@ -1584,6 +1633,49 @@ export default {
   },
 
   methods: {
+    shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  },
+   // Function to get the categories from URL
+   getCategoriesFromUrl() {
+    // Accessing categories from URL, assuming Vue Router is used
+    const urlCategories = this.$route.query.categories;
+
+    // If categories exist, split by comma and return them as an array
+    return urlCategories ? urlCategories.split(",") : [];
+  },
+
+  // Randomly select a category if it matches the ones in URL
+  getRandomCategory(room) {
+    // Extract the categories from the URL
+    const urlCategories = this.getCategoriesFromUrl();
+
+    // Prepare the list of room categories to choose from
+    const roomCategories = [];
+
+    // Check if the room's primary category matches the ones in the URL
+    if (urlCategories.includes(room.category)) {
+      roomCategories.push(room.category);
+    }
+
+    // Check if the room's secondary category matches the ones in the URL
+    if (urlCategories.includes(room.secondary_category)) {
+      roomCategories.push(room.secondary_category);
+    }
+
+    // If there's no match, return an empty string or fallback message
+    if (roomCategories.length === 0) {
+      return "No matching category";
+    }
+
+    // Randomly select between matching categories
+    const randomIndex = Math.floor(Math.random() * roomCategories.length);
+    return roomCategories[randomIndex];
+  },
     handleActivityChange() {
       console.log("Updated activities:", this.activities);
       this.submitPayload(); // Ensure submitPayload is updated to handle changes in activities
@@ -1632,29 +1724,34 @@ export default {
       // Adjust other properties as necessary based on the selected category
     },
     updateRoomDetails() {
-      this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
-        const room = this.rooms.find((r) => r.room_number === roomNumber);
-        if (room) {
-          const selectedCategory =
-            this.roomDetails[roomNumber]?.selectedCategory || room.category;
-          acc[roomNumber] = {
-            selectedCategory: selectedCategory,
-            primaryCategory: room.category,
-            secondaryCategory: room.secondary_category,
-            adults:
-              this.roomDetails[roomNumber]?.adults ||
-              Math.min(1, room.max_adults),
-            children: this.roomDetails[roomNumber]?.children || 0,
-            infants: this.roomDetails[roomNumber]?.infants || 0,
-            mealPlan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
-            childrenAges: this.roomDetails[roomNumber]?.childrenAges || [],
-            infantAges: this.roomDetails[roomNumber]?.infantAges || [],
-            mealTime: this.roomDetails[roomNumber]?.mealTime || " ",
-          };
-        }
-        return acc;
-      }, {});
-    },
+  this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
+    const room = this.rooms.find((r) => r.room_number === roomNumber);
+    if (room) {
+      const selectedCategory =
+        this.roomDetails[roomNumber]?.selectedCategory || room.category;
+      
+      // Get current number of children
+      const currentChildren = this.roomDetails[roomNumber]?.children || 0;
+      // Truncate or adjust the childrenAges array to match the current number of children
+      const currentChildrenAges = (this.roomDetails[roomNumber]?.childrenAges || []).slice(0, currentChildren);
+
+      acc[roomNumber] = {
+        selectedCategory: selectedCategory,
+        primaryCategory: room.category,
+        secondaryCategory: room.secondary_category,
+        adults: this.roomDetails[roomNumber]?.adults || Math.min(1, room.max_adults),
+        children: currentChildren,
+        infants: this.roomDetails[roomNumber]?.infants || 0,
+        mealPlan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
+        childrenAges: currentChildrenAges, // Adjusted childrenAges array
+        infantAges: this.roomDetails[roomNumber]?.infantAges || [],
+        mealTime: this.roomDetails[roomNumber]?.mealTime || " ",
+      };
+    }
+    return acc;
+  }, {});
+},
+
 
     formatDatePayload(dateString) {
       const date = new Date(dateString);
@@ -1668,158 +1765,166 @@ export default {
       }));
     },
     preparePayload() {
-      const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-      const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
-      const discountCode = this.$route.query.discount;
-      const taxes = []; // Temporarily setting taxes to an empty array
-      const discounts = []; // Temporarily setting discounts to an empty array
-      const selectedActivities = this.activities
-        .filter((activity) => activity.checked)
-        .map((activity) => ({ activity_id: activity.id }));
+  const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
+  const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
+  const discountCode = this.$route.query.discount;
+  const taxes = [];
+  const discounts = [];
+  const selectedActivities = this.activities
+    .filter((activity) => activity.checked)
+    .map((activity) => ({ activity_id: activity.id }));
+
+  return {
+    check_in: checkInDate,
+    check_out: checkOutDate,
+    rooms: this.selectedRoomNumbers.map((roomNumber) => {
+      const room = this.rooms.find((r) => r.room_number === roomNumber);
+      const roomDetail = this.roomDetails[roomNumber] || {};
+      const childrenCount = roomDetail.children || 0;
+      const childrenAges = roomDetail.childrenAges.slice(0, childrenCount); // Ensure only valid ages are passed
+      const infantAges = roomDetail.infants > 0
+        ? roomDetail.infantAges.slice(0, roomDetail.infants) // Truncate if needed
+        : [];
+
+      // Get the randomized category for this room
+      const randomizedCategory = this.randomizedCategories[roomNumber] || room.category;
 
       return {
-        check_in: checkInDate,
-        check_out: checkOutDate,
-        rooms: this.selectedRoomNumbers.map((roomNumber) => {
-          const room = this.rooms.find((r) => r.room_number === roomNumber);
-          const roomDetail = this.roomDetails[roomNumber] || {};
-          const childrenCount = roomDetail.children || 0;
-          const childrenAges =
-            childrenCount > 0
-              ? roomDetail.childrenAges || Array(childrenCount).fill(0)
-              : []; // Reset children ages if count is 0
-          const infantAges =
-            roomDetail.infants > 0
-              ? roomDetail.infantAges || Array(roomDetail.infants).fill(0)
-              : []; // Reset infant ages if count is 0
-
-          return {
-            room_id: room.id,
-            adults: roomDetail.adults || 0,
-            children: childrenAges, // This will be an empty array if count is 0
-            infants: infantAges, // This will be an empty array if count is 0
-            meal_plan: roomDetail.mealPlan || "room_only",
-            category: roomDetail.selectedCategory || room.category, // Pass the selected category
-          };
-        }),
-        taxes: taxes,
-        discounts: discounts,
-        activities: selectedActivities,
-        discount_code: discountCode,
+        room_id: room.id,
+        adults: roomDetail.adults || 0,
+        children: childrenAges, // Trimmed childrenAges
+        infants: infantAges, // Trimmed infantAges
+        meal_plan: roomDetail.mealPlan || "room_only",
+        category: randomizedCategory, // Use randomized category here
       };
-    },
+    }),
+    taxes: taxes,
+    discounts: discounts,
+    activities: selectedActivities,
+    discount_code: discountCode,
+  };
+}
 
-    preparePayloadBooking() {
-      const formatDateToISO = (dateString) => {
-        if (!dateString) return "";
-        const date = new Date(dateString);
 
-        // Get the local timezone offset in minutes
-        const offset = date.getTimezoneOffset();
+,
 
-        // Adjust date by subtracting the offset
-        const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+preparePayloadBooking() {
+  const formatDateToISO = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
 
-        // Convert to ISO format
-        return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
+    // Get the local timezone offset in minutes
+    const offset = date.getTimezoneOffset();
+
+    // Adjust date by subtracting the offset
+    const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
+
+    // Convert to ISO format
+    return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
+  };
+
+  const checkInDate = formatDateToISO(this.$route.query.fromDate);
+  const checkOutDate = formatDateToISO(this.$route.query.toDate);
+  const discountCode = this.$route.query.discount;
+
+  // Temporarily setting taxes and discounts to empty arrays
+  const taxes = [];
+  const discounts = [];
+  const selectedActivities = this.activities
+    .filter((activity) => activity.checked)
+    .map((activity) => ({
+      activity_id: activity.id,
+      activity_name: activity.name,
+    }));
+
+  const agentInfo = this.showGuestInfo
+    ? {
+        first_name: this.form.first_name || "",
+        last_name: this.form.last_name || "",
+        email: this.form.email || "",
+        telephone: this.form.telephone || "",
+        address: this.form.address || "",
+        nationality: this.form.nationality || "",
+      }
+    : {
+        first_name: "",
+        last_name: "",
+        email: "",
+        telephone: "",
+        address: "",
+        nationality: "",
       };
 
-      const checkInDate = formatDateToISO(this.$route.query.fromDate);
-      const checkOutDate = formatDateToISO(this.$route.query.toDate);
-      const discountCode = this.$route.query.discount;
+  return {
+    check_in: checkInDate,
+    check_out: checkOutDate,
+    booking_type: "website",
+    rooms: this.selectedRoomNumbers.map((roomNumber) => {
+      const room = this.rooms.find((r) => r.room_number === roomNumber);
+      const roomDetail = this.roomDetails[roomNumber] || {};
 
-      // Temporarily setting taxes and discounts to empty arrays
-      const taxes = [];
-      const discounts = [];
-      const selectedActivities = this.activities
-        .filter((activity) => activity.checked)
-        .map((activity) => ({
-          activity_id: activity.id,
-          activity_name: activity.name,
-        }));
+      // Get the randomized category for this room
+      const randomizedCategory = this.randomizedCategories[roomNumber] || room.category;
 
-      const agentInfo = this.showGuestInfo
-        ? {
-            first_name: this.form.first_name || "",
-            last_name: this.form.last_name || "",
-            email: this.form.email || "",
-            telephone: this.form.telephone || "",
-            address: this.form.address || "",
-            nationality: this.form.nationality || "",
-          }
-        : {
-            first_name: "",
-            last_name: "",
-            email: "",
-            telephone: "",
-            address: "",
-            nationality: "",
-          };
+      // Get the number of children and infants to properly slice their respective age arrays
+      const childrenCount = roomDetail.children || 0;
+      const infantsCount = roomDetail.infants || 0;
 
       return {
-        check_in: checkInDate,
-        check_out: checkOutDate,
-        booking_type: "website",
-        rooms: this.selectedRoomNumbers.map((roomNumber) => {
-          const room = this.rooms.find((r) => r.room_number === roomNumber);
-          const roomDetail = this.roomDetails[roomNumber] || {};
-
-          return {
-            room_id: room.id,
-            room_number: room.room_number,
-            category: roomDetail.selectedCategory || room.category || "unknown", // Include selected category
-            adults: roomDetail.adults || 0,
-            children:
-              roomDetail.childrenAges?.length > 0
-                ? roomDetail.childrenAges
-                : [],
-            infants:
-              roomDetail.infantAges?.length > 0 ? roomDetail.infantAges : [],
-            meal_plan: roomDetail.mealPlan || "room_only",
-            starting_meals_with: roomDetail.mealTime || "",
-            view: this.$route.query.view || "default",
-          };
-        }),
-        taxes,
-        discounts,
-        activities: selectedActivities,
-        discount_code: discountCode || "",
-        total_taxes: this.total_rate?.total_tax_amount || 0,
-        total_rooms_charge: this.total_rate?.total_rooms_amount || 0,
-        total_meal_plan_amount: this.total_rate?.total_meal_plan_amount || 0,
-        total_activities_charge: this.total_rate?.total_activities_amount || 0,
-        total_discount_amount: this.total_rate?.total_discount_amount || 0,
-        total_amount: this.total_rate?.total_amount || 0,
-        total_additional_services_amount: 0,
-        payment_method: "sueen_web",
-        is_partial_payment: false,
-        paid_amount: 0,
-        agent_info: agentInfo,
-        guest_info: {
-          first_name: this.form.guest_info.first_name,
-          last_name: this.form.guest_info.last_name,
-          email: this.form.guest_info.email,
-          telephone: this.form.guest_info.telephone,
-          address: this.form.guest_info.guest_address,
-          nationality: this.form.guest_info.nationality,
-          identification_type: this.form?.guest_info?.identification_type || "",
-          identification_no: this.form?.guest_info?.identification_no || "",
-          gender: this.form?.guest_info?.gender || "",
-          profile_image: this.form?.guest_info?.profile_image || [],
-          identification_issue_date: this.form?.guest_info
-            ?.identification_issue_date
-            ? this.formatDatePayload(
-                this.form.guest_info.identification_issue_date
-              )
-            : null,
-          dob: this.form?.guest_info?.dob
-            ? this.formatDatePayload(this.form.guest_info.dob)
-            : null,
-        },
-        booking_note: this.booking_note || "",
-        payment_note: this.payment_note || "",
+        room_id: room.id,
+        room_number: room.room_number,
+        category: randomizedCategory, // Use randomized category here
+        adults: roomDetail.adults || 0,
+        children:
+          childrenCount > 0
+            ? (roomDetail.childrenAges || []).slice(0, childrenCount) // Ensure only valid number of children ages are passed
+            : [],
+        infants:
+          infantsCount > 0
+            ? (roomDetail.infantAges || []).slice(0, infantsCount) // Ensure only valid number of infant ages are passed
+            : [],
+        meal_plan: roomDetail.mealPlan || "room_only",
+        starting_meals_with: roomDetail.mealTime || "",
+        view: this.$route.query.view || "default",
       };
+    }),
+    taxes,
+    discounts,
+    activities: selectedActivities,
+    discount_code: discountCode || "",
+    total_taxes: this.total_rate?.total_tax_amount || 0,
+    total_rooms_charge: this.total_rate?.total_rooms_amount || 0,
+    total_meal_plan_amount: this.total_rate?.total_meal_plan_amount || 0,
+    total_activities_charge: this.total_rate?.total_activities_amount || 0,
+    total_discount_amount: this.total_rate?.total_discount_amount || 0,
+    total_amount: this.total_rate?.total_amount || 0,
+    total_additional_services_amount: 0,
+    payment_method: "sueen_web",
+    is_partial_payment: false,
+    paid_amount: 0,
+    agent_info: agentInfo,
+    guest_info: {
+      first_name: this.form.guest_info.first_name,
+      last_name: this.form.guest_info.last_name,
+      email: this.form.guest_info.email,
+      telephone: this.form.guest_info.telephone,
+      address: this.form.guest_info.guest_address,
+      nationality: this.form.guest_info.nationality,
+      identification_type: this.form?.guest_info?.identification_type || "",
+      identification_no: this.form?.guest_info?.identification_no || "",
+      gender: this.form?.guest_info?.gender || "",
+      profile_image: this.form?.guest_info?.profile_image || [],
+      identification_issue_date: this.form.guest_info?.identification_issue_date
+        ? this.formatDatePayload(this.form.guest_info.identification_issue_date)
+        : null,
+      dob: this.form.guest_info?.dob
+        ? this.formatDatePayload(this.form.guest_info.dob)
+        : null,
     },
+    booking_note: this.booking_note || "",
+    payment_note: this.payment_note || "",
+  };
+},
 
     async submitPayload() {
       try {
@@ -1918,31 +2023,34 @@ export default {
       });
     },
     adultOptions(room) {
-      const roomDetails = this.rooms.find((r) => r.room_number === room);
-      const selectedCategory = this.roomDetails[room]?.selectedCategory;
+  const roomDetails = this.rooms.find((r) => r.room_number === room);
+  const randomizedCategory = this.randomizedRoomCategories[room] || roomDetails.category; 
 
-      let maxAdults;
-      if (selectedCategory === roomDetails.secondary_category) {
-        maxAdults = roomDetails.secondary_max_adults;
-      } else {
-        maxAdults = roomDetails.max_adults;
-      }
+  let maxAdults;
+  if (randomizedCategory === roomDetails.secondary_category) {
+    maxAdults = roomDetails.secondary_max_adults;
+  } else {
+    maxAdults = roomDetails.max_adults;
+  }
 
-      return Array.from({ length: maxAdults }, (_, i) => i + 1);
-    },
-    childOptions(room) {
-      const roomDetails = this.rooms.find((r) => r.room_number === room);
-      const selectedCategory = this.roomDetails[room]?.selectedCategory;
+  return Array.from({ length: maxAdults }, (_, i) => i + 1);
+}
 
-      let maxChildren;
-      if (selectedCategory === roomDetails.secondary_category) {
-        maxChildren = roomDetails.secondary_max_childs;
-      } else {
-        maxChildren = roomDetails.max_childs;
-      }
+,
+childOptions(room) {
+  const roomDetails = this.rooms.find((r) => r.room_number === room);
+  const randomizedCategory = this.randomizedRoomCategories[room] || roomDetails.category; 
 
-      return Array.from({ length: maxChildren + 1 }, (_, i) => i); // Including 0 to maxChildren
-    },
+  let maxChildren;
+  if (randomizedCategory === roomDetails.secondary_category) {
+    maxChildren = roomDetails.secondary_max_childs;
+  } else {
+    maxChildren = roomDetails.max_childs;
+  }
+
+  return Array.from({ length: maxChildren + 1 }, (_, i) => i);
+}
+,
     scrollToPaymentInfo() {
       this.$nextTick(() => {
         this.$refs.paymentInfoRef.scrollIntoView({ behavior: "smooth" });
