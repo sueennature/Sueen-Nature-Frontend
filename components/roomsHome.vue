@@ -23,9 +23,9 @@
           :alt="`${category.category} Room image`"
         />
         <figcaption class="absolute px-4 text-lg text-white bottom-6">
-          <h5 class="text-base font-semibold text-white">
+          <!-- <h5 class="text-base font-semibold text-white">
             LKR {{ category.rooms[0].room_only || 'N/A' }}
-          </h5>
+          </h5> -->
           <h2 class="text-3xl text-white">{{ category.category }} Room</h2>
         </figcaption>
       </figure>
