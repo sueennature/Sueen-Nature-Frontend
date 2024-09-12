@@ -5,7 +5,7 @@
       We invite you to experience the essence of tranquility and luxury at Sueen Nature Resort, where every stay is an unforgettable journey.
     </h2>
     <p class="text-base text-gray-300 mt-2 text-center">
-      Welcome to Sueen Nature Resort Established in 2024, Sueen Nature Resort is a premier hospitality destination founded by Mr. Dinusha Sampath Liyanage, Managing Director of Sampath Super Trading (PVT) Ltd. Nestled in the tranquil surroundings of Baduraliya, our resort offers an unparalleled retreat where guests can indulge in luxury amidst nature's beauty.
+      Welcome to Sueen Nature Resort Established in 2024, Sueen Nature Resort is a premier hospitality destination founded by Mr. Dinusha Sampath Liyanage, Managing Director of Sampath Super Property Developments & Invesments (Pvt) Ltd. Nestled in the tranquil surroundings of Baduraliya, our resort offers an unparalleled retreat where guests can indulge in luxury amidst nature's beauty.
     </p>
     
     <h5 class="text-black-200 text-4xl text-center my-8">

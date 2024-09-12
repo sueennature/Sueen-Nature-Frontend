@@ -11,7 +11,7 @@
         Experience the epitome of comfort and luxury amidst the tranquil surroundings of Sueen Nature Resort.
       </h2>
       <p class="text-gray-300 md:text-xl text-lg text-center mt-10 max-w-[70ch] mx-auto">
-        Our thoughtfully designed rooms and suites offer a perfect blend of contemporary elegance and natural charm, providing guests with an unforgettable retreat away from the hustle and bustle of everyday life. Whether you choose to wake up to the serene beauty of the lake or the majestic mountains, our rooms and suites at Sueen Nature Resort promise a blissful retreat amidst nature's splendor. Immerse yourself in comfort, style, and natural beauty during your stay with us.
+        Our thoughtfully designed rooms and suites offer a perfect blend of contemporary elegance and natural charm, providing guests with an unforgettable retreat away from the hustle and bustle of everyday life. Whether you choose to wake up to the serene beauty of the lake or the majestic mountains, our rooms and suites at Sueen Nature Resort premise a blissful retreat amidst nature's splendor. Immerse yourself in comfort, style, and natural beauty during your stay with us.
       </p>
       <div class="flex flex-col items-center justify-center">
         <div v-for="roomType in room_types" :key="roomType.id" class="max-w-[70vh] flex flex-col">

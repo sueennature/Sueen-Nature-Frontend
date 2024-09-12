@@ -186,9 +186,9 @@
             </g>
           </svg>
           <a
-            href="tel:+94715840000"
+            href="tel:+94343307500"
             class="text-stone-700 hover:underline text-base"
-            >+(94) 71 584 0000
+            >+(94) 34 3307500
 
           </a>
         </div>
@@ -228,7 +228,7 @@
           <a
             href="https://maps.app.goo.gl/TaHXpW9rRsbYadZa8"
             class="text-stone-700 hover:underline text-base"
-            >Sueen Nature, Palangahawatta, Morapitiya Road, Palanda, Baduraliya,
+            >Sueen Nature, Palangahawatta, Morapitiya Road, Palenda, Baduraliya,
             Sri Lanka</a
           >
         </div>

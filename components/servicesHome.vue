@@ -294,7 +294,7 @@
           </h3>
           <h2 class="text-black-100 text-4xl pt-2">Sports & Games</h2>
           <p class="text-base text-black-50 pt-2">
-            At Sueen Nature Resort, embrace leisure with walks, bird watching, and sports like tennis and volleyball. Thrill-seekers can explore jungle treks and river rafting, while team building activities unite guests. From cricket to football, there's something for everyone to enjoy.
+            At Sueen Nature Resort, embrace leisure with walks, bird watching, and sports like tennis,badminton and volleyball. Thrill-seekers can explore jungle treks and river rafting, while team building activities unite guests. From cricket to football, there's something for everyone to enjoy.
           </p>
           <a href="./services">
             <button

@@ -367,7 +367,7 @@
                     >
                       <span class="font-bold">Sports Facilities: </span> Take
                       advantage of our state-of-the-art sports facilities,
-                      including tennis courts, volleyball courts, and cricket
+                      including tennis courts, volleyball courts, badminton courts and cricket
                       pitches, for friendly matches and competitive games.
                     </p>
                     <p
