@@ -303,57 +303,57 @@
         <a
           href="/"
           aria-current="true"
-          class="text-white font-semibold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Home
         </a>
         <a
           href="/about"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           About
         </a>
 
         <a
           href="/additionalActivites"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
           >Activites</a
         >
 
         <a
           href="/services"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Services
         </a>
         <a
           href="/news"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           News
         </a>
         <a
           href="/rooms"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Rooms
         </a>
         <a
           href="/gallery"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Gallery
         </a>
         <a
           href="/contact"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Contact
         </a>
         <a
           v-if="userEmail && authToken"
           @click.prevent="redirectToDashboard"
-          class="text-white font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Profile
         </a>
