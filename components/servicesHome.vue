@@ -35,7 +35,9 @@
           <swiper
             :spaceBetween="30"
             :centeredSlides="true"
-            :autoplay="{ delay: 2500, disableOnInteraction: false }"
+            :effect="'fade'"
+            :speed=2000
+            :autoplay="{ delay: 4000, disableOnInteraction: false }"
             :pagination="{
               clickable: true,
             }"
@@ -162,7 +164,9 @@
           <swiper
             :spaceBetween="30"
             :centeredSlides="true"
-            :autoplay="{ delay: 2500, disableOnInteraction: false }"
+            :effect="'fade'"
+            :speed=2000
+            :autoplay="{ delay: 4000, disableOnInteraction: false }"
             :pagination="{
               clickable: true,
             }"
@@ -309,7 +313,9 @@
           <swiper
             :spaceBetween="30"
             :centeredSlides="true"
-            :autoplay="{ delay: 2500, disableOnInteraction: false }"
+            :effect="'fade'"
+            :speed=2000
+            :autoplay="{ delay: 4000, disableOnInteraction: false }"
             :pagination="{
               clickable: true,
             }"
@@ -379,16 +385,18 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation,EffectFade } from "swiper/modules";
 
 // You can define your modules directly here
-const modules = [Autoplay, Pagination, Navigation];
+const modules = [Autoplay, Pagination, Navigation,EffectFade];
 </script>
 
 <style scoped>
 @import "swiper/css";
 @import "swiper/css/pagination";
 @import "swiper/css/navigation";
+@import 'swiper/css/effect-fade';
+
 
 h2 {
   font-family: "Philosopher", sans-serif;

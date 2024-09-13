@@ -600,18 +600,52 @@
 
     <!-- image gallery -->
     <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-36">
-      <img src="/img/IMG_0302.jpg" alt="servicesImg" class="max-w-full max-h-full" />
-      <img src="/img/IMG_0712.jpg" alt="servicesImg" class="max-w-full max-h-full" />
-      <img src="/img/CM4A8505.jpg" alt="servicesImg" class="max-w-full max-h-full" />
-      <img src="/img/IMG_0675.jpg" alt="servicesImg" class="max-w-full max-h-full" />
-      <img src="/img/IMG_0443.jpg" alt="servicesImg" class="max-w-full max-h-full" />
-      <img src="/img/IMG_0698.jpg" alt="servicesImg" class="max-w-full max-h-full" />
+      <img
+      v-for="(url, idx) in servicesImages"
+      :key="idx"
+      :src="getImageUrl(url)"
+      alt="servicesImg"
+      class="max-w-full max-h-full"
+    />
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const servicesImages = ref([]); // Store the media URLs with "Services" tag
+
+// Fetch carousels with the "Services" tag
+const fetchCarousels = async () => {
+  const runtimeConfig = useRuntimeConfig();
+  try {
+    const response = await axios.get('https://api.sueennature.com/carousels/?skip=0&limit=100', {
+      headers: {
+        'x-api-key': runtimeConfig.public.DATABASE_ID, // Replace with your actual API key
+        "Content-Type": "application/json",
+      }
+    });
+
+    // Filter carousels with "Services" tag and flatten media URLs
+    servicesImages.value = response.data.data
+      .filter(carousel => carousel.tags && carousel.tags.includes('Services'))
+      .flatMap(carousel => carousel.media_urls);
+  } catch (error) {
+    console.error('Error fetching carousels:', error);
+  }
+};
+
+// Helper function to construct the image URL
+const getImageUrl = (path) => `https://api.sueennature.com/${path}`;
+
+// Fetch carousels when the component is mounted
+onMounted(() => {
+  fetchCarousels();
+});
 </script>
+
 
 <style scoped>
 h3,
