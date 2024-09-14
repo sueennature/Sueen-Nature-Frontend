@@ -291,6 +291,8 @@ export default defineComponent({
 
     const navigateToRoomTypePage = (roomTypeName) => {
       // Update the URL without reloading the page
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
       router.push({ query: { name: roomTypeName } });
       
       // Fetch data for the new room type

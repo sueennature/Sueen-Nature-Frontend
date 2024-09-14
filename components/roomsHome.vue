@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:container px-4 py-20">
+  <div class=" px-4 py-20 ">
     <div class="flex gap-4 items-center justify-center">
       <h2 class="uppercase text-black-100 text-4xl text-center">
         Rooms & Services
@@ -9,27 +9,45 @@
     <h3 class="text-black-50 text-xl pt-1 text-center tracking-widest uppercase">
       Sueen Nature Resort
     </h3>
+    <div class="xl:grid xl:grid-cols-5  lg:grid lg:grid-cols-1 md:grid md:grid-cols-1 grid grid-cols-1 justify-items-center gap-4 my-10">
+  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter">
+    <img class="rounded-0 w-64 max-w-md h-60" :src="`https://api.sueennature.com/${room_carousels[1]}`" :alt="`Room image`" />
+    <figcaption class="absolute px-4 text-lg text-white bottom-6">
+      <h2 class="text-3xl text-white">Single Room</h2>
+    </figcaption>
+  </figure>
 
-    <div class="lg:flex lg:flex-row grid grid-cols-1 lg:justify-center lg:items-baseline justify-items-center gap-6 my-10">
-      <figure
-        v-for="(category, index) in groupedRoomTypes"
-        :key="index"
-        class="relative max-w-sm transition-all duration-300 cursor-pointer filter"
-      >
-        <img
-          v-if="category.rooms[0].images && category.rooms[0].images.length > 0"
-          class="rounded-0 w-72 max-w-md h-60"
-          :src="`https://api.sueennature.com/${category.rooms[0].images[0]}`"
-          :alt="`${category.category} Room image`"
-        />
-        <figcaption class="absolute px-4 text-lg text-white bottom-6">
-          <!-- <h5 class="text-base font-semibold text-white">
-            LKR {{ category.rooms[0].room_only || 'N/A' }}
-          </h5> -->
-          <h2 class="text-3xl text-white">{{ category.category }} Room</h2>
-        </figcaption>
-      </figure>
-    </div>
+  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter">
+    <img class="rounded-0 w-64 max-w-md h-60" :src="`https://api.sueennature.com/${room_carousels[3]}`" :alt="`Room image`" />
+    <figcaption class="absolute px-4 text-lg text-white bottom-6">
+      <h2 class="text-3xl text-white">Double Room</h2>
+    </figcaption>
+  </figure>
+
+  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter">
+    <img class="rounded-0 w-64 max-w-md h-60" :src="`https://api.sueennature.com/${room_carousels[4]}`" :alt="`Room image`" />
+    <figcaption class="absolute px-4 text-lg text-white bottom-6">
+      <h2 class="text-3xl text-white">Deluxe Room</h2>
+    </figcaption>
+  </figure>
+
+  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter">
+    <img class="rounded-0 w-64 max-w-md h-60" :src="`https://api.sueennature.com/${room_carousels[0]}`" :alt="`Room image`" />
+    <figcaption class="absolute px-4 text-lg text-white bottom-6">
+      <h2 class="text-3xl text-white">Triple Room</h2>
+    </figcaption>
+  </figure>
+
+  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter">
+    <img class="rounded-0 w-64 max-w-md h-60" :src="`https://api.sueennature.com/${room_carousels[2]}`" :alt="`Room image`" />
+    <figcaption class="absolute px-4 text-lg text-white bottom-6">
+      <h2 class="text-3xl text-white">Family Room</h2>
+    </figcaption>
+  </figure>
+</div>
+
+
+   
 
     <div class="flex justify-center items-center">
       <a href="./rooms">
@@ -47,27 +65,15 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 
-const room_types = ref([]);
 const runtimeConfig = useRuntimeConfig();
+const room_carousels = ref([]);
 
-// Group rooms by their category
-const groupedRoomTypes = computed(() => {
-  const grouped = {};
-  room_types.value.forEach((type) => {
-    if (!grouped[type.category]) {
-      grouped[type.category] = {
-        category: type.category,
-        rooms: []
-      };
-    }
-    grouped[type.category].rooms.push(...type.rooms);
-  });
-  return Object.values(grouped);
-});
 
-async function fetchRoomTypes() {
+
+
+async function fetchRoomCarousels() {
   try {
-    const response = await fetch("https://api.sueennature.com/rooms/types", {
+    const response = await fetch("https://api.sueennature.com/carousels/?skip=0&limit=10", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -75,18 +81,21 @@ async function fetchRoomTypes() {
       },
     });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+  
     const data = await response.json();
-    room_types.value = data.room_types || [];
+    console.log("ROOM", data.data)
+    const roomsMedia = data.data.find(entry => entry.title === 'Rooms');
+    if (roomsMedia) {
+    room_carousels.value = roomsMedia.media_urls;
+    console.log("TEST, room_C", room_carousels.value)
+}
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
   }
 }
 
 onMounted(() => {
-  fetchRoomTypes();
+  fetchRoomCarousels();
 });
 </script>
 
