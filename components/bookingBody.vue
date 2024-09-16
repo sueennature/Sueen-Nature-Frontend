@@ -11,7 +11,7 @@
       <div
         class="flex flex-col lg-flex-row xl:flex-row items-start justify-between w-full gap-8"
       >
-        <!-- <div
+       <div
           v-if="discounts.length > 0"
           class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
         >
@@ -24,21 +24,19 @@
             :key="discount.id"
           >
             <div class="w-full">
-              <div class="flex items-center w-full gap-4">
-                <div>{{ discount.name }}</div>
-                <div>:</div>
+              <div class="flex items-center justify-between w-full">
+                <div>{{ discount.name }}  :</div>
                 <div class="font-bold">{{ discount.percentage }}%</div>
               </div>
               <div class="flex items-center w-full justify-between mt-4">
                 <div class="font-bold">
-                  {{ formatDate(discount.start_date) }}
+                  {{ formatDate(discount.start_date) }} :
                 </div>
-                <div>-</div>
                 <div class="font-bold">{{ formatDate(discount.end_date) }}</div>
               </div>
             </div>
           </div>
-        </div> -->
+        </div> 
         <!-- Activities -->
 
         <div
@@ -146,12 +144,13 @@
 
           <div class="overflow-x-auto">
             <table class="min-w-full bg-white shadow-lg border border-gray-100">
-              <thead>
+              <thead >
                 <tr>
                   <th class="py-2 px-4 border-b min-w-[150px]">Room Number</th>
                   <th class="py-2 px-4 border-b min-w-[200px]">Category</th>
                   <th class="py-2 px-4 border-b min-w-[100px]">Adults</th>
-                  <th class="py-2 px-4 border-b min-w-[100px]">Children</th>
+                  <th class="py-2 px-4 border-b min-w-[100px]"  
+                  >Children</th>
                   <th class="py-2 px-4 border-b min-w-[100px]">Infants</th>
                   <th class="py-2 px-4 border-b min-w-[200px]">Meal Plan</th>
                   <th class="py-2 px-4 border-b min-w-[120px]">
@@ -199,14 +198,12 @@
                     </div>
                   </td>
                   <td class="py-2 px-4 min-w-[100px]">
-                    <div
-                    
-                      class="mb-2"
-                    >
+                    <div class="mb-2">
+
                       <select
                         id="children-{{ room }}"
                         v-model="roomDetails[room].children"
-                        class="border border-gray-300 p-2 rounded w-full"
+                      class="p-2 rounded w-full"
                       >
                         <option
                           v-for="num in childOptions(room)"
@@ -258,19 +255,21 @@
                       "
                       class="mb-2"
                     >
-                      <select
-                        id="infants-{{ room }}"
-                        v-model="roomDetails[room].infants"
-                        class="border border-gray-300 p-2 rounded w-full"
-                      >
-                        <option
-                          v-for="num in [0, 1, 2]"
-                          :key="num"
-                          :value="num"
-                        >
-                          {{ num }}
-                        </option>
-                      </select>
+                    <select
+  id="infants-{{ room }}"
+  v-model="roomDetails[room].infants"
+  class="p-2 rounded w-full"
+>
+  <option
+    v-for="num in (randomizedRoomCategories[room] === 'Single' ? [0,1] : [0, 1, 2])"
+    :key="num"
+    :value="num"
+  >
+    {{ num }}
+  </option>
+</select>
+
+
 
                       <div v-if="roomDetails[room].infants > 0" class="mt-4">
                         <div
@@ -1589,6 +1588,10 @@ export default {
     const urlCategories = this.$route.query.categories;
     return urlCategories ? urlCategories.split(",") : [];
   },
+  shouldShowChildrenColumn() {
+    console.log("first")
+    return this.rooms.some(room => this.randomizedRoomCategories[room] !== 'Single');
+  },
   
   // Method to get random category, ensuring it is consistent
   roomCategories() {
@@ -1768,8 +1771,18 @@ export default {
   const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
   const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
   const discountCode = this.$route.query.discount;
+
   const taxes = [];
-  const discounts = [];
+  const discounts = []; 
+  const latestDiscount = this.discounts?.length > 0 ? this.discounts[0] : null;
+
+  if (latestDiscount) {
+    discounts.push({
+      discount_id: latestDiscount.id,
+      
+    });
+  }
+
   const selectedActivities = this.activities
     .filter((activity) => activity.checked)
     .map((activity) => ({ activity_id: activity.id }));
@@ -1799,11 +1812,12 @@ export default {
       };
     }),
     taxes: taxes,
-    discounts: discounts,
+    discounts: discounts, // Pass the updated discounts array with the latest discount
     activities: selectedActivities,
     discount_code: discountCode,
   };
 }
+
 
 
 ,
@@ -1827,9 +1841,23 @@ preparePayloadBooking() {
   const checkOutDate = formatDateToISO(this.$route.query.toDate);
   const discountCode = this.$route.query.discount;
 
-  // Temporarily setting taxes and discounts to empty arrays
+  // Temporarily setting taxes to an empty array
   const taxes = [];
+
+  // Initialize discounts array
   const discounts = [];
+
+  // Get latest discount (for example, the most recent one in the list)
+  const latestDiscount = this.discounts?.length > 0 ? this.discounts[0] : null;
+
+  if (latestDiscount) {
+    // Push the latest discount into the discounts array
+    discounts.push({
+      discount_id: latestDiscount.id,
+ 
+    });
+  }
+
   const selectedActivities = this.activities
     .filter((activity) => activity.checked)
     .map((activity) => ({
@@ -1889,7 +1917,7 @@ preparePayloadBooking() {
       };
     }),
     taxes,
-    discounts,
+    discounts, // Pass the updated discounts array with the latest discount
     activities: selectedActivities,
     discount_code: discountCode || "",
     total_taxes: this.total_rate?.total_tax_amount || 0,
@@ -1924,7 +1952,8 @@ preparePayloadBooking() {
     booking_note: this.booking_note || "",
     payment_note: this.payment_note || "",
   };
-},
+}
+,
 
     async submitPayload() {
       try {
