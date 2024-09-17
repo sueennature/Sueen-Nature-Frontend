@@ -82,12 +82,11 @@
               class="bg-white border-black-200 text-black-200 text-opacity-60 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             >
-            <option value="" disabled selected hidden>Select the room</option>
+              <option value="" disabled selected hidden>Select the room</option>
               <option value="Deluxe Room">Deluxe Room</option>
               <option value="Single Room">Single Room</option>
               <option value="Double Room">Double Room</option>
             </select>
-
           </div>
         </div>
 
@@ -103,6 +102,23 @@
           class="block p-2.5 w-full text-sm text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm bg-white border-black-200 rounded-0 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your Message"
         ></textarea>
+        <div class="mb-4">
+          <label
+            for="arithmetic"
+            class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
+          >
+            Solve this:
+            <span id="arithmetic-question">{{ arithmeticQuestion }}</span>
+          </label>
+          <input
+            type="text"
+            id="arithmetic"
+            v-model="formData.arithmetic"
+            class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Your Answer"
+            required
+          />
+        </div>
 
         <button
           type="submit"
@@ -222,7 +238,6 @@
             href="tel:+94343307500"
             class="text-stone-700 hover:underline text-base"
             >+(94) 34 3307500
-
           </a>
         </div>
       </div>
@@ -302,7 +317,6 @@
             href="https://wa.me/+94715840000"
             class="text-stone-700 hover:underline text-base"
             >+(94) 71 584 0000</a
-
           >
         </div>
       </div>
@@ -311,54 +325,107 @@
 </template>
 
 <script>
-import {toast} from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
-import axios from 'axios';
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+import axios from "axios";
 
 export default {
   data() {
     return {
-      formData:{
-        name: '',
-        email: '',
-        phone: '',
-        room:"",
-        message: ''
-      }
-     
-    }
+      formData: {
+        name: "",
+        email: "",
+        phone: "",
+        room: "",
+        message: "",
+        arithmetic: "",
+      },
+      arithmeticQuestion: "",
+      arithmeticAnswer: 0,
+      questions: [
+        { question: "5 + 3", answer: 8 },
+        { question: "10 - 4", answer: 6 },
+        { question: "7 * 2", answer: 14 },
+        { question: "9 / 3", answer: 3 },
+        { question: "6 + 7", answer: 13 },
+        { question: "8 - 5", answer: 3 },
+        { question: "4 * 3", answer: 12 },
+        { question: "12 / 4", answer: 3 },
+        { question: "3 + 9", answer: 12 },
+        { question: "15 - 7", answer: 8 },
+        { question: "9 + 7", answer: 16 },
+        { question: "14 - 6", answer: 8 },
+        { question: "8 * 4", answer: 32 },
+        { question: "16 / 4", answer: 4 },
+      ],
+    };
   },
   methods: {
-
-    async submitForm(){
-      if (!this.formData.room) {
-    toast.error("Please select a room");
-    return; 
-  }
-      try {
-        const response = await axios.post('https://admin.sueennature.com/api/contact', {
-          name: this.formData.name,
-          email: this.formData.email,
-          message: this.formData.message,
-          room: this.formData.room,
-          phoneNumber: this.formData.phone
-        })
-        toast.success("Form Submiited Successfully")
-        console.log(response.message)
-        this.resetForm()
-      } catch (error) {
-        toast.error("Something went wrong")
-        console.error(error)
-      }
+    generateArithmeticQuestion() {
+      const randomIndex = Math.floor(Math.random() * this.questions.length);
+      const selectedQuestion = this.questions[randomIndex];
+      this.arithmeticQuestion = selectedQuestion.question;
+      this.arithmeticAnswer = selectedQuestion.answer;
     },
-    resetForm(){
-      this.formData.name = '';
-      this.formData.email = '';
-      this.formData.phone = '';
-      this.formData.room = 'Deluxe Room';
-      this.formData.message = '';
-    }
-  }
+    async submitForm() {
+      if (parseInt(this.formData.arithmetic, 10) !== this.arithmeticAnswer) {
+        toast.error("Arithmetic challenge failed. Please try again.");
+        this.generateArithmeticQuestion();
+        return;
+      }
+      if (!this.formData.arithmetic) {
+        toast.error("Please fill to proceed further");
+        return;
+      }
+      if (
+        !this.formData.name |
+        !this.formData.email |
+        !this.formData.message |
+        !this.formData.phone |
+        !this.formData.room
+      ) {
+        toast.error("Please fill all fields");
+        return;
+      }
+
+      try {
+        const response = await axios.post(
+          "https://api.sueennature.com/users/contact",
+          {
+            name: this.formData.name,
+            email: this.formData.email,
+            message: this.formData.message,
+            room: this.formData.room,
+            phone_number: this.formData.phone,
+          },
+          {
+            headers: {
+              "x-api-key": this.$config.public.DATABASE_ID,
+            },
+          }
+        );
+
+        toast.success("Request is Submitted Successfully");
+        console.log(response.data.message);
+        this.resetForm();
+      } catch (error) {
+        toast.error("Something went wrong");
+        console.error(error);
+      }
+      this.generateArithmeticQuestion();
+    },
+
+    resetForm() {
+      this.formData.name = "";
+      this.formData.email = "";
+      this.formData.phone = "";
+      this.formData.room = "Deluxe Room";
+      this.formData.message = "";
+    },
+  },
+  mounted() {
+    this.generateArithmeticQuestion();
+  },
 };
 </script>
 

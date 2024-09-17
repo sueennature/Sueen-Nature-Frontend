@@ -1,2555 +1,385 @@
 <template>
-  <div class="sm:container px-4 my-20">
-    <h2 class="text-black-100 md:text-4xl text-3xl text-center">
-      Check Availability
-    </h2>
-    <div class="mt-8">
-      <CheckoutAvailability />
-    </div>
-
-    <div>
-      <div
-        class="flex flex-col lg-flex-row xl:flex-row items-start justify-between w-full gap-8"
-      >
-        <!-- <div
-          v-if="discounts.length > 0"
-          class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14"
+  <div
+    class="lg:flex lg:flex-row grid grid-cols-1 justify-center justify-items-center gap-8 my-10 p-4 lg:p-0"
+  >
+    <div
+      class="w-full p-4 max-w-lg bg-white border border-gray-200 rounded-none shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <form class="space-y-6" @submit.prevent="submitForm">
+        <h3
+          class="text-2xl font-bold text-stone-700 dark:text-white text-center"
         >
-          <h6 class="text-black-200 xl:text-lg text-base font-bold">
-            Discounts
-          </h6>
-          <div
-            class="flex items-center mb-4 mt-8 w-full"
-            v-for="(discount, index) in discounts"
-            :key="discount.id"
-          >
-            <div class="w-full">
-              <div class="flex items-center w-full gap-4">
-                <div>{{ discount.name }}</div>
-                <div>:</div>
-                <div class="font-bold">{{ discount.percentage }}%</div>
-              </div>
-              <div class="flex items-center w-full justify-between mt-4">
-                <div class="font-bold">
-                  {{ formatDate(discount.start_date) }}
-                </div>
-                <div>-</div>
-                <div class="font-bold">{{ formatDate(discount.end_date) }}</div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        <!-- Activities -->
-
-        <div
-          class="w-full p-6 bg-gray-800 border border-gray-200 rounded-lg shadow mt-14"
+          Get in Touch
+        </h3>
+        <h2
+          class="text-6xl font-bold text-stone-700 dark:text-white text-center my-6"
         >
-          <h6 class="text-black-200 xl:text-lg text-base font-bold">
-            Activities
-          </h6>
-          <div
-            class="flex items-center mb-4 mt-8"
-            v-for="(activity, index) in activities"
-            :key="activity.id"
-          >
-            <input
-              :id="'checkbox-' + activity.id"
-              v-model="activity.checked"
-              type="checkbox"
-              :value="activity.id"
-              @change="handleActivityChange"
-              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+          Book Your Stay
+        </h2>
+        <p
+          class="text-base font-bold text-black-50 dark:text-white text-center my-8"
+        >
+          Feel free to reach out to us for any inquiries, reservations, or
+          feedback. Our dedicated team at Sueen Nature Resort is here to assist
+          you.
+        </p>
 
+        <div class="grid gap-x-4 mb-6 grid-cols-2 gap-y-6">
+          <div>
             <label
-              :for="'checkbox-' + activity.id"
-              class="ms-2 text-[17px] font-medium text-gray-900 dark:text-gray-300 flex items-center justify-between w-full"
+              for="name"
+              class="block mb-2 text-sm text-black-200 font-bold dark:text-white"
+              >Name</label
             >
-              {{ activity.name }} -
-              <strong>LKR {{ formatPrice(activity.price) }}</strong>
-            </label>
-          </div>
-
-          <!-- <img
-            :src="`https://admin.sueennature.com/uploads/${activity.image}`"
-            alt="roomImg"
-            class="w-full object-cover"
-          /> -->
-        </div>
-      </div>
-      <div class="flex flex-col items-start w-full mt-4 gap-4">
-        <div class="font-bold text-xl mt-10">
-          Select a rooms to further process
-        </div>
-        <div class="mt-4 w-full">
-          <h4 class="text-lg font-bold">Available Rooms</h4>
-
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div
-  v-for="(room, index) in rooms"
-  :key="room.room_number"
-  :value="room.room_number"
-  class="w-full flex items-start"
-  :disabled="selectedRoomNumbers.includes(room.room_number)"
->
-  <span class="border flex flex-col border-gray-700 rounded-lg p-2 w-40">
-    <span><strong>Room:</strong> {{ room.room_number }}</span>
-    {{ " " }}
-    <span>
-      <strong>Category:</strong>
-      {{ randomizedRoomCategories[room.room_number] || 'Unknown' }}
-    </span>
-    {{ " " }}
-    <span><strong>View:</strong> {{ room.view }}</span>
-  </span>
-</div>
-
-          </div>
-
-          <select
-            v-model="selectedRoom"
-            @change="toggleRoom"
-            class="w-72 border border-gray-600 rounded-lg mt-8"
-          >
-            <option value="null" disabled>Select a room</option>
-            <option
-              v-for="room in rooms"
-              :key="room.room_number"
-              :value="room.room_number"
-              :disabled="selectedRoomNumbers.includes(room.room_number)"
-            >
-              <span class="flex justify-between w-full gap-4">
-                <span>Room: {{ room.room_number }}</span> {{ " " }}
-              </span>
-            </option>
-          </select>
-
-          <!-- Display selected rooms with close icons -->
-          <div v-if="selectedRoomNumbers.length">
-            <span
-              v-for="roomNumber in selectedRoomNumbers"
-              :key="roomNumber"
-              class="selected-room"
-            >
-              Room {{ roomNumber }}
-              <button @click="removeRoom(roomNumber)" class="close-icon">
-                &times;
-              </button>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div v-if="selectedRoomNumbers.length" class="w-full p-0 mt-4">
-        <div class="p-4">
-          <h3 class="text-lg font-bold mb-2">Room Details:</h3>
-
-          <div class="overflow-x-auto">
-            <table class="min-w-full bg-white shadow-lg border border-gray-100">
-              <thead>
-                <tr>
-                  <th class="py-2 px-4 border-b min-w-[150px]">Room Number</th>
-                  <th class="py-2 px-4 border-b min-w-[200px]">Category</th>
-                  <th class="py-2 px-4 border-b min-w-[100px]">Adults</th>
-                  <th class="py-2 px-4 border-b min-w-[100px]">Children</th>
-                  <th class="py-2 px-4 border-b min-w-[100px]">Infants</th>
-                  <th class="py-2 px-4 border-b min-w-[200px]">Meal Plan</th>
-                  <th class="py-2 px-4 border-b min-w-[120px]">
-                    Starting Meal
-                  </th>
-                  <th class="py-2 px-4 border-b min-w-[100px]">Action</th>
-                </tr>
-              </thead>
-              <tbody v-if="selectedRoomNumbers.length">
-                <tr
-                  v-for="room in selectedRoomNumbers"
-                  :key="room"
-                  class="border-t"
-                >
-                  <td class="py-2 px-4 min-w-[150px]">
-                    <h4
-                      class="text-md font-semibold border border-gray-300 p-2 rounded text-center"
-                    >
-                      Room {{ room }}
-                    </h4>
-                  </td>
-                  <td class="py-2 px-4 min-w-[200px]">
-                    <div class="mb-2  text-center">
-                      <span class="border flex flex-col border-gray-700 rounded-lg p-2">
-                {{ randomizedRoomCategories[room] || 'Unknown' }}
-              </span>
+            <input
+              type="text"
+              id="name"
+              v-model="formData.name"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Your Name"
               
-                    </div>
-                  </td>
-                  <td class="py-2 px-4 min-w-[100px]">
-                    <div class="mb-2">
-                      <select
-                        id="adults-{{ room }}"
-                        v-model="roomDetails[room].adults"
-                        class="border border-gray-300 p-2 rounded w-full"
-                      >
-                        <option
-                          v-for="num in adultOptions(room)"
-                          :key="num"
-                          :value="num"
-                        >
-                          {{ num }}
-                        </option>
-                      </select>
-                    </div>
-                  </td>
-                  <td class="py-2 px-4 min-w-[100px]">
-                    <div
-                    
-                      class="mb-2"
-                    >
-                      <select
-                        id="children-{{ room }}"
-                        v-model="roomDetails[room].children"
-                        class="border border-gray-300 p-2 rounded w-full"
-                      >
-                        <option
-                          v-for="num in childOptions(room)"
-                          :key="num"
-                          :value="num"
-                        >
-                          {{ num }}
-                        </option>
-                      </select>
+            />
+          </div>
+          <div>
+            <label
+              for="email"
+              class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="Email"
+              v-model="formData.email"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Your Email"
+              
+            />
+          </div>
+          <div>
+            <label
+              for="phone"
+              class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
+              >Phone Number</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              v-model="formData.phone"
+              class="bg-white border-black-200 text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="+ 1009 12345"
+              
+            />
+          </div>
+          <div>
+            <label
+              for="countries"
+              class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
+              >Room</label
+            >
+            <select
+              id="rooms"
+              v-model="formData.room"
+              class="bg-white border-black-200 text-black-200 text-opacity-60 placeholder:text-black-200 placeholder:text-opacity-40 text-sm rounded-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              
+            >
+            <option value="" disabled selected hidden>Select the room</option>
+              <option value="Deluxe Room">Deluxe Room</option>
+              <option value="Single Room">Single Room</option>
+              <option value="Double Room">Double Room</option>
+            </select>
 
-                      <div
-                        v-if="roomDetails[room].children > 0"
-                        class="mt-4"
-                        style="min-height: 100px"
-                      >
-                        <div
-                          v-for="index in roomDetails[room].children"
-                          :key="'child-age-' + index"
-                          class="mb-2"
-                        >
-                          <label
-                            :for="'child-age-' + room + '-' + index"
-                            class="block mb-1 font-bold"
-                          >
-                            Child {{ index }} Age
-                          </label>
-                          <select
-                            :id="'child-age-' + room + '-' + index"
-                            v-model="roomDetails[room].childrenAges[index - 1]"
-                            class="border border-red-500 p-2 rounded w-full"
-                          >
-                            <option
-                              v-for="age in childAgeOptions"
-                              :key="age"
-                              :value="age"
-                            >
-                              {{ age }}
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="py-2 px-4 min-w-[100px]">
-                    <div
-                      v-if="
-                        rooms.find((r) => r.room_number === room).category !==
-                        'Single'
-                      "
-                      class="mb-2"
-                    >
-                      <select
-                        id="infants-{{ room }}"
-                        v-model="roomDetails[room].infants"
-                        class="border border-gray-300 p-2 rounded w-full"
-                      >
-                        <option
-                          v-for="num in [0, 1, 2]"
-                          :key="num"
-                          :value="num"
-                        >
-                          {{ num }}
-                        </option>
-                      </select>
-
-                      <div v-if="roomDetails[room].infants > 0" class="mt-4">
-                        <div
-                          v-for="index in roomDetails[room].infants"
-                          :key="'infant-age-' + index"
-                          class="mb-2"
-                        >
-                          <label
-                            :for="'infant-age-' + room + '-' + index"
-                            class="block mb-1 font-bold"
-                          >
-                            Infant {{ index }} Age
-                          </label>
-                          <select
-                            :id="'infant-age-' + room + '-' + index"
-                            v-model="roomDetails[room].infantAges[index - 1]"
-                            class="border border-red-500 p-2 rounded w-full"
-                          >
-                            <option
-                              v-for="age in infantAgeOptions"
-                              :key="age"
-                              :value="age"
-                            >
-                              {{ age }}
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="py-2 px-4 min-w-[200px]">
-                    <div
-                      v-if="
-                        rooms.find((r) => r.room_number === room).category !==
-                        'Single'
-                      "
-                      class="mb-2"
-                    >
-                      <select
-                        id="meal-plan-{{ room }}"
-                        v-model="roomDetails[room].mealPlan"
-                        class="border border-gray-300 p-2 rounded w-full"
-                      >
-                        <option
-                          v-for="plan in mealPlans"
-                          :key="plan.value"
-                          :value="plan.value"
-                        >
-                          {{ plan.label }}
-                        </option>
-                      </select>
-                    </div>
-                  </td>
-                  <td class="py-2 px-4 min-w-[150px]">
-                    <div
-                      v-if="
-                        roomDetails[room].mealPlan !== 'room_only' &&
-                        roomDetails[room].mealPlan !== 'bread_breakfast' &&
-                        rooms.find((r) => r.room_number === room).category !==
-                          'Single'
-                      "
-                      class="mb-2"
-                    >
-                      <select
-                        id="meal-time-{{ room }}"
-                        v-model="roomDetails[room].mealTime"
-                        class="border border-gray-300 p-2 rounded w-full"
-                      >
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-                      </select>
-                    </div>
-                  </td>
-                  <td class="py-2 px-4 min-w-[150px] text-center">
-                    <button
-                      @click="removeRoom(room)"
-                      class="mb-2 text-red-400 font-semibold border border-red-400 w-4 p-3 h-4 rounded-lg hover:text-red-600"
-                    >
-                      <span
-                        class="flex items-center justify-center text-center w-full h-full"
-                      >
-                        X</span
-                      >
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
-      </div>
 
-      <div v-if="selectedRoomNumbers.length">
-        <button
-          class="mt-8 buttontext rounded-xl text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          @click="submitPayload"
+        <label
+          for="message"
+          class="block mb-2 text-sm font-bold text-black-200 dark:text-white"
+          >Message Us</label
         >
-          Please Click to get final rates to proceed further
-        </button>
-      </div>
-
-      <!-- Login and Register modal popups -->
-
-      <!-- end of price breakdown section -->
-    </div>
-    <div class="mt-8">
-      <div v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">
-        Total Rates
-      </div>
-      <div v-if="Object.keys(total_rate).length > 0">
-        <div class="flex justify-between mt-4">
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            Total Activities
-          </h5>
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            {{
-              total_rate.total_activities_amount === 0
-                ? "-"
-                : `LKR ${formatPrice(total_rate.total_activities_amount)}`
-            }}
-          </h5>
-        </div>
-        <div class="flex justify-between mt-4">
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            Total Rooms
-          </h5>
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            {{
-              total_rate.total_rooms_amount === 0
-                ? "-"
-                : `LKR ${formatPrice(total_rate.total_rooms_amount)}`
-            }}
-          </h5>
-        </div>
-        <div class="flex justify-between mt-4">
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            Total Meal Plan
-          </h5>
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            {{
-              total_rate.total_meal_plan_amount === 0
-                ? "-"
-                : `LKR ${formatPrice(total_rate.total_meal_plan_amount)}`
-            }}
-          </h5>
-        </div>
-        <div class="flex justify-between mt-4">
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            Total Taxes
-          </h5>
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            {{
-              total_rate.total_tax_amount === 0
-                ? "-"
-                : `LKR ${formatPrice(total_rate.total_tax_amount)}`
-            }}
-          </h5>
-        </div>
-        <div class="flex justify-between mt-4">
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            Total Discounts
-          </h5>
-          <h5 class="lg:text-base text-sm font-medium text-red-400">
-            {{
-              total_rate.total_discount_amount === 0
-                ? "-"
-                : `- LKR ${formatPrice(total_rate.total_discount_amount)}`
-            }}
-          </h5>
-        </div>
-        <hr
-          class="h-px w-full bg-black-200 bg-opacity-30 border-none border-opacity-20 mt-4"
-        />
-        <div class="flex justify-between mt-4">
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            Total Room Rates
-          </h5>
-          <h5 class="lg:text-base text-sm font-medium text-black-200">
-            {{
-              total_rate.total_amount === 0
-                ? "-"
-                : `LKR ${formatPrice(total_rate.total_amount)}`
-            }}
-          </h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex flex-col w-full mt-8"></div>
-
-    <div class="flex flex-row space-x-4 items-baseline">
-      <button
-        class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        type="button"
-        @click="scrollToPaymentInfo"
-      >
-        Proceed As a Guest
-      </button>
-      <span class="text-black-200 text-base font-bold">OR</span>
-      <div>
-        <button
-          @click="getClickMethod"
-          type="button"
-          class="mt-8 buttontext uppercase text-white bg-black-50 bg-opacity-50 hover:bg-black-50 hover:bg-opacity-50 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 px-8 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        >
-          {{ isSignedIn ? "Sign Off" : "Sign In" }}
-        </button>
-      </div>
-    </div>
-    <div ref="paymentInfoRef"></div>
-    <div class="flex flex-col w-72 mt-16">
-      <label class="text-xl font-bold mb-5">Booking Notes</label>
-      <textarea
-        v-model="booking_note"
-        placeholder="Comments..."
-        class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-      ></textarea>
-    </div>
-    <!--  <div class="flex flex-col lg:flex-row xl:flex-row gap-8 mt-12">
-    
-    <div class="flex flex-col w-72">
-        <label class="text-xl font-bold mb-5">Payment Notes</label>
         <textarea
-          type="text"
-          v-model="payment_note"
-          placeholder="Comments..."
-          class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
+          id="message"
+          rows="4"
+          v-model="formData.message"
+          class="block p-2.5 w-full text-sm text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm bg-white border-black-200 rounded-0 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Your Message"
         ></textarea>
-      </div>
-    </div> -->
-    <!-- Guest Info & Payment section -->
-    <h2
-      class="text-black-100 md:text-4xl text-3xl text-center mt-20 mb-10"
-      ref="paymentInfoRef"
-    >
-      Guest Info & Payment
-    </h2>
-    <!-- checkbox section -->
-    <div class="flex justify-center space-x-2">
-      <h5 class="text-black-200 lg:text-lg text-sm font-medium">
-        Are you booking for someone else?
-      </h5>
-      <div class="flex items-center me-4">
-        <input
-          id="inline-radio"
-          type="radio"
-          value="Yes"
-          name="inline-radio-group"
-          class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-          v-model="bookingForSomeoneElse"
-          @change="toggleGuestInfo"
-        />
-        <label
-          for="inline-radio"
-          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >Yes</label
+
+        <button
+          type="submit"
+          class="mt-8 buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
         >
-      </div>
-      <div class="flex items-center me-4">
-        <input
-          id="inline-2-radio"
-          type="radio"
-          value="No"
-          name="inline-radio-group"
-          class="w-4 h-4 text-black-200 bg-white border-black-200 focus:ring-0 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-          v-model="bookingForSomeoneElse"
-          @change="toggleGuestInfo"
-        />
-        <label
-          for="inline-2-radio"
-          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >No</label
-        >
-      </div>
+          send request
+        </button>
+      </form>
     </div>
-
-    <div class="text-center mt-10" v-if="showYourInfo">
-      <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
-        your info
-      </h5>
-      <!-- user information form -->
-
-      <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
-        <div>
-          <label
-            for="first_name"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >First name *</label
-          >
-          <input
-            type="text"
-            id="first_name"
-            class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.guest_info.first_name"
-          />
-        </div>
-        <div>
-          <label
-            for="last_name"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Last name *</label
-          >
-          <input
-            type="text"
-            id="last_name"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.guest_info.last_name"
-          />
-        </div>
-        <div>
-          <label
-            for="phone"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Phone *</label
-          >
-          <input
-            type="tel"
-            id="phone"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.guest_info.telephone"
-          />
-        </div>
-        <div>
-          <label
-            for="email"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >E-mail *</label
-          >
-          <input
-            type="email"
-            id="email"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.guest_info.email"
-          />
-        </div>
-        <div>
-          <label
-            for="nationality"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Nationality *</label
-          >
-          <select
-            id="nationality"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="form.guest_info.nationality"
-          >
-            <option value="" disabled>Select Nationality</option>
-            <option
-              v-for="country in countries"
-              :key="country.code"
-              :value="country.name"
-            >
-              {{ country.name }}
-            </option>
-          </select>
-        </div>
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Address *</label
-          >
-          <input
-            type="text"
-            id="address"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            v-model="form.guest_info.guest_address"
-          />
-        </div>
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Identification Type *</label
-          >
-          <select
-            v-model="form.guest_info.identification_type"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option value="" disabled>Select Identification Type</option>
-            <option value="passport">Passport</option>
-            <option value="driver_license">Driver's License</option>
-            <option value="id_card">ID Card</option>
-            <!-- Add more options as needed -->
-          </select>
-        </div>
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Identification No *</label
-          >
-          <input
-            type="text"
-            v-model="form.guest_info.identification_no"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Gender
-          </label>
-          <select
-            v-model="form.guest_info.gender"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option value="" disabled>Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="flex flex-col">
-          <label
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Date of Birth
-          </label>
-          <input
-            type="date"
-            v-model="form.guest_info.dob"
-            placeholder="Date of Birth"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-        <div class="flex flex-col">
-          <label
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Identification Issue Date
-          </label>
-          <input
-            type="date"
-            v-model="form.guest_info.identification_issue_date"
-            placeholder="Identification Issue Date"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center mt-10" v-if="showGuestInfo">
-      <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
-        guest info
-      </h5>
-      <!-- Guest information form -->
-      <!-- <form class="mt-4"> -->
-      <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
-        <div>
-          <label
-            for="first_name"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >First name *</label
-          >
-          <input
-            type="text"
-            id="first_name"
-            class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.guest_info.first_name"
-          />
-        </div>
-        <div>
-          <label
-            for="last_name"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Last name *</label
-          >
-          <input
-            type="text"
-            id="last_name"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.guest_info.last_name"
-          />
-        </div>
-        <div>
-          <label
-            for="phone"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Phone *</label
-          >
-          <input
-            type="tel"
-            id="phone"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.guest_info.telephone"
-          />
-        </div>
-        <div>
-          <label
-            for="email"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >E-mail *</label
-          >
-          <input
-            type="email"
-            id="email"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.guest_info.email"
-          />
-        </div>
-        <div>
-          <label
-            for="nationality"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Nationality *</label
-          >
-          <select
-            id="nationality"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="form.guest_info.nationality"
-          >
-            <option value="" disabled>Select Nationality</option>
-            <option
-              v-for="country in countries"
-              :key="country.code"
-              :value="country.name"
-            >
-              {{ country.name }}
-            </option>
-          </select>
-        </div>
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Address *</label
-          >
-          <input
-            type="text"
-            id="address"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            v-model="form.guest_info.guest_address"
-          />
-        </div>
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Identification Type *</label
-          >
-          <select
-            v-model="form.guest_info.identification_type"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option value="" disabled>Select Identification Type</option>
-            <option value="passport">Passport</option>
-            <option value="driver_license">Driver's License</option>
-            <option value="id_card">ID Card</option>
-            <!-- Add more options as needed -->
-          </select>
-        </div>
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Identification No *</label
-          >
-          <input
-            type="text"
-            v-model="form.guest_info.identification_no"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Gender *</label
-          >
-          <select
-            v-model="form.guest_info.gender"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option value="" disabled>Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="flex flex-col">
-          <label
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Date of Birth *</label
-          >
-          <input
-            type="date"
-            v-model="form.guest_info.dob"
-            placeholder="Date of Birth"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-        <div class="flex flex-col">
-          <label
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Identification Issue Date *</label
-          >
-          <input
-            type="date"
-            v-model="form.guest_info.identification_issue_date"
-            placeholder="Identification Issue Date"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-      </div>
-
-      <h5 class="text-red-100 font-semibold text-2xl uppercase mt-8">
-        your info
-      </h5>
-      <!-- Guest information form -->
-      <!-- <form class="mt-4"> -->
-      <div class="grid gap-6 md:grid-cols-2 grid-cols-1">
-        <div>
-          <label
-            for="first_name"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >First name *</label
-          >
-          <input
-            type="text"
-            id="first_name"
-            class="bg-white border border-black-200 text-black-200 placeholder:text-black-200 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.first_name"
-          />
-        </div>
-        <div>
-          <label
-            for="last_name"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Last name *</label
-          >
-          <input
-            type="text"
-            id="last_name"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.last_name"
-          />
-        </div>
-        <div>
-          <label
-            for="phone"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Phone *</label
-          >
-          <input
-            type="tel"
-            id="phone"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.telephone"
-          />
-        </div>
-        <div>
-          <label
-            for="email"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >E-mail *</label
-          >
-          <input
-            type="email"
-            id="email"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            required
-            v-model="form.email"
-          />
-        </div>
-        <div>
-          <label
-            for="nationality"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Nationality *</label
-          >
-          <select
-            id="nationality"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="form.nationality"
-          >
-            <option value="" disabled>Select Nationality</option>
-            <option
-              v-for="country in countries"
-              :key="country.code"
-              :value="country.name"
-            >
-              {{ country.name }}
-            </option>
-          </select>
-        </div>
-        <div>
-          <label
-            for="address"
-            class="block mb-2 lg:text-base text-sm font-semibold text-black-200 dark:text-white"
-            >Address *</label
-          >
-          <input
-            type="text"
-            id="address"
-            class="bg-white border border-black-200 text-gray-900 lg:text-base text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
-            v-model="form.address"
-          />
-        </div>
-      </div>
-    </div>
-
-    <a
-      href="/termsAndConditions"
-      class="lg:text-lg text-base font-medium text-red-100 underline block mt-10"
-      >View Our Terms & Conditions</a
-    >
-    <div class="flex items-center mt-4">
-      <div class="flex items-center h-5">
-        <input
-          id="remember"
-          type="checkbox"
-          value=""
-          class="w-4 h-4 border border-black-200 rounded bg-gray-50 focus:ring-0 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-          required
-        />
-      </div>
-      <label
-        for="remember"
-        class="ms-2 lg:text-lg text-sm font-medium text-black-200 dark:text-gray-300"
-        >I have read and I agree to the terms and conditions.</label
+    <!-- column of contact details inofrmation -->
+    <div class="flex flex-col space-y-4">
+      <div
+        class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
       >
-    </div>
-    <div v-if="Object.keys(total_rate).length > 0" class="text-xl font-bold">
-      <button
-        v-if="isRoomSelected"
-        class="mt-8 buttontext uppercase text-white bg-red-100 hover:bg-red-100 focus:ring-none font-bold rounded-sm lg:text-base text-sm p-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        @click="handleSubmit"
-        :disabled="book_loading"
-      >
-        <span v-if="book_loading" class="flex items-center justify-center">
-          <!-- Loader Icon or Text -->
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
+          EMAIL US
+        </h5>
+        <div class="flex flex-row gap-1">
           <svg
-            class="animate-spin h-5 w-5 mr-3 text-white"
             xmlns="http://www.w3.org/2000/svg"
+            width="27"
+            height="24"
+            viewBox="0 0 27 24"
             fill="none"
-            viewBox="0 0 24 24"
           >
-            <circle
-              class="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              stroke-width="4"
-            ></circle>
-            <path
-              class="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z"
-            ></path>
+            <mask
+              id="mask0_397_545"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="27"
+              height="24"
+            >
+              <rect width="26.1494" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_397_545)">
+              <path
+                d="M4.35783 20C3.75857 20 3.24557 19.8042 2.81883 19.4125C2.39208 19.0208 2.17871 18.55 2.17871 18V6C2.17871 5.45 2.39208 4.97917 2.81883 4.5875C3.24557 4.19583 3.75857 4 4.35783 4H21.7908C22.39 4 22.903 4.19583 23.3298 4.5875C23.7565 4.97917 23.9699 5.45 23.9699 6V18C23.9699 18.55 23.7565 19.0208 23.3298 19.4125C22.903 19.8042 22.39 20 21.7908 20H4.35783ZM13.0743 13L4.35783 8V18H21.7908V8L13.0743 13ZM13.0743 11L21.7908 6H4.35783L13.0743 11ZM4.35783 8V6V18V8Z"
+                fill="#3B3A43"
+              />
+            </g>
           </svg>
-          Loading...
-        </span>
-        <span v-else> Proceed to Pay</span>
-      </button>
-    </div>
-
-    <!-- Register and Login Modal Popup -->
-    <!-- Register modal -->
-    <div
-      v-show="isModalVisible"
-      @click="closeModal"
-      class="fixed inset-0 bg-black-200 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center"
-      id="modal_1"
-    >
-      <div @click.stop class="relative w-full max-w-2xl max-h-full">
-        <!-- Modal content -->
-        <div
-          class="relative bg-white rounded-lg shadow dark:bg-gray-700 px-10 pt-5 pb-14"
-        >
-          <!-- Modal header -->
-          <div
-            class="flex items-center justify-between border-none rounded-t dark:border-gray-600"
+          <a
+            href="mailto:sueennature@gmail.com"
+            class="text-stone-700 hover:underline text-base"
+            >sueennature@gmail.com</a
           >
-            <button
-              @click="closeModal"
-              type="button"
-              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              data-modal-hide="static-modal"
+        </div>
+      </div>
+      <div
+        class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
+          CALL US
+        </h5>
+        <div class="flex flex-row gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <mask
+              id="mask0_397_602"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="24"
+              height="24"
             >
-              <svg
-                class="w-3 h-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                />
-              </svg>
-              <span class="sr-only">Close modal</span>
-            </button>
-          </div>
-          <!-- Modal body -->
-          <div class="">
-            <h2 class="text-3xl mb-4 text-center">Get Started!</h2>
-            <!-- <p class="mb-12 text-center text-black-200 text-opacity-60">
-              Use your social profile to register
-            </p> -->
-            <!-- SOCIAL MEDIA LOGIN -->
-            <!-- <SocialLogin @login-success="handleGoogleLoginData" /> -->
+              <rect width="23.2437" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_397_602)">
+              <path
+                d="M19.3216 21C17.3039 21 15.3104 20.5458 13.3412 19.6375C11.3719 18.7292 9.58024 17.4417 7.9661 15.775C6.35196 14.1083 5.10503 12.2583 4.22532 10.225C3.34562 8.19167 2.90576 6.13333 2.90576 4.05C2.90576 3.75 3.00261 3.5 3.19631 3.3C3.39 3.1 3.63213 3 3.92267 3H7.84504C8.07102 3 8.27279 3.07917 8.45034 3.2375C8.6279 3.39583 8.73282 3.58333 8.7651 3.8L9.39462 7.3C9.4269 7.56667 9.41883 7.79167 9.3704 7.975C9.32198 8.15833 9.2332 8.31667 9.10407 8.45L6.75549 10.9C7.07832 11.5167 7.46168 12.1125 7.90557 12.6875C8.34946 13.2625 8.83774 13.8167 9.3704 14.35C9.87079 14.8667 10.3954 15.3458 10.9442 15.7875C11.493 16.2292 12.0741 16.6333 12.6875 17L14.9634 14.65C15.1087 14.5 15.2983 14.3875 15.5324 14.3125C15.7664 14.2375 15.9965 14.2167 16.2224 14.25L19.5637 14.95C19.7897 15.0167 19.9753 15.1375 20.1206 15.3125C20.2659 15.4875 20.3385 15.6833 20.3385 15.9V19.95C20.3385 20.25 20.2417 20.5 20.048 20.7C19.8543 20.9 19.6121 21 19.3216 21ZM5.83543 9L7.43343 7.35L7.02183 5H4.86695C4.94765 5.68333 5.06064 6.35833 5.20591 7.025C5.35119 7.69167 5.56103 8.35 5.83543 9ZM14.5034 17.95C15.1329 18.2333 15.7745 18.4583 16.4282 18.625C17.082 18.7917 17.7397 18.9 18.4015 18.95V16.75L16.1256 16.275L14.5034 17.95Z"
+                fill="#1C1B1F"
+              />
+            </g>
+          </svg>
+          <a
+            href="tel:+94343307500"
+            class="text-stone-700 hover:underline text-base"
+            >+(94) 34 3307500
 
-            <!-- Centered "or" text -->
-            <!-- Centered "or" text -->
-            <!-- <div class="flex items-center justify-center">
-              <div
-                class="flex-1 border-t border-black-200 border-opacity-65"
-              ></div>
-              <span class="px-4 text-black-200 text-opacity-65 text-sm"
-                >Or</span
-              >
-              <div
-                class="flex-1 border-t border-black-200 border-opacity-65"
-              ></div>
-            </div> -->
-            <!-- Modal -->
-            <form action="#" class="space-y-6 mt-4" @submit.prevent="register">
-              <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
-                <input
-                  type="text"
-                  v-model="registerUser.name"
-                  placeholder="Name"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-                <input
-                  type="text"
-                  v-model.trim="registerUser.lname"
-                  placeholder="Last Name"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-              </div>
-              <div class="">
-                <input
-                  type="text"
-                  v-model.trim="registerUser.email"
-                  placeholder="you@email.com"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                />
-              </div>
-              <div class="relative">
-                <input
-                  :type="showPassword ? 'text' : 'password'"
-                  v-model.trim="registerUser.password"
-                  placeholder="Password"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10"
-                />
-                <button
-                  @click="togglePasswordVisibility"
-                  class="absolute inset-y-0 right-0 flex items-center pr-3"
-                >
-                  <span v-if="showPassword">🔓</span>
-                  <span v-else>🔒</span>
-                </button>
-              </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
+          LOCATION
+        </h5>
+        <div class="flex flex-row gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="65"
+            height="30"
+            viewBox="0 0 27 24"
+            fill="none"
+          >
+            <mask
+              id="mask0_397_595"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="27"
+              height="24"
+            >
+              <rect x="0.168457" width="26.0249" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_397_595)">
+              <path
+                d="M13.1815 22C11.2658 22 9.7025 21.7208 8.49162 21.1625C7.28073 20.6042 6.67529 19.8833 6.67529 19C6.67529 18.4167 6.93735 17.9083 7.46146 17.475C7.98558 17.0417 8.70849 16.7 9.63021 16.45L10.2537 18.35C9.94648 18.4333 9.66635 18.5375 9.41333 18.6625C9.16031 18.7875 8.98862 18.9 8.89826 19C9.1332 19.2667 9.67539 19.5 10.5248 19.7C11.3742 19.9 12.2598 20 13.1815 20C14.1032 20 14.9933 19.9 15.8518 19.7C16.7103 19.5 17.257 19.2667 17.4919 19C17.4015 18.9 17.2298 18.7875 16.9768 18.6625C16.7238 18.5375 16.4437 18.4333 16.1364 18.35L16.76 16.45C17.6817 16.7 18.4001 17.0417 18.9151 17.475C19.4302 17.9083 19.6878 18.4167 19.6878 19C19.6878 19.8833 19.0823 20.6042 17.8714 21.1625C16.6606 21.7208 15.0972 22 13.1815 22ZM13.1815 15.325C13.5068 14.775 13.8502 14.2708 14.2117 13.8125C14.5731 13.3542 14.9256 12.9167 15.2689 12.5C15.9376 11.7 16.4708 10.9792 16.8684 10.3375C17.266 9.69583 17.4648 8.9 17.4648 7.95C17.4648 6.85 17.0491 5.91667 16.2178 5.15C15.3864 4.38333 14.3743 4 13.1815 4C11.9887 4 10.9766 4.38333 10.1453 5.15C9.31393 5.91667 8.89826 6.85 8.89826 7.95C8.89826 8.9 9.09706 9.69583 9.49466 10.3375C9.89226 10.9792 10.4254 11.7 11.0941 12.5C11.4375 12.9167 11.7899 13.3542 12.1514 13.8125C12.5128 14.2708 12.8562 14.775 13.1815 15.325ZM13.1815 19C12.9827 19 12.802 18.9458 12.6393 18.8375C12.4767 18.7292 12.3592 18.5833 12.2869 18.4C11.8712 17.2167 11.3471 16.225 10.7146 15.425C10.082 14.625 9.46755 13.8583 8.87115 13.125C8.29281 12.3917 7.79129 11.6333 7.36658 10.85C6.94187 10.0667 6.72951 9.1 6.72951 7.95C6.72951 6.28333 7.35303 4.875 8.60005 3.725C9.84708 2.575 11.3742 2 13.1815 2C14.9888 2 16.516 2.575 17.763 3.725C19.01 4.875 19.6335 6.28333 19.6335 7.95C19.6335 9.1 19.4257 10.0667 19.01 10.85C18.5943 11.6333 18.0883 12.3917 17.4919 13.125C16.9136 13.8583 16.3036 14.625 15.662 15.425C15.0204 16.225 14.4918 17.2167 14.0761 18.4C14.0038 18.5833 13.8864 18.7292 13.7237 18.8375C13.5611 18.9458 13.3803 19 13.1815 19ZM13.1815 10.075C13.8141 10.075 14.3563 9.86667 14.8081 9.45C15.2599 9.03333 15.4858 8.53333 15.4858 7.95C15.4858 7.36667 15.2599 6.86667 14.8081 6.45C14.3563 6.03333 13.8141 5.825 13.1815 5.825C12.549 5.825 12.0068 6.03333 11.555 6.45C11.1031 6.86667 10.8772 7.36667 10.8772 7.95C10.8772 8.53333 11.1031 9.03333 11.555 9.45C12.0068 9.86667 12.549 10.075 13.1815 10.075Z"
+                fill="#1C1B1F"
+              />
+            </g>
+          </svg>
+          <a
+            href="https://maps.app.goo.gl/TaHXpW9rRsbYadZa8"
+            class="text-stone-700 hover:underline text-base"
+            >Sueen Nature, Palangahawatta, Morapitiya Road, Palenda, Baduraliya,
+            Sri Lanka</a
+          >
+        </div>
+      </div>
+      <div
+        class="max-w-xs p-8 bg-white border border-gray-200 rounded-none shadow dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h5 class="mb-2 text-lg font-bold text-stone-700 dark:text-white">
+          WhatsApp
+        </h5>
+        <div class="flex flex-row gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <mask
+              id="mask0_397_602"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="24"
+              height="24"
+            >
+              <rect width="23.2437" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_397_602)">
+              <path
+                d="M19.3216 21C17.3039 21 15.3104 20.5458 13.3412 19.6375C11.3719 18.7292 9.58024 17.4417 7.9661 15.775C6.35196 14.1083 5.10503 12.2583 4.22532 10.225C3.34562 8.19167 2.90576 6.13333 2.90576 4.05C2.90576 3.75 3.00261 3.5 3.19631 3.3C3.39 3.1 3.63213 3 3.92267 3H7.84504C8.07102 3 8.27279 3.07917 8.45034 3.2375C8.6279 3.39583 8.73282 3.58333 8.7651 3.8L9.39462 7.3C9.4269 7.56667 9.41883 7.79167 9.3704 7.975C9.32198 8.15833 9.2332 8.31667 9.10407 8.45L6.75549 10.9C7.07832 11.5167 7.46168 12.1125 7.90557 12.6875C8.34946 13.2625 8.83774 13.8167 9.3704 14.35C9.87079 14.8667 10.3954 15.3458 10.9442 15.7875C11.493 16.2292 12.0741 16.6333 12.6875 17L14.9634 14.65C15.1087 14.5 15.2983 14.3875 15.5324 14.3125C15.7664 14.2375 15.9965 14.2167 16.2224 14.25L19.5637 14.95C19.7897 15.0167 19.9753 15.1375 20.1206 15.3125C20.2659 15.4875 20.3385 15.6833 20.3385 15.9V19.95C20.3385 20.25 20.2417 20.5 20.048 20.7C19.8543 20.9 19.6121 21 19.3216 21ZM5.83543 9L7.43343 7.35L7.02183 5H4.86695C4.94765 5.68333 5.06064 6.35833 5.20591 7.025C5.35119 7.69167 5.56103 8.35 5.83543 9ZM14.5034 17.95C15.1329 18.2333 15.7745 18.4583 16.4282 18.625C17.082 18.7917 17.7397 18.9 18.4015 18.95V16.75L16.1256 16.275L14.5034 17.95Z"
+                fill="#1C1B1F"
+              />
+            </g>
+          </svg>
+          <a
+            href="https://wa.me/+94715840000"
+            class="text-stone-700 hover:underline text-base"
+            >+(94) 71 584 0000</a
 
-              <div class="grid md:grid-cols-2 grid-cols-1 gap-5 mt-5">
-                <!-- Additional fields for createGuest API -->
-                <input
-                  type="text"
-                  v-model="guestDetails.telephone"
-                  placeholder="Telephone"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-                <input
-                  type="text"
-                  v-model="guestDetails.address"
-                  placeholder="Address"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-                <select
-                  v-model="guestDetails.nationality"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                >
-                  <option value="" disabled>Select Nationality</option>
-                  <option
-                    v-for="country in countries"
-                    :key="country.code"
-                    :value="country.name"
-                  >
-                    {{ country.name }}
-                  </option>
-                </select>
-                <select
-                  v-model="guestDetails.identification_type"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                >
-                  <option value="" disabled>Select Identification Type</option>
-                  <option value="passport">Passport</option>
-                  <option value="driver_license">Driver's License</option>
-                  <option value="id_card">ID Card</option>
-                  <!-- Add more options as needed -->
-                </select>
-                <input
-                  type="text"
-                  v-model="guestDetails.identification_no"
-                  placeholder="Identification No"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                />
-
-                <select
-                  v-model="guestDetails.gender"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                >
-                  <option value="" disabled>Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-                <div class="flex flex-col">
-                  <label>Date of Birth</label>
-                  <input
-                    type="date"
-                    v-model="guestDetails.dob"
-                    placeholder="Date of Birth"
-                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                  />
-                </div>
-                <div class="flex flex-col">
-                  <label>Identification Issue Date</label>
-                  <input
-                    type="date"
-                    v-model="guestDetails.identification_issue_date"
-                    placeholder="Identification Issue Date"
-                    class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 rounded-md"
-                  />
-                </div>
-              </div>
-
-              <div class="flex items-start mt-5">
-                <div class="flex items-center h-5">
-                  <input
-                    id="remember"
-                    type="checkbox"
-                    value=""
-                    class="w-4 h-4 border border-gray-300 rounded-none bg-white focus:ring-3 focus:ring-blue-300"
-                    required
-                  />
-                </div>
-                <label
-                  for="remember"
-                  class="ms-2 text-sm font-medium text-gray-900"
-                >
-                  I Agree To The
-                  <a
-                    href="/termsAndConditions"
-                    class="font-semibold underline underline-offset-4"
-                  >
-                    Terms & Conditions
-                  </a>
-                  And
-                  <a
-                    href="/privacyPolicy"
-                    class="font-semibold underline underline-offset-4"
-                  >
-                    Privacy Policy
-                  </a>
-                </label>
-              </div>
-
-              <div class="mt-5">
-                <button
-                  type="submit"
-                  class="w-full bg-red-100 py-3 text-center text-white rounded-md block text-decoration-none"
-                >
-                  REGISTER
-                </button>
-              </div>
-
-              <div class="flex flex-row items-center text-md space-x-1 mt-5">
-                <p>Already have an account?</p>
-                <button
-                  @click="toggleModal_1"
-                  id="toggle-modal-button"
-                  class="block text-red-100 font-medium text-md text-center"
-                  type="button"
-                >
-                  Login Here
-                </button>
-              </div>
-            </form>
-          </div>
+          >
         </div>
       </div>
     </div>
-    <!-- Login modal -->
-    <div
-      v-show="isModal2Visible"
-      @click="closeModal_1"
-      class="fixed inset-0 bg-black-200 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center"
-      id="modal_2"
-    >
-      <div class="relative p-4 w-full max-w-2xl max-h-full">
-        <!-- Modal content -->
-        <div
-          @click.stop
-          class="relative p-6 bg-white rounded-lg shadow dark:bg-gray-700"
-        >
-          <!-- Modal header -->
-          <div
-            class="flex items-center justify-between border-none rounded-t dark:border-gray-600"
-          >
-            <button
-              @click="closeModal_1"
-              type="button"
-              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              data-modal-hide="default-modal"
-            >
-              <svg
-                class="w-3 h-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                />
-              </svg>
-              <span class="sr-only">Close modal</span>
-            </button>
-          </div>
-          <!-- Modal body -->
-          <div class="">
-            <h2 class="text-3xl mb-4 text-center">Login Into Your Account!</h2>
-            <!-- <p class="mb-10 text-center text-black-200 text-opacity-60">
-              Use your social profile to Login
-            </p> -->
-            <!-- SOCIAL LOGIN -->
-            <!-- <SocialLogin @login-success="handleGoogleLoginData" /> -->
-
-            <!-- Centered "or" text -->
-            <!-- <div class="flex items-center justify-center">
-              <div
-                class="flex-1 border-t border-black-200 border-opacity-65"
-              ></div>
-              <span class="px-4 text-black-200 text-opacity-65 text-sm"
-                >Or</span
-              >
-              <div
-                class="flex-1 border-t border-black-200 border-opacity-65"
-              ></div>
-            </div> -->
-
-            <form @submit.prevent="login" class="space-y-6 mt-4">
-              <div>
-                <input
-                  v-model="loginUser.email"
-                  type="text"
-                  placeholder="you@email.com"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md"
-                />
-                <p v-if="errors.email" class="error">{{ errors.email[0] }}</p>
-              </div>
-
-              <div class="relative">
-                <input
-                  :type="showPassword ? 'text' : 'password'"
-                  v-model="loginUser.password"
-                  placeholder="Password"
-                  class="text-black-200 placeholder:text-black-200 placeholder:text-opacity-60 placeholder:text-sm border border-gray-400 py-3 px-2 w-full rounded-md pr-10"
-                />
-                <p v-if="errors.password" class="error">
-                  {{ errors.password[0] }}
-                </p>
-                <button
-                  @click="togglePasswordVisibility"
-                  class="absolute inset-y-0 right-0 flex items-center pr-3"
-                >
-                  <span v-if="showPassword">🔓</span>
-                  <span v-else>🔒</span>
-                </button>
-              </div>
-              <div class="mt-5">
-                <div class="text"></div>
-                <button
-                  type="submit"
-                  class="w-full bg-red-100 py-3 text-center text-white rounded-md block"
-                >
-                  Log In
-                </button>
-              </div>
-
-              <div class="flex flex-row items-center text-md space-x-1">
-                <p>Don't have an account?</p>
-                <button
-                  @click="toggleModal"
-                  id="toggle-modal-button"
-                  class="block text-red-100 font-medium text-md text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  type="button"
-                >
-                  Register Here
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--End of Register and Login Modal Popup -->
   </div>
 </template>
 
 <script>
-import CheckoutAvailability from "./CheckoutAvailability.vue";
-import { ref, onMounted, onUnmounted } from "vue";
-import { initFlowbite } from "flowbite";
-import { useNuxtApp } from "#app";
-import SocialLogin from "./SocialLogin.vue";
-import { toast } from "vue3-toastify";
-import "vue3-toastify/dist/index.css";
-import axios from "axios";
-import countries from "./countries.json"; // Adjust the path according to where you put your JSON file
+import {toast} from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+import axios from 'axios';
+import { useReCaptcha } from 'vue-recaptcha-v3';
 
 export default {
-  components: {
-    CheckoutAvailability,
-    SocialLogin,
-  },
   data() {
     return {
-      bookingForSomeoneElse: "No",
-      showPassword: false,
-      showGuestInfo: false,
-      showYourInfo: true,
-      isModalOpen: false,
-      isModalVisible: false,
-      isModal2Visible: false,
-      selectedInfants: 0,
-      selectedChildren: 0,
-      total_rate: 0,
-      countries: countries,
-      isSpecialRateApplied: false,
-      infantAges: [],
-      childrenAges: [],
-      discount_data: {},
-      rooms: [],
-      roomCategory: "",
-      selectedNumberOfRooms: "", // Selected number of rooms from the dropdown
-      selectedRoomNumbers: [],
-      randomizedCategories: {} // to store randomized categories for each room
-,
-      roomDetails: {}, // Object to store details for each room
-      mealPlans: [
-        // Example meal plan options
-        { value: "room_only", label: "Room Only" },
-        { value: "bread_breakfast", label: "Bed & Breakfast" },
-        { value: "half_board", label: "Half Board" },
-        { value: "full_board", label: "Full Board" },
-      ],
-      childAgeOptions: [3, 4, 5, 6, 7, 8, 9, 10], // Options for children's ages
-      infantAgeOptions: [0, 1, 2], // Age options for children
-      selectedOption: "",
-      boardType: [],
-      special_rate: 0,
-      roomCategories: [],
-      view_type_id: null,
-      view_types: [],
-      childFormAges: [],
-      infantFormAges: [],
-      activities: [],
-      categories: [],
-      book_loading: false,
-      discounts: [],
-      taxes: [],
-      isSocialLogin: false,
-      price: 0,
-      roomPeopleCount: [],
-      booking_note: "",
-      payment_note: "",
-      form: {
-        first_name: "",
-        last_name: "",
-        email: "",
-        telephone: "",
-        address: "",
-        nationality: "",
-        check_in: this.$route.query.check_in,
-        check_out: this.$route.query.check_out,
-        guest_info: {
-          first_name: "",
-          last_name: "",
-          email: "",
-          telephone: "",
-          address: "",
-          nationality: "",
-          identification_type: "",
-          identification_no: "",
-          identification_issue_date: "",
-          dob: "",
-          gender: "",
-        },
-      },
-      registerUser: {
-        name: "",
-        lname: "",
-        email: "",
-        password: "",
-      },
-      guestDetails: {
-        telephone: "",
-        address: "",
-        nationality: "",
-        // profile_image: [],
-        identification_type: "",
-        identification_no: "",
-        identification_issue_date: "",
-        dob: "",
-        gender: "",
-      },
-      loginUser: {
-        email: "",
-        password: "",
-      },
-      errors: {
-        email: [],
-        password: [],
-      },
-    };
-  },
-  watch: {
-    selectedRoomNumbers(newVal, oldVal) {
-      console.log("selectedRoomNumbers changed:", { newVal, oldVal });
-      this.submitPayload();
-    },
-    roomDetails: {
-      handler(newVal, oldVal) {
-        console.log("roomDetails changed:", { newVal, oldVal });
-        this.submitPayload();
-      },
-      deep: true, // Enables deep watching for nested properties
-    },
-    activities(newVal, oldVal) {
-      console.log("activities changed:", { newVal, oldVal });
-      this.submitPayload();
-    },
-    taxes(newVal, oldVal) {
-      console.log("taxes changed:", { newVal, oldVal });
-      this.submitPayload();
-    },
-    discounts(newVal, oldVal) {
-      console.log("discounts changed:", { newVal, oldVal });
-      this.submitPayload();
-    },
-    $route(query) {
-      console.log("Route changed:", query);
-      this.submitPayload();
-    },
-  },
-
-  computed: {
-    randomizedRoomCategories() {
-    const categoriesFromUrl = this.$route.query.categories
-      ? this.$route.query.categories.split(',')
-      : [];
-
-    // Only compute if not already done
-    if (Object.keys(this.randomizedCategories).length === 0) {
-      this.randomizedCategories = this.rooms.reduce((acc, room) => {
-        const availableCategories = [];
-        if (categoriesFromUrl.includes(room.category)) {
-          availableCategories.push(room.category);
-        }
-        if (categoriesFromUrl.includes(room.secondary_category)) {
-          availableCategories.push(room.secondary_category);
-        }
-
-        // Shuffle categories and assign the first one
-        const shuffledCategories = this.shuffleArray(availableCategories);
-        acc[room.room_number] = shuffledCategories[0] || 'Unknown';
-        return acc;
-      }, {});
+      formData:{
+        name: '',
+        email: '',
+        phone: '',
+        room:"",
+        message: ''
+      }
+     
     }
-
-    return this.randomizedCategories;
-
-},
-    categoriesFromUrl() {
-    const urlCategories = this.$route.query.categories;
-    return urlCategories ? urlCategories.split(",") : [];
   },
-  
-  // Method to get random category, ensuring it is consistent
-  roomCategories() {
-    return this.rooms.map(room => {
-      const urlCategories = this.categoriesFromUrl;
-      const roomCategories = [];
+  setup() {
+        // initialize a instance
+        const recaptchaInstance = useReCaptcha();
 
-      if (urlCategories.includes(room.category)) {
-        roomCategories.push(room.category);
-      }
+        const recaptcha = async () => {
+            // optional you can await for the reCaptcha load
+            await recaptchaInstance?.recaptchaLoaded();
 
-      if (urlCategories.includes(room.secondary_category)) {
-        roomCategories.push(room.secondary_category);
-      }
+            // get the token, a custom action could be added as argument to the method
+            const token = await recaptchaInstance?.executeRecaptcha('submitForm');
 
-      // Return a random category from the filtered ones
-      if (roomCategories.length === 0) {
-        return "No matching category";
-      }
-      
-      const randomIndex = Math.floor(Math.random() * roomCategories.length);
-      return roomCategories[randomIndex];
-    });
-  },
-    isRoomSelected() {
-      return this.selectedRoomNumbers.length > 0;
-    },
-    // Calculate the number of rooms
-    numberOfRooms() {
-      return this.rooms.length
-        ? Array.from({ length: this.rooms.length }, (_, i) => i + 1)
-        : [];
-    },
-    childrenAges() {
-      const ages = {};
-      this.selectedRoomNumbers.forEach((room) => {
-        const numChildren = this.roomDetails[room]?.children || 0;
-        ages[room] = Array.from({ length: numChildren }, (_, i) => i); // Use indices for children
-      });
-      return ages;
-    },
-  },
-
-  methods: {
-    shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  },
-   // Function to get the categories from URL
-   getCategoriesFromUrl() {
-    // Accessing categories from URL, assuming Vue Router is used
-    const urlCategories = this.$route.query.categories;
-
-    // If categories exist, split by comma and return them as an array
-    return urlCategories ? urlCategories.split(",") : [];
-  },
-
-  // Randomly select a category if it matches the ones in URL
-  getRandomCategory(room) {
-    // Extract the categories from the URL
-    const urlCategories = this.getCategoriesFromUrl();
-
-    // Prepare the list of room categories to choose from
-    const roomCategories = [];
-
-    // Check if the room's primary category matches the ones in the URL
-    if (urlCategories.includes(room.category)) {
-      roomCategories.push(room.category);
-    }
-
-    // Check if the room's secondary category matches the ones in the URL
-    if (urlCategories.includes(room.secondary_category)) {
-      roomCategories.push(room.secondary_category);
-    }
-
-    // If there's no match, return an empty string or fallback message
-    if (roomCategories.length === 0) {
-      return "No matching category";
-    }
-
-    // Randomly select between matching categories
-    const randomIndex = Math.floor(Math.random() * roomCategories.length);
-    return roomCategories[randomIndex];
-  },
-    handleActivityChange() {
-      console.log("Updated activities:", this.activities);
-      this.submitPayload(); // Ensure submitPayload is updated to handle changes in activities
-    },
-    toggleRoom() {
-      const roomNumber = this.selectedRoom;
-      const index = this.selectedRoomNumbers.indexOf(roomNumber);
-
-      if (index === -1) {
-        // Room number is not in the array, add it
-        this.selectedRoomNumbers.push(roomNumber);
-      } else {
-        // Room number is in the array, remove it
-        this.selectedRoomNumbers.splice(index, 1);
-      }
-
-      this.selectedRoom = ""; // Reset the select dropdown
-      this.updateRoomDetails(); // Update only the details of selected rooms
-    },
-    removeRoom(roomNumber) {
-      const index = this.selectedRoomNumbers.indexOf(roomNumber);
-      if (index > -1) {
-        this.selectedRoomNumbers.splice(index, 1);
-        this.updateRoomDetails(); // Update only the details of selected rooms
-      }
-    },
-    updateCategory(roomNumber) {
-      const selectedCategory = this.roomDetails[roomNumber].selectedCategory;
-      const room = this.rooms.find((r) => r.room_number === roomNumber);
-
-      if (selectedCategory === room.category) {
-        // If primary category is selected, reset to primary room limits
-        this.roomDetails[roomNumber].adults = Math.min(1, room.max_adults);
-        this.roomDetails[roomNumber].children = 0;
-        this.roomDetails[roomNumber].infants = 0;
-      } else if (selectedCategory === room.secondary_category) {
-        // If secondary category is selected, reset to secondary room limits
-        this.roomDetails[roomNumber].adults = Math.min(
-          1,
-          room.secondary_max_adults
-        );
-        this.roomDetails[roomNumber].children = 0;
-        this.roomDetails[roomNumber].infants = 0;
-      }
-
-      // Adjust other properties as necessary based on the selected category
-    },
-    updateRoomDetails() {
-  this.roomDetails = this.selectedRoomNumbers.reduce((acc, roomNumber) => {
-    const room = this.rooms.find((r) => r.room_number === roomNumber);
-    if (room) {
-      const selectedCategory =
-        this.roomDetails[roomNumber]?.selectedCategory || room.category;
-      
-      // Get current number of children
-      const currentChildren = this.roomDetails[roomNumber]?.children || 0;
-      // Truncate or adjust the childrenAges array to match the current number of children
-      const currentChildrenAges = (this.roomDetails[roomNumber]?.childrenAges || []).slice(0, currentChildren);
-
-      acc[roomNumber] = {
-        selectedCategory: selectedCategory,
-        primaryCategory: room.category,
-        secondaryCategory: room.secondary_category,
-        adults: this.roomDetails[roomNumber]?.adults || Math.min(1, room.max_adults),
-        children: currentChildren,
-        infants: this.roomDetails[roomNumber]?.infants || 0,
-        mealPlan: this.roomDetails[roomNumber]?.mealPlan || "room_only",
-        childrenAges: currentChildrenAges, // Adjusted childrenAges array
-        infantAges: this.roomDetails[roomNumber]?.infantAges || [],
-        mealTime: this.roomDetails[roomNumber]?.mealTime || " ",
-      };
-    }
-    return acc;
-  }, {});
-},
-
-
-    formatDatePayload(dateString) {
-      const date = new Date(dateString);
-      return date.toISOString(); // Converts to ISO 8601 format: "YYYY-MM-DDTHH:mm:ss.sssZ"
-    },
-
-    initializeActivities() {
-      this.activities = this.activities.map((activity) => ({
-        ...activity,
-        checked: false,
-      }));
-    },
-    preparePayload() {
-  const checkInDate = this.formatDatePayload(this.$route.query.fromDate);
-  const checkOutDate = this.formatDatePayload(this.$route.query.toDate);
-  const discountCode = this.$route.query.discount;
-  const taxes = [];
-  const discounts = [];
-  const selectedActivities = this.activities
-    .filter((activity) => activity.checked)
-    .map((activity) => ({ activity_id: activity.id }));
-
-  return {
-    check_in: checkInDate,
-    check_out: checkOutDate,
-    rooms: this.selectedRoomNumbers.map((roomNumber) => {
-      const room = this.rooms.find((r) => r.room_number === roomNumber);
-      const roomDetail = this.roomDetails[roomNumber] || {};
-      const childrenCount = roomDetail.children || 0;
-      const childrenAges = roomDetail.childrenAges.slice(0, childrenCount); // Ensure only valid ages are passed
-      const infantAges = roomDetail.infants > 0
-        ? roomDetail.infantAges.slice(0, roomDetail.infants) // Truncate if needed
-        : [];
-
-      // Get the randomized category for this room
-      const randomizedCategory = this.randomizedCategories[roomNumber] || room.category;
-
-      return {
-        room_id: room.id,
-        adults: roomDetail.adults || 0,
-        children: childrenAges, // Trimmed childrenAges
-        infants: infantAges, // Trimmed infantAges
-        meal_plan: roomDetail.mealPlan || "room_only",
-        category: randomizedCategory, // Use randomized category here
-      };
-    }),
-    taxes: taxes,
-    discounts: discounts,
-    activities: selectedActivities,
-    discount_code: discountCode,
-  };
-}
-
-
-,
-
-preparePayloadBooking() {
-  const formatDateToISO = (dateString) => {
-    if (!dateString) return "";
-    const date = new Date(dateString);
-
-    // Get the local timezone offset in minutes
-    const offset = date.getTimezoneOffset();
-
-    // Adjust date by subtracting the offset
-    const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
-
-    // Convert to ISO format
-    return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
-  };
-
-  const checkInDate = formatDateToISO(this.$route.query.fromDate);
-  const checkOutDate = formatDateToISO(this.$route.query.toDate);
-  const discountCode = this.$route.query.discount;
-
-  // Temporarily setting taxes and discounts to empty arrays
-  const taxes = [];
-  const discounts = [];
-  const selectedActivities = this.activities
-    .filter((activity) => activity.checked)
-    .map((activity) => ({
-      activity_id: activity.id,
-      activity_name: activity.name,
-    }));
-
-  const agentInfo = this.showGuestInfo
-    ? {
-        first_name: this.form.first_name || "",
-        last_name: this.form.last_name || "",
-        email: this.form.email || "",
-        telephone: this.form.telephone || "",
-        address: this.form.address || "",
-        nationality: this.form.nationality || "",
-      }
-    : {
-        first_name: "",
-        last_name: "",
-        email: "",
-        telephone: "",
-        address: "",
-        nationality: "",
-      };
-
-  return {
-    check_in: checkInDate,
-    check_out: checkOutDate,
-    booking_type: "website",
-    rooms: this.selectedRoomNumbers.map((roomNumber) => {
-      const room = this.rooms.find((r) => r.room_number === roomNumber);
-      const roomDetail = this.roomDetails[roomNumber] || {};
-
-      // Get the randomized category for this room
-      const randomizedCategory = this.randomizedCategories[roomNumber] || room.category;
-
-      // Get the number of children and infants to properly slice their respective age arrays
-      const childrenCount = roomDetail.children || 0;
-      const infantsCount = roomDetail.infants || 0;
-
-      return {
-        room_id: room.id,
-        room_number: room.room_number,
-        category: randomizedCategory, // Use randomized category here
-        adults: roomDetail.adults || 0,
-        children:
-          childrenCount > 0
-            ? (roomDetail.childrenAges || []).slice(0, childrenCount) // Ensure only valid number of children ages are passed
-            : [],
-        infants:
-          infantsCount > 0
-            ? (roomDetail.infantAges || []).slice(0, infantsCount) // Ensure only valid number of infant ages are passed
-            : [],
-        meal_plan: roomDetail.mealPlan || "room_only",
-        starting_meals_with: roomDetail.mealTime || "",
-        view: this.$route.query.view || "default",
-      };
-    }),
-    taxes,
-    discounts,
-    activities: selectedActivities,
-    discount_code: discountCode || "",
-    total_taxes: this.total_rate?.total_tax_amount || 0,
-    total_rooms_charge: this.total_rate?.total_rooms_amount || 0,
-    total_meal_plan_amount: this.total_rate?.total_meal_plan_amount || 0,
-    total_activities_charge: this.total_rate?.total_activities_amount || 0,
-    total_discount_amount: this.total_rate?.total_discount_amount || 0,
-    total_amount: this.total_rate?.total_amount || 0,
-    total_additional_services_amount: 0,
-    payment_method: "sueen_web",
-    is_partial_payment: false,
-    paid_amount: 0,
-    agent_info: agentInfo,
-    guest_info: {
-      first_name: this.form.guest_info.first_name,
-      last_name: this.form.guest_info.last_name,
-      email: this.form.guest_info.email,
-      telephone: this.form.guest_info.telephone,
-      address: this.form.guest_info.guest_address,
-      nationality: this.form.guest_info.nationality,
-      identification_type: this.form?.guest_info?.identification_type || "",
-      identification_no: this.form?.guest_info?.identification_no || "",
-      gender: this.form?.guest_info?.gender || "",
-      profile_image: this.form?.guest_info?.profile_image || [],
-      identification_issue_date: this.form.guest_info?.identification_issue_date
-        ? this.formatDatePayload(this.form.guest_info.identification_issue_date)
-        : null,
-      dob: this.form.guest_info?.dob
-        ? this.formatDatePayload(this.form.guest_info.dob)
-        : null,
-    },
-    booking_note: this.booking_note || "",
-    payment_note: this.payment_note || "",
-  };
-},
-
-    async submitPayload() {
-      try {
-        const payload = this.preparePayload();
-        const runtimeConfig = useRuntimeConfig();
-        console.log(payload);
-        const response = await fetch(
-          "https://api.sueennature.com/rooms/get-rates/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "x-api-key": runtimeConfig.public.DATABASE_ID,
-            },
-            body: JSON.stringify(payload),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        console.log(data);
-        this.total_rate = data;
-        console.log("RATES", this.total_rate);
-      } catch (error) {
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error
-        );
-      }
-    },
-    handleSubmit() {
-      const payload = this.preparePayloadBooking();
-      console.log("Submitted payload", payload);
-      if (
-        !payload.guest_info.first_name |
-        !payload.guest_info.nationality |
-        !payload.guest_info.last_name |
-        !payload.guest_info.telephone |
-        !payload.guest_info.address |
-        !payload.guest_info.identification_no |
-        !payload.guest_info.identification_type
-      ) {
-        return toast.error("Please fill fields in Guest info & Payment");
-      }
-      const headers = {
-        "x-api-key": this.$config.public.DATABASE_ID,
-        "Content-Type": "application/json",
-      };
-
-      this.book_loading = true;
-
-      axios
-        .post("https://api.sueennature.com/bookings/", payload, { headers })
-        .then((response) => {
-          console.log("Response received:", response.data);
-          this.book_loading = false;
-          toast.success("Proceeding to payment");
-          setTimeout(() => {
-            window.location.href = response.data.payment_url;
-          }, 1500);
-        })
-        .catch((error) => {
-          console.error("An error occurred:", error);
-          this.book_loading = false;
-          this.setupToastError("An error occurred. Please try again later.");
-        });
-    },
-    updateRoomNumbers() {
-      if (this.selectedNumberOfRooms) {
-        const num = parseInt(this.selectedNumberOfRooms, 10);
-        this.selectedRoomNumbers = this.rooms
-          .slice(0, num)
-          .map((room) => room.room_number);
-        this.initializeRoomDetails();
-      } else {
-        this.selectedRoomNumbers = [];
-        this.roomDetails = {};
-      }
-    },
-    initializeRoomDetails() {
-      // Initialize room details for selected rooms only
-      this.selectedRoomNumbers.forEach((room) => {
-        if (!this.roomDetails[room]) {
-          const roomData = this.rooms.find((r) => r.room_number === room);
-          this.$set(this.roomDetails, room, {
-            adults: Math.min(1, roomData.max_adults),
-            children: Math.min(0, roomData.max_childs),
-            mealPlan: "room_only",
-            infants: 0,
-            childrenAges: Array(Math.min(0, roomData.max_childs)).fill(0),
-            infantAges: Array(0).fill(0),
-          });
-        }
-      });
-    },
-    adultOptions(room) {
-  const roomDetails = this.rooms.find((r) => r.room_number === room);
-  const randomizedCategory = this.randomizedRoomCategories[room] || roomDetails.category; 
-
-  let maxAdults;
-  if (randomizedCategory === roomDetails.secondary_category) {
-    maxAdults = roomDetails.secondary_max_adults;
-  } else {
-    maxAdults = roomDetails.max_adults;
-  }
-
-  return Array.from({ length: maxAdults }, (_, i) => i + 1);
-}
-
-,
-childOptions(room) {
-  const roomDetails = this.rooms.find((r) => r.room_number === room);
-  const randomizedCategory = this.randomizedRoomCategories[room] || roomDetails.category; 
-
-  let maxChildren;
-  if (randomizedCategory === roomDetails.secondary_category) {
-    maxChildren = roomDetails.secondary_max_childs;
-  } else {
-    maxChildren = roomDetails.max_childs;
-  }
-
-  return Array.from({ length: maxChildren + 1 }, (_, i) => i);
-}
-,
-    scrollToPaymentInfo() {
-      this.$nextTick(() => {
-        this.$refs.paymentInfoRef.scrollIntoView({ behavior: "smooth" });
-      });
-    },
-    formatDate(dateString) {
-      const date = new Date(dateString);
-
-      const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-
-      const month = months[date.getMonth()];
-      const day = date.getDate();
-      const daySuffix = this.getDaySuffix(day);
-      const year = date.getFullYear();
-
-      return `${month} ${day}${daySuffix} ${year}`;
-    },
-    getDaySuffix(day) {
-      if (day > 3 && day < 21) return "th";
-      switch (day % 10) {
-        case 1:
-          return "st";
-        case 2:
-          return "nd";
-        case 3:
-          return "rd";
-        default:
-          return "th";
-      }
-    },
-
-    getClickMethod() {
-      if (this.isSignedIn) {
-        this.$auth.setAuthToken(null);
-        localStorage.removeItem("userEmail");
-        toast.success("Successfully Logged Out");
-        setTimeout(() => {
-          this.$router.push("/home");
-        }, 2000);
-      } else {
-        this.toggleModal();
-      }
-    },
-    togglePasswordVisibility() {
-      this.showPassword = !this.showPassword;
-    },
-    handleGoogleLoginData({ name, lname, email, password }) {
-      (this.isSocialLogin = true), (this.registerUser.name = name);
-      this.registerUser.lname = lname;
-      this.registerUser.email = email;
-      this.registerUser.password = password;
-      this.loginUser.email = email;
-      this.loginUser.password = password;
-      this.login();
-    },
-
-    async register() {
-      try {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(this.registerUser.email)) {
-          this.setupToastError("Please enter a valid email address.");
-          return;
-        }
-        if (this.registerUser.password.length < 8) {
-          this.setupToastError("Password must be at least 8 characters long.");
-          return;
-        }
-        // Step 1: Create guest
-        const guestPayload = {
-          first_name: this.registerUser.name,
-          last_name: this.registerUser.lname,
-          email: this.registerUser.email,
-          telephone: this.guestDetails.telephone || "",
-          address: this.guestDetails.address || "",
-          nationality: this.guestDetails.nationality || "",
-          profile_image: this.registerUser.profile_image || [],
-          identification_type: this.registerUser.identification_type || "",
-          identification_no: this.guestDetails.identification_no || "",
-          identification_issue_date:
-            this.registerUser.identification_issue_date ||
-            new Date().toISOString(),
-          dob: this.registerUser.dob || new Date().toISOString(),
-          gender: this.guestDetails.gender || "",
-          password: this.registerUser.password,
+            return token;
         };
 
-        const { data: guestResponse } = await axios.post(
-          "https://api.sueennature.com/guests",
-          guestPayload,
-          {
-            headers: {
-              "x-api-key": this.$config.public.DATABASE_ID,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        return {
+            recaptcha,
+        };
+    },
+  methods: {
 
-        console.log("Create guest response", guestPayload);
+    async submitForm() {
+  if (!this.formData.room) {
+    toast.error("Please select a room");
+    return; 
+  }
+  
+  try {
+    const token = await this.recaptcha();
+    console.log('reCAPTCHA Token:', token);
 
-        // Step 2: Register user
-        const { data: registerResponse } = await axios.post(
-          "https://api.sueennature.com/users/register",
-          {
-            username: this.registerUser.name + " " + this.registerUser.lname,
-            email: this.registerUser.email,
-            role: "guest",
-            password: this.registerUser.password,
-          },
-          {
-            headers: {
-              "x-api-key": this.$config.public.DATABASE_ID,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+    // const response = await axios.post(
+    //   'https://api.sueennature.com/users/contact',
+    //   {
+    //     name: this.formData.name,
+    //     email: this.formData.email,
+    //     message: this.formData.message,
+    //     room: this.formData.room,
+    //     phone_number: this.formData.phone
+    //   },
+    //   {
+    //     headers: {
+    //       'x-api-key': 'your-api-key-here'  // Add the API key here
+    //     }
+    //   }
+    // );
+    
+    toast.success("Form Submitted Successfully");
+    // console.log(response.data.message);
+    this.resetForm();
+  } catch (error) {
+    toast.error("Something went wrong");
+    console.error(error);
+  }
+},
 
-        console.log("Register response", registerResponse);
-        localStorage.setItem("userEmail", this.registerUser.email);
-          this.toggleModal_1()
-        // Set auth token and other necessary operations
-        this.nuxtApp.$auth.setAuthToken(registerResponse.access_token);
-        // localStorage.setItem("guest_id", data.guest_id);
-        this.setAuthTokenInCookie(registerResponse.access_token);
-        localStorage.setItem("userEmail", this.registerUser.email);
-        // this.$router.push({
-        //   path: "/dashboard",
-        //   query: { email: this.registerUser.email },
-
-        // });
-        // this.$router.push({
-        //   path: "/dashboard",
-        //   query: { guest_id: data.guest_id },
-        // });
-        // if ((data.detail = "Email already registered")) {
-        //   return toast.error(`Invalid Credentials`);
-        // }
-      } catch (error) {
-        console.error("An error occurred:", error);
-
-        if (
-          error.response &&
-          error.response.data &&
-          error.response.data.detail === "Email already registered"
-        ) {
-          this.setupToastError("Email already registered");
-        } else if (
-          error.response &&
-          error.response.data &&
-          error.response.data.detail === "Username already exists"
-        ) {
-          this.setupToastError("Username already exists");
-        } else {
-          this.setupToastError("An error occurred. Please try again later.");
-        }
-      }
-    },
-
-    async login() {
-      const {
-        public: { DATABASE_ID },
-      } = useRuntimeConfig();
-
-      const headers = {
-        "x-api-key": DATABASE_ID, // Set the X-API-Key header
-        "Content-Type": "application/json",
-      };
-      if (!this.loginUser.email || !this.loginUser.password) {
-        this.setupToastError("Please fill in all fields.");
-        return;
-      }
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(this.loginUser.email)) {
-        this.setupToastError("Please enter a valid email address.");
-        return;
-      }
-      // try {
-      const queryParams = new URLSearchParams({
-        email: this.loginUser.email,
-        password: this.loginUser.password,
-      }).toString();
-
-      const response = await fetch(
-        `https://api.sueennature.com/users/login?${queryParams}`,
-        {
-          method: "POST",
-          headers: {
-            "x-api-key": DATABASE_ID, // Set the X-API-Key header
-          },
-        }
-      )
-        .then(async (response) => {
-          // console.log("Status:", response.status);
-          localStorage.setItem("userEmail", this.loginUser.email);
-          const data = await response.json();
-          console.log(data);
-          this.setAuthTokenInCookie(data.access_token);
-          localStorage.setItem("guest_id", data.guest_id);
-          this.setAuthTokenInCookie(data.guest_id);
-          this.nuxtApp.$auth.setAuthToken(data.access_token);
-          if (data.access_token) {
-            this.$router.push({
-              path: "/dashboard",
-              query: { guest_id: data.guest_id },
-            });
-
-            return toast.success(`Successfully logged In`);
-          } else if ((data.detail = "Invalid credentials")) {
-            return toast.error(`Invalid Credentials`);
-          } else {
-            return toast.error("Something went wrong");
-          }
-          this.$router.push({
-            path: "/dashboard",
-            query: { id: 30 },
-          });
-          // this.setupToastSucess("Successfully Logged In")
-        })
-        .catch((error) => {
-          if (error.response) {
-            // console.log("Error status:", error.response.status);
-            // console.log("Error data:", error.response.data);
-
-            if (error.response.data.message === "Invalid Credentials") {
-              if (this.isSocialLogin) {
-                this.register();
-              } else {
-                this.setupToastError("Please check your credentials");
-              }
-            }
-          } else if (error.request) {
-            console.log("Error request:", error.request);
-          } else {
-            console.log("Error", error.message);
-          }
-        });
-    },
-    setAuthTokenInCookie(token) {
-      const cookieName = "auth_token=";
-      const daysValid = 7;
-      const expiryDate = new Date();
-      expiryDate.setTime(
-        expiryDate.getTime() + daysValid * 24 * 60 * 60 * 1000
-      );
-      const expires = "expires=" + expiryDate.toUTCString();
-
-      document.cookie = cookieName + token + ";" + expires + ";path=/";
-    },
-    logout() {
-      this.$auth.setAuthToken(null);
-      localStorage.removeItem("userEmail");
-      localStorage.removeItem("guest_id");
-      this.$router.push("/home");
-    },
-    formatPrice(value) {
-      return value?.toLocaleString("en-US");
-    },
-    redirectToRegister() {
-      this.$router.push("/register");
-    },
-    toggleButtonGuestInfo() {
-      this.showGuestInfo = true;
-      this.showYourInfo = false;
-    },
-    toggleGuestInfo(event) {
-      this.bookingForSomeoneElse = event.target.value;
-      if (event.target.value === "Yes") {
-        this.showGuestInfo = true;
-        this.showYourInfo = false;
-      } else {
-        this.showGuestInfo = false;
-        this.showYourInfo = true;
-      }
-    },
-    toggleModal() {
-      this.isModalVisible = !this.isModalVisible;
-      this.isModal2Visible = false;
-    },
-    closeModal() {
-      this.isModalVisible = false;
-    },
-    toggleModal_1() {
-      this.isModalVisible = false; // Close the first modal if it's open.
-      this.isModal2Visible = !this.isModal2Visible;
-    },
-    closeModal_1() {
-      this.isModal2Visible = false;
-    },
-    reopenFirstModal() {
-      this.closeModal_1(); // Close the second modal if it's open.
-      this.toggleModal(); // Toggle the first modal (open it).
-    },
-    setupToastSucess(message) {
-      toast.success(message, {
-        autoClose: 3000,
-      });
-    },
-    setupToastError(message) {
-      toast.error(message, {
-        autoClose: 3000,
-      });
-    },
-
-    scrollToBottom() {
-      this.$refs.paymentInfoRef?.scrollIntoView({ behavior: "smooth" });
-    },
-  },
-
-  mounted() {
-    const queryParams = this.$route.query;
-
-    if (queryParams.categories) {
-      this.categories = queryParams.categories
-        .replace(/[\[\]']+/g, "")
-        .split(",");
+    resetForm(){
+      this.formData.name = '';
+      this.formData.email = '';
+      this.formData.phone = '';
+      this.formData.room = 'Deluxe Room';
+      this.formData.message = '';
     }
-
-    console.log("Categories:", this.categories);
-
-    const { fromDate, toDate, view, discount, categories } = this.$route.query;
-
-    const categoryList = Array.isArray(categories)
-      ? categories
-      : categories
-      ? categories.split(",")
-      : [];
-
-    this.initializeActivities();
-
-    // Adjusted formatDateToISO function
-    const formatDateToISO = (dateString) => {
-      if (!dateString) return "";
-      const date = new Date(dateString);
-
-      // Get the local timezone offset in minutes
-      const offset = date.getTimezoneOffset();
-
-      // Adjust date by subtracting the offset
-      const adjustedDate = new Date(date.getTime() - offset * 60 * 1000);
-
-      // Convert to ISO format
-      return adjustedDate.toISOString().slice(0, 19); // Remove milliseconds
-    };
-
-    // Ensure check-out date is after check-in date
-    if (new Date(fromDate) >= new Date(toDate)) {
-      this.setupToastError("Check-out date must be after check-in date.");
-      return;
-    }
-
-    // Format dates
-    const formattedCheckIn = formatDateToISO(fromDate);
-    const formattedCheckOut = formatDateToISO(toDate);
-
-    console.log(
-      "BOOKING_FORMAT",
-      fromDate,
-      formattedCheckIn,
-      toDate,
-      formattedCheckOut
-    );
-
-    const runtimeConfig = useRuntimeConfig();
-
-    const baseUrl = "https://api.sueennature.com/rooms/availability/";
-
-    const params = new URLSearchParams();
-    params.append("check_in", formattedCheckIn);
-    params.append("check_out", formattedCheckOut);
-    params.append("views", view);
-    params.append("discount_code", discount || "");
-
-    categoryList.forEach((category) => params.append("categories", category));
-
-    // Proceed with API call or other logic
-
-    const url = `${baseUrl}?${params.toString()}`;
-    console.log("BOOKING", url);
-    fetch(url, {
-      method: "GET",
-      headers: {
-        "x-api-key": runtimeConfig.public.DATABASE_ID,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Response Data:", data);
-        this.activities = data.activities;
-        this.rooms = data.rooms;
-        this.discounts = data.discounts;
-        this.taxes = data.taxes;
-        console.log(this.rooms);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-
-    const cookies = document.cookie.split(";");
-    const authTokenCookie = cookies.find((cookie) =>
-      cookie.trim().startsWith("auth_token=")
-    );
-    this.isSignedIn = !!authTokenCookie;
-    initFlowbite();
-  },
-
-  setup() {
-    const nuxtApp = useNuxtApp();
-
-    const isLoggedIn = computed(() => authStore.token !== null);
-
-    return {
-      isLoggedIn,
-      nuxtApp,
-    };
-  },
+  }
 };
 </script>
 
 <style scoped>
-h2,
-h6,
-.costSelector,
-.total-cost,
-.image-label {
+h2 {
   font-family: "Philosopher", sans-serif;
 }
+
 h3,
-h5,
-label,
-select,
 .buttontext,
 p,
-input {
+h5,
+label,
+input,
+textarea,
+a {
   font-family: "Barlow", sans-serif;
 }
-::marker {
-  color: #c64816; /* Change this color to the desired color */
-}
-#room {
-  /* Your existing styles here */
-  background-image: none;
-}
-#rates {
+
+#rooms {
   /* Your existing styles here */
   background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
-  background-position: right 0rem center;
-  padding-right: 1rem;
-}
-#rooms,
-#adults,
-#children,
-#infants,
-#nationality {
-  background-image: url("data:image/svg+xml,%3csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 10 6'%3e %3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 1 4 4 4-4'/%3e %3c/svg%3e");
-}
-.selected-room {
-  display: inline-flex;
-  align-items: center;
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.close-icon {
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: red;
-  cursor: pointer;
-  margin-left: 5px;
-}
-table {
-  border-collapse: collapse;
-}
-
-tr {
-  min-height: 120px; /* Adjust this value based on your content */
-}
-
-td {
-  vertical-align: top; /* Ensure content aligns to the top */
 }
 </style>
