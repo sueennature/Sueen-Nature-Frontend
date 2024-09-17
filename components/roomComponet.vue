@@ -36,7 +36,7 @@
           />
         </svg>
 
-        <h6 class="mt-4 text-gray-300 text-xs">Breakfsast</h6>
+        <h6 class="mt-4 text-gray-300 text-xs">Breakfast</h6>
       </div>
       <div class="flex flex-col justify-center items-center">
         <svg
@@ -100,20 +100,12 @@
     </div>
     <p
       class="md:text-xl text-base text-gray-300 text-center mt-20 max-w-[80ch] mx-auto"
-    >
-      The Master Suite provides an ambience of comfort, elegance and luxury to
-      welcome business and leisure travelers. The interior exudes a light
-      atmosphere with tasteful tones reflecting the distinctive, individual
-      style of Andrew Martin, the renowned British interior designer.
+    >The Master Suite offers an unparalleled blend of comfort, elegance, and luxury, creating the perfect sanctuary for both business and leisure travelers. The thoughtfully curated interior features soft, sophisticated tones that reflect the distinctive character of the suite, while ensuring a serene and relaxing environment. Every detail has been meticulously crafted to enhance the overall experience, providing guests with a space that is both inviting and refined.
     </p>
     <p
       class="md:text-xl text-base text-gray-300 text-center mt-8 max-w-[80ch] mx-auto"
     >
-      The luxuriously elegant suites at the award-winning Grand Palace Hotel are
-      designed to satisfy the most discerning tastes. The welcoming atmosphere,
-      together with the impeccable service of our staff, ensures that our guests
-      will enjoy their experience in Riga, and take with them many fond memories
-      of this historic city.
+    At the prestigious, award-winning Grand Palace Hotel, our exquisitely designed Master Suites cater to the most discerning of tastes. The luxurious ambiance, coupled with the impeccable service provided by our dedicated staff, guarantees an unforgettable stay. Whether visiting for business or pleasure, guests are embraced by a warm and welcoming atmosphere that complements the charm and history of Riga, leaving them with cherished memories of both the hotel and the city itself.
     </p>
     <div class="wrapper max-w-lg h-auto mx-auto mt-10 md:mt-20">
         <div id="main-slider" class="splide">
@@ -291,6 +283,8 @@ export default defineComponent({
 
     const navigateToRoomTypePage = (roomTypeName) => {
       // Update the URL without reloading the page
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
       router.push({ query: { name: roomTypeName } });
       
       // Fetch data for the new room type

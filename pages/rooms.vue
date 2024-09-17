@@ -14,7 +14,7 @@
 
 <script setup>
 // import contentRooms from "../components/contentRooms.vue";
-import roomContent from '../components/roomContent'
+import roomContent from '../components/contentRooms.vue'
 import footerHome from "~/components/footerHome.vue";
 import navbar from "~/components/navbar.vue";
 </script>
