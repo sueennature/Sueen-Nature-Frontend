@@ -15,8 +15,9 @@
                <h4 class="text-black-50 text-base mt-2">Sueen Nature Resort - General Manager</h4> -->
             </div>
             <div class="mt-10">
-                <h3 class="uppercase text-black-50 lg:text-xl text-sm">Reservation</h3>
-                <h3 class="uppercase text-black-50 lg:text-xl text-sm mt-2 text-nowrap">+(94) 34 3307500</h3>
+                <h3 class="uppercase text-black-50 lg:text-lg text-sm">Reservation</h3>
+                <h3 class="uppercase text-black-50 lg:text-lg text-sm mt-2 text-nowrap">+(94) 34 330 7500</h3>
+                <h3 class="uppercase text-black-50 lg:text-lg text-sm mt-2 text-nowrap">+(94) 71 584 0000</h3>
 
             </div>
 
