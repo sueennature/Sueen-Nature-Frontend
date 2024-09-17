@@ -86,6 +86,8 @@
               <option value="Deluxe Room">Deluxe Room</option>
               <option value="Single Room">Single Room</option>
               <option value="Double Room">Double Room</option>
+              <option value="Triple Room">Triple Room</option>
+              <option value="Family Room">Family Room</option>
             </select>
           </div>
         </div>
