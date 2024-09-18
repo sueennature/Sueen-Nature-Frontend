@@ -1,11 +1,27 @@
 <template>
-  <div class="relative">
-    <!-- <img
-      src="/img/hero-home 1.webp"
-      alt="backgroundImg"
-      class="w-full min-h-screen object-cover"
-    /> -->
+<div>
+  <div v-if="loadingTest" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75">
+      <div class="relative -6 rounded-lg  text-gray-800">
+        <button
+          @click="closeBanner"
+          class="absolute top-0 right-0 p-2 text-gray-500 hover:text-gray-700"
+          aria-label="Close"
+        >
+          &times;
+        </button>
 
+        <div class="text-center flex flex-col items-center">
+          <h2 class="text-2xl font-bold mb-4">Exclusive Offer!</h2>
+          <img
+            src="/img/family_room_four.jpg"
+            class="object-cover w-72 mb-4 rounded-xl"
+          />
+          <div class="loader mb-4"></div>
+        </div>
+      </div>
+    </div>
+    <div >
+      <div class="relative">
     <swiper
       :spaceBetween="30"
       :autoplay="autoplayConfig"
@@ -59,7 +75,6 @@
       </swiper-slide>
     </swiper>
 
-    <!-- stiky navbar -->
     <nav
       class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
     >
@@ -278,24 +293,17 @@
         </div>
       </div>
     </nav>
-    <!-- Overlay -->
-    <!-- <div class="absolute inset-0 bg-black-200 opacity-30 z-20"></div>  -->
-    <!-- hero logo image -->
+  
     <div class="absolute z-40 top-8 left-0 w-full md:flex hidden items-center">
       <a href="/" class="relative mx-auto">
-        <!-- Adjust mx-2 as needed for spacing -->
         <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
         <div
           class="absolute bottom-0 h-0.5 shadow-slate-800 md:w-40 w-4 bg-white md:-left-48 -left-10 md:block hidden"
         ></div>
-        <!-- Left vertical line -->
         <div
           class="absolute bottom-0 h-0.5 shadow-slate-800 md:w-40 w-4 bg-white md:-right-48 -right-10 md:block hidden"
-        ></div>
-        <!-- Right vertical line -->
-      </a>
+        ></div>      </a>
     </div>
-    <!-- default navbar -->
     <div
       class="absolute z-40 top-20 left-0 right-0 md:flex hidden justify-center md:top-60"
     >
@@ -359,7 +367,6 @@
         </a>
       </div>
     </div>
-    <!-- main hero booking options selector -->
     <div
       class="absolute z-40 inset-x-0 bottom-56 lg:flex lg:flex-col xl:flex-row flex-col lg:justify-center md:mx-0 mx-4"
     >
@@ -426,7 +433,6 @@
               </div>
             </div>
 
-            <!-- Dropdown Options -->
             <div
               v-if="dropdownOpen"
               class="absolute mt-2 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg z-10"
@@ -482,7 +488,6 @@
         @click="checkAvailability"
       >
         <span v-if="loading" class="flex">
-          <!-- Loader Icon or Text -->
           <svg
             class="animate-spin h-5 w-5 mr-3 text-white"
             xmlns="http://www.w3.org/2000/svg"
@@ -513,7 +518,6 @@
           @click="checkAvailability"
         >
           <span v-if="loading" class="flex items-center justify-center">
-            <!-- Loader Icon or Text -->
             <svg
               class="animate-spin h-5 w-5 mr-3 text-white"
               xmlns="http://www.w3.org/2000/svg"
@@ -542,6 +546,8 @@
     </div>
     <div></div>
   </div>
+</div>
+</div>
 </template>
 
 <script>
@@ -561,6 +567,7 @@ export default {
 
   data() {
     return {
+      loadingTest: true, // Default to true to show banner initially
       modules: [EffectFade, Navigation, Pagination, Autoplay],
       autoplayConfig: {
         delay: 5000,
@@ -591,6 +598,9 @@ export default {
   },
 
   methods: {
+    closeBanner() {
+      this.loadingTest = false; // Set loading to false to close the banner
+    },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
@@ -795,6 +805,9 @@ export default {
   },
 
   mounted() {
+    setTimeout(() => {
+      this.loadingTest = false; 
+    }, 5000)
     const cookies = document.cookie.split(";");
     const authTokenCookie = cookies.find((cookie) =>
       cookie.trim().startsWith("auth_token=")
@@ -832,6 +845,14 @@ export default {
 </script>
 
 <style scoped>
+button[aria-label="Close"] {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
 input[type="date"] {
   background: transparent;
   color: white;
@@ -872,5 +893,18 @@ select,
 /* Style for the custom icon */
 .relative svg {
   pointer-events: none; /* Ensure the icon does not interfere with input interactions */
+}
+.loader {
+  border: 4px solid #f3f3f3; /* Light gray */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
