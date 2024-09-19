@@ -136,6 +136,7 @@
           </div>
         </div>
       </div>
+  
       <div v-if="roomData">
   <div class="flex flex-col items-center">
     <div class="flex flex-row gap-4 justify-center mt-4">
@@ -165,12 +166,49 @@
       >
     <div v-for="(category, categoryIndex) in unSelectedRoomData" :key="categoryIndex" class="category-section">
       <!-- <div v-for="(room, roomIndex) in category.rooms" :key="roomIndex" class="room-card"> -->
-        
+        <!-- <div v-if="category.rooms[0].images.length > 0" class="image-gallery">
+          <img :src="https://api.sueennature.com/${category.rooms[0].images[0]}" alt="Room Image" class="room-image w-[300px] h-[300px]" />
+        </div> -->
         <!-- Display images -->
         <div v-if="category.rooms.length > 0" class="room-card">
-        <div v-if="category.rooms[0].images.length > 0" class="image-gallery">
-          <img :src="`https://api.sueennature.com/${category.rooms[0].images[0]}`" alt="Room Image" class="room-image w-[300px] h-[300px]" />
-        </div>
+          <div class="image-gallery">
+      <img
+        v-if="category.category === 'Single'"
+        src="/img/Single Room.webp"
+        alt="Single Room Image"
+        class="room-image w-[300px] h-[300px]"
+      />
+      <img
+        v-else-if="category.category === 'Double'"
+        src="/img/Double Room.webp"
+        alt="Double Room Image"
+        class="room-image w-[300px] h-[300px]"
+      />
+      <img
+        v-else-if="category.category === 'Deluxe'"
+        src="/img/Delux Room.webp"
+        alt="Deluxe Room Image"
+        class="room-image w-[300px] h-[300px]"
+      />
+      <img
+        v-else-if="category.category === 'Triple'"
+        src="/img/Triple Room.webp"
+        alt="Triple Room Image"
+        class="room-image w-[300px] h-[300px]"
+      />
+      <img
+        v-else-if="category.category === 'Family'"
+        src="/img/Family Room.webp"
+        alt="Family Room Image"
+        class="room-image w-[300px] h-[300px]"
+      />
+      <img
+        v-else
+        src="/img/room_5.jpg "
+        alt="Default Room Image"
+        class="room-image w-[300px] h-[300px]"
+      />
+    </div>
       </div>
       <!-- </div> -->
       <h2 class="text-xl mt-2 mb-2 text-center">{{ category.category }}</h2>
