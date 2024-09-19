@@ -10,7 +10,7 @@
       Sueen Nature Resort
     </h3>
     <div class="xl:grid xl:grid-cols-5  lg:grid lg:grid-cols-1 md:grid md:grid-cols-1 grid grid-cols-1 justify-items-center gap-4 my-10">
-  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter">
+  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter" @click="handleNavigateSingle">
     <img class="rounded-0 w-64 max-w-md h-60" :src="`https://api.sueennature.com/${room_carousels[1]}`" :alt="`Room image`" />
     <figcaption class="absolute px-4 text-lg text-white bottom-6">
       <h2 class="text-3xl text-white">Single Room</h2>
