@@ -204,7 +204,7 @@
       />
       <img
         v-else
-        src="./img/room_5.jpg "
+        src="/img/room_5.jpg "
         alt="Default Room Image"
         class="room-image w-[300px] h-[300px]"
       />
