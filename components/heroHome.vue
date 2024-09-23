@@ -616,7 +616,7 @@ export default {
       return this.carousels
         .filter(
           (carousel) =>
-            carousel.title === "HomeSlider"// Filter by specific titles
+            carousel.tags === "Carousel"// Filter by specific titles
         )
         .flatMap((carousel) =>
           carousel.media_urls
