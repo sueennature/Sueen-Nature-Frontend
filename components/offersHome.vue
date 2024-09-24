@@ -1,10 +1,11 @@
 <template>
   <section class="px-16 py-20">
 <div class="flex justify-center w-full">
-    <div class="grid justify-items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
+    <div class="grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
       <div v-for="offer in offers" :key="offer.id" class="flex max-w-[500px] flex-col rounded-xl bg-gray-500 text-gray-700 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105 relative">
         <div class="image-container">
-          <img :src="offer.imgSrc" :alt="offer.altText" class="apiImage rounded-t-md" @error="onImageError" />
+          <img :src="offer.imgSrc" :alt="offer.altText"  class=" rounded-t-md object-cover w-full h-[290px] sm:h-[300px] md:h-[300px] lg:h-[390px]" 
+          @error="onImageError" />
          <div class="flex items-center justify-end w-full z-10 absolute top-0 right-0 left-10 bottom-30  mt-4">
             <img src="/Logo.png" alt="Logo" class="w-48" />
           </div> 
