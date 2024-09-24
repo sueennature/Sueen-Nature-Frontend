@@ -12,10 +12,12 @@
 
         <div class="text-center flex flex-col items-center">
           <h2 class="text-2xl font-bold mb-4">Exclusive Offer!</h2>
+        <a href="/offers">
           <img
             src="/img/family_room_four.jpg"
-            class="object-cover w-72 mb-4 rounded-xl"
+            class="object-cover w-72 mb-4 rounded-xl cursor-pointer"
           />
+        </a>
           <div class="loader mb-4"></div>
         </div>
       </div>

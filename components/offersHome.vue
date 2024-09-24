@@ -1,6 +1,7 @@
 <template>
   <section class="px-16 py-20">
-    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-7">
+<div class="flex justify-center w-full">
+    <div class="grid justify-items-center grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
       <div v-for="offer in offers" :key="offer.id" class="flex max-w-[500px] flex-col rounded-xl bg-gray-500 text-gray-700 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105 relative">
         <div class="image-container">
           <img :src="offer.imgSrc" :alt="offer.altText" class="apiImage rounded-t-md" @error="onImageError" />
@@ -24,6 +25,7 @@
         </div>
       </div>
     </div>
+</div>
   </section>
 </template>
 
@@ -89,7 +91,7 @@ ul li {
 }
 .apiImage {
   object-fit: cover; 
-  height: 250px; 
+  height: 380px; 
   width:120%; 
 }
 
