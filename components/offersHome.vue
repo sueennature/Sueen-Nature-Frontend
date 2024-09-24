@@ -91,7 +91,7 @@ ul li {
 }
 .apiImage {
   object-fit: cover; 
-  height: 380px; 
+  height: 390px; 
   width:120%; 
 }
 
