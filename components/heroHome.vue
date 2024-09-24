@@ -35,7 +35,7 @@
       class="mySwiper"
       @slideChange="onSlideChange"
     >
-      <swiper-slide>
+      <!-- <swiper-slide>
         <video
           ref="video"
           src="/img/home_video.mp4"
@@ -74,7 +74,26 @@
           src="/img/hero-home 5.webp"
           class="object-cover w-full min-h-screen"
         />
-      </swiper-slide>
+      </swiper-slide> -->
+
+      <swiper-slide v-for="(item, index) in allMedia" :key="index">
+  <!-- Conditionally render video or image based on the media type -->
+  <video
+    v-if="item.media_type === 'video'"
+    :src="getImageUrl(item.path)"
+    ref="video"
+    class="object-cover w-full min-h-screen"
+    autoplay
+    muted
+    loop
+  ></video>
+
+  <img
+    v-else-if="item.media_type === 'image'"
+    :src="getImageUrl(item.path)"
+    class="object-cover w-full min-h-screen"
+  />
+</swiper-slide>
     </swiper>
 
     <nav
@@ -580,6 +599,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { EffectFade, Navigation, Pagination, Autoplay } from "swiper/modules";
+import axios from "axios"; // Import axios for API requests
 
 export default {
   components: {
@@ -607,15 +627,33 @@ export default {
       discount_code: "",
       isMenuOpen: false,
       authToken: "",
+      carousels: [], // Array to hold fetched carousel data
     };
   },
 
-  computed: {},
-  watch: {
-    roomCategory(newVal) {
-      if (newVal === null) {
-        this.roomCategory = ""; // Set default value if needed
-      }
+  computed: {
+    allMedia() {
+      const uniqueMedia = new Set(); // Create a Set to store unique media paths
+
+      return this.carousels
+        .filter(
+          (carousel) =>
+            carousel.tags === "Carousel"// Filter by specific titles
+        )
+        .flatMap((carousel) =>
+          carousel.media_urls
+            .map((url) => ({
+              path: url,
+              media_type: carousel.media_type,
+            }))
+            .filter((media) => {
+              if (!uniqueMedia.has(media.path)) {
+                uniqueMedia.add(media.path); // Add unique path to the Set
+                return true; // Include this media
+              }
+              return false; // Skip duplicate media
+            })
+        );
     },
   },
 
@@ -676,25 +714,37 @@ export default {
         );
       }
     },
+    async fetchCarousels() {
+      const runtimeConfig = useRuntimeConfig();
+      try {
+        const response = await axios.get(
+          "https://api.sueennature.com/carousels/?skip=0&limit=10",
+          {
+            headers: {
+              "x-api-key": runtimeConfig.public.DATABASE_ID, // Replace with your actual API key
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        this.carousels = response.data.data; // Assign the fetched carousels data
+      } catch (error) {
+        console.error("Error fetching carousels:", error);
+      }
+    },
+    getImageUrl(path) {
+      return `https://api.sueennature.com/${path}`;
+    },
     setupToast() {
       toast.error("welcome to sda", {
         autoClose: 1000,
       });
     },
-
     redirectToDashboard() {
-      // if (this.userEmail) {
-      //   this.$router.push({
-      //     path: "/dashboard",
-      //     query: { email: this.userEmail },
-      //   });
-      // }
       this.$router.push({
         path: "/dashboard",
         query: { guest_id: 30 },
       });
     },
-
     async checkAvailability() {
       const runtimeConfig = useRuntimeConfig();
       if (
@@ -703,7 +753,7 @@ export default {
         !this.roomView ||
         this.selectedCategories.length === 0
       ) {
-        return toast.error("Please all fields");
+        return toast.error("Please fill all fields");
       }
       const checkInDate = new Date(this.check_in);
       const checkOutDate = new Date(this.check_out);
@@ -799,27 +849,25 @@ export default {
         console.error("Error during fetch operation:", error);
       }
     },
-    setupToast(message) {
+    setupToastError(message) {
       toast.error(message, {
         autoClose: 3000,
       });
     },
-
     setupToastSuccess(message) {
       toast.success(message, {
         autoClose: 3000,
       });
     },
-
     onSlideChange(swiper) {
       const activeSlide = swiper.slides[swiper.activeIndex];
       const videoElement = this.$refs.video;
 
       if (activeSlide.contains(videoElement)) {
-        swiper.params.autoplay.delay = 30000; // 10 seconds delay for video slide
+        swiper.params.autoplay.delay = 30000; // 30 seconds delay for video slide
         videoElement.play();
       } else {
-        swiper.params.autoplay.delay = 10000; // 5 seconds delay for other slides
+        swiper.params.autoplay.delay = 10000; // 10 seconds delay for other slides
         videoElement.pause();
       }
       swiper.autoplay.start();
@@ -828,8 +876,8 @@ export default {
 
   mounted() {
     setTimeout(() => {
-      this.loadingTest = false; 
-    }, 5000)
+      this.loadingTest = false;
+    }, 5000);
     const cookies = document.cookie.split(";");
     const authTokenCookie = cookies.find((cookie) =>
       cookie.trim().startsWith("auth_token=")
@@ -842,6 +890,7 @@ export default {
       console.log("first", this.userEmail);
     }
     this.fetchRoomTypes();
+    this.fetchCarousels(); // Fetch the carousel data
     document.addEventListener("click", this.handleClickOutside);
 
     Promise.all([
@@ -865,6 +914,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 button[aria-label="Close"] {
