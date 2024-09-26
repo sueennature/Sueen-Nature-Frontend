@@ -60,6 +60,12 @@
             <a href="/gallery" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">Gallery</a>
           </li>
           <li>
+            <a href="/news" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">News</a>
+          </li>
+          <li>
+            <a href="/offers" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">Offers</a>
+          </li>
+          <li>
             <a href="/contact" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">Contact</a>
           </li>
         </ul>
@@ -118,6 +124,12 @@
             </li>
             <li>
               <a href="/gallery" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">Gallery</a>
+            </li>
+            <li>
+              <a href="/news" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">News</a>
+            </li>
+            <li>
+              <a href="/offers" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">Offers</a>
             </li>
             <li>
               <a href="/contact" class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase">Contact</a>

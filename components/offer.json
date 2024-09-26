@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "title": "Seasonal Offer",
+      "description": "Enjoy an exclusive summer 2-night stay package at Sueen Nature.",
+      "dateRange": "Aug 2023 - Nov 2023",
+      "imgSrc": "https://cdn.britannica.com/96/115096-050-5AFDAF5D/Bellagio-Hotel-Casino-Las-Vegas.jpg",
+      "altText": "Spa Summer Offer"
+    },
+    {
+      "id": 2,
+      "title": "Winter Getaway",
+      "description": "Experience a cozy retreat with our winter 3-night stay package.",
+      "dateRange": "Dec 2023 - Feb 2024",
+      "imgSrc": "/img/winter-getaway.png",
+      "altText": "Winter Getaway"
+    },
+    {
+      "id": 3,
+      "title": "Summer Getaway",
+      "description": "Experience a cozy retreat with our summer 3-night stay package.",
+      "dateRange": "Jun 2023 - Aug 2023",
+      "imgSrc": "/img/summer-getaway.png",
+      "altText": "Summer Getaway"
+    }
+  ]
+  
