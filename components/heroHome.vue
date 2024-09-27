@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-if="loadingTest" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75">
+  <!-- <div v-if="loadingTest" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75">
       <div class="relative -6 rounded-lg  text-gray-800">
         <button
           @click="closeBanner"
@@ -21,9 +21,9 @@
           <div class="loader mb-4"></div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div >
-      <div class="relative">
+      <div class="relative min-h-screen ">
     <swiper
       :spaceBetween="30"
       :autoplay="autoplayConfig"
@@ -174,13 +174,13 @@
                 >News</a
               >
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="/offers"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Offers</a
               >
-            </li>
+            </li> -->
             <li>
               <a
                 href="/rooms"
@@ -301,13 +301,13 @@
                   >News</a
                 >
               </li>
-              <li>
+              <!-- <li>
                 <a
                   href="/offers"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >Offers</a
                 >
-              </li>
+              </li> -->
               <li>
                 <a
                   href="/contact"
@@ -375,12 +375,12 @@
         >
           News
         </a>
-        <a
+        <!-- <a
           href="/offers"
           class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Offers
-        </a>
+        </a> -->
         <a
           href="/rooms"
           class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
