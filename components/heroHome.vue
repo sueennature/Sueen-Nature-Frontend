@@ -825,9 +825,9 @@ export default {
       const videoElement = activeSlide.querySelector("video");
 
       if (videoElement) {
-        swiper.params.autoplay.delay = 10000; // 10 seconds delay for image slides
+        swiper.params.autoplay.delay = 15000; // 10 seconds delay for image slides
         swiper.autoplay.start(); 
-        console.log("video slide, autoplay started with 10s delay.");
+        console.log("video slide, autoplay started with 15s delay.");
 
         
       } else {
