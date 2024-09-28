@@ -1,26 +1,31 @@
 <template>
   <!-- stiky navbar -->
-  <nav class="dark:bg-gray-900 fixed w-full z-50 top-0 start-0 border-none dark:border-gray-600 md:px-20 px-0" :class="{ 'bg-black-200': isNavbarBackgroundBlack }" :style="{ opacity: isNavbarBackgroundBlack ? '0.7' : '1' }">
+  <nav
+    class="dark:bg-gray-900 fixed w-full z-50 top-0 start-0 border-none dark:border-gray-600 md:px-20 px-0"
+    :class="{ 'bg-black-200': isNavbarBackgroundBlack }"
+    :style="{ opacity: isNavbarBackgroundBlack ? '0.7' : '1' }"
+  >
     <div
       class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <a
-        href="/home"
-        class="flex items-center space-x-3 rtl:space-x-reverse"
-      >
-      <img src="/img/logoMobile.png" alt="logoImg" class="w-auto h-8 md:h-10" />
+      <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img
+          src="/img/logoMobile.png"
+          alt="logoImg"
+          class="w-auto h-8 md:h-10"
+        />
       </a>
       <div
         class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
       >
-      <a href="/booking">
-        <button
-          type="button"
-          class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
-        >
-          book now
-        </button>
-      </a>  
+        <a href="/booking">
+          <button
+            type="button"
+            class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm md:text-base text-sm px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
+          >
+            book now
+          </button>
+        </a>
         <button
           data-collapse-toggle="navbar-cta"
           type="button"
@@ -100,13 +105,13 @@
       <div class="hidden lg:flex lg:flex-row lg:gap-4">
         <div class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
           <a href="/booking">
-          <button
-            type="button"
-            class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
-          >
-            book now
-          </button>
-        </a>
+            <button
+              type="button"
+              class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
+            >
+              book now
+            </button>
+          </a>
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
@@ -200,18 +205,19 @@
       src="/img/hero-contact.webp"
       alt="hero-rooms-Img"
       class="w-full z-10 min-h-screen lg:min-h-0 object-cover"
-    />  
+    />
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black-200 opacity-50 z-20"></div>
     <!-- content on hero section -->
     <div
       class="absolute inset-0 flex flex-col justify-center items-center text-center z-40"
     >
-      <h6 class="text-white text-xl font-semibold uppercase md:mt-0 mt-28">Get in touch</h6>
+      <h6 class="text-white text-xl font-semibold uppercase md:mt-0 mt-28">
+        Get in touch
+      </h6>
       <h2 class="text-white md:text-6xl text-5xl font-semibold mt-5 uppercase">
         contact us
       </h2>
-
     </div>
   </div>
 </template>
@@ -246,10 +252,10 @@ h2 {
 }
 h3,
 .buttontext,
-h6,p,ul li,a{
+h6,
+p,
+ul li,
+a {
   font-family: "Barlow", sans-serif;
 }
-
-
-
 </style>
