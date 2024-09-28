@@ -207,7 +207,6 @@
             href="tel:+94715840000"
             class="text-stone-700 hover:underline text-base"
             >+(94) 71 584 0000
-
           </a>
         </div>
         <div class="flex flex-row gap-1 mt-2">

@@ -57,12 +57,12 @@
         <div
           class="flex flex-col items-center justify-start md:flex-row md:text-sm text-xs text-black-200 border-l pl-2 md:pl-4"
         >
-        <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
-        <select
+          <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
+          <select
             class="ml-0 md:ml-2 border rounded-sm text-xs h-8 px-2"
             v-model="view"
           >
-          <option value="view">select</option>
+            <option value="view">select</option>
 
             <option value="mountain">Mountain</option>
             <option value="lake">Lake</option>
@@ -113,12 +113,12 @@
         <div
           class="flex flex-col items-center justify-start md:flex-row md:text-sm text-xs text-black-200 border-l pl-2 md:pl-4"
         >
-        <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
-        <select
+          <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
+          <select
             class="ml-0 md:ml-2 border rounded-sm text-xs h-8 px-2"
             v-model="viewDeluxe"
           >
-          <option value="viewDeluxe">select</option>
+            <option value="viewDeluxe">select</option>
 
             <option value="mountain">Mountain</option>
             <option value="lake">Lake</option>
@@ -167,12 +167,12 @@
         <div
           class="flex flex-col items-center justify-start md:flex-row md:text-sm text-xs text-black-200 border-l pl-2 md:pl-4"
         >
-        <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
-        <select
+          <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
+          <select
             class="ml-0 md:ml-2 border rounded-sm text-xs h-8 px-2"
             v-model="viewDouble"
           >
-          <option value="viewDouble">select</option>
+            <option value="viewDouble">select</option>
 
             <option value="mountain">Mountain</option>
             <option value="lake">Lake</option>
@@ -202,7 +202,11 @@
         <span class="border-t border-black w-1/4 mx-4"></span>
       </div>
       <div class="flex justify-center items-center">
-          <img :src="getImageSrcTriple()" alt="Triple Room View" class="h-96 w-full max-w-5xl rounded-lg"/>
+        <img
+          :src="getImageSrcTriple()"
+          alt="Triple Room View"
+          class="h-96 w-full max-w-5xl rounded-lg"
+        />
       </div>
       <!-- Bottom line details about the room -->
       <div class="flex flex-row gap-4 justify-center mt-2">
@@ -218,12 +222,12 @@
         <div
           class="flex flex-col items-center justify-start md:flex-row md:text-sm text-xs text-black-200 border-l pl-2 md:pl-4"
         >
-        <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
-        <select
+          <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
+          <select
             class="ml-0 md:ml-2 border rounded-sm text-xs h-8 px-2"
             v-model="viewTriple"
           >
-          <option value="viewTriple">select</option>
+            <option value="viewTriple">select</option>
             <option value="mountain">Mountain</option>
             <option value="lake">Lake</option>
           </select>
@@ -268,20 +272,19 @@
           Occupancy: 04 Adults / 02 Adults & 02 Kids
         </h5>
         <div
-  class="flex flex-col items-center justify-start md:flex-row md:text-sm text-xs text-black-200 border-l pl-2 md:pl-4"
->
-  <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
-  <select
-    class="ml-0 md:ml-2 border rounded-sm text-xs h-8 px-2"
-    v-model="viewFamily"
-  >
-  <option value="viewFamily">select</option>
+          class="flex flex-col items-center justify-start md:flex-row md:text-sm text-xs text-black-200 border-l pl-2 md:pl-4"
+        >
+          <span class="mb-2 md:mb-0 hidden md:inline">View:</span>
+          <select
+            class="ml-0 md:ml-2 border rounded-sm text-xs h-8 px-2"
+            v-model="viewFamily"
+          >
+            <option value="viewFamily">select</option>
 
-    <option value="mountain">Mountain</option>
-    <option value="lake">Lake</option>
-  </select>
-</div>
-
+            <option value="mountain">Mountain</option>
+            <option value="lake">Lake</option>
+          </select>
+        </div>
       </div>
       <!-- view all button -->
       <div class="flex justify-center items-center">
@@ -335,36 +338,42 @@ const handleNavigateFamily = () => {
   router.push({ path: "/room", query: { name: "Family" } });
 };
 
-
 const getImageSrc = () => {
   return view.value === "view"
-    ?  "./img/Single Roomv.webp"
-    : viewTriple.value=="lake" ? "./img/single_room_two.jpg" : "./img/single_room_one.jpg";
-
+    ? "./img/Single Roomv.webp"
+    : viewTriple.value == "lake"
+    ? "./img/single_room_two.jpg"
+    : "./img/single_room_one.jpg";
 };
 
 const getImageSrcDouble = () => {
   return viewDouble.value === "viewDouble"
-    ?  "./img/Double Roomv.webp"
-    : viewDouble.value=="lake" ? "./img/room_2.jpg" : "./img/room_1.jpg";
-
+    ? "./img/Double Roomv.webp"
+    : viewDouble.value == "lake"
+    ? "./img/room_2.jpg"
+    : "./img/room_1.jpg";
 };
 const getImageSrcDeluxe = () => {
   return viewDeluxe.value === "viewDeluxe"
-    ?  "./img/Delux Roomv.webp"
-    : viewDeluxe.value=="lake" ? "./img/room_5.jpg" : "./img/room_3.jpg";
+    ? "./img/Delux Roomv.webp"
+    : viewDeluxe.value == "lake"
+    ? "./img/room_5.jpg"
+    : "./img/room_3.jpg";
 };
 const getImageSrcTriple = () => {
   return viewTriple.value === "viewTriple"
-    ?  "./img/Triple Roomv.webp"
-    : viewTriple.value=="lake" ? "./img/room_5.jpg" : "./img/family_room_four.jpg";
+    ? "./img/Triple Roomv.webp"
+    : viewTriple.value == "lake"
+    ? "./img/room_5.jpg"
+    : "./img/family_room_four.jpg";
 };
 const getImageSrcFamily = () => {
   return viewFamily.value === "viewFamily"
-    ?  "./img/Family Roomv.webp"
-    : viewFamily.value=="lake" ? "./img/family_room_one.jpg" : "./img/family_room_two.jpg";
+    ? "./img/Family Roomv.webp"
+    : viewFamily.value == "lake"
+    ? "./img/family_room_one.jpg"
+    : "./img/family_room_two.jpg";
 };
-
 </script>
 
 <style scoped></style>
