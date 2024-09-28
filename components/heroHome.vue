@@ -28,6 +28,8 @@
       :spaceBetween="30"
       :autoplay="autoplayConfig"
       :navigation="true"
+      :effect="'fade'"
+      :speed=2000
       :pagination="{
         clickable: true,
       }"
@@ -35,47 +37,6 @@
       class="mySwiper"
       @slideChange="onSlideChange"
     >
-      <!-- <swiper-slide>
-        <video
-          ref="video"
-          src="/img/home_video.mp4"
-          class="object-cover w-full min-h-screen"
-          autoplay
-          muted
-          loop
-        ></video>
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 1.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 2.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 3.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home4.jpg"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide>
-      <swiper-slide>
-        <img
-          src="/img/hero-home 5.webp"
-          class="object-cover w-full min-h-screen"
-        />
-      </swiper-slide> -->
-
       <swiper-slide v-for="(item, index) in allMedia" :key="index">
   <!-- Conditionally render video or image based on the media type -->
   <video
@@ -346,32 +307,32 @@
         <a
           href="/"
           aria-current="true"
-          class="text-slate-600 font-semibold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Home
         </a>
         <a
           href="/about"
-          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           About
         </a>
 
         <a
           href="/additionalActivites"
-          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
           >Activites</a
         >
 
         <a
           href="/services"
-          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Services
         </a>
         <a
           href="/news"
-          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           News
         </a>
@@ -383,26 +344,26 @@
         </a> -->
         <a
           href="/rooms"
-          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Rooms
         </a>
         <a
           href="/gallery"
-          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Gallery
         </a>
         <a
           href="/contact"
-          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Contact
         </a>
         <a
           v-if="userEmail && authToken"
           @click.prevent="redirectToDashboard"
-          class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Profile
         </a>
@@ -612,7 +573,7 @@ export default {
       loadingTest: true, // Default to true to show banner initially
       modules: [EffectFade, Navigation, Pagination, Autoplay],
       autoplayConfig: {
-        delay: 5000,
+        delay: 3000,
         disableOnInteraction: false,
       },
       check_in: "",
@@ -861,14 +822,18 @@ export default {
     },
     onSlideChange(swiper) {
       const activeSlide = swiper.slides[swiper.activeIndex];
-      const videoElement = this.$refs.video;
+      const videoElement = activeSlide.querySelector("video");
 
-      if (activeSlide.contains(videoElement)) {
-        swiper.params.autoplay.delay = 30000; // 30 seconds delay for video slide
-        videoElement.play();
+      if (videoElement) {
+        swiper.params.autoplay.delay = 15000; // 10 seconds delay for image slides
+        swiper.autoplay.start(); 
+        console.log("video slide, autoplay started with 15s delay.");
+
+        
       } else {
-        swiper.params.autoplay.delay = 10000; // 10 seconds delay for other slides
-        videoElement.pause();
+        swiper.params.autoplay.delay = 3000; // 10 seconds delay for image slides
+        swiper.autoplay.start(); 
+        console.log("Non-video slide, autoplay started with 3s delay.");
       }
       swiper.autoplay.start();
     },
@@ -917,6 +882,7 @@ export default {
 
 
 <style scoped>
+@import 'swiper/css/effect-fade';
 button[aria-label="Close"] {
   font-size: 1.5rem;
   font-weight: bold;
