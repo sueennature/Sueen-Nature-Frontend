@@ -1,0 +1,288 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/galleryComponent.vue?vue&type=style&index=0&scoped=c36aa653&lang.css?inline&used",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n/* Masonry Layout */\n.masonry-grid {\n  column-count: 2; /* Number of columns */\n  column-gap: 0.5rem; /* Gap between columns */\n}\n\n@media (min-width: 768px) {\n  .masonry-grid {\n    column-count: 4; /* Adjust the number of columns for larger screens */\n  }\n}\n\n/* Gap between individual items */\n.masonry-item {\n  margin-bottom: 0.5rem; /* Adds gap between images */\n  overflow: hidden; /* Prevent the image from expanding outside the container */\n}\n\n/* Style for images and videos */\n.masonry-grid img, \n.masonry-grid video {\n  break-inside: avoid; /* Prevent media from being broken across columns */\n  width: 100%; /* Ensure full width within column */\n  transition: transform 0.3s ease-in-out; /* Smooth transition for zoom effect */\n}\n\n/* Subtle zoom-in effect on hover */\n.masonry-grid img:hover, \n.masonry-grid video:hover {\n  transform: scale(1.1); /* Subtle zoom, keep size controlled */\n}\n",
+      "start": 1727432837757,
+      "end": 1727432837757,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/galleryComponent.vue"
+        ],
+        "names": [],
+        "mappings": ";AAqGA,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACvC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;AAC9C;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACvE;AACF;;AAEA,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;AACjC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACnD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;AAC/E;;AAEA,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;AAChC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;AACjB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE;EAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACxE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACjD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;AAChF;;AAEA,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;AACnC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;AAC/D",
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/galleryComponent.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <div class=\"masonry-grid my-24 mx-14\">\n    <!-- Loop through all the media URLs from all carousels and display them -->\n    <div v-for=\"(url, idx) in allMedia\" :key=\"idx\" class=\"masonry-item\">\n      <!-- Image handling -->\n      <img\n        v-if=\"url.media_type === 'image'\"\n        :src=\"getImageUrl(url.path)\"\n        class=\"w-full h-auto object-cover rounded-none cursor-pointer\"\n        alt=\"carousel image\"\n        @click=\"openLightbox(idx)\"\n      />\n      \n      <!-- Video handling -->\n      <video v-if=\"url.media_type === 'video'\" controls class=\"w-full h-auto rounded-lg\">\n        <source :src=\"getImageUrl(url.path)\" type=\"video/mp4\" />\n        Your browser does not support the video tag.\n      </video>\n    </div>\n\n    <!-- Lightbox Component -->\n    <vue-easy-lightbox\n      :visible=\"visible\"\n      :imgs=\"imageUrls\"\n      :index=\"lightboxIndex\"\n      :zoom-percent=\"120\"\n      @hide=\"visible = false\"\n    />\n\n  </div>\n</template>\n\n<script>\nimport axios from 'axios';\nimport VueEasyLightbox from 'vue-easy-lightbox';\n\nexport default {\n  components: {\n    VueEasyLightbox\n  },\n  data() {\n    return {\n      carousels: [], // Raw carousels fetched from the API\n      visible: false, // Controls the lightbox visibility\n      lightboxIndex: 0, // Index of the current image in the lightbox\n    };\n  },\n  computed: {\n    allMedia() {\n      const uniqueMedia = new Set(); // Create a Set to store unique media paths\n\n      return this.carousels\n        .filter(carousel => carousel.tags && carousel.tags.includes('Gallery')) // Filter \"Gallery\" tagged carousels\n        .flatMap(carousel =>\n          carousel.media_urls\n            .map(url => ({ path: url, media_type: carousel.media_type }))\n            .filter(media => {\n              if (!uniqueMedia.has(media.path)) {\n                uniqueMedia.add(media.path); // Add unique path to the Set\n                return true; // Include this media\n              }\n              return false; // Skip duplicate media\n            })\n        );\n    },\n    imageUrls() {\n      // Extract the image paths only for the lightbox\n      return this.allMedia.filter(media => media.media_type === 'image').map(media => this.getImageUrl(media.path));\n    }\n  },\n  mounted() {\n    this.fetchCarousels();\n  },\n  methods: {\n    async fetchCarousels() {\n      const runtimeConfig = useRuntimeConfig();\n      try {\n        const response = await axios.get('https://api.sueennature.com/carousels/?skip=0&limit=10', {\n          headers: {\n            'x-api-key': runtimeConfig.public.DATABASE_ID, // Replace with your actual API key\n            \"Content-Type\": \"application/json\",\n          }\n        });\n        this.carousels = response.data.data; // Assign the fetched carousels data\n      } catch (error) {\n        console.error('Error fetching carousels:', error);\n      }\n    },\n    getImageUrl(path) {\n      return `https://api.sueennature.com/${path}`;\n    },\n    openLightbox(index) {\n      this.lightboxIndex = index; // Set the current index of the image\n      this.visible = true; // Show the lightbox\n    }\n  }\n};\n\n</script>\n\n<style scoped>\n/* Masonry Layout */\n.masonry-grid {\n  column-count: 2; /* Number of columns */\n  column-gap: 0.5rem; /* Gap between columns */\n}\n\n@media (min-width: 768px) {\n  .masonry-grid {\n    column-count: 4; /* Adjust the number of columns for larger screens */\n  }\n}\n\n/* Gap between individual items */\n.masonry-item {\n  margin-bottom: 0.5rem; /* Adds gap between images */\n  overflow: hidden; /* Prevent the image from expanding outside the container */\n}\n\n/* Style for images and videos */\n.masonry-grid img, \n.masonry-grid video {\n  break-inside: avoid; /* Prevent media from being broken across columns */\n  width: 100%; /* Ensure full width within column */\n  transition: transform 0.3s ease-in-out; /* Smooth transition for zoom effect */\n}\n\n/* Subtle zoom-in effect on hover */\n.masonry-grid img:hover, \n.masonry-grid video:hover {\n  transform: scale(1.1); /* Subtle zoom, keep size controlled */\n}\n</style>\n\n  "
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432837759,
+      "end": 1727432837759,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432837759,
+      "end": 1727432837759,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432837762,
+      "end": 1727432837762,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432837762,
+      "end": 1727432837762,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432837763,
+      "end": 1727432837763,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".masonry-grid{-moz-column-count:2;column-count:2;-moz-column-gap:.5rem;column-gap:.5rem}@media (min-width:768px){.masonry-grid{-moz-column-count:4;column-count:4}}.masonry-item{margin-bottom:.5rem;overflow:hidden}.masonry-grid img,.masonry-grid video{-moz-column-break-inside:avoid;break-inside:avoid;transition:transform .3s ease-in-out;width:100%}.masonry-grid img:hover,.masonry-grid video:hover{transform:scale(1.1)}",
+      "start": 1727432837763,
+      "end": 1727432837776,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/galleryComponent.vue",
+        "mappings": "AAEA,cACE,mBAAe,CAAf,cAAe,CACf,qBAAkB,CAAlB,gBACF,CAEA,yBACE,cACE,mBAAe,CAAf,cACF,CACF,CAGA,cACE,mBAAqB,CACrB,eACF,CAGA,sCAEE,8BAAmB,CAAnB,kBAAmB,CAEnB,oCAAsC,CADtC,UAEF,CAGA,kDAEE,oBACF",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/galleryComponent.vue"
+        ],
+        "sourcesContent": [
+          "\n/* Masonry Layout */\n.masonry-grid {\n  column-count: 2; /* Number of columns */\n  column-gap: 0.5rem; /* Gap between columns */\n}\n\n@media (min-width: 768px) {\n  .masonry-grid {\n    column-count: 4; /* Adjust the number of columns for larger screens */\n  }\n}\n\n/* Gap between individual items */\n.masonry-item {\n  margin-bottom: 0.5rem; /* Adds gap between images */\n  overflow: hidden; /* Prevent the image from expanding outside the container */\n}\n\n/* Style for images and videos */\n.masonry-grid img, \n.masonry-grid video {\n  break-inside: avoid; /* Prevent media from being broken across columns */\n  width: 100%; /* Ensure full width within column */\n  transition: transform 0.3s ease-in-out; /* Smooth transition for zoom effect */\n}\n\n/* Subtle zoom-in effect on hover */\n.masonry-grid img:hover, \n.masonry-grid video:hover {\n  transform: scale(1.1); /* Subtle zoom, keep size controlled */\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432837776,
+      "end": 1727432837776,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432837777,
+      "end": 1727432837777,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432837783,
+      "end": 1727432837783,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".masonry-grid[data-v-c36aa653]{-moz-column-count:2;column-count:2;-moz-column-gap:.5rem;column-gap:.5rem}@media (min-width:768px){.masonry-grid[data-v-c36aa653]{-moz-column-count:4;column-count:4}}.masonry-item[data-v-c36aa653]{margin-bottom:.5rem;overflow:hidden}.masonry-grid img[data-v-c36aa653],.masonry-grid video[data-v-c36aa653]{-moz-column-break-inside:avoid;break-inside:avoid;transition:transform .3s ease-in-out;width:100%}.masonry-grid img[data-v-c36aa653]:hover,.masonry-grid video[data-v-c36aa653]:hover{transform:scale(1.1)}",
+      "start": 1727432837784,
+      "end": 1727432837789,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/galleryComponent.vue",
+        "mappings": "AAAA,+BAAc,mBAAmB,CAAC,cAAc,CAAC,qBAAqB,CAAC,gBAAgB,CAAC,yBAAyB,+BAAc,mBAAmB,CAAC,cAAc,CAAC,CAAC,+BAAc,mBAAmB,CAAC,eAAe,CAAC,wEAAsC,8BAA8B,CAAC,kBAAkB,CAAC,oCAAoC,CAAC,UAAU,CAAC,oFAAkD,oBAAoB",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/galleryComponent.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432837790,
+      "end": 1727432837794,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432837797,
+      "end": 1727432837798,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432837797,
+      "end": 1727432837798,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432837799,
+      "end": 1727432837799,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432837799,
+      "end": 1727432837799,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432837799,
+      "end": 1727432837799,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432837804,
+      "end": 1727432837804,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432837805,
+      "end": 1727432837805,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432837809,
+      "end": 1727432837809,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default \".masonry-grid[data-v-c36aa653]{-moz-column-count:2;column-count:2;-moz-column-gap:.5rem;column-gap:.5rem}@media (min-width:768px){.masonry-grid[data-v-c36aa653]{-moz-column-count:4;column-count:4}}.masonry-item[data-v-c36aa653]{margin-bottom:.5rem;overflow:hidden}.masonry-grid img[data-v-c36aa653],.masonry-grid video[data-v-c36aa653]{-moz-column-break-inside:avoid;break-inside:avoid;transition:transform .3s ease-in-out;width:100%}.masonry-grid img[data-v-c36aa653]:hover,.masonry-grid video[data-v-c36aa653]:hover{transform:scale(1.1)}\"",
+      "start": 1727432837810,
+      "end": 1727432837810,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432837810,
+      "end": 1727432837811,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432837811,
+      "end": 1727432837811,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432837812,
+      "end": 1727432837812,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432837816,
+      "end": 1727432837816,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432837818,
+      "end": 1727432837818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432837820,
+      "end": 1727432837820,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432837820,
+      "end": 1727432837821,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432837820,
+      "end": 1727432837821,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432837822,
+      "end": 1727432837822,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432837822,
+      "end": 1727432837822,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432837823,
+      "end": 1727432837823,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432837823,
+      "end": 1727432837823,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432837823,
+      "end": 1727432837823,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432837823,
+      "end": 1727432837823,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432837828,
+      "end": 1727432837828,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432837829,
+      "end": 1727432837829,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432837831,
+      "end": 1727432837831,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432837831,
+      "end": 1727432837831,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432837831,
+      "end": 1727432837831,
+      "order": "normal"
+    }
+  ]
+}

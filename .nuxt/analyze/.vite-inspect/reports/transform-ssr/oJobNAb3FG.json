@@ -1,0 +1,288 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/BookingHistoryTable.vue?vue&type=style&index=0&scoped=055d10a0&lang.css?inline&used",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n @media screen and (max-width: 640px) {\n    #bookingTable th, #bookingTable td {\n      white-space: nowrap;\n    }\n  }\n.table-responsive {\n  display: block;\n  width: 100%;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n\ntable {\n  width: 100%;\n  border-collapse: collapse;\n}\n\nth, td {\n  padding: 8px;\n  text-align: left;\n}\n\n.black-checkbox {\n  border: 1px solid black;\n}\n\ninput[type=\"checkbox\"] {\n  cursor: pointer;\n}\n\n.text-gray-500 {\n  color: #6b7280;\n}\n\n.dark .text-gray-400 {\n  color: #9ca3af;\n}\n\n@media (max-width: 640px) {\n  .text-3xl {\n    font-size: 1.875rem;\n    line-height: 2.25rem;\n  }\n}\n",
+      "start": 1727432839724,
+      "end": 1727432839724,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/BookingHistoryTable.vue"
+        ],
+        "names": [],
+        "mappings": "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",
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/BookingHistoryTable.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <div class=\"w-full p-4 text-center bg-white border border-gray-200 rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-8 shadow-lg shadow-gray-300\">\n    <div class=\"flex flex-col sm:flex-row justify-between items-center mb-8\">\n      <h2 class=\"text-3xl uppercase font-medium text-gray-900 dark:text-white mb-4 sm:mb-0\">Booking History</h2>\n\n    \n      <div class=\"flex space-x-2\">\n        <input\n          type=\"date\"\n          v-model=\"selectedDate\"\n          class=\"text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm border-none focus:ring-0\"\n          @input=\"dateChanged\"\n        />\n        <!-- <button\n          type=\"button\"\n          @click=\"generateReport\"\n          class=\"button-text whitespace-nowrap text-orange-200 bg-orange-50 hover:bg-orange-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800\"\n        >\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n            width=\"24\"\n            height=\"24\"\n            viewBox=\"0 0 49 61\"\n            fill=\"none\"\n          >\n            <rect width=\"49\" height=\"61\" fill=\"url(#pattern12)\" />\n            <defs>\n              <pattern id=\"pattern12\" patternContentUnits=\"objectBoundingBox\" width=\"1\" height=\"1\">\n                <use xlink:href=\"#image0_1032_340\" transform=\"matrix(0.0155612 0 0 0.0125 -0.122449 0)\" />\n              </pattern>\n              <image id=\"image0_1032_340\" width=\"80\" height=\"80\" xlink:href=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABnUlEQVR4nO2aQUoDQRREezmtbhW8tMzfeCCDFzAwBeJdFMFsRCXMt7t+aT0IElePR7pmJtqaMcYYY4wxZi6I/lrlta0d293FbVMCBcJJR8SHeBUPuYgoF3A5nn6+3F/eNNWA29oft+iH2R7v0aQi4ruA0Q9Y+wPDQyoiih3h0/vnuLre1uWp/CaiaECZiCi2gZ9/X/44o+AGSkVE4SMscZwhErBsRBTfwPLHGQIbWDoiih3hfa/lSBdvZLLf4tDFG3kD91I3YMzdwD8XUAW6P9gC6v7wBg4KGN7AVEAV6P5gC6j7wxs4fwMx8e/Ee/2ngR0CDpgMWAm6P7yBgwKG7wNTAVWg+6PYRWSGP30D4YBnBAxvYOoTqALdH2wBdX/4PnBQwPCzcCrgT/hZ+IsYTRS6P7yBgwKG7wNTAVWg+6PYRWSG/68CPwsPChjewFRAFej+YAuo+8P3gYMChjcwFVAFuj/YAur+8AYOChjewFRAFej+YAuo+8MbOChgeANTAVWg+4MtoO6Pif+uW+mLWAeMIgGNMcYYY4xp/5Q3MAr4klREn0IAAAAASUVORK5CYII=\" />\n            </defs>\n          </svg>\n          Generate Report\n        </button> -->\n      </div>\n    </div>\n    <div>\n      \n      <div class=\"overflow-x-auto\">\n  <table class=\"min-w-full\" id=\"bookingTable\">\n    <thead>\n      <tr>\n        <th>\n          <input type=\"checkbox\" :checked=\"allSelected\" @change=\"selectAll\" class=\"black-checkbox checkbox\" />\n        </th>\n        <th>Booking Id</th>\n        <th>Room No</th>\n        <th>Check In</th>\n        <th>Check Out</th>\n        <th>View</th>\n        <th>Room Category</th>\n      </tr>\n    </thead>\n    <tbody class=\"bg-white divide-y divide-gray-200\">\n      <tr v-for=\"(booking, index) in filteredBookingHistory\" :key=\"booking.id\">\n        <td>\n          <input type=\"checkbox\" :value=\"index\" v-model=\"selectedRowIndices\" @change=\"updateSelectedRows\" class=\"black-checkbox checkbox\" />\n        </td>\n        <td>{{booking?.id}}</td>\n        <td>{{booking?.rooms[0]?.room_number}}</td>\n        <td>{{formatDate(booking?.check_in)}}</td>\n        <td>{{formatDate(booking?.check_out)}}</td>\n        <td>{{booking?.rooms[0]?.view}}</td>\n        <td>{{booking?.rooms[0]?.category}}</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n\n\n\n    </div>\n    <!-- <div v-else>\n      <p class=\"text-gray-500 dark:text-gray-400 text-3xl\">You have not booked any rooms</p>\n    </div> -->\n  </div>\n</template>\n\n<script>\nimport axios from \"axios\";\nimport { toast } from \"vue3-toastify\";\nimport \"vue3-toastify/dist/index.css\";\nimport jsPDF from \"jspdf\";\nimport \"jspdf-autotable\";\n\n\nexport default {\n  data() {\n    return {\n      filteredBookingHistory: [],\n      selectedRows: [],\n      originalBookingHistory: [], // Store the original data here\n      selectedRowIndices: [], \n      selectedDate: null,\n    };\n  },\n  computed: {\n    allSelected() {\n      return this.selectedRowIndices.length === this.filteredBookingHistory.length;\n    },\n  },\n  mounted() {\n    this.getBookingHistory();\n  },\n  methods: {\n    formatDate(dateString) {\n      const date = new Date(dateString);\n      const months = [\n        \"January\", \"February\", \"March\", \"April\", \"May\", \"June\",\n        \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"\n      ];\n      const day = date.getDate();\n      const daySuffix = this.getDaySuffix(day);\n      return `${months[date.getMonth()]} ${day}${daySuffix} ${date.getFullYear()}`;\n    },\n    getDaySuffix(day) {\n      if (day > 3 && day < 21) return \"th\";\n      switch (day % 10) {\n        case 1: return \"st\";\n        case 2: return \"nd\";\n        case 3: return \"rd\";\n        default: return \"th\";\n      }\n    },\n  \n    async getBookingHistory() {\n  const runtimeConfig = useRuntimeConfig();\n  const guest_id = this.$route.query.guest_id; \n\n  if (this.editModeFirstName || this.editModeLastName || this.editModeEmail || this.editModePhoneNumber || this.editModeAddress) {\n    toast.error(\"Please save your changes\");\n    return;\n  }\n\n  const body = {\n    guest_id: guest_id\n  };\n\n  const cookies = document.cookie.split(';');\n  const authTokenCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));\n  if (!authTokenCookie) {\n    console.error(\"Auth Token not found in cookies.\");\n    return;\n  }\n  const authToken = authTokenCookie.split('=')[1];\n  console.log(\"TOKEN\", authToken);\n\n  const headers = {\n    'Authorization': `Bearer ${authToken}`,\n    'Content-Type': 'application/json',\n    \"x-api-key\": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid\n\n  };\n\n  try {\n    const response = await axios.post(`https://api.sueennature.com/bookings/guest/history`, body, { headers });\n    this.originalBookingHistory = response.data;\n    console.log(\"History\", response.data)\n    \n    this.filteredBookingHistory = [...this.originalBookingHistory]; \n\n    toast.success(\"Retrived Successfully\");\n    // window.location.reload();\n  } catch (error) {\n    console.error('Error updating profile:', error);\n    this.setupToastError(\"An error occurred. Please try again later.\");\n  }\n},\ndateChanged() {\n    if (this.selectedDate) {\n      const selectedDate = new Date(this.selectedDate);\n      selectedDate.setHours(0, 0, 0, 0);\n\n      // Filter the original data based on the selected date\n      this.filteredBookingHistory = this.originalBookingHistory.filter(booking => {\n        const checkInDate = new Date(booking.check_in);\n        checkInDate.setHours(0, 0, 0, 0);\n        return checkInDate.getTime() === selectedDate.getTime();\n      });\n    } else {\n      // Reset to original data if no date is selected\n      this.filteredBookingHistory = [...this.originalBookingHistory];\n    }\n  },\n\n\n    clearDate() {\n      this.selectedDate = null;\n    },\n    selectAll(event) {\n      this.selectedRowIndices = event.target.checked ? this.filteredBookingHistory.map((_, index) => index) : [];\n      this.updateSelectedRows();\n    },\n    updateSelectedRows() {\n      this.selectedRows = this.selectedRowIndices.map(index => this.filteredBookingHistory[index]);\n    },\n    async generateReport() {\n     const formatDate=(dateString) =>{\n      const date = new Date(dateString);\n      const months = [\n        \"January\", \"February\", \"March\", \"April\", \"May\", \"June\",\n        \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"\n      ];\n      const day = date.getDate();\n      const daySuffix = this.getDaySuffix(day);\n      return `${months[date.getMonth()]} ${day}${daySuffix} ${date.getFullYear()}`;\n    }\n      try {\n        const doc = new jsPDF('p', 'pt', 'a4');\n\n        doc.setFontSize(18);\n        doc.text(\"Booking History Report\", 40, 40);\n\n        const tableData = this.filteredBookingHistory.map(booking => ({\n        \n        RoomNo :booking?.rooms[0]?.room_number,\n        Check_IN :formatDate(booking?.check_in),\n        Check_Out :formatDate(booking?.check_out),\n        Category :booking?.rooms[0]?.category,\n        View :booking?.rooms[0]?.view\n\n       \n        }));\n\n    doc.autoTable({\n      head: [\n        ['Room Number', 'Check In', 'Check Out', 'Category', 'View']\n      ],\n      body: tableData.map(row => [row.RoomNo, row.Check_IN, row.Check_Out,row.Category,row.View]),\n      startY: 70,\n      margin: { top: 80 },\n      didDrawPage: function (data) {\n        doc.setFontSize(18);\n        doc.setTextColor(40);\n        doc.text(\"Booking History Report\", 40, 40);\n      },\n      styles: {\n  head: {\n    fillColor: [173, 216, 230], \n    textColor: [173, 216, 230] \n  },\n  body: {\n    textColor: [0, 0, 0] // Black text color for body rows\n}\n      }\n    });\n\n    // Save or open the PDF\n    doc.save('booking-history.pdf');\n  } catch (error) {\n    console.error('Error generating PDF:', error);\n    toast.error('Error generating PDF');\n  }\n},\n\n\n  },\n};\n</script>\n\n<style scoped>\n @media screen and (max-width: 640px) {\n    #bookingTable th, #bookingTable td {\n      white-space: nowrap;\n    }\n  }\n.table-responsive {\n  display: block;\n  width: 100%;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n\ntable {\n  width: 100%;\n  border-collapse: collapse;\n}\n\nth, td {\n  padding: 8px;\n  text-align: left;\n}\n\n.black-checkbox {\n  border: 1px solid black;\n}\n\ninput[type=\"checkbox\"] {\n  cursor: pointer;\n}\n\n.text-gray-500 {\n  color: #6b7280;\n}\n\n.dark .text-gray-400 {\n  color: #9ca3af;\n}\n\n@media (max-width: 640px) {\n  .text-3xl {\n    font-size: 1.875rem;\n    line-height: 2.25rem;\n  }\n}\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432839724,
+      "end": 1727432839724,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432839724,
+      "end": 1727432839724,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432839724,
+      "end": 1727432839724,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432839724,
+      "end": 1727432839724,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432839724,
+      "end": 1727432839724,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "@media screen and (max-width:640px){#bookingTable td,#bookingTable th{white-space:nowrap}}.table-responsive{display:block;overflow-x:auto;white-space:nowrap;width:100%}table{border-collapse:collapse;width:100%}td,th{padding:8px;text-align:left}.black-checkbox{border:1px solid #000}input[type=checkbox]{cursor:pointer}.text-gray-500{color:#6b7280}.dark .text-gray-400{color:#9ca3af}@media (max-width:640px){.text-3xl{font-size:1.875rem;line-height:2.25rem}}",
+      "start": 1727432839724,
+      "end": 1727432839739,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/BookingHistoryTable.vue",
+        "mappings": "AACC,oCACG,kCACE,kBACF,CACF,CACF,kBACE,aAAc,CAEd,eAAgB,CAChB,kBAAmB,CAFnB,UAGF,CAEA,MAEE,wBAAyB,CADzB,UAEF,CAEA,MACE,WAAY,CACZ,eACF,CAEA,gBACE,qBACF,CAEA,qBACE,cACF,CAEA,eACE,aACF,CAEA,qBACE,aACF,CAEA,yBACE,UACE,kBAAmB,CACnB,mBACF,CACF",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/BookingHistoryTable.vue"
+        ],
+        "sourcesContent": [
+          "\n @media screen and (max-width: 640px) {\n    #bookingTable th, #bookingTable td {\n      white-space: nowrap;\n    }\n  }\n.table-responsive {\n  display: block;\n  width: 100%;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n\ntable {\n  width: 100%;\n  border-collapse: collapse;\n}\n\nth, td {\n  padding: 8px;\n  text-align: left;\n}\n\n.black-checkbox {\n  border: 1px solid black;\n}\n\ninput[type=\"checkbox\"] {\n  cursor: pointer;\n}\n\n.text-gray-500 {\n  color: #6b7280;\n}\n\n.dark .text-gray-400 {\n  color: #9ca3af;\n}\n\n@media (max-width: 640px) {\n  .text-3xl {\n    font-size: 1.875rem;\n    line-height: 2.25rem;\n  }\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432839739,
+      "end": 1727432839739,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432839739,
+      "end": 1727432839739,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432839739,
+      "end": 1727432839739,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "@media screen and (max-width:640px){#bookingTable td[data-v-055d10a0],#bookingTable th[data-v-055d10a0]{white-space:nowrap}}.table-responsive[data-v-055d10a0]{display:block;overflow-x:auto;white-space:nowrap;width:100%}table[data-v-055d10a0]{border-collapse:collapse;width:100%}td[data-v-055d10a0],th[data-v-055d10a0]{padding:8px;text-align:left}.black-checkbox[data-v-055d10a0]{border:1px solid #000}input[type=checkbox][data-v-055d10a0]{cursor:pointer}.text-gray-500[data-v-055d10a0]{color:#6b7280}.dark .text-gray-400[data-v-055d10a0]{color:#9ca3af}@media (max-width:640px){.text-3xl[data-v-055d10a0]{font-size:1.875rem;line-height:2.25rem}}",
+      "start": 1727432839739,
+      "end": 1727432839741,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/BookingHistoryTable.vue",
+        "mappings": "AAAA,oCAAoC,oEAAkC,kBAAkB,CAAC,CAAC,mCAAkB,aAAa,CAAC,eAAe,CAAC,kBAAkB,CAAC,UAAU,CAAC,uBAAM,wBAAwB,CAAC,UAAU,CAAC,wCAAM,WAAW,CAAC,eAAe,CAAC,iCAAgB,qBAAqB,CAAC,sCAAqB,cAAc,CAAC,gCAAe,aAAa,CAAC,sCAAqB,aAAa,CAAC,yBAAyB,2BAAU,kBAAkB,CAAC,mBAAmB,CAAC",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/BookingHistoryTable.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default \"@media screen and (max-width:640px){#bookingTable td[data-v-055d10a0],#bookingTable th[data-v-055d10a0]{white-space:nowrap}}.table-responsive[data-v-055d10a0]{display:block;overflow-x:auto;white-space:nowrap;width:100%}table[data-v-055d10a0]{border-collapse:collapse;width:100%}td[data-v-055d10a0],th[data-v-055d10a0]{padding:8px;text-align:left}.black-checkbox[data-v-055d10a0]{border:1px solid #000}input[type=checkbox][data-v-055d10a0]{cursor:pointer}.text-gray-500[data-v-055d10a0]{color:#6b7280}.dark .text-gray-400[data-v-055d10a0]{color:#9ca3af}@media (max-width:640px){.text-3xl[data-v-055d10a0]{font-size:1.875rem;line-height:2.25rem}}\"",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432839742,
+      "end": 1727432839742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432839742,
+      "end": 1727432839743,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432839743,
+      "end": 1727432839743,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432839743,
+      "end": 1727432839743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432839743,
+      "end": 1727432839743,
+      "order": "normal"
+    }
+  ]
+}

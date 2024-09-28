@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/check-correctness-of-iteration.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar wellKnownSymbol = require('../internals/well-known-symbol');\n\nvar ITERATOR = wellKnownSymbol('iterator');\nvar SAFE_CLOSING = false;\n\ntry {\n  var called = 0;\n  var iteratorWithReturn = {\n    next: function () {\n      return { done: !!called++ };\n    },\n    'return': function () {\n      SAFE_CLOSING = true;\n    }\n  };\n  iteratorWithReturn[ITERATOR] = function () {\n    return this;\n  };\n  // eslint-disable-next-line es/no-array-from, no-throw-literal -- required for testing\n  Array.from(iteratorWithReturn, function () { throw 2; });\n} catch (error) { /* empty */ }\n\nmodule.exports = function (exec, SKIP_CLOSING) {\n  try {\n    if (!SKIP_CLOSING && !SAFE_CLOSING) return false;\n  } catch (error) { return false; } // workaround of old WebKit + `eval` bug\n  var ITERATION_SUPPORT = false;\n  try {\n    var object = {};\n    object[ITERATOR] = function () {\n      return {\n        next: function () {\n          return { done: ITERATION_SUPPORT = true };\n        }\n      };\n    };\n    exec(object);\n  } catch (error) { /* empty */ }\n  return ITERATION_SUPPORT;\n};\n",
+      "start": 1727432820486,
+      "end": 1727432820588,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820588,
+      "end": 1727432820588,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820589,
+      "end": 1727432820589,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820589,
+      "end": 1727432820589,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820589,
+      "end": 1727432820589,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820589,
+      "end": 1727432820589,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820589,
+      "end": 1727432820589,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820589,
+      "end": 1727432820589,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/well-known-symbol.js?commonjs-proxy\";\n\n'use strict';\nvar wellKnownSymbol = require$$0;\n\nvar ITERATOR = wellKnownSymbol('iterator');\nvar SAFE_CLOSING = false;\n\ntry {\n  var called = 0;\n  var iteratorWithReturn = {\n    next: function () {\n      return { done: !!called++ };\n    },\n    'return': function () {\n      SAFE_CLOSING = true;\n    }\n  };\n  iteratorWithReturn[ITERATOR] = function () {\n    return this;\n  };\n  // eslint-disable-next-line es/no-array-from, no-throw-literal -- required for testing\n  Array.from(iteratorWithReturn, function () { throw 2; });\n} catch (error) { /* empty */ }\n\nvar checkCorrectnessOfIteration = function (exec, SKIP_CLOSING) {\n  try {\n    if (!SKIP_CLOSING && !SAFE_CLOSING) return false;\n  } catch (error) { return false; } // workaround of old WebKit + `eval` bug\n  var ITERATION_SUPPORT = false;\n  try {\n    var object = {};\n    object[ITERATOR] = function () {\n      return {\n        next: function () {\n          return { done: ITERATION_SUPPORT = true };\n        }\n      };\n    };\n    exec(object);\n  } catch (error) { /* empty */ }\n  return ITERATION_SUPPORT;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(checkCorrectnessOfIteration);\nexport { checkCorrectnessOfIteration as __moduleExports };",
+      "start": 1727432820589,
+      "end": 1727432820593,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;AAAA,YAAY,CAAC;AACb,IAAI,eAAe,GAAG,UAAyC,CAAC;AAChE;AACA,IAAI,QAAQ,GAAG,eAAe,CAAC,UAAU,CAAC,CAAC;AAC3C,IAAI,YAAY,GAAG,KAAK,CAAC;AACzB;AACA,IAAI;AACJ,EAAE,IAAI,MAAM,GAAG,CAAC,CAAC;AACjB,EAAE,IAAI,kBAAkB,GAAG;AAC3B,IAAI,IAAI,EAAE,YAAY;AACtB,MAAM,OAAO,EAAE,IAAI,EAAE,CAAC,CAAC,MAAM,EAAE,EAAE,CAAC;AAClC,KAAK;AACL,IAAI,QAAQ,EAAE,YAAY;AAC1B,MAAM,YAAY,GAAG,IAAI,CAAC;AAC1B,KAAK;AACL,GAAG,CAAC;AACJ,EAAE,kBAAkB,CAAC,QAAQ,CAAC,GAAG,YAAY;AAC7C,IAAI,OAAO,IAAI,CAAC;AAChB,GAAG,CAAC;AACJ;AACA,EAAE,KAAK,CAAC,IAAI,CAAC,kBAAkB,EAAE,YAAY,EAAE,MAAM,CAAC,CAAC,EAAE,CAAC,CAAC;AAC3D,CAAC,CAAC,OAAO,KAAK,EAAE,eAAe;AAC/B;IACA,2BAAc,GAAG,UAAU,IAAI,EAAE,YAAY,EAAE;AAC/C,EAAE,IAAI;AACN,IAAI,IAAI,CAAC,YAAY,IAAI,CAAC,YAAY,EAAE,OAAO,KAAK,CAAC;AACrD,GAAG,CAAC,OAAO,KAAK,EAAE,EAAE,OAAO,KAAK,CAAC,EAAE;AACnC,EAAE,IAAI,iBAAiB,GAAG,KAAK,CAAC;AAChC,EAAE,IAAI;AACN,IAAI,IAAI,MAAM,GAAG,EAAE,CAAC;AACpB,IAAI,MAAM,CAAC,QAAQ,CAAC,GAAG,YAAY;AACnC,MAAM,OAAO;AACb,QAAQ,IAAI,EAAE,YAAY;AAC1B,UAAU,OAAO,EAAE,IAAI,EAAE,iBAAiB,GAAG,IAAI,EAAE,CAAC;AACpD,SAAS;AACT,OAAO,CAAC;AACR,KAAK,CAAC;AACN,IAAI,IAAI,CAAC,MAAM,CAAC,CAAC;AACjB,GAAG,CAAC,OAAO,KAAK,EAAE,eAAe;AACjC,EAAE,OAAO,iBAAiB,CAAC;AAC3B,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820593,
+      "end": 1727432820593,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820593,
+      "end": 1727432820593,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820593,
+      "end": 1727432820593,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820594,
+      "end": 1727432820594,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820594,
+      "end": 1727432820594,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820594,
+      "end": 1727432820594,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820594,
+      "end": 1727432820594,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820594,
+      "end": 1727432820594,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820594,
+      "end": 1727432820594,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820594,
+      "end": 1727432820594,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820595,
+      "end": 1727432820595,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820595,
+      "end": 1727432820595,
+      "order": "normal"
+    }
+  ]
+}

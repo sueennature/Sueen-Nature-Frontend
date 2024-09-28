@@ -1,0 +1,212 @@
+{
+  "resolvedId": "virtual:nuxt:/var/www/html/Sueen-Nature-Frontend/.nuxt/routes.mjs",
+  "transforms": [
+    {
+      "name": "virtual",
+      "result": "import { default as about25xEts1Y4VMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/about.vue?macro=true\";\nimport { default as additionalActivitesSjrkvpmmyPMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/additionalActivites.vue?macro=true\";\nimport { default as bookinglU89bPJpmxMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/booking.vue?macro=true\";\nimport { default as checkout6qDk30mFZvMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/checkout.vue?macro=true\";\nimport { default as contactrBtUiJHOeIMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/contact.vue?macro=true\";\nimport { default as cookiesPolicyqPT3NL2QvTMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/cookiesPolicy.vue?macro=true\";\nimport { default as dashboardVt58fiPU7LMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/dashboard.vue?macro=true\";\nimport { default as deluxeRoom6NrzTyJzNCMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/deluxeRoom.vue?macro=true\";\nimport { default as disabledRoomzpataUSx22Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/disabledRoom.vue?macro=true\";\nimport { default as doubleRoom3pWBXEfVV5Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/doubleRoom.vue?macro=true\";\nimport { default as familyRoom2aEoPaWmAWMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/familyRoom.vue?macro=true\";\nimport { default as faqwlK46TW2dgMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/faq.vue?macro=true\";\nimport { default as galleryaSPlMxAlzIMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/gallery.vue?macro=true\";\nimport { default as homeoJWgGtUxo0Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/home.vue?macro=true\";\nimport { default as indexzTG4MIYKdOMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/index.vue?macro=true\";\nimport { default as launchingPageqi31R7OgX1Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/launchingPage.vue?macro=true\";\nimport { default as metaAppDataDeletionInstructionsGxS2siyncrMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/metaAppDataDeletionInstructions.vue?macro=true\";\nimport { default as newshe83vLkkgVMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/news.vue?macro=true\";\nimport { default as offers9VSw8vIQCaMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/offers.vue?macro=true\";\nimport { default as privacyPolicyhDoMJKJl2IMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/privacyPolicy.vue?macro=true\";\nimport { default as room2Auw2oDLS1Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/room.vue?macro=true\";\nimport { default as roomso9f5gRjqyCMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/rooms.vue?macro=true\";\nimport { default as safetySecurityag7JrygUpcMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/safetySecurity.vue?macro=true\";\nimport { default as servicesdbm5y5YhzEMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/services.vue?macro=true\";\nimport { default as singleRoom2fhFOc54vdMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/singleRoom.vue?macro=true\";\nimport { default as termsAndConditions2lgJG0eYhWMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/termsAndConditions.vue?macro=true\";\nimport { default as tripleRoomxxRUp98mMqMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/tripleRoom.vue?macro=true\";\nexport default [\n  {\n    name: about25xEts1Y4VMeta?.name ?? \"about\",\n    path: about25xEts1Y4VMeta?.path ?? \"/about\",\n    meta: about25xEts1Y4VMeta || {},\n    alias: about25xEts1Y4VMeta?.alias || [],\n    redirect: about25xEts1Y4VMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/about.vue\").then(m => m.default || m)\n  },\n  {\n    name: additionalActivitesSjrkvpmmyPMeta?.name ?? \"additionalActivites\",\n    path: additionalActivitesSjrkvpmmyPMeta?.path ?? \"/additionalActivites\",\n    meta: additionalActivitesSjrkvpmmyPMeta || {},\n    alias: additionalActivitesSjrkvpmmyPMeta?.alias || [],\n    redirect: additionalActivitesSjrkvpmmyPMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/additionalActivites.vue\").then(m => m.default || m)\n  },\n  {\n    name: bookinglU89bPJpmxMeta?.name ?? \"booking\",\n    path: bookinglU89bPJpmxMeta?.path ?? \"/booking\",\n    meta: bookinglU89bPJpmxMeta || {},\n    alias: bookinglU89bPJpmxMeta?.alias || [],\n    redirect: bookinglU89bPJpmxMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/booking.vue\").then(m => m.default || m)\n  },\n  {\n    name: checkout6qDk30mFZvMeta?.name ?? \"checkout\",\n    path: checkout6qDk30mFZvMeta?.path ?? \"/checkout\",\n    meta: checkout6qDk30mFZvMeta || {},\n    alias: checkout6qDk30mFZvMeta?.alias || [],\n    redirect: checkout6qDk30mFZvMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/checkout.vue\").then(m => m.default || m)\n  },\n  {\n    name: contactrBtUiJHOeIMeta?.name ?? \"contact\",\n    path: contactrBtUiJHOeIMeta?.path ?? \"/contact\",\n    meta: contactrBtUiJHOeIMeta || {},\n    alias: contactrBtUiJHOeIMeta?.alias || [],\n    redirect: contactrBtUiJHOeIMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/contact.vue\").then(m => m.default || m)\n  },\n  {\n    name: cookiesPolicyqPT3NL2QvTMeta?.name ?? \"cookiesPolicy\",\n    path: cookiesPolicyqPT3NL2QvTMeta?.path ?? \"/cookiesPolicy\",\n    meta: cookiesPolicyqPT3NL2QvTMeta || {},\n    alias: cookiesPolicyqPT3NL2QvTMeta?.alias || [],\n    redirect: cookiesPolicyqPT3NL2QvTMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/cookiesPolicy.vue\").then(m => m.default || m)\n  },\n  {\n    name: dashboardVt58fiPU7LMeta?.name ?? \"dashboard\",\n    path: dashboardVt58fiPU7LMeta?.path ?? \"/dashboard\",\n    meta: dashboardVt58fiPU7LMeta || {},\n    alias: dashboardVt58fiPU7LMeta?.alias || [],\n    redirect: dashboardVt58fiPU7LMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/dashboard.vue\").then(m => m.default || m)\n  },\n  {\n    name: deluxeRoom6NrzTyJzNCMeta?.name ?? \"deluxeRoom\",\n    path: deluxeRoom6NrzTyJzNCMeta?.path ?? \"/deluxeRoom\",\n    meta: deluxeRoom6NrzTyJzNCMeta || {},\n    alias: deluxeRoom6NrzTyJzNCMeta?.alias || [],\n    redirect: deluxeRoom6NrzTyJzNCMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/deluxeRoom.vue\").then(m => m.default || m)\n  },\n  {\n    name: disabledRoomzpataUSx22Meta?.name ?? \"disabledRoom\",\n    path: disabledRoomzpataUSx22Meta?.path ?? \"/disabledRoom\",\n    meta: disabledRoomzpataUSx22Meta || {},\n    alias: disabledRoomzpataUSx22Meta?.alias || [],\n    redirect: disabledRoomzpataUSx22Meta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/disabledRoom.vue\").then(m => m.default || m)\n  },\n  {\n    name: doubleRoom3pWBXEfVV5Meta?.name ?? \"doubleRoom\",\n    path: doubleRoom3pWBXEfVV5Meta?.path ?? \"/doubleRoom\",\n    meta: doubleRoom3pWBXEfVV5Meta || {},\n    alias: doubleRoom3pWBXEfVV5Meta?.alias || [],\n    redirect: doubleRoom3pWBXEfVV5Meta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/doubleRoom.vue\").then(m => m.default || m)\n  },\n  {\n    name: familyRoom2aEoPaWmAWMeta?.name ?? \"familyRoom\",\n    path: familyRoom2aEoPaWmAWMeta?.path ?? \"/familyRoom\",\n    meta: familyRoom2aEoPaWmAWMeta || {},\n    alias: familyRoom2aEoPaWmAWMeta?.alias || [],\n    redirect: familyRoom2aEoPaWmAWMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/familyRoom.vue\").then(m => m.default || m)\n  },\n  {\n    name: faqwlK46TW2dgMeta?.name ?? \"faq\",\n    path: faqwlK46TW2dgMeta?.path ?? \"/faq\",\n    meta: faqwlK46TW2dgMeta || {},\n    alias: faqwlK46TW2dgMeta?.alias || [],\n    redirect: faqwlK46TW2dgMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/faq.vue\").then(m => m.default || m)\n  },\n  {\n    name: galleryaSPlMxAlzIMeta?.name ?? \"gallery\",\n    path: galleryaSPlMxAlzIMeta?.path ?? \"/gallery\",\n    meta: galleryaSPlMxAlzIMeta || {},\n    alias: galleryaSPlMxAlzIMeta?.alias || [],\n    redirect: galleryaSPlMxAlzIMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/gallery.vue\").then(m => m.default || m)\n  },\n  {\n    name: homeoJWgGtUxo0Meta?.name ?? \"home\",\n    path: homeoJWgGtUxo0Meta?.path ?? \"/home\",\n    meta: homeoJWgGtUxo0Meta || {},\n    alias: homeoJWgGtUxo0Meta?.alias || [],\n    redirect: homeoJWgGtUxo0Meta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/home.vue\").then(m => m.default || m)\n  },\n  {\n    name: indexzTG4MIYKdOMeta?.name ?? \"index\",\n    path: indexzTG4MIYKdOMeta?.path ?? \"/\",\n    meta: indexzTG4MIYKdOMeta || {},\n    alias: indexzTG4MIYKdOMeta?.alias || [],\n    redirect: indexzTG4MIYKdOMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/index.vue\").then(m => m.default || m)\n  },\n  {\n    name: launchingPageqi31R7OgX1Meta?.name ?? \"launchingPage\",\n    path: launchingPageqi31R7OgX1Meta?.path ?? \"/launchingPage\",\n    meta: launchingPageqi31R7OgX1Meta || {},\n    alias: launchingPageqi31R7OgX1Meta?.alias || [],\n    redirect: launchingPageqi31R7OgX1Meta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/launchingPage.vue\").then(m => m.default || m)\n  },\n  {\n    name: metaAppDataDeletionInstructionsGxS2siyncrMeta?.name ?? \"metaAppDataDeletionInstructions\",\n    path: metaAppDataDeletionInstructionsGxS2siyncrMeta?.path ?? \"/metaAppDataDeletionInstructions\",\n    meta: metaAppDataDeletionInstructionsGxS2siyncrMeta || {},\n    alias: metaAppDataDeletionInstructionsGxS2siyncrMeta?.alias || [],\n    redirect: metaAppDataDeletionInstructionsGxS2siyncrMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/metaAppDataDeletionInstructions.vue\").then(m => m.default || m)\n  },\n  {\n    name: newshe83vLkkgVMeta?.name ?? \"news\",\n    path: newshe83vLkkgVMeta?.path ?? \"/news\",\n    meta: newshe83vLkkgVMeta || {},\n    alias: newshe83vLkkgVMeta?.alias || [],\n    redirect: newshe83vLkkgVMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/news.vue\").then(m => m.default || m)\n  },\n  {\n    name: offers9VSw8vIQCaMeta?.name ?? \"offers\",\n    path: offers9VSw8vIQCaMeta?.path ?? \"/offers\",\n    meta: offers9VSw8vIQCaMeta || {},\n    alias: offers9VSw8vIQCaMeta?.alias || [],\n    redirect: offers9VSw8vIQCaMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/offers.vue\").then(m => m.default || m)\n  },\n  {\n    name: privacyPolicyhDoMJKJl2IMeta?.name ?? \"privacyPolicy\",\n    path: privacyPolicyhDoMJKJl2IMeta?.path ?? \"/privacyPolicy\",\n    meta: privacyPolicyhDoMJKJl2IMeta || {},\n    alias: privacyPolicyhDoMJKJl2IMeta?.alias || [],\n    redirect: privacyPolicyhDoMJKJl2IMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/privacyPolicy.vue\").then(m => m.default || m)\n  },\n  {\n    name: room2Auw2oDLS1Meta?.name ?? \"room\",\n    path: room2Auw2oDLS1Meta?.path ?? \"/room\",\n    meta: room2Auw2oDLS1Meta || {},\n    alias: room2Auw2oDLS1Meta?.alias || [],\n    redirect: room2Auw2oDLS1Meta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/room.vue\").then(m => m.default || m)\n  },\n  {\n    name: roomso9f5gRjqyCMeta?.name ?? \"rooms\",\n    path: roomso9f5gRjqyCMeta?.path ?? \"/rooms\",\n    meta: roomso9f5gRjqyCMeta || {},\n    alias: roomso9f5gRjqyCMeta?.alias || [],\n    redirect: roomso9f5gRjqyCMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/rooms.vue\").then(m => m.default || m)\n  },\n  {\n    name: safetySecurityag7JrygUpcMeta?.name ?? \"safetySecurity\",\n    path: safetySecurityag7JrygUpcMeta?.path ?? \"/safetySecurity\",\n    meta: safetySecurityag7JrygUpcMeta || {},\n    alias: safetySecurityag7JrygUpcMeta?.alias || [],\n    redirect: safetySecurityag7JrygUpcMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/safetySecurity.vue\").then(m => m.default || m)\n  },\n  {\n    name: servicesdbm5y5YhzEMeta?.name ?? \"services\",\n    path: servicesdbm5y5YhzEMeta?.path ?? \"/services\",\n    meta: servicesdbm5y5YhzEMeta || {},\n    alias: servicesdbm5y5YhzEMeta?.alias || [],\n    redirect: servicesdbm5y5YhzEMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/services.vue\").then(m => m.default || m)\n  },\n  {\n    name: singleRoom2fhFOc54vdMeta?.name ?? \"singleRoom\",\n    path: singleRoom2fhFOc54vdMeta?.path ?? \"/singleRoom\",\n    meta: singleRoom2fhFOc54vdMeta || {},\n    alias: singleRoom2fhFOc54vdMeta?.alias || [],\n    redirect: singleRoom2fhFOc54vdMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/singleRoom.vue\").then(m => m.default || m)\n  },\n  {\n    name: termsAndConditions2lgJG0eYhWMeta?.name ?? \"termsAndConditions\",\n    path: termsAndConditions2lgJG0eYhWMeta?.path ?? \"/termsAndConditions\",\n    meta: termsAndConditions2lgJG0eYhWMeta || {},\n    alias: termsAndConditions2lgJG0eYhWMeta?.alias || [],\n    redirect: termsAndConditions2lgJG0eYhWMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/termsAndConditions.vue\").then(m => m.default || m)\n  },\n  {\n    name: tripleRoomxxRUp98mMqMeta?.name ?? \"tripleRoom\",\n    path: tripleRoomxxRUp98mMqMeta?.path ?? \"/tripleRoom\",\n    meta: tripleRoomxxRUp98mMqMeta || {},\n    alias: tripleRoomxxRUp98mMqMeta?.alias || [],\n    redirect: tripleRoomxxRUp98mMqMeta?.redirect,\n    component: () => import(\"/var/www/html/Sueen-Nature-Frontend/pages/tripleRoom.vue\").then(m => m.default || m)\n  }\n]",
+      "start": 1727432807764,
+      "end": 1727432807764,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432807764,
+      "end": 1727432807764,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432807765,
+      "end": 1727432807765,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432807765,
+      "end": 1727432807765,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432807765,
+      "end": 1727432807765,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432807765,
+      "end": 1727432807765,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432807765,
+      "end": 1727432807765,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432807765,
+      "end": 1727432807765,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432807765,
+      "end": 1727432807765,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432807765,
+      "end": 1727432807765,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432807765,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432807766,
+      "end": 1727432807766,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432807767,
+      "end": 1727432807767,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432807767,
+      "end": 1727432807767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432807767,
+      "end": 1727432807768,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432807768,
+      "end": 1727432807768,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432807769,
+      "end": 1727432807769,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432807769,
+      "end": 1727432807788,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432807788,
+      "end": 1727432807788,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432807788,
+      "end": 1727432807788,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432807789,
+      "end": 1727432807789,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432807789,
+      "end": 1727432807789,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432807789,
+      "end": 1727432807789,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432807789,
+      "end": 1727432807789,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "result": "import { __vitePreload } from \"\u0000vite/preload-helper.js\";import { default as about25xEts1Y4VMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/about.vue?macro=true\";\nimport { default as additionalActivitesSjrkvpmmyPMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/additionalActivites.vue?macro=true\";\nimport { default as bookinglU89bPJpmxMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/booking.vue?macro=true\";\nimport { default as checkout6qDk30mFZvMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/checkout.vue?macro=true\";\nimport { default as contactrBtUiJHOeIMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/contact.vue?macro=true\";\nimport { default as cookiesPolicyqPT3NL2QvTMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/cookiesPolicy.vue?macro=true\";\nimport { default as dashboardVt58fiPU7LMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/dashboard.vue?macro=true\";\nimport { default as deluxeRoom6NrzTyJzNCMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/deluxeRoom.vue?macro=true\";\nimport { default as disabledRoomzpataUSx22Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/disabledRoom.vue?macro=true\";\nimport { default as doubleRoom3pWBXEfVV5Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/doubleRoom.vue?macro=true\";\nimport { default as familyRoom2aEoPaWmAWMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/familyRoom.vue?macro=true\";\nimport { default as faqwlK46TW2dgMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/faq.vue?macro=true\";\nimport { default as galleryaSPlMxAlzIMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/gallery.vue?macro=true\";\nimport { default as homeoJWgGtUxo0Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/home.vue?macro=true\";\nimport { default as indexzTG4MIYKdOMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/index.vue?macro=true\";\nimport { default as launchingPageqi31R7OgX1Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/launchingPage.vue?macro=true\";\nimport { default as metaAppDataDeletionInstructionsGxS2siyncrMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/metaAppDataDeletionInstructions.vue?macro=true\";\nimport { default as newshe83vLkkgVMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/news.vue?macro=true\";\nimport { default as offers9VSw8vIQCaMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/offers.vue?macro=true\";\nimport { default as privacyPolicyhDoMJKJl2IMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/privacyPolicy.vue?macro=true\";\nimport { default as room2Auw2oDLS1Meta } from \"/var/www/html/Sueen-Nature-Frontend/pages/room.vue?macro=true\";\nimport { default as roomso9f5gRjqyCMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/rooms.vue?macro=true\";\nimport { default as safetySecurityag7JrygUpcMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/safetySecurity.vue?macro=true\";\nimport { default as servicesdbm5y5YhzEMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/services.vue?macro=true\";\nimport { default as singleRoom2fhFOc54vdMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/singleRoom.vue?macro=true\";\nimport { default as termsAndConditions2lgJG0eYhWMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/termsAndConditions.vue?macro=true\";\nimport { default as tripleRoomxxRUp98mMqMeta } from \"/var/www/html/Sueen-Nature-Frontend/pages/tripleRoom.vue?macro=true\";\nexport default [\n  {\n    name: about25xEts1Y4VMeta?.name ?? \"about\",\n    path: about25xEts1Y4VMeta?.path ?? \"/about\",\n    meta: about25xEts1Y4VMeta || {},\n    alias: about25xEts1Y4VMeta?.alias || [],\n    redirect: about25xEts1Y4VMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/about.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: additionalActivitesSjrkvpmmyPMeta?.name ?? \"additionalActivites\",\n    path: additionalActivitesSjrkvpmmyPMeta?.path ?? \"/additionalActivites\",\n    meta: additionalActivitesSjrkvpmmyPMeta || {},\n    alias: additionalActivitesSjrkvpmmyPMeta?.alias || [],\n    redirect: additionalActivitesSjrkvpmmyPMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/additionalActivites.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: bookinglU89bPJpmxMeta?.name ?? \"booking\",\n    path: bookinglU89bPJpmxMeta?.path ?? \"/booking\",\n    meta: bookinglU89bPJpmxMeta || {},\n    alias: bookinglU89bPJpmxMeta?.alias || [],\n    redirect: bookinglU89bPJpmxMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/booking.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: checkout6qDk30mFZvMeta?.name ?? \"checkout\",\n    path: checkout6qDk30mFZvMeta?.path ?? \"/checkout\",\n    meta: checkout6qDk30mFZvMeta || {},\n    alias: checkout6qDk30mFZvMeta?.alias || [],\n    redirect: checkout6qDk30mFZvMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/checkout.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: contactrBtUiJHOeIMeta?.name ?? \"contact\",\n    path: contactrBtUiJHOeIMeta?.path ?? \"/contact\",\n    meta: contactrBtUiJHOeIMeta || {},\n    alias: contactrBtUiJHOeIMeta?.alias || [],\n    redirect: contactrBtUiJHOeIMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/contact.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: cookiesPolicyqPT3NL2QvTMeta?.name ?? \"cookiesPolicy\",\n    path: cookiesPolicyqPT3NL2QvTMeta?.path ?? \"/cookiesPolicy\",\n    meta: cookiesPolicyqPT3NL2QvTMeta || {},\n    alias: cookiesPolicyqPT3NL2QvTMeta?.alias || [],\n    redirect: cookiesPolicyqPT3NL2QvTMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/cookiesPolicy.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: dashboardVt58fiPU7LMeta?.name ?? \"dashboard\",\n    path: dashboardVt58fiPU7LMeta?.path ?? \"/dashboard\",\n    meta: dashboardVt58fiPU7LMeta || {},\n    alias: dashboardVt58fiPU7LMeta?.alias || [],\n    redirect: dashboardVt58fiPU7LMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/dashboard.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: deluxeRoom6NrzTyJzNCMeta?.name ?? \"deluxeRoom\",\n    path: deluxeRoom6NrzTyJzNCMeta?.path ?? \"/deluxeRoom\",\n    meta: deluxeRoom6NrzTyJzNCMeta || {},\n    alias: deluxeRoom6NrzTyJzNCMeta?.alias || [],\n    redirect: deluxeRoom6NrzTyJzNCMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/deluxeRoom.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: disabledRoomzpataUSx22Meta?.name ?? \"disabledRoom\",\n    path: disabledRoomzpataUSx22Meta?.path ?? \"/disabledRoom\",\n    meta: disabledRoomzpataUSx22Meta || {},\n    alias: disabledRoomzpataUSx22Meta?.alias || [],\n    redirect: disabledRoomzpataUSx22Meta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/disabledRoom.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: doubleRoom3pWBXEfVV5Meta?.name ?? \"doubleRoom\",\n    path: doubleRoom3pWBXEfVV5Meta?.path ?? \"/doubleRoom\",\n    meta: doubleRoom3pWBXEfVV5Meta || {},\n    alias: doubleRoom3pWBXEfVV5Meta?.alias || [],\n    redirect: doubleRoom3pWBXEfVV5Meta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/doubleRoom.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: familyRoom2aEoPaWmAWMeta?.name ?? \"familyRoom\",\n    path: familyRoom2aEoPaWmAWMeta?.path ?? \"/familyRoom\",\n    meta: familyRoom2aEoPaWmAWMeta || {},\n    alias: familyRoom2aEoPaWmAWMeta?.alias || [],\n    redirect: familyRoom2aEoPaWmAWMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/familyRoom.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: faqwlK46TW2dgMeta?.name ?? \"faq\",\n    path: faqwlK46TW2dgMeta?.path ?? \"/faq\",\n    meta: faqwlK46TW2dgMeta || {},\n    alias: faqwlK46TW2dgMeta?.alias || [],\n    redirect: faqwlK46TW2dgMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/faq.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: galleryaSPlMxAlzIMeta?.name ?? \"gallery\",\n    path: galleryaSPlMxAlzIMeta?.path ?? \"/gallery\",\n    meta: galleryaSPlMxAlzIMeta || {},\n    alias: galleryaSPlMxAlzIMeta?.alias || [],\n    redirect: galleryaSPlMxAlzIMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/gallery.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: homeoJWgGtUxo0Meta?.name ?? \"home\",\n    path: homeoJWgGtUxo0Meta?.path ?? \"/home\",\n    meta: homeoJWgGtUxo0Meta || {},\n    alias: homeoJWgGtUxo0Meta?.alias || [],\n    redirect: homeoJWgGtUxo0Meta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/home.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: indexzTG4MIYKdOMeta?.name ?? \"index\",\n    path: indexzTG4MIYKdOMeta?.path ?? \"/\",\n    meta: indexzTG4MIYKdOMeta || {},\n    alias: indexzTG4MIYKdOMeta?.alias || [],\n    redirect: indexzTG4MIYKdOMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/index.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: launchingPageqi31R7OgX1Meta?.name ?? \"launchingPage\",\n    path: launchingPageqi31R7OgX1Meta?.path ?? \"/launchingPage\",\n    meta: launchingPageqi31R7OgX1Meta || {},\n    alias: launchingPageqi31R7OgX1Meta?.alias || [],\n    redirect: launchingPageqi31R7OgX1Meta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/launchingPage.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: metaAppDataDeletionInstructionsGxS2siyncrMeta?.name ?? \"metaAppDataDeletionInstructions\",\n    path: metaAppDataDeletionInstructionsGxS2siyncrMeta?.path ?? \"/metaAppDataDeletionInstructions\",\n    meta: metaAppDataDeletionInstructionsGxS2siyncrMeta || {},\n    alias: metaAppDataDeletionInstructionsGxS2siyncrMeta?.alias || [],\n    redirect: metaAppDataDeletionInstructionsGxS2siyncrMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/metaAppDataDeletionInstructions.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: newshe83vLkkgVMeta?.name ?? \"news\",\n    path: newshe83vLkkgVMeta?.path ?? \"/news\",\n    meta: newshe83vLkkgVMeta || {},\n    alias: newshe83vLkkgVMeta?.alias || [],\n    redirect: newshe83vLkkgVMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/news.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: offers9VSw8vIQCaMeta?.name ?? \"offers\",\n    path: offers9VSw8vIQCaMeta?.path ?? \"/offers\",\n    meta: offers9VSw8vIQCaMeta || {},\n    alias: offers9VSw8vIQCaMeta?.alias || [],\n    redirect: offers9VSw8vIQCaMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/offers.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: privacyPolicyhDoMJKJl2IMeta?.name ?? \"privacyPolicy\",\n    path: privacyPolicyhDoMJKJl2IMeta?.path ?? \"/privacyPolicy\",\n    meta: privacyPolicyhDoMJKJl2IMeta || {},\n    alias: privacyPolicyhDoMJKJl2IMeta?.alias || [],\n    redirect: privacyPolicyhDoMJKJl2IMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/privacyPolicy.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: room2Auw2oDLS1Meta?.name ?? \"room\",\n    path: room2Auw2oDLS1Meta?.path ?? \"/room\",\n    meta: room2Auw2oDLS1Meta || {},\n    alias: room2Auw2oDLS1Meta?.alias || [],\n    redirect: room2Auw2oDLS1Meta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/room.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: roomso9f5gRjqyCMeta?.name ?? \"rooms\",\n    path: roomso9f5gRjqyCMeta?.path ?? \"/rooms\",\n    meta: roomso9f5gRjqyCMeta || {},\n    alias: roomso9f5gRjqyCMeta?.alias || [],\n    redirect: roomso9f5gRjqyCMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/rooms.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: safetySecurityag7JrygUpcMeta?.name ?? \"safetySecurity\",\n    path: safetySecurityag7JrygUpcMeta?.path ?? \"/safetySecurity\",\n    meta: safetySecurityag7JrygUpcMeta || {},\n    alias: safetySecurityag7JrygUpcMeta?.alias || [],\n    redirect: safetySecurityag7JrygUpcMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/safetySecurity.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: servicesdbm5y5YhzEMeta?.name ?? \"services\",\n    path: servicesdbm5y5YhzEMeta?.path ?? \"/services\",\n    meta: servicesdbm5y5YhzEMeta || {},\n    alias: servicesdbm5y5YhzEMeta?.alias || [],\n    redirect: servicesdbm5y5YhzEMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/services.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: singleRoom2fhFOc54vdMeta?.name ?? \"singleRoom\",\n    path: singleRoom2fhFOc54vdMeta?.path ?? \"/singleRoom\",\n    meta: singleRoom2fhFOc54vdMeta || {},\n    alias: singleRoom2fhFOc54vdMeta?.alias || [],\n    redirect: singleRoom2fhFOc54vdMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/singleRoom.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: termsAndConditions2lgJG0eYhWMeta?.name ?? \"termsAndConditions\",\n    path: termsAndConditions2lgJG0eYhWMeta?.path ?? \"/termsAndConditions\",\n    meta: termsAndConditions2lgJG0eYhWMeta || {},\n    alias: termsAndConditions2lgJG0eYhWMeta?.alias || [],\n    redirect: termsAndConditions2lgJG0eYhWMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/termsAndConditions.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: tripleRoomxxRUp98mMqMeta?.name ?? \"tripleRoom\",\n    path: tripleRoomxxRUp98mMqMeta?.path ?? \"/tripleRoom\",\n    meta: tripleRoomxxRUp98mMqMeta || {},\n    alias: tripleRoomxxRUp98mMqMeta?.alias || [],\n    redirect: tripleRoomxxRUp98mMqMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/var/www/html/Sueen-Nature-Frontend/pages/tripleRoom.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  }\n]",
+      "start": 1727432807790,
+      "end": 1727432807792,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432807792,
+      "end": 1727432807792,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/vue3-google-signin/dist/index.es.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { ref as m, watch as F, onMounted as Q, onUnmounted as z, readonly as w, defineComponent as W, inject as I, watchEffect as S, computed as X, openBlock as Y, createElementBlock as Z, normalizeStyle as ee, unref as l } from \"vue\";\nconst v = Symbol(), U = m(!1), C = m(!1), B = m(!1), T = m(0);\nlet k = null;\nconst te = () => {\n  const e = document.createElement(\"script\");\n  return e.src = \"https://accounts.google.com/gsi/client\", e.async = !0, e.defer = !0, e;\n}, ne = () => {\n  C.value = !0, k = te(), document.head.appendChild(k), k.onload = () => {\n    C.value = !1, U.value = !0;\n  }, k.onerror = () => {\n    C.value = !1, B.value = !0;\n  };\n};\nF(\n  () => T.value,\n  (e, o) => {\n    e > 0 && !U.value && !C.value && ne();\n  }\n);\nfunction A() {\n  return Q(() => {\n    T.value++;\n  }), z(() => {\n    T.value--;\n  }), {\n    scriptLoaded: w(U),\n    scriptLoadError: w(B)\n  };\n}\nconst oe = /* @__PURE__ */ W({\n  __name: \"GoogleSignInButton\",\n  props: {\n    oneTap: { type: Boolean },\n    autoSelect: { type: Boolean },\n    loginUri: {},\n    cancelOnTapOutside: { type: Boolean },\n    promptParentId: {},\n    nonce: {},\n    context: {},\n    stateCookieDomain: {},\n    uxMode: {},\n    allowedParentOrigin: {},\n    itpSupport: { type: Boolean },\n    type: {},\n    theme: {},\n    size: {},\n    text: {},\n    shape: {},\n    logoAlignment: {},\n    width: {},\n    locale: {}\n  },\n  emits: [\"success\", \"error\", \"intermediateIframeCloseCallback\", \"nativeCallback\", \"promptMomentNotification\"],\n  setup(e, { emit: o }) {\n    const n = { large: 40, medium: 32, small: 20 }, t = e, i = o, r = I(v), s = m(null), { scriptLoaded: d } = A();\n    S(() => {\n      var a, p, f, g;\n      d.value && ((a = window.google) == null || a.accounts.id.initialize({\n        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion\n        client_id: r,\n        callback: (c) => {\n          if (!c.clientId || !c.credential) {\n            i(\"error\");\n            return;\n          }\n          i(\"success\", c);\n        },\n        allowed_parent_origin: t.allowedParentOrigin,\n        auto_select: t.autoSelect,\n        cancel_on_tap_outside: t.cancelOnTapOutside,\n        context: t.context,\n        intermediate_iframe_close_callback: () => {\n          i(\"intermediateIframeCloseCallback\");\n        },\n        itp_support: t.itpSupport,\n        login_uri: t.loginUri,\n        native_callback: (c) => {\n          i(\"nativeCallback\", c);\n        },\n        nonce: t.nonce,\n        prompt_parent_id: t.promptParentId,\n        state_cookie_domain: t.stateCookieDomain,\n        ux_mode: t.uxMode\n      }), (f = window.google) == null || f.accounts.id.renderButton(s.value, {\n        type: t.type,\n        theme: t.theme,\n        size: t.size,\n        text: t.text,\n        shape: t.shape,\n        logo_alignment: t.logoAlignment,\n        width: (p = t.width) == null ? void 0 : p.toString(),\n        locale: t.locale\n      }), t.oneTap && ((g = window.google) == null || g.accounts.id.prompt((c) => {\n        i(\"promptMomentNotification\", c);\n      })));\n    }), z(() => {\n      var a;\n      t.oneTap && ((a = window.google) == null || a.accounts.id.cancel());\n    });\n    const u = X(() => n[t.size || \"large\"]);\n    return (a, p) => (Y(), Z(\"div\", {\n      ref_key: \"targetElement\",\n      ref: s,\n      style: ee({ display: \"inline-flex\", height: u.value })\n    }, null, 4));\n  }\n});\nfunction le(e, o, ...n) {\n  var t;\n  return ((t = window.google) == null ? void 0 : t.accounts.oauth2.hasGrantedAllScopes(\n    e,\n    o,\n    ...n\n  )) || !1;\n}\nfunction re(e, o, ...n) {\n  var t;\n  return ((t = window.google) == null ? void 0 : t.accounts.oauth2.hasGrantedAnyScope(\n    e,\n    o,\n    ...n\n  )) || !1;\n}\nfunction se(e, o) {\n  var n;\n  (n = window.google) == null || n.accounts.oauth2.revoke(e, () => {\n    o == null || o();\n  });\n}\nfunction ie(e) {\n  const o = \"https://accounts.google.com/o/oauth2/v2/auth\", n = new URLSearchParams({\n    gsiwebsdk: \"3\",\n    client_id: e.client_id,\n    scope: e.scope,\n    include_granted_scopes: \"true\",\n    access_type: \"offline\",\n    response_type: \"code\",\n    prompt: \"consent\"\n  });\n  return e.hint && n.append(\"hint\", e.hint), e.hosted_domain && n.append(\"hosted_domain\", e.hosted_domain), e.redirect_uri === void 0 ? n.append(\"redirect_uri\", window.origin) : n.append(\"redirect_uri\", e.redirect_uri), e.select_account === void 0 ? n.append(\"select_account\", \"false\") : n.append(\"select_account\", `${e.select_account}`), e.enable_serial_consent === void 0 ? n.append(\"enable_serial_consent\", \"false\") : n.append(\n    \"enable_serial_consent\",\n    `${e.enable_serial_consent}`\n  ), e.state && n.append(\"state\", e.state), `${o}?${n.toString()}`;\n}\nfunction de(e = {}) {\n  const { scope: o = \"\", onError: n, onSuccess: t, ...i } = e, { scriptLoaded: r } = A(), s = I(v), d = m(!1), u = m(null);\n  let a;\n  return S(() => {\n    var c;\n    if (d.value = !1, !r.value)\n      return;\n    const p = l(o), g = `openid email profile ${Array.isArray(p) ? p.join(\" \") : p}`;\n    u.value = ie({\n      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion\n      client_id: s,\n      scope: g,\n      ...i\n    }), a = (c = window.google) == null ? void 0 : c.accounts.oauth2.initCodeClient({\n      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion\n      client_id: s,\n      scope: g,\n      callback: (h) => {\n        if (h.error)\n          return n == null ? void 0 : n(h);\n        t == null || t(h);\n      },\n      ...i\n    }), d.value = !0;\n  }), {\n    isReady: w(d),\n    login: () => a == null ? void 0 : a.requestCode(),\n    codeRequestRedirectUrl: w(u)\n  };\n}\nfunction ue(e) {\n  const {\n    disableAutomaticPrompt: o = !1,\n    onSuccess: n,\n    onError: t,\n    onPromptMomentNotification: i,\n    onNativeCallback: r,\n    onIntermediateIframeCloseCallback: s,\n    autoSelect: d,\n    loginUri: u,\n    cancelOnTapOutside: a,\n    promptParentId: p,\n    nonce: f,\n    context: g,\n    stateCookieDomain: c,\n    allowedParentOrigin: h,\n    itpSupport: L\n  } = e || {}, { scriptLoaded: P } = A(), $ = I(v), y = m(!1), q = () => {\n    var b;\n    return y.value && ((b = window.google) == null ? void 0 : b.accounts.id.prompt(\n      (x) => i == null ? void 0 : i(x)\n    ));\n  };\n  return S((b) => {\n    var G, O;\n    if (y.value = !1, !P.value)\n      return;\n    const x = !l(o), E = l(d), j = l(u), V = l(p), D = l(f), M = l(g), H = l(c), J = l(h), K = l(L), N = l(a);\n    (G = window.google) == null || G.accounts.id.initialize({\n      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion\n      client_id: $,\n      callback: (_) => {\n        if (!_.clientId || !_.credential) {\n          t == null || t();\n          return;\n        }\n        n == null || n(_);\n      },\n      native_callback: (_) => {\n        r == null || r(_);\n      },\n      intermediate_iframe_close_callback: () => {\n        s == null || s();\n      },\n      auto_select: E,\n      allowed_parent_origin: J,\n      context: M,\n      itp_support: K,\n      login_uri: j,\n      nonce: D,\n      prompt_parent_id: V,\n      state_cookie_domain: H,\n      cancel_on_tap_outside: N\n    }), y.value = !0, x && ((O = window.google) == null || O.accounts.id.prompt(\n      (_) => i == null ? void 0 : i(_)\n    )), b(() => {\n      var _;\n      (_ = window.google) == null || _.accounts.id.cancel();\n    });\n  }), { isReady: w(y), login: q };\n}\nfunction pe(e = {}) {\n  const { scope: o = \"\", onError: n, onSuccess: t, ...i } = e, { scriptLoaded: r } = A(), s = I(v), d = m(!1);\n  let u;\n  return S(() => {\n    var f;\n    if (d.value = !1, !r.value)\n      return;\n    const a = l(o), p = Array.isArray(a) ? a.join(\" \") : a;\n    u = (f = window.google) == null ? void 0 : f.accounts.oauth2.initTokenClient({\n      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion\n      client_id: s,\n      scope: `openid email profile ${p}`,\n      callback: (g) => {\n        if (g.error)\n          return n == null ? void 0 : n(g);\n        t == null || t(g);\n      },\n      ...i\n    }), d.value = !0;\n  }), {\n    isReady: w(d),\n    login: (a) => u == null ? void 0 : u.requestAccessToken(a)\n  };\n}\nfunction ge(e, o) {\n  var n;\n  (n = window.google) == null || n.accounts.id.revoke(e, (t) => {\n    o == null || o(t);\n  });\n}\nfunction _e(e) {\n  const n = e.split(\".\")[1].replace(/-/g, \"+\").replace(/_/g, \"/\"), t = decodeURIComponent(\n    window.atob(n).split(\"\").map((r) => `%${(\"00\" + r.charCodeAt(0).toString(16)).slice(-2)}`).join(\"\")\n  ), i = JSON.parse(t);\n  return {\n    email: i.email,\n    email_verified: i.email_verified,\n    hd: i.hd,\n    family_name: i.family_name,\n    given_name: i.given_name,\n    name: i.name,\n    picture: i.picture,\n    id: i.sub\n  };\n}\nconst ae = \"GoogleSignInPlugin\", R = (e) => `[${ae}]: ${e}`, me = {\n  install(e, o) {\n    if (!o)\n      throw new Error(\n        R(\"initialize plugin by passing an options object\")\n      );\n    if (!o.clientId || o.clientId && o.clientId.trim().length === 0)\n      throw new Error(R(\"clientId is required to initialize\"));\n    e.provide(v, o.clientId), e.component(\"GoogleSignInButton\", oe);\n  }\n};\nexport {\n  oe as GoogleSignInButton,\n  ae as PLUGIN_NAME,\n  ie as buildCodeRequestRedirectUrl,\n  _e as decodeCredential,\n  me as default,\n  le as hasGrantedAllScopes,\n  re as hasGrantedAnyScopes,\n  ge as idRevoke,\n  se as revokeAccessToken,\n  de as useCodeClient,\n  A as useGsiScript,\n  ue as useOneTap,\n  pe as useTokenClient\n};\n",
+      "start": 1727432807823,
+      "end": 1727432809131,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432809131,
+      "end": 1727432809131,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432809132,
+      "end": 1727432809132,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432809132,
+      "end": 1727432809136,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432809136,
+      "end": 1727432809136,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432809136,
+      "end": 1727432809136,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432809136,
+      "end": 1727432809136,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432809136,
+      "end": 1727432809137,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432809137,
+      "end": 1727432809137,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432809137,
+      "end": 1727432809137,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432809137,
+      "end": 1727432809137,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432809137,
+      "end": 1727432809137,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432809137,
+      "end": 1727432809137,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432809137,
+      "end": 1727432809137,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432809137,
+      "end": 1727432809137,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432809137,
+      "end": 1727432809137,
+      "order": "normal"
+    }
+  ]
+}

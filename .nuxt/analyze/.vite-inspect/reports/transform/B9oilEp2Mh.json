@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-get-prototype-of.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar hasOwn = require('../internals/has-own-property');\nvar isCallable = require('../internals/is-callable');\nvar toObject = require('../internals/to-object');\nvar sharedKey = require('../internals/shared-key');\nvar CORRECT_PROTOTYPE_GETTER = require('../internals/correct-prototype-getter');\n\nvar IE_PROTO = sharedKey('IE_PROTO');\nvar $Object = Object;\nvar ObjectPrototype = $Object.prototype;\n\n// `Object.getPrototypeOf` method\n// https://tc39.es/ecma262/#sec-object.getprototypeof\n// eslint-disable-next-line es/no-object-getprototypeof -- safe\nmodule.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O) {\n  var object = toObject(O);\n  if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];\n  var constructor = object.constructor;\n  if (isCallable(constructor) && object instanceof constructor) {\n    return constructor.prototype;\n  } return object instanceof $Object ? ObjectPrototype : null;\n};\n",
+      "start": 1727432820345,
+      "end": 1727432820443,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820444,
+      "end": 1727432820444,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/has-own-property.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-callable.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-object.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/shared-key.js?commonjs-proxy\";\nimport require$$4 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/correct-prototype-getter.js?commonjs-proxy\";\n\n'use strict';\nvar hasOwn = require$$0;\nvar isCallable = require$$1;\nvar toObject = require$$2;\nvar sharedKey = require$$3;\nvar CORRECT_PROTOTYPE_GETTER = require$$4;\n\nvar IE_PROTO = sharedKey('IE_PROTO');\nvar $Object = Object;\nvar ObjectPrototype = $Object.prototype;\n\n// `Object.getPrototypeOf` method\n// https://tc39.es/ecma262/#sec-object.getprototypeof\n// eslint-disable-next-line es/no-object-getprototypeof -- safe\nvar objectGetPrototypeOf = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O) {\n  var object = toObject(O);\n  if (hasOwn(object, IE_PROTO)) return object[IE_PROTO];\n  var constructor = object.constructor;\n  if (isCallable(constructor) && object instanceof constructor) {\n    return constructor.prototype;\n  } return object instanceof $Object ? ObjectPrototype : null;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(objectGetPrototypeOf);\nexport { objectGetPrototypeOf as __moduleExports };",
+      "start": 1727432820444,
+      "end": 1727432820690,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;AAAA,YAAY,CAAC;AACb,IAAI,MAAM,GAAG,UAAwC,CAAC;AACtD,IAAI,UAAU,GAAG,UAAmC,CAAC;AACrD,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD,IAAI,SAAS,GAAG,UAAkC,CAAC;AACnD,IAAI,wBAAwB,GAAG,UAAgD,CAAC;AAChF;AACA,IAAI,QAAQ,GAAG,SAAS,CAAC,UAAU,CAAC,CAAC;AACrC,IAAI,OAAO,GAAG,MAAM,CAAC;AACrB,IAAI,eAAe,GAAG,OAAO,CAAC,SAAS,CAAC;AACxC;AACA;AACA;AACA;IACA,oBAAc,GAAG,wBAAwB,GAAG,OAAO,CAAC,cAAc,GAAG,UAAU,CAAC,EAAE;AAClF,EAAE,IAAI,MAAM,GAAG,QAAQ,CAAC,CAAC,CAAC,CAAC;AAC3B,EAAE,IAAI,MAAM,CAAC,MAAM,EAAE,QAAQ,CAAC,EAAE,OAAO,MAAM,CAAC,QAAQ,CAAC,CAAC;AACxD,EAAE,IAAI,WAAW,GAAG,MAAM,CAAC,WAAW,CAAC;AACvC,EAAE,IAAI,UAAU,CAAC,WAAW,CAAC,IAAI,MAAM,YAAY,WAAW,EAAE;AAChE,IAAI,OAAO,WAAW,CAAC,SAAS,CAAC;AACjC,GAAG,CAAC,OAAO,MAAM,YAAY,OAAO,GAAG,eAAe,GAAG,IAAI,CAAC;AAC9D,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820690,
+      "end": 1727432820690,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820690,
+      "end": 1727432820690,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820690,
+      "end": 1727432820690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820690,
+      "end": 1727432820690,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820690,
+      "end": 1727432820690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820690,
+      "end": 1727432820690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820690,
+      "end": 1727432820690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820690,
+      "end": 1727432820690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820690,
+      "end": 1727432820691,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820691,
+      "end": 1727432820691,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820691,
+      "end": 1727432820691,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820691,
+      "end": 1727432820691,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-set-prototype-of.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\n/* eslint-disable no-proto -- safe */\nvar uncurryThisAccessor = require('../internals/function-uncurry-this-accessor');\nvar isObject = require('../internals/is-object');\nvar requireObjectCoercible = require('../internals/require-object-coercible');\nvar aPossiblePrototype = require('../internals/a-possible-prototype');\n\n// `Object.setPrototypeOf` method\n// https://tc39.es/ecma262/#sec-object.setprototypeof\n// Works with __proto__ only. Old v8 can't work with null proto objects.\n// eslint-disable-next-line es/no-object-setprototypeof -- safe\nmodule.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {\n  var CORRECT_SETTER = false;\n  var test = {};\n  var setter;\n  try {\n    setter = uncurryThisAccessor(Object.prototype, '__proto__', 'set');\n    setter(test, []);\n    CORRECT_SETTER = test instanceof Array;\n  } catch (error) { /* empty */ }\n  return function setPrototypeOf(O, proto) {\n    requireObjectCoercible(O);\n    aPossiblePrototype(proto);\n    if (!isObject(O)) return O;\n    if (CORRECT_SETTER) setter(O, proto);\n    else O.__proto__ = proto;\n    return O;\n  };\n}() : undefined);\n",
+      "start": 1727432820159,
+      "end": 1727432820215,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820215,
+      "end": 1727432820215,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820215,
+      "end": 1727432820216,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820216,
+      "end": 1727432820216,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/function-uncurry-this-accessor.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-object.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/require-object-coercible.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/a-possible-prototype.js?commonjs-proxy\";\n\n'use strict';\n/* eslint-disable no-proto -- safe */\nvar uncurryThisAccessor = require$$0;\nvar isObject = require$$1;\nvar requireObjectCoercible = require$$2;\nvar aPossiblePrototype = require$$3;\n\n// `Object.setPrototypeOf` method\n// https://tc39.es/ecma262/#sec-object.setprototypeof\n// Works with __proto__ only. Old v8 can't work with null proto objects.\n// eslint-disable-next-line es/no-object-setprototypeof -- safe\nvar objectSetPrototypeOf = Object.setPrototypeOf || ('__proto__' in {} ? function () {\n  var CORRECT_SETTER = false;\n  var test = {};\n  var setter;\n  try {\n    setter = uncurryThisAccessor(Object.prototype, '__proto__', 'set');\n    setter(test, []);\n    CORRECT_SETTER = test instanceof Array;\n  } catch (error) { /* empty */ }\n  return function setPrototypeOf(O, proto) {\n    requireObjectCoercible(O);\n    aPossiblePrototype(proto);\n    if (!isObject(O)) return O;\n    if (CORRECT_SETTER) setter(O, proto);\n    else O.__proto__ = proto;\n    return O;\n  };\n}() : undefined);\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(objectSetPrototypeOf);\nexport { objectSetPrototypeOf as __moduleExports };",
+      "start": 1727432820216,
+      "end": 1727432820699,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;AAAA,YAAY,CAAC;AACb;AACA,IAAI,mBAAmB,GAAG,UAAsD,CAAC;AACjF,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD,IAAI,sBAAsB,GAAG,UAAgD,CAAC;AAC9E,IAAI,kBAAkB,GAAG,UAA4C,CAAC;AACtE;AACA;AACA;AACA;AACA;IACA,oBAAc,GAAG,MAAM,CAAC,cAAc,KAAK,WAAW,IAAI,EAAE,GAAG,YAAY;AAC3E,EAAE,IAAI,cAAc,GAAG,KAAK,CAAC;AAC7B,EAAE,IAAI,IAAI,GAAG,EAAE,CAAC;AAChB,EAAE,IAAI,MAAM,CAAC;AACb,EAAE,IAAI;AACN,IAAI,MAAM,GAAG,mBAAmB,CAAC,MAAM,CAAC,SAAS,EAAE,WAAW,EAAE,KAAK,CAAC,CAAC;AACvE,IAAI,MAAM,CAAC,IAAI,EAAE,EAAE,CAAC,CAAC;AACrB,IAAI,cAAc,GAAG,IAAI,YAAY,KAAK,CAAC;AAC3C,GAAG,CAAC,OAAO,KAAK,EAAE,eAAe;AACjC,EAAE,OAAO,SAAS,cAAc,CAAC,CAAC,EAAE,KAAK,EAAE;AAC3C,IAAI,sBAAsB,CAAC,CAAC,CAAC,CAAC;AAC9B,IAAI,kBAAkB,CAAC,KAAK,CAAC,CAAC;AAC9B,IAAI,IAAI,CAAC,QAAQ,CAAC,CAAC,CAAC,EAAE,OAAO,CAAC,CAAC;AAC/B,IAAI,IAAI,cAAc,EAAE,MAAM,CAAC,CAAC,EAAE,KAAK,CAAC,CAAC;AACzC,SAAS,CAAC,CAAC,SAAS,GAAG,KAAK,CAAC;AAC7B,IAAI,OAAO,CAAC,CAAC;AACb,GAAG,CAAC;AACJ,CAAC,EAAE,GAAG,SAAS,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820699,
+      "end": 1727432820699,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/array-reduce.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar aCallable = require('../internals/a-callable');\nvar toObject = require('../internals/to-object');\nvar IndexedObject = require('../internals/indexed-object');\nvar lengthOfArrayLike = require('../internals/length-of-array-like');\n\nvar $TypeError = TypeError;\n\nvar REDUCE_EMPTY = 'Reduce of empty array with no initial value';\n\n// `Array.prototype.{ reduce, reduceRight }` methods implementation\nvar createMethod = function (IS_RIGHT) {\n  return function (that, callbackfn, argumentsLength, memo) {\n    var O = toObject(that);\n    var self = IndexedObject(O);\n    var length = lengthOfArrayLike(O);\n    aCallable(callbackfn);\n    if (length === 0 && argumentsLength < 2) throw new $TypeError(REDUCE_EMPTY);\n    var index = IS_RIGHT ? length - 1 : 0;\n    var i = IS_RIGHT ? -1 : 1;\n    if (argumentsLength < 2) while (true) {\n      if (index in self) {\n        memo = self[index];\n        index += i;\n        break;\n      }\n      index += i;\n      if (IS_RIGHT ? index < 0 : length <= index) {\n        throw new $TypeError(REDUCE_EMPTY);\n      }\n    }\n    for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {\n      memo = callbackfn(memo, self[index], index, O);\n    }\n    return memo;\n  };\n};\n\nmodule.exports = {\n  // `Array.prototype.reduce` method\n  // https://tc39.es/ecma262/#sec-array.prototype.reduce\n  left: createMethod(false),\n  // `Array.prototype.reduceRight` method\n  // https://tc39.es/ecma262/#sec-array.prototype.reduceright\n  right: createMethod(true)\n};\n",
+      "start": 1727432820018,
+      "end": 1727432820100,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820100,
+      "end": 1727432820100,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820101,
+      "end": 1727432820101,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820101,
+      "end": 1727432820101,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/a-callable.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-object.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/indexed-object.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/length-of-array-like.js?commonjs-proxy\";\n\n'use strict';\nvar aCallable = require$$0;\nvar toObject = require$$1;\nvar IndexedObject = require$$2;\nvar lengthOfArrayLike = require$$3;\n\nvar $TypeError = TypeError;\n\nvar REDUCE_EMPTY = 'Reduce of empty array with no initial value';\n\n// `Array.prototype.{ reduce, reduceRight }` methods implementation\nvar createMethod = function (IS_RIGHT) {\n  return function (that, callbackfn, argumentsLength, memo) {\n    var O = toObject(that);\n    var self = IndexedObject(O);\n    var length = lengthOfArrayLike(O);\n    aCallable(callbackfn);\n    if (length === 0 && argumentsLength < 2) throw new $TypeError(REDUCE_EMPTY);\n    var index = IS_RIGHT ? length - 1 : 0;\n    var i = IS_RIGHT ? -1 : 1;\n    if (argumentsLength < 2) while (true) {\n      if (index in self) {\n        memo = self[index];\n        index += i;\n        break;\n      }\n      index += i;\n      if (IS_RIGHT ? index < 0 : length <= index) {\n        throw new $TypeError(REDUCE_EMPTY);\n      }\n    }\n    for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {\n      memo = callbackfn(memo, self[index], index, O);\n    }\n    return memo;\n  };\n};\n\nvar arrayReduce = {\n  // `Array.prototype.reduce` method\n  // https://tc39.es/ecma262/#sec-array.prototype.reduce\n  left: createMethod(false),\n  // `Array.prototype.reduceRight` method\n  // https://tc39.es/ecma262/#sec-array.prototype.reduceright\n  right: createMethod(true)\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(arrayReduce);\nexport { arrayReduce as __moduleExports };",
+      "start": 1727432820101,
+      "end": 1727432820507,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;AAAA,YAAY,CAAC;AACb,IAAI,SAAS,GAAG,UAAkC,CAAC;AACnD,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD,IAAI,aAAa,GAAG,UAAsC,CAAC;AAC3D,IAAI,iBAAiB,GAAG,UAA4C,CAAC;AACrE;AACA,IAAI,UAAU,GAAG,SAAS,CAAC;AAC3B;AACA,IAAI,YAAY,GAAG,6CAA6C,CAAC;AACjE;AACA;AACA,IAAI,YAAY,GAAG,UAAU,QAAQ,EAAE;AACvC,EAAE,OAAO,UAAU,IAAI,EAAE,UAAU,EAAE,eAAe,EAAE,IAAI,EAAE;AAC5D,IAAI,IAAI,CAAC,GAAG,QAAQ,CAAC,IAAI,CAAC,CAAC;AAC3B,IAAI,IAAI,IAAI,GAAG,aAAa,CAAC,CAAC,CAAC,CAAC;AAChC,IAAI,IAAI,MAAM,GAAG,iBAAiB,CAAC,CAAC,CAAC,CAAC;AACtC,IAAI,SAAS,CAAC,UAAU,CAAC,CAAC;AAC1B,IAAI,IAAI,MAAM,KAAK,CAAC,IAAI,eAAe,GAAG,CAAC,EAAE,MAAM,IAAI,UAAU,CAAC,YAAY,CAAC,CAAC;AAChF,IAAI,IAAI,KAAK,GAAG,QAAQ,GAAG,MAAM,GAAG,CAAC,GAAG,CAAC,CAAC;AAC1C,IAAI,IAAI,CAAC,GAAG,QAAQ,GAAG,CAAC,CAAC,GAAG,CAAC,CAAC;AAC9B,IAAI,IAAI,eAAe,GAAG,CAAC,EAAE,OAAO,IAAI,EAAE;AAC1C,MAAM,IAAI,KAAK,IAAI,IAAI,EAAE;AACzB,QAAQ,IAAI,GAAG,IAAI,CAAC,KAAK,CAAC,CAAC;AAC3B,QAAQ,KAAK,IAAI,CAAC,CAAC;AACnB,QAAQ,MAAM;AACd,OAAO;AACP,MAAM,KAAK,IAAI,CAAC,CAAC;AACjB,MAAM,IAAI,QAAQ,GAAG,KAAK,GAAG,CAAC,GAAG,MAAM,IAAI,KAAK,EAAE;AAClD,QAAQ,MAAM,IAAI,UAAU,CAAC,YAAY,CAAC,CAAC;AAC3C,OAAO;AACP,KAAK;AACL,IAAI,MAAM,QAAQ,GAAG,KAAK,IAAI,CAAC,GAAG,MAAM,GAAG,KAAK,EAAE,KAAK,IAAI,CAAC,EAAE,IAAI,KAAK,IAAI,IAAI,EAAE;AACjF,MAAM,IAAI,GAAG,UAAU,CAAC,IAAI,EAAE,IAAI,CAAC,KAAK,CAAC,EAAE,KAAK,EAAE,CAAC,CAAC,CAAC;AACrD,KAAK;AACL,IAAI,OAAO,IAAI,CAAC;AAChB,GAAG,CAAC;AACJ,CAAC,CAAC;AACF;IACA,WAAc,GAAG;AACjB;AACA;AACA,EAAE,IAAI,EAAE,YAAY,CAAC,KAAK,CAAC;AAC3B;AACA;AACA,EAAE,KAAK,EAAE,YAAY,CAAC,IAAI,CAAC;AAC3B,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820507,
+      "end": 1727432820507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820507,
+      "end": 1727432820507,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820507,
+      "end": 1727432820507,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820507,
+      "end": 1727432820507,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "normal"
+    }
+  ]
+}

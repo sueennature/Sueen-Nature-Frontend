@@ -1,0 +1,214 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/contentFAQ.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <div class=\"sm:container px-4 py-20\">\n    \n<div id=\"accordion-color\" data-accordion=\"collapse\" data-active-classes=\"bg-gray-100 dark:bg-gray-800 text-black-200 dark:text-white\">\n  <h2 id=\"accordion-color-heading-1\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-b-0 border-gray-200 rounded-t-xl focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-1\" aria-expanded=\"true\" aria-controls=\"accordion-color-body-1\">\n      <span class=\"text-black-200 text-lg\">How can I make a reservation at Sueen Nature Resort?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-1\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-1\">\n    <div class=\"p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">You can make a reservation by visiting our website or by contacting us via email at sueennature@gmail.com or by phone at +(94) 34 330 7500.</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-2\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 rtl:text-right text-black-200 font-bold border border-b-0 border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-2\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-2\">\n      <span class=\"text-black-200 text-lg\">What are the check-in and check-out times?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-2\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-2\">\n    <div class=\"p-5 border border-b-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">Check-in time is from 2:00 PM, and check-out time is by 11:00 AM. Early check-in and late check-out may be available upon request and subject to availability.</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-3\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-3\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-3\">\n      <span class=\"text-black-200 text-lg\">What payment methods are accepted at the resort?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-3\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-3\">\n    <div class=\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">We accept major credit/debit cards and cash payments. A valid credit/debit card is required to secure your reservation, and full payment is required at check-in.</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-4\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-4\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-4\">\n      <span class=\"text-black-200 text-lg\">What is the cancellation policy?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-4\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-4\">\n    <div class=\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">Cancellation policies may vary based on the rate or special offer selected. Specific cancellation terms will be detailed at the time of booking. In the event of a no-show or late cancellation, one night's stay may be charged to the credit/debit card provided at booking.</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-5\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-5\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-5\">\n      <span class=\"text-black-200 text-lg\"> Are there specific terms for group bookings, events, or conference services?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-5\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-5\">\n    <div class=\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">Yes, specific terms and conditions may apply to group bookings, events, and conference services, which will be agreed upon in a separate contract.</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-6\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-6\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-6\">\n      <span class=\"text-black-200 text-lg\">Is there parking available at the resort?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-6\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-6\">\n    <div class=\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">Yes, we offer parking facilities for guests.</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-7\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-7\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-7\">\n      <span class=\"text-black-200 text-lg\">How is my personal information protected?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-7\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-7\">\n    <div class=\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">We are committed to protecting your privacy and personal information. Our privacy policy, available on our website, outlines how we collect, use, and protect your data</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-8\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-8\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-8\">\n      <span class=\"text-black-200 text-lg\">What if I have special requests or requirements during my stay?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-8\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-8\">\n    <div class=\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">Please inform us of any special requests or requirements you may have, and we will do our best to accommodate them.</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-9\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-9\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-9\">\n      <span class=\"text-black-200 text-lg\">Are pets allowed at Sueen Nature Resort?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-9\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-9\">\n    <div class=\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">Unfortunately, pets are not allowed at our resort.</p>\n    </div>\n  </div>\n  <h2 id=\"accordion-color-heading-10\">\n    <button type=\"button\" class=\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\" data-accordion-target=\"#accordion-color-body-10\" aria-expanded=\"false\" aria-controls=\"accordion-color-body-10\">\n      <span class=\"text-black-200 text-lg\">How can I reach Sueen Nature Resort for further inquiries?</span>\n      <svg data-accordion-icon class=\"w-3 h-3 rotate-180 shrink-0\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 10 6\">\n        <path stroke=\"#636363\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5 5 1 1 5\"/>\n      </svg>\n    </button>\n  </h2>\n  <div id=\"accordion-color-body-10\" class=\"hidden\" aria-labelledby=\"accordion-color-heading-10\">\n    <div class=\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\">\n      <p class=\"mb-2 text-black-200 dark:text-gray-400\">You can contact us via email at sueennature@gmail.com or by phone at +(94) 34 330 7500 , +(94) 71 584 0000. Our staff will be happy to assist you with any further inquiries or assistance you may need.</p>\n    </div>\n  </div>\n</div>\n\n \n  </div>\n</template>\n\n<script setup>\nimport { onMounted } from 'vue'\nimport { initFlowbite } from 'flowbite'\n\n// initialize components based on data attribute selectors\nonMounted(() => {\n    initFlowbite();\n})\n</script>\n\n<style scoped>\nh3 {\n  font-family: \"Philosopher\", sans-serif;\n}\nspan,\nh2,\nh5,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n</style>",
+      "start": 1727432812814,
+      "end": 1727432814035,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432814036,
+      "end": 1727432814036,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432814036,
+      "end": 1727432814036,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432814036,
+      "end": 1727432814036,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432814036,
+      "end": 1727432814036,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432814036,
+      "end": 1727432814036,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432814036,
+      "end": 1727432814036,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432814036,
+      "end": 1727432814036,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import { createElementVNode as _createElementVNode, createStaticVNode as _createStaticVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-d913cd7f\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = { class: \"sm:container px-4 py-20\" }\nconst _hoisted_2 = /*#__PURE__*/_createStaticVNode(\"<div id=\\\"accordion-color\\\" data-accordion=\\\"collapse\\\" data-active-classes=\\\"bg-gray-100 dark:bg-gray-800 text-black-200 dark:text-white\\\" data-v-d913cd7f><h2 id=\\\"accordion-color-heading-1\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-b-0 border-gray-200 rounded-t-xl focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-1\\\" aria-expanded=\\\"true\\\" aria-controls=\\\"accordion-color-body-1\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>How can I make a reservation at Sueen Nature Resort?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-1\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-1\\\" data-v-d913cd7f><div class=\\\"p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>You can make a reservation by visiting our website or by contacting us via email at sueennature@gmail.com or by phone at +(94) 34 330 7500.</p></div></div><h2 id=\\\"accordion-color-heading-2\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 rtl:text-right text-black-200 font-bold border border-b-0 border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-2\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-2\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>What are the check-in and check-out times?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-2\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-2\\\" data-v-d913cd7f><div class=\\\"p-5 border border-b-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>Check-in time is from 2:00 PM, and check-out time is by 11:00 AM. Early check-in and late check-out may be available upon request and subject to availability.</p></div></div><h2 id=\\\"accordion-color-heading-3\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-3\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-3\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>What payment methods are accepted at the resort?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-3\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-3\\\" data-v-d913cd7f><div class=\\\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>We accept major credit/debit cards and cash payments. A valid credit/debit card is required to secure your reservation, and full payment is required at check-in.</p></div></div><h2 id=\\\"accordion-color-heading-4\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-4\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-4\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>What is the cancellation policy?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-4\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-4\\\" data-v-d913cd7f><div class=\\\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>Cancellation policies may vary based on the rate or special offer selected. Specific cancellation terms will be detailed at the time of booking. In the event of a no-show or late cancellation, one night&#39;s stay may be charged to the credit/debit card provided at booking.</p></div></div><h2 id=\\\"accordion-color-heading-5\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-5\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-5\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f> Are there specific terms for group bookings, events, or conference services?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-5\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-5\\\" data-v-d913cd7f><div class=\\\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>Yes, specific terms and conditions may apply to group bookings, events, and conference services, which will be agreed upon in a separate contract.</p></div></div><h2 id=\\\"accordion-color-heading-6\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-6\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-6\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>Is there parking available at the resort?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-6\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-6\\\" data-v-d913cd7f><div class=\\\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>Yes, we offer parking facilities for guests.</p></div></div><h2 id=\\\"accordion-color-heading-7\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-7\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-7\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>How is my personal information protected?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-7\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-7\\\" data-v-d913cd7f><div class=\\\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>We are committed to protecting your privacy and personal information. Our privacy policy, available on our website, outlines how we collect, use, and protect your data</p></div></div><h2 id=\\\"accordion-color-heading-8\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-8\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-8\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>What if I have special requests or requirements during my stay?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-8\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-8\\\" data-v-d913cd7f><div class=\\\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>Please inform us of any special requests or requirements you may have, and we will do our best to accommodate them.</p></div></div><h2 id=\\\"accordion-color-heading-9\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-9\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-9\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>Are pets allowed at Sueen Nature Resort?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-9\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-9\\\" data-v-d913cd7f><div class=\\\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>Unfortunately, pets are not allowed at our resort.</p></div></div><h2 id=\\\"accordion-color-heading-10\\\" data-v-d913cd7f><button type=\\\"button\\\" class=\\\"flex items-center justify-between w-full p-5 font-bold rtl:text-right text-black-200 border border-gray-200 focus:ring-0 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-orange-50 dark:hover:bg-gray-800 gap-3\\\" data-accordion-target=\\\"#accordion-color-body-10\\\" aria-expanded=\\\"false\\\" aria-controls=\\\"accordion-color-body-10\\\" data-v-d913cd7f><span class=\\\"text-black-200 text-lg\\\" data-v-d913cd7f>How can I reach Sueen Nature Resort for further inquiries?</span><svg data-accordion-icon class=\\\"w-3 h-3 rotate-180 shrink-0\\\" aria-hidden=\\\"true\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" fill=\\\"none\\\" viewBox=\\\"0 0 10 6\\\" data-v-d913cd7f><path stroke=\\\"#636363\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" stroke-width=\\\"2\\\" d=\\\"M9 5 5 1 1 5\\\" data-v-d913cd7f></path></svg></button></h2><div id=\\\"accordion-color-body-10\\\" class=\\\"hidden\\\" aria-labelledby=\\\"accordion-color-heading-10\\\" data-v-d913cd7f><div class=\\\"p-5 border border-t-0 border-gray-200 dark:border-gray-700\\\" data-v-d913cd7f><p class=\\\"mb-2 text-black-200 dark:text-gray-400\\\" data-v-d913cd7f>You can contact us via email at sueennature@gmail.com or by phone at +(94) 34 330 7500 , +(94) 71 584 0000. Our staff will be happy to assist you with any further inquiries or assistance you may need.</p></div></div></div>\", 1)\nconst _hoisted_3 = [\n  _hoisted_2\n]\n\nimport { onMounted } from 'vue'\nimport { initFlowbite } from 'flowbite'\n\n// initialize components based on data attribute selectors\n\nconst _sfc_main = {\n  __name: 'contentFAQ',\n  setup(__props) {\n\nonMounted(() => {\n    initFlowbite();\n})\n\nreturn (_ctx, _cache) => {\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, _hoisted_3))\n}\n}\n\n}\n\n\nimport \"/var/www/html/Sueen-Nature-Frontend/components/contentFAQ.vue?vue&type=style&index=0&scoped=d913cd7f&lang.css\"\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['__scopeId',\"data-v-d913cd7f\"]])",
+      "start": 1727432814036,
+      "end": 1727432814043,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432814043,
+      "end": 1727432814043,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432814043,
+      "end": 1727432814044,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432814044,
+      "end": 1727432814046,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432814046,
+      "end": 1727432814046,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432814046,
+      "end": 1727432814046,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432814046,
+      "end": 1727432814046,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432814046,
+      "end": 1727432814046,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432814046,
+      "end": 1727432814046,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432814046,
+      "end": 1727432814046,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432814046,
+      "end": 1727432814046,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432814046,
+      "end": 1727432814047,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/flowbite-datepicker/js/lib/event.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "const listenerRegistry = new WeakMap();\nconst {addEventListener, removeEventListener} = EventTarget.prototype;\n\n// Register event listeners to a key object\n// listeners: array of listener definitions;\n//   - each definition must be a flat array of event target and the arguments\n//     used to call addEventListener() on the target\nexport function registerListeners(keyObj, listeners) {\n  let registered = listenerRegistry.get(keyObj);\n  if (!registered) {\n    registered = [];\n    listenerRegistry.set(keyObj, registered);\n  }\n  listeners.forEach((listener) => {\n    addEventListener.call(...listener);\n    registered.push(listener);\n  });\n}\n\nexport function unregisterListeners(keyObj) {\n  let listeners = listenerRegistry.get(keyObj);\n  if (!listeners) {\n    return;\n  }\n  listeners.forEach((listener) => {\n    removeEventListener.call(...listener);\n  });\n  listenerRegistry.delete(keyObj);\n}\n\n// Event.composedPath() polyfill for Edge\n// based on https://gist.github.com/kleinfreund/e9787d73776c0e3750dcfcdc89f100ec\nif (!Event.prototype.composedPath) {\n  const getComposedPath = (node, path = []) => {\n    path.push(node);\n\n    let parent;\n    if (node.parentNode) {\n      parent = node.parentNode;\n    } else if (node.host) { // ShadowRoot\n      parent = node.host;\n    } else if (node.defaultView) {  // Document\n      parent = node.defaultView;\n    }\n    return parent ? getComposedPath(parent, path) : path;\n  };\n\n  Event.prototype.composedPath = function () {\n    return getComposedPath(this.target);\n  };\n}\n\nfunction findFromPath(path, criteria, currentTarget, index = 0) {\n  const el = path[index];\n  if (criteria(el)) {\n    return el;\n  } else if (el === currentTarget || !el.parentElement) {\n    // stop when reaching currentTarget or <html>\n    return;\n  }\n  return findFromPath(path, criteria, currentTarget, index + 1);\n}\n\n// Search for the actual target of a delegated event\nexport function findElementInEventPath(ev, selector) {\n  const criteria = typeof selector === 'function' ? selector : el => el.matches(selector);\n  return findFromPath(ev.composedPath(), criteria, ev.currentTarget);\n}\n",
+      "start": 1727432817236,
+      "end": 1727432817330,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432817330,
+      "end": 1727432817330,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432817330,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432817331,
+      "end": 1727432817331,
+      "order": "normal"
+    }
+  ]
+}

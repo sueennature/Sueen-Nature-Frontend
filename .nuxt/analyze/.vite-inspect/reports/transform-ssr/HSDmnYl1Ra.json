@@ -1,0 +1,288 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/welcomeHome.vue?vue&type=style&index=0&scoped=b9fcdd73&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\nh2{\n    font-family: \"Philosopher\", sans-serif;;\n}\nh3,h4,h5,p{\n    font-family: \"Barlow\", sans-serif;\n}\n",
+      "start": 1727432837853,
+      "end": 1727432837853,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/welcomeHome.vue"
+        ],
+        "names": [],
+        "mappings": ";AAkCA,CAAC,CAAC;IACE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3C;AACA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACN,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrC",
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/welcomeHome.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n    <div class=\"relative\">\n        <img\n        src=\"/img/welcomeImg.webp\"\n        alt=\"backgroundImg\"\n        class=\"object-cover w-full min-h-screen\"\n      />\n      <div class=\"sm:container px-4 top-5 absolute lg:pt-5 xl:pt-16 pt-2\">\n         <div class=\"lg:flex lg:flex-row justify-between grid-cols-2 gap-8\">\n            <div>\n               <h3 class=\"uppercase text-black-50 lg:text-xl text-base\">Welcome</h3>\n               <h2 class=\"text-black-100 lg:text-5xl text-2xl mt-4\">Embodiment of tranquility</h2>\n               <p class=\"max-w-[80ch] lg:text-base text-sm text-black-50 mt-2\">Embrace the endless vista of pure greenery with Sueen Nature – Baduraliya, escaping the hustle and bustle of everyday routine. Rustling leaves, the songs of birds, and the burbling of water offer you the perfect tonic to relax.  We heartily welcome all to your ideal place of tranquillity.</p>\n               <!-- <h5 class=\"text-black-100 text-xl mt-2\">Ajith Muthukumara</h5>\n               <h4 class=\"text-black-50 text-base mt-2\">Sueen Nature Resort - General Manager</h4> -->\n            </div>\n            <div class=\"mt-10\">\n                <h3 class=\"uppercase text-black-50 lg:text-lg text-sm\">Reservation</h3>\n                <h3 class=\"uppercase text-black-50 lg:text-lg text-sm mt-2 text-nowrap\">+(94) 34 330 7500</h3>\n                <h3 class=\"uppercase text-black-50 lg:text-lg text-sm mt-2 text-nowrap\">+(94) 71 584 0000</h3>\n\n            </div>\n\n         </div>\n      </div>\n\n    </div>\n</template>\n\n<script setup>\n\n</script>\n\n<style scoped>\nh2{\n    font-family: \"Philosopher\", sans-serif;;\n}\nh3,h4,h5,p{\n    font-family: \"Barlow\", sans-serif;\n}\n</style>\n\n"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432837855,
+      "end": 1727432837855,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432837855,
+      "end": 1727432837855,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432837856,
+      "end": 1727432837856,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432837856,
+      "end": 1727432837856,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432837856,
+      "end": 1727432837856,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "h2{font-family:Philosopher,sans-serif}h3,h4,h5,p{font-family:Barlow,sans-serif}",
+      "start": 1727432837857,
+      "end": 1727432837864,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/welcomeHome.vue",
+        "mappings": "AACA,GACI,kCACJ,CACA,WACI,6BACJ",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/welcomeHome.vue"
+        ],
+        "sourcesContent": [
+          "\nh2{\n    font-family: \"Philosopher\", sans-serif;;\n}\nh3,h4,h5,p{\n    font-family: \"Barlow\", sans-serif;\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432837864,
+      "end": 1727432837864,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432837865,
+      "end": 1727432837865,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432837865,
+      "end": 1727432837865,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "h2[data-v-b9fcdd73]{font-family:Philosopher,sans-serif}h3[data-v-b9fcdd73],h4[data-v-b9fcdd73],h5[data-v-b9fcdd73],p[data-v-b9fcdd73]{font-family:Barlow,sans-serif}",
+      "start": 1727432837871,
+      "end": 1727432837873,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/welcomeHome.vue",
+        "mappings": "AAAA,oBAAG,kCAAkC,CAAC,+EAAW,6BAA6B",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/welcomeHome.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432837873,
+      "end": 1727432837873,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432837873,
+      "end": 1727432837874,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432837873,
+      "end": 1727432837874,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432837874,
+      "end": 1727432837874,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432837874,
+      "end": 1727432837874,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432837874,
+      "end": 1727432837874,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432837879,
+      "end": 1727432837879,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432837880,
+      "end": 1727432837893,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432837895,
+      "end": 1727432837895,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1727432837895,
+      "end": 1727432837895,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432837895,
+      "end": 1727432837895,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432837896,
+      "end": 1727432837896,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432837896,
+      "end": 1727432837896,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432837897,
+      "end": 1727432837897,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432837897,
+      "end": 1727432837897,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432837897,
+      "end": 1727432837897,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432837897,
+      "end": 1727432837897,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432837897,
+      "end": 1727432837897,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432837897,
+      "end": 1727432837897,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432837897,
+      "end": 1727432837897,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432837897,
+      "end": 1727432837898,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432837897,
+      "end": 1727432837898,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432837898,
+      "end": 1727432837898,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432837898,
+      "end": 1727432837898,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432837898,
+      "end": 1727432837898,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432837899,
+      "end": 1727432837899,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432837899,
+      "end": 1727432837899,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432837899,
+      "end": 1727432837899,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432837899,
+      "end": 1727432837899,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/offersHome.vue?vue&type=style&index=0&scoped=27056d62&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\nh3,\nh5 {\n  font-family: \"Philosopher\", sans-serif;\n}\nh2,\n.buttontext,\nh6,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n\n.relaxationCard {\n  letter-spacing: 0.6rem;\n}\n.apiImage {\n  object-fit: cover; \n  height: 390px; \n  width:120%; \n}\n\n.h-96 {\n  height: 24rem;\n}\n.image-container {\n  position: relative;\n}\n\n\n\n.text-overlay {\n  position: absolute;\n  top: 0;\n  left: 1;\n  right: 0;\n  bottom: 2;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px;\n  color: white; /* Change text color as needed */\n  z-index: 10; /* Ensures this overlay appears above the image */\n}\n\n.offer-title {\n  font-size: 40px; /* Adjust size as necessary */\n  font-weight: bold; /* Optional styling */\n}\n\n\n",
+      "start": 1727432838919,
+      "end": 1727432838919,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/offersHome.vue"
+        ],
+        "names": [],
+        "mappings": "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",
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/offersHome.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <section class=\"px-16 py-20\">\n<div class=\"flex justify-center w-full\">\n    <div class=\"grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full\">\n      <div v-for=\"offer in offers\" :key=\"offer.id\" class=\"flex max-w-[500px] flex-col rounded-xl bg-gray-500 text-gray-700 shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105 relative\">\n        <div class=\"image-container\">\n          <img :src=\"offer.imgSrc\" :alt=\"offer.altText\"  class=\" rounded-t-md object-cover w-full h-[290px] sm:h-[300px] md:h-[300px] lg:h-[390px]\" \n          @error=\"onImageError\" />\n         <div class=\"flex items-center justify-end w-full z-10 absolute top-0 right-0 left-10 bottom-30  mt-4\">\n            <img src=\"/Logo.png\" alt=\"Logo\" class=\"w-48\" />\n          </div> \n        </div>\n        <div class=\"px-6\">\n          <h4 class=\"mb-2 mt-4 text-2xl font-semibold text-blue-gray-900\">{{ offer.title }}</h4>\n          <div class=\"h-12\">\n            <p class=\"text-base font-light\">{{ offer.description }}</p>\n          </div>\n          <p class=\"mt-8 sm:mt-4 text-lg font-bold\">{{ offer.dateRange }}</p>\n        </div>\n        <div class=\"px-4 mb-4 pt-0 w-full mt-4\">\n         \n          <a href=\"/\" class=\"w-full text-center px-5 py-2.5 relative rounded group overflow-hidden font-medium bg-white text-black inline-block\" aria-label=\"Book Now\">\n            <span class=\"absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-600 group-hover:h-full opacity-90\"></span>\n            <span class=\"relative group-hover:text-white\">Book Now</span>\n          </a>\n        </div>\n      </div>\n    </div>\n</div>\n  </section>\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      offers: [\n        {\n          id: 1,\n          title: \"Seasonal Offer\",\n          description: \"Enjoy an exclusive summer 2-night stay package at Sueen Nature.\",\n          dateRange: \"Aug 2023 - Nov 2023\",\n          imgSrc: \"/img/hero-contact.png\",\n          altText: \"Spa Summer Offer\"\n        },\n        {\n          id: 2,\n          title: \"Winter Getaway\",\n          description: \"Experience a cozy retreat with our winter 3-night stay package.\",\n          dateRange: \"Dec 2023 - Feb 2024\",\n          imgSrc: \"/img/image_playground.png\",\n          altText: \"Winter Getaway\"\n        },\n        {\n          id: 3,\n          title: \"Summer Getaway\",\n          description: \"Experience a cozy retreat with our summer 3-night stay package.\",\n          dateRange: \"Jun 2023 - Aug 2023\",\n          imgSrc: \"/img/image_roof_top_bar.png\",\n          altText: \"Summer Getaway\"\n        },\n        {\n          id: 4,\n          title: \"Summer Getaway\",\n          description: \"Experience a cozy retreat with our summer 3-night stay package.\",\n          dateRange: \"Jun 2023 - Aug 2023\",\n          imgSrc: \"/img/hero-home 2.webp\",\n          altText: \"Summer Getaway\"\n        }\n      ]\n    };\n  }\n};\n</script>\n\n<style scoped>\nh3,\nh5 {\n  font-family: \"Philosopher\", sans-serif;\n}\nh2,\n.buttontext,\nh6,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n\n.relaxationCard {\n  letter-spacing: 0.6rem;\n}\n.apiImage {\n  object-fit: cover; \n  height: 390px; \n  width:120%; \n}\n\n.h-96 {\n  height: 24rem;\n}\n.image-container {\n  position: relative;\n}\n\n\n\n.text-overlay {\n  position: absolute;\n  top: 0;\n  left: 1;\n  right: 0;\n  bottom: 2;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px;\n  color: white; /* Change text color as needed */\n  z-index: 10; /* Ensures this overlay appears above the image */\n}\n\n.offer-title {\n  font-size: 40px; /* Adjust size as necessary */\n  font-weight: bold; /* Optional styling */\n}\n\n\n</style>\n"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432838920,
+      "end": 1727432838920,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432838920,
+      "end": 1727432838920,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432838921,
+      "end": 1727432838921,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432838921,
+      "end": 1727432838921,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432838921,
+      "end": 1727432838921,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "h3,h5{font-family:Philosopher,sans-serif}.buttontext,a,h2,h6,p,ul li{font-family:Barlow,sans-serif}.relaxationCard{letter-spacing:.6rem}.apiImage{height:390px;-o-object-fit:cover;object-fit:cover;width:120%}.h-96{height:24rem}.image-container{position:relative}.text-overlay{align-items:center;bottom:2;color:#fff;display:flex;justify-content:space-between;left:1;padding:10px;position:absolute;right:0;top:0;z-index:10}.offer-title{font-size:40px;font-weight:700}",
+      "start": 1727432838921,
+      "end": 1727432838932,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/offersHome.vue",
+        "mappings": "AACA,MAEE,kCACF,CACA,4BAME,6BACF,CAEA,gBACE,oBACF,CACA,UAEE,YAAa,CADb,mBAAiB,CAAjB,gBAAiB,CAEjB,UACF,CAEA,MACE,YACF,CACA,iBACE,iBACF,CAIA,cAQE,kBAAmB,CAHnB,QAAS,CAKT,UAAY,CAJZ,YAAa,CACb,6BAA8B,CAJ9B,MAAO,CAMP,YAAa,CARb,iBAAkB,CAGlB,OAAQ,CAFR,KAAM,CASN,UACF,CAEA,aACE,cAAe,CACf,eACF",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/offersHome.vue"
+        ],
+        "sourcesContent": [
+          "\nh3,\nh5 {\n  font-family: \"Philosopher\", sans-serif;\n}\nh2,\n.buttontext,\nh6,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n\n.relaxationCard {\n  letter-spacing: 0.6rem;\n}\n.apiImage {\n  object-fit: cover; \n  height: 390px; \n  width:120%; \n}\n\n.h-96 {\n  height: 24rem;\n}\n.image-container {\n  position: relative;\n}\n\n\n\n.text-overlay {\n  position: absolute;\n  top: 0;\n  left: 1;\n  right: 0;\n  bottom: 2;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px;\n  color: white; /* Change text color as needed */\n  z-index: 10; /* Ensures this overlay appears above the image */\n}\n\n.offer-title {\n  font-size: 40px; /* Adjust size as necessary */\n  font-weight: bold; /* Optional styling */\n}\n\n\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432838933,
+      "end": 1727432838933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432838933,
+      "end": 1727432838933,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432838933,
+      "end": 1727432838934,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "h3[data-v-27056d62],h5[data-v-27056d62]{font-family:Philosopher,sans-serif}.buttontext[data-v-27056d62],a[data-v-27056d62],h2[data-v-27056d62],h6[data-v-27056d62],p[data-v-27056d62],ul li[data-v-27056d62]{font-family:Barlow,sans-serif}.relaxationCard[data-v-27056d62]{letter-spacing:.6rem}.apiImage[data-v-27056d62]{height:390px;-o-object-fit:cover;object-fit:cover;width:120%}.h-96[data-v-27056d62]{height:24rem}.image-container[data-v-27056d62]{position:relative}.text-overlay[data-v-27056d62]{align-items:center;bottom:2;color:#fff;display:flex;justify-content:space-between;left:1;padding:10px;position:absolute;right:0;top:0;z-index:10}.offer-title[data-v-27056d62]{font-size:40px;font-weight:700}",
+      "start": 1727432838934,
+      "end": 1727432838936,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/offersHome.vue",
+        "mappings": "AAAA,wCAAM,kCAAkC,CAAC,kIAA4B,6BAA6B,CAAC,iCAAgB,oBAAoB,CAAC,2BAAU,YAAY,CAAC,mBAAmB,CAAC,gBAAgB,CAAC,UAAU,CAAC,uBAAM,YAAY,CAAC,kCAAiB,iBAAiB,CAAC,+BAAc,kBAAkB,CAAC,QAAQ,CAAC,UAAU,CAAC,YAAY,CAAC,6BAA6B,CAAC,MAAM,CAAC,YAAY,CAAC,iBAAiB,CAAC,OAAO,CAAC,KAAK,CAAC,UAAU,CAAC,8BAAa,cAAc,CAAC,eAAe",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/offersHome.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432838937,
+      "end": 1727432838937,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838937,
+      "end": 1727432838937,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838937,
+      "end": 1727432838937,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432838938,
+      "end": 1727432838938,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432838938,
+      "end": 1727432838938,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432838938,
+      "end": 1727432838938,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838950,
+      "end": 1727432838950,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432838951,
+      "end": 1727432838969,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432838972,
+      "end": 1727432838972,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1727432838972,
+      "end": 1727432838972,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432838973,
+      "end": 1727432838973,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432838974,
+      "end": 1727432838974,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432838974,
+      "end": 1727432838975,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432838975,
+      "end": 1727432838978,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432838979,
+      "end": 1727432838979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432838981,
+      "end": 1727432838981,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432838982,
+      "end": 1727432838982,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432838982,
+      "end": 1727432838982,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432838983,
+      "end": 1727432838983,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432838983,
+      "end": 1727432838983,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432838984,
+      "end": 1727432838984,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432838984,
+      "end": 1727432838984,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432838984,
+      "end": 1727432838984,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432838984,
+      "end": 1727432838984,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432838988,
+      "end": 1727432838988,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432838988,
+      "end": 1727432838989,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432838990,
+      "end": 1727432838990,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432838991,
+      "end": 1727432838991,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432838991,
+      "end": 1727432838992,
+      "order": "normal"
+    }
+  ]
+}

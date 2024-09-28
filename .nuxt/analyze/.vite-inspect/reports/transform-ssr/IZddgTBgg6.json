@@ -1,0 +1,288 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue?vue&type=style&index=0&scoped=4401d25a&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\nh3,\nh2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n",
+      "start": 1727432838892,
+      "end": 1727432838892,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue"
+        ],
+        "names": [],
+        "mappings": ";AA2EA,CAAC,CAAC;AACF,CAAC,EAAE;EACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxC;;AAEA,CAAC,CAAC;AACF,CAAC;AACD,CAAC;AACD,CAAC,EAAE,CAAC,EAAE;EACJ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnC",
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <div class=\"sm:container px-4 py-20\">\n    <!-- main title -->\n \n\n    <h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\">\n      Data Deletion Instructions\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2\">\n      At sueennature app, we value your privacy and are committed to ensuring\n      that your personal data is handled securely. If you wish to delete your\n      data from our application, please follow the instructions below:\n    </p>\n    <ul\n      class=\"w-full mt-4 space-y-7 text-gray-300 list-decimal list-inside dark:text-gray-400\"\n    >\n      <li>\n        Removing Access via Facebook Settings.\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>Log in to your Facebook account</li>\n          <li>\n            Navigate to the Apps and Websites\n            <a\n              href=\"https://www.facebook.com/settings?tab=applications\"\n              class=\"text-blue-500 font-bold\"\n              >settings</a\n            >\n          </li>\n          <li>Locate and remove our app from the list of active apps</li>\n        </ul>\n      </li>\n      <li>\n        Data Deletion Request\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>Upon removal of our app from your Facebook account, a data deletion request will be automatically initiated</li>\n          <li>Our system will process the deletion of any data we have collected from Facebook about you</li>\n        </ul>\n      </li>\n\n      <li>\n        Manual Deletion Request.\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>If you face any issues or need further assistance, please contact our support team at sueennaturebooking@gmail.com</li>\n          <li>Provide your Facebook user ID and a brief description of your request. Our team will manually process your request and provide confirmation once completed</li>\n        </ul>\n      </li>\n\n    </ul>\n    <h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\">\n        Important Notes\n    </h5>\n \n    <ul\n      class=\"w-full mt-4 space-y-1 text-gray-300 list-disc list-inside dark:text-gray-400\"\n    >\n      <li>\n        Processing Time: The data deletion process may take some time. Please allow up to 30 days for your data to be completely removed from our systems.\n      </li>\n      <li>\n        Retention of Non-Personal Data: Some non-personal data may be retained for legal, regulatory, or internal business purposes.\n      </li>\n     \n    </ul>\n\n    <p class=\"text-base text-gray-300 mt-8\">\n        For more information, please refer to our <a href=\"/privacyPolicy\" class=\"text-blue-500 font-bold\">privacy policy</a>\n        <br/>\n        Thank you for using sueennature app. If you have any questions or concerns, feel free to reach out to our support team. \n    </p>\n  </div>\n</template>\n\n<script setup></script>\n\n<style scoped>\nh3,\nh2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n</style>\n"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432838893,
+      "end": 1727432838893,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432838893,
+      "end": 1727432838893,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432838893,
+      "end": 1727432838893,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432838893,
+      "end": 1727432838893,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432838894,
+      "end": 1727432838894,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "h2,h3{font-family:Philosopher,sans-serif}a,h5,p,ul li{font-family:Barlow,sans-serif}",
+      "start": 1727432838894,
+      "end": 1727432838902,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue",
+        "mappings": "AACA,MAEE,kCACF,CAEA,aAIE,6BACF",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue"
+        ],
+        "sourcesContent": [
+          "\nh3,\nh2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432838903,
+      "end": 1727432838903,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432838903,
+      "end": 1727432838903,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432838907,
+      "end": 1727432838907,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "h2[data-v-4401d25a],h3[data-v-4401d25a]{font-family:Philosopher,sans-serif}a[data-v-4401d25a],h5[data-v-4401d25a],p[data-v-4401d25a],ul li[data-v-4401d25a]{font-family:Barlow,sans-serif}",
+      "start": 1727432838908,
+      "end": 1727432838910,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue",
+        "mappings": "AAAA,wCAAM,kCAAkC,CAAC,iFAAa,6BAA6B",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432838910,
+      "end": 1727432838910,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838911,
+      "end": 1727432838911,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838911,
+      "end": 1727432838911,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432838911,
+      "end": 1727432838911,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432838911,
+      "end": 1727432838912,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432838912,
+      "end": 1727432838912,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838916,
+      "end": 1727432838916,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432838917,
+      "end": 1727432838934,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432838936,
+      "end": 1727432838936,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1727432838936,
+      "end": 1727432838936,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432838937,
+      "end": 1727432838937,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432838937,
+      "end": 1727432838937,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432838938,
+      "end": 1727432838938,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432838938,
+      "end": 1727432838948,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432838950,
+      "end": 1727432838950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432838951,
+      "end": 1727432838951,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432838951,
+      "end": 1727432838951,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432838951,
+      "end": 1727432838951,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432838952,
+      "end": 1727432838952,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432838952,
+      "end": 1727432838952,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432838952,
+      "end": 1727432838953,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432838952,
+      "end": 1727432838953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432838953,
+      "end": 1727432838953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432838953,
+      "end": 1727432838953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432838956,
+      "end": 1727432838956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432838957,
+      "end": 1727432838958,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432838960,
+      "end": 1727432838960,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432838961,
+      "end": 1727432838962,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432838963,
+      "end": 1727432838963,
+      "order": "normal"
+    }
+  ]
+}

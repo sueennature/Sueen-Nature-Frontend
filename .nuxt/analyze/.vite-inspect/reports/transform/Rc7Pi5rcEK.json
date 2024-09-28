@@ -1,0 +1,223 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/pages/index.vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <div class=\"main overflow-hidden\">\n    <heroHome/>\n    <welcomeHome/>\n    <roomsHome/>\n    <facilitiesHome/>\n    <servicesHome/>\n    <footerHome/>\n\n  </div>\n</template>\n\n<script setup>\nimport heroHome from '~/components/heroHome.vue';\nimport welcomeHome from '~/components/welcomeHome.vue';\nimport facilitiesHome from '~/components/facilitiesHome.vue';\nimport servicesHome from '~/components/servicesHome.vue';\nimport footerHome from '~/components/footerHome.vue';\nimport roomsHome from '~/components/roomsHome.vue';\n\n</script>\n\n<style scoped>\n\n</style>\n",
+      "start": 1727432809152,
+      "end": 1727432812144,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432812144,
+      "end": 1727432812144,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432812144,
+      "end": 1727432812145,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432812145,
+      "end": 1727432812145,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432812145,
+      "end": 1727432812145,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432812145,
+      "end": 1727432812145,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432812145,
+      "end": 1727432812145,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432812145,
+      "end": 1727432812145,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import { createVNode as _createVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nconst _hoisted_1 = { class: \"main overflow-hidden\" }\n\nimport heroHome from '~/components/heroHome.vue';\nimport welcomeHome from '~/components/welcomeHome.vue';\nimport facilitiesHome from '~/components/facilitiesHome.vue';\nimport servicesHome from '~/components/servicesHome.vue';\nimport footerHome from '~/components/footerHome.vue';\nimport roomsHome from '~/components/roomsHome.vue';\n\n\nconst _sfc_main = {\n  __name: 'index',\n  setup(__props) {\n\n\nreturn (_ctx, _cache) => {\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n    _createVNode(heroHome),\n    _createVNode(welcomeHome),\n    _createVNode(roomsHome),\n    _createVNode(facilitiesHome),\n    _createVNode(servicesHome),\n    _createVNode(footerHome)\n  ]))\n}\n}\n\n}\n\n\n\nexport default _sfc_main",
+      "start": 1727432812145,
+      "end": 1727432812147,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432812147,
+      "end": 1727432812147,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432812147,
+      "end": 1727432812147,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432812147,
+      "end": 1727432812147,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432812147,
+      "end": 1727432812147,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432812147,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432812148,
+      "end": 1727432812148,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432812148,
+      "end": 1727432812149,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432812149,
+      "end": 1727432812149,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "\nconst __nuxt_page_meta = null\nexport default __nuxt_page_meta\n",
+      "start": 1727432812149,
+      "end": 1727432812150,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA;AAAA;AAAA;"
+      }
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432812150,
+      "end": 1727432812150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432812150,
+      "end": 1727432812150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432812150,
+      "end": 1727432812150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432812150,
+      "end": 1727432812150,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432812150,
+      "end": 1727432812150,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432812150,
+      "end": 1727432812150,
+      "order": "normal"
+    }
+  ]
+}

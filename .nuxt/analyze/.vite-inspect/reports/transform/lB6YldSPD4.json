@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/try-to-string.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar $String = String;\n\nmodule.exports = function (argument) {\n  try {\n    return $String(argument);\n  } catch (error) {\n    return 'Object';\n  }\n};\n",
+      "start": 1727432820400,
+      "end": 1727432820483,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820483,
+      "end": 1727432820483,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820484,
+      "end": 1727432820484,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n'use strict';\nvar $String = String;\n\nvar tryToString = function (argument) {\n  try {\n    return $String(argument);\n  } catch (error) {\n    return 'Object';\n  }\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(tryToString);\nexport { tryToString as __moduleExports };",
+      "start": 1727432820484,
+      "end": 1727432820485,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;AAAA,YAAY,CAAC;AACb,IAAI,OAAO,GAAG,MAAM,CAAC;AACrB;IACA,WAAc,GAAG,UAAU,QAAQ,EAAE;AACrC,EAAE,IAAI;AACN,IAAI,OAAO,OAAO,CAAC,QAAQ,CAAC,CAAC;AAC7B,GAAG,CAAC,OAAO,KAAK,EAAE;AAClB,IAAI,OAAO,QAAQ,CAAC;AACpB,GAAG;AACH,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820485,
+      "end": 1727432820485,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/get-method.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar aCallable = require('../internals/a-callable');\nvar isNullOrUndefined = require('../internals/is-null-or-undefined');\n\n// `GetMethod` abstract operation\n// https://tc39.es/ecma262/#sec-getmethod\nmodule.exports = function (V, P) {\n  var func = V[P];\n  return isNullOrUndefined(func) ? undefined : aCallable(func);\n};\n",
+      "start": 1727432819816,
+      "end": 1727432819948,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432819948,
+      "end": 1727432819948,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432819948,
+      "end": 1727432819949,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819949,
+      "end": 1727432819949,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432819949,
+      "end": 1727432819949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432819949,
+      "end": 1727432819949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432819949,
+      "end": 1727432819949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432819949,
+      "end": 1727432819949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432819949,
+      "end": 1727432819949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432819949,
+      "end": 1727432819949,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/a-callable.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-null-or-undefined.js?commonjs-proxy\";\n\n'use strict';\nvar aCallable = require$$0;\nvar isNullOrUndefined = require$$1;\n\n// `GetMethod` abstract operation\n// https://tc39.es/ecma262/#sec-getmethod\nvar getMethod = function (V, P) {\n  var func = V[P];\n  return isNullOrUndefined(func) ? undefined : aCallable(func);\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(getMethod);\nexport { getMethod as __moduleExports };",
+      "start": 1727432819949,
+      "end": 1727432820507,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb,IAAI,SAAS,GAAG,UAAkC,CAAC;AACnD,IAAI,iBAAiB,GAAG,UAA4C,CAAC;AACrE;AACA;AACA;IACA,SAAc,GAAG,UAAU,CAAC,EAAE,CAAC,EAAE;AACjC,EAAE,IAAI,IAAI,GAAG,CAAC,CAAC,CAAC,CAAC,CAAC;AAClB,EAAE,OAAO,iBAAiB,CAAC,IAAI,CAAC,GAAG,SAAS,GAAG,SAAS,CAAC,IAAI,CAAC,CAAC;AAC/D,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820507,
+      "end": 1727432820507,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820507,
+      "end": 1727432820507,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820507,
+      "end": 1727432820507,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820507,
+      "end": 1727432820507,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820507,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820508,
+      "end": 1727432820508,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-define-property.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar DESCRIPTORS = require('../internals/descriptors');\nvar IE8_DOM_DEFINE = require('../internals/ie8-dom-define');\nvar V8_PROTOTYPE_DEFINE_BUG = require('../internals/v8-prototype-define-bug');\nvar anObject = require('../internals/an-object');\nvar toPropertyKey = require('../internals/to-property-key');\n\nvar $TypeError = TypeError;\n// eslint-disable-next-line es/no-object-defineproperty -- safe\nvar $defineProperty = Object.defineProperty;\n// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe\nvar $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;\nvar ENUMERABLE = 'enumerable';\nvar CONFIGURABLE = 'configurable';\nvar WRITABLE = 'writable';\n\n// `Object.defineProperty` method\n// https://tc39.es/ecma262/#sec-object.defineproperty\nexports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {\n  anObject(O);\n  P = toPropertyKey(P);\n  anObject(Attributes);\n  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {\n    var current = $getOwnPropertyDescriptor(O, P);\n    if (current && current[WRITABLE]) {\n      O[P] = Attributes.value;\n      Attributes = {\n        configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],\n        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],\n        writable: false\n      };\n    }\n  } return $defineProperty(O, P, Attributes);\n} : $defineProperty : function defineProperty(O, P, Attributes) {\n  anObject(O);\n  P = toPropertyKey(P);\n  anObject(Attributes);\n  if (IE8_DOM_DEFINE) try {\n    return $defineProperty(O, P, Attributes);\n  } catch (error) { /* empty */ }\n  if ('get' in Attributes || 'set' in Attributes) throw new $TypeError('Accessors not supported');\n  if ('value' in Attributes) O[P] = Attributes.value;\n  return O;\n};\n",
+      "start": 1727432819948,
+      "end": 1727432820071,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820071,
+      "end": 1727432820071,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820072,
+      "end": 1727432820072,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as objectDefineProperty } from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-define-property.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/descriptors.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/ie8-dom-define.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/v8-prototype-define-bug.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/an-object.js?commonjs-proxy\";\nimport require$$4 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-property-key.js?commonjs-proxy\";\n\n'use strict';\nvar DESCRIPTORS = require$$0;\nvar IE8_DOM_DEFINE = require$$1;\nvar V8_PROTOTYPE_DEFINE_BUG = require$$2;\nvar anObject = require$$3;\nvar toPropertyKey = require$$4;\n\nvar $TypeError = TypeError;\n// eslint-disable-next-line es/no-object-defineproperty -- safe\nvar $defineProperty = Object.defineProperty;\n// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe\nvar $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;\nvar ENUMERABLE = 'enumerable';\nvar CONFIGURABLE = 'configurable';\nvar WRITABLE = 'writable';\n\n// `Object.defineProperty` method\n// https://tc39.es/ecma262/#sec-object.defineproperty\nvar f = objectDefineProperty.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {\n  anObject(O);\n  P = toPropertyKey(P);\n  anObject(Attributes);\n  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {\n    var current = $getOwnPropertyDescriptor(O, P);\n    if (current && current[WRITABLE]) {\n      O[P] = Attributes.value;\n      Attributes = {\n        configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],\n        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],\n        writable: false\n      };\n    }\n  } return $defineProperty(O, P, Attributes);\n} : $defineProperty : function defineProperty(O, P, Attributes) {\n  anObject(O);\n  P = toPropertyKey(P);\n  anObject(Attributes);\n  if (IE8_DOM_DEFINE) try {\n    return $defineProperty(O, P, Attributes);\n  } catch (error) { /* empty */ }\n  if ('get' in Attributes || 'set' in Attributes) throw new $TypeError('Accessors not supported');\n  if ('value' in Attributes) O[P] = Attributes.value;\n  return O;\n};\n\nexport { objectDefineProperty as __moduleExports, f, objectDefineProperty as default };",
+      "start": 1727432820072,
+      "end": 1727432820760,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;AAAA,YAAY,CAAC;AACb,IAAI,WAAW,GAAG,UAAmC,CAAC;AACtD,IAAI,cAAc,GAAG,UAAsC,CAAC;AAC5D,IAAI,uBAAuB,GAAG,UAA+C,CAAC;AAC9E,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD,IAAI,aAAa,GAAG,UAAuC,CAAC;AAC5D;AACA,IAAI,UAAU,GAAG,SAAS,CAAC;AAC3B;AACA,IAAI,eAAe,GAAG,MAAM,CAAC,cAAc,CAAC;AAC5C;AACA,IAAI,yBAAyB,GAAG,MAAM,CAAC,wBAAwB,CAAC;AAChE,IAAI,UAAU,GAAG,YAAY,CAAC;AAC9B,IAAI,YAAY,GAAG,cAAc,CAAC;AAClC,IAAI,QAAQ,GAAG,UAAU,CAAC;AAC1B;AACA;AACA;AACA,8BAAS,GAAG,WAAW,GAAG,uBAAuB,GAAG,SAAS,cAAc,CAAC,CAAC,EAAE,CAAC,EAAE,UAAU,EAAE;AAC9F,EAAE,QAAQ,CAAC,CAAC,CAAC,CAAC;AACd,EAAE,CAAC,GAAG,aAAa,CAAC,CAAC,CAAC,CAAC;AACvB,EAAE,QAAQ,CAAC,UAAU,CAAC,CAAC;AACvB,EAAE,IAAI,OAAO,CAAC,KAAK,UAAU,IAAI,CAAC,KAAK,WAAW,IAAI,OAAO,IAAI,UAAU,IAAI,QAAQ,IAAI,UAAU,IAAI,CAAC,UAAU,CAAC,QAAQ,CAAC,EAAE;AAChI,IAAI,IAAI,OAAO,GAAG,yBAAyB,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;AAClD,IAAI,IAAI,OAAO,IAAI,OAAO,CAAC,QAAQ,CAAC,EAAE;AACtC,MAAM,CAAC,CAAC,CAAC,CAAC,GAAG,UAAU,CAAC,KAAK,CAAC;AAC9B,MAAM,UAAU,GAAG;AACnB,QAAQ,YAAY,EAAE,YAAY,IAAI,UAAU,GAAG,UAAU,CAAC,YAAY,CAAC,GAAG,OAAO,CAAC,YAAY,CAAC;AACnG,QAAQ,UAAU,EAAE,UAAU,IAAI,UAAU,GAAG,UAAU,CAAC,UAAU,CAAC,GAAG,OAAO,CAAC,UAAU,CAAC;AAC3F,QAAQ,QAAQ,EAAE,KAAK;AACvB,OAAO,CAAC;AACR,KAAK;AACL,GAAG,CAAC,OAAO,eAAe,CAAC,CAAC,EAAE,CAAC,EAAE,UAAU,CAAC,CAAC;AAC7C,CAAC,GAAG,eAAe,GAAG,SAAS,cAAc,CAAC,CAAC,EAAE,CAAC,EAAE,UAAU,EAAE;AAChE,EAAE,QAAQ,CAAC,CAAC,CAAC,CAAC;AACd,EAAE,CAAC,GAAG,aAAa,CAAC,CAAC,CAAC,CAAC;AACvB,EAAE,QAAQ,CAAC,UAAU,CAAC,CAAC;AACvB,EAAE,IAAI,cAAc,EAAE,IAAI;AAC1B,IAAI,OAAO,eAAe,CAAC,CAAC,EAAE,CAAC,EAAE,UAAU,CAAC,CAAC;AAC7C,GAAG,CAAC,OAAO,KAAK,EAAE,eAAe;AACjC,EAAE,IAAI,KAAK,IAAI,UAAU,IAAI,KAAK,IAAI,UAAU,EAAE,MAAM,IAAI,UAAU,CAAC,yBAAyB,CAAC,CAAC;AAClG,EAAE,IAAI,OAAO,IAAI,UAAU,EAAE,CAAC,CAAC,CAAC,CAAC,GAAG,UAAU,CAAC,KAAK,CAAC;AACrD,EAAE,OAAO,CAAC,CAAC;AACX,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820760,
+      "end": 1727432820760,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820760,
+      "end": 1727432820760,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820761,
+      "end": 1727432820761,
+      "order": "normal"
+    }
+  ]
+}

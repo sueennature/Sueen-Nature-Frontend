@@ -28,5 +28,4 @@ export { useTokenClient, useCodeClient, useGsiScript, useOneTap } from 'vue3-goo
 export { injectHead, useHead, useSeoMeta, useHeadSafe, useServerHead, useServerSeoMeta, useServerHeadSafe } from '@unhead/vue';
 export { apiRequest } from '../utils/api';
 export { socialLogin } from '../utils/socialLogin';
-export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

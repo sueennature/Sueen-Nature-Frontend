@@ -1,0 +1,210 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/flowbite/lib/esm/components/dismiss/index.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "var __assign = (this && this.__assign) || function () {\n    __assign = Object.assign || function(t) {\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\n            s = arguments[i];\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\n                t[p] = s[p];\n        }\n        return t;\n    };\n    return __assign.apply(this, arguments);\n};\nimport instances from '../../dom/instances';\nvar Default = {\n    transition: 'transition-opacity',\n    duration: 300,\n    timing: 'ease-out',\n    onHide: function () { },\n};\nvar DefaultInstanceOptions = {\n    id: null,\n    override: true,\n};\nvar Dismiss = /** @class */ (function () {\n    function Dismiss(targetEl, triggerEl, options, instanceOptions) {\n        if (targetEl === void 0) { targetEl = null; }\n        if (triggerEl === void 0) { triggerEl = null; }\n        if (options === void 0) { options = Default; }\n        if (instanceOptions === void 0) { instanceOptions = DefaultInstanceOptions; }\n        this._instanceId = instanceOptions.id\n            ? instanceOptions.id\n            : targetEl.id;\n        this._targetEl = targetEl;\n        this._triggerEl = triggerEl;\n        this._options = __assign(__assign({}, Default), options);\n        this._initialized = false;\n        this.init();\n        instances.addInstance('Dismiss', this, this._instanceId, instanceOptions.override);\n    }\n    Dismiss.prototype.init = function () {\n        var _this = this;\n        if (this._triggerEl && this._targetEl && !this._initialized) {\n            this._clickHandler = function () {\n                _this.hide();\n            };\n            this._triggerEl.addEventListener('click', this._clickHandler);\n            this._initialized = true;\n        }\n    };\n    Dismiss.prototype.destroy = function () {\n        if (this._triggerEl && this._initialized) {\n            this._triggerEl.removeEventListener('click', this._clickHandler);\n            this._initialized = false;\n        }\n    };\n    Dismiss.prototype.removeInstance = function () {\n        instances.removeInstance('Dismiss', this._instanceId);\n    };\n    Dismiss.prototype.destroyAndRemoveInstance = function () {\n        this.destroy();\n        this.removeInstance();\n    };\n    Dismiss.prototype.hide = function () {\n        var _this = this;\n        this._targetEl.classList.add(this._options.transition, \"duration-\".concat(this._options.duration), this._options.timing, 'opacity-0');\n        setTimeout(function () {\n            _this._targetEl.classList.add('hidden');\n        }, this._options.duration);\n        // callback function\n        this._options.onHide(this, this._targetEl);\n    };\n    Dismiss.prototype.updateOnHide = function (callback) {\n        this._options.onHide = callback;\n    };\n    return Dismiss;\n}());\nexport function initDismisses() {\n    document.querySelectorAll('[data-dismiss-target]').forEach(function ($triggerEl) {\n        var targetId = $triggerEl.getAttribute('data-dismiss-target');\n        var $dismissEl = document.querySelector(targetId);\n        if ($dismissEl) {\n            new Dismiss($dismissEl, $triggerEl);\n        }\n        else {\n            console.error(\"The dismiss element with id \\\"\".concat(targetId, \"\\\" does not exist. Please check the data-dismiss-target attribute.\"));\n        }\n    });\n}\nif (typeof window !== 'undefined') {\n    window.Dismiss = Dismiss;\n    window.initDismisses = initDismisses;\n}\nexport default Dismiss;\n//# sourceMappingURL=index.js.map",
+      "start": 1727432816825,
+      "end": 1727432817054,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432817054,
+      "end": 1727432817054,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432817054,
+      "end": 1727432817054,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432817054,
+      "end": 1727432817054,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432817054,
+      "end": 1727432817054,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432817055,
+      "end": 1727432817055,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432817055,
+      "end": 1727432817056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432817056,
+      "end": 1727432817056,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432817056,
+      "end": 1727432817056,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432817056,
+      "end": 1727432817056,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432817056,
+      "end": 1727432817056,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432817057,
+      "end": 1727432817057,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432817057,
+      "end": 1727432817057,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432817057,
+      "end": 1727432817057,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432817057,
+      "end": 1727432817057,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432817057,
+      "end": 1727432817057,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432817057,
+      "end": 1727432817057,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432817057,
+      "end": 1727432817057,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432817057,
+      "end": 1727432817057,
+      "order": "normal"
+    }
+  ]
+}

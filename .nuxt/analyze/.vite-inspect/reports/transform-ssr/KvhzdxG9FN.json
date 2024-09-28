@@ -1,0 +1,259 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/launching.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n    <div class=\"launching-page h-screen relative overflow-hidden\" @keydown.enter=\"startCurtainOpen\" tabindex=\"0\">\n      <!-- Red curtain -->\n      <div :class=\"['curtain curtain-left', { open: isCurtainOpen }]\"></div>\n      <div :class=\"['curtain curtain-right', { open: isCurtainOpen }]\"></div>\n\n  \n      <!-- Hidden content that fades in when the curtain opens -->\n      <div :class=\"['content absolute inset-0 flex flex-col items-center justify-center text-center', { 'opacity-0': !isCurtainOpen }]\">\n          \n\n        <!-- Logo that pops up -->\n        <img v-if=\"isCurtainOpen\" src=\"/img/logoImg.png\" alt=\"Hotel Logo\" class=\"logo-popup mb-4\"/>\n  \n        <!-- Logo that pops up -->\n        <img v-if=\"isCurtainOpen\" src=\"/img/bg.png\" alt=\"Hotel Image\" class=\"bg-popup mb-4\"/>\n\n  \n        <h1 class=\"welcome-text text-4xl mb-4 text-white\">Welcome to Sueen Nature Hotel Official Website</h1>\n        <button @click=\"enterSite\" class=\" text-white px-4 py-2 rounded-lg enter-btn hover:text-red-600\">\n          Click Here\n        </button>\n         <!-- Gradient effect at the bottom -->\n    <div class=\"gradient-bottom\"></div>\n\n\n\n    \n\n    \n      </div>\n      <!-- Fireworks container -->\n    <!-- Fireworks container -->\n    <div ref=\"fireworksContainer\" class=\"fireworks-container\"></div>\n    </div>\n  </template>\n  \n  <script>\n  import { Fireworks } from 'fireworks-js';\n\n  export default {\n    data() {\n      return {\n        isCurtainOpen: false, // Controls whether the curtain is open\n        fireworksInstance: null,\n      };\n    },\n    mounted() {\n      // Focus the div to allow capturing Enter key events\n      this.$el.focus();\n      // Create audio elements\n    \n    this.welcomeSound = new Audio('/crowd-cheer-applause-victory-fanfare-clapping-236698.mp3');\n    },\n    methods: {\n      startCurtainOpen() {\n         // Play welcome sound\n       this.welcomeSound.play();\n        // Trigger curtain open state\n        this.isCurtainOpen = true;\n        console.log('Curtain opened, starting fireworks...');\n\n        // Start fireworks once the curtain is open\n        this.launchFireworks();\n      },\n      launchFireworks() {\n        \n        const container = this.$refs.fireworksContainer;\n\n      if (container) {\n        console.log('Fireworks container found:', container);\n\n        const fireworks = new Fireworks(container, {\n          maxRockets: 5, // Number of rockets launched per interval\n          rocketSpawnInterval: 150, // Time between each rocket launch\n          numParticles: 100, // Number of particles per explosion\n          explosionMinHeight: 0.2, // Min height for the explosion\n          explosionMaxHeight: 0.8, // Max height for the explosion\n          explosionChance: 0.08, // Chance for an explosion per frame\n        });\n\n        console.log('Fireworks initialized:', fireworks);\n        fireworks.start();\n        console.log('Fireworks started');\n    } else {\n        console.error('Fireworks container not found');\n      }\n     \n    },\n      enterSite() {\n        // Set local storage to indicate the user has bypassed the launching page\n        localStorage.setItem('hasVisited', 'true');\n        // Redirect to the home page\n        \n        this.$router.push('/home');\n      },\n    },\n    beforeDestroy() {\n    // Stop fireworks on component destruction\n    if (this.fireworksInstance) {\n      this.fireworksInstance.stop();\n    }\n  },\n\n  };\n  </script>\n  \n  <style scoped>\n\n.fireworks-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  z-index: 1;\n}\n\n  /* Curtain styling */\n  .launching-page {\n    background-color: #000;\n    position: relative;\n    overflow: hidden;\n    \n  }\n /* Gradient effect at the bottom of the page */\n.gradient-bottom {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100px; /* Initial height of the gradient */\n  background: linear-gradient(to top, rgba(255, 215, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);\n  opacity: 0; /* Start with hidden gradient */\n  transform: scaleY(0); /* Start with the gradient compressed */\n  transform-origin: bottom; /* Scale from the bottom */\n  animation: fadeInGradient 2.5s forwards, expandGradient 2.5s forwards; /* Adjust duration as needed */\n}\n  \n  .curtain {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    width: 50%;\n    background-color: #e50914; /* Base red curtain color */\n    z-index: 10;\n    transition: width 2.5s ease-in-out;\n    background-image: linear-gradient(90deg, rgba(229, 9, 20, 0.9) 0%, rgba(200, 0, 0, 0.7) 50%, rgba(229, 9, 20, 0.9) 100%);\n    box-shadow: inset -10px 0 15px rgba(0, 0, 0, 0.5), inset 10px 0 15px rgba(0, 0, 0, 0.5);\n    background-size: 15px; /* Create repeating stripes */\n  }\n  \n  .curtain-left {\n    left: 0;\n  }\n  \n  .curtain-right {\n    right: 0;\n  }\n  \n  .open.curtain-left,\n  .open.curtain-right {\n    width: 0; /* When the curtain is open, they slide away */\n  }\n  \n  /* Content fade in after curtain opens */\n  .content {\n    z-index: 5;\n    transition: opacity 3s ease-in-out;\n  }\n  \n  .opacity-0 {\n    opacity: 0;\n  }\n  \n  .opacity-1 {\n    opacity: 1;\n  }\n  \n  /* Logo popup animation */\n  .logo-popup {\n    width: auto;\n    height: 160px;\n    opacity: 0;\n    transform: scale(0);\n    animation: popInLogo 2.5s forwards, blinkText 1s infinite;\n    animation-delay: 2s;\n  }\n  /* background popup animation */\n  .bg-popup {\n    width: auto;\n    height: 200px;\n    opacity: 0;\n    transform: scale(0);\n    animation: popInLogo 2.5s forwards, blink 1s infinite;\n    animation-delay: 2s;\n  }\n  \n  /* Welcome text pop-in effect */\n  .welcome-text {\n    opacity: 0;\n    animation: popInText 2s forwards, blinkText 1s infinite;\n    animation-delay: 3s;\n  }\n  \n  /* Button appearance with pop-in effect */\n  .enter-btn {\n    opacity: 0;\n    animation: popInButton 2.5s forwards, blinkText 1s infinite;\n    animation-delay: 3.5s;\n  }\n\n  @keyframes fadeInGradient {\n  0% {\n    opacity: 0;\n    transform: scaleY(0); /* Start compressed */\n  }\n  100% {\n    opacity: 1;\n    transform: scaleY(1); /* End at full scale */\n  }\n}\n\n@keyframes expandGradient {\n  0% {\n    height: 0px; /* Initial height */\n  }\n  100% {\n    height: 80px; /* Expanded height */\n  }\n}\n  \n  /* Blinking effect for text */\n@keyframes blinkText {\n  0%, 100% {\n    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); /* Golden glow */\n  }\n  50% {\n    text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 215, 0, 0.8); /* Stronger golden glow */\n  }\n}\n  \n  /* Blinking effect for images */\n@keyframes blinkImage {\n  0%, 100% {\n    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);\n  }\n  50% {\n    box-shadow: 0 0 20px rgba(255, 255, 255, 1);\n  }\n}\n\n  @keyframes popInLogo {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  \n  @keyframes popInText {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  \n  @keyframes popInButton {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  </style>",
+      "start": 1727432835463,
+      "end": 1727432836980,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432836980,
+      "end": 1727432836980,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "\n  import { Fireworks } from 'fireworks-js';\n\n  const _sfc_main = {\n    data() {\n      return {\n        isCurtainOpen: false, // Controls whether the curtain is open\n        fireworksInstance: null,\n      };\n    },\n    mounted() {\n      // Focus the div to allow capturing Enter key events\n      this.$el.focus();\n      // Create audio elements\n    \n    this.welcomeSound = new Audio('/crowd-cheer-applause-victory-fanfare-clapping-236698.mp3');\n    },\n    methods: {\n      startCurtainOpen() {\n         // Play welcome sound\n       this.welcomeSound.play();\n        // Trigger curtain open state\n        this.isCurtainOpen = true;\n        console.log('Curtain opened, starting fireworks...');\n\n        // Start fireworks once the curtain is open\n        this.launchFireworks();\n      },\n      launchFireworks() {\n        \n        const container = this.$refs.fireworksContainer;\n\n      if (container) {\n        console.log('Fireworks container found:', container);\n\n        const fireworks = new Fireworks(container, {\n          maxRockets: 5, // Number of rockets launched per interval\n          rocketSpawnInterval: 150, // Time between each rocket launch\n          numParticles: 100, // Number of particles per explosion\n          explosionMinHeight: 0.2, // Min height for the explosion\n          explosionMaxHeight: 0.8, // Max height for the explosion\n          explosionChance: 0.08, // Chance for an explosion per frame\n        });\n\n        console.log('Fireworks initialized:', fireworks);\n        fireworks.start();\n        console.log('Fireworks started');\n    } else {\n        console.error('Fireworks container not found');\n      }\n     \n    },\n      enterSite() {\n        // Set local storage to indicate the user has bypassed the launching page\n        localStorage.setItem('hasVisited', 'true');\n        // Redirect to the home page\n        \n        this.$router.push('/home');\n      },\n    },\n    beforeDestroy() {\n    // Stop fireworks on component destruction\n    if (this.fireworksInstance) {\n      this.fireworksInstance.stop();\n    }\n  },\n\n  };\n  \nimport { mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderClass as _ssrRenderClass, ssrRenderAttr as _ssrRenderAttr, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\"\nimport _imports_0 from '/img/logoImg.png'\nimport _imports_1 from '/img/bg.png'\n\n\nfunction _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {\n  _push(`<div${\n    _ssrRenderAttrs(_mergeProps({\n      class: \"launching-page h-screen relative overflow-hidden\",\n      tabindex: \"0\"\n    }, _attrs))\n  } data-v-f83c9469><div class=\"${\n    _ssrRenderClass(['curtain curtain-left', { open: $data.isCurtainOpen }])\n  }\" data-v-f83c9469></div><div class=\"${\n    _ssrRenderClass(['curtain curtain-right', { open: $data.isCurtainOpen }])\n  }\" data-v-f83c9469></div><div class=\"${\n    _ssrRenderClass(['content absolute inset-0 flex flex-col items-center justify-center text-center', { 'opacity-0': !$data.isCurtainOpen }])\n  }\" data-v-f83c9469>`)\n  if ($data.isCurtainOpen) {\n    _push(`<img${_ssrRenderAttr(\"src\", _imports_0)} alt=\"Hotel Logo\" class=\"logo-popup mb-4\" data-v-f83c9469>`)\n  } else {\n    _push(`<!---->`)\n  }\n  if ($data.isCurtainOpen) {\n    _push(`<img${_ssrRenderAttr(\"src\", _imports_1)} alt=\"Hotel Image\" class=\"bg-popup mb-4\" data-v-f83c9469>`)\n  } else {\n    _push(`<!---->`)\n  }\n  _push(`<h1 class=\"welcome-text text-4xl mb-4 text-white\" data-v-f83c9469>Welcome to Sueen Nature Hotel Official Website</h1><button class=\"text-white px-4 py-2 rounded-lg enter-btn hover:text-red-600\" data-v-f83c9469> Click Here </button><div class=\"gradient-bottom\" data-v-f83c9469></div></div><div class=\"fireworks-container\" data-v-f83c9469></div></div>`)\n}\n\nimport \"/var/www/html/Sueen-Nature-Frontend/components/launching.vue?vue&type=style&index=0&scoped=f83c9469&lang.css\"\n\nimport { useSSRContext as __vite_useSSRContext } from 'vue'\nconst _sfc_setup = _sfc_main.setup\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext()\n  ;(ssrContext.modules || (ssrContext.modules = new Set())).add(\"components/launching.vue\")\n  return _sfc_setup ? _sfc_setup(props, ctx) : undefined\n}\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['ssrRender',_sfc_ssrRender],['__scopeId',\"data-v-f83c9469\"]])",
+      "start": 1727432836980,
+      "end": 1727432836987,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/launching.vue",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/launching.vue"
+        ],
+        "sourcesContent": [
+          "<template>\n    <div class=\"launching-page h-screen relative overflow-hidden\" @keydown.enter=\"startCurtainOpen\" tabindex=\"0\">\n      <!-- Red curtain -->\n      <div :class=\"['curtain curtain-left', { open: isCurtainOpen }]\"></div>\n      <div :class=\"['curtain curtain-right', { open: isCurtainOpen }]\"></div>\n\n  \n      <!-- Hidden content that fades in when the curtain opens -->\n      <div :class=\"['content absolute inset-0 flex flex-col items-center justify-center text-center', { 'opacity-0': !isCurtainOpen }]\">\n          \n\n        <!-- Logo that pops up -->\n        <img v-if=\"isCurtainOpen\" src=\"/img/logoImg.png\" alt=\"Hotel Logo\" class=\"logo-popup mb-4\"/>\n  \n        <!-- Logo that pops up -->\n        <img v-if=\"isCurtainOpen\" src=\"/img/bg.png\" alt=\"Hotel Image\" class=\"bg-popup mb-4\"/>\n\n  \n        <h1 class=\"welcome-text text-4xl mb-4 text-white\">Welcome to Sueen Nature Hotel Official Website</h1>\n        <button @click=\"enterSite\" class=\" text-white px-4 py-2 rounded-lg enter-btn hover:text-red-600\">\n          Click Here\n        </button>\n         <!-- Gradient effect at the bottom -->\n    <div class=\"gradient-bottom\"></div>\n\n\n\n    \n\n    \n      </div>\n      <!-- Fireworks container -->\n    <!-- Fireworks container -->\n    <div ref=\"fireworksContainer\" class=\"fireworks-container\"></div>\n    </div>\n  </template>\n  \n  <script>\n  import { Fireworks } from 'fireworks-js';\n\n  export default {\n    data() {\n      return {\n        isCurtainOpen: false, // Controls whether the curtain is open\n        fireworksInstance: null,\n      };\n    },\n    mounted() {\n      // Focus the div to allow capturing Enter key events\n      this.$el.focus();\n      // Create audio elements\n    \n    this.welcomeSound = new Audio('/crowd-cheer-applause-victory-fanfare-clapping-236698.mp3');\n    },\n    methods: {\n      startCurtainOpen() {\n         // Play welcome sound\n       this.welcomeSound.play();\n        // Trigger curtain open state\n        this.isCurtainOpen = true;\n        console.log('Curtain opened, starting fireworks...');\n\n        // Start fireworks once the curtain is open\n        this.launchFireworks();\n      },\n      launchFireworks() {\n        \n        const container = this.$refs.fireworksContainer;\n\n      if (container) {\n        console.log('Fireworks container found:', container);\n\n        const fireworks = new Fireworks(container, {\n          maxRockets: 5, // Number of rockets launched per interval\n          rocketSpawnInterval: 150, // Time between each rocket launch\n          numParticles: 100, // Number of particles per explosion\n          explosionMinHeight: 0.2, // Min height for the explosion\n          explosionMaxHeight: 0.8, // Max height for the explosion\n          explosionChance: 0.08, // Chance for an explosion per frame\n        });\n\n        console.log('Fireworks initialized:', fireworks);\n        fireworks.start();\n        console.log('Fireworks started');\n    } else {\n        console.error('Fireworks container not found');\n      }\n     \n    },\n      enterSite() {\n        // Set local storage to indicate the user has bypassed the launching page\n        localStorage.setItem('hasVisited', 'true');\n        // Redirect to the home page\n        \n        this.$router.push('/home');\n      },\n    },\n    beforeDestroy() {\n    // Stop fireworks on component destruction\n    if (this.fireworksInstance) {\n      this.fireworksInstance.stop();\n    }\n  },\n\n  };\n  </script>\n  \n  <style scoped>\n\n.fireworks-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  z-index: 1;\n}\n\n  /* Curtain styling */\n  .launching-page {\n    background-color: #000;\n    position: relative;\n    overflow: hidden;\n    \n  }\n /* Gradient effect at the bottom of the page */\n.gradient-bottom {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100px; /* Initial height of the gradient */\n  background: linear-gradient(to top, rgba(255, 215, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);\n  opacity: 0; /* Start with hidden gradient */\n  transform: scaleY(0); /* Start with the gradient compressed */\n  transform-origin: bottom; /* Scale from the bottom */\n  animation: fadeInGradient 2.5s forwards, expandGradient 2.5s forwards; /* Adjust duration as needed */\n}\n  \n  .curtain {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    width: 50%;\n    background-color: #e50914; /* Base red curtain color */\n    z-index: 10;\n    transition: width 2.5s ease-in-out;\n    background-image: linear-gradient(90deg, rgba(229, 9, 20, 0.9) 0%, rgba(200, 0, 0, 0.7) 50%, rgba(229, 9, 20, 0.9) 100%);\n    box-shadow: inset -10px 0 15px rgba(0, 0, 0, 0.5), inset 10px 0 15px rgba(0, 0, 0, 0.5);\n    background-size: 15px; /* Create repeating stripes */\n  }\n  \n  .curtain-left {\n    left: 0;\n  }\n  \n  .curtain-right {\n    right: 0;\n  }\n  \n  .open.curtain-left,\n  .open.curtain-right {\n    width: 0; /* When the curtain is open, they slide away */\n  }\n  \n  /* Content fade in after curtain opens */\n  .content {\n    z-index: 5;\n    transition: opacity 3s ease-in-out;\n  }\n  \n  .opacity-0 {\n    opacity: 0;\n  }\n  \n  .opacity-1 {\n    opacity: 1;\n  }\n  \n  /* Logo popup animation */\n  .logo-popup {\n    width: auto;\n    height: 160px;\n    opacity: 0;\n    transform: scale(0);\n    animation: popInLogo 2.5s forwards, blinkText 1s infinite;\n    animation-delay: 2s;\n  }\n  /* background popup animation */\n  .bg-popup {\n    width: auto;\n    height: 200px;\n    opacity: 0;\n    transform: scale(0);\n    animation: popInLogo 2.5s forwards, blink 1s infinite;\n    animation-delay: 2s;\n  }\n  \n  /* Welcome text pop-in effect */\n  .welcome-text {\n    opacity: 0;\n    animation: popInText 2s forwards, blinkText 1s infinite;\n    animation-delay: 3s;\n  }\n  \n  /* Button appearance with pop-in effect */\n  .enter-btn {\n    opacity: 0;\n    animation: popInButton 2.5s forwards, blinkText 1s infinite;\n    animation-delay: 3.5s;\n  }\n\n  @keyframes fadeInGradient {\n  0% {\n    opacity: 0;\n    transform: scaleY(0); /* Start compressed */\n  }\n  100% {\n    opacity: 1;\n    transform: scaleY(1); /* End at full scale */\n  }\n}\n\n@keyframes expandGradient {\n  0% {\n    height: 0px; /* Initial height */\n  }\n  100% {\n    height: 80px; /* Expanded height */\n  }\n}\n  \n  /* Blinking effect for text */\n@keyframes blinkText {\n  0%, 100% {\n    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); /* Golden glow */\n  }\n  50% {\n    text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 215, 0, 0.8); /* Stronger golden glow */\n  }\n}\n  \n  /* Blinking effect for images */\n@keyframes blinkImage {\n  0%, 100% {\n    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);\n  }\n  50% {\n    box-shadow: 0 0 20px rgba(255, 255, 255, 1);\n  }\n}\n\n  @keyframes popInLogo {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  \n  @keyframes popInText {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  \n  @keyframes popInButton {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  </style>"
+        ],
+        "mappings": "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,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;;QAEpD,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC;QAC1C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;MACxB,CAAC;MACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;;QAEhB,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;;MAEjD,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;QACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;;QAEpD,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;UACzC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;UACxD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;UAC3D,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;UACtD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;UACvD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC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"
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432836987,
+      "end": 1727432836987,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432836988,
+      "end": 1727432836988,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432836988,
+      "end": 1727432836988,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432836988,
+      "end": 1727432836988,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432836988,
+      "end": 1727432836988,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432836988,
+      "end": 1727432836988,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432836988,
+      "end": 1727432836988,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432836988,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432836990,
+      "end": 1727432836990,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432836990,
+      "end": 1727432836993,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432836990,
+      "end": 1727432836993,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432836993,
+      "end": 1727432836993,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432836993,
+      "end": 1727432836993,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432836993,
+      "end": 1727432836993,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432836993,
+      "end": 1727432836993,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432836993,
+      "end": 1727432836993,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432836993,
+      "end": 1727432836994,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432836994,
+      "end": 1727432836994,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432836994,
+      "end": 1727432836994,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432836994,
+      "end": 1727432836994,
+      "order": "normal"
+    }
+  ]
+}

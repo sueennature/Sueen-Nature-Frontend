@@ -1,0 +1,214 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/contentAbout.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n    <div class=\"sm:container px-4 py-20\">\n    <!--discriptive paragraph of learn page -->\n    <h2 class=\"text-black-200 md:text-4xl text-3xl font-medium my-20 text-center\">\n      We invite you to experience the essence of tranquility and luxury at Sueen Nature Resort, where every stay is an unforgettable journey.\n    </h2>\n    <p class=\"text-base text-gray-300 mt-2 text-center\">\n      Welcome to Sueen Nature Resort Established in 2024, Sueen Nature Resort is a premier hospitality destination founded by Mr. Dinusha Sampath Liyanage, Managing Director of Sampath Super Property Developments & Invesments (Pvt) Ltd. Nestled in the tranquil surroundings of Baduraliya, our resort offers an unparalleled retreat where guests can indulge in luxury amidst nature's beauty.\n    </p>\n    \n    <h5 class=\"text-black-200 text-4xl text-center my-8\">\n      Our Vision\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2 text-center\">\n      We aspire to set the standard for exceptional hospitality in Sri Lanka, providing guests with unforgettable experiences that seamlessly blend luxury with the wonders of nature.\n    </p>\n    <h5 class=\"text-black-200 text-4xl text-center my-8\">\n      Our Mission\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2 text-center\">\n      At Sueen Nature Resort, we are dedicated to curating extraordinary experiences for our guests. Our mission is to deliver personalized, friendly, and professional service that surpasses expectations, ensuring each guest enjoys unparalleled comfort, service, and attention to detail.\n    </p>\n\n    <!-- about us title -->\n    <!-- <h3 class=\"text-red-100 font-medium text-2xl mt-12 text-center md:text-left\">About Us</h3>\n    <hr class=\"h-px w-full bg-neutral-400 border-none border-opacity-20 mt-4\"/>\n\n    <h2 class=\"text-black-200 text-4xl text-center mt-20\">MEET OUR TEAM</h2> -->\n    <!-- team section -->\n    <!-- <div class=\"lg:flex lg:flex-row grid grid-cols-1 justify-center mt-10 lg:space-x-20 gap-y-4\"> -->\n      <!-- <div class=\"flex flex-col items-center\">    \n        <img class=\"rounded-full w-32 h-32\" src=\"../public/img/team1.png\" alt=\"teamImg\">\n        <h3 class=\"text-sm text-black-200 font-medium text-center mx-auto mt-8\">Mr. Dinusha Sampath Liyanage</h3>\n        <h6 class=\"text-gray-300 font-bold text-sm text-center\">Chairman</h6>\n      </div> -->\n      <!-- <div class=\"flex flex-col items-center\">\n        <img class=\"rounded-full w-32 h-32\" src=\"/img/team2.png\" alt=\"teamImg\">\n        <h3 class=\"text-sm text-black-200 font-medium text-center mx-auto mt-8\">Ms. Lanka Priyangi</h3>\n        <h6 class=\"text-gray-300 font-bold text-sm text-center\">Manager Corporate Affairs</h6>\n      </div> -->\n      <!-- <div class=\"flex flex-col items-center\">\n        <img class=\"rounded-full w-32 h-32\" src=\"/img/team3.png\" alt=\"teamImg\">\n        <h3 class=\"text-sm text-black-200 font-medium text-center mx-auto mt-8\">Mr. Chandima</h3>\n        <h6 class=\"text-gray-300 font-bold text-sm text-center\">Head of Finance</h6>\n      </div> -->\n      <!-- <div class=\"flex flex-col items-center\">\n        <img class=\"rounded-full w-32 h-32\" src=\"/img/team4.png\" alt=\"teamImg\">\n        <h3 class=\"text-sm text-black-200 font-medium text-center mx-auto mt-8\">Jessie Williams</h3>\n        <h6 class=\"text-gray-300 font-bold text-sm text-center\">Su Chef</h6>\n      </div> -->\n\n    <!-- </div> -->\n    <!-- <h2 class=\"text-black-200 text-4xl text-center mt-20 mb-4\">EXPLORE OUR JOURNAL</h2> -->\n    <!-- journal section -->\n    <!-- <div class=\"lg:flex lg:flex-row grid grid-cols-1 md:space-x-4 gap-y-16 md:mt-20 mt-10\">\n      <div class=\"flex flex-col space-y-4 items-center flex-1\">    \n        <h3 class=\"md:text-4xl text-3xl text-red-100 font-medium text-center\">7 Reasons to Visit Prince Edward County</h3>\n        <p class=\"text-sm text-black-200 font-light text-center\">With chilly evenings creeping in and the slightest change in the colour of the leaves, it's getting hard to deny that pumpkin spice season is here! The County has more to offer than a summer getaway to the beach - here are 7 reasons you should visit in the fall</p>\n        <a href=\"#\" class=\"text-red-100 font-bold text-sm text-center\">VIEW DETAILS</a>\n      </div>\n      <div class=\"flex flex-col space-y-4 items-center flex-1\">\n        \n        <h3 class=\"md:text-4xl text-3xl text-red-100 font-medium text-center\">What's on in Prince Edward County in November</h3>\n        <p class=\"text-sm text-black-200 font-light text-center\">We’ve wrapped up a beautiful October in The County but that doesn’t mean we’re settling into hibernation just yet. While the beaches may be emptier and the traffic slower, the wine is still pouring and we have plenty to share with our neighbours.</p>\n        <a href=\"#\" class=\"text-red-100 font-bold text-sm text-center\">VIEW DETAILS</a>\n      </div>\n      <div class=\"flex flex-col space-y-4 items-center flex-1\">\n        \n        <h3 class=\"md:text-4xl text-3xl text-red-100 font-medium text-center\">Where and What to Eat in The County</h3>\n        <p class=\"text-sm text-black-200 font-light text-center\">Wondering where the vegan friendly spots are? Look for the * to know which places are serving up plant-based eats!</p>\n        <a href=\"#\" class=\"text-red-100 font-bold text-sm text-center\">VIEW DETAILS</a>\n      </div>\n\n    </div> -->\n    </div>\n\n    \n</template>\n\n<script setup>\n\n</script>\n\n<style scoped>\nh2 ,h5 {\n  font-family: \"Philosopher\", sans-serif;\n}\nh3 ,.buttontext ,h6 ,p,a{\n  font-family: \"Barlow\", sans-serif;\n}\n\n</style>",
+      "start": 1727432812611,
+      "end": 1727432812889,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432812890,
+      "end": 1727432812890,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432812890,
+      "end": 1727432812890,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432812890,
+      "end": 1727432812890,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432812890,
+      "end": 1727432812890,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432812890,
+      "end": 1727432812890,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432812890,
+      "end": 1727432812890,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432812890,
+      "end": 1727432812890,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "const _sfc_main = {}\nimport { createElementVNode as _createElementVNode, createStaticVNode as _createStaticVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-8d3387ed\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = { class: \"sm:container px-4 py-20\" }\nconst _hoisted_2 = /*#__PURE__*/_createStaticVNode(\"<h2 class=\\\"text-black-200 md:text-4xl text-3xl font-medium my-20 text-center\\\" data-v-8d3387ed> We invite you to experience the essence of tranquility and luxury at Sueen Nature Resort, where every stay is an unforgettable journey. </h2><p class=\\\"text-base text-gray-300 mt-2 text-center\\\" data-v-8d3387ed> Welcome to Sueen Nature Resort Established in 2024, Sueen Nature Resort is a premier hospitality destination founded by Mr. Dinusha Sampath Liyanage, Managing Director of Sampath Super Property Developments &amp; Invesments (Pvt) Ltd. Nestled in the tranquil surroundings of Baduraliya, our resort offers an unparalleled retreat where guests can indulge in luxury amidst nature&#39;s beauty. </p><h5 class=\\\"text-black-200 text-4xl text-center my-8\\\" data-v-8d3387ed> Our Vision </h5><p class=\\\"text-base text-gray-300 mt-2 text-center\\\" data-v-8d3387ed> We aspire to set the standard for exceptional hospitality in Sri Lanka, providing guests with unforgettable experiences that seamlessly blend luxury with the wonders of nature. </p><h5 class=\\\"text-black-200 text-4xl text-center my-8\\\" data-v-8d3387ed> Our Mission </h5><p class=\\\"text-base text-gray-300 mt-2 text-center\\\" data-v-8d3387ed> At Sueen Nature Resort, we are dedicated to curating extraordinary experiences for our guests. Our mission is to deliver personalized, friendly, and professional service that surpasses expectations, ensuring each guest enjoys unparalleled comfort, service, and attention to detail. </p>\", 6)\nconst _hoisted_8 = [\n  _hoisted_2\n]\n\nfunction _sfc_render(_ctx, _cache) {\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, _hoisted_8))\n}\n\nimport \"/var/www/html/Sueen-Nature-Frontend/components/contentAbout.vue?vue&type=style&index=0&scoped=8d3387ed&lang.css\"\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__scopeId',\"data-v-8d3387ed\"]])",
+      "start": 1727432812890,
+      "end": 1727432812904,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432812904,
+      "end": 1727432812904,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432812904,
+      "end": 1727432812904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432812904,
+      "end": 1727432812904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432812904,
+      "end": 1727432812904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432812905,
+      "end": 1727432812905,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432812905,
+      "end": 1727432812913,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432812913,
+      "end": 1727432812913,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432812913,
+      "end": 1727432812913,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432812913,
+      "end": 1727432812913,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432812913,
+      "end": 1727432812913,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432812913,
+      "end": 1727432812914,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432812914,
+      "end": 1727432812914,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432812914,
+      "end": 1727432812916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432812916,
+      "end": 1727432812916,
+      "order": "normal"
+    }
+  ]
+}

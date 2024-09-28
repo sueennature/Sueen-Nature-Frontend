@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/recaptcha-v3/dist/ReCaptcha.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.ReCaptchaInstance = exports.getInstance = exports.load = void 0;\nvar ReCaptchaLoader_1 = require(\"./ReCaptchaLoader\");\nObject.defineProperty(exports, \"load\", { enumerable: true, get: function () { return ReCaptchaLoader_1.load; } });\nObject.defineProperty(exports, \"getInstance\", { enumerable: true, get: function () { return ReCaptchaLoader_1.getInstance; } });\nvar ReCaptchaInstance_1 = require(\"./ReCaptchaInstance\");\nObject.defineProperty(exports, \"ReCaptchaInstance\", { enumerable: true, get: function () { return ReCaptchaInstance_1.ReCaptchaInstance; } });\n",
+      "start": 1727432817258,
+      "end": 1727432817361,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432817361,
+      "end": 1727432817361,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432817362,
+      "end": 1727432817362,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as ReCaptcha } from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/recaptcha-v3/dist/ReCaptcha.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/recaptcha-v3/dist/ReCaptchaLoader.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/recaptcha-v3/dist/ReCaptchaInstance.js?commonjs-proxy\";\n\n(function (exports) {\n\t\"use strict\";\n\tObject.defineProperty(exports, \"__esModule\", { value: true });\n\texports.ReCaptchaInstance = exports.getInstance = exports.load = void 0;\n\tvar ReCaptchaLoader_1 = require$$0;\n\tObject.defineProperty(exports, \"load\", { enumerable: true, get: function () { return ReCaptchaLoader_1.load; } });\n\tObject.defineProperty(exports, \"getInstance\", { enumerable: true, get: function () { return ReCaptchaLoader_1.getInstance; } });\n\tvar ReCaptchaInstance_1 = require$$1;\n\tObject.defineProperty(exports, \"ReCaptchaInstance\", { enumerable: true, get: function () { return ReCaptchaInstance_1.ReCaptchaInstance; } }); \n} (ReCaptcha));\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(ReCaptcha);\nexport { ReCaptcha as __moduleExports };",
+      "start": 1727432817362,
+      "end": 1727432819437,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;CAAA,YAAY,CAAC;CACb,MAAM,CAAC,cAAc,UAAU,YAAY,EAAE,EAAE,KAAK,EAAE,IAAI,EAAE,CAAC,CAAC;CAC9D,4BAA4B,sBAAsB,eAAe,KAAK,CAAC,CAAC;CACxE,IAAI,iBAAiB,GAAG,UAA4B,CAAC;CACrD,MAAM,CAAC,cAAc,CAAC,OAAO,EAAE,MAAM,EAAE,EAAE,UAAU,EAAE,IAAI,EAAE,GAAG,EAAE,YAAY,EAAE,OAAO,iBAAiB,CAAC,IAAI,CAAC,EAAE,EAAE,CAAC,CAAC;CAClH,MAAM,CAAC,cAAc,CAAC,OAAO,EAAE,aAAa,EAAE,EAAE,UAAU,EAAE,IAAI,EAAE,GAAG,EAAE,YAAY,EAAE,OAAO,iBAAiB,CAAC,WAAW,CAAC,EAAE,EAAE,CAAC,CAAC;CAChI,IAAI,mBAAmB,GAAG,UAA8B,CAAC;CACzD,MAAM,CAAC,cAAc,CAAC,OAAO,EAAE,mBAAmB,EAAE,EAAE,UAAU,EAAE,IAAI,EAAE,GAAG,EAAE,YAAY,EAAE,OAAO,mBAAmB,CAAC,iBAAiB,CAAC,EAAE,EAAE,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432819438,
+      "end": 1727432819438,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432819438,
+      "end": 1727432819439,
+      "order": "normal"
+    }
+  ]
+}

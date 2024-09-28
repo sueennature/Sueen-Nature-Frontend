@@ -1,0 +1,221 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/launching.vue?vue&type=style&index=0&scoped=f83c9469&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n\n.fireworks-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  z-index: 1;\n}\n\n  /* Curtain styling */\n  .launching-page {\n    background-color: #000;\n    position: relative;\n    overflow: hidden;\n    \n  }\n /* Gradient effect at the bottom of the page */\n.gradient-bottom {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100px; /* Initial height of the gradient */\n  background: linear-gradient(to top, rgba(255, 215, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);\n  opacity: 0; /* Start with hidden gradient */\n  transform: scaleY(0); /* Start with the gradient compressed */\n  transform-origin: bottom; /* Scale from the bottom */\n  animation: fadeInGradient 2.5s forwards, expandGradient 2.5s forwards; /* Adjust duration as needed */\n}\n  \n  .curtain {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    width: 50%;\n    background-color: #e50914; /* Base red curtain color */\n    z-index: 10;\n    transition: width 2.5s ease-in-out;\n    background-image: linear-gradient(90deg, rgba(229, 9, 20, 0.9) 0%, rgba(200, 0, 0, 0.7) 50%, rgba(229, 9, 20, 0.9) 100%);\n    box-shadow: inset -10px 0 15px rgba(0, 0, 0, 0.5), inset 10px 0 15px rgba(0, 0, 0, 0.5);\n    background-size: 15px; /* Create repeating stripes */\n  }\n  \n  .curtain-left {\n    left: 0;\n  }\n  \n  .curtain-right {\n    right: 0;\n  }\n  \n  .open.curtain-left,\n  .open.curtain-right {\n    width: 0; /* When the curtain is open, they slide away */\n  }\n  \n  /* Content fade in after curtain opens */\n  .content {\n    z-index: 5;\n    transition: opacity 3s ease-in-out;\n  }\n  \n  .opacity-0 {\n    opacity: 0;\n  }\n  \n  .opacity-1 {\n    opacity: 1;\n  }\n  \n  /* Logo popup animation */\n  .logo-popup {\n    width: auto;\n    height: 160px;\n    opacity: 0;\n    transform: scale(0);\n    animation: popInLogo 2.5s forwards, blinkText 1s infinite;\n    animation-delay: 2s;\n  }\n  /* background popup animation */\n  .bg-popup {\n    width: auto;\n    height: 200px;\n    opacity: 0;\n    transform: scale(0);\n    animation: popInLogo 2.5s forwards, blink 1s infinite;\n    animation-delay: 2s;\n  }\n  \n  /* Welcome text pop-in effect */\n  .welcome-text {\n    opacity: 0;\n    animation: popInText 2s forwards, blinkText 1s infinite;\n    animation-delay: 3s;\n  }\n  \n  /* Button appearance with pop-in effect */\n  .enter-btn {\n    opacity: 0;\n    animation: popInButton 2.5s forwards, blinkText 1s infinite;\n    animation-delay: 3.5s;\n  }\n\n  @keyframes fadeInGradient {\n  0% {\n    opacity: 0;\n    transform: scaleY(0); /* Start compressed */\n  }\n  100% {\n    opacity: 1;\n    transform: scaleY(1); /* End at full scale */\n  }\n}\n\n@keyframes expandGradient {\n  0% {\n    height: 0px; /* Initial height */\n  }\n  100% {\n    height: 80px; /* Expanded height */\n  }\n}\n  \n  /* Blinking effect for text */\n@keyframes blinkText {\n  0%, 100% {\n    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); /* Golden glow */\n  }\n  50% {\n    text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 215, 0, 0.8); /* Stronger golden glow */\n  }\n}\n  \n  /* Blinking effect for images */\n@keyframes blinkImage {\n  0%, 100% {\n    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);\n  }\n  50% {\n    box-shadow: 0 0 20px rgba(255, 255, 255, 1);\n  }\n}\n\n  @keyframes popInLogo {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  \n  @keyframes popInText {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  \n  @keyframes popInButton {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  ",
+      "start": 1727432815672,
+      "end": 1727432815672
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432815672,
+      "end": 1727432815672,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432815672,
+      "end": 1727432815673,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432815673,
+      "end": 1727432815673,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".fireworks-container{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%;z-index:1}.launching-page{background-color:#000;overflow:hidden;position:relative}.gradient-bottom{animation:fadeInGradient 2.5s forwards,expandGradient 2.5s forwards;background:linear-gradient(0deg,gold 0,#000);height:100px;left:0;opacity:0;transform:scaleY(0);transform-origin:bottom;width:100%}.curtain,.gradient-bottom{bottom:0;position:absolute}.curtain{background-color:#e50914;background-image:linear-gradient(90deg,rgba(229,9,20,.9),rgba(200,0,0,.7) 50%,rgba(229,9,20,.9));background-size:15px;box-shadow:inset -10px 0 15px rgba(0,0,0,.5),inset 10px 0 15px rgba(0,0,0,.5);top:0;transition:width 2.5s ease-in-out;width:50%;z-index:10}.curtain-left{left:0}.curtain-right{right:0}.open.curtain-left,.open.curtain-right{width:0}.content{transition:opacity 3s ease-in-out;z-index:5}.opacity-0{opacity:0}.opacity-1{opacity:1}.logo-popup{animation:popInLogo 2.5s forwards,blinkText 1s infinite;animation-delay:2s;height:160px}.bg-popup,.logo-popup{opacity:0;transform:scale(0);width:auto}.bg-popup{animation:popInLogo 2.5s forwards,blink 1s infinite;animation-delay:2s;height:200px}.welcome-text{animation:popInText 2s forwards,blinkText 1s infinite;animation-delay:3s;opacity:0}.enter-btn{animation:popInButton 2.5s forwards,blinkText 1s infinite;animation-delay:3.5s;opacity:0}@keyframes fadeInGradient{0%{opacity:0;transform:scaleY(0)}to{opacity:1;transform:scaleY(1)}}@keyframes expandGradient{0%{height:0}to{height:80px}}@keyframes blinkText{0%,to{text-shadow:0 0 15px rgba(255,215,0,.8),0 0 30px rgba(255,215,0,.6)}50%{text-shadow:0 0 30px gold,0 0 50px rgba(255,215,0,.8)}}@keyframes blinkImage{0%,to{box-shadow:0 0 10px hsla(0,0%,100%,.8)}50%{box-shadow:0 0 20px #fff}}@keyframes popInLogo{0%{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}@keyframes popInText{0%{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}@keyframes popInButton{0%{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}",
+      "start": 1727432815673,
+      "end": 1727432815739,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432815739,
+      "end": 1727432815739,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432815739,
+      "end": 1727432815739,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432815739,
+      "end": 1727432815739,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".fireworks-container[data-v-f83c9469]{height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%;z-index:1}.launching-page[data-v-f83c9469]{background-color:#000;overflow:hidden;position:relative}.gradient-bottom[data-v-f83c9469]{animation:fadeInGradient-f83c9469 2.5s forwards,expandGradient-f83c9469 2.5s forwards;background:linear-gradient(0deg,gold 0,#000);height:100px;left:0;opacity:0;transform:scaleY(0);transform-origin:bottom;width:100%}.curtain[data-v-f83c9469],.gradient-bottom[data-v-f83c9469]{bottom:0;position:absolute}.curtain[data-v-f83c9469]{background-color:#e50914;background-image:linear-gradient(90deg,rgba(229,9,20,.9),rgba(200,0,0,.7) 50%,rgba(229,9,20,.9));background-size:15px;box-shadow:inset -10px 0 15px rgba(0,0,0,.5),inset 10px 0 15px rgba(0,0,0,.5);top:0;transition:width 2.5s ease-in-out;width:50%;z-index:10}.curtain-left[data-v-f83c9469]{left:0}.curtain-right[data-v-f83c9469]{right:0}.open.curtain-left[data-v-f83c9469],.open.curtain-right[data-v-f83c9469]{width:0}.content[data-v-f83c9469]{transition:opacity 3s ease-in-out;z-index:5}.opacity-0[data-v-f83c9469]{opacity:0}.opacity-1[data-v-f83c9469]{opacity:1}.logo-popup[data-v-f83c9469]{animation:popInLogo-f83c9469 2.5s forwards,blinkText-f83c9469 1s infinite;animation-delay:2s;height:160px}.bg-popup[data-v-f83c9469],.logo-popup[data-v-f83c9469]{opacity:0;transform:scale(0);width:auto}.bg-popup[data-v-f83c9469]{animation:popInLogo-f83c9469 2.5s forwards,blink 1s infinite;animation-delay:2s;height:200px}.welcome-text[data-v-f83c9469]{animation:popInText-f83c9469 2s forwards,blinkText-f83c9469 1s infinite;animation-delay:3s;opacity:0}.enter-btn[data-v-f83c9469]{animation:popInButton-f83c9469 2.5s forwards,blinkText-f83c9469 1s infinite;animation-delay:3.5s;opacity:0}@keyframes fadeInGradient-f83c9469{0%{opacity:0;transform:scaleY(0)}to{opacity:1;transform:scaleY(1)}}@keyframes expandGradient-f83c9469{0%{height:0}to{height:80px}}@keyframes blinkText-f83c9469{0%,to{text-shadow:0 0 15px rgba(255,215,0,.8),0 0 30px rgba(255,215,0,.6)}50%{text-shadow:0 0 30px gold,0 0 50px rgba(255,215,0,.8)}}@keyframes blinkImage-f83c9469{0%,to{box-shadow:0 0 10px hsla(0,0%,100%,.8)}50%{box-shadow:0 0 20px #fff}}@keyframes popInLogo-f83c9469{0%{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}@keyframes popInText-f83c9469{0%{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}@keyframes popInButton-f83c9469{0%{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}",
+      "start": 1727432815739,
+      "end": 1727432815748,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432815748,
+      "end": 1727432815757,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432815757,
+      "end": 1727432815757,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432815757,
+      "end": 1727432815758,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432815758,
+      "end": 1727432815758,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432815762,
+      "end": 1727432815763,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432815763,
+      "end": 1727432815763,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432815764,
+      "end": 1727432815764,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432815764,
+      "end": 1727432815765,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1727432815765,
+      "end": 1727432815765,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432815765,
+      "end": 1727432815765,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432815765,
+      "end": 1727432815765,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432815769,
+      "end": 1727432815769,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432815769,
+      "end": 1727432815771,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432815773,
+      "end": 1727432815773,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432815773,
+      "end": 1727432815774,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432815774,
+      "end": 1727432815774,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432815775,
+      "end": 1727432815775,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432815775,
+      "end": 1727432815775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432815779,
+      "end": 1727432815779,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432815780,
+      "end": 1727432815780,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432815782,
+      "end": 1727432815782,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432815782,
+      "end": 1727432815782,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432815783,
+      "end": 1727432815783,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432815784,
+      "end": 1727432815784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432815784,
+      "end": 1727432815784,
+      "order": "normal"
+    }
+  ]
+}

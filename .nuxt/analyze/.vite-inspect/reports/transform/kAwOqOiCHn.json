@@ -1,0 +1,210 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/flowbite-datepicker/js/picker/views/YearsView.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import {hasProperty, pushUnique, createTagRepeat} from '../../lib/utils.js';\nimport {dateValue, startOfYearPeriod} from '../../lib/date.js';\nimport {parseHTML} from '../../lib/dom.js';\nimport View from './View.js';\n\nfunction toTitleCase(word) {\n  return [...word].reduce((str, ch, ix) => str += ix ? ch : ch.toUpperCase(), '');\n}\n\n// Class representing the years and decades view elements\nexport default class YearsView extends View {\n  constructor(picker, config) {\n    super(picker, config);\n  }\n\n  init(options, onConstruction = true) {\n    if (onConstruction) {\n      this.navStep = this.step * 10;\n      this.beforeShowOption = `beforeShow${toTitleCase(this.cellClass)}`;\n      this.grid = this.element;\n      this.element.classList.add(this.name, 'datepicker-grid', 'w-64', 'grid', 'grid-cols-4');\n      this.grid.appendChild(parseHTML(createTagRepeat('span', 12)));\n    }\n    super.init(options);\n  }\n\n  setOptions(options) {\n    if (hasProperty(options, 'minDate')) {\n      if (options.minDate === undefined) {\n        this.minYear = this.minDate = undefined;\n      } else {\n        this.minYear = startOfYearPeriod(options.minDate, this.step);\n        this.minDate = dateValue(this.minYear, 0, 1);\n      }\n    }\n    if (hasProperty(options, 'maxDate')) {\n      if (options.maxDate === undefined) {\n        this.maxYear = this.maxDate = undefined;\n      } else {\n        this.maxYear = startOfYearPeriod(options.maxDate, this.step);\n        this.maxDate = dateValue(this.maxYear, 11, 31);\n      }\n    }\n    if (options[this.beforeShowOption] !== undefined) {\n      const beforeShow = options[this.beforeShowOption];\n      this.beforeShow = typeof beforeShow === 'function' ? beforeShow : undefined;\n    }\n  }\n\n  // Update view's settings to reflect the viewDate set on the picker\n  updateFocus() {\n    const viewDate = new Date(this.picker.viewDate);\n    const first = startOfYearPeriod(viewDate, this.navStep);\n    const last = first + 9 * this.step;\n\n    this.first = first;\n    this.last = last;\n    this.start = first - this.step;\n    this.focused = startOfYearPeriod(viewDate, this.step);\n  }\n\n  // Update view's settings to reflect the selected dates\n  updateSelection() {\n    const {dates, rangepicker} = this.picker.datepicker;\n    this.selected = dates.reduce((years, timeValue) => {\n      return pushUnique(years, startOfYearPeriod(timeValue, this.step));\n    }, []);\n    if (rangepicker && rangepicker.dates) {\n      this.range = rangepicker.dates.map(timeValue => {\n        if (timeValue !== undefined) {\n          return startOfYearPeriod(timeValue, this.step);\n        }\n      });\n    }\n  }\n\n  // Update the entire view UI\n  render() {\n    // refresh disabled years on every render in order to clear the ones added\n    // by beforeShow hook at previous render\n    this.disabled = [];\n\n    this.picker.setViewSwitchLabel(`${this.first}-${this.last}`);\n    this.picker.setPrevBtnDisabled(this.first <= this.minYear);\n    this.picker.setNextBtnDisabled(this.last >= this.maxYear);\n\n    Array.from(this.grid.children).forEach((el, index) => {\n      const classList = el.classList;\n      const current = this.start + (index * this.step);\n      const date = dateValue(current, 0, 1);\n\n      el.className = `datepicker-cell hover:bg-gray-100 dark:hover:bg-gray-600 block flex-1 leading-9 border-0 rounded-lg cursor-pointer text-center text-gray-900 dark:text-white font-semibold text-sm ${this.cellClass}`;\n      if (this.isMinView) {\n        el.dataset.date = date;\n      }\n      el.textContent = el.dataset.year = current;\n\n      if (index === 0) {\n        classList.add('prev');\n      } else if (index === 11) {\n        classList.add('next');\n      }\n      if (current < this.minYear || current > this.maxYear) {\n        classList.add('disabled');\n      }\n      if (this.range) {\n        const [rangeStart, rangeEnd] = this.range;\n        if (current > rangeStart && current < rangeEnd) {\n          classList.add('range');\n        }\n        if (current === rangeStart) {\n          classList.add('range-start');\n        }\n        if (current === rangeEnd) {\n          classList.add('range-end');\n        }\n      }\n      if (this.selected.includes(current)) {\n        classList.add('selected', 'bg-blue-700', '!bg-primary-700', 'text-white', 'dark:bg-blue-600', 'dark:!bg-primary-600', 'dark:text-white');\n        classList.remove('text-gray-900', 'hover:bg-gray-100', 'dark:text-white', 'dark:hover:bg-gray-600');\n      }\n      if (current === this.focused) {\n        classList.add('focused');\n      }\n\n      if (this.beforeShow) {\n        this.performBeforeHook(el, current, date);\n      }\n    });\n  }\n\n  // Update the view UI by applying the changes of selected and focused items\n  refresh() {\n    const [rangeStart, rangeEnd] = this.range || [];\n    this.grid\n      .querySelectorAll('.range, .range-start, .range-end, .selected, .focused')\n      .forEach((el) => {\n        el.classList.remove('range', 'range-start', 'range-end', 'selected', 'bg-blue-700', '!bg-primary-700', 'text-white', 'dark:bg-blue-600', 'dark!bg-primary-600', 'dark:text-white', 'focused');\n      });\n    Array.from(this.grid.children).forEach((el) => {\n      const current = Number(el.textContent);\n      const classList = el.classList;\n      if (current > rangeStart && current < rangeEnd) {\n        classList.add('range');\n      }\n      if (current === rangeStart) {\n        classList.add('range-start');\n      }\n      if (current === rangeEnd) {\n        classList.add('range-end');\n      }\n      if (this.selected.includes(current)) {\n        classList.add('selected', 'bg-blue-700', '!bg-primary-700', 'text-white', 'dark:bg-blue-600', 'dark:!bg-primary-600', 'dark:text-white');\n        classList.remove('text-gray-900', 'hover:bg-gray-100', 'dark:text-white', 'dark:hover:bg-gray-600');\n      }\n      if (current === this.focused) {\n        classList.add('focused');\n      }\n    });\n  }\n\n  // Update the view UI by applying the change of focused item\n  refreshFocus() {\n    const index = Math.round((this.focused - this.start) / this.step);\n    this.grid.querySelectorAll('.focused').forEach((el) => {\n      el.classList.remove('focused');\n    });\n    this.grid.children[index].classList.add('focused');\n  }\n}\n",
+      "start": 1727432818934,
+      "end": 1727432819069,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432819069,
+      "end": 1727432819069,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432819070,
+      "end": 1727432819070,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432819070,
+      "end": 1727432819071,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819071,
+      "end": 1727432819071,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432819071,
+      "end": 1727432819071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432819071,
+      "end": 1727432819071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432819071,
+      "end": 1727432819071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432819071,
+      "end": 1727432819071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432819071,
+      "end": 1727432819071,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432819071,
+      "end": 1727432819071,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432819071,
+      "end": 1727432819072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432819072,
+      "end": 1727432819072,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432819072,
+      "end": 1727432819072,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432819072,
+      "end": 1727432819072,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432819072,
+      "end": 1727432819073,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432819073,
+      "end": 1727432819073,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432819073,
+      "end": 1727432819073,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432819073,
+      "end": 1727432819073,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432819073,
+      "end": 1727432819073,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432819073,
+      "end": 1727432819073,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432819073,
+      "end": 1727432819073,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432819073,
+      "end": 1727432819073,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432819073,
+      "end": 1727432819073,
+      "order": "normal"
+    }
+  ]
+}

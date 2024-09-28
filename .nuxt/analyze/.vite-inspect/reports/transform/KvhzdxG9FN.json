@@ -1,0 +1,214 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/launching.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n    <div class=\"launching-page h-screen relative overflow-hidden\" @keydown.enter=\"startCurtainOpen\" tabindex=\"0\">\n      <!-- Red curtain -->\n      <div :class=\"['curtain curtain-left', { open: isCurtainOpen }]\"></div>\n      <div :class=\"['curtain curtain-right', { open: isCurtainOpen }]\"></div>\n\n  \n      <!-- Hidden content that fades in when the curtain opens -->\n      <div :class=\"['content absolute inset-0 flex flex-col items-center justify-center text-center', { 'opacity-0': !isCurtainOpen }]\">\n          \n\n        <!-- Logo that pops up -->\n        <img v-if=\"isCurtainOpen\" src=\"/img/logoImg.png\" alt=\"Hotel Logo\" class=\"logo-popup mb-4\"/>\n  \n        <!-- Logo that pops up -->\n        <img v-if=\"isCurtainOpen\" src=\"/img/bg.png\" alt=\"Hotel Image\" class=\"bg-popup mb-4\"/>\n\n  \n        <h1 class=\"welcome-text text-4xl mb-4 text-white\">Welcome to Sueen Nature Hotel Official Website</h1>\n        <button @click=\"enterSite\" class=\" text-white px-4 py-2 rounded-lg enter-btn hover:text-red-600\">\n          Click Here\n        </button>\n         <!-- Gradient effect at the bottom -->\n    <div class=\"gradient-bottom\"></div>\n\n\n\n    \n\n    \n      </div>\n      <!-- Fireworks container -->\n    <!-- Fireworks container -->\n    <div ref=\"fireworksContainer\" class=\"fireworks-container\"></div>\n    </div>\n  </template>\n  \n  <script>\n  import { Fireworks } from 'fireworks-js';\n\n  export default {\n    data() {\n      return {\n        isCurtainOpen: false, // Controls whether the curtain is open\n        fireworksInstance: null,\n      };\n    },\n    mounted() {\n      // Focus the div to allow capturing Enter key events\n      this.$el.focus();\n      // Create audio elements\n    \n    this.welcomeSound = new Audio('/crowd-cheer-applause-victory-fanfare-clapping-236698.mp3');\n    },\n    methods: {\n      startCurtainOpen() {\n         // Play welcome sound\n       this.welcomeSound.play();\n        // Trigger curtain open state\n        this.isCurtainOpen = true;\n        console.log('Curtain opened, starting fireworks...');\n\n        // Start fireworks once the curtain is open\n        this.launchFireworks();\n      },\n      launchFireworks() {\n        \n        const container = this.$refs.fireworksContainer;\n\n      if (container) {\n        console.log('Fireworks container found:', container);\n\n        const fireworks = new Fireworks(container, {\n          maxRockets: 5, // Number of rockets launched per interval\n          rocketSpawnInterval: 150, // Time between each rocket launch\n          numParticles: 100, // Number of particles per explosion\n          explosionMinHeight: 0.2, // Min height for the explosion\n          explosionMaxHeight: 0.8, // Max height for the explosion\n          explosionChance: 0.08, // Chance for an explosion per frame\n        });\n\n        console.log('Fireworks initialized:', fireworks);\n        fireworks.start();\n        console.log('Fireworks started');\n    } else {\n        console.error('Fireworks container not found');\n      }\n     \n    },\n      enterSite() {\n        // Set local storage to indicate the user has bypassed the launching page\n        localStorage.setItem('hasVisited', 'true');\n        // Redirect to the home page\n        \n        this.$router.push('/home');\n      },\n    },\n    beforeDestroy() {\n    // Stop fireworks on component destruction\n    if (this.fireworksInstance) {\n      this.fireworksInstance.stop();\n    }\n  },\n\n  };\n  </script>\n  \n  <style scoped>\n\n.fireworks-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  z-index: 1;\n}\n\n  /* Curtain styling */\n  .launching-page {\n    background-color: #000;\n    position: relative;\n    overflow: hidden;\n    \n  }\n /* Gradient effect at the bottom of the page */\n.gradient-bottom {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100px; /* Initial height of the gradient */\n  background: linear-gradient(to top, rgba(255, 215, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);\n  opacity: 0; /* Start with hidden gradient */\n  transform: scaleY(0); /* Start with the gradient compressed */\n  transform-origin: bottom; /* Scale from the bottom */\n  animation: fadeInGradient 2.5s forwards, expandGradient 2.5s forwards; /* Adjust duration as needed */\n}\n  \n  .curtain {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    width: 50%;\n    background-color: #e50914; /* Base red curtain color */\n    z-index: 10;\n    transition: width 2.5s ease-in-out;\n    background-image: linear-gradient(90deg, rgba(229, 9, 20, 0.9) 0%, rgba(200, 0, 0, 0.7) 50%, rgba(229, 9, 20, 0.9) 100%);\n    box-shadow: inset -10px 0 15px rgba(0, 0, 0, 0.5), inset 10px 0 15px rgba(0, 0, 0, 0.5);\n    background-size: 15px; /* Create repeating stripes */\n  }\n  \n  .curtain-left {\n    left: 0;\n  }\n  \n  .curtain-right {\n    right: 0;\n  }\n  \n  .open.curtain-left,\n  .open.curtain-right {\n    width: 0; /* When the curtain is open, they slide away */\n  }\n  \n  /* Content fade in after curtain opens */\n  .content {\n    z-index: 5;\n    transition: opacity 3s ease-in-out;\n  }\n  \n  .opacity-0 {\n    opacity: 0;\n  }\n  \n  .opacity-1 {\n    opacity: 1;\n  }\n  \n  /* Logo popup animation */\n  .logo-popup {\n    width: auto;\n    height: 160px;\n    opacity: 0;\n    transform: scale(0);\n    animation: popInLogo 2.5s forwards, blinkText 1s infinite;\n    animation-delay: 2s;\n  }\n  /* background popup animation */\n  .bg-popup {\n    width: auto;\n    height: 200px;\n    opacity: 0;\n    transform: scale(0);\n    animation: popInLogo 2.5s forwards, blink 1s infinite;\n    animation-delay: 2s;\n  }\n  \n  /* Welcome text pop-in effect */\n  .welcome-text {\n    opacity: 0;\n    animation: popInText 2s forwards, blinkText 1s infinite;\n    animation-delay: 3s;\n  }\n  \n  /* Button appearance with pop-in effect */\n  .enter-btn {\n    opacity: 0;\n    animation: popInButton 2.5s forwards, blinkText 1s infinite;\n    animation-delay: 3.5s;\n  }\n\n  @keyframes fadeInGradient {\n  0% {\n    opacity: 0;\n    transform: scaleY(0); /* Start compressed */\n  }\n  100% {\n    opacity: 1;\n    transform: scaleY(1); /* End at full scale */\n  }\n}\n\n@keyframes expandGradient {\n  0% {\n    height: 0px; /* Initial height */\n  }\n  100% {\n    height: 80px; /* Expanded height */\n  }\n}\n  \n  /* Blinking effect for text */\n@keyframes blinkText {\n  0%, 100% {\n    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); /* Golden glow */\n  }\n  50% {\n    text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 215, 0, 0.8); /* Stronger golden glow */\n  }\n}\n  \n  /* Blinking effect for images */\n@keyframes blinkImage {\n  0%, 100% {\n    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);\n  }\n  50% {\n    box-shadow: 0 0 20px rgba(255, 255, 255, 1);\n  }\n}\n\n  @keyframes popInLogo {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  \n  @keyframes popInText {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  \n  @keyframes popInButton {\n    0% {\n      transform: scale(0);\n      opacity: 0;\n    }\n    100% {\n      transform: scale(1);\n      opacity: 1;\n    }\n  }\n  </style>",
+      "start": 1727432813144,
+      "end": 1727432814167,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432814168,
+      "end": 1727432814168,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432814168,
+      "end": 1727432814168,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432814168,
+      "end": 1727432814168,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432814168,
+      "end": 1727432814168,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432814168,
+      "end": 1727432814168,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432814168,
+      "end": 1727432814168,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432814168,
+      "end": 1727432814168,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "\n  import { Fireworks } from 'fireworks-js';\n\n  const _sfc_main = {\n    data() {\n      return {\n        isCurtainOpen: false, // Controls whether the curtain is open\n        fireworksInstance: null,\n      };\n    },\n    mounted() {\n      // Focus the div to allow capturing Enter key events\n      this.$el.focus();\n      // Create audio elements\n    \n    this.welcomeSound = new Audio('/crowd-cheer-applause-victory-fanfare-clapping-236698.mp3');\n    },\n    methods: {\n      startCurtainOpen() {\n         // Play welcome sound\n       this.welcomeSound.play();\n        // Trigger curtain open state\n        this.isCurtainOpen = true;\n        console.log('Curtain opened, starting fireworks...');\n\n        // Start fireworks once the curtain is open\n        this.launchFireworks();\n      },\n      launchFireworks() {\n        \n        const container = this.$refs.fireworksContainer;\n\n      if (container) {\n        console.log('Fireworks container found:', container);\n\n        const fireworks = new Fireworks(container, {\n          maxRockets: 5, // Number of rockets launched per interval\n          rocketSpawnInterval: 150, // Time between each rocket launch\n          numParticles: 100, // Number of particles per explosion\n          explosionMinHeight: 0.2, // Min height for the explosion\n          explosionMaxHeight: 0.8, // Max height for the explosion\n          explosionChance: 0.08, // Chance for an explosion per frame\n        });\n\n        console.log('Fireworks initialized:', fireworks);\n        fireworks.start();\n        console.log('Fireworks started');\n    } else {\n        console.error('Fireworks container not found');\n      }\n     \n    },\n      enterSite() {\n        // Set local storage to indicate the user has bypassed the launching page\n        localStorage.setItem('hasVisited', 'true');\n        // Redirect to the home page\n        \n        this.$router.push('/home');\n      },\n    },\n    beforeDestroy() {\n    // Stop fireworks on component destruction\n    if (this.fireworksInstance) {\n      this.fireworksInstance.stop();\n    }\n  },\n\n  };\n  \nimport { normalizeClass as _normalizeClass, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, withKeys as _withKeys, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\nimport _imports_0 from '/img/logoImg.png'\nimport _imports_1 from '/img/bg.png'\n\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-f83c9469\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = {\n  key: 0,\n  src: _imports_0,\n  alt: \"Hotel Logo\",\n  class: \"logo-popup mb-4\"\n}\nconst _hoisted_2 = {\n  key: 1,\n  src: _imports_1,\n  alt: \"Hotel Image\",\n  class: \"bg-popup mb-4\"\n}\nconst _hoisted_3 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"h1\", { class: \"welcome-text text-4xl mb-4 text-white\" }, \"Welcome to Sueen Nature Hotel Official Website\", -1))\nconst _hoisted_4 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"div\", { class: \"gradient-bottom\" }, null, -1))\nconst _hoisted_5 = {\n  ref: \"fireworksContainer\",\n  class: \"fireworks-container\"\n}\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (_openBlock(), _createElementBlock(\"div\", {\n    class: \"launching-page h-screen relative overflow-hidden\",\n    onKeydown: _cache[1] || (_cache[1] = _withKeys((...args) => ($options.startCurtainOpen && $options.startCurtainOpen(...args)), [\"enter\"])),\n    tabindex: \"0\"\n  }, [\n    _createElementVNode(\"div\", {\n      class: _normalizeClass(['curtain curtain-left', { open: $data.isCurtainOpen }])\n    }, null, 2),\n    _createElementVNode(\"div\", {\n      class: _normalizeClass(['curtain curtain-right', { open: $data.isCurtainOpen }])\n    }, null, 2),\n    _createElementVNode(\"div\", {\n      class: _normalizeClass(['content absolute inset-0 flex flex-col items-center justify-center text-center', { 'opacity-0': !$data.isCurtainOpen }])\n    }, [\n      ($data.isCurtainOpen)\n        ? (_openBlock(), _createElementBlock(\"img\", _hoisted_1))\n        : _createCommentVNode(\"\", true),\n      ($data.isCurtainOpen)\n        ? (_openBlock(), _createElementBlock(\"img\", _hoisted_2))\n        : _createCommentVNode(\"\", true),\n      _hoisted_3,\n      _createElementVNode(\"button\", {\n        onClick: _cache[0] || (_cache[0] = (...args) => ($options.enterSite && $options.enterSite(...args))),\n        class: \"text-white px-4 py-2 rounded-lg enter-btn hover:text-red-600\"\n      }, \" Click Here \"),\n      _hoisted_4\n    ], 2),\n    _createElementVNode(\"div\", _hoisted_5, null, 512)\n  ], 32))\n}\n\nimport \"/var/www/html/Sueen-Nature-Frontend/components/launching.vue?vue&type=style&index=0&scoped=f83c9469&lang.css\"\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__scopeId',\"data-v-f83c9469\"]])",
+      "start": 1727432814168,
+      "end": 1727432814172,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432814173,
+      "end": 1727432814173,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432814173,
+      "end": 1727432814174,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432814174,
+      "end": 1727432814176,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432814176,
+      "end": 1727432814176,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432814176,
+      "end": 1727432814176,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432814176,
+      "end": 1727432814176,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432814176,
+      "end": 1727432814176,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432814176,
+      "end": 1727432814176,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432814176,
+      "end": 1727432814176,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432814176,
+      "end": 1727432814177,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432814177,
+      "end": 1727432814177,
+      "order": "normal"
+    }
+  ]
+}

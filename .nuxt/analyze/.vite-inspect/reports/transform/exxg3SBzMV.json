@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.string.includes.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar $ = require('../internals/export');\nvar uncurryThis = require('../internals/function-uncurry-this');\nvar notARegExp = require('../internals/not-a-regexp');\nvar requireObjectCoercible = require('../internals/require-object-coercible');\nvar toString = require('../internals/to-string');\nvar correctIsRegExpLogic = require('../internals/correct-is-regexp-logic');\n\nvar stringIndexOf = uncurryThis(''.indexOf);\n\n// `String.prototype.includes` method\n// https://tc39.es/ecma262/#sec-string.prototype.includes\n$({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {\n  includes: function includes(searchString /* , position = 0 */) {\n    return !!~stringIndexOf(\n      toString(requireObjectCoercible(this)),\n      toString(notARegExp(searchString)),\n      arguments.length > 1 ? arguments[1] : undefined\n    );\n  }\n});\n",
+      "start": 1727432819575,
+      "end": 1727432819695,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432819695,
+      "end": 1727432819695,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432819695,
+      "end": 1727432819696,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819696,
+      "end": 1727432819696,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432819696,
+      "end": 1727432819696,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432819696,
+      "end": 1727432819696,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432819696,
+      "end": 1727432819696,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432819696,
+      "end": 1727432819696,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432819696,
+      "end": 1727432819696,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432819696,
+      "end": 1727432819696,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as es_string_includes } from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.string.includes.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/export.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/function-uncurry-this.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/not-a-regexp.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/require-object-coercible.js?commonjs-proxy\";\nimport require$$4 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-string.js?commonjs-proxy\";\nimport require$$5 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/correct-is-regexp-logic.js?commonjs-proxy\";\n\n'use strict';\nvar $ = require$$0;\nvar uncurryThis = require$$1;\nvar notARegExp = require$$2;\nvar requireObjectCoercible = require$$3;\nvar toString = require$$4;\nvar correctIsRegExpLogic = require$$5;\n\nvar stringIndexOf = uncurryThis(''.indexOf);\n\n// `String.prototype.includes` method\n// https://tc39.es/ecma262/#sec-string.prototype.includes\n$({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {\n  includes: function includes(searchString /* , position = 0 */) {\n    return !!~stringIndexOf(\n      toString(requireObjectCoercible(this)),\n      toString(notARegExp(searchString)),\n      arguments.length > 1 ? arguments[1] : undefined\n    );\n  }\n});\n\nexport { es_string_includes as __moduleExports, es_string_includes as default };",
+      "start": 1727432819696,
+      "end": 1727432820834,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;AAAA,YAAY,CAAC;AACb,IAAI,CAAC,GAAG,UAA8B,CAAC;AACvC,IAAI,WAAW,GAAG,UAA6C,CAAC;AAChE,IAAI,UAAU,GAAG,UAAoC,CAAC;AACtD,IAAI,sBAAsB,GAAG,UAAgD,CAAC;AAC9E,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD,IAAI,oBAAoB,GAAG,UAA+C,CAAC;AAC3E;AACA,IAAI,aAAa,GAAG,WAAW,CAAC,EAAE,CAAC,OAAO,CAAC,CAAC;AAC5C;AACA;AACA;AACA,CAAC,CAAC,EAAE,MAAM,EAAE,QAAQ,EAAE,KAAK,EAAE,IAAI,EAAE,MAAM,EAAE,CAAC,oBAAoB,CAAC,UAAU,CAAC,EAAE,EAAE;AAChF,EAAE,QAAQ,EAAE,SAAS,QAAQ,CAAC,YAAY,uBAAuB;AACjE,IAAI,OAAO,CAAC,CAAC,CAAC,aAAa;AAC3B,MAAM,QAAQ,CAAC,sBAAsB,CAAC,IAAI,CAAC,CAAC;AAC5C,MAAM,QAAQ,CAAC,UAAU,CAAC,YAAY,CAAC,CAAC;AACxC,MAAM,SAAS,CAAC,MAAM,GAAG,CAAC,GAAG,SAAS,CAAC,CAAC,CAAC,GAAG,SAAS;AACrD,KAAK,CAAC;AACN,GAAG;AACH,CAAC,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820835,
+      "end": 1727432820835,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820835,
+      "end": 1727432820835,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820836,
+      "end": 1727432820836,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820836,
+      "end": 1727432820837,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820837,
+      "end": 1727432820837,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820862,
+      "end": 1727432820862,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820862,
+      "end": 1727432820862,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820862,
+      "end": 1727432820862,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820863,
+      "end": 1727432820863,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820863,
+      "end": 1727432820863,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820864,
+      "end": 1727432820864,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820864,
+      "end": 1727432820864,
+      "order": "normal"
+    }
+  ]
+}

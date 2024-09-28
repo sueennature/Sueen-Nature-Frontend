@@ -1,0 +1,288 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/CheckoutAvailability.vue?vue&type=style&index=0&scoped=caecd611&lang.css?inline&used",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\ninput[type=\"date\"] {\n  background: transparent;\n  color: white;\n  outline: none;\n  border: none;\n  color-scheme: dark;\n}\n\n#view {\n  background-position: right 1.25rem center;\n}\n.dropdown-text {\n  width: 100%; /* Adjust this to your preferred width */\n  white-space: nowrap; /* Prevents text from wrapping */\n  overflow: hidden; /* Hides overflow text */\n  text-overflow: ellipsis; /* Adds ellipsis (...) at the end of the text */\n}\n\ninput,\nselect,\n.buttontext {\n  font-family: \"Barlow\", sans-serif;\n}\n",
+      "start": 1727432839677,
+      "end": 1727432839677,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/CheckoutAvailability.vue"
+        ],
+        "names": [],
+        "mappings": "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",
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/CheckoutAvailability.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <div class=\"relative\">\n    <!-- main hero booking options selector -->\n    <div\n      class=\"inset-x-0 lg:flex lg:flex-col xl:flex-row flex-col lg:justify-center lg:mx-0 mx-4\"\n    >\n      <div\n        class=\"xl:flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center lg:space-x-0 border rounded-l-none rounded-r-none lg:rounded-l-lg lg:rounded-r-none shadow-lg border-white bg-black-200 bg-opacity-65\"\n      >\n        <div class=\"relative lg:max-w-xs lg:mx-auto\">\n          <input\n            type=\"datetime-local\"\n            class=\"w-full bg-transparent border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white\"\n            placeholder=\"Check In Date\"\n            v-model=\"check_in\"\n          />\n        </div>\n        <div class=\"w-0.5 bg-white h-8 my-auto xl:flex hidden\"></div>\n        <!-- Vertical separator -->\n        <div class=\"relative lg:max-w-xs lg:mx-auto\">\n          <input\n            type=\"datetime-local\"\n            class=\"w-full border-none bg-transparent rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white\"\n            placeholder=\"Check Out Date\"\n            v-model=\"check_out\"\n          />\n        </div>\n        <div class=\"w-0.5 bg-white h-8 my-auto xl:flex hidden\"></div>\n        <!-- Vertical separator -->\n        <div class=\"lg:max-w-sm lg:mx-auto\">\n          <div class=\"relative\">\n            <div\n              @click=\"toggleDropdown\"\n              ref=\"dropdownContainer\"\n              class=\"text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer flex justify-between items-center\"\n            >\n              <div class=\"overflow-hidden text-ellipsis whitespace-nowrap w-24\">\n                <span v-if=\"selectedCategories.length === 0\">Choose Rooms</span>\n                <span v-else>{{ selectedCategories.join(\", \") }}</span>\n              </div>\n\n              <div class=\"ml-1\">\n                <svg\n                  v-if=\"dropdownOpen\"\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                  class=\"h-4 w-4\"\n                  viewBox=\"0 0 20 20\"\n                  fill=\"currentColor\"\n                >\n                  <path\n                    fill-rule=\"evenodd\"\n                    d=\"M10 3a1 1 0 01.707.293l7 7a1 1 0 11-1.414 1.414L10 5.414l-6.293 6.293a1 1 0 01-1.414-1.414l7-7A1 1 0 0110 3z\"\n                    clip-rule=\"evenodd\"\n                  />\n                </svg>\n                <svg\n                  v-else\n                  xmlns=\"http://www.w3.org/2000/svg\"\n                  class=\"h-4 w-4\"\n                  viewBox=\"0 0 20 20\"\n                  fill=\"currentColor\"\n                >\n                  <path\n                    fill-rule=\"evenodd\"\n                    d=\"M10 17a1 1 0 01-.707-.293l-7-7a1 1 0 011.414-1.414L10 14.586l6.293-6.293a1 1 0 111.414 1.414l-7 7A1 1 0 0110 17z\"\n                    clip-rule=\"evenodd\"\n                  />\n                </svg>\n              </div>\n            </div>\n\n            <!-- Dropdown Options -->\n            <div\n              v-if=\"dropdownOpen\"\n              class=\"absolute mt-2 w-full max-w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg z-10\"\n            >\n              <div\n                v-for=\"room in room_types\"\n                :key=\"room.value\"\n                class=\"p-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center\"\n                @click.stop=\"selectCategory(room.category)\"\n              >\n                <input\n                  type=\"checkbox\"\n                  :value=\"room.category\"\n                  :checked=\"selectedCategories.includes(room.category)\"\n                  @change=\"selectCategory(room.category)\"\n                  class=\"mr-2\"\n                />\n                <span class=\"text-gray-900 dark:text-white\">\n                  {{ room.category }}\n                </span>\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"w-0.5 bg-white h-8 my-auto xl:flex hidden\"></div>\n        <form class=\"lg:max-w-sm lg:mx-auto\">\n          <select\n            id=\"view\"\n            class=\"text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500\"\n            v-model=\"roomView\"\n          >\n            <option :value=\"null\" disabled selected class=\"text-gray-900\">\n              Choose Room View\n            </option>\n            <option value=\"LAKE\" class=\"text-gray-900\">LAKE</option>\n            <option value=\"MOUNTAIN\" class=\"text-gray-900\">MOUNTAIN</option>\n          </select>\n        </form>\n        <div class=\"w-0.5 bg-white h-8 my-auto xl:flex hidden\"></div>\n\n        <form class=\"lg:max-w-sm lg:mx-auto\">\n          <input\n            v-model=\"discount_code\"\n            type=\"text\"\n            placeholder=\"Discount Code\"\n            class=\"text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500\"\n          />\n        </form>\n      </div>\n      <button\n        class=\"bg-red-100 hover:bg-red-500 text-sm text-center text-white p-2 md:p-4 rounded xl:rounded-r-lg xl:rounded-l-none hidden justify-center lg:flex\"\n        @click=\"checkAvailability\"\n      >\n        <span v-if=\"loading\" class=\"flex\">\n          <!-- Loader Icon or Text -->\n          <svg\n            class=\"animate-spin h-5 w-5 mr-3 text-white\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            fill=\"none\"\n            viewBox=\"0 0 24 24\"\n          >\n            <circle\n              class=\"opacity-25\"\n              cx=\"12\"\n              cy=\"12\"\n              r=\"10\"\n              stroke=\"currentColor\"\n              stroke-width=\"4\"\n            ></circle>\n            <path\n              class=\"opacity-75\"\n              fill=\"currentColor\"\n              d=\"M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z\"\n            ></path>\n          </svg>\n          Loading...\n        </span>\n        <span v-else>Check Availability</span>\n      </button>\n\n      <div class=\"lg:hidden\">\n        <button\n          class=\"bg-red-100 hover:bg-red-500 buttontext text-sm text-white p-4 rounded-none border border-white w-full\"\n          @click=\"checkAvailability\"\n        >\n          <span v-if=\"loading\" class=\"flex items-center justify-center\">\n            <!-- Loader Icon or Text -->\n            <svg\n              class=\"animate-spin h-5 w-5 mr-3 text-white\"\n              xmlns=\"http://www.w3.org/2000/svg\"\n              fill=\"none\"\n              viewBox=\"0 0 24 24\"\n            >\n              <circle\n                class=\"opacity-25\"\n                cx=\"12\"\n                cy=\"12\"\n                r=\"10\"\n                stroke=\"currentColor\"\n                stroke-width=\"4\"\n              ></circle>\n              <path\n                class=\"opacity-75\"\n                fill=\"currentColor\"\n                d=\"M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z\"\n              ></path>\n            </svg>\n            Loading...\n          </span>\n          <span v-else> Check Availability </span>\n        </button>\n      </div>\n    </div>\n  </div>\n</template>\n<script>\nimport { toast } from \"vue3-toastify\";\nimport \"vue3-toastify/dist/index.css\";\n\nexport default {\n  data() {\n    return {\n      check_in: \"\",\n      check_out: \"\",\n      roomCategory: null,\n      roomView: null,\n      room_types: [],\n      selectedCategories: [],\n      discount_code: \"\",\n      dropdownOpen: false,\n      loading: false,\n    };\n  },\n\n  methods: {\n    formatDateToISO(dateString) {\n      const date = new Date(dateString);\n      // Format manually without changing the time\n      const year = date.getUTCFullYear();\n      const month = String(date.getUTCMonth() + 1).padStart(2, \"0\");\n      const day = String(date.getUTCDate()).padStart(2, \"0\");\n      const hours = String(date.getUTCHours()).padStart(2, \"0\");\n      const minutes = String(date.getUTCMinutes()).padStart(2, \"0\");\n\n      return `${year}-${month}-${day}T${hours}:${minutes}:00.000Z`;\n    },\n\n    populateFieldsFromQuery() {\n      const { fromDate, toDate, categories, view, discount } =\n        this.$route.query;\n      this.check_in = fromDate || this.formatDateTime(new Date());\n      this.check_out =\n        toDate ||\n        this.formatDateTime(\n          new Date(new Date().getTime() + 2 * 60 * 60 * 1000)\n        ); // 2 hours later\n      this.roomView = view || null;\n      this.discount_code = discount || \"\";\n      console.log(\"FROM_URL\", this.check_in, this.check_out);\n      // Handle categories\n      if (categories) {\n        this.selectedCategories = categories.split(\",\"); // Split categories string into an array\n      } else {\n        this.selectedCategories = [];\n      }\n      console.log(\"Populated Categories:\", this.selectedCategories); // Verify here\n    },\n    formatDateTime(date) {\n      if (!(date instanceof Date) || isNaN(date)) {\n        return \"\";\n      }\n\n      const year = date.getFullYear();\n      const month = String(date.getMonth() + 1).padStart(2, \"0\"); // Months are zero-based\n      const day = String(date.getDate()).padStart(2, \"0\");\n      const hours = String(date.getHours()).padStart(2, \"0\");\n      const minutes = String(date.getMinutes()).padStart(2, \"0\");\n\n      return `${year}-${month}-${day}T${hours}:${minutes}`;\n    },\n\n    selectCategory(category) {\n      if (this.selectedCategories.includes(category)) {\n        this.selectedCategories = this.selectedCategories.filter(\n          (c) => c !== category\n        );\n      } else {\n        this.selectedCategories.push(category);\n      }\n      console.log(\"Selected Categories after update:\", this.selectedCategories); // Check updated state\n    },\n\n    toggleDropdown() {\n      this.dropdownOpen = !this.dropdownOpen;\n    },\n    selectCategory(category) {\n      if (this.selectedCategories.includes(category)) {\n        this.selectedCategories = this.selectedCategories.filter(\n          (c) => c !== category\n        );\n      } else {\n        this.selectedCategories.push(category);\n      }\n    },\n    closeDropdown() {\n      this.dropdownOpen = false;\n    },\n    async fetchRoomTypes() {\n      try {\n        const response = await fetch(\n          \"https://api.sueennature.com/rooms/types\",\n          {\n            method: \"GET\",\n            headers: {\n              \"Content-Type\": \"application/json\",\n              \"x-api-key\": this.$config.public.DATABASE_ID, // Adjust the runtime config reference according to your environment\n            },\n          }\n        );\n\n        if (!response.ok) {\n          throw new Error(\"Network response was not ok\");\n        }\n\n        const data = await response.json();\n        this.room_types = data.room_types || [];\n      } catch (error) {\n        console.error(\n          \"There has been a problem with your fetch operation:\",\n          error\n        );\n      }\n    },\n    async checkAvailability() {\n      if (\n        !this.check_in ||\n        !this.check_out ||\n        !this.roomView ||\n        this.selectedCategories.length === 0\n      ) {\n        return this.setupToastError(\"Please fill all fields\");\n      }\n\n      const checkInDate = new Date(this.check_in);\n      const checkOutDate = new Date(this.check_out);\n      const checkInDateOnly = checkInDate.toISOString().split(\"T\")[0];\n      const checkOutDateOnly = checkOutDate.toISOString().split(\"T\")[0];\n\n      if (checkInDateOnly === checkOutDateOnly) {\n        return toast.error(\n          \"Check-out date must be different from check-in date.\"\n        );\n      }\n      if (checkOutDate <= checkInDate) {\n        return this.setupToastError(\n          \"Check-out date must be after check-in date\"\n        );\n      }\n\n      const formatDateToISO = (date) => {\n        const localDate = new Date(date);\n        const offset = localDate.getTimezoneOffset();\n        const adjustedDate = new Date(localDate.getTime() - offset * 60 * 1000);\n        return adjustedDate.toISOString().slice(0, 19); // Use YYYY-MM-DDTHH:MM:SS format\n      };\n\n      const formattedCheckIn = formatDateToISO(this.check_in);\n      const formattedCheckOut = formatDateToISO(this.check_out);\n\n      console.log(\"FORMATTED\", formattedCheckIn, formattedCheckOut);\n\n      const runtimeConfig = useRuntimeConfig();\n\n      const baseUrl = \"https://api.sueennature.com/rooms/availability/\";\n      const params = new URLSearchParams({\n        check_in: formattedCheckIn,\n        check_out: formattedCheckOut,\n        views: this.roomView,\n        discount_code: this.discount_code,\n      });\n\n      this.selectedCategories.forEach((category) => {\n        params.append(\"categories\", category);\n      });\n\n      const url = `${baseUrl}?${params.toString()}`;\n      console.log(\"URL\", url);\n\n      this.loading = true;\n      try {\n        const response = await fetch(url, {\n          method: \"GET\",\n          headers: {\n            \"x-api-key\": runtimeConfig.public.DATABASE_ID,\n            \"Content-Type\": \"application/json\",\n          },\n        });\n\n        const data = await response.json();\n        this.loading = false;\n        if (response.status === 200) {\n          this.setupToastSuccess(\"Availability checked successfully.\");\n          setTimeout(() => {\n            window.location.reload();\n          }, 1500);\n          this.$router.push({\n            path: \"/booking\",\n            query: {\n              fromDate: this.check_in,\n              toDate: this.check_out,\n              categories: this.selectedCategories.join(\",\"),\n              view: this.roomView,\n              discount: this.discount_code,\n            },\n          });\n        } else if (response.status === 204) {\n          this.setupToastError(\"No rooms available.\");\n        } else {\n          const errorData = await response.json();\n          this.setupToastError(\n            `An error occurred: ${errorData.message || \"Unknown error\"}`\n          );\n        }\n        // Handle response data as needed\n      } catch (error) {\n        this.loading = false;\n        this.setupToastError(`An error occurred: ${error.message}`);\n      }\n    },\n\n    setupToastSuccess(message) {\n      toast.success(message, { autoClose: 3000 });\n    },\n\n    setupToastError(message) {\n      toast.error(message, { autoClose: 3000 });\n    },\n    handleClickOutside(event) {\n      if (\n        this.dropdownOpen &&\n        !this.$refs.dropdownContainer.contains(event.target)\n      ) {\n        this.dropdownOpen = false;\n      }\n    },\n  },\n  mounted() {\n    this.populateFieldsFromQuery();\n    document.addEventListener(\"click\", this.handleClickOutside);\n\n    this.fetchRoomTypes();\n\n    Promise.all([\n      import(\"flowbite-datepicker/Datepicker\"),\n      import(\"flowbite-datepicker/Datepicker\"),\n    ]).then(([DatePicker1, DatePicker2]) => {\n      const datepickerEl1 = this.$refs.datepicker1;\n      const datepickerEl2 = this.$refs.datepicker2;\n      new DatePicker1.default(datepickerEl1, {\n        autohide: true,\n        orientation: \"bottom right\",\n      });\n      new DatePicker2.default(datepickerEl2, {\n        autohide: true,\n        orientation: \"bottom right\",\n      });\n    });\n  },\n  beforeDestroy() {\n    document.removeEventListener(\"click\", this.handleClickOutside);\n  },\n};\n</script>\n\n<style scoped>\ninput[type=\"date\"] {\n  background: transparent;\n  color: white;\n  outline: none;\n  border: none;\n  color-scheme: dark;\n}\n\n#view {\n  background-position: right 1.25rem center;\n}\n.dropdown-text {\n  width: 100%; /* Adjust this to your preferred width */\n  white-space: nowrap; /* Prevents text from wrapping */\n  overflow: hidden; /* Hides overflow text */\n  text-overflow: ellipsis; /* Adds ellipsis (...) at the end of the text */\n}\n\ninput,\nselect,\n.buttontext {\n  font-family: \"Barlow\", sans-serif;\n}\n</style>\n"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432839677,
+      "end": 1727432839677,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432839677,
+      "end": 1727432839677,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432839677,
+      "end": 1727432839677,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432839677,
+      "end": 1727432839677,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432839677,
+      "end": 1727432839677,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "input[type=date]{background:transparent;border:none;color:#fff;color-scheme:dark;outline:none}#view{background-position:right 1.25rem center}.dropdown-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}.buttontext,input,select{font-family:Barlow,sans-serif}",
+      "start": 1727432839677,
+      "end": 1727432839683,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/CheckoutAvailability.vue",
+        "mappings": "AACA,iBACE,sBAAuB,CAGvB,WAAY,CAFZ,UAAY,CAGZ,iBAAkB,CAFlB,YAGF,CAEA,MACE,wCACF,CACA,eAGE,eAAgB,CAChB,sBAAuB,CAFvB,kBAAmB,CADnB,UAIF,CAEA,yBAGE,6BACF",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/CheckoutAvailability.vue"
+        ],
+        "sourcesContent": [
+          "\ninput[type=\"date\"] {\n  background: transparent;\n  color: white;\n  outline: none;\n  border: none;\n  color-scheme: dark;\n}\n\n#view {\n  background-position: right 1.25rem center;\n}\n.dropdown-text {\n  width: 100%; /* Adjust this to your preferred width */\n  white-space: nowrap; /* Prevents text from wrapping */\n  overflow: hidden; /* Hides overflow text */\n  text-overflow: ellipsis; /* Adds ellipsis (...) at the end of the text */\n}\n\ninput,\nselect,\n.buttontext {\n  font-family: \"Barlow\", sans-serif;\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432839683,
+      "end": 1727432839683,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432839683,
+      "end": 1727432839683,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432839683,
+      "end": 1727432839683,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "input[type=date][data-v-caecd611]{background:transparent;border:none;color:#fff;color-scheme:dark;outline:none}#view[data-v-caecd611]{background-position:right 1.25rem center}.dropdown-text[data-v-caecd611]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}.buttontext[data-v-caecd611],input[data-v-caecd611],select[data-v-caecd611]{font-family:Barlow,sans-serif}",
+      "start": 1727432839683,
+      "end": 1727432839685,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/CheckoutAvailability.vue",
+        "mappings": "AAAA,kCAAiB,sBAAsB,CAAC,WAAW,CAAC,UAAU,CAAC,iBAAiB,CAAC,YAAY,CAAC,uBAAM,wCAAwC,CAAC,gCAAe,eAAe,CAAC,sBAAsB,CAAC,kBAAkB,CAAC,UAAU,CAAC,4EAAyB,6BAA6B",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/CheckoutAvailability.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default \"input[type=date][data-v-caecd611]{background:transparent;border:none;color:#fff;color-scheme:dark;outline:none}#view[data-v-caecd611]{background-position:right 1.25rem center}.dropdown-text[data-v-caecd611]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}.buttontext[data-v-caecd611],input[data-v-caecd611],select[data-v-caecd611]{font-family:Barlow,sans-serif}\"",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432839685,
+      "end": 1727432839685,
+      "order": "normal"
+    }
+  ]
+}

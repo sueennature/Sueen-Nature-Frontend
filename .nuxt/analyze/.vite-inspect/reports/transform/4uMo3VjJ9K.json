@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.regexp.to-string.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar PROPER_FUNCTION_NAME = require('../internals/function-name').PROPER;\nvar defineBuiltIn = require('../internals/define-built-in');\nvar anObject = require('../internals/an-object');\nvar $toString = require('../internals/to-string');\nvar fails = require('../internals/fails');\nvar getRegExpFlags = require('../internals/regexp-get-flags');\n\nvar TO_STRING = 'toString';\nvar RegExpPrototype = RegExp.prototype;\nvar nativeToString = RegExpPrototype[TO_STRING];\n\nvar NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) !== '/a/b'; });\n// FF44- RegExp#toString has a wrong name\nvar INCORRECT_NAME = PROPER_FUNCTION_NAME && nativeToString.name !== TO_STRING;\n\n// `RegExp.prototype.toString` method\n// https://tc39.es/ecma262/#sec-regexp.prototype.tostring\nif (NOT_GENERIC || INCORRECT_NAME) {\n  defineBuiltIn(RegExpPrototype, TO_STRING, function toString() {\n    var R = anObject(this);\n    var pattern = $toString(R.source);\n    var flags = $toString(getRegExpFlags(R));\n    return '/' + pattern + '/' + flags;\n  }, { unsafe: true });\n}\n",
+      "start": 1727432819590,
+      "end": 1727432819720,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432819720,
+      "end": 1727432819720,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432819721,
+      "end": 1727432819721,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819721,
+      "end": 1727432819721,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432819721,
+      "end": 1727432819721,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432819721,
+      "end": 1727432819721,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432819721,
+      "end": 1727432819721,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432819721,
+      "end": 1727432819721,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432819721,
+      "end": 1727432819721,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432819721,
+      "end": 1727432819721,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as es_regexp_toString } from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.regexp.to-string.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/function-name.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/define-built-in.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/an-object.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-string.js?commonjs-proxy\";\nimport require$$4 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/fails.js?commonjs-proxy\";\nimport require$$5 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/regexp-get-flags.js?commonjs-proxy\";\n\n'use strict';\nvar PROPER_FUNCTION_NAME = require$$0.PROPER;\nvar defineBuiltIn = require$$1;\nvar anObject = require$$2;\nvar $toString = require$$3;\nvar fails = require$$4;\nvar getRegExpFlags = require$$5;\n\nvar TO_STRING = 'toString';\nvar RegExpPrototype = RegExp.prototype;\nvar nativeToString = RegExpPrototype[TO_STRING];\n\nvar NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) !== '/a/b'; });\n// FF44- RegExp#toString has a wrong name\nvar INCORRECT_NAME = PROPER_FUNCTION_NAME && nativeToString.name !== TO_STRING;\n\n// `RegExp.prototype.toString` method\n// https://tc39.es/ecma262/#sec-regexp.prototype.tostring\nif (NOT_GENERIC || INCORRECT_NAME) {\n  defineBuiltIn(RegExpPrototype, TO_STRING, function toString() {\n    var R = anObject(this);\n    var pattern = $toString(R.source);\n    var flags = $toString(getRegExpFlags(R));\n    return '/' + pattern + '/' + flags;\n  }, { unsafe: true });\n}\n\nexport { es_regexp_toString as __moduleExports, es_regexp_toString as default };",
+      "start": 1727432819721,
+      "end": 1727432820806,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;AAAA,YAAY,CAAC;AACb,IAAI,oBAAoB,GAAG,UAAqC,CAAC,MAAM,CAAC;AACxE,IAAI,aAAa,GAAG,UAAuC,CAAC;AAC5D,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD,IAAI,SAAS,GAAG,UAAiC,CAAC;AAClD,IAAI,KAAK,GAAG,UAA6B,CAAC;AAC1C,IAAI,cAAc,GAAG,UAAwC,CAAC;AAC9D;AACA,IAAI,SAAS,GAAG,UAAU,CAAC;AAC3B,IAAI,eAAe,GAAG,MAAM,CAAC,SAAS,CAAC;AACvC,IAAI,cAAc,GAAG,eAAe,CAAC,SAAS,CAAC,CAAC;AAChD;AACA,IAAI,WAAW,GAAG,KAAK,CAAC,YAAY,EAAE,OAAO,cAAc,CAAC,IAAI,CAAC,EAAE,MAAM,EAAE,GAAG,EAAE,KAAK,EAAE,GAAG,EAAE,CAAC,KAAK,MAAM,CAAC,EAAE,CAAC,CAAC;AAC7G;AACA,IAAI,cAAc,GAAG,oBAAoB,IAAI,cAAc,CAAC,IAAI,KAAK,SAAS,CAAC;AAC/E;AACA;AACA;AACA,IAAI,WAAW,IAAI,cAAc,EAAE;AACnC,EAAE,aAAa,CAAC,eAAe,EAAE,SAAS,EAAE,SAAS,QAAQ,GAAG;AAChE,IAAI,IAAI,CAAC,GAAG,QAAQ,CAAC,IAAI,CAAC,CAAC;AAC3B,IAAI,IAAI,OAAO,GAAG,SAAS,CAAC,CAAC,CAAC,MAAM,CAAC,CAAC;AACtC,IAAI,IAAI,KAAK,GAAG,SAAS,CAAC,cAAc,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7C,IAAI,OAAO,GAAG,GAAG,OAAO,GAAG,GAAG,GAAG,KAAK,CAAC;AACvC,GAAG,EAAE,EAAE,MAAM,EAAE,IAAI,EAAE,CAAC,CAAC;AACvB"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820807,
+      "end": 1727432820807,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820815,
+      "end": 1727432820815,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820815,
+      "end": 1727432820815,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820815,
+      "end": 1727432820815,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820815,
+      "end": 1727432820815,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820815,
+      "end": 1727432820816,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820816,
+      "end": 1727432820816,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820816,
+      "end": 1727432820816,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820816,
+      "end": 1727432820816,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820816,
+      "end": 1727432820816,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820816,
+      "end": 1727432820816,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820816,
+      "end": 1727432820816,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/flowbite/lib/esm/components/clipboard/index.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "var __assign = (this && this.__assign) || function () {\n    __assign = Object.assign || function(t) {\n        for (var s, i = 1, n = arguments.length; i < n; i++) {\n            s = arguments[i];\n            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))\n                t[p] = s[p];\n        }\n        return t;\n    };\n    return __assign.apply(this, arguments);\n};\nimport instances from '../../dom/instances';\nvar Default = {\n    htmlEntities: false,\n    contentType: 'input',\n    onCopy: function () { },\n};\nvar DefaultInstanceOptions = {\n    id: null,\n    override: true,\n};\nvar CopyClipboard = /** @class */ (function () {\n    function CopyClipboard(triggerEl, targetEl, options, instanceOptions) {\n        if (triggerEl === void 0) { triggerEl = null; }\n        if (targetEl === void 0) { targetEl = null; }\n        if (options === void 0) { options = Default; }\n        if (instanceOptions === void 0) { instanceOptions = DefaultInstanceOptions; }\n        this._instanceId = instanceOptions.id\n            ? instanceOptions.id\n            : targetEl.id;\n        this._triggerEl = triggerEl;\n        this._targetEl = targetEl;\n        this._options = __assign(__assign({}, Default), options);\n        this._initialized = false;\n        this.init();\n        instances.addInstance('CopyClipboard', this, this._instanceId, instanceOptions.override);\n    }\n    CopyClipboard.prototype.init = function () {\n        var _this = this;\n        if (this._targetEl && this._triggerEl && !this._initialized) {\n            this._triggerElClickHandler = function () {\n                _this.copy();\n            };\n            // clicking on the trigger element should copy the value of the target element\n            if (this._triggerEl) {\n                this._triggerEl.addEventListener('click', this._triggerElClickHandler);\n            }\n            this._initialized = true;\n        }\n    };\n    CopyClipboard.prototype.destroy = function () {\n        if (this._triggerEl && this._targetEl && this._initialized) {\n            if (this._triggerEl) {\n                this._triggerEl.removeEventListener('click', this._triggerElClickHandler);\n            }\n            this._initialized = false;\n        }\n    };\n    CopyClipboard.prototype.removeInstance = function () {\n        instances.removeInstance('CopyClipboard', this._instanceId);\n    };\n    CopyClipboard.prototype.destroyAndRemoveInstance = function () {\n        this.destroy();\n        this.removeInstance();\n    };\n    CopyClipboard.prototype.getTargetValue = function () {\n        if (this._options.contentType === 'input') {\n            return this._targetEl.value;\n        }\n        if (this._options.contentType === 'innerHTML') {\n            return this._targetEl.innerHTML;\n        }\n        if (this._options.contentType === 'textContent') {\n            return this._targetEl.textContent.replace(/\\s+/g, ' ').trim();\n        }\n    };\n    CopyClipboard.prototype.copy = function () {\n        var textToCopy = this.getTargetValue();\n        // Check if HTMLEntities option is enabled\n        if (this._options.htmlEntities) {\n            // Encode the text using HTML entities\n            textToCopy = this.decodeHTML(textToCopy);\n        }\n        // Create a temporary textarea element\n        var tempTextArea = document.createElement('textarea');\n        tempTextArea.value = textToCopy;\n        document.body.appendChild(tempTextArea);\n        // Select the text inside the textarea and copy it to the clipboard\n        tempTextArea.select();\n        document.execCommand('copy');\n        // Remove the temporary textarea\n        document.body.removeChild(tempTextArea);\n        // Callback function\n        this._options.onCopy(this);\n        return textToCopy;\n    };\n    // Function to encode text into HTML entities\n    CopyClipboard.prototype.decodeHTML = function (html) {\n        var textarea = document.createElement('textarea');\n        textarea.innerHTML = html;\n        return textarea.textContent;\n    };\n    CopyClipboard.prototype.updateOnCopyCallback = function (callback) {\n        this._options.onCopy = callback;\n    };\n    return CopyClipboard;\n}());\nexport function initCopyClipboards() {\n    document\n        .querySelectorAll('[data-copy-to-clipboard-target]')\n        .forEach(function ($triggerEl) {\n        var targetId = $triggerEl.getAttribute('data-copy-to-clipboard-target');\n        var $targetEl = document.getElementById(targetId);\n        var contentType = $triggerEl.getAttribute('data-copy-to-clipboard-content-type');\n        var htmlEntities = $triggerEl.getAttribute('data-copy-to-clipboard-html-entities');\n        // check if the target element exists\n        if ($targetEl) {\n            if (!instances.instanceExists('CopyClipboard', $targetEl.getAttribute('id'))) {\n                new CopyClipboard($triggerEl, $targetEl, {\n                    htmlEntities: htmlEntities && htmlEntities === 'true'\n                        ? true\n                        : Default.htmlEntities,\n                    contentType: contentType\n                        ? contentType\n                        : Default.contentType,\n                });\n            }\n        }\n        else {\n            console.error(\"The target element with id \\\"\".concat(targetId, \"\\\" does not exist. Please check the data-copy-to-clipboard-target attribute.\"));\n        }\n    });\n}\nif (typeof window !== 'undefined') {\n    window.CopyClipboard = CopyClipboard;\n    window.initClipboards = initCopyClipboards;\n}\nexport default CopyClipboard;\n//# sourceMappingURL=index.js.map",
+      "start": 1727432816858,
+      "end": 1727432817091,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432817092,
+      "end": 1727432817092,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432817092,
+      "end": 1727432817094,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432817094,
+      "end": 1727432817094,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-symbol.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar getBuiltIn = require('../internals/get-built-in');\nvar isCallable = require('../internals/is-callable');\nvar isPrototypeOf = require('../internals/object-is-prototype-of');\nvar USE_SYMBOL_AS_UID = require('../internals/use-symbol-as-uid');\n\nvar $Object = Object;\n\nmodule.exports = USE_SYMBOL_AS_UID ? function (it) {\n  return typeof it == 'symbol';\n} : function (it) {\n  var $Symbol = getBuiltIn('Symbol');\n  return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));\n};\n",
+      "start": 1727432820546,
+      "end": 1727432820645,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820645,
+      "end": 1727432820645,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820645,
+      "end": 1727432820646,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820646,
+      "end": 1727432820646,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820646,
+      "end": 1727432820646,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820646,
+      "end": 1727432820646,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/get-built-in.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-callable.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-is-prototype-of.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/use-symbol-as-uid.js?commonjs-proxy\";\n\n'use strict';\nvar getBuiltIn = require$$0;\nvar isCallable = require$$1;\nvar isPrototypeOf = require$$2;\nvar USE_SYMBOL_AS_UID = require$$3;\n\nvar $Object = Object;\n\nvar isSymbol = USE_SYMBOL_AS_UID ? function (it) {\n  return typeof it == 'symbol';\n} : function (it) {\n  var $Symbol = getBuiltIn('Symbol');\n  return isCallable($Symbol) && isPrototypeOf($Symbol.prototype, $Object(it));\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(isSymbol);\nexport { isSymbol as __moduleExports };",
+      "start": 1727432820646,
+      "end": 1727432820648,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;AAAA,YAAY,CAAC;AACb,IAAI,UAAU,GAAG,UAAoC,CAAC;AACtD,IAAI,UAAU,GAAG,UAAmC,CAAC;AACrD,IAAI,aAAa,GAAG,UAA8C,CAAC;AACnE,IAAI,iBAAiB,GAAG,UAAyC,CAAC;AAClE;AACA,IAAI,OAAO,GAAG,MAAM,CAAC;AACrB;IACA,QAAc,GAAG,iBAAiB,GAAG,UAAU,EAAE,EAAE;AACnD,EAAE,OAAO,OAAO,EAAE,IAAI,QAAQ,CAAC;AAC/B,CAAC,GAAG,UAAU,EAAE,EAAE;AAClB,EAAE,IAAI,OAAO,GAAG,UAAU,CAAC,QAAQ,CAAC,CAAC;AACrC,EAAE,OAAO,UAAU,CAAC,OAAO,CAAC,IAAI,aAAa,CAAC,OAAO,CAAC,SAAS,EAAE,OAAO,CAAC,EAAE,CAAC,CAAC,CAAC;AAC9E,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820648,
+      "end": 1727432820648,
+      "order": "normal"
+    }
+  ]
+}

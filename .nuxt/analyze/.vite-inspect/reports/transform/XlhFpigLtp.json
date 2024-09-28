@@ -1,0 +1,221 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/facilitiesHome.vue?vue&type=style&index=0&scoped=03325034&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\nh2,h5 {\n  font-family: \"Philosopher\", sans-serif;\n}\nh3,p {\n  font-family: \"Barlow\", sans-serif;\n}\n.card-padding {\n  padding: 0.5px;\n}\n/* .bg-gradient-right {\n  background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(203, 213, 224, 0.5));\n}\n.bg-gradient-top {\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(203, 213, 224, 0.5));\n} */\n.bg-gradient-right-top {\n  background: linear-gradient(\n      to right,\n      rgba(0, 0, 0, 0),\n      rgba(203, 213, 224, 0.5)\n    ),\n    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(203, 213, 224, 0.5));\n}\n",
+      "start": 1727432815304,
+      "end": 1727432815304
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432815305,
+      "end": 1727432815305,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432815306,
+      "end": 1727432815306,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432815306,
+      "end": 1727432815306,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "h2,h5{font-family:Philosopher,sans-serif}h3,p{font-family:Barlow,sans-serif}.card-padding{padding:.5px}.bg-gradient-right-top{background:linear-gradient(90deg,transparent,rgba(203,213,224,.5)),linear-gradient(180deg,transparent,rgba(203,213,224,.5))}",
+      "start": 1727432815306,
+      "end": 1727432815322,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432815323,
+      "end": 1727432815323,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432815323,
+      "end": 1727432815323,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432815324,
+      "end": 1727432815324,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "h2[data-v-03325034],h5[data-v-03325034]{font-family:Philosopher,sans-serif}h3[data-v-03325034],p[data-v-03325034]{font-family:Barlow,sans-serif}.card-padding[data-v-03325034]{padding:.5px}.bg-gradient-right-top[data-v-03325034]{background:linear-gradient(90deg,transparent,rgba(203,213,224,.5)),linear-gradient(180deg,transparent,rgba(203,213,224,.5))}",
+      "start": 1727432815324,
+      "end": 1727432815325,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432815326,
+      "end": 1727432815326,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432815326,
+      "end": 1727432815326,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432815326,
+      "end": 1727432815326,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432815326,
+      "end": 1727432815326,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432815326,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432815327,
+      "end": 1727432815327,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432815328,
+      "end": 1727432815328,
+      "order": "normal"
+    }
+  ]
+}

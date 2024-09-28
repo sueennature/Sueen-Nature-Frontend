@@ -1,0 +1,276 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/pages/deluxeRoom.vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <div class=\"main overflow-hidden\">\n    <heroRoomsSingle/>\n    <contentRoomDeluxe/>\n    <footerHome />\n  </div>\n</template>\n\n<script setup>\nimport heroRoomsSingle from \"~/components/heroRoomsSingle.vue\";\nimport footerHome from \"~/components/footerHome.vue\";\nimport contentRoomsDeluxe from \"~/components/contentRoomDeluxe.vue\";\n\n\n</script>\n\n<style  scoped>\n</style>",
+      "start": 1727432831977,
+      "end": 1727432834628,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432834628,
+      "end": 1727432834628,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import { resolveComponent as _resolveComponent, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderComponent as _ssrRenderComponent, ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\"\n\nimport heroRoomsSingle from \"~/components/heroRoomsSingle.vue\";\nimport footerHome from \"~/components/footerHome.vue\";\nimport contentRoomsDeluxe from \"~/components/contentRoomDeluxe.vue\";\n\n\n\nconst _sfc_main = {\n  __name: 'deluxeRoom',\n  __ssrInlineRender: true,\n  setup(__props) {\n\n\nreturn (_ctx, _push, _parent, _attrs) => {\n  const _component_contentRoomDeluxe = _resolveComponent(\"contentRoomDeluxe\")\n\n  _push(`<div${_ssrRenderAttrs(_mergeProps({ class: \"main overflow-hidden\" }, _attrs))}>`)\n  _push(_ssrRenderComponent(heroRoomsSingle, null, null, _parent))\n  _push(_ssrRenderComponent(_component_contentRoomDeluxe, null, null, _parent))\n  _push(_ssrRenderComponent(footerHome, null, null, _parent))\n  _push(`</div>`)\n}\n}\n\n}\n\n\n\nimport { useSSRContext as __vite_useSSRContext } from 'vue'\nconst _sfc_setup = _sfc_main.setup\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext()\n  ;(ssrContext.modules || (ssrContext.modules = new Set())).add(\"pages/deluxeRoom.vue\")\n  return _sfc_setup ? _sfc_setup(props, ctx) : undefined\n}\nexport default _sfc_main",
+      "start": 1727432834628,
+      "end": 1727432834631,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/pages/deluxeRoom.vue"
+        ],
+        "sourcesContent": [
+          "<template>\n  <div class=\"main overflow-hidden\">\n    <heroRoomsSingle/>\n    <contentRoomDeluxe/>\n    <footerHome />\n  </div>\n</template>\n\n<script setup>\nimport heroRoomsSingle from \"~/components/heroRoomsSingle.vue\";\nimport footerHome from \"~/components/footerHome.vue\";\nimport contentRoomsDeluxe from \"~/components/contentRoomDeluxe.vue\";\n\n\n</script>\n\n<style  scoped>\n</style>"
+        ],
+        "names": [],
+        "mappings": ";;;AASA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/D,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpE;AACA;;;;;;AALc;;;;;;;;;;;;;"
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432834631,
+      "end": 1727432834631,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432834631,
+      "end": 1727432834632,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432834631,
+      "end": 1727432834632,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432834632,
+      "end": 1727432834633,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432834632,
+      "end": 1727432834633,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432834633,
+      "end": 1727432834633,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432834633,
+      "end": 1727432834633,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "\nconst __nuxt_page_meta = null\nexport default __nuxt_page_meta\n",
+      "start": 1727432834633,
+      "end": 1727432834634,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA;AAAA;AAAA;"
+      }
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "\nconst __nuxt_page_meta = null\nexport default __nuxt_page_meta\n",
+      "start": 1727432834633,
+      "end": 1727432834634,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA;AAAA;AAAA;"
+      }
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432834634,
+      "end": 1727432834634,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432834634,
+      "end": 1727432834634,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432834634,
+      "end": 1727432834634,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432834634,
+      "end": 1727432834634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432834634,
+      "end": 1727432834634,
+      "order": "normal"
+    }
+  ]
+}

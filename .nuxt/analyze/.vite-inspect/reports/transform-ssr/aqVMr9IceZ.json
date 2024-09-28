@@ -1,0 +1,288 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/contentSafetySecurity.vue?vue&type=style&index=0&scoped=a26512cd&lang.css?inline&used",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\nh2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nol li {\n  font-family: \"Barlow\", sans-serif;\n}\n",
+      "start": 1727432838960,
+      "end": 1727432838960,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/contentSafetySecurity.vue"
+        ],
+        "names": [],
+        "mappings": ";AA4CA,CAAC,EAAE;EACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxC;;AAEA,CAAC,CAAC;AACF,CAAC;AACD,CAAC;AACD,CAAC,EAAE,CAAC,EAAE;EACJ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnC",
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/contentSafetySecurity.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <div class=\"sm:container px-4 py-20\">\n    <!-- main title -->\n    <h2\n      class=\"text-black-200 md:text-4xl text-xl font-bold text-center max-w-[50ch] mx-auto\"\n    >\n      Sueen Nature Resort Safety and Security\n    </h2>\n    <p class=\"text-base text-gray-300 mt-16\">\n      Safety and security are paramount at Sueen Nature Resort, and we are committed to providing a secure environment for all our guests. Here are some of the safety and security measures we have in place:\n    </p>\n    <ol\n      class=\"w-full mt-4 space-y-6 text-gray-300 list-decimal list-inside dark:text-gray-400\"\n    >\n      <li>\n        <strong>Staff Training and Awareness: </strong> All staff members are considered part of the security team and are trained to prioritize guest safety and security. They are vigilant and proactive in identifying and addressing potential security concerns.\n\n      </li>\n      <li>\n        <strong>Closed Circuit Television (CCTV) Surveillance: </strong>We have installed the latest CCTV technology at key areas throughout the resort premises. Trained security officers monitor these cameras 24/7 to ensure the safety of our guests and the security of the property.\n      </li>\n      <li>\n        <strong>Regular Security Audits: </strong>Comprehensive security audits are conducted regularly to assess and enhance security measures. These audits help identify any vulnerabilities and ensure that our security protocols are up to date and effective.\n      </li>\n      <li>\n        <strong>Dedicated Fire/Life/Safety Officers: </strong> We have appointed dedicated Fire/Life/Safety Officers whose primary responsibility is to monitor and maintain all fire, life, and safety systems within the resort. They are trained to respond swiftly and effectively in case of any emergency situations.\n      </li>\n      <li>\n        <strong>Ongoing Staff Training Workshops: </strong> Our security staff regularly participate in training workshops to ensure they are well-equipped to handle various emergency situations. These workshops cover a wide range of scenarios and provide our staff with the necessary skills and knowledge to respond effectively.\n      </li>\n      <li>\n        <strong>24/7 Emergency Response Teams: </strong>We have cross-functional emergency response teams available on-site 24 hours a day, 7 days a week. These teams are trained to respond to emergencies promptly and efficiently, ensuring the safety and well-being of our guests at all times.\n      </li>\n    </ol>  \n    <p class=\"text-base text-gray-300 mt-6\">\n      At Sueen Nature Resort, we prioritize the safety and security of our guests above all else. You can relax and enjoy your stay knowing that we have implemented stringent security measures to protect you and provide you with a safe and secure environment. If you have any concerns or require assistance during your stay, please do not hesitate to contact our staff or security team. Your safety is our top priority.\n    </p>\n  </div>\n</template>\n\n<script setup>\n</script>\n\n<style scoped>\nh2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nol li {\n  font-family: \"Barlow\", sans-serif;\n}\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432838962,
+      "end": 1727432838962,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432838962,
+      "end": 1727432838962,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432838963,
+      "end": 1727432838963,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432838963,
+      "end": 1727432838963,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432838964,
+      "end": 1727432838964,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "h2{font-family:Philosopher,sans-serif}a,h5,ol li,p{font-family:Barlow,sans-serif}",
+      "start": 1727432838964,
+      "end": 1727432838974,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/contentSafetySecurity.vue",
+        "mappings": "AACA,GACE,kCACF,CAEA,aAIE,6BACF",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/contentSafetySecurity.vue"
+        ],
+        "sourcesContent": [
+          "\nh2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nol li {\n  font-family: \"Barlow\", sans-serif;\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432838974,
+      "end": 1727432838974,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432838975,
+      "end": 1727432838975,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432838979,
+      "end": 1727432838979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "h2[data-v-a26512cd]{font-family:Philosopher,sans-serif}a[data-v-a26512cd],h5[data-v-a26512cd],ol li[data-v-a26512cd],p[data-v-a26512cd]{font-family:Barlow,sans-serif}",
+      "start": 1727432838980,
+      "end": 1727432838982,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/var/www/html/Sueen-Nature-Frontend/components/contentSafetySecurity.vue",
+        "mappings": "AAAA,oBAAG,kCAAkC,CAAC,iFAAa,6BAA6B",
+        "names": [],
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/contentSafetySecurity.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432838982,
+      "end": 1727432838983,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838983,
+      "end": 1727432838983,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838983,
+      "end": 1727432838984,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432838984,
+      "end": 1727432838984,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432838984,
+      "end": 1727432838984,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432838984,
+      "end": 1727432838985,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432838988,
+      "end": 1727432838988,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432838989,
+      "end": 1727432838989,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432838990,
+      "end": 1727432838990,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default \"h2[data-v-a26512cd]{font-family:Philosopher,sans-serif}a[data-v-a26512cd],h5[data-v-a26512cd],ol li[data-v-a26512cd],p[data-v-a26512cd]{font-family:Barlow,sans-serif}\"",
+      "start": 1727432838991,
+      "end": 1727432838991,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432838991,
+      "end": 1727432838992,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432838993,
+      "end": 1727432838993,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432838993,
+      "end": 1727432838993,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432838995,
+      "end": 1727432838996,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432838996,
+      "end": 1727432838996,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432838999,
+      "end": 1727432838999,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432838999,
+      "end": 1727432838999,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432838999,
+      "end": 1727432838999,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432839000,
+      "end": 1727432839000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432839000,
+      "end": 1727432839000,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432839001,
+      "end": 1727432839002,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432839001,
+      "end": 1727432839002,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432839002,
+      "end": 1727432839002,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432839002,
+      "end": 1727432839002,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432839005,
+      "end": 1727432839005,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432839006,
+      "end": 1727432839006,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432839008,
+      "end": 1727432839008,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432839009,
+      "end": 1727432839009,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432839010,
+      "end": 1727432839010,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/shared-store.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar IS_PURE = require('../internals/is-pure');\nvar globalThis = require('../internals/global');\nvar defineGlobalProperty = require('../internals/define-global-property');\n\nvar SHARED = '__core-js_shared__';\nvar store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});\n\n(store.versions || (store.versions = [])).push({\n  version: '3.37.1',\n  mode: IS_PURE ? 'pure' : 'global',\n  copyright: '© 2014-2024 Denis Pushkarev (zloirock.ru)',\n  license: 'https://github.com/zloirock/core-js/blob/v3.37.1/LICENSE',\n  source: 'https://github.com/zloirock/core-js'\n});\n",
+      "start": 1727432820317,
+      "end": 1727432820399,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820400,
+      "end": 1727432820400,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820401,
+      "end": 1727432820401,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820401,
+      "end": 1727432820401,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __module as sharedStoreModule } from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/shared-store.js?commonjs-module\";\nvar sharedStore = sharedStoreModule.exports;\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-pure.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/global.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/define-global-property.js?commonjs-proxy\";\n\n'use strict';\nvar IS_PURE = require$$0;\nvar globalThis = require$$1;\nvar defineGlobalProperty = require$$2;\n\nvar SHARED = '__core-js_shared__';\nvar store = sharedStoreModule.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});\n\n(store.versions || (store.versions = [])).push({\n  version: '3.37.1',\n  mode: IS_PURE ? 'pure' : 'global',\n  copyright: '© 2014-2024 Denis Pushkarev (zloirock.ru)',\n  license: 'https://github.com/zloirock/core-js/blob/v3.37.1/LICENSE',\n  source: 'https://github.com/zloirock/core-js'\n});\n\nvar sharedStoreExports = sharedStoreModule.exports;\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(sharedStoreExports);\nexport { sharedStoreExports as __moduleExports };",
+      "start": 1727432820401,
+      "end": 1727432820421,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;AAAA,YAAY,CAAC;AACb,IAAI,OAAO,GAAG,UAA+B,CAAC;AAC9C,IAAI,UAAU,GAAG,UAA8B,CAAC;AAChD,IAAI,oBAAoB,GAAG,UAA8C,CAAC;AAC1E;AACA,IAAI,MAAM,GAAG,oBAAoB,CAAC;AAClC,IAAI,KAAK,GAAG,yBAAc,GAAG,UAAU,CAAC,MAAM,CAAC,IAAI,oBAAoB,CAAC,MAAM,EAAE,EAAE,CAAC,CAAC;AACpF;AACA,CAAC,KAAK,CAAC,QAAQ,KAAK,KAAK,CAAC,QAAQ,GAAG,EAAE,CAAC,EAAE,IAAI,CAAC;AAC/C,EAAE,OAAO,EAAE,QAAQ;AACnB,EAAE,IAAI,EAAE,OAAO,GAAG,MAAM,GAAG,QAAQ;AACnC,EAAE,SAAS,EAAE,2CAA2C;AACxD,EAAE,OAAO,EAAE,0DAA0D;AACrE,EAAE,MAAM,EAAE,qCAAqC;AAC/C,CAAC,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820421,
+      "end": 1727432820421,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820422,
+      "end": 1727432820422,
+      "order": "normal"
+    }
+  ]
+}

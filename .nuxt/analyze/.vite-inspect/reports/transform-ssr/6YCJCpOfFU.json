@@ -1,0 +1,258 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <div class=\"sm:container px-4 py-20\">\n    <!-- main title -->\n \n\n    <h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\">\n      Data Deletion Instructions\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2\">\n      At sueennature app, we value your privacy and are committed to ensuring\n      that your personal data is handled securely. If you wish to delete your\n      data from our application, please follow the instructions below:\n    </p>\n    <ul\n      class=\"w-full mt-4 space-y-7 text-gray-300 list-decimal list-inside dark:text-gray-400\"\n    >\n      <li>\n        Removing Access via Facebook Settings.\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>Log in to your Facebook account</li>\n          <li>\n            Navigate to the Apps and Websites\n            <a\n              href=\"https://www.facebook.com/settings?tab=applications\"\n              class=\"text-blue-500 font-bold\"\n              >settings</a\n            >\n          </li>\n          <li>Locate and remove our app from the list of active apps</li>\n        </ul>\n      </li>\n      <li>\n        Data Deletion Request\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>Upon removal of our app from your Facebook account, a data deletion request will be automatically initiated</li>\n          <li>Our system will process the deletion of any data we have collected from Facebook about you</li>\n        </ul>\n      </li>\n\n      <li>\n        Manual Deletion Request.\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>If you face any issues or need further assistance, please contact our support team at sueennaturebooking@gmail.com</li>\n          <li>Provide your Facebook user ID and a brief description of your request. Our team will manually process your request and provide confirmation once completed</li>\n        </ul>\n      </li>\n\n    </ul>\n    <h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\">\n        Important Notes\n    </h5>\n \n    <ul\n      class=\"w-full mt-4 space-y-1 text-gray-300 list-disc list-inside dark:text-gray-400\"\n    >\n      <li>\n        Processing Time: The data deletion process may take some time. Please allow up to 30 days for your data to be completely removed from our systems.\n      </li>\n      <li>\n        Retention of Non-Personal Data: Some non-personal data may be retained for legal, regulatory, or internal business purposes.\n      </li>\n     \n    </ul>\n\n    <p class=\"text-base text-gray-300 mt-8\">\n        For more information, please refer to our <a href=\"/privacyPolicy\" class=\"text-blue-500 font-bold\">privacy policy</a>\n        <br/>\n        Thank you for using sueennature app. If you have any questions or concerns, feel free to reach out to our support team. \n    </p>\n  </div>\n</template>\n\n<script setup></script>\n\n<style scoped>\nh3,\nh2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n</style>\n",
+      "start": 1727432835767,
+      "end": 1727432836995,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432836995,
+      "end": 1727432836995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "const _sfc_main = {}\nimport { mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\"\n\nfunction _sfc_ssrRender(_ctx, _push, _parent, _attrs) {\n  _push(`<div${_ssrRenderAttrs(_mergeProps({ class: \"sm:container px-4 py-20\" }, _attrs))} data-v-4401d25a><h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\" data-v-4401d25a> Data Deletion Instructions </h5><p class=\"text-base text-gray-300 mt-2\" data-v-4401d25a> At sueennature app, we value your privacy and are committed to ensuring that your personal data is handled securely. If you wish to delete your data from our application, please follow the instructions below: </p><ul class=\"w-full mt-4 space-y-7 text-gray-300 list-decimal list-inside dark:text-gray-400\" data-v-4401d25a><li data-v-4401d25a> Removing Access via Facebook Settings. <ul class=\"list-disc list-inside mt-[10px]\" data-v-4401d25a><li data-v-4401d25a>Log in to your Facebook account</li><li data-v-4401d25a> Navigate to the Apps and Websites <a href=\"https://www.facebook.com/settings?tab=applications\" class=\"text-blue-500 font-bold\" data-v-4401d25a>settings</a></li><li data-v-4401d25a>Locate and remove our app from the list of active apps</li></ul></li><li data-v-4401d25a> Data Deletion Request <ul class=\"list-disc list-inside mt-[10px]\" data-v-4401d25a><li data-v-4401d25a>Upon removal of our app from your Facebook account, a data deletion request will be automatically initiated</li><li data-v-4401d25a>Our system will process the deletion of any data we have collected from Facebook about you</li></ul></li><li data-v-4401d25a> Manual Deletion Request. <ul class=\"list-disc list-inside mt-[10px]\" data-v-4401d25a><li data-v-4401d25a>If you face any issues or need further assistance, please contact our support team at sueennaturebooking@gmail.com</li><li data-v-4401d25a>Provide your Facebook user ID and a brief description of your request. Our team will manually process your request and provide confirmation once completed</li></ul></li></ul><h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\" data-v-4401d25a> Important Notes </h5><ul class=\"w-full mt-4 space-y-1 text-gray-300 list-disc list-inside dark:text-gray-400\" data-v-4401d25a><li data-v-4401d25a> Processing Time: The data deletion process may take some time. Please allow up to 30 days for your data to be completely removed from our systems. </li><li data-v-4401d25a> Retention of Non-Personal Data: Some non-personal data may be retained for legal, regulatory, or internal business purposes. </li></ul><p class=\"text-base text-gray-300 mt-8\" data-v-4401d25a> For more information, please refer to our <a href=\"/privacyPolicy\" class=\"text-blue-500 font-bold\" data-v-4401d25a>privacy policy</a><br data-v-4401d25a> Thank you for using sueennature app. If you have any questions or concerns, feel free to reach out to our support team. </p></div>`)\n}\n\nimport \"/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue?vue&type=style&index=0&scoped=4401d25a&lang.css\"\n\nimport { useSSRContext as __vite_useSSRContext } from 'vue'\nconst _sfc_setup = _sfc_main.setup\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext()\n  ;(ssrContext.modules || (ssrContext.modules = new Set())).add(\"components/contentFBPolicy.vue\")\n  return _sfc_setup ? _sfc_setup(props, ctx) : undefined\n}\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['ssrRender',_sfc_ssrRender],['__scopeId',\"data-v-4401d25a\"]])",
+      "start": 1727432836995,
+      "end": 1727432836998,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/var/www/html/Sueen-Nature-Frontend/components/contentFBPolicy.vue"
+        ],
+        "names": [],
+        "mappings": ";;;;EAAA,aAAA,gBAAA,cACO,KAAK,EAAC,yBAAyB,IADtC",
+        "sourcesContent": [
+          "<template>\n  <div class=\"sm:container px-4 py-20\">\n    <!-- main title -->\n \n\n    <h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\">\n      Data Deletion Instructions\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2\">\n      At sueennature app, we value your privacy and are committed to ensuring\n      that your personal data is handled securely. If you wish to delete your\n      data from our application, please follow the instructions below:\n    </p>\n    <ul\n      class=\"w-full mt-4 space-y-7 text-gray-300 list-decimal list-inside dark:text-gray-400\"\n    >\n      <li>\n        Removing Access via Facebook Settings.\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>Log in to your Facebook account</li>\n          <li>\n            Navigate to the Apps and Websites\n            <a\n              href=\"https://www.facebook.com/settings?tab=applications\"\n              class=\"text-blue-500 font-bold\"\n              >settings</a\n            >\n          </li>\n          <li>Locate and remove our app from the list of active apps</li>\n        </ul>\n      </li>\n      <li>\n        Data Deletion Request\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>Upon removal of our app from your Facebook account, a data deletion request will be automatically initiated</li>\n          <li>Our system will process the deletion of any data we have collected from Facebook about you</li>\n        </ul>\n      </li>\n\n      <li>\n        Manual Deletion Request.\n        <ul class=\"list-disc list-inside mt-[10px]\">\n          <li>If you face any issues or need further assistance, please contact our support team at sueennaturebooking@gmail.com</li>\n          <li>Provide your Facebook user ID and a brief description of your request. Our team will manually process your request and provide confirmation once completed</li>\n        </ul>\n      </li>\n\n    </ul>\n    <h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\">\n        Important Notes\n    </h5>\n \n    <ul\n      class=\"w-full mt-4 space-y-1 text-gray-300 list-disc list-inside dark:text-gray-400\"\n    >\n      <li>\n        Processing Time: The data deletion process may take some time. Please allow up to 30 days for your data to be completely removed from our systems.\n      </li>\n      <li>\n        Retention of Non-Personal Data: Some non-personal data may be retained for legal, regulatory, or internal business purposes.\n      </li>\n     \n    </ul>\n\n    <p class=\"text-base text-gray-300 mt-8\">\n        For more information, please refer to our <a href=\"/privacyPolicy\" class=\"text-blue-500 font-bold\">privacy policy</a>\n        <br/>\n        Thank you for using sueennature app. If you have any questions or concerns, feel free to reach out to our support team. \n    </p>\n  </div>\n</template>\n\n<script setup></script>\n\n<style scoped>\nh3,\nh2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n</style>\n"
+        ]
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432836999,
+      "end": 1727432836999,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432836999,
+      "end": 1727432836999,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432836999,
+      "end": 1727432836999,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432836999,
+      "end": 1727432836999,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432836999,
+      "end": 1727432836999,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432837014,
+      "end": 1727432837021,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432837022,
+      "end": 1727432837022,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432837022,
+      "end": 1727432837023,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432837023,
+      "end": 1727432837023,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432837024,
+      "end": 1727432837024,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432837024,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432837024,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432837028,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432837028,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432837028,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432837028,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1727432837028,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432837028,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432837028,
+      "end": 1727432837028,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432837028,
+      "end": 1727432837028,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432837029,
+      "end": 1727432837029,
+      "order": "normal"
+    }
+  ]
+}

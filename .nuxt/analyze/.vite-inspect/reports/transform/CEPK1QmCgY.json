@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-property-key.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar toPrimitive = require('../internals/to-primitive');\nvar isSymbol = require('../internals/is-symbol');\n\n// `ToPropertyKey` abstract operation\n// https://tc39.es/ecma262/#sec-topropertykey\nmodule.exports = function (argument) {\n  var key = toPrimitive(argument, 'string');\n  return isSymbol(key) ? key : key + '';\n};\n",
+      "start": 1727432820295,
+      "end": 1727432820377,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820377,
+      "end": 1727432820377,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-primitive.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-symbol.js?commonjs-proxy\";\n\n'use strict';\nvar toPrimitive = require$$0;\nvar isSymbol = require$$1;\n\n// `ToPropertyKey` abstract operation\n// https://tc39.es/ecma262/#sec-topropertykey\nvar toPropertyKey = function (argument) {\n  var key = toPrimitive(argument, 'string');\n  return isSymbol(key) ? key : key + '';\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(toPropertyKey);\nexport { toPropertyKey as __moduleExports };",
+      "start": 1727432820377,
+      "end": 1727432820753,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb,IAAI,WAAW,GAAG,UAAoC,CAAC;AACvD,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD;AACA;AACA;IACA,aAAc,GAAG,UAAU,QAAQ,EAAE;AACrC,EAAE,IAAI,GAAG,GAAG,WAAW,CAAC,QAAQ,EAAE,QAAQ,CAAC,CAAC;AAC5C,EAAE,OAAO,QAAQ,CAAC,GAAG,CAAC,GAAG,GAAG,GAAG,GAAG,GAAG,EAAE,CAAC;AACxC,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820753,
+      "end": 1727432820753,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820753,
+      "end": 1727432820753,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820753,
+      "end": 1727432820753,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820753,
+      "end": 1727432820753,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820754,
+      "end": 1727432820754,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820754,
+      "end": 1727432820754,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820754,
+      "end": 1727432820754,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820754,
+      "end": 1727432820754,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820754,
+      "end": 1727432820754,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820754,
+      "end": 1727432820754,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820754,
+      "end": 1727432820754,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820754,
+      "end": 1727432820754,
+      "order": "normal"
+    }
+  ]
+}

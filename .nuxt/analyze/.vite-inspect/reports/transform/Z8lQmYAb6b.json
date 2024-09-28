@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/symbol-constructor-detection.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\n/* eslint-disable es/no-symbol -- required for testing */\nvar V8_VERSION = require('../internals/engine-v8-version');\nvar fails = require('../internals/fails');\nvar global = require('../internals/global');\n\nvar $String = global.String;\n\n// eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing\nmodule.exports = !!Object.getOwnPropertySymbols && !fails(function () {\n  var symbol = Symbol('symbol detection');\n  // Chrome 38 Symbol has incorrect toString conversion\n  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances\n  // nb: Do not call `String` directly to avoid this being optimized out to `symbol+''` which will,\n  // of course, fail.\n  return !$String(symbol) || !(Object(symbol) instanceof Symbol) ||\n    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances\n    !Symbol.sham && V8_VERSION && V8_VERSION < 41;\n});\n",
+      "start": 1727432820263,
+      "end": 1727432820350,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820350,
+      "end": 1727432820350,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820350,
+      "end": 1727432820351,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820351,
+      "end": 1727432820351,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820351,
+      "end": 1727432820351,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820351,
+      "end": 1727432820351,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820351,
+      "end": 1727432820351,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820351,
+      "end": 1727432820351,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820351,
+      "end": 1727432820351,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820351,
+      "end": 1727432820351,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/engine-v8-version.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/fails.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/global.js?commonjs-proxy\";\n\n'use strict';\n/* eslint-disable es/no-symbol -- required for testing */\nvar V8_VERSION = require$$0;\nvar fails = require$$1;\nvar global = require$$2;\n\nvar $String = global.String;\n\n// eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing\nvar symbolConstructorDetection = !!Object.getOwnPropertySymbols && !fails(function () {\n  var symbol = Symbol('symbol detection');\n  // Chrome 38 Symbol has incorrect toString conversion\n  // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances\n  // nb: Do not call `String` directly to avoid this being optimized out to `symbol+''` which will,\n  // of course, fail.\n  return !$String(symbol) || !(Object(symbol) instanceof Symbol) ||\n    // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances\n    !Symbol.sham && V8_VERSION && V8_VERSION < 41;\n});\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(symbolConstructorDetection);\nexport { symbolConstructorDetection as __moduleExports };",
+      "start": 1727432820351,
+      "end": 1727432820503,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;AAAA,YAAY,CAAC;AACb;AACA,IAAI,UAAU,GAAG,UAAyC,CAAC;AAC3D,IAAI,KAAK,GAAG,UAA6B,CAAC;AAC1C,IAAI,MAAM,GAAG,UAA8B,CAAC;AAC5C;AACA,IAAI,OAAO,GAAG,MAAM,CAAC,MAAM,CAAC;AAC5B;AACA;IACA,0BAAc,GAAG,CAAC,CAAC,MAAM,CAAC,qBAAqB,IAAI,CAAC,KAAK,CAAC,YAAY;AACtE,EAAE,IAAI,MAAM,GAAG,MAAM,CAAC,kBAAkB,CAAC,CAAC;AAC1C;AACA;AACA;AACA;AACA,EAAE,OAAO,CAAC,OAAO,CAAC,MAAM,CAAC,IAAI,EAAE,MAAM,CAAC,MAAM,CAAC,YAAY,MAAM,CAAC;AAChE;AACA,IAAI,CAAC,MAAM,CAAC,IAAI,IAAI,UAAU,IAAI,UAAU,GAAG,EAAE,CAAC;AAClD,CAAC,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820503,
+      "end": 1727432820503,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820503,
+      "end": 1727432820503,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820503,
+      "end": 1727432820503,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820503,
+      "end": 1727432820503,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820503,
+      "end": 1727432820503,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820503,
+      "end": 1727432820503,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820503,
+      "end": 1727432820503,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820503,
+      "end": 1727432820504,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820504,
+      "end": 1727432820504,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820504,
+      "end": 1727432820504,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820504,
+      "end": 1727432820504,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820504,
+      "end": 1727432820504,
+      "order": "normal"
+    }
+  ]
+}

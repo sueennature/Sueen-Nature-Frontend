@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\n// TODO: Remove this module from `core-js@4` since it's split to modules listed below\nrequire('../modules/es.promise.constructor');\nrequire('../modules/es.promise.all');\nrequire('../modules/es.promise.catch');\nrequire('../modules/es.promise.race');\nrequire('../modules/es.promise.reject');\nrequire('../modules/es.promise.resolve');\n",
+      "start": 1727432819509,
+      "end": 1727432819619,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432819619,
+      "end": 1727432819619,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432819619,
+      "end": 1727432819619,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432819619,
+      "end": 1727432819619,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432819619,
+      "end": 1727432819619,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432819619,
+      "end": 1727432819619,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432819620,
+      "end": 1727432819620,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432819621,
+      "end": 1727432819621,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as es_promise } from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.js?commonjs-exports\";\nimport \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.constructor.js?commonjs-proxy\";\nimport \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.all.js?commonjs-proxy\";\nimport \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.catch.js?commonjs-proxy\";\nimport \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.race.js?commonjs-proxy\";\nimport \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.reject.js?commonjs-proxy\";\nimport \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.resolve.js?commonjs-proxy\";\n\n'use strict';\n// TODO: Remove this module from `core-js@4` since it's split to modules listed below\n\nexport { es_promise as __moduleExports, es_promise as default };",
+      "start": 1727432819621,
+      "end": 1727432820943,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;AAAA,YAAY,CAAC;AACb"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820944,
+      "end": 1727432820944,
+      "order": "normal"
+    }
+  ]
+}

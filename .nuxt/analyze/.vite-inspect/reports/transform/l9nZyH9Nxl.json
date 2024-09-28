@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/get-substitution.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar uncurryThis = require('../internals/function-uncurry-this');\nvar toObject = require('../internals/to-object');\n\nvar floor = Math.floor;\nvar charAt = uncurryThis(''.charAt);\nvar replace = uncurryThis(''.replace);\nvar stringSlice = uncurryThis(''.slice);\n// eslint-disable-next-line redos/no-vulnerable -- safe\nvar SUBSTITUTION_SYMBOLS = /\\$([$&'`]|\\d{1,2}|<[^>]*>)/g;\nvar SUBSTITUTION_SYMBOLS_NO_NAMED = /\\$([$&'`]|\\d{1,2})/g;\n\n// `GetSubstitution` abstract operation\n// https://tc39.es/ecma262/#sec-getsubstitution\nmodule.exports = function (matched, str, position, captures, namedCaptures, replacement) {\n  var tailPos = position + matched.length;\n  var m = captures.length;\n  var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;\n  if (namedCaptures !== undefined) {\n    namedCaptures = toObject(namedCaptures);\n    symbols = SUBSTITUTION_SYMBOLS;\n  }\n  return replace(replacement, symbols, function (match, ch) {\n    var capture;\n    switch (charAt(ch, 0)) {\n      case '$': return '$';\n      case '&': return matched;\n      case '`': return stringSlice(str, 0, position);\n      case \"'\": return stringSlice(str, tailPos);\n      case '<':\n        capture = namedCaptures[stringSlice(ch, 1, -1)];\n        break;\n      default: // \\d\\d?\n        var n = +ch;\n        if (n === 0) return match;\n        if (n > m) {\n          var f = floor(n / 10);\n          if (f === 0) return match;\n          if (f <= m) return captures[f - 1] === undefined ? charAt(ch, 1) : captures[f - 1] + charAt(ch, 1);\n          return match;\n        }\n        capture = captures[n - 1];\n    }\n    return capture === undefined ? '' : capture;\n  });\n};\n",
+      "start": 1727432819887,
+      "end": 1727432820007,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820007,
+      "end": 1727432820007,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820007,
+      "end": 1727432820008,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820008,
+      "end": 1727432820008,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820008,
+      "end": 1727432820008,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820008,
+      "end": 1727432820008,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820008,
+      "end": 1727432820008,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820008,
+      "end": 1727432820008,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820008,
+      "end": 1727432820008,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820008,
+      "end": 1727432820008,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/function-uncurry-this.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-object.js?commonjs-proxy\";\n\n'use strict';\nvar uncurryThis = require$$0;\nvar toObject = require$$1;\n\nvar floor = Math.floor;\nvar charAt = uncurryThis(''.charAt);\nvar replace = uncurryThis(''.replace);\nvar stringSlice = uncurryThis(''.slice);\n// eslint-disable-next-line redos/no-vulnerable -- safe\nvar SUBSTITUTION_SYMBOLS = /\\$([$&'`]|\\d{1,2}|<[^>]*>)/g;\nvar SUBSTITUTION_SYMBOLS_NO_NAMED = /\\$([$&'`]|\\d{1,2})/g;\n\n// `GetSubstitution` abstract operation\n// https://tc39.es/ecma262/#sec-getsubstitution\nvar getSubstitution = function (matched, str, position, captures, namedCaptures, replacement) {\n  var tailPos = position + matched.length;\n  var m = captures.length;\n  var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;\n  if (namedCaptures !== undefined) {\n    namedCaptures = toObject(namedCaptures);\n    symbols = SUBSTITUTION_SYMBOLS;\n  }\n  return replace(replacement, symbols, function (match, ch) {\n    var capture;\n    switch (charAt(ch, 0)) {\n      case '$': return '$';\n      case '&': return matched;\n      case '`': return stringSlice(str, 0, position);\n      case \"'\": return stringSlice(str, tailPos);\n      case '<':\n        capture = namedCaptures[stringSlice(ch, 1, -1)];\n        break;\n      default: // \\d\\d?\n        var n = +ch;\n        if (n === 0) return match;\n        if (n > m) {\n          var f = floor(n / 10);\n          if (f === 0) return match;\n          if (f <= m) return captures[f - 1] === undefined ? charAt(ch, 1) : captures[f - 1] + charAt(ch, 1);\n          return match;\n        }\n        capture = captures[n - 1];\n    }\n    return capture === undefined ? '' : capture;\n  });\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(getSubstitution);\nexport { getSubstitution as __moduleExports };",
+      "start": 1727432820008,
+      "end": 1727432820417,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb,IAAI,WAAW,GAAG,UAA6C,CAAC;AAChE,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD;AACA,IAAI,KAAK,GAAG,IAAI,CAAC,KAAK,CAAC;AACvB,IAAI,MAAM,GAAG,WAAW,CAAC,EAAE,CAAC,MAAM,CAAC,CAAC;AACpC,IAAI,OAAO,GAAG,WAAW,CAAC,EAAE,CAAC,OAAO,CAAC,CAAC;AACtC,IAAI,WAAW,GAAG,WAAW,CAAC,EAAE,CAAC,KAAK,CAAC,CAAC;AACxC;AACA,IAAI,oBAAoB,GAAG,6BAA6B,CAAC;AACzD,IAAI,6BAA6B,GAAG,qBAAqB,CAAC;AAC1D;AACA;AACA;IACA,eAAc,GAAG,UAAU,OAAO,EAAE,GAAG,EAAE,QAAQ,EAAE,QAAQ,EAAE,aAAa,EAAE,WAAW,EAAE;AACzF,EAAE,IAAI,OAAO,GAAG,QAAQ,GAAG,OAAO,CAAC,MAAM,CAAC;AAC1C,EAAE,IAAI,CAAC,GAAG,QAAQ,CAAC,MAAM,CAAC;AAC1B,EAAE,IAAI,OAAO,GAAG,6BAA6B,CAAC;AAC9C,EAAE,IAAI,aAAa,KAAK,SAAS,EAAE;AACnC,IAAI,aAAa,GAAG,QAAQ,CAAC,aAAa,CAAC,CAAC;AAC5C,IAAI,OAAO,GAAG,oBAAoB,CAAC;AACnC,GAAG;AACH,EAAE,OAAO,OAAO,CAAC,WAAW,EAAE,OAAO,EAAE,UAAU,KAAK,EAAE,EAAE,EAAE;AAC5D,IAAI,IAAI,OAAO,CAAC;AAChB,IAAI,QAAQ,MAAM,CAAC,EAAE,EAAE,CAAC,CAAC;AACzB,MAAM,KAAK,GAAG,EAAE,OAAO,GAAG,CAAC;AAC3B,MAAM,KAAK,GAAG,EAAE,OAAO,OAAO,CAAC;AAC/B,MAAM,KAAK,GAAG,EAAE,OAAO,WAAW,CAAC,GAAG,EAAE,CAAC,EAAE,QAAQ,CAAC,CAAC;AACrD,MAAM,KAAK,GAAG,EAAE,OAAO,WAAW,CAAC,GAAG,EAAE,OAAO,CAAC,CAAC;AACjD,MAAM,KAAK,GAAG;AACd,QAAQ,OAAO,GAAG,aAAa,CAAC,WAAW,CAAC,EAAE,EAAE,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;AACxD,QAAQ,MAAM;AACd,MAAM;AACN,QAAQ,IAAI,CAAC,GAAG,CAAC,EAAE,CAAC;AACpB,QAAQ,IAAI,CAAC,KAAK,CAAC,EAAE,OAAO,KAAK,CAAC;AAClC,QAAQ,IAAI,CAAC,GAAG,CAAC,EAAE;AACnB,UAAU,IAAI,CAAC,GAAG,KAAK,CAAC,CAAC,GAAG,EAAE,CAAC,CAAC;AAChC,UAAU,IAAI,CAAC,KAAK,CAAC,EAAE,OAAO,KAAK,CAAC;AACpC,UAAU,IAAI,CAAC,IAAI,CAAC,EAAE,OAAO,QAAQ,CAAC,CAAC,GAAG,CAAC,CAAC,KAAK,SAAS,GAAG,MAAM,CAAC,EAAE,EAAE,CAAC,CAAC,GAAG,QAAQ,CAAC,CAAC,GAAG,CAAC,CAAC,GAAG,MAAM,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC;AAC7G,UAAU,OAAO,KAAK,CAAC;AACvB,SAAS;AACT,QAAQ,OAAO,GAAG,QAAQ,CAAC,CAAC,GAAG,CAAC,CAAC,CAAC;AAClC,KAAK;AACL,IAAI,OAAO,OAAO,KAAK,SAAS,GAAG,EAAE,GAAG,OAAO,CAAC;AAChD,GAAG,CAAC,CAAC;AACL,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820418,
+      "end": 1727432820418,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820418,
+      "end": 1727432820419,
+      "order": "normal"
+    }
+  ]
+}

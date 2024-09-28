@@ -1,0 +1,214 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/components/contentCookiesPolicy.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <div class=\"sm:container px-4 py-20\">\n    <!-- main title -->\n    <h2\n      class=\"text-black-200 md:text-4xl text-xl font-bold text-center max-w-[50ch] mx-auto\"\n    >\n      Sueen Nature Resort Cookies Policy\n    </h2>\n    <p class=\"text-base text-gray-300 mt-14\">\n      Welcome to the Sueen Nature Resort. This Cookies Policy explains how we,\n      Sueen Nature Resort, located at Sueen Nature, Palangahawatta, Morapitiya\n      Road, Palanda, Baduraliya, Sri Lanka, use cookies and similar technologies\n      to recognize you when you visit our website. It explains what these\n      technologies are and why we use them, as well as your rights to control\n      our use of them.\n    </p>\n    <h5 class=\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\">\n      1. What Are Cookies?\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2\">\n      Cookies are small data files that are placed on your computer or mobile\n      device when you visit a website. Cookies are widely used by website owners\n      in order to make their websites work, or to work more efficiently, as well\n      as to provide reporting information.\n    </p>\n    <h5 class=\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\">\n      2. Why Do We Use Cookies?\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2\">\n      We use cookies for several reasons. Some cookies are required for\n      technical reasons in order for our website to operate, and we refer to\n      these as \"essential\" or \"strictly necessary\" cookies. Other cookies also\n      enable us to track and target the interests of our users to enhance the\n      experience on our website. Third parties serve cookies through our website\n      for advertising, analytics, and other purposes.\n    </p>\n    <h5 class=\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\">\n      3. Types of Cookies Used\n    </h5>\n    <ul\n      class=\"w-full mt-4 space-y-1 text-gray-300 list-disc list-inside dark:text-gray-400\"\n    >\n      <li>\n        <strong>Strictly Necessary Cookies:</strong> These cookies are essential\n        for you to browse the website and use its features, such as accessing\n        secure areas.\n      </li>\n      <li>\n        <strong>Performance and Analytics Cookies:</strong> These cookies\n        collect information about how you use our website, such as which pages\n        you visit most often and if you receive error messages from certain\n        pages.\n      </li>\n      <li>\n        <strong>Functionality Cookies:</strong> These cookies allow our website\n        to remember choices you've made in the past, like what language you\n        prefer, to provide a more personalized experience.\n      </li>\n      <li>\n        <strong>Advertising Cookies:</strong> These cookies are used to make\n        advertising messages more relevant to you. They perform functions like\n        preventing the same ad from continuously reappearing, ensuring that ads\n        are properly displayed, and in some cases selecting advertisements that\n        are based on your interests.\n      </li>\n    </ul>\n    <h5 class=\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\">\n      4. Controlling Cookies\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2\">\n      You have the right to decide whether to accept or reject cookies. You can\n      exercise your cookie rights by setting your preferences in the Cookie\n      Consent Manager. The Cookie Consent Manager allows you to select which\n      categories of cookies you accept or reject. Essential cookies cannot be\n      rejected as they are strictly necessary to provide you with services.\n    </p>\n    <h5 class=\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\">\n      5. Changes to This Cookies Policy\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2\">\n      We may update this Cookies Policy from time to time in order to reflect,\n      for example, changes to the cookies we use or for other operational,\n      legal, or regulatory reasons. Please therefore re-visit this Cookies\n      Policy regularly to stay informed about our use of cookies and related\n      technologies.\n    </p>\n    <h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\">\n      6. Contact Us\n    </h5>\n    <p class=\"text-base text-gray-300 mt-2\">\n      If you have any questions about our use of cookies or other technologies,\n      please email us at sueennature@gmail.com or contact us by phone at +71 256\n      58 54\n    </p>\n    <h5 class=\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\">\n      Effective Date: 04/04/2024\n    </h5>\n  </div>\n</template>\n\n<script setup>\n</script>\n\n<style scoped>\nh3,h2 {\n  font-family: \"Philosopher\", sans-serif;\n}\n\nh5,\na,\np,\nul li {\n  font-family: \"Barlow\", sans-serif;\n}\n</style>",
+      "start": 1727432812674,
+      "end": 1727432813658,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432813659,
+      "end": 1727432813659,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432813659,
+      "end": 1727432813659,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432813659,
+      "end": 1727432813659,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432813659,
+      "end": 1727432813659,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432813659,
+      "end": 1727432813659,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432813659,
+      "end": 1727432813659,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432813659,
+      "end": 1727432813659,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "const _sfc_main = {}\nimport { createElementVNode as _createElementVNode, createTextVNode as _createTextVNode, createStaticVNode as _createStaticVNode, openBlock as _openBlock, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-9854a87a\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = { class: \"sm:container px-4 py-20\" }\nconst _hoisted_2 = /*#__PURE__*/_createStaticVNode(\"<h2 class=\\\"text-black-200 md:text-4xl text-xl font-bold text-center max-w-[50ch] mx-auto\\\" data-v-9854a87a> Sueen Nature Resort Cookies Policy </h2><p class=\\\"text-base text-gray-300 mt-14\\\" data-v-9854a87a> Welcome to the Sueen Nature Resort. This Cookies Policy explains how we, Sueen Nature Resort, located at Sueen Nature, Palangahawatta, Morapitiya Road, Palanda, Baduraliya, Sri Lanka, use cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are and why we use them, as well as your rights to control our use of them. </p><h5 class=\\\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\\\" data-v-9854a87a> 1. What Are Cookies? </h5><p class=\\\"text-base text-gray-300 mt-2\\\" data-v-9854a87a> Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners in order to make their websites work, or to work more efficiently, as well as to provide reporting information. </p><h5 class=\\\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\\\" data-v-9854a87a> 2. Why Do We Use Cookies? </h5><p class=\\\"text-base text-gray-300 mt-2\\\" data-v-9854a87a> We use cookies for several reasons. Some cookies are required for technical reasons in order for our website to operate, and we refer to these as &quot;essential&quot; or &quot;strictly necessary&quot; cookies. Other cookies also enable us to track and target the interests of our users to enhance the experience on our website. Third parties serve cookies through our website for advertising, analytics, and other purposes. </p><h5 class=\\\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\\\" data-v-9854a87a> 3. Types of Cookies Used </h5><ul class=\\\"w-full mt-4 space-y-1 text-gray-300 list-disc list-inside dark:text-gray-400\\\" data-v-9854a87a><li data-v-9854a87a><strong data-v-9854a87a>Strictly Necessary Cookies:</strong> These cookies are essential for you to browse the website and use its features, such as accessing secure areas. </li><li data-v-9854a87a><strong data-v-9854a87a>Performance and Analytics Cookies:</strong> These cookies collect information about how you use our website, such as which pages you visit most often and if you receive error messages from certain pages. </li><li data-v-9854a87a><strong data-v-9854a87a>Functionality Cookies:</strong> These cookies allow our website to remember choices you&#39;ve made in the past, like what language you prefer, to provide a more personalized experience. </li><li data-v-9854a87a><strong data-v-9854a87a>Advertising Cookies:</strong> These cookies are used to make advertising messages more relevant to you. They perform functions like preventing the same ad from continuously reappearing, ensuring that ads are properly displayed, and in some cases selecting advertisements that are based on your interests. </li></ul><h5 class=\\\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\\\" data-v-9854a87a> 4. Controlling Cookies </h5><p class=\\\"text-base text-gray-300 mt-2\\\" data-v-9854a87a> You have the right to decide whether to accept or reject cookies. You can exercise your cookie rights by setting your preferences in the Cookie Consent Manager. The Cookie Consent Manager allows you to select which categories of cookies you accept or reject. Essential cookies cannot be rejected as they are strictly necessary to provide you with services. </p><h5 class=\\\"text-black-200 font-semibold md:text-3xl text-lg text-left my-8\\\" data-v-9854a87a> 5. Changes to This Cookies Policy </h5><p class=\\\"text-base text-gray-300 mt-2\\\" data-v-9854a87a> We may update this Cookies Policy from time to time in order to reflect, for example, changes to the cookies we use or for other operational, legal, or regulatory reasons. Please therefore re-visit this Cookies Policy regularly to stay informed about our use of cookies and related technologies. </p><h5 class=\\\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\\\" data-v-9854a87a> 6. Contact Us </h5><p class=\\\"text-base text-gray-300 mt-2\\\" data-v-9854a87a> If you have any questions about our use of cookies or other technologies, please email us at sueennature@gmail.com or contact us by phone at +71 256 58 54 </p><h5 class=\\\"text-black-200 md:text-3xl text-lg font-semibold text-left my-8\\\" data-v-9854a87a> Effective Date: 04/04/2024 </h5>\", 15)\nconst _hoisted_17 = [\n  _hoisted_2\n]\n\nfunction _sfc_render(_ctx, _cache) {\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, _hoisted_17))\n}\n\nimport \"/var/www/html/Sueen-Nature-Frontend/components/contentCookiesPolicy.vue?vue&type=style&index=0&scoped=9854a87a&lang.css\"\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__scopeId',\"data-v-9854a87a\"]])",
+      "start": 1727432813659,
+      "end": 1727432813661,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432813661,
+      "end": 1727432813662,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432813662,
+      "end": 1727432813662,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432813662,
+      "end": 1727432813662,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432813662,
+      "end": 1727432813662,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432813674,
+      "end": 1727432813674,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432813674,
+      "end": 1727432813681,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432813681,
+      "end": 1727432813681,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432813681,
+      "end": 1727432813681,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432813681,
+      "end": 1727432813681,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432813681,
+      "end": 1727432813682,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432813682,
+      "end": 1727432813682,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432813682,
+      "end": 1727432813682,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432813682,
+      "end": 1727432813682,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432813682,
+      "end": 1727432813682,
+      "order": "normal"
+    }
+  ]
+}

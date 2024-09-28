@@ -1,0 +1,222 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/global.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar check = function (it) {\n  return it && it.Math === Math && it;\n};\n\n// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028\nmodule.exports =\n  // eslint-disable-next-line es/no-global-this -- safe\n  check(typeof globalThis == 'object' && globalThis) ||\n  check(typeof window == 'object' && window) ||\n  // eslint-disable-next-line no-restricted-globals -- safe\n  check(typeof self == 'object' && self) ||\n  check(typeof global == 'object' && global) ||\n  check(typeof this == 'object' && this) ||\n  // eslint-disable-next-line no-new-func -- fallback\n  (function () { return this; })() || Function('return this')();\n",
+      "start": 1727432819990,
+      "end": 1727432820086,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820086,
+      "end": 1727432820086,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820086,
+      "end": 1727432820087,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820087,
+      "end": 1727432820087,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820087,
+      "end": 1727432820087,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820087,
+      "end": 1727432820087,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820087,
+      "end": 1727432820087,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n'use strict';\nvar check = function (it) {\n  return it && it.Math === Math && it;\n};\n\n// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028\nvar global =\n  // eslint-disable-next-line es/no-global-this -- safe\n  check(typeof globalThis == 'object' && globalThis) ||\n  check(typeof window == 'object' && window) ||\n  // eslint-disable-next-line no-restricted-globals -- safe\n  check(typeof self == 'object' && self) ||\n  check(typeof commonjsHelpers.commonjsGlobal == 'object' && commonjsHelpers.commonjsGlobal) ||\n  check(typeof commonjsHelpers.commonjsGlobal == 'object' && commonjsHelpers.commonjsGlobal) ||\n  // eslint-disable-next-line no-new-func -- fallback\n  (function () { return this; })() || Function('return this')();\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(global);\nexport { global as __moduleExports };",
+      "start": 1727432820087,
+      "end": 1727432820088,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [
+          "global",
+          "this"
+        ],
+        "mappings": ";;AAAA,YAAY,CAAC;AACb,IAAI,KAAK,GAAG,UAAU,EAAE,EAAE;AAC1B,EAAE,OAAO,EAAE,IAAI,EAAE,CAAC,IAAI,KAAK,IAAI,IAAI,EAAE,CAAC;AACtC,CAAC,CAAC;AACF;AACA;IACA,MAAc;AACd;AACA,EAAE,KAAK,CAAC,OAAO,UAAU,IAAI,QAAQ,IAAI,UAAU,CAAC;AACpD,EAAE,KAAK,CAAC,OAAO,MAAM,IAAI,QAAQ,IAAI,MAAM,CAAC;AAC5C;AACA,EAAE,KAAK,CAAC,OAAO,IAAI,IAAI,QAAQ,IAAI,IAAI,CAAC;AACxC,EAAE,KAAK,CAAC,OAAOA,8BAAM,IAAI,QAAQ,IAAIA,8BAAM,CAAC;AAC5C,EAAE,KAAK,CAAC,OAAOC,8BAAI,IAAI,QAAQ,IAAIA,8BAAI,CAAC;AACxC;AACA,EAAE,CAAC,YAAY,EAAE,OAAO,IAAI,CAAC,EAAE,GAAG,IAAI,QAAQ,CAAC,aAAa,CAAC,EAAE"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820088,
+      "end": 1727432820088,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.reject.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar $ = require('../internals/export');\nvar newPromiseCapabilityModule = require('../internals/new-promise-capability');\nvar FORCED_PROMISE_CONSTRUCTOR = require('../internals/promise-constructor-detection').CONSTRUCTOR;\n\n// `Promise.reject` method\n// https://tc39.es/ecma262/#sec-promise.reject\n$({ target: 'Promise', stat: true, forced: FORCED_PROMISE_CONSTRUCTOR }, {\n  reject: function reject(r) {\n    var capability = newPromiseCapabilityModule.f(this);\n    var capabilityReject = capability.reject;\n    capabilityReject(r);\n    return capability.promise;\n  }\n});\n",
+      "start": 1727432819769,
+      "end": 1727432819903,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432819903,
+      "end": 1727432819903,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432819903,
+      "end": 1727432819903,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432819903,
+      "end": 1727432819903,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432819903,
+      "end": 1727432819903,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432819904,
+      "end": 1727432819904,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as es_promise_reject } from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/modules/es.promise.reject.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/export.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/new-promise-capability.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/promise-constructor-detection.js?commonjs-proxy\";\n\n'use strict';\nvar $ = require$$0;\nvar newPromiseCapabilityModule = require$$1;\nvar FORCED_PROMISE_CONSTRUCTOR = require$$2.CONSTRUCTOR;\n\n// `Promise.reject` method\n// https://tc39.es/ecma262/#sec-promise.reject\n$({ target: 'Promise', stat: true, forced: FORCED_PROMISE_CONSTRUCTOR }, {\n  reject: function reject(r) {\n    var capability = newPromiseCapabilityModule.f(this);\n    var capabilityReject = capability.reject;\n    capabilityReject(r);\n    return capability.promise;\n  }\n});\n\nexport { es_promise_reject as __moduleExports, es_promise_reject as default };",
+      "start": 1727432819904,
+      "end": 1727432820834,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;AAAA,YAAY,CAAC;AACb,IAAI,CAAC,GAAG,UAA8B,CAAC;AACvC,IAAI,0BAA0B,GAAG,UAA8C,CAAC;AAChF,IAAI,0BAA0B,GAAG,UAAqD,CAAC,WAAW,CAAC;AACnG;AACA;AACA;AACA,CAAC,CAAC,EAAE,MAAM,EAAE,SAAS,EAAE,IAAI,EAAE,IAAI,EAAE,MAAM,EAAE,0BAA0B,EAAE,EAAE;AACzE,EAAE,MAAM,EAAE,SAAS,MAAM,CAAC,CAAC,EAAE;AAC7B,IAAI,IAAI,UAAU,GAAG,0BAA0B,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC;AACxD,IAAI,IAAI,gBAAgB,GAAG,UAAU,CAAC,MAAM,CAAC;AAC7C,IAAI,gBAAgB,CAAC,CAAC,CAAC,CAAC;AACxB,IAAI,OAAO,UAAU,CAAC,OAAO,CAAC;AAC9B,GAAG;AACH,CAAC,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820835,
+      "end": 1727432820835,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820835,
+      "end": 1727432820835,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820836,
+      "end": 1727432820836,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820836,
+      "end": 1727432820837,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820837,
+      "end": 1727432820837,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820862,
+      "end": 1727432820862,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820862,
+      "end": 1727432820862,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820862,
+      "end": 1727432820863,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820863,
+      "end": 1727432820863,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820863,
+      "end": 1727432820863,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820864,
+      "end": 1727432820864,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820864,
+      "end": 1727432820864,
+      "order": "normal"
+    }
+  ]
+}

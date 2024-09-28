@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/get-iterator.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar call = require('../internals/function-call');\nvar aCallable = require('../internals/a-callable');\nvar anObject = require('../internals/an-object');\nvar tryToString = require('../internals/try-to-string');\nvar getIteratorMethod = require('../internals/get-iterator-method');\n\nvar $TypeError = TypeError;\n\nmodule.exports = function (argument, usingIterator) {\n  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;\n  if (aCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));\n  throw new $TypeError(tryToString(argument) + ' is not iterable');\n};\n",
+      "start": 1727432820480,
+      "end": 1727432820578,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820578,
+      "end": 1727432820578,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820578,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820579,
+      "end": 1727432820579,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/function-call.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/a-callable.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/an-object.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/try-to-string.js?commonjs-proxy\";\nimport require$$4 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/get-iterator-method.js?commonjs-proxy\";\n\n'use strict';\nvar call = require$$0;\nvar aCallable = require$$1;\nvar anObject = require$$2;\nvar tryToString = require$$3;\nvar getIteratorMethod = require$$4;\n\nvar $TypeError = TypeError;\n\nvar getIterator = function (argument, usingIterator) {\n  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;\n  if (aCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));\n  throw new $TypeError(tryToString(argument) + ' is not iterable');\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(getIterator);\nexport { getIterator as __moduleExports };",
+      "start": 1727432820579,
+      "end": 1727432820704,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;AAAA,YAAY,CAAC;AACb,IAAI,IAAI,GAAG,UAAqC,CAAC;AACjD,IAAI,SAAS,GAAG,UAAkC,CAAC;AACnD,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD,IAAI,WAAW,GAAG,UAAqC,CAAC;AACxD,IAAI,iBAAiB,GAAG,UAA2C,CAAC;AACpE;AACA,IAAI,UAAU,GAAG,SAAS,CAAC;AAC3B;IACA,WAAc,GAAG,UAAU,QAAQ,EAAE,aAAa,EAAE;AACpD,EAAE,IAAI,cAAc,GAAG,SAAS,CAAC,MAAM,GAAG,CAAC,GAAG,iBAAiB,CAAC,QAAQ,CAAC,GAAG,aAAa,CAAC;AAC1F,EAAE,IAAI,SAAS,CAAC,cAAc,CAAC,EAAE,OAAO,QAAQ,CAAC,IAAI,CAAC,cAAc,EAAE,QAAQ,CAAC,CAAC,CAAC;AACjF,EAAE,MAAM,IAAI,UAAU,CAAC,WAAW,CAAC,QAAQ,CAAC,GAAG,kBAAkB,CAAC,CAAC;AACnE,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820704,
+      "end": 1727432820704,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820704,
+      "end": 1727432820704,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820704,
+      "end": 1727432820704,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820704,
+      "end": 1727432820705,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820705,
+      "end": 1727432820705,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820705,
+      "end": 1727432820705,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820705,
+      "end": 1727432820705,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820705,
+      "end": 1727432820705,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820705,
+      "end": 1727432820705,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820705,
+      "end": 1727432820705,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820705,
+      "end": 1727432820705,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820705,
+      "end": 1727432820705,
+      "order": "normal"
+    }
+  ]
+}

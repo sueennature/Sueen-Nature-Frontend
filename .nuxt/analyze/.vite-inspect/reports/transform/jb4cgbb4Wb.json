@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-forced.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar fails = require('../internals/fails');\nvar isCallable = require('../internals/is-callable');\n\nvar replacement = /#|\\.prototype\\./;\n\nvar isForced = function (feature, detection) {\n  var value = data[normalize(feature)];\n  return value === POLYFILL ? true\n    : value === NATIVE ? false\n    : isCallable(detection) ? fails(detection)\n    : !!detection;\n};\n\nvar normalize = isForced.normalize = function (string) {\n  return String(string).replace(replacement, '.').toLowerCase();\n};\n\nvar data = isForced.data = {};\nvar NATIVE = isForced.NATIVE = 'N';\nvar POLYFILL = isForced.POLYFILL = 'P';\n\nmodule.exports = isForced;\n",
+      "start": 1727432820276,
+      "end": 1727432820367,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820368,
+      "end": 1727432820368,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/fails.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/is-callable.js?commonjs-proxy\";\n\n'use strict';\nvar fails = require$$0;\nvar isCallable = require$$1;\n\nvar replacement = /#|\\.prototype\\./;\n\nvar isForced = function (feature, detection) {\n  var value = data[normalize(feature)];\n  return value === POLYFILL ? true\n    : value === NATIVE ? false\n    : isCallable(detection) ? fails(detection)\n    : !!detection;\n};\n\nvar normalize = isForced.normalize = function (string) {\n  return String(string).replace(replacement, '.').toLowerCase();\n};\n\nvar data = isForced.data = {};\nvar NATIVE = isForced.NATIVE = 'N';\nvar POLYFILL = isForced.POLYFILL = 'P';\n\nvar isForced_1 = isForced;\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(isForced_1);\nexport { isForced_1 as __moduleExports };",
+      "start": 1727432820368,
+      "end": 1727432820370,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;AAAA,YAAY,CAAC;AACb,IAAI,KAAK,GAAG,UAA6B,CAAC;AAC1C,IAAI,UAAU,GAAG,UAAmC,CAAC;AACrD;AACA,IAAI,WAAW,GAAG,iBAAiB,CAAC;AACpC;AACA,IAAI,QAAQ,GAAG,UAAU,OAAO,EAAE,SAAS,EAAE;AAC7C,EAAE,IAAI,KAAK,GAAG,IAAI,CAAC,SAAS,CAAC,OAAO,CAAC,CAAC,CAAC;AACvC,EAAE,OAAO,KAAK,KAAK,QAAQ,GAAG,IAAI;AAClC,MAAM,KAAK,KAAK,MAAM,GAAG,KAAK;AAC9B,MAAM,UAAU,CAAC,SAAS,CAAC,GAAG,KAAK,CAAC,SAAS,CAAC;AAC9C,MAAM,CAAC,CAAC,SAAS,CAAC;AAClB,CAAC,CAAC;AACF;AACA,IAAI,SAAS,GAAG,QAAQ,CAAC,SAAS,GAAG,UAAU,MAAM,EAAE;AACvD,EAAE,OAAO,MAAM,CAAC,MAAM,CAAC,CAAC,OAAO,CAAC,WAAW,EAAE,GAAG,CAAC,CAAC,WAAW,EAAE,CAAC;AAChE,CAAC,CAAC;AACF;AACA,IAAI,IAAI,GAAG,QAAQ,CAAC,IAAI,GAAG,EAAE,CAAC;AAC9B,IAAI,MAAM,GAAG,QAAQ,CAAC,MAAM,GAAG,GAAG,CAAC;AACnC,IAAI,QAAQ,GAAG,QAAQ,CAAC,QAAQ,GAAG,GAAG,CAAC;AACvC;IACA,UAAc,GAAG,QAAQ"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820370,
+      "end": 1727432820370,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820370,
+      "end": 1727432820370,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820370,
+      "end": 1727432820370,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820370,
+      "end": 1727432820371,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820371,
+      "end": 1727432820371,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820371,
+      "end": 1727432820371,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820371,
+      "end": 1727432820371,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820371,
+      "end": 1727432820371,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820371,
+      "end": 1727432820371,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820371,
+      "end": 1727432820371,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820371,
+      "end": 1727432820371,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820371,
+      "end": 1727432820371,
+      "order": "normal"
+    }
+  ]
+}

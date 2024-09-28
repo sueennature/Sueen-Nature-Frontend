@@ -1,0 +1,219 @@
+{
+  "resolvedId": "/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-define-properties.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "'use strict';\nvar DESCRIPTORS = require('../internals/descriptors');\nvar V8_PROTOTYPE_DEFINE_BUG = require('../internals/v8-prototype-define-bug');\nvar definePropertyModule = require('../internals/object-define-property');\nvar anObject = require('../internals/an-object');\nvar toIndexedObject = require('../internals/to-indexed-object');\nvar objectKeys = require('../internals/object-keys');\n\n// `Object.defineProperties` method\n// https://tc39.es/ecma262/#sec-object.defineproperties\n// eslint-disable-next-line es/no-object-defineproperties -- safe\nexports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {\n  anObject(O);\n  var props = toIndexedObject(Properties);\n  var keys = objectKeys(Properties);\n  var length = keys.length;\n  var index = 0;\n  var key;\n  while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);\n  return O;\n};\n",
+      "start": 1727432820549,
+      "end": 1727432820649,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1727432820649,
+      "end": 1727432820649,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1727432820649,
+      "end": 1727432820650,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1727432820650,
+      "end": 1727432820650,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1727432820650,
+      "end": 1727432820650,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1727432820650,
+      "end": 1727432820650,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1727432820650,
+      "end": 1727432820650,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1727432820650,
+      "end": 1727432820650,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1727432820650,
+      "end": 1727432820650,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1727432820650,
+      "end": 1727432820650,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as objectDefineProperties } from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-define-properties.js?commonjs-exports\";\nimport require$$0 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/descriptors.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/v8-prototype-define-bug.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-define-property.js?commonjs-proxy\";\nimport require$$3 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/an-object.js?commonjs-proxy\";\nimport require$$4 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/to-indexed-object.js?commonjs-proxy\";\nimport require$$5 from \"\\u0000/var/www/html/Sueen-Nature-Frontend/node_modules/core-js/internals/object-keys.js?commonjs-proxy\";\n\n'use strict';\nvar DESCRIPTORS = require$$0;\nvar V8_PROTOTYPE_DEFINE_BUG = require$$1;\nvar definePropertyModule = require$$2;\nvar anObject = require$$3;\nvar toIndexedObject = require$$4;\nvar objectKeys = require$$5;\n\n// `Object.defineProperties` method\n// https://tc39.es/ecma262/#sec-object.defineproperties\n// eslint-disable-next-line es/no-object-defineproperties -- safe\nvar f = objectDefineProperties.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {\n  anObject(O);\n  var props = toIndexedObject(Properties);\n  var keys = objectKeys(Properties);\n  var length = keys.length;\n  var index = 0;\n  var key;\n  while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);\n  return O;\n};\n\nexport { objectDefineProperties as __moduleExports, f, objectDefineProperties as default };",
+      "start": 1727432820650,
+      "end": 1727432820773,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;AAAA,YAAY,CAAC;AACb,IAAI,WAAW,GAAG,UAAmC,CAAC;AACtD,IAAI,uBAAuB,GAAG,UAA+C,CAAC;AAC9E,IAAI,oBAAoB,GAAG,UAA8C,CAAC;AAC1E,IAAI,QAAQ,GAAG,UAAiC,CAAC;AACjD,IAAI,eAAe,GAAG,UAAyC,CAAC;AAChE,IAAI,UAAU,GAAG,UAAmC,CAAC;AACrD;AACA;AACA;AACA;AACA,gCAAS,GAAG,WAAW,IAAI,CAAC,uBAAuB,GAAG,MAAM,CAAC,gBAAgB,GAAG,SAAS,gBAAgB,CAAC,CAAC,EAAE,UAAU,EAAE;AACzH,EAAE,QAAQ,CAAC,CAAC,CAAC,CAAC;AACd,EAAE,IAAI,KAAK,GAAG,eAAe,CAAC,UAAU,CAAC,CAAC;AAC1C,EAAE,IAAI,IAAI,GAAG,UAAU,CAAC,UAAU,CAAC,CAAC;AACpC,EAAE,IAAI,MAAM,GAAG,IAAI,CAAC,MAAM,CAAC;AAC3B,EAAE,IAAI,KAAK,GAAG,CAAC,CAAC;AAChB,EAAE,IAAI,GAAG,CAAC;AACV,EAAE,OAAO,MAAM,GAAG,KAAK,EAAE,oBAAoB,CAAC,CAAC,CAAC,CAAC,EAAE,GAAG,GAAG,IAAI,CAAC,KAAK,EAAE,CAAC,EAAE,KAAK,CAAC,GAAG,CAAC,CAAC,CAAC;AACpF,EAAE,OAAO,CAAC,CAAC;AACX,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1727432820773,
+      "end": 1727432820773,
+      "order": "normal"
+    }
+  ]
+}
