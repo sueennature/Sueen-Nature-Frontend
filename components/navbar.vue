@@ -95,20 +95,20 @@
             >
           </li>
           <li>
-              <a
-                href="/gallery"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Gallery</a
-              >
-            </li>
+            <a
+              href="/gallery"
+              class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+              >Gallery</a
+            >
+          </li>
           <li>
-              <a
-                href="/news"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >News</a
-              >
-            </li>
-            <!-- <li>
+            <a
+              href="/news"
+              class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+              >News</a
+            >
+          </li>
+          <!-- <li>
               <a
                 href="/offers"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-slate-500  lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
@@ -204,7 +204,7 @@
                 >Services</a
               >
             </li>
-            
+
             <li>
               <a
                 href="/rooms"
@@ -220,13 +220,13 @@
               >
             </li>
             <li>
-                <a
-                  href="/news"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >News</a
-                >
-              </li>
-              <!-- <li>
+              <a
+                href="/news"
+                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                >News</a
+              >
+            </li>
+            <!-- <li>
                 <a
                   href="/offers"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
@@ -242,7 +242,7 @@
             </li>
             <li>
               <a
-              v-if="userEmail && authToken"
+                v-if="userEmail && authToken"
                 @click.prevent="handleNavigate"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Profile</a
@@ -334,9 +334,7 @@ const toggleMenu = () => {
 };
 const handleNavigate = () => {
   if (userEmail.value) {
-    router.push({ path: "/dashboard", query: { guest_id: 30  } });
-
-   
+    router.push({ path: "/dashboard", query: { guest_id: 30 } });
   }
 };
 
