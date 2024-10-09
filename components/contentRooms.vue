@@ -11,7 +11,6 @@
     <!-- <h6 class="text-black-200 font-semibold md:text-xl text-lg text-center mt-4">
       RECENT GUEST
     </h6> -->
-    <!-- introduction paragraph -->
     <p
       class="text-gray-300 md:text-xl text-lg text-center mt-10 max-w-[70ch] mx-auto"
     >
