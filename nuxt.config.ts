@@ -24,7 +24,7 @@ export default defineNuxtConfig({
         { hid: 'robots', name: 'robots', content: 'index, follow' },
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/public/favicon.ico' },
+        { rel: 'icon', type: 'image/png', href: '/logo.ico' },
       ],
     }
   },
