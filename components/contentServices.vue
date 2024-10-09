@@ -591,7 +591,7 @@
     </div>
 
     <!-- image gallery -->
-    <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-36">
+    <!-- <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-36">
       <img
         v-for="(url, idx) in servicesImages"
         :key="idx"
@@ -599,7 +599,7 @@
         alt="servicesImg"
         class="max-w-full max-h-full"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 
