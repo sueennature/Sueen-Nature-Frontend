@@ -1,1 +1,0 @@
-export { default } from "file:///D:/CDAZZDEV/sueenProject/Sueen-Nature-Frontend/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
