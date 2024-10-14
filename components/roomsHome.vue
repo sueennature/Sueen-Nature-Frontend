@@ -94,7 +94,7 @@ async function fetchRoomCarousels() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID,
+        "x-api-key": runtimeConfig.public.X_API_KEY,
       },
     });
 

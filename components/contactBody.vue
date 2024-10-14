@@ -401,7 +401,7 @@ export default {
           },
           {
             headers: {
-              "x-api-key": this.$config.public.DATABASE_ID,
+              "x-api-key": this.$config.public.X_API_KEY,
             },
           }
         );

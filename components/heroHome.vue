@@ -656,7 +656,7 @@ export default {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "x-api-key": this.$config.public.DATABASE_ID, // Adjust the runtime config reference according to your environment
+              "x-api-key": this.$config.public.X_API_KEY, // Adjust the runtime config reference according to your environment
             },
           }
         );
@@ -682,7 +682,7 @@ export default {
           "https://api.sueennature.com/carousels/?skip=0&limit=10",
           {
             headers: {
-              "x-api-key": runtimeConfig.public.DATABASE_ID, // Replace with your actual API key
+              "x-api-key": runtimeConfig.public.X_API_KEY, // Replace with your actual API key
               "Content-Type": "application/json",
             },
           }
@@ -773,7 +773,7 @@ export default {
         const response = await fetch(fullUrl, {
           method: "GET",
           headers: {
-            "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+            "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
             "Content-Type": "application/json", // Optional for GET requests
           },
         });

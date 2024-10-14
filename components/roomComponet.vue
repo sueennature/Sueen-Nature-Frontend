@@ -262,7 +262,7 @@ export default defineComponent({
         const response = await fetch("https://api.sueennature.com/rooms/types", {
           method: "GET",
           headers: {
-            "x-api-key": runtimeConfig.public.DATABASE_ID,
+            "x-api-key": runtimeConfig.public.X_API_KEY,
             "Content-Type": "application/json",
           },
         });

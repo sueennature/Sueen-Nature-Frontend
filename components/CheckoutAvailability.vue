@@ -286,7 +286,7 @@ export default {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "x-api-key": this.$config.public.DATABASE_ID, // Adjust the runtime config reference according to your environment
+              "x-api-key": this.$config.public.X_API_KEY, // Adjust the runtime config reference according to your environment
             },
           }
         );
@@ -364,7 +364,7 @@ export default {
         const response = await fetch(url, {
           method: "GET",
           headers: {
-            "x-api-key": runtimeConfig.public.DATABASE_ID,
+            "x-api-key": runtimeConfig.public.X_API_KEY,
             "Content-Type": "application/json",
           },
         });

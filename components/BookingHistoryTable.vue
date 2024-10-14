@@ -150,7 +150,7 @@ export default {
   const headers = {
     'Authorization': `Bearer ${authToken}`,
     'Content-Type': 'application/json',
-    "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+    "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
 
   };
 
