@@ -391,7 +391,7 @@ export default {
 
       try {
         const response = await axios.post(
-          "https://api.sueennature.com/users/contact",
+          `${this.$config.public.BE_URL}/users/contact`,
           {
             name: this.formData.name,
             email: this.formData.email,
@@ -401,7 +401,7 @@ export default {
           },
           {
             headers: {
-              "x-api-key": this.$config.public.DATABASE_ID,
+              "x-api-key": this.$config.public.X_API_KEY,
             },
           }
         );
@@ -426,6 +426,7 @@ export default {
   },
   mounted() {
     this.generateArithmeticQuestion();
+    
   },
 };
 </script>

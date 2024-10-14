@@ -150,12 +150,12 @@ export default {
   const headers = {
     'Authorization': `Bearer ${authToken}`,
     'Content-Type': 'application/json',
-    "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+    "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
 
   };
 
   try {
-    const response = await axios.post(`https://api.sueennature.com/bookings/guest/history`, body, { headers });
+    const response = await axios.post(`${runtimeConfig.public.BE_URL}/bookings/guest/history`, body, { headers });
     this.originalBookingHistory = response.data;
     console.log("History", response.data)
     

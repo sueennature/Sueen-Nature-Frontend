@@ -259,10 +259,10 @@ export default defineComponent({
       const runtimeConfig = useRuntimeConfig();
 
       try {
-        const response = await fetch("https://api.sueennature.com/rooms/types", {
+        const response = await fetch(`${runtimeConfig.public.BE_URL}/rooms/types`, {
           method: "GET",
           headers: {
-            "x-api-key": runtimeConfig.public.DATABASE_ID,
+            "x-api-key": runtimeConfig.public.X_API_KEY,
             "Content-Type": "application/json",
           },
         });
@@ -304,7 +304,7 @@ export default defineComponent({
 
         if (matchedRoomTypes.value.length > 0) {
           slides.value = (matchedRoom.images)?.map((image) => ({
-            src: `https://api.sueennature.com/${image}`,
+            src: `${runtimeConfig.public.BE_URL}/${image}`,
             alt: matchedRoom.name,
           }));
 

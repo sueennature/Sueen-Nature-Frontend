@@ -431,12 +431,12 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
 
       console.log("Headers", headers);
       axios
-        .get(`https://api.sueennature.com/guests/guest/${guest_id}`, {
+        .get(`${runtimeConfig.public.BE_URL}/guests/guest/${guest_id}`, {
           headers: headers,
         })
         .then((response) => {
@@ -474,7 +474,7 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
       console.log("Headers", headers);
       axios
@@ -501,7 +501,7 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
       console.log("Headers", headers);
       axios
@@ -641,12 +641,12 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
 
       try {
         const response = await axios.put(
-          `https://api.sueennature.com/guests/${guest_id}`,
+          `${runtimeConfig.public.BE_URL}/guests/${guest_id}`,
           body,
           { headers }
         );
@@ -691,12 +691,12 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
 
       try {
         const response = await axios.post(
-          `https://api.sueennature.com/bookings/guest/history`,
+          `${runtimeConfig.public.BE_URL}/bookings/guest/history`,
           body,
           { headers }
         );

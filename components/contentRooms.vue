@@ -200,11 +200,10 @@
         </h2>
         <span class="border-t border-black w-1/4 mx-4"></span>
       </div>
-      <div class="flex justify-center items-center">
+      <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
         <img
           :src="getImageSrcTriple()"
           alt="Triple Room View"
-          class="h-96 w-full max-w-5xl rounded-lg"
         />
       </div>
       <!-- Bottom line details about the room -->

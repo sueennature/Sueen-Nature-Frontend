@@ -75,9 +75,9 @@ export default {
     async fetchCarousels() {
       const runtimeConfig = useRuntimeConfig();
       try {
-        const response = await axios.get('https://api.sueennature.com/carousels/?skip=0&limit=10', {
+        const response = await axios.get(`${runtimeConfig.public.BE_URL}/carousels/?skip=0&limit=10`, {
           headers: {
-            'x-api-key': runtimeConfig.public.DATABASE_ID, // Replace with your actual API key
+            'x-api-key': runtimeConfig.public.X_API_KEY, // Replace with your actual API key
             "Content-Type": "application/json",
           }
         });
@@ -87,7 +87,8 @@ export default {
       }
     },
     getImageUrl(path) {
-      return `https://api.sueennature.com/${path}`;
+      const runtimeConfig = useRuntimeConfig();
+      return `${runtimeConfig.public.BE_URL}/${path}`;
     },
     openLightbox(index) {
       this.lightboxIndex = index; // Set the current index of the image

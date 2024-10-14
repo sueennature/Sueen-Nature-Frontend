@@ -7,7 +7,7 @@
       
       <div v-else v-for="service in services" :key="service.id" class="max-w-xl mt-16 flex flex-col">
         <img 
-    :src="service.media[0] ? `https://api.sueennature.com/${service.media[0]}` : ''" 
+    :src="service.media[0] ? `${runtimeConfig.public.BE_URL}/${service.media[0]}` : ''" 
     alt="serviceImg" 
     class="flex-grow object-cover rounded-t-md"
   />
@@ -51,9 +51,9 @@ const runtimeConfig = useRuntimeConfig();
 const fetchData = async () => {
   isLoading.value = true;
   try {
-    const response = await axios.get('https://api.sueennature.com/activities', {
+    const response = await axios.get(`${runtimeConfig.public.BE_URL}/activities`, {
       headers: {
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Add your API key here
       }
     });
     services.value =  response.data.data;

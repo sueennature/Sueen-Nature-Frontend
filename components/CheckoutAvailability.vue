@@ -281,12 +281,12 @@ export default {
     async fetchRoomTypes() {
       try {
         const response = await fetch(
-          "https://api.sueennature.com/rooms/types",
+          `${runtimeConfig.public.BE_URL}/rooms/types`,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "x-api-key": this.$config.public.DATABASE_ID, // Adjust the runtime config reference according to your environment
+              "x-api-key": this.$config.public.X_API_KEY, // Adjust the runtime config reference according to your environment
             },
           }
         );
@@ -344,7 +344,7 @@ export default {
 
       const runtimeConfig = useRuntimeConfig();
 
-      const baseUrl = "https://api.sueennature.com/rooms/availability/";
+      const baseUrl = `${runtimeConfig.public.BE_URL}/rooms/availability/`;
       const params = new URLSearchParams({
         check_in: formattedCheckIn,
         check_out: formattedCheckOut,
@@ -364,7 +364,7 @@ export default {
         const response = await fetch(url, {
           method: "GET",
           headers: {
-            "x-api-key": runtimeConfig.public.DATABASE_ID,
+            "x-api-key": runtimeConfig.public.X_API_KEY,
             "Content-Type": "application/json",
           },
         });

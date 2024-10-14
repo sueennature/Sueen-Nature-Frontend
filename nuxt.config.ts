@@ -24,7 +24,7 @@ export default defineNuxtConfig({
         { hid: 'robots', name: 'robots', content: 'index, follow' },
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/public/favicon.ico' },
+        { rel: 'icon', type: 'image/png', href: '/logo.ico' },
       ],
     }
   },
@@ -61,7 +61,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      DATABASE_ID: process.env.NUXT_DATABASE_ID,
+      X_API_KEY: process.env.NUXT_X_API_KEY,
+      BE_URL:process.env.NUXT_BE_URL
     }
   },
   plugins: [
