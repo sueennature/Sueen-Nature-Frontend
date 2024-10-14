@@ -200,12 +200,14 @@
         </h2>
         <span class="border-t border-black w-1/4 mx-4"></span>
       </div>
+      <div class="relative max-w-5xl mx-auto">
       <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
         <img
           :src="getImageSrcTriple()"
           alt="Triple Room View"
         />
       </div>
+    </div>
       <!-- Bottom line details about the room -->
       <div class="flex flex-row gap-4 justify-center mt-2">
         <h5 class="md:text-sm text-xs text-black-200 pl-4 mt-[6px]">
