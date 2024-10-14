@@ -608,13 +608,14 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const servicesImages = ref([]); // Store the media URLs with "Services" tag
+const runtimeConfig = useRuntimeConfig();
 
 // Fetch carousels with the "Services" tag
 const fetchCarousels = async () => {
-  const runtimeConfig = useRuntimeConfig();
+  
   try {
     const response = await axios.get(
-      "https://api.sueennature.com/carousels/?skip=0&limit=100",
+      `${runtimeConfig.public.BE_URL}/carousels/?skip=0&limit=100`,
       {
         headers: {
           "x-api-key": runtimeConfig.public.X_API_KEY, // Replace with your actual API key
@@ -633,7 +634,7 @@ const fetchCarousels = async () => {
 };
 
 // Helper function to construct the image URL
-const getImageUrl = (path) => `https://api.sueennature.com/${path}`;
+const getImageUrl = (path) => `${runtimeConfig.public.BE_URL}/${path}`;
 
 // Fetch carousels when the component is mounted
 onMounted(() => {

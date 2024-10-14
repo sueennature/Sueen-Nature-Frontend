@@ -436,7 +436,7 @@ export default {
 
       console.log("Headers", headers);
       axios
-        .get(`https://api.sueennature.com/guests/guest/${guest_id}`, {
+        .get(`${runtimeConfig.public.BE_URL}/guests/guest/${guest_id}`, {
           headers: headers,
         })
         .then((response) => {
@@ -646,7 +646,7 @@ export default {
 
       try {
         const response = await axios.put(
-          `https://api.sueennature.com/guests/${guest_id}`,
+          `${runtimeConfig.public.BE_URL}/guests/${guest_id}`,
           body,
           { headers }
         );
@@ -696,7 +696,7 @@ export default {
 
       try {
         const response = await axios.post(
-          `https://api.sueennature.com/bookings/guest/history`,
+          `${runtimeConfig.public.BE_URL}/bookings/guest/history`,
           body,
           { headers }
         );

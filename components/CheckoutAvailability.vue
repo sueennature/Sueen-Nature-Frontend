@@ -281,7 +281,7 @@ export default {
     async fetchRoomTypes() {
       try {
         const response = await fetch(
-          "https://api.sueennature.com/rooms/types",
+          `${runtimeConfig.public.BE_URL}/rooms/types`,
           {
             method: "GET",
             headers: {
@@ -344,7 +344,7 @@ export default {
 
       const runtimeConfig = useRuntimeConfig();
 
-      const baseUrl = "https://api.sueennature.com/rooms/availability/";
+      const baseUrl = `${runtimeConfig.public.BE_URL}/rooms/availability/`;
       const params = new URLSearchParams({
         check_in: formattedCheckIn,
         check_out: formattedCheckOut,
