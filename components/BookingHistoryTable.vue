@@ -155,7 +155,7 @@ export default {
   };
 
   try {
-    const response = await axios.post(`https://api.sueennature.com/bookings/guest/history`, body, { headers });
+    const response = await axios.post(`${runtimeConfig.public.BE_URL}/bookings/guest/history`, body, { headers });
     this.originalBookingHistory = response.data;
     console.log("History", response.data)
     
