@@ -431,7 +431,7 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
 
       console.log("Headers", headers);
@@ -474,7 +474,7 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken.replace(/%7C/g, "|")}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
       console.log("Headers", headers);
       axios
@@ -501,7 +501,7 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
       console.log("Headers", headers);
       axios
@@ -641,7 +641,7 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
 
       try {
@@ -691,7 +691,7 @@ export default {
       const headers = {
         Authorization: `Bearer ${authToken}`,
         "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Ensure this key is valid
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Ensure this key is valid
       };
 
       try {

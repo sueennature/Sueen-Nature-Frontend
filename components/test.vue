@@ -1937,7 +1937,7 @@ preparePayloadBooking() {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "x-api-key": runtimeConfig.public.DATABASE_ID,
+              "x-api-key": runtimeConfig.public.X_API_KEY,
             },
             body: JSON.stringify(payload),
           }
@@ -1972,7 +1972,7 @@ preparePayloadBooking() {
         return toast.error("Please fill fields in Guest info & Payment");
       }
       const headers = {
-        "x-api-key": this.$config.public.DATABASE_ID,
+        "x-api-key": this.$config.public.X_API_KEY,
         "Content-Type": "application/json",
       };
 
@@ -2155,7 +2155,7 @@ childOptions(room) {
           guestPayload,
           {
             headers: {
-              "x-api-key": this.$config.public.DATABASE_ID,
+              "x-api-key": this.$config.public.X_API_KEY,
               "Content-Type": "application/json",
             },
           }
@@ -2174,7 +2174,7 @@ childOptions(room) {
           },
           {
             headers: {
-              "x-api-key": this.$config.public.DATABASE_ID,
+              "x-api-key": this.$config.public.X_API_KEY,
               "Content-Type": "application/json",
             },
           }
@@ -2223,11 +2223,11 @@ childOptions(room) {
 
     async login() {
       const {
-        public: { DATABASE_ID },
+        public: { X_API_KEY },
       } = useRuntimeConfig();
 
       const headers = {
-        "x-api-key": DATABASE_ID, // Set the X-API-Key header
+        "x-api-key": X_API_KEY, // Set the X-API-Key header
         "Content-Type": "application/json",
       };
       if (!this.loginUser.email || !this.loginUser.password) {
@@ -2250,7 +2250,7 @@ childOptions(room) {
         {
           method: "POST",
           headers: {
-            "x-api-key": DATABASE_ID, // Set the X-API-Key header
+            "x-api-key": X_API_KEY, // Set the X-API-Key header
           },
         }
       )
@@ -2444,7 +2444,7 @@ childOptions(room) {
     fetch(url, {
       method: "GET",
       headers: {
-        "x-api-key": runtimeConfig.public.DATABASE_ID,
+        "x-api-key": runtimeConfig.public.X_API_KEY,
         "Content-Type": "application/json",
       },
     })

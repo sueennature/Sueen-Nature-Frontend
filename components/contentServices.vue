@@ -617,7 +617,7 @@ const fetchCarousels = async () => {
       "https://api.sueennature.com/carousels/?skip=0&limit=100",
       {
         headers: {
-          "x-api-key": runtimeConfig.public.DATABASE_ID, // Replace with your actual API key
+          "x-api-key": runtimeConfig.public.X_API_KEY, // Replace with your actual API key
           "Content-Type": "application/json",
         },
       }

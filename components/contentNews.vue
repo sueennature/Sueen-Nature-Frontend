@@ -54,7 +54,7 @@ const fetchData = async () => {
   try {
     const response = await axios.get('https://api.sueennature.com/news', {
       headers: {
-        "x-api-key": runtimeConfig.public.DATABASE_ID, // Add your API key here
+        "x-api-key": runtimeConfig.public.X_API_KEY, // Add your API key here
       }
     });
     services.value =  response.data.data;
