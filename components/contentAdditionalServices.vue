@@ -51,7 +51,7 @@ const runtimeConfig = useRuntimeConfig();
 const fetchData = async () => {
   isLoading.value = true;
   try {
-    const response = await axios.get(`${runtimeConfig.public.BE_URL}/activities`, {
+    const response = await axios.get(`${runtimeConfig.public.BE_URL}/activities/`, {
       headers: {
         "x-api-key": runtimeConfig.public.X_API_KEY, // Add your API key here
       }
