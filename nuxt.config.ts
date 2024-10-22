@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts', 'nuxt-icon', 'nuxt-vue3-google-signin', '@nuxtjs/sitemap'],
   site: {
     url: 'https://sueennature.com',
-    name: 'My Awesome Website',
+    name: 'Sri Lanka Hotel',
     trailingSlash: true
   },
   googleSignIn: {
