@@ -44,12 +44,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
     }
   },
-  modules: ['@nuxtjs/google-fonts', 'nuxt-icon', 'nuxt-vue3-google-signin', '@nuxtjs/sitemap'],
-  site: {
-    url: 'https://sueennature.com',
-    name: 'Sri Lanka Hotel',
-    trailingSlash: true
-  },
+  modules: ['@nuxtjs/google-fonts', 'nuxt-icon', 'nuxt-vue3-google-signin'],
+
   googleSignIn: {
     clientId: '865303988777-4tcvutqa985usae6fahkll4iorpjfb1s.apps.googleusercontent.com',
   },
