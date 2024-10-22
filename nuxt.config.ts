@@ -16,21 +16,13 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: 'Discover Sueen Nature, a luxury resort offering breathtaking experiences in nature. Book your stay now and enjoy comfort and tranquility.' },
-        { hid: 'keywords', name: 'keywords', content: 'luxury resort, nature experiences, book your stay, resort room booking, enjoy your stay, Sri Lanka, Sri Lankan Hotels' }, 
+        { hid: 'keywords', name: 'keywords', content: 'luxury resort, nature experiences, book your stay, resort room booking, enjoy your stay.' },
         { hid: 'og:title', property: 'og:title', content: 'Sueen Nature - Luxury Resort | Book Your Stay Now' },
-        { hid: 'og:description', property: 'og:description', content: 'Discover Sueen Nature, Sri Lanka Hotel, a luxury resort offering breathtaking experiences in nature. Book your stay now and enjoy comfort and tranquility in Sri Lanka.' }, 
-        { hid: 'og:url', property: 'og:url', content: 'https://sueennature.com' },
+        { hid: 'og:description', property: 'og:description', content: 'Discover Sueen Nature, a luxury resort offering breathtaking experiences in nature. Book your stay now and enjoy comfort and tranquility.' },
+        { hid: 'og:image', property: 'og:image', content: '/public/Logo.png' }, 
+        { hid: 'og:url', property: 'og:url', content: 'https://sueennature.com' }, 
         { hid: 'robots', name: 'robots', content: 'index, follow' },
-        { hid: 'geo.placename', name: 'geo.placename', content: 'Sri Lanka' }, 
-        { hid: 'geo.region', name: 'geo.region', content: 'LK' }, 
-        { hid: 'og:locale', property: 'og:locale', content: 'en_LK' }, 
-        { hid: 'geo.position', name: 'geo.position', content: '6.5546956;80.2580174' },
-        { hid: 'ICBM', name: 'ICBM', content: '6.5546956, 80.2580174' },
-        { hid: 'hotel.name', name: 'hotel.name', content: 'Sueen Nature' }, 
-        { hid: 'hotel.location', name: 'hotel.location', content: 'Baduraliya, Sri Lanka' }, 
-        { hid: 'hotel.category', name: 'hotel.category', content: 'Luxury Resort' },
       ],
-      
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.ico' },
       ],
@@ -44,12 +36,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     }
   },
-  modules: ['@nuxtjs/google-fonts', 'nuxt-icon', 'nuxt-vue3-google-signin', '@nuxtjs/sitemap'],
-  site: {
-    url: 'https://sueennature.com',
-    name: 'Sri Lanka Hotel',
-    trailingSlash: true
-  },
+  modules: [
+    '@nuxtjs/google-fonts',
+    'nuxt-icon',
+    'nuxt-vue3-google-signin'
+  ],
+  
   googleSignIn: {
     clientId: '865303988777-4tcvutqa985usae6fahkll4iorpjfb1s.apps.googleusercontent.com',
   },
