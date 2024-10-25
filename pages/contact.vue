@@ -15,7 +15,8 @@ import contactBody from "~/components/contactBody.vue";
 import footerHome from "~/components/footerHome.vue";
 import navbar from "~/components/navbar.vue";
 import { useHead } from '@vueuse/head' 
-+
+
+useHead({
   title: 'Contact Us - Sueen Nature | Get in Touch with Our Eco-Resort',
   meta: [
     {
