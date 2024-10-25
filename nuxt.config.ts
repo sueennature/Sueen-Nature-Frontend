@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Sueen Nature - Luxury Resort | Book Your Stay Now',
+      title: 'Sueen Nature - Luxury Eco-Resort in Sri Lanka | Book Your Stay for Nature, Adventure & Relaxation',
       htmlAttrs: {
         lang: 'en',
       },
@@ -15,13 +15,29 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: 'Discover Sueen Nature, a luxury resort offering breathtaking experiences in nature.  Book your stay now and enjoy comfort and tranquility.' },
-        { hid: 'keywords', name: 'keywords', content: 'luxury resort, nature experiences, book your stay, resort room booking, enjoy your stay, Sri Lanka Hotel, Sri Lanka' },
-        { hid: 'og:title', property: 'og:title', content: 'Sueen Nature - Luxury Resort | Book Your Stay Now' },
-        { hid: 'og:description', property: 'og:description', content: 'Discover Sueen Nature, a luxury resort offering breathtaking experiences in nature. Book your stay now and enjoy comfort and tranquility.' },
-        { hid: 'og:image', property: 'og:image', content: '/public/Logo.png' }, 
-        { hid: 'og:url', property: 'og:url', content: 'https://sueennature.com' }, 
-        { hid: 'robots', name: 'robots', content: 'index, follow' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Discover Sueen Nature, a luxury resort in Sri Lanka offering unique experiences amidst lush landscapes and wildlife. Perfect for nature lovers, adventure seekers, and those in search of relaxation. Book your stay today for an unforgettable journey.'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'luxury resort in Sri Lanka, nature experiences, eco-resort booking, Sri Lanka Hotel, eco-friendly hotel, wildlife safaris in Sri Lanka, Sri Lanka hiking, birdwatching in Sri Lanka, Sri Lanka luxury travel, sustainable tourism Sri Lanka, beachfront resorts, luxury villa booking, Ayurveda spa, yoga retreats Sri Lanka, meditation in nature, eco-tourism, sustainable resorts, boutique hotels Sri Lanka, Sri Lanka waterfalls, tea plantation tours, rainforest walks, Sri Lanka culture, Sri Lankan cuisine, luxury camping, snorkeling, diving, whale watching, fishing villages, local culture, traditional Sri Lankan workshops, heritage tours Sri Lanka, honeymoon destination, romantic getaways, family vacations'
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Sueen Nature - Luxury Eco-Resort in Sri Lanka | Nature Experiences and Sustainable Luxury'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'Sueen Nature, a luxury eco-resort in Sri Lanka, offers immersive nature experiences combined with sustainable luxury. Relax in the comfort of our villas or explore wildlife safaris, hiking, cultural tours, and more.'
+        },
+        { hid: 'og:image', property: 'og:image', content: '/public/Logo.png' },
+        { hid: 'og:url', property: 'og:url', content: 'https://sueennature.com' },
+        { hid: 'robots', name: 'robots', content: 'index, follow' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo.ico' },
