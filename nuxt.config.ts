@@ -56,9 +56,9 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-icon',
     'nuxt-vue3-google-signin'
+    
   ],
   
-
   googleSignIn: {
     clientId: '865303988777-4tcvutqa985usae6fahkll4iorpjfb1s.apps.googleusercontent.com',
   },
@@ -79,7 +79,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       X_API_KEY: process.env.NUXT_X_API_KEY,
-      BE_URL:process.env.NUXT_BE_URL
+      BE_URL:process.env.NUXT_BE_URL,
+      GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID
     }
   },
   plugins: [
