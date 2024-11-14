@@ -11,7 +11,7 @@
         >
           <div class="image-container">
             <img
-              :src="offer.imgSrc"
+              src="/img/hero-contact.png"
               :alt="offer.altText"
               class="rounded-t-md object-cover w-full h-[290px] sm:h-[300px] md:h-[300px] lg:h-[390px]"
               @error="onImageError"
@@ -29,7 +29,16 @@
             <div class="h-12">
               <p class="text-base font-light">{{ offer.description }}</p>
             </div>
-            <p class="mt-8 sm:mt-4 text-lg font-bold">{{ offer.dateRange }}</p>
+            <div class="flex items-center gap-6">
+              <p class="mt-8 sm:mt-4 text-lg font-bold">
+                {{ formatDate(offer.start_date) }}
+              </p>
+              <p class="mt-8 sm:mt-4 text-xl font-bold">--</p>
+
+              <p class="mt-8 sm:mt-4 text-lg font-bold">
+                {{ formatDate(offer.end_date) }}
+              </p>
+            </div>
           </div>
           <div class="px-4 mb-4 pt-0 w-full mt-4">
             <a
@@ -50,48 +59,42 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      offers: [
-        {
-          id: 1,
-          title: "Seasonal Offer",
-          description:
-            "Enjoy an exclusive summer 2-night stay package at Sueen Nature.",
-          dateRange: "Aug 2023 - Nov 2023",
-          imgSrc: "/img/hero-contact.png",
-          altText: "Spa Summer Offer",
-        },
-        {
-          id: 2,
-          title: "Winter Getaway",
-          description:
-            "Experience a cozy retreat with our winter 3-night stay package.",
-          dateRange: "Dec 2023 - Feb 2024",
-          imgSrc: "/img/image_playground.png",
-          altText: "Winter Getaway",
-        },
-        {
-          id: 3,
-          title: "Summer Getaway",
-          description:
-            "Experience a cozy retreat with our summer 3-night stay package.",
-          dateRange: "Jun 2023 - Aug 2023",
-          imgSrc: "/img/image_roof_top_bar.png",
-          altText: "Summer Getaway",
-        },
-        {
-          id: 4,
-          title: "Summer Getaway",
-          description:
-            "Experience a cozy retreat with our summer 3-night stay package.",
-          dateRange: "Jun 2023 - Aug 2023",
-          imgSrc: "/img/hero-home 2.webp",
-          altText: "Summer Getaway",
-        },
-      ],
+      offers: "",
+     
     };
+  },
+  mounted() {
+    this.fetchOffers();
+  },
+  methods: {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const year = date.getFullYear();
+      return `${day}.${month}.${year}`;
+    },
+    async fetchOffers() {
+      const runtimeConfig = useRuntimeConfig();
+      try {
+        const response = await axios.get(
+          `${runtimeConfig.public.BE_URL}/offers/?skip=0&limit=100`,
+          {
+            headers: {
+              "x-api-key": runtimeConfig.public.X_API_KEY,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        this.offers = response.data.data;
+      } catch (error) {
+        console.error("Error fetching carousels:", error);
+      }
+    },
   },
 };
 </script>
