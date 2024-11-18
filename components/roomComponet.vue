@@ -242,11 +242,23 @@ export default defineComponent({
   );
 
   if (selectedRoom) {
+    if (matchedRooms.value.length > 0) {
+      nonMatchedRooms.value.push(matchedRooms.value[0]);
+    }
+
     matchedRooms.value = [selectedRoom];
+
+    nonMatchedRooms.value = nonMatchedRooms.value.filter(
+      (room) => room.category.toLowerCase() !== roomTypeName.toLowerCase()
+    );
+
+    unSelectedRoomData.value = nonMatchedRooms.value;
+
     slides.value = (selectedRoom.room_images || []).map((image) => ({
       src: `${runtimeConfig.public.BE_URL}/${image}`,
       alt: selectedRoom.category,
     }));
+
     history.pushState(null, "", `/room?name=${encodeURIComponent(roomTypeName)}`);
 
     nextTick(() => {
@@ -256,6 +268,8 @@ export default defineComponent({
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+
 
 const initializeCarousels = () => {
   const mainSliderElement = document.getElementById("main-slider");
