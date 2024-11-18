@@ -18,12 +18,12 @@ export default defineNuxtConfig({
         {
           hid: 'description',
           name: 'description',
-          content: 'Discover Sueen Nature, a luxury resort in Sri Lanka offering unique experiences amidst lush landscapes and wildlife. Perfect for nature lovers, adventure seekers, and those in search of relaxation. Book your stay today for an unforgettable journey.'
+          content: "Enjoy an unforgettable journey at Sueen Nature, a luxury resort in the serene town of Baduraliya, Sri Lanka. Discover our exceptional services and explore a variety of rooms designed for comfort and relaxation amidst lush landscapes and wildlife. With convenient access to Sri Lanka's attractions like Sinharaja Forest Reserve, Nine Arch Bridge, and Demodara Station, Sueen Nature is perfect for nature lovers and adventure seekers. Experience the ideal escape and book your stay today!"
         },
         {
           hid: 'keywords',
           name: 'keywords',
-          content: 'luxury resort in Sri Lanka, nature experiences, eco-resort booking, Sri Lanka Hotel, eco-friendly hotel, wildlife safaris in Sri Lanka, Sri Lanka hiking, birdwatching in Sri Lanka, Sri Lanka luxury travel, sustainable tourism Sri Lanka, beachfront resorts, luxury villa booking, Ayurveda spa, yoga retreats Sri Lanka, meditation in nature, eco-tourism, sustainable resorts, boutique hotels Sri Lanka, Sri Lanka waterfalls, tea plantation tours, rainforest walks, Sri Lanka culture, Sri Lankan cuisine, luxury camping, snorkeling, diving, whale watching, fishing villages, local culture, traditional Sri Lankan workshops, heritage tours Sri Lanka, honeymoon destination, romantic getaways, family vacations'
+          content: 'luxury resort in Sri Lanka, Sri Lanka, Hotel, Sri Lanka Hotel, Banquet Halls, Leisure, Travel, Tourism, nature experiences, eco-resort booking, Sri Lanka Hotel, eco-friendly hotel, wildlife safaris in Sri Lanka, Sri Lanka hiking, birdwatching in Sri Lanka, Sri Lanka luxury travel, sustainable tourism Sri Lanka, beachfront resorts, luxury villa booking, Ayurveda spa, yoga retreats Sri Lanka, meditation in nature, eco-tourism, sustainable resorts, boutique hotels Sri Lanka, Sri Lanka waterfalls, tea plantation tours, rainforest walks, Sri Lanka culture, Sri Lankan cuisine, luxury camping, snorkeling, diving, whale watching, fishing villages, local culture, traditional Sri Lankan workshops, heritage tours Sri Lanka, honeymoon destination, romantic getaways, family vacations, enjoy, Services,rooms,room,Sueen, Sueen Nature , Baduraliya, Sinharaja Forest Reserve, Kanneliya Forest Reserve, Kalutara Bodhiya, Bopath Ella Falls, Makeliya Falls, Kukule Ganga Dam, Nine Arch Bridge, Demodara Station, nature, eco-tourism'
         },
         {
           hid: 'og:title',
