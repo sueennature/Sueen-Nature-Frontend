@@ -1,6 +1,6 @@
 <template>
-<div>
-  <!-- <div v-if="loadingTest" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75">
+  <div>
+    <!-- <div v-if="loadingTest" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75">
       <div class="relative -6 rounded-lg  text-gray-800">
         <button
           @click="closeBanner"
@@ -22,534 +22,577 @@
         </div>
       </div>
     </div> -->
-    <div >
-      <div class="relative min-h-screen ">
-    <swiper
-      :spaceBetween="30"
-      :autoplay="autoplayConfig"
-      :navigation="true"
-      :effect="'fade'"
-      :speed=2000
-      :pagination="{
-        clickable: true,
-      }"
-      :modules="modules"
-      class="mySwiper"
-      @slideChange="onSlideChange"
-    >
-      <swiper-slide v-for="(item, index) in allMedia" :key="index">
-  <!-- Conditionally render video or image based on the media type -->
-  <video
-    v-if="item.media_type === 'video'"
-    :src="getImageUrl(item.path)"
-    ref="video"
-    class="object-cover w-full min-h-screen"
-    autoplay
-    muted
-    loop
-  ></video>
-
-  <img
-    v-else-if="item.media_type === 'image'"
-    :src="getImageUrl(item.path)"
-    class="object-cover w-full min-h-screen"
-  />
-</swiper-slide>
-    </swiper>
-
-    <nav
-      class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
-    >
-      <div
-        class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
-      >
-        <a href="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            src="/img/logoMobile.png"
-            alt="logoImg"
-            class="w-auto h-8 md:h-10"
-          />
-        </a>
-        <div
-          class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
+    <div>
+      <div class="relative min-h-screen">
+        <swiper
+          :spaceBetween="30"
+          :autoplay="autoplayConfig"
+          :navigation="true"
+          :effect="'fade'"
+          :speed="2000"
+          :pagination="{
+            clickable: true,
+          }"
+          :modules="modules"
+          class="mySwiper"
+          @slideChange="onSlideChange"
         >
-          <button
-            data-collapse-toggle="navbar-cta-2"
-            @click="toggleMenu"
-            type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-cta-2"
-            aria-expanded="false"
+          <swiper-slide v-for="(item, index) in allMedia" :key="index">
+            <!-- Conditionally render video or image based on the media type -->
+            <video
+              v-if="item.media_type === 'video'"
+              :src="getImageUrl(item.path)"
+              ref="video"
+              class="object-cover w-full min-h-screen"
+              autoplay
+              muted
+              loop
+            ></video>
+
+            <img
+              v-else-if="item.media_type === 'image'"
+              :src="getImageUrl(item.path)"
+              class="object-cover w-full min-h-screen"
+            />
+          </swiper-slide>
+        </swiper>
+
+        <nav
+          class="fixed z-50 top-0 bg-black-200 lg:border-b border-white dark:bg-gray-900 w-full md:hidden"
+        >
+          <div
+            class="max-w-full flex flex-wrap items-center justify-between mx-auto p-4"
           >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
+            <a
+              href="/home"
+              class="flex items-center space-x-3 rtl:space-x-reverse"
             >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M1 1h15M1 7h15M1 13h15"
+              <img
+                src="/img/logoMobile.png"
+                alt="logoImg"
+                class="w-auto h-8 md:h-10"
               />
-            </svg>
-          </button>
-        </div>
-        <div
-          :class="{ hidden: !isMenuOpen, flex: isMenuOpen }"
-          class="lg:hidden items-center justify-between w-full lg:w-auto lg:order-1"
-          id="navbar-cta-2"
-        >
-          <ul
-            class="flex flex-col font-medium p-4 w-full lg:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
-          >
-            <li>
-              <a
-                href="/home"
-                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 rounded lg:bg-transparent hover:bg-gray-100 lg:text-white lg:dark:text-blue-500 uppercase"
-                >Home</a
+            </a>
+            <div
+              class="lg:hidden flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
+            >
+              <button
+                data-collapse-toggle="navbar-cta-2"
+                @click="toggleMenu"
+                type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-cta-2"
+                aria-expanded="false"
               >
-            </li>
-            <li>
-              <a
-                href="/about"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >About</a
+                <span class="sr-only">Open main menu</span>
+                <svg
+                  class="w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 17 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h15"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              :class="{ hidden: !isMenuOpen, flex: isMenuOpen }"
+              class="lg:hidden items-center justify-between w-full lg:w-auto lg:order-1"
+              id="navbar-cta-2"
+            >
+              <ul
+                class="flex flex-col font-medium p-4 w-full lg:p-0 mt-4 border border-gray-100 rounded-lg bg-transparent lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
               >
-            </li>
-            <li>
-              <a
-                href="/services"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Services</a
-              >
-            </li>
-            <li>
-              <a
-                href="/news"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >News</a
-              >
-            </li>
-            <!-- <li>
+                <li>
+                  <a
+                    href="/home"
+                    class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 rounded lg:bg-transparent hover:bg-gray-100 lg:text-white lg:dark:text-blue-500 uppercase"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/about"
+                    class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/services"
+                    class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                    >Services</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/news"
+                    class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                    >News</a
+                  >
+                </li>
+                <!-- <li>
               <a
                 href="/offers"
                 class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                 >Offers</a
               >
             </li> -->
-            <li>
-              <a
-                href="/rooms"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Rooms</a
-              >
-            </li>
-            <li>
-              <a
-                href="/gallery"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Gallery</a
-              >
-            </li>
-            <li>
-              <a
-                href="/contact"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Contact</a
-              >
-            </li>
+                <li>
+                  <a
+                    href="/rooms"
+                    class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                    >Rooms</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/gallery"
+                    class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                    >Gallery</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/contact"
+                    class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                    >Contact</a
+                  >
+                </li>
 
-            <li>
-              <a
-                v-if="userEmail && authToken"
-                @click.prevent="redirectToDashboard"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                <li>
+                  <a
+                    v-if="userEmail && authToken"
+                    @click.prevent="redirectToDashboard"
+                    class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                  >
+                    Profile
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="hidden lg:flex lg:flex-row lg:gap-4">
+              <div
+                class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
               >
-                Profile
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="hidden lg:flex lg:flex-row lg:gap-4">
-          <div
-            class="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse"
-          >
-            <a href="/booking">
-              <button
-                type="button"
-                class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
-              >
-                Book Now
-              </button>
-            </a>
+                <a href="/booking">
+                  <button
+                    type="button"
+                    class="buttontext text-white bg-red-100 hover:bg-red-100 focus:ring-none font-medium rounded-sm text-base px-8 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 uppercase"
+                  >
+                    Book Now
+                  </button>
+                </a>
 
-            <button
-              data-collapse-toggle="navbar-cta"
-              type="button"
-              class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-controls="navbar-cta"
-              aria-expanded="false"
-            >
-              <span class="sr-only">Open main menu</span>
-              <svg
-                class="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 17 14"
+                <button
+                  data-collapse-toggle="navbar-cta"
+                  type="button"
+                  class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                  aria-controls="navbar-cta"
+                  aria-expanded="false"
+                >
+                  <span class="sr-only">Open main menu</span>
+                  <svg
+                    class="w-5 h-5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 17 14"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M1 1h15M1 7h15M1 13h15"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1"
+                id="navbar-cta"
               >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 1h15M1 7h15M1 13h15"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1"
-            id="navbar-cta"
-          >
-            <ul
-              class="flex flex-col font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
-            >
-              <li>
-                <a
-                  href="/home"
-                  class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
-                  >Home</a
+                <ul
+                  class="flex flex-col font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
                 >
-              </li>
-              <li>
-                <a
-                  href="/about"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/services"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >Services</a
-                >
-              </li>
-              <!-- <li>
+                  <li>
+                    <a
+                      href="/home"
+                      class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
+                      >Home</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/about"
+                      class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                      >About</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/services"
+                      class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                      >Services</a
+                    >
+                  </li>
+                  <!-- <li>
                 <a
                   href="/news"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >News</a
                 >
               </li> -->
-              <li>
-                <a
-                  href="/rooms"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >Rooms</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/news"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >News</a
-                >
-              </li>
-              <!-- <li>
+                  <li>
+                    <a
+                      href="/rooms"
+                      class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                      >Rooms</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/news"
+                      class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                      >News</a
+                    >
+                  </li>
+                  <!-- <li>
                 <a
                   href="/offers"
                   class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
                   >Offers</a
                 >
               </li> -->
-              <li>
-                <a
-                  href="/contact"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >Contact</a
-                >
-              </li>
-              <li>
-                <a
-                  v-if="userEmail && authToken"
-                  @click.prevent="redirectToDashboard"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >Profile</a
-                >
-              </li>
-            </ul>
+                  <li>
+                    <a
+                      href="/contact"
+                      class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                      >Contact</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      v-if="userEmail && authToken"
+                      @click.prevent="redirectToDashboard"
+                      class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
+                      >Profile</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
+        </nav>
+
+        <div
+          class="absolute z-40 top-8 left-0 w-full md:flex hidden items-center"
+        >
+          <a href="/" class="relative mx-auto">
+            <img
+              src="/img/logoImg.png"
+              alt="logoImg"
+              class="w-auto h-16 md:h-44"
+            />
+            <div
+              class="absolute bottom-0 h-0.5 shadow-slate-800 md:w-40 w-4 bg-white md:-left-48 -left-10 md:block hidden"
+            ></div>
+            <div
+              class="absolute bottom-0 h-0.5 shadow-slate-800 md:w-40 w-4 bg-white md:-right-48 -right-10 md:block hidden"
+            ></div>
+          </a>
         </div>
-      </div>
-    </nav>
-  
-    <div class="absolute z-40 top-8 left-0 w-full md:flex hidden items-center">
-      <a href="/" class="relative mx-auto">
-        <img src="/img/logoImg.png" alt="logoImg" class="w-auto h-16 md:h-44" />
         <div
-          class="absolute bottom-0 h-0.5 shadow-slate-800 md:w-40 w-4 bg-white md:-left-48 -left-10 md:block hidden"
-        ></div>
-        <div
-          class="absolute bottom-0 h-0.5 shadow-slate-800 md:w-40 w-4 bg-white md:-right-48 -right-10 md:block hidden"
-        ></div>      </a>
-    </div>
-    <div
-      class="absolute z-40 top-20 left-0 right-0 md:flex hidden justify-center md:top-60"
-    >
-      <div class="flex flex-row justify-center md:space-x-4 space-x-0">
-        <a
-          href="/"
-          aria-current="true"
-          class="text-orange-700 font-bold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+          class="absolute z-40 top-20 left-0 right-0 md:flex hidden justify-center md:top-60"
         >
-          Home
-        </a>
-        <a
-          href="/about"
-          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-        >
-          About
-        </a>
+          <div class="flex flex-row justify-center md:space-x-4 space-x-0">
+            <a
+              href="/"
+              aria-current="true"
+              class="text-orange-700 font-bold md:text-sm text-xs bg-transparent px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+            >
+              Home
+            </a>
+            <a
+              href="/about"
+              class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+            >
+              About
+            </a>
 
-        <a
-          href="/additionalActivites"
-          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-          >Activites</a
-        >
+            <a
+              href="/additionalActivites"
+              class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+              >Activites</a
+            >
 
-        <a
-          href="/services"
-          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-        >
-          Services
-        </a>
-        <a
-          href="/news"
-          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-        >
-          News
-        </a>
-        <!-- <a
+            <a
+              href="/services"
+              class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+            >
+              Services
+            </a>
+            <a
+              href="/news"
+              class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+            >
+              News
+            </a>
+            <!-- <a
           href="/offers"
           class="text-slate-600 font-semibold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
         >
           Offers
         </a> -->
-        <a
-          href="/rooms"
-          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-        >
-          Rooms
-        </a>
-        <a
-          href="/gallery"
-          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-        >
-          Gallery
-        </a>
-        <a
-          href="/contact"
-          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-        >
-          Contact
-        </a>
-        <a
-          v-if="userEmail && authToken"
-          @click.prevent="redirectToDashboard"
-          class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
-        >
-          Profile
-        </a>
-      </div>
-    </div>
-    <div
-      class="absolute z-40 inset-x-0 bottom-56 lg:flex lg:flex-col xl:flex-row flex-col lg:justify-center md:mx-0 mx-4"
-    >
-      <div
-        class="xl:flex grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 items-center justify-center bg-black-200 bg-opacity-60 md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
-      >
-        <div class="relative md:max-w-sm md:mx-auto">
-          <input
-            type="datetime-local"
-            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            placeholder="Check In Date and Time"
-            v-model="check_in"
-          />
-        </div>
-        <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
-        <div class="relative md:max-w-sm md:mx-auto">
-          <input
-            type="datetime-local"
-            class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block"
-            placeholder="Check Out Date and Time"
-            v-model="check_out"
-          />
-        </div>
-
-        <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
-        <div class="lg:max-w-sm lg:mx-auto">
-          <div class="relative">
-            <div
-              @click="toggleDropdown"
-              ref="dropdownContainer"
-              class="text-white text-sm p-4 xl:w-60 lg:w-60 md-48:w-6 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer flex justify-between items-center"
+            <a
+              href="/rooms"
+              class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
             >
-              <div class="overflow-hidden text-ellipsis whitespace-nowrap w-24">
-                <span v-if="selectedCategories.length === 0">Choose Rooms</span>
-                <span v-else>{{ selectedCategories.join(", ") }}</span>
-              </div>
-              <div class="ml-1">
-                <svg
-                  v-if="dropdownOpen"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 3a1 1 0 01.707.293l7 7a1 1 0 11-1.414 1.414L10 5.414l-6.293 6.293a1 1 0 01-1.414-1.414l7-7A1 1 0 0110 3z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <svg
-                  v-else
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 17a1 1 0 01-.707-.293l-7-7a1 1 0 011.414-1.414L10 14.586l6.293-6.293a1 1 0 111.414 1.414l-7 7A1 1 0 0110 17z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div
-              v-if="dropdownOpen"
-              class="absolute mt-2 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg z-10"
+              Rooms
+            </a>
+            <a
+              href="/gallery"
+              class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
             >
-              <div
-                v-for="room in room_types"
-                :key="room.value"
-                class="p-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center"
-                @click.stop="selectCategory(room.category)"
-              >
-                <input
-                  type="checkbox"
-                  :value="room.category"
-                  :checked="selectedCategories.includes(room.category)"
-                  @change="selectCategory(room.category)"
-                  class="mr-2"
-                />
-                <span class="text-gray-900 dark:text-white">{{
-                  room.category
-                }}</span>
-              </div>
-            </div>
+              Gallery
+            </a>
+            <a
+              href="/contact"
+              class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+            >
+              Contact
+            </a>
+            <a
+              v-if="userEmail && authToken"
+              @click.prevent="redirectToDashboard"
+              class="text-orange-700 font-bold md:text-sm text-xs px-4 py-2 rounded-lg uppercase hover:text-orange-400"
+            >
+              Profile
+            </a>
           </div>
         </div>
-        <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
-
-        <div class="lg:max-w-sm lg:mx-auto">
-          <select
-            id="view"
-            v-model="roomView"
-            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option :value="null" disabled selected class="text-gray-900">
-              Choose Room View
-            </option>
-            <option value="LAKE" class="text-gray-900">LAKE</option>
-            <option value="MOUNTAIN" class="text-gray-900">MOUNTAIN</option>
-          </select>
-        </div>
-        <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
-
-        <div class="lg:max-w-sm lg:mx-auto">
-          <input
-            v-model="discount_code"
-            type="text"
-            placeholder="Discount Code"
-            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-      </div>
-      <button
-        class="bg-red-100 hover:bg-red-500 text-sm text-center text-white p-2 md:p-4 rounded xl:rounded-r-lg xl:rounded-l-none hidden justify-center lg:flex"
-        @click="checkAvailability"
-      >
-        <span v-if="loading" class="flex">
-          <svg
-            class="animate-spin h-5 w-5 mr-3 text-white"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              class="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              stroke-width="4"
-            ></circle>
-            <path
-              class="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z"
-            ></path>
-          </svg>
-          Loading...
-        </span>
-        <span v-else> Check Availability </span>
-      </button>
-      <div class="lg:hidden">
-        <button
-          class="bg-red-100 hover:bg-red-500 buttontext text-sm text-white p-4 rounded-none border border-white w-full"
-          @click="checkAvailability"
+        <div
+          class="absolute z-40 inset-x-0 bottom-56 lg:flex lg:flex-col xl:flex-row flex-col lg:justify-center md:mx-0 mx-4"
         >
-          <span v-if="loading" class="flex items-center justify-center">
-            <svg
-              class="animate-spin h-5 w-5 mr-3 text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
+          <div
+            class="xl:flex grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 items-center justify-center bg-black-200 bg-opacity-60 md:space-x-0 border md:rounded-e-none rounded-none md:rounded-lg shadow-lg border-white"
+          >
+            <div class="relative md:max-w-sm md:mx-auto">
+              <input
+                type="datetime-local"
+                class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                placeholder="Check In Date and Time"
+                v-model="check_in"
+              />
+            </div>
+            <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
+            <div class="relative md:max-w-sm md:mx-auto">
+              <input
+                type="datetime-local"
+                class="bg-transparent w-full border-none rounded-lg text-white placeholder-gray-500 text-sm p-4 focus:ring-0 block"
+                placeholder="Check Out Date and Time"
+                v-model="check_out"
+              />
+            </div>
+
+            <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
+            <div class="lg:max-w-sm lg:mx-auto">
+              <div class="relative">
+                <div
+                  @click="toggleDropdown"
+                  ref="dropdownContainer"
+                  class="text-white text-sm p-4 xl:w-60 lg:w-60 md-48:w-6 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer flex justify-between items-center"
+                >
+                  <div
+                    class="overflow-hidden text-ellipsis whitespace-nowrap w-24"
+                  >
+                    <span v-if="selectedCategories.length === 0"
+                      >Choose Rooms</span
+                    >
+                    <span v-else>{{ selectedCategories.join(", ") }}</span>
+                  </div>
+                  <div class="ml-1">
+                    <svg
+                      v-if="dropdownOpen"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 3a1 1 0 01.707.293l7 7a1 1 0 11-1.414 1.414L10 5.414l-6.293 6.293a1 1 0 01-1.414-1.414l7-7A1 1 0 0110 3z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <svg
+                      v-else
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 17a1 1 0 01-.707-.293l-7-7a1 1 0 011.414-1.414L10 14.586l6.293-6.293a1 1 0 111.414 1.414l-7 7A1 1 0 0110 17z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div
+                  v-if="dropdownOpen"
+                  class="absolute mt-2 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg z-10"
+                >
+                  <div
+                    v-for="room in room_types"
+                    :key="room.value"
+                    class="p-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center"
+                    @click.stop="selectCategory(room.category)"
+                  >
+                    <input
+                      type="checkbox"
+                      :value="room.category"
+                      :checked="selectedCategories.includes(room.category)"
+                      @change="selectCategory(room.category)"
+                      class="mr-2"
+                    />
+                    <span class="text-gray-900 dark:text-white">{{
+                      room.category
+                    }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
+            <div class="lg:max-w-sm lg:mx-auto relative">
+              <div
+                @click="toggleDropdown2"
+                class="text-white text-sm p-4 xl:w-60 lg:w-60 md-48:w-6 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer flex justify-between items-center"
+              >
+                <span>{{
+                  roomView.length ? roomView.join(", ") : "Choose Room View"
+                }}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-white absolute right-4 top-1/2 transform -translate-y-1/2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div
+                v-if="dropdownOpen2"
+                class="absolute mt-2 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg z-10"
+              >
+                <label
+                  v-for="(option, index) in options"
+                  :key="index"
+                  class="block text-gray-900 dark:text-white p-4 hover:bg-gray-200 dark:hover:bg-gray-500 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    :value="option"
+                    v-model="roomView"
+                    class="mr-2"
+                  />
+                  {{ option }}
+                </label>
+              </div>
+            </div>
+
+            <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
+
+            <div class="lg:max-w-sm lg:mx-auto">
+              <input
+                v-model="discount_code"
+                type="text"
+                placeholder="Discount Code"
+                class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+          </div>
+          <button
+            class="bg-red-100 hover:bg-red-500 text-sm text-center text-white p-2 md:p-4 rounded xl:rounded-r-lg xl:rounded-l-none hidden justify-center lg:flex"
+            @click="checkAvailability"
+          >
+            <span v-if="loading" class="flex">
+              <svg
+                class="animate-spin h-5 w-5 mr-3 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z"
+                ></path>
+              </svg>
+              Loading...
+            </span>
+            <span v-else> Check Availability </span>
+          </button>
+          <div class="lg:hidden">
+            <button
+              class="bg-red-100 hover:bg-red-500 buttontext text-sm text-white p-4 rounded-none border border-white w-full"
+              @click="checkAvailability"
             >
-              <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"
-              ></circle>
-              <path
-                class="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z"
-              ></path>
-            </svg>
-            Loading...
-          </span>
-          <span v-else> Check Availability </span>
-        </button>
+              <span v-if="loading" class="flex items-center justify-center">
+                <svg
+                  class="animate-spin h-5 w-5 mr-3 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4l4-4-4-4v4a8 8 0 01-8 8z"
+                  ></path>
+                </svg>
+                Loading...
+              </span>
+              <span v-else> Check Availability </span>
+            </button>
+          </div>
+        </div>
+        <div></div>
       </div>
     </div>
-    <div></div>
   </div>
-</div>
-</div>
 </template>
 
 <script>
@@ -589,6 +632,9 @@ export default {
       isMenuOpen: false,
       authToken: "",
       carousels: [], // Array to hold fetched carousel data
+      roomView: [], // Holds selected values
+      options: ["LAKE", "MOUNTAIN"], // List of options
+      dropdownOpen2: false, // Toggles dropdown visibility
     };
   },
 
@@ -598,8 +644,7 @@ export default {
 
       return this.carousels
         .filter(
-          (carousel) =>
-            carousel.tags === "Carousel"// Filter by specific titles
+          (carousel) => carousel.tags === "Carousel" // Filter by specific titles
         )
         .flatMap((carousel) =>
           carousel.media_urls
@@ -624,6 +669,9 @@ export default {
     },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    toggleDropdown2() {
+      this.dropdownOpen2 = !this.dropdownOpen2;
     },
     handleClickOutside(event) {
       if (
@@ -827,13 +875,11 @@ export default {
 
       if (videoElement) {
         swiper.params.autoplay.delay = 20000; // 10 seconds delay for image slides
-        swiper.autoplay.start(); 
+        swiper.autoplay.start();
         console.log("video slide, autoplay started with 15s delay.");
-
-        
       } else {
         swiper.params.autoplay.delay = 5000; // 10 seconds delay for image slides
-        swiper.autoplay.start(); 
+        swiper.autoplay.start();
         console.log("Non-video slide, autoplay started with 3s delay.");
       }
       swiper.autoplay.start();
@@ -883,7 +929,7 @@ export default {
 
 
 <style scoped>
-@import 'swiper/css/effect-fade';
+@import "swiper/css/effect-fade";
 button[aria-label="Close"] {
   font-size: 1.5rem;
   font-weight: bold;
@@ -943,7 +989,11 @@ select,
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
