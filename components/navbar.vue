@@ -169,87 +169,95 @@
             </svg>
           </button>
         </div>
-        <div
-          class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1"
-          id="navbar-cta"
+<div
+        id="navbar-cta"
+        class="hidden lg:flex items-center w-full lg:w-auto lg:space-x-8"
+      >
+        <ul
+          class="flex flex-col lg:flex-row lg:space-x-6 font-medium text-sm lg:items-center"
         >
-          <ul
-            class="flex flex-col font-medium p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-gray-900 dark:border-gray-700"
-          >
-            <li>
-              <a
-                href="/"
-                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a
-                href="/about"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="/additionalActivites"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Activities</a
-              >
-            </li>
-            <li>
-              <a
-                href="/services"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 d:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Services</a
-              >
-            </li>
-
-            <li>
-              <a
-                href="/rooms"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Rooms</a
-              >
-            </li>
-            <li>
-              <a
-                href="/gallery"
-                class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 bg-blue-700 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
-                >Gallery</a
-              >
-            </li>
-            <li>
-              <a
-                href="/news"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >News</a
-              >
-            </li>
-            <!-- <li>
-                <a
-                  href="/offers"
-                  class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                  >Offers</a
-                >
-              </li> -->
-            <li>
-              <a
-                href="/contact"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Contact</a
-              >
-            </li>
-            <li>
-              <a
-                v-if="userEmail && authToken"
-                @click.prevent="handleNavigate"
-                class="block py-2 px-3 lg:p-0 text-white rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-orange-300 lg:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 uppercase"
-                >Profile</a
-              >
-            </li>
-          </ul>
-        </div>
+          <li>
+            <router-link
+              to="/"
+              :class="{ 'text-orange-300 font-bold': isActiveLink('/') }"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+            >
+              Home
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/about"
+              :class="{ 'text-orange-300 font-bold': isActiveLink('/about') }"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+            >
+              About
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/additionalActivites"
+              :class="{ 'text-orange-300 font-bold': isActiveLink('/additionalActivites') }"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+            >
+              Activities
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/services"
+              :class="{ 'text-orange-300 font-bold': isActiveLink('/services') }"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+            >
+              Services
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/rooms"
+              :class="{ 'text-orange-300 font-bold': isActiveLink('/rooms') }"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+            >
+              Rooms
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/gallery"
+              :class="{ 'text-orange-300 font-bold': isActiveLink('/gallery') }"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+            >
+              Gallery
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/news"
+              :class="{ 'text-orange-300 font-bold': isActiveLink('/news') }"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+            >
+              News
+            </router-link>
+          </li>
+          <li>
+            <router-link
+              to="/contact"
+              :class="{ 'text-orange-300 font-bold': isActiveLink('/contact') }"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+            >
+              Contact
+            </router-link>
+          </li>
+          <li v-if="userEmail && authToken">
+            <a
+              @click.prevent="handleNavigate"
+              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase cursor-pointer"
+            >
+              Profile
+            </a>
+          </li>
+        </ul>
+      </div>
       </div>
     </div>
   </nav>
@@ -281,27 +289,27 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { initFlowbite } from "flowbite";
-import { useRouter } from "vue-router";
 
 const isNavbarBackgroundBlack = ref(false);
-const router = useRouter();
-
 const userEmail = ref(null);
-const { props } = defineProps([
-  "pageTitle",
-  "pageTitleTwo",
-  "pageTitleThree",
-  "imageNav",
-]);
 const authToken = ref(null);
+const router = useRouter();
+const route = useRoute();
 
+// Props
+const { props } = defineProps(["pageTitle", "pageTitleTwo", "pageTitleThree", "imageNav"]);
+
+// Scroll Handling
 const handleScroll = () => {
   const scrollTop = window.scrollY;
   const scrollThreshold = 50;
   isNavbarBackgroundBlack.value = scrollTop > scrollThreshold;
 };
+
+// Toggle Mobile Menu
 const toggleMenu = () => {
   const button = document.querySelector('[data-collapse-toggle="navbar-cta"]');
   const isOpen = button.getAttribute("aria-expanded") === "true";
@@ -311,13 +319,13 @@ const toggleMenu = () => {
   const icon = button.querySelector("svg");
   if (!isOpen) {
     icon.innerHTML = `
-    <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 1L1 13M1 1l12 12"
-            />
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13 1L1 13M1 1l12 12"
+      />
     `;
   } else {
     // Restore hamburger icon
@@ -332,23 +340,28 @@ const toggleMenu = () => {
     `;
   }
 };
+
+// Navigation Handling
 const handleNavigate = () => {
   if (userEmail.value) {
     router.push({ path: "/dashboard", query: { guest_id: 30 } });
   }
 };
 
+// Initialize Data on Mount
 onMounted(() => {
   handleScroll();
-
   window.addEventListener("scroll", handleScroll);
   initFlowbite();
+
+  // Retrieve Auth Token from Cookies
   const cookies = document.cookie.split(";");
   const authTokenCookie = cookies.find((cookie) =>
     cookie.trim().startsWith("auth_token=")
   );
   authToken.value = authTokenCookie?.split("=")[1];
 
+  // Retrieve User Email from Local Storage
   if (typeof localStorage !== "undefined") {
     userEmail.value = localStorage.getItem("userEmail");
   }
@@ -357,7 +370,11 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
+
+// Watch Route Changes for Active Class
+const isActiveLink = (path) => route.path === path;
 </script>
+
 
 <style scoped>
 h2 {
@@ -372,4 +389,9 @@ ul li,
 a {
   font-family: "Barlow", sans-serif;
 }
+.active {
+  color: orange; 
+  font-weight: bold;
+}
+
 </style>
