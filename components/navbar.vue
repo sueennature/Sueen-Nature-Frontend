@@ -62,6 +62,7 @@
           <li>
             <a
               href="/"
+              :class="{ 'text-orange-300 font-bold active': isActiveLink('/') }"
               class="block py-2 px-3 lg:p-0 text-white lg:hover:text-orange-300 hover:bg-slate-500 rounded lg:bg-transparent lg:text-white lg:dark:text-blue-500 uppercase"
               >Home</a
             >
@@ -169,95 +170,105 @@
             </svg>
           </button>
         </div>
-<div
-        id="navbar-cta"
-        class="hidden lg:flex items-center w-full lg:w-auto lg:space-x-8"
-      >
-        <ul
-          class="flex flex-col lg:flex-row lg:space-x-6 font-medium text-sm lg:items-center"
+        <div
+          id="navbar-cta"
+          class="hidden lg:flex items-center w-full lg:w-auto lg:space-x-8"
         >
-          <li>
-            <router-link
-              to="/"
-              :class="{ 'text-orange-300 font-bold': isActiveLink('/') }"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
-            >
-              Home
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/about"
-              :class="{ 'text-orange-300 font-bold': isActiveLink('/about') }"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
-            >
-              About
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/additionalActivites"
-              :class="{ 'text-orange-300 font-bold': isActiveLink('/additionalActivites') }"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
-            >
-              Activities
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/services"
-              :class="{ 'text-orange-300 font-bold': isActiveLink('/services') }"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
-            >
-              Services
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/rooms"
-              :class="{ 'text-orange-300 font-bold': isActiveLink('/rooms') }"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
-            >
-              Rooms
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/gallery"
-              :class="{ 'text-orange-300 font-bold': isActiveLink('/gallery') }"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
-            >
-              Gallery
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/news"
-              :class="{ 'text-orange-300 font-bold': isActiveLink('/news') }"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
-            >
-              News
-            </router-link>
-          </li>
-          <li>
-            <router-link
-              to="/contact"
-              :class="{ 'text-orange-300 font-bold': isActiveLink('/contact') }"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
-            >
-              Contact
-            </router-link>
-          </li>
-          <li v-if="userEmail && authToken">
-            <a
-              @click.prevent="handleNavigate"
-              class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase cursor-pointer"
-            >
-              Profile
-            </a>
-          </li>
-        </ul>
-      </div>
+          <ul
+            class="flex flex-col lg:flex-row lg:space-x-6 font-medium text-sm lg:items-center"
+          >
+            <li>
+              <router-link
+                to="/"
+                :class="{ 'text-orange-300 font-bold active': isActiveLink('/') }"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+              >
+                Home
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                to="/about"
+                :class="{ 'text-orange-300 font-bold active': isActiveLink('/about') }"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+              >
+                About
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                to="/additionalActivites"
+                :class="{
+                  'text-orange-300 font-bold active': isActiveLink(
+                    '/additionalActivites'
+                  ),
+                }"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+              >
+                Activities
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                to="/services"
+                :class="{
+                  'text-orange-300 font-bold active': isActiveLink('/services'),
+                }"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+              >
+                Services
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                to="/rooms"
+                :class="{ 'text-orange-300 font-bold active': isActiveLink('/rooms') }"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+              >
+                Rooms
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                to="/gallery"
+                :class="{
+                  'text-orange-300 font-bold active': isActiveLink('/gallery'),
+                }"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+              >
+                Gallery
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                to="/news"
+                :class="{ 'text-orange-300 font-bold active': isActiveLink('/news') }"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+              >
+                News
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                to="/contact"
+                :class="{
+                  'text-orange-300 font-bold active': isActiveLink('/contact'),
+                }"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase"
+              >
+                Contact
+              </router-link>
+            </li>
+            <li v-if="userEmail && authToken">
+              <a
+                @click.prevent="handleNavigate"
+                class="block py-2 px-4 text-white lg:hover:text-orange-300 uppercase cursor-pointer"
+              >
+                Profile
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
@@ -300,7 +311,12 @@ const router = useRouter();
 const route = useRoute();
 
 // Props
-const { props } = defineProps(["pageTitle", "pageTitleTwo", "pageTitleThree", "imageNav"]);
+const { props } = defineProps([
+  "pageTitle",
+  "pageTitleTwo",
+  "pageTitleThree",
+  "imageNav",
+]);
 
 // Scroll Handling
 const handleScroll = () => {
@@ -375,7 +391,6 @@ onUnmounted(() => {
 const isActiveLink = (path) => route.path === path;
 </script>
 
-
 <style scoped>
 h2 {
   font-family: "Philosopher", sans-serif;
@@ -390,8 +405,7 @@ a {
   font-family: "Barlow", sans-serif;
 }
 .active {
-  color: orange; 
+  color:  #fb923c;
   font-weight: bold;
 }
-
 </style>
