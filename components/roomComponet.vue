@@ -4,7 +4,6 @@
       IN YOUR ROOM
     </h2>
     <hr class="h-px w-full bg-gray-600 mt-8" />
-    <!-- images of faciclities -->
     <div
       class="md:flex md:flex-row grid grid-cols-2 justify-center items-center justify-items-center gap-16 mt-20"
     >
@@ -136,105 +135,53 @@
           </div>
         </div>
       </div>
-  
-      <div v-if="roomData">
-  <div class="flex flex-col items-center">
-    <div class="flex flex-row gap-4 justify-center mt-4">
-      <h5 class="md:text-sm text-xs text-black-200 pl-4">
-        Size: <span class="italic">{{ roomData.size }}&nbsp;m<sup>2</sup></span>
-      </h5>
-      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
-        Bed: {{ roomData.beds || '01 Queen' }}
-      </h5>
-      <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
-        Occupancy: Max adult{{ roomData.max_adults > 1 ? "s" : "" }} {{ roomData.max_adults }}
-        {{ roomData.max_childs ? ", Max Children " + roomData.max_childs + (roomData.max_childs > 1 ? " " : " ") : "" }}
-      </h5>
-    </div>
+      <div>
+        <div v-if="matchedRoom" class="flex flex-col items-center">
+  <div class="flex flex-row gap-4 justify-center mt-4">
+    <h5 class="md:text-sm text-xs text-black-200 pl-4">
+      Size: <span class="italic">{{ matchedRoom.size }}&nbsp;m<sup>2</sup></span>
+    </h5>
+    <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+      Bed: {{ matchedRoom.bed === 1 ? '01 Queen' : `${matchedRoom.bed} Beds` }}
+    </h5>
+    <h5 class="md:text-sm text-xs text-black-200 border-l pl-4">
+      Occupancy: {{ matchedRoom.occupancy }}
+    </h5>
   </div>
 </div>
-
-
-    <!-- <div class="mt-8">
-      <CheckoutAvailability />
-    </div> -->
-
+</div>
      <h2 class="uppercase text-black-100 md:text-4xl text-3xl text-center mt-16">
       EXPLORE OTHER ROOMS
     </h2> 
     <div v-if="unSelectedRoomData?.length > 0"       class="lg:flex lg:flex-row grid grid-cols-1 justify-center justify-items-center gap-4 my-20"
       >
     <div v-for="(category, categoryIndex) in unSelectedRoomData" :key="categoryIndex" class="category-section">
-      <!-- <div v-for="(room, roomIndex) in category.rooms" :key="roomIndex" class="room-card"> -->
-        <!-- <div v-if="category.rooms[0].images.length > 0" class="image-gallery">
-          <img :src="https://api.sueennature.com/${category.rooms[0].images[0]}" alt="Room Image" class="room-image w-[300px] h-[300px]" />
-        </div> -->
-        <!-- Display images -->
-        <div v-if="category.rooms.length > 0" class="room-card">
+        <div  class="room-card">
           <div class="image-gallery">
-      <img
-        v-if="category.category === 'Single'"
-        src="/img/Single Room.webp"
-        alt="Single Room Image"
-        class="room-image w-[300px] h-[300px]"
-      />
-      <img
-        v-else-if="category.category === 'Double'"
-        src="/img/Double Room.webp"
-        alt="Double Room Image"
-        class="room-image w-[300px] h-[300px]"
-      />
-      <img
-        v-else-if="category.category === 'Deluxe'"
-        src="/img/Delux Room.webp"
-        alt="Deluxe Room Image"
-        class="room-image w-[300px] h-[300px]"
-      />
-      <img
-        v-else-if="category.category === 'Triple'"
-        src="/img/Triple Room.webp"
-        alt="Triple Room Image"
-        class="room-image w-[300px] h-[300px]"
-      />
-      <img
-        v-else-if="category.category === 'Family'"
-        src="/img/Family Room.webp"
-        alt="Family Room Image"
-        class="room-image w-[300px] h-[300px]"
-      />
-      <img
-        v-else
-        src="/img/room_5.jpg "
-        alt="Default Room Image"
-        class="room-image w-[300px] h-[300px]"
-      />
+            <img
+            class="rounded-0 w-64 max-w-md h-60"
+            :src="`${runtimeConfig.public.BE_URL}/${category.primary_image[0]}`"
+            :alt="`${category.category} Room image`"
+          />
+     
     </div>
       </div>
-      <!-- </div> -->
       <h2 class="text-xl mt-2 mb-2 text-center">{{ category.category }}</h2>
-      
-      
-        <p class="text-center text-[14px]"> {{ category.rooms[0].description }}</p>
-  
-        
-    
       <div class="text-center mt-2 mb-2">
         <button
-          @click="navigateToRoomTypePage(category.category )"
-          class="text-red-100 font-bold text-sm lg:text-center"
+        @click="navigateToRoomTypePage(category.category)"
+        class="text-red-100 font-bold text-sm lg:text-center"
         >
           VIEW DETAILS
         </button>
       </div>
-   
     </div>
   </div>
-
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, nextTick } from "vue";
+import { defineComponent, ref, computed, onMounted, nextTick } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import Splide from "@splidejs/splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
@@ -246,20 +193,20 @@ export default defineComponent({
     CheckoutAvailability,
   },
   setup() {
-    const matchedRoomTypes = ref([]);
-    const nonMatchedRoomTypes = ref([]);
+    const matchedRooms = ref([]);
+    const nonMatchedRooms = ref([]);
     const slides = ref([]);
-    const roomData = ref(null);
     const unSelectedRoomData = ref([]);
+    const runtimeConfig = useRuntimeConfig();
+    const matchedRoom = computed(() => (matchedRooms.value.length > 0 ? matchedRooms.value[0] : null));
 
     const route = useRoute();
     const router = useRouter();
 
-    const fetchRoomData = async (roomId) => {
-      const runtimeConfig = useRuntimeConfig();
-
+    const fetchRoomTypeData = async () => {
+      const roomName = route.query.name;
       try {
-        const response = await fetch(`${runtimeConfig.public.BE_URL}/rooms/types`, {
+        const response = await fetch(`${runtimeConfig.public.BE_URL}/room_type/?skip=0&limit=100`, {
           method: "GET",
           headers: {
             "x-api-key": runtimeConfig.public.X_API_KEY,
@@ -267,121 +214,112 @@ export default defineComponent({
           },
         });
         const data = await response.json();
+        const roomsData = data.data;
 
-        matchedRoomTypes.value = data.room_types.filter(
-          (room) => room.category === roomId
-        );
+        matchedRooms.value = roomsData.filter(room => room.category.toLowerCase() === roomName.toLowerCase());
+        nonMatchedRooms.value = roomsData.filter(room => room.category.toLowerCase() !== roomName.toLowerCase());
+        unSelectedRoomData.value = nonMatchedRooms.value;
 
-        nonMatchedRoomTypes.value = data.room_types.filter(
-          (room) => room.category !== roomId
-        );
-        unSelectedRoomData.value = nonMatchedRoomTypes.value;
+        if (matchedRoom.value) {
+          slides.value = (matchedRoom.value.room_images || []).map(image => ({
+            src: `${runtimeConfig.public.BE_URL}/${image}`,
+            alt: matchedRoom.value.category,
+          }));
+        } else {
+          slides.value = [];
+        }
 
-        const matchedRoom = matchedRoomTypes.value[0]?.rooms[0];
-        // roomData.value = matchedRoom;
-        if (matchedRoom) {
-          // Check if the secondary category matches the room ID
-      if (matchedRoom.secondary_category === roomId) {
-        roomData.value = {
-          ...matchedRoom,
-          max_adults: matchedRoom.secondary_max_adults,
-          max_childs: matchedRoom.secondary_max_childs,
-          max_people: matchedRoom.secondary_max_people,
-          size: matchedRoom.secondary_size ,
-          beds: matchedRoom.secondary_beds,
-        };
-      } else if (matchedRoom.category === roomId) {
-        roomData.value = {
-          ...matchedRoom,
-          max_adults: matchedRoom.max_adults,
-          max_childs: matchedRoom.max_childs,
-          max_people: matchedRoom.max_people,
-          size: matchedRoom.size,
-          beds: matchedRoom.beds,
-        };
+        nextTick(() => {
+          initializeCarousels();
+        });
+      } catch (error) {
+        console.error("Error fetching room data:", error);
       }
+    };
+    const navigateToRoomTypePage = (roomTypeName) => {
+  const selectedRoom = nonMatchedRooms.value.find(
+    (room) => room.category.toLowerCase() === roomTypeName.toLowerCase()
+  );
+
+  if (selectedRoom) {
+    if (matchedRooms.value.length > 0) {
+      nonMatchedRooms.value.push(matchedRooms.value[0]);
     }
 
-        if (matchedRoomTypes.value.length > 0) {
-          slides.value = (matchedRoom.images)?.map((image) => ({
-            src: `${runtimeConfig.public.BE_URL}/${image}`,
-            alt: matchedRoom.name,
-          }));
+    matchedRooms.value = [selectedRoom];
 
-          // Initialize carousels after slides are set
-          nextTick(() => {
-            initializeCarousels();
-          });
-        }
-      
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-      }
-    };
+    nonMatchedRooms.value = nonMatchedRooms.value.filter(
+      (room) => room.category.toLowerCase() !== roomTypeName.toLowerCase()
+    );
 
-    const navigateToRoomTypePage = (roomTypeName) => {
-      // Update the URL without reloading the page
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    unSelectedRoomData.value = nonMatchedRooms.value;
 
-      router.push({ query: { name: roomTypeName } });
-      
-      // Fetch data for the new room type
-      fetchRoomData(roomTypeName);
-    };
+    slides.value = (selectedRoom.room_images || []).map((image) => ({
+      src: `${runtimeConfig.public.BE_URL}/${image}`,
+      alt: selectedRoom.category,
+    }));
 
-    const initializeCarousels = () => {
-      const mainSliderElement = document.getElementById("main-slider");
-      const thumbnailSliderElement =
-        document.getElementById("thumbnail-slider");
+    history.pushState(null, "", `/room?name=${encodeURIComponent(roomTypeName)}`);
 
-      if (mainSliderElement && thumbnailSliderElement) {
-        const main = new Splide(mainSliderElement, {
-          type: "fade",
-          heightRatio: 0.5,
-          pagination: false,
-          arrows: false,
-          cover: true,
-        });
+    nextTick(() => {
+      initializeCarousels();
+    });
+  }
 
-        const thumbnails = new Splide(thumbnailSliderElement, {
-          rewind: true,
-          fixedWidth: 80,
-          fixedHeight: 45,
-          isNavigation: true,
-          gap: 10,
-          focus: "center",
-          pagination: false,
-          cover: true,
-          dragMinThreshold: {
-            mouse: 4,
-            touch: 10,
-          },
-          breakpoints: {
-            640: {
-              fixedWidth: 50,
-              fixedHeight: 30,
-            },
-          },
-        });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
-        main.sync(thumbnails);
-        main.mount();
-        thumbnails.mount();
-      }
-    };
+
+
+const initializeCarousels = () => {
+  const mainSliderElement = document.getElementById("main-slider");
+  const thumbnailSliderElement = document.getElementById("thumbnail-slider");
+
+  if (mainSliderElement && thumbnailSliderElement) {
+    // Destroy previous instances if any, to prevent conflicts
+    if (mainSliderElement.splide) mainSliderElement.splide.destroy();
+    if (thumbnailSliderElement.splide) thumbnailSliderElement.splide.destroy();
+
+    const main = new Splide(mainSliderElement, {
+      type: "fade",
+      heightRatio: 0.5,
+      pagination: false,
+      arrows: false,
+      cover: true,
+    });
+
+    const thumbnails = new Splide(thumbnailSliderElement, {
+      rewind: true,
+      fixedWidth: 80,
+      fixedHeight: 45,
+      isNavigation: true,
+      gap: 10,
+      focus: "center",
+      pagination: false,
+      cover: true,
+    });
+
+    main.sync(thumbnails);
+    main.mount();
+    thumbnails.mount();
+  }
+};
+
 
     onMounted(() => {
-      fetchRoomData(route.query.name);
+      fetchRoomTypeData();
     });
 
     return {
-      slides,
-      roomData,
+      matchedRoom,
       unSelectedRoomData,
+      slides,
       navigateToRoomTypePage,
+      runtimeConfig,
     };
   },
 });
+
 </script>
 
 

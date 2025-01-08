@@ -96,19 +96,48 @@
         </div>
 
         <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
-        <form class="lg:max-w-sm lg:mx-auto">
-          <select
-            id="view"
-            class="text-white text-sm p-4 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            v-model="roomView"
-          >
-            <option :value="null" disabled selected class="text-gray-900">
-              Choose Room View
-            </option>
-            <option value="LAKE" class="text-gray-900">LAKE</option>
-            <option value="MOUNTAIN" class="text-gray-900">MOUNTAIN</option>
-          </select>
-        </form>
+        <div class="lg:max-w-sm lg:mx-auto relative">
+              <div
+                @click="toggleDropdown2"
+                class="text-white text-sm p-4 xl:w-60 lg:w-60 md-48:w-6 bg-transparent border-none rounded-0 focus:ring-0 focus:border-white w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer flex justify-between items-center"
+              >
+                <span>{{
+                  roomView.length ? roomView.join(", ") : "Choose Room View"
+                }}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 text-white absolute right-4 top-1/2 transform -translate-y-1/2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+              <div
+                v-if="dropdownOpen2"
+                class="absolute mt-2 w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg z-10"
+              >
+                <label
+                  v-for="(option, index) in options"
+                  :key="index"
+                  class="block text-gray-900 dark:text-white p-4 hover:bg-gray-200 dark:hover:bg-gray-500 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    :value="option"
+                    v-model="roomView"
+                    class="mr-2"
+                  />
+                  {{ option }}
+                </label>
+              </div>
+            </div>
         <div class="w-0.5 bg-white h-8 my-auto xl:flex hidden"></div>
 
         <form class="lg:max-w-sm lg:mx-auto">
@@ -196,12 +225,14 @@ export default {
       check_in: "",
       check_out: "",
       roomCategory: null,
-      roomView: null,
       room_types: [],
       selectedCategories: [],
       discount_code: "",
       dropdownOpen: false,
       loading: false,
+      roomView: [], // Holds selected values
+      options: ["LAKE", "MOUNTAIN"], // List of options
+      dropdownOpen2: false, // Toggles dropdown visibility
     };
   },
 
@@ -227,7 +258,15 @@ export default {
         this.formatDateTime(
           new Date(new Date().getTime() + 2 * 60 * 60 * 1000)
         ); // 2 hours later
-      this.roomView = view || null;
+         // Handle view
+  if (typeof view === "string") {
+    this.roomView = view.split(",");
+  } else if (Array.isArray(view)) {
+    this.roomView = view; // In case 'view' is an array
+  } else {
+    this.roomView = [];
+  }
+      
       this.discount_code = discount || "";
       console.log("FROM_URL", this.check_in, this.check_out);
       // Handle categories
@@ -265,6 +304,9 @@ export default {
 
     toggleDropdown() {
       this.dropdownOpen = !this.dropdownOpen;
+    },
+    toggleDropdown2() {
+      this.dropdownOpen2 = !this.dropdownOpen2;
     },
     selectCategory(category) {
       if (this.selectedCategories.includes(category)) {
@@ -308,7 +350,6 @@ export default {
       if (
         !this.check_in ||
         !this.check_out ||
-        !this.roomView ||
         this.selectedCategories.length === 0
       ) {
         return this.setupToastError("Please fill all fields");
@@ -348,10 +389,16 @@ export default {
       const params = new URLSearchParams({
         check_in: formattedCheckIn,
         check_out: formattedCheckOut,
-        views: this.roomView,
+        
+       
         discount_code: this.discount_code,
       });
-
+   
+      // Append all selected views
+  this.roomView.forEach((view) => {
+    params.append("view", view);
+  });
+  
       this.selectedCategories.forEach((category) => {
         params.append("categories", category);
       });
@@ -382,7 +429,7 @@ export default {
               fromDate: this.check_in,
               toDate: this.check_out,
               categories: this.selectedCategories.join(","),
-              view: this.roomView,
+              view: this.roomView.join(","),
               discount: this.discount_code,
             },
           });

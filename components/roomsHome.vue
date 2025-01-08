@@ -1,53 +1,25 @@
 <template>
-  <div class=" px-4 py-20 ">
+  <div class="px-4 py-20">
     <div class="flex gap-4 items-center justify-center">
-      <h2 class="uppercase text-black-100 text-4xl text-center">
-        Rooms & Services
-      </h2>
+      <h2 class="uppercase text-black-100 text-4xl text-center">Rooms & Services</h2>
     </div>
 
-    <h3 class="text-black-50 text-xl pt-1 text-center tracking-widest uppercase">
-      Sueen Nature Resort
-    </h3>
-    <div class="xl:grid xl:grid-cols-5  lg:grid lg:grid-cols-1 md:grid md:grid-cols-1 grid grid-cols-1 justify-items-center gap-4 my-10">
-  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter" @click="handleNavigateSingle">
-    <img class="rounded-0 w-64 max-w-md h-60" :src="`${runtimeConfig.public.BE_URL}/${room_carousels[3]}`" :alt="`Room image`" />
-    <figcaption class="absolute px-4 text-lg text-white bottom-6">
-      <h2 class="text-3xl text-white">Single Room</h2>
-    </figcaption>
-  </figure>
+    <h3 class="text-black-50 text-xl pt-1 text-center tracking-widest uppercase">Sueen Nature Resort</h3>
 
-  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter" @click="handleNavigateDouble">
-    <img class="rounded-0 w-64 max-w-md h-60" :src="`${runtimeConfig.public.BE_URL}/${room_carousels[1]}`" :alt="`Room image`" />
-    <figcaption class="absolute px-4 text-lg text-white bottom-6">
-      <h2 class="text-3xl text-white">Double Room</h2>
-    </figcaption>
-  </figure>
-
-  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter" @click="handleNavigateDeluxe">
-    <img class="rounded-0 w-64 max-w-md h-60" :src="`${runtimeConfig.public.BE_URL}/${room_carousels[2]}`" :alt="`Room image`" />
-    <figcaption class="absolute px-4 text-lg text-white bottom-6">
-      <h2 class="text-3xl text-white">Deluxe Room</h2>
-    </figcaption>
-  </figure>
-
-  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter" @click="handleNavigateTriple">
-    <img class="rounded-0 w-64 max-w-md h-60" :src="`${runtimeConfig.public.BE_URL}/${room_carousels[0]}`" :alt="`Room image`" />
-    <figcaption class="absolute px-4 text-lg text-white bottom-6">
-      <h2 class="text-3xl text-white">Triple Room</h2>
-    </figcaption>
-  </figure>
-
-  <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter" @click="handleNavigateFamily">
-    <img class="rounded-0 w-64 max-w-md h-60" :src="`${runtimeConfig.public.BE_URL}/${room_carousels[4]}`" :alt="`Room image`" />
-    <figcaption class="absolute px-4 text-lg text-white bottom-6">
-      <h2 class="text-3xl text-white">Family Room</h2>
-    </figcaption>
-  </figure>
-</div>
-
-
-   
+    <div class="xl:grid xl:grid-cols-5 lg:grid-cols-1 md:grid-cols-1 grid grid-cols-1 justify-items-center gap-4 my-10">
+      <template v-for="(room, index) in roomData" :key="room.id">
+        <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter" @click="navigateToRoom(room.category)">
+          <img
+            class="rounded-0 w-64 max-w-md h-60"
+            :src="`${runtimeConfig.public.BE_URL}/${room.primary_image[0]}`"
+            :alt="`${room.category} Room image`"
+          />
+          <figcaption class="absolute px-4 text-lg text-white bottom-6">
+            <h2 class="text-3xl text-white">{{ room.category }} Room</h2>
+          </figcaption>
+        </figure>
+      </template>
+    </div>
 
     <div class="flex justify-center items-center">
       <a href="./rooms">
@@ -63,67 +35,46 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import { useRouter } from "vue-router";
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
 const runtimeConfig = useRuntimeConfig();
-const room_carousels = ref([]);
+const roomData = ref([]);
 const router = useRouter();
 
-const handleNavigateSingle = () => {
-  router.push({ path: "/room", query: { name: "Single" } });
-};
-const handleNavigateDouble = () => {
-  router.push({ path: "/room", query: { name: "Double" } });
-};
-const handleNavigateDeluxe = () => {
-  router.push({ path: "/room", query: { name: "Deluxe" } });
-};
-const handleNavigateTriple = () => {
-  router.push({ path: "/room", query: { name: "Triple" } });
-};
-const handleNavigateFamily = () => {
-  router.push({ path: "/room", query: { name: "Family" } });
-};
-
-
-
-async function fetchRoomCarousels() {
+async function fetchRoomTypes() {
   try {
-    const response = await fetch(`${runtimeConfig.public.BE_URL}/carousels/?skip=0&limit=100`, {
-      method: "GET",
+    const response = await fetch(`${runtimeConfig.public.BE_URL}/room_type/?skip=0&limit=100`, {
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        "x-api-key": runtimeConfig.public.X_API_KEY,
+        'Content-Type': 'application/json',
+        'x-api-key': runtimeConfig.public.X_API_KEY,
       },
     });
-
-  
     const data = await response.json();
-    console.log("ROOM", data.data)
-    const roomsMedia = data.data.find(entry => entry.title === 'Rooms&Services');
-    if (roomsMedia) {
-    room_carousels.value = roomsMedia.media_urls;
-    console.log("TEST, room_C", room_carousels.value)
-}
+    roomData.value = data.data;
   } catch (error) {
-    console.error("There has been a  problem with your fetch operation:", error);
+    console.error('Error fetching room data:', error);
   }
 }
 
 onMounted(() => {
-  fetchRoomCarousels();
+  fetchRoomTypes();
 });
+
+function navigateToRoom(roomType) {
+  router.push({ path: '/room', query: { name: roomType } });
+}
 </script>
 
 <style scoped>
 h2 {
-  font-family: "Philosopher", sans-serif;
+  font-family: 'Philosopher', sans-serif;
 }
 h3,
 .buttontext,
 p,
 h5 {
-  font-family: "Barlow", sans-serif;
+  font-family: 'Barlow', sans-serif;
 }
 </style>
