@@ -1932,7 +1932,7 @@ preparePayloadBooking() {
         const runtimeConfig = useRuntimeConfig();
         console.log(payload);
         const response = await fetch(
-          "https://api.sueennature.com/rooms/get-rates/",
+          `${runtimeConfig.public.BE_URL}/rooms/get-rates/`,
           {
             method: "POST",
             headers: {
@@ -1979,7 +1979,7 @@ preparePayloadBooking() {
       this.book_loading = true;
 
       axios
-        .post("https://api.sueennature.com/bookings/", payload, { headers })
+        .post(`${runtimeConfig.public.BE_URL}/bookings/`, payload, { headers })
         .then((response) => {
           console.log("Response received:", response.data);
           this.book_loading = false;
@@ -2151,7 +2151,7 @@ childOptions(room) {
         };
 
         const { data: guestResponse } = await axios.post(
-          "https://api.sueennature.com/guests",
+          `${runtimeConfig.public.BE_URL}/guests`,
           guestPayload,
           {
             headers: {
@@ -2165,7 +2165,7 @@ childOptions(room) {
 
         // Step 2: Register user
         const { data: registerResponse } = await axios.post(
-          "https://api.sueennature.com/users/register",
+          `${runtimeConfig.public.BE_URL}/users/register`,
           {
             username: this.registerUser.name + " " + this.registerUser.lname,
             email: this.registerUser.email,
@@ -2246,7 +2246,7 @@ childOptions(room) {
       }).toString();
 
       const response = await fetch(
-        `https://api.sueennature.com/users/login?${queryParams}`,
+        `${runtimeConfig.public.BE_URL}/users/login?${queryParams}`,
         {
           method: "POST",
           headers: {
@@ -2427,7 +2427,7 @@ childOptions(room) {
 
     const runtimeConfig = useRuntimeConfig();
 
-    const baseUrl = "https://api.sueennature.com/rooms/availability/";
+    const baseUrl = `${runtimeConfig.public.BE_URL}/rooms/availability/`;
 
     const params = new URLSearchParams();
     params.append("check_in", formattedCheckIn);
