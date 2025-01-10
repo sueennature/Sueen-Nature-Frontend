@@ -20,7 +20,7 @@
             <h2 class="md:text-4xl text-2xl uppercase text-black-200 mx-4 whitespace-pre">{{ roomType.category }}</h2>
             <span class="border-t border-black w-1/4 mx-4"></span>
           </div>
-          <img :src="roomType.rooms[0].images[0].length > 0 ?  `https://api.sueennature.com/${roomType.rooms[0].images[0]}` : 'default-image-url.jpg'" alt="serviceImg" class="flex-grow w-[800px] h-[400px] text-center object-cover  rounded-md"/>
+          <img :src="roomType.rooms[0].images[0].length > 0 ?  `${runtimeConfig.public.BE_URL}/${roomType.rooms[0].images[0]}` : 'default-image-url.jpg'" alt="serviceImg" class="flex-grow w-[800px] h-[400px] text-center object-cover  rounded-md"/>
           <div class="flex flex-row gap-4 justify-center mt-2">
             <h5 class="md:text-sm text-xs text-black-200 pl-4 whitespace-nowrap">
               Size: <span class="italic">{{ 
@@ -122,7 +122,7 @@ export default {
     initFlowbite();
 
     // try {
-    //   const response = await fetch("https://api.sueennature.com/rooms", {
+    //   const response = await fetch(`${runtimeConfig.public.BE_URL}/rooms`, {
     //     method: "GET",
     //     headers: {
     //       "x-api-key": runtimeConfig.public.DATABASE_ID,
@@ -144,7 +144,7 @@ export default {
     // }
 
     try {
-      const response = await fetch("https://api.sueennature.com/rooms/types", {
+      const response = await fetch(`${runtimeConfig.public.BE_URL}/rooms/types`, {
         method: "GET",
         headers: {
           "x-api-key": runtimeConfig.public.DATABASE_ID,
